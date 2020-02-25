@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// import { SplashPageComponent } from './components/splash-page/splash-page.component';
+import { SplashComponent } from './components/splash/splash.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'splash', pathMatch: 'full' },
-  // { path: 'splash', component: SplashPageComponent },
+  { path: '', redirectTo: 'splash', pathMatch: 'full' },
+  { path: 'splash', component: SplashComponent },
+  { path: 'home', component: HomeComponent },
 ];
 
 @NgModule({
