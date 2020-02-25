@@ -1,0 +1,22 @@
+@import "../../styles/variables";
+
+
+@mixin button-styles{
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: $vvblue;
+    padding: 15px 10px;
+    color:#ffffff;
+    max-width:200px;
+    margin:auto;
+    box-shadow: $vvshadow;
+
+
+    &:hover {
+        background-color: $vvlightblue;
+        box-shadow: $vvshadowdark;
+      }
+
+}
