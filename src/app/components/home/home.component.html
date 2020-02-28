@@ -1,3 +1,5 @@
-<p>
-  home works!
-</p>
+<a [routerLink]="[{ outlets: {sidenav: ['city-attorney']} }]">go to city attorney</a>
+<a [routerLink]="[{ outlets: {sidenav: ['city-council']} }]">go to city council</a>
+<a [routerLink]="[{ outlets: {sidenav: ['mayor']} }]">go to mayor</a>
+<a routerLink="/splash">go to splash</a>
+<router-outlet name="sidenav"></router-outlet>
