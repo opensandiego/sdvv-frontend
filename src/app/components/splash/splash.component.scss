@@ -1,3 +1,6 @@
+@import "../../styles/variables";
+@import "../../styles/elements";
+
 * {
   padding: 0px;
   margin: 0px;
@@ -6,9 +9,8 @@
 
 /*Hero*/
 .hero {
-  background-image: linear-gradient(to bottom, rgba(18, 93, 179, 0.9), rgba(0, 36, 77, 0.9)),
-    url("../../../assets/splash/splash_bg@2x.jpg");
-  background-position: center top;
+  background-image: url("../../../assets/splash/splash_bg@2x.jpg");
+  background-position: center center;
   width: 100%;
   color: #ffffff;
   margin: auto !important;
@@ -34,26 +36,40 @@
   text-decoration: none;
 }
 
-.buttons {
+.races {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 40px;
-  max-width: 800px;
+  grid-column-gap: 20px;
+  max-width: 900px;
   margin: auto;
   padding: 20px;
+  color: $vvdarkblue;
+  h2 {
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  h3 {
+    font-weight: 400;
+    font-size: 35px;
+  }
+  p {
+    margin-bottom: 10px;
+    color: $vvgreen;
+  }
+  .card {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: $vvshadow;
+  }
+  a {
+    text-decoration: none;
+  }
 }
 
-.buttons a {
-  text-decoration: none;
-}
 .cta {
-  background-color: #ffc400;
-  border-radius: 5px;
-  border: none;
-  color: #07376b;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 15px 10px;
+  @include button-styles;
 }
 
 .logo {
@@ -61,16 +77,36 @@
 }
 .headline {
   font-size: 35px;
-  font-weight: 400;
+  font-weight: 700;
   display: block;
   max-width: 750px;
   margin: auto;
   padding: 40px 20px 20px 20px;
 }
 
-.contribution {
-  color: #07ff66;
-  font-weight: 700;
+.rtb {
+  text-align: left;
+  margin: auto;
+  padding: 20px;
+  max-width: 450px;
+  list-style: none;
+  font-size: 18px;
+
+  li {
+    padding-left: 20px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    position: relative;
+
+    &::before {
+      content: "\f00c";
+      font-family: "Font Awesome";
+      color: $vvred;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
 }
 
 .subheadline {
@@ -88,40 +124,8 @@
 .subheadline p a {
   color: #ffc400;
   text-decoration: none;
-  display: inline-block;
-}
-
-/* Register Section */
-.register {
-  background-color: #222222;
-  color: #ffffff;
-  text-align: center;
-  padding: 20px 40px;
-}
-
-.register h2 {
-  display: inline;
-  font-size: 24px;
-  font-weight: 400;
-  margin-right: 20px;
-}
-.register a {
-  text-decoration: none;
-}
-
-.register_cta {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 700;
-  color: #ffffff;
-  padding: 10px 20px;
-  margin: 10px 0px;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 2px solid #ffffff;
-  background-color: #222222;
-  border-radius: 5px;
-  max-width: 200px;
+  display: block;
+  margin-top: 10px;
 }
 
 /*Footer*/
@@ -146,18 +150,18 @@
 }
 
 .footer h3 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 5px;
   margin-right: 40px;
 }
 .footer p {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
-  line-height: 1.1;
-  max-width: 700px;
-  margin-right: 20px;
+  line-height: 1.3;
+  max-width: 600px;
+  margin-right: 40px;
   margin-bottom: 20px;
 }
 .footer_logo {
@@ -179,19 +183,16 @@
   background-color: #ffffff !important;
 }
 
-.cta:hover {
-  background-color: #ffffff;
-}
-
 /*CTA Stack*/
-@media only screen and (max-width: 614px) {
+@media only screen and (max-width: 636px) {
   .headline {
     font-size: 26px;
   }
-  .buttons {
+  .races {
     grid-template-columns: 1fr;
     grid-row-gap: 20px;
-    max-width: 220px !important;
+    grid-column-gap: 0px;
+    max-width: 300px !important;
   }
 
   .subheadline {

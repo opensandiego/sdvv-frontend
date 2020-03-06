@@ -3,18 +3,36 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SplashPageComponent } from './components/splash-page/splash-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatIconModule,
+  MatListModule,
+  MatSidenavModule,
+  MatToolbarModule,
+} from '@angular/material';
+import { HomeComponent } from './components/home/home.component';
+import { SplashComponent } from './components/splash/splash.component';
+import { MayorComponent } from './components/mayor/mayor.component';
+import { CityAttorneyComponent } from './components/city-attorney/city-attorney.component';
+import { CityCouncilComponent } from './components/city-council/city-council.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SplashPageComponent
+    HomeComponent,
+    SplashComponent,
+    MayorComponent,
+    CityAttorneyComponent,
+    CityCouncilComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
