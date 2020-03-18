@@ -7,6 +7,7 @@ import {
   HomeComponent,
   MayorComponent,
   SplashComponent,
+  UnderConstructionComponent,
 } from './components';
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'mayor', component: MayorComponent, outlet: 'sidenav' },
     ],
   },
+  { path: 'under-construction', component: UnderConstructionComponent },
 ];
 
 @NgModule({

@@ -15,6 +15,7 @@ import { SplashComponent } from './components/splash/splash.component';
 import { MayorComponent } from './components/mayor/mayor.component';
 import { CityAttorneyComponent } from './components/city-attorney/city-attorney.component';
 import { CityCouncilComponent } from './components/city-council/city-council.component';
+import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CityCouncilComponent } from './components/city-council/city-council.com
     MayorComponent,
     CityAttorneyComponent,
     CityCouncilComponent,
+    UnderConstructionComponent,
   ],
   imports: [
     BrowserModule,
