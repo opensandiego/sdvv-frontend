@@ -32,4 +32,4 @@ npm install -g @angular/cli
 
 ### Contributing
 
-[Contributing](CONTRIBUTING.MD)
+[Contributing](https://github.com/opensandiego/sdvv-frontend/blob/master/CONTRIBUTING.md)
