@@ -16,6 +16,8 @@ import { MayorComponent } from './components/mayor/mayor.component';
 import { CityAttorneyComponent } from './components/city-attorney/city-attorney.component';
 import { CityCouncilComponent } from './components/city-council/city-council.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
+import { DistrictOneComponent } from './components/city-council/district-one/district-one.component';
+import { DistrictTwoComponent } from './components/city-council/district-two/district-two.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { UnderConstructionComponent } from './components/under-construction/unde
     CityAttorneyComponent,
     CityCouncilComponent,
     UnderConstructionComponent,
+    DistrictOneComponent,
+    DistrictTwoComponent,
   ],
   imports: [
     BrowserModule,
