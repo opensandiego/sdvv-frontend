@@ -18,6 +18,7 @@ import { CityCouncilComponent } from './components/city-council/city-council.com
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { DistrictOneComponent } from './components/city-council/district-one/district-one.component';
 import { DistrictTwoComponent } from './components/city-council/district-two/district-two.component';
+import { CandidateCardComponent } from './components/candidate-card/candidate-card.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DistrictTwoComponent } from './components/city-council/district-two/dis
     UnderConstructionComponent,
     DistrictOneComponent,
     DistrictTwoComponent,
+    CandidateCardComponent,
   ],
   imports: [
     BrowserModule,
