@@ -14,18 +14,19 @@
     display: flex;
     flex-direction: column;
     width: 150px;
-    margin: 20px;
-    padding: 20px 30px;
+    margin: 10px;
+    padding: 15px 25px 15px 25px;
     background: #fff;
     box-shadow: $vvshadow;
     h1{
         font-size: 20px;
-        color: $vvdarkgrey;
+        color: $vvdarkblue;
     }
     h2{
         font-weight: normal;
         font-size: 12px;
         color: $vvgrey;
+        margin: 5px 0px 10px 0px;
     }
     h3{
         font-size: 18px;
@@ -45,17 +46,11 @@
         }
     }  
     a{
-        text-decoration: none;
-        border-radius: 5px;
-        border: none;
-        font-size: 12px;
-        font-weight: 700;
-        background-color: $vvblue;
-        padding: 8px 30px;
-        margin: 5px 0;
-        color: #ffffff;
+
+        @include button-styles;
+        padding: 10px 30px;
         max-width: 200px;
-        box-shadow: $vvshadow;
+        margin: 10px 0;
     }
     a:hover{
         background-color: $vvlightblue;

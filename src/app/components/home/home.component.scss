@@ -3,7 +3,9 @@
 @import "../../styles/global";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
-
+.main_section{
+  background-color: $vvbackground;
+}
 
 .sidenav-container {
   height: 100vh;
@@ -38,4 +40,104 @@
 :host ::ng-deep .mat-list-item-content {
   font-size: 20px;
   font-weight: 500;
+}
+
+
+/*Footer*/
+.footer {
+  display: grid;
+  grid-template-columns: 3fr auto;
+  padding: 40px;
+  color: $vvdarkblue;
+  border:none;
+  background-color: $vvbackground;
+
+  h3 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    margin-right: 40px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+    max-width: 600px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+  }
+}
+
+.footer_links {
+  margin: 20px 20px 20px 0px;
+  display: inline-block;
+  
+  a {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    text-decoration: none;
+    color: $vvblue;
+  }
+}
+
+
+.footer_logo {
+  align-self: center;
+  justify-self: center;
+  margin-right: 20px;
+}
+.updated{
+ color: $vvgreen;
+ font-style: italic;
+ font-size: 12px;
+}
+
+/*Hover States*/
+
+.subheadline p a:hover,
+.nav_links a:hover,
+.footer_links a:hover {
+  text-decoration: underline;
+}
+
+
+
+/*CTA Stack*/
+@media only screen and (max-width: 636px) {
+  .headline {
+    font-size: 26px;
+  }
+  .races {
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+    grid-column-gap: 0px;
+    max-width: 300px !important;
+  }
+
+  .subheadline {
+    margin: auto;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+   
+    h3 {
+      font-size: 14px;
+      margin-right: 0px;
+    }
+
+    p {
+      margin-right: 0px;
+    }
+  }
+
+
+
+  .last {
+    margin-right: 0px !important;
+  }
 }
