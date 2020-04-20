@@ -11,12 +11,44 @@
   height: 100vh;
   border: 1px solid rgba(0, 0, 0, 0.5);
 
+  .office {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .active-link {
+    background-color: $vvlightblue;
+    color: $vvlightgrey;
+  }
+
+  mat-list-item {
+    transition: 300ms ease;
+
+    &:hover, &:active, &:focus {
+      background-color: $vvlightblue !important;
+      color: $vvlightgrey;
+    }
+  }
+
+
   .submenu {
     overflow-y: hidden;
     transition: transform 300ms ease;
     transform: scaleY(0);
     transform-origin: top;
     padding-left: 30px;
+    background: $vvlightgrey;
+
+    .mat-list-item {
+
+      &:hover {
+        background-color: $vvlightgrey !important;
+        border-bottom: 3px $vvlightblue solid;
+        font-style: italic;
+        color: black;
+      }
+
+    }
   }
 
   .submenu.expanded {
@@ -34,6 +66,7 @@
 
   mat-nav-list {
     width: 15vw;
+    padding-top: 0;
   }
 }
 
