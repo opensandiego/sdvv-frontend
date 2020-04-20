@@ -19,6 +19,7 @@ import { UnderConstructionComponent } from './components/under-construction/unde
 import { DistrictOneComponent } from './components/city-council/district-one/district-one.component';
 import { DistrictTwoComponent } from './components/city-council/district-two/district-two.component';
 import { CandidateCardComponent } from './components/candidate-card/candidate-card.component';
+import { CandidateCardExpandedComponent } from './components/candidate-card-expanded/candidate-card-expanded.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CandidateCardComponent } from './components/candidate-card/candidate-ca
     DistrictOneComponent,
     DistrictTwoComponent,
     CandidateCardComponent,
+    CandidateCardExpandedComponent,
   ],
   imports: [
     BrowserModule,
