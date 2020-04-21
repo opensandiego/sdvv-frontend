@@ -1,5 +1,6 @@
 <div class="candidate-cards">
-  <app-candidate-card></app-candidate-card>
+  <app-candidate-card-expanded *ngIf="isExpanded" [candidate]="candidate"></app-candidate-card-expanded>
+  <app-candidate-card (emitCandidateData)="getCandidate($event)"></app-candidate-card>
   <app-candidate-card></app-candidate-card>
   <app-candidate-card></app-candidate-card>
   <app-candidate-card></app-candidate-card>
