@@ -12,6 +12,7 @@ import {
   MatTableModule,
   MatToolbarModule,
 } from '@angular/material';
+import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './components/home/home.component';
 import { SplashComponent } from './components/splash/splash.component';
 import { MayorComponent } from './components/mayor/mayor.component';
@@ -41,6 +42,7 @@ import { CandidateCardExpandedComponent } from './components/candidate-card-expa
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ChartsModule,
     MatButtonModule,
     MatIconModule,
     MatListModule,

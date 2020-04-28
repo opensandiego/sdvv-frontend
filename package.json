@@ -26,7 +26,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "chart.js": "^2.9.3",
     "core-js": "^2.5.4",
-    "ng2-charts": "^2.3.0",
+    "ng2-charts": "^2.2.3",
     "primeflex": "^1.0.0",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.2",
