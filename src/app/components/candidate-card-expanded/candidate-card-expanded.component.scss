@@ -38,14 +38,23 @@
         font-size: 18px;
         color: $vvdarkgrey;
     }
+}
 
-    a { 
-        @include button-styles;
-        padding: 10px 30px;
-        max-width: 200px;
-        margin: 10px 0;
+.website-link {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: $vvlightblue;
+    
+    .mat-icon {
+        padding-right: 5px;
     }
-    a:hover {
-        background-color: $vvlightblue;
-    }
+}
+
+.full-details-btn {
+    width: 140px;
+    background-color: $vvblue;
+    color: #fff;
 }

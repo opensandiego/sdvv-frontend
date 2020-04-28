@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  MatButtonModule,
   MatIconModule,
   MatListModule,
   MatSidenavModule,
+  MatTableModule,
   MatToolbarModule,
 } from '@angular/material';
 import { HomeComponent } from './components/home/home.component';
@@ -39,9 +41,11 @@ import { CandidateCardExpandedComponent } from './components/candidate-card-expa
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatButtonModule,
     MatIconModule,
     MatListModule,
     MatSidenavModule,
+    MatTableModule,
     MatToolbarModule,
   ],
   providers: [],
