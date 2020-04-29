@@ -11,4 +11,17 @@
 
     <button class="full-details-btn" mat-flat-button>See Full Details</button>
   </div>
+
+  <div>
+    <div style="display: block">
+      <canvas baseChart
+        width="200"
+        height="220"
+        [chartType]="barChartType"
+        [datasets]="barChartData"
+        [colors]="barChartColors"
+        [options]="barChartOptions"
+      ></canvas>
+    </div>
+  </div>
 </div>

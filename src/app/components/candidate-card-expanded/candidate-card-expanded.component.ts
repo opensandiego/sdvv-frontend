@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Color } from 'ng2-charts';
 import { Candidate } from '../../candidate';
 
 @Component({
@@ -8,6 +10,57 @@ import { Candidate } from '../../candidate';
 })
 export class CandidateCardExpandedComponent implements OnInit {
   @Input() candidate: Candidate;
+
+  barChartType: ChartType = 'bar';
+  barChartData: ChartDataSets[] = [
+    { data: [150000], label: 'Raised', barPercentage: 0.4, categoryPercentage: 1.0 },
+    { data: [125000], label: 'Spent', barPercentage: 0.4, categoryPercentage: 1.0  },
+  ];
+
+  barChartColors: Color[] = [
+    { backgroundColor: '#289a58' },
+    { backgroundColor: '#ff5647' },
+  ];
+
+  barChartOptions: ChartOptions = {
+    responsive: true,
+
+    title: {
+      text: 'Raised v. Spent',
+      display: true,
+      fontSize: 15,
+      fontColor: '#16375d',
+      fontStyle: 'bold',
+    },
+
+    legend: {
+      display: false,
+    },
+
+    plugins: {
+      dataLabels: {
+        anchor: 'end',
+        align: 'end',
+        font: {
+          size: 10,
+        }
+      }
+    },
+
+    scales: {
+      xAxes: [{
+        ticks: {
+          min: 0,
+        },
+      }],
+      yAxes:[{
+        display: false,
+        ticks: {
+          min: 0,
+        },
+      }],
+    },
+  }
 
   constructor() { }
 
