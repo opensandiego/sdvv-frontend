@@ -11,25 +11,84 @@
   height: 100vh;
   border: 1px solid rgba(0, 0, 0, 0.5);
 
-  .office {
-    text-transform: uppercase;
-    font-weight: bold;
-  }
+  .mat-accordion {
 
-  .active-link {
-    background-color: $vvlightblue;
-    color: $vvlightgrey;
-  }
+    .mat-expansion-panel {
+      border-radius: 0px !important;
 
-  mat-list-item {
-    transition: 300ms ease;
+      .mat-expansion-panel-content {
+        background: lighten($vvbackground, 3%);
+        .mat-expansion-panel-body {
+          padding-bottom: 0px;
+        }
+      
+        .mat-icon {
+          opacity: 0.7;
+          float: right;
+        }
 
-    &:hover, &:active, &:focus {
-      background-color: $vvlightblue !important;
-      color: $vvlightgrey;
+        .mat-expansion-panel-header {
+          .mat-content{
+            display: flex;
+            justify-content: space-between;
+            margin: 0 10px;       
+          }
+          transition: none;
+          background: lighten($vvbackground, 3%);
+          padding: 5px 10px;
+
+          &:hover {
+            background: lighten($vvbackground, 3%) !important;
+            border-bottom: 2px $vvlightblue solid;
+            font-style: italic;
+          }
+
+        }
+      }
     }
-  }
 
+    .active-link {
+      background-color: $vvlightblue !important;
+      box-shadow: $vvshadowdark;
+
+      .mat-content .mat-expansion-panel-header-title {
+        color: $vvlightgrey;         
+      }
+    }
+
+    .mat-expansion-panel-header {
+      transition: 300ms ease;
+      .mat-content .mat-expansion-panel-header-title {
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      &:hover {
+        background-color: lighten($vvlightblue, 10%) !important;
+
+        .mat-content .mat-expansion-panel-header-title {
+          color: $vvlightgrey;         
+        }
+      }
+      
+    }
+
+    .mat-expansion-panel-body {
+      ul {
+        list-style-type: none;
+        padding: 0px;
+
+        li {
+          margin: 0 0 5px 0;
+
+          &:hover {
+            font-weight: bold;
+            color: $vvlightblue;
+          }
+        }
+      }
+    }
+}
 
   .submenu {
     overflow-y: hidden;
@@ -38,17 +97,6 @@
     transform-origin: top;
     padding-left: 30px;
     background: $vvlightgrey;
-
-    .mat-list-item {
-
-      &:hover {
-        background-color: $vvlightgrey !important;
-        border-bottom: 3px $vvlightblue solid;
-        font-style: italic;
-        color: black;
-      }
-
-    }
   }
 
   .submenu.expanded {

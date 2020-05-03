@@ -8,17 +8,71 @@
 <mat-drawer-container class="sidenav-container">
   <mat-drawer #drawer mode="side" disableClose="true" opened="true">
     <mat-nav-list [disableRipple]="true">
-      <mat-list-item class="office" routerLinkActive="active-link" [routerLink]="[{ outlets: {sidenav: ['mayor']} }]">Mayor</mat-list-item>
-      <mat-list-item class="office" routerLinkActive="active-link" [routerLink]="[{ outlets: {sidenav: ['city-attorney']} }]">City Attorney</mat-list-item>
-      <mat-list-item class="office" (click)="showSubmenu = !showSubmenu">
-        <span>City Council</span>
-        <mat-icon class="menu-button-expand" [ngClass]="{'rotated' : showSubmenu}">expand_more</mat-icon>
-      </mat-list-item>
+          
+    <mat-accordion displayMode="flat">
+      <mat-expansion-panel hideToggle="true">
+        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" [routerLink]="[{ outlets: {sidenav: ['mayor']} }]">
+          <mat-panel-title>
+            Mayor
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li><a>John Jones</a></li>
+          <li><a>John Jones</a></li>
+          <li><a>John Jones</a></li>
+        </ul>
+      </mat-expansion-panel>
 
-      <div class="submenu" [ngClass]="{'expanded' : showSubmenu}">
-        <mat-list-item>District 1</mat-list-item>
-        <mat-list-item>District 2</mat-list-item>
-      </div>
+      <mat-expansion-panel hideToggle="true">
+        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" [routerLink]="[{ outlets: {sidenav: ['city-attorney']} }]">
+          <mat-panel-title>
+            City Attorney
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li><a>John Jones</a></li>
+          <li><a>John Jones</a></li>
+          <li><a>John Jones</a></li>
+        </ul>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true">
+        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px">
+          <mat-panel-title>
+            City Council
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <!-- <mat-list-item>
+
+        </mat-list-item> -->
+        <mat-expansion-panel class="mat-elevation-z0" hideToggle="true">
+          <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
+              <span class="full-width">District Finder</span>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="active-link">
+          <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
+            District 1
+          </mat-expansion-panel-header>
+          <ul>
+            <li>Candidate A</li>
+            <li>Candidate B</li>
+            <li>Candidate C</li>
+          </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="active-link">
+          <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
+            District 2
+          </mat-expansion-panel-header>
+          <ul>
+            <li>Candidate D</li>
+            <li>Candidate E</li>
+            <li>Candidate F</li>
+          </ul>
+        </mat-expansion-panel>
+      </mat-expansion-panel>
+    </mat-accordion>
     </mat-nav-list>
   </mat-drawer>
 
