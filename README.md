@@ -15,7 +15,7 @@ Welcome to the San Diego Voter's Voice Initiative! We are a coalition of non-par
 
 #### Background Information
 
-Currently, campaign finance information for candidates running for local offices as well as money spent by outside groups to support or defeat them is not readily accessible to the public.  When the amount of money being spent as well as the source is not known, voters’ feel disenfranchised by the election process.  Making campaign finance data easy to find and read will increase public trust and confidence in the election process.
+Currently, campaign finance information for candidates running for local offices as well as money spent by outside groups to support or defeat them is not readily accessible to the public.  When the amount of money being spent as well as the source is not known, voters feel disenfranchised by the election process.  Making campaign finance data easy to find and read will increase public trust and confidence in the election process.
 
 For more information with Voter's Voice Initiative visit [https://sdvotersvoice.org/](https://sdvotersvoice.org/)
 

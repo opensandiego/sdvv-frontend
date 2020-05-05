@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CandidateCardComponent } from '../candidate-card/candidate-card.component';
 
 @Component({
   selector: 'app-mayor',

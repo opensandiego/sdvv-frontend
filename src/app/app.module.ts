@@ -10,6 +10,7 @@ import {
   MatSidenavModule,
   MatToolbarModule,
 } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeComponent } from './components/home/home.component';
 import { SplashComponent } from './components/splash/splash.component';
 import { MayorComponent } from './components/mayor/mayor.component';
@@ -21,6 +22,9 @@ import { DistrictTwoComponent } from './components/city-council/district-two/dis
 import { CandidateCardComponent } from './components/candidate-card/candidate-card.component';
 
 @NgModule({
+  exports: [
+    MatExpansionModule,
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -37,6 +41,7 @@ import { CandidateCardComponent } from './components/candidate-card/candidate-ca
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatExpansionModule,
     MatIconModule,
     MatListModule,
     MatSidenavModule,
