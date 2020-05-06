@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Color } from 'ng2-charts';
 import { Candidate } from '../../candidate';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-candidate-card-expanded',
@@ -11,10 +12,22 @@ import { Candidate } from '../../candidate';
 export class CandidateCardExpandedComponent implements OnInit {
   @Input() candidate: Candidate;
 
+  barChartPlugins = [ pluginDataLabels ];
+
   barChartType: ChartType = 'bar';
   barChartData: ChartDataSets[] = [
-    { data: [150000], label: 'Raised', barPercentage: 0.4, categoryPercentage: 1.0 },
-    { data: [125000], label: 'Spent', barPercentage: 0.4, categoryPercentage: 1.0  },
+    {
+      data: [150000],
+      label: 'Raised',
+      barPercentage: 0.4,
+      categoryPercentage: 1.0,
+    },
+    {
+      data: [125000],
+      label: 'Spent',
+      barPercentage: 0.4,
+      categoryPercentage: 1.0,
+    },
   ];
 
   barChartColors: Color[] = [
@@ -39,10 +52,24 @@ export class CandidateCardExpandedComponent implements OnInit {
 
     plugins: {
       dataLabels: {
+        color: 'blue',
+        labels: {
+          title: {
+            font: {
+              weight: 'bold',
+            },
+          },
+          value: {
+            color: 'green',
+          },
+        }
+      },
+
+      datalabels: {
         anchor: 'end',
         align: 'end',
         font: {
-          size: 10,
+          size: 15,
         }
       }
     },
@@ -53,6 +80,7 @@ export class CandidateCardExpandedComponent implements OnInit {
           min: 0,
         },
       }],
+
       yAxes:[{
         display: false,
         ticks: {

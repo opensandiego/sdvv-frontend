@@ -21,7 +21,20 @@
         [datasets]="barChartData"
         [colors]="barChartColors"
         [options]="barChartOptions"
+        [plugins]="barChartPlugins"
       ></canvas>
+    </div>
+
+    <div class="raised-spent-footer">
+      <div>
+        <p class="raised-spent-footer-title">Donors</p>
+        <p class="raised-spent-footer-content">{{ candidate.donors }}</p>
+      </div>
+
+      <div>
+        <p class="raised-spent-footer-title">Average Donation</p>
+        <p class="raised-spent-footer-content">$200</p>
+      </div>
     </div>
   </div>
 </div>

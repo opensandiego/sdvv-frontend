@@ -38,6 +38,26 @@
         font-size: 18px;
         color: $vvdarkgrey;
     }
+    
+    .raised-spent-footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding-left: 10px;
+
+        p {
+            margin: 0;
+        }
+
+        .raised-spent-footer-title {
+            font-size: 13px;
+        }
+
+        .raised-spent-footer-content {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
 }
 
 .website-link {
