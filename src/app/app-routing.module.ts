@@ -14,12 +14,13 @@ import {
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'splash', pathMatch: 'full' },
-  { path: 'splash', component: SplashComponent },
+
+
   {
     path: 'home',
     component: HomeComponent,
     children: [
+      { path: 'splash', component: SplashComponent,  outlet: 'sidenav'},
       { path: 'mayor', component: MayorComponent, outlet: 'sidenav' },
       { path: 'city-attorney', component: CityAttorneyComponent, outlet: 'sidenav' },
       {

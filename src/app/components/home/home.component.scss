@@ -6,7 +6,9 @@
 .main_section{
   background-color: $vvbackground;
 }
-
+.full-width{
+  padding: 0px;
+}
 .sidenav-container {
   height: 100vh;
   border: 1px solid rgba(0, 0, 0, 0.5);
@@ -128,7 +130,7 @@
 .footer {
   display: grid;
   grid-template-columns: 3fr auto;
-  padding: 40px;
+  padding: 40px 40px 40px 40px;
   color: $vvdarkblue;
   border:none;
   background-color: $vvbackground;
