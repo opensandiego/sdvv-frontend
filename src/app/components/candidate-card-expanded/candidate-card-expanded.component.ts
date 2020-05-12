@@ -19,6 +19,9 @@ export class CandidateCardExpandedComponent implements OnInit {
     {
       data: [150000],
       label: 'Raised',
+      datalabels: {
+        color: '#289a58',
+      },
       barPercentage: 0.4,
       categoryPercentage: 1.0,
     },
@@ -39,7 +42,6 @@ export class CandidateCardExpandedComponent implements OnInit {
     responsive: true,
 
     title: {
-      text: 'Raised v. Spent',
       display: true,
       fontSize: 15,
       fontColor: '#16375d',
@@ -50,27 +52,21 @@ export class CandidateCardExpandedComponent implements OnInit {
       display: false,
     },
 
-    plugins: {
-      dataLabels: {
-        color: 'blue',
-        labels: {
-          title: {
-            font: {
-              weight: 'bold',
-            },
-          },
-          value: {
-            color: 'green',
-          },
-        }
-      },
+    tooltips: {
+      enabled: false,
+    },
 
+    plugins: {
       datalabels: {
         anchor: 'end',
         align: 'end',
+        textAlign: 'center',
         font: {
           size: 15,
-        }
+        },
+        formatter: (val, ctx) => {
+          return ctx.dataset.label === 'Raised' ? `Raised\n$${val}` : `Spent\n$${val}`;
+        },
       }
     },
 
