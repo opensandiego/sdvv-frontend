@@ -12,13 +12,12 @@
     <button class="full-details-btn" mat-flat-button>See Full Details</button>
   </div>
 
-  <div>
-    <div class="header-title">
-      <!-- <h1>Raised v. Spent</h1> -->
+  <div class="raised-spent">
+    <div class="raised-spent-header">
       <p>Raised v. Spent</p>
     </div>
 
-    <div style="display: block">
+    <div class="raised-spetn-graph">
       <canvas baseChart
         width="200"
         height="220"
@@ -41,5 +40,35 @@
         <p class="raised-spent-footer-content">$200</p>
       </div>
     </div>
+  </div>
+
+  <div class="industries">
+    <table class="industries-table" mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="colorCode">
+        <th mat-header-cell *matHeaderCellDef>Color Code</th>
+        <td mat-cell *matCellDef="let element" [style.color]="element.colorCode">
+          <mat-icon>fiber_manual_record</mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="industry">
+        <th mat-header-cell *matHeaderCellDef>Industry</th>
+        <td mat-cell *matCellDef="let element">{{ element.industry }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
+        <td mat-cell *matCellDef="let element">{{ element.amount | currency }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="percentage">
+        <th mat-header-cell *matHeaderCellDef>Percentage</th>
+        <td mat-cell *matCellDef="let element">{{ element.percentage | percent }}</td>
+      </ng-container>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
   </div>
 </div>

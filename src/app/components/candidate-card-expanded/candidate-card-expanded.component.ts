@@ -1,8 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Color } from 'ng2-charts';
 import { Candidate } from '../../candidate';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+
+const placeholder_data = [
+  { colorCode: '#007431', industry: 'Technology', amount: 200000, percentage: 0.5 },
+  { colorCode: '#00903d', industry: 'Finance', amount: 200000, percentage: 0.2 },
+  { colorCode: '#00af4a', industry: 'Energy', amount: 200000, percentage: null },
+  { colorCode: '#00d359', industry: 'Construction', amount: 200000, percentage: null },
+  { colorCode: '#00fc6a', industry: 'Other', amount: 200000, percentage: null },
+];
 
 @Component({
   selector: 'app-candidate-card-expanded',
@@ -12,6 +21,11 @@ import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 export class CandidateCardExpandedComponent implements OnInit {
   @Input() candidate: Candidate;
 
+  //For By Industry Table
+  displayedColumns: string[]
+  dataSource = new MatTableDataSource();
+
+  // For Raised v. Spent Chart
   barChartPlugins = [ pluginDataLabels ];
 
   barChartType: ChartType = 'bar';
@@ -89,6 +103,17 @@ export class CandidateCardExpandedComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.setDisplayedColumns();
+    this.dataSource.data = placeholder_data;
+  }
+
+  setDisplayedColumns() {
+    this.displayedColumns = [
+      'colorCode',
+      'industry',
+      'amount',
+      'percentage',
+    ];
   }
 
 }

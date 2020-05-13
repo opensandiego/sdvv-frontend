@@ -39,29 +39,39 @@
         color: $vvdarkgrey;
     }
 
-    .header-title {
-        font-size: 16px;
-        font-weight: bold;
-        color: $vvdarkblue;
-    }
-    
-    .raised-spent-footer {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        padding-left: 10px;
-
-        p {
-            margin: 0;
-        }
-
-        .raised-spent-footer-title {
-            font-size: 13px;
-        }
-
-        .raised-spent-footer-content {
-            font-size: 20px;
+    .raised-spent {
+        .raised-spent-header {
+            font-size: 16px;
             font-weight: bold;
+            color: $vvdarkblue;
+        }
+
+        .raised-spent-footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            padding-left: 10px;
+
+            p {
+                margin: 0;
+            }
+
+            .raised-spent-footer-title {
+                font-size: 13px;
+            }
+
+            .raised-spent-footer-content {
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .industries {
+        width: 25%;
+
+        .industries-table {
+            width: 100%;
         }
     }
 }
@@ -73,7 +83,7 @@
     margin-bottom: 10px;
     font-size: 14px;
     color: $vvlightblue;
-    
+
     .mat-icon {
         padding-right: 5px;
     }
