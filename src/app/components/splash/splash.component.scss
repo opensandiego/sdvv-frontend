@@ -1,228 +1,129 @@
 @import "../../styles/variables";
 @import "../../styles/elements";
+@import "../../styles/global";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
-* {
-  padding: 0px;
-  margin: 0px;
-  font-family: "Roboto", sans-serif;
+.splashpage{
+  padding:20px 40px 0px 30px;
 }
-
-/*Hero*/
-.hero {
-  background-image: url("../../../assets/splash/splash_bg@2x.jpg");
-  background-position: center center;
-  width: 100%;
-  color: #ffffff;
-  margin: auto !important;
-  text-align: center;
-}
-
-.splash_nav {
-  font-size: 18px;
-  display: grid;
-  grid-template-columns: 3fr auto auto;
-  padding: 20px;
-  text-align: left;
-}
-
-.fa-bars {
-  font-size: 28px !important;
-}
-
-.nav_links a {
-  margin-left: 20px;
-  margin-right: 20px;
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.races {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 20px;
-  max-width: 900px;
+.whorwe{
+  background-color: $vvdarkblue;
+  color:#fff;
   margin: auto;
-  padding: 20px;
-  color: $vvdarkblue;
-  h2 {
-    font-weight: 400;
-    font-size: 18px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+  text-align:center;
+  padding:40px;
+  font-weight: 100;
+  box-shadow: $vvshadow;
+
+  h1{
+    font-size:18px;
+    font-weight:bold;
+    padding:0;
+    margin-top:0px;
+    margin-bottom:20px;
+    color:#fff;
+
   }
-  h3 {
-    font-weight: 400;
-    font-size: 35px;
-  }
-  p {
-    margin-bottom: 10px;
-    color: $vvgreen;
-  }
-  .card {
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: $vvshadow;
+  p{
+    margin-top:0px;
+    margin-bottom:20px;
+    font-size:14px;
+    line-height: 1.4;
+ 
   }
   a {
+    color: $vvyellow;
     text-decoration: none;
+    
+   
+    &:hover {
+        text-decoration: underline;
+      }
   }
 }
 
-.cta {
-  @include button-styles;
-}
+.ftm{
+  margin: 20px auto 20px auto;
+  text-align:center;
+  padding:40px 40px 60px 40px;
+  font-weight: 100;
+  box-shadow: $vvshadow;
+  color:#4E4E4E;
+  background-color: #fff;
+  h1{
+    margin: 0px;
+  }
+  p{
+    margin:10px 0px 20px 0px;
+    line-height: 1.4;
+  }
+  .ftm_caption{
+   
+    display: block;
+    max-width: 400px;
+    margin:10px auto;
+  }
+  .choose{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: center;
 
-.logo {
-  margin: 20px;
-}
-.headline {
-  font-size: 35px;
-  font-weight: 700;
-  display: block;
-  max-width: 750px;
-  margin: auto;
-  padding: 40px 20px 20px 20px;
-}
-
-.rtb {
-  text-align: left;
-  margin: auto;
-  padding: 20px 40px 20px 68px;
-  max-width: 450px;
-  list-style: none;
-  font-size: 18px;
-
-  li {
-    padding-left: 10px;
-    line-height: 1.3;
-    position: relative;
-    margin-bottom: 20px;
-    font-weight: 300;
-
-    .fa-check {
-      color: $vvred;
-      margin-bottom:50px;
-      top: 0em;
-      
-     
+    div{
+      border-right:2px solid $vvbackground;
     }
+    div:last-child{
+      border-right:none;
+    }
+
+
+      .cta{
+
+          @include button-styles;
+          padding: 10px 20px;
+          max-width: 200px;
+          text-decoration: none;
+          a{
+            text-decoration: none;
+          }
+          i{
+            padding:0px;
+            margin:0px 8px 0px 0px;
+            font-size:14px;
+          }
+      }
+      .cta:hover{
+            background-color: $vvlightblue;
+        }
+}
+
+    .racename{
+        font-size: 20px;
+        margin-bottom: 30px;
+     
   }
-}
-
-.subheadline {
-  padding: 40px;
-  max-width: 1000px;
-  margin: 80px auto 0px;
-  text-align: center;
-}
-
-.subheadline p {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-}
-.subheadline p a {
-  color: #ffc400;
-  text-decoration: none;
-  display: block;
-  margin-top: 10px;
-}
-
-/*Footer*/
-.footer {
-  display: grid;
-  grid-template-columns: 3fr auto;
-  padding: 20px;
-  color: #002f65;
-}
-
-.footer_links {
-  margin: 20px 20px 20px 0px;
-  display: inline-block;
-}
-
-.footer_links a {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  text-decoration: none;
-  color: #002f65;
-}
-
-.footer h3 {
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 5px;
-  margin-right: 40px;
-}
-.footer p {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.3;
-  max-width: 600px;
-  margin-right: 40px;
-  margin-bottom: 20px;
-}
-.footer_logo {
-  align-self: center;
-  justify-self: center;
-  margin-right: 20px;
-}
-
-/*Hover States*/
-
-.subheadline p a:hover,
-.nav_links a:hover,
-.footer_links a:hover {
-  text-decoration: underline;
-}
-
-.register_cta:hover {
-  color: #222222 !important;
-  background-color: #ffffff !important;
-}
-
-/*CTA Stack*/
-@media only screen and (max-width: 636px) {
-  .headline {
-    font-size: 26px;
+  .raised{
+    margin:40px 0px  5px 0px;
   }
-  .races {
-    grid-template-columns: 1fr;
-    grid-row-gap: 20px;
-    grid-column-gap: 0px;
-    max-width: 300px !important;
+  .candidate_num{
+    margin:10px 0px  5px 0px;
   }
+  h3{
+    font-size:20px;
+    margin: 0px;
+  }
+  .amount_raised{
+    color:#289A58;
+  }
+  
+}
 
-  .subheadline {
-    margin: auto;
+.sources{
+  margin-top:60px;
+  font-size:14px;
+  a{
+    color:$vvlightblue;
   }
-  .register h2 {
-    display: block;
-    margin: 10px !important;
-    font-size: 18px;
-  }
-
-  .register_cta {
-    display: block;
-    margin: 20px auto 20px auto;
-    max-width: 120px !important;
-  }
-  .footer {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .footer h3 {
-    font-size: 14px;
-    margin-right: 0px;
-  }
-  .footer p {
-    margin-right: 0px;
-  }
-  .last {
-    margin-right: 0px !important;
+  p{
+    margin:0px !important;
   }
 }
