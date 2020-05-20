@@ -1,6 +1,96 @@
+@import "../../styles/variables";
+@import "../../styles/elements";
+@import "../../styles/global";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+.main_section{
+  background-color: $vvbackground;
+}
+.full-width{
+  padding: 0px;
+}
 .sidenav-container {
   height: 100vh;
   border: 1px solid rgba(0, 0, 0, 0.5);
+
+  .mat-accordion {
+
+    .mat-expansion-panel {
+      border-radius: 0px !important;
+
+      .mat-expansion-panel-content {
+        background: lighten($vvbackground, 3%);
+        .mat-expansion-panel-body {
+          padding-bottom: 0px;
+        }
+      
+        .mat-icon {
+          opacity: 0.7;
+          float: right;
+        }
+
+        .mat-expansion-panel-header {
+          .mat-content{
+            display: flex;
+            justify-content: space-between;
+            margin: 0 10px;       
+          }
+          transition: none;
+          background: lighten($vvbackground, 3%);
+          padding: 5px 10px;
+
+          &:hover {
+            background: lighten($vvbackground, 3%) !important;
+            border-bottom: 2px $vvlightblue solid;
+            font-style: italic;
+          }
+
+        }
+      }
+    }
+
+    .active-link {
+      background-color: $vvlightblue !important;
+      box-shadow: $vvshadowdark;
+
+      .mat-content .mat-expansion-panel-header-title {
+        color: $vvlightgrey;         
+      }
+    }
+
+    .mat-expansion-panel-header {
+      transition: 300ms ease;
+      .mat-content .mat-expansion-panel-header-title {
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      &:hover {
+        background-color: lighten($vvlightblue, 10%) !important;
+
+        .mat-content .mat-expansion-panel-header-title {
+          color: $vvlightgrey;         
+        }
+      }
+      
+    }
+
+    .mat-expansion-panel-body {
+      ul {
+        list-style-type: none;
+        padding: 0px;
+
+        li {
+          margin: 0 0 5px 0;
+
+          &:hover {
+            font-weight: bold;
+            color: $vvlightblue;
+          }
+        }
+      }
+    }
+}
 
   .submenu {
     overflow-y: hidden;
@@ -8,6 +98,7 @@
     transform: scaleY(0);
     transform-origin: top;
     padding-left: 30px;
+    background: $vvlightgrey;
   }
 
   .submenu.expanded {
@@ -25,10 +116,111 @@
 
   mat-nav-list {
     width: 15vw;
+    padding-top: 0;
   }
 }
 
 :host ::ng-deep .mat-list-item-content {
   font-size: 20px;
   font-weight: 500;
+}
+
+
+/*Footer*/
+.footer {
+  display: grid;
+  grid-template-columns: 3fr auto;
+  padding: 40px 40px 40px 40px;
+  color: $vvdarkblue;
+  border:none;
+  background-color: $vvbackground;
+
+  h3 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    margin-right: 40px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+    max-width: 600px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+  }
+}
+
+.footer_links {
+  margin: 20px 20px 20px 0px;
+  display: inline-block;
+  
+  a {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    text-decoration: none;
+    color: $vvblue;
+  }
+}
+
+
+.footer_logo {
+  align-self: center;
+  justify-self: center;
+  margin-right: 20px;
+}
+.updated{
+ color: $vvgreen;
+ font-style: italic;
+ font-size: 12px;
+}
+
+/*Hover States*/
+
+.subheadline p a:hover,
+.nav_links a:hover,
+.footer_links a:hover {
+  text-decoration: underline;
+}
+
+
+
+/*CTA Stack*/
+@media only screen and (max-width: 636px) {
+  .headline {
+    font-size: 26px;
+  }
+  .races {
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+    grid-column-gap: 0px;
+    max-width: 300px !important;
+  }
+
+  .subheadline {
+    margin: auto;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+   
+    h3 {
+      font-size: 14px;
+      margin-right: 0px;
+    }
+
+    p {
+      margin-right: 0px;
+    }
+  }
+
+
+
+  .last {
+    margin-right: 0px !important;
+  }
 }

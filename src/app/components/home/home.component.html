@@ -1,27 +1,103 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span routerLink="/splash">Toolbar/Back to Splash</span>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div class="header-nav">
+  <div routerLinkActive="active-link" routerLink="/splash"><img class="logo" src="../../../assets/home/VV_Logo_Reversed@2x.png" alt="Voter's Voice Initiative" width="120"
+    height="auto"></div>
+  <div class="nav_links"><a href="about">About</a></div>
+  <div class="nav_links"><a href="faq">FAQ</a></div>
+</div>
 
 <mat-drawer-container class="sidenav-container">
   <mat-drawer #drawer mode="side" disableClose="true" opened="true">
-    <mat-nav-list>
-      <mat-list-item [routerLink]="[{ outlets: {sidenav: ['mayor']} }]">Mayor</mat-list-item>
-      <mat-list-item [routerLink]="[{ outlets: {sidenav: ['city-attorney']} }]">City Attorney</mat-list-item>
-      <mat-list-item (click)="showSubmenu = !showSubmenu">
-        <span>City Council</span>
-        <mat-icon class="menu-button-expand" [ngClass]="{'rotated' : showSubmenu}">expand_more</mat-icon>
-      </mat-list-item>
+    <mat-nav-list [disableRipple]="true">
+          
+    <mat-accordion displayMode="flat">
+      <mat-expansion-panel hideToggle="true">
+        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/mayor">
+          <mat-panel-title>
+            Mayor
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li><a>John Jones</a></li>
+          <li><a>John Jones</a></li>
+          <li><a>John Jones</a></li>
+        </ul>
+      </mat-expansion-panel>
 
-      <div class="submenu" [ngClass]="{'expanded' : showSubmenu}">
-        <mat-list-item>District 1</mat-list-item>
-        <mat-list-item>District 2</mat-list-item>
-      </div>
+      <mat-expansion-panel hideToggle="true">
+        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/city-attorney">
+          <mat-panel-title>
+            City Attorney
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li><a>John Jones</a></li>
+          <li><a>John Jones</a></li>
+          <li><a>John Jones</a></li>
+        </ul>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true">
+        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px">
+          <mat-panel-title>
+            City Council
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <!-- <mat-list-item>
+
+        </mat-list-item> -->
+        <mat-expansion-panel class="mat-elevation-z0" hideToggle="true">
+          <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
+              <span class="full-width">District Finder</span>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="active-link">
+          <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
+            District 1
+          </mat-expansion-panel-header>
+          <ul>
+            <li>Candidate A</li>
+            <li>Candidate B</li>
+            <li>Candidate C</li>
+          </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="active-link">
+          <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
+            District 2
+          </mat-expansion-panel-header>
+          <ul>
+            <li>Candidate D</li>
+            <li>Candidate E</li>
+            <li>Candidate F</li>
+          </ul>
+        </mat-expansion-panel>
+      </mat-expansion-panel>
+    </mat-accordion>
     </mat-nav-list>
   </mat-drawer>
 
-  <mat-drawer-content>
-    <router-outlet name="sidenav"></router-outlet>
+  <mat-drawer-content class="main_section">
+    <router-outlet></router-outlet>
+    <div class="footer">
+      <div>
+        <div class="footer_nav">
+          <div class="footer_links"><a href="about">About</a></div>
+          <div class="footer_links"><a href="faq">FAQ</a></div>
+          <div class="footer_links last"><a href="register">Register to Vote</a></div>
+        </div>
+        <div>
+          <h3>Brought to you by the Voter’s Voice Initiatives and San Diego’s Public Ethics Commission</h3>
+          <p>The San Diego Campaign Finance Dashboard is being developed by volunteers in a non-partisan coalition as a
+            service to our community. Data has been gathered from public records posted by the City of San Diego Clerk’s
+            Office and the County of San Diego Registrar of Voters Public Portal in order to create the graphs and summaries
+            for each candidate’s campaign.</p>
+        </div>
+      </div>
+      <div class="footer_logo"><img src="../../../assets/home/VV_Logo_Color@2x.png" alt="Voter's Voice Initiative"
+          width="120" height="auto">
+        <p class="updated">Last Updated 00/00/0000</p>
+      </div>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>
+

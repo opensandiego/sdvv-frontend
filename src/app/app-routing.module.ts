@@ -4,24 +4,29 @@ import { Routes, RouterModule } from '@angular/router';
 import { 
   CityAttorneyComponent,
   CityCouncilComponent,
+  DistrictOneComponent,
+  DistrictTwoComponent,
   HomeComponent,
   MayorComponent,
   SplashComponent,
+  UnderConstructionComponent,
 } from './components';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'splash', pathMatch: 'full' },
+  { path: '', redirectTo: 'splash',pathMatch: 'full' },
   { path: 'splash', component: SplashComponent },
+  { path: 'mayor', component: MayorComponent },
+  { path: 'city-attorney', component: CityAttorneyComponent },
+  { path: 'under-construction', component: UnderConstructionComponent },
   {
-    path: 'home',
-    component: HomeComponent,
+    path: 'city-council',
+    component: CityCouncilComponent,
     children: [
-      { path: 'city-attorney', component: CityAttorneyComponent, outlet: 'sidenav' },
-      { path: 'city-council', component: CityCouncilComponent, outlet: 'sidenav' },
-      { path: 'mayor', component: MayorComponent, outlet: 'sidenav' },
+      { path: 'district-one', component: DistrictOneComponent },
+      { path: 'district-two', component: DistrictTwoComponent },
     ],
-  },
+  }
 ];
 
 @NgModule({
