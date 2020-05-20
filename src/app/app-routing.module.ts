@@ -14,26 +14,19 @@ import {
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'splash', pathMatch: 'full' },
+  { path: '', redirectTo: 'splash',pathMatch: 'full' },
   { path: 'splash', component: SplashComponent },
-  {
-    path: 'home',
-    component: HomeComponent,
-    children: [
-      { path: 'mayor', component: MayorComponent, outlet: 'sidenav' },
-      { path: 'city-attorney', component: CityAttorneyComponent, outlet: 'sidenav' },
-      {
-        path: 'city-council',
-        component: CityCouncilComponent,
-        outlet: 'sidenav',
-        children: [
-          { path: 'district-one', component: DistrictOneComponent },
-          { path: 'district-two', component: DistrictTwoComponent },
-        ],
-      },
-    ],
-  },
+  { path: 'mayor', component: MayorComponent },
+  { path: 'city-attorney', component: CityAttorneyComponent },
   { path: 'under-construction', component: UnderConstructionComponent },
+  {
+    path: 'city-council',
+    component: CityCouncilComponent,
+    children: [
+      { path: 'district-one', component: DistrictOneComponent },
+      { path: 'district-two', component: DistrictTwoComponent },
+    ],
+  }
 ];
 
 @NgModule({

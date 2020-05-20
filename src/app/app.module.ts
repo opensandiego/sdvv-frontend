@@ -13,6 +13,7 @@ import {
   MatToolbarModule,
 } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeComponent } from './components/home/home.component';
 import { SplashComponent } from './components/splash/splash.component';
 import { MayorComponent } from './components/mayor/mayor.component';
@@ -25,6 +26,9 @@ import { CandidateCardComponent } from './components/candidate-card/candidate-ca
 import { CandidateCardExpandedComponent } from './components/candidate-card-expanded/candidate-card-expanded.component';
 
 @NgModule({
+  exports: [
+    MatExpansionModule,
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -44,6 +48,7 @@ import { CandidateCardExpandedComponent } from './components/candidate-card-expa
     BrowserAnimationsModule,
     ChartsModule,
     MatButtonModule,
+    MatExpansionModule,
     MatIconModule,
     MatListModule,
     MatSidenavModule,
