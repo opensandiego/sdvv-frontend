@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Color } from 'ng2-charts';
+import { Color, Label } from 'ng2-charts';
 import { Candidate } from '../../candidate';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
@@ -21,22 +21,19 @@ const placeholder_data = [
 export class CandidateCardExpandedComponent implements OnInit {
   @Input() candidate: Candidate;
 
-  // For By Industry Table
+  // Industry Table
   displayedColumns: string[]
   dataSource = new MatTableDataSource();
 
   // All Charts
-  chartPlugins = [ pluginDataLabels ];
+  chartPlugins = [pluginDataLabels];
 
-  // For Raised v. Spent Chart
+  // Raised v. Spent Chart
   barChartType: ChartType = 'bar';
   barChartData: ChartDataSets[] = [
     {
       data: [150000],
       label: 'Raised',
-      datalabels: {
-        color: '#289a58',
-      },
       barPercentage: 0.4,
       categoryPercentage: 1.0,
     },
@@ -92,11 +89,86 @@ export class CandidateCardExpandedComponent implements OnInit {
         },
       }],
 
-      yAxes:[{
+      yAxes: [{
         display: false,
         ticks: {
           min: 0,
         },
+      }],
+    },
+  }
+
+  // Oppose v. Support Chart
+  stackedHorizontalBarChartType: ChartType = 'horizontalBar';
+  stackedHorizontalBarChartData: ChartDataSets[] = [
+    {
+      data: [5000],
+      stack: 'oppose-support',
+      datalabels: {
+        anchor: 'start',
+        align: 'start',
+        textAlign: 'right',
+        font: {
+          size: 16,
+        },
+        formatter: (val) => {
+          return `Oppose\n$${val.toLocaleString('en')}`;
+        },
+      },
+    },
+    {
+      data: [200000],
+      stack: 'oppose-support',
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+        textAlign: 'left',
+        font: {
+          size: 16,
+        },
+        formatter: (val) => {
+          return `Support\n$${val.toLocaleString('en')}`;
+        },
+      },
+    },
+  ];
+
+  stackedHorizontalBarChartColors: Color[] = [
+    { backgroundColor: '#6964ad' },
+    { backgroundColor: '#336399' },
+  ];
+
+  stackedHorizontalBarChartOptions: ChartOptions = {
+    responsive: true,
+
+    layout: {
+      padding: {
+        left: 100,
+        right: 100,
+      },
+    },
+
+    legend: {
+      display: false,
+    },
+
+    tooltips: {
+      enabled: false,
+    },
+
+    scales: {
+      xAxes: [{
+        display: false,
+        gridLines: {
+          color: "rgba(0, 0, 0, 0)",
+        }
+      }],
+
+      yAxes: [{
+        display: false,
+        gridLines: {
+          color: "rgba(0, 0, 0, 0)",
+        }
       }],
     },
   }

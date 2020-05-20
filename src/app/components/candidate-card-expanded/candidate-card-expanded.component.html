@@ -88,4 +88,28 @@
       contributing directly to their campaign.
     </div>
   </div>
+
+  <div class="raised-donors-amount">
+    <div>
+      <p>Raised</p>
+      <div>$150,000</div>
+    </div>
+
+    <div>
+      <p>Donors</p>
+      <div>3250</div>
+    </div>
+  </div>
+
+  <div class="oppose-support-graph">
+    <canvas baseChart
+      width="400"
+      height="60"
+      [chartType]="stackedHorizontalBarChartType"
+      [datasets]="stackedHorizontalBarChartData"
+      [colors]="stackedHorizontalBarChartColors"
+      [options]="stackedHorizontalBarChartOptions"
+      [plugins]="chartPlugins"
+    ></canvas>
+  </div>
 </div>

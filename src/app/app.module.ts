@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
+  MatExpansionModule,
   MatIconModule,
   MatListModule,
   MatSidenavModule,
@@ -13,7 +14,6 @@ import {
   MatToolbarModule,
 } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeComponent } from './components/home/home.component';
 import { SplashComponent } from './components/splash/splash.component';
 import { MayorComponent } from './components/mayor/mayor.component';
