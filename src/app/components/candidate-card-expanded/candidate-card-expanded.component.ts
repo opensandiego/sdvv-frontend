@@ -21,13 +21,14 @@ const placeholder_data = [
 export class CandidateCardExpandedComponent implements OnInit {
   @Input() candidate: Candidate;
 
-  //For By Industry Table
+  // For By Industry Table
   displayedColumns: string[]
   dataSource = new MatTableDataSource();
 
-  // For Raised v. Spent Chart
-  barChartPlugins = [ pluginDataLabels ];
+  // All Charts
+  chartPlugins = [ pluginDataLabels ];
 
+  // For Raised v. Spent Chart
   barChartType: ChartType = 'bar';
   barChartData: ChartDataSets[] = [
     {

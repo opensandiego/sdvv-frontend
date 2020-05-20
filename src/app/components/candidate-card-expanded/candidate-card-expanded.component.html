@@ -13,11 +13,11 @@
   </div>
 
   <div class="raised-spent">
-    <div class="raised-spent-header">
+    <div class="title-header">
       <p>Raised v. Spent</p>
     </div>
 
-    <div class="raised-spetn-graph">
+    <div class="raised-spent-graph">
       <canvas baseChart
         width="200"
         height="220"
@@ -25,7 +25,7 @@
         [datasets]="barChartData"
         [colors]="barChartColors"
         [options]="barChartOptions"
-        [plugins]="barChartPlugins"
+        [plugins]="chartPlugins"
       ></canvas>
     </div>
 
@@ -43,6 +43,10 @@
   </div>
 
   <div class="industries">
+    <div class="title-header">
+      <p>By Industry</p>
+    </div>
+
     <table class="industries-table" mat-table [dataSource]="dataSource">
 
       <ng-container matColumnDef="colorCode">
@@ -70,5 +74,18 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
     </table>
+  </div>
+
+  <div class="outside-money">
+    <div class="title-header">
+      <p>Outside Money</p>
+    </div>
+
+    <div>
+      The Amount of money raised by independent
+      expenditure committees spent on intiatives in
+      support or opposition of a candidate but not
+      contributing directly to their campaign.
+    </div>
   </div>
 </div>

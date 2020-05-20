@@ -2,20 +2,11 @@
 @import "../../styles/elements";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
-.candidate {
-    width: 150px;
-    padding: 15px 25px 15px 25px;
-
-    img {
-        width: 110px;
-        border-radius: 50%;
-    }
-}
-
 .candidate-card-expanded {
     text-align: center;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 1470px;
     margin: 10px;
     padding: 15px 25px 15px 25px;
@@ -39,13 +30,23 @@
         color: $vvdarkgrey;
     }
 
-    .raised-spent {
-        .raised-spent-header {
-            font-size: 16px;
-            font-weight: bold;
-            color: $vvdarkblue;
-        }
+    .title-header {
+        font-size: 16px;
+        font-weight: bold;
+        color: $vvdarkblue;
+    }
 
+    .candidate {
+        width: 150px;
+        padding: 15px 25px 15px 25px;
+    
+        img {
+            width: 110px;
+            border-radius: 50%;
+        }
+    }
+
+    .raised-spent {
         .raised-spent-footer {
             display: flex;
             flex-direction: row;
@@ -73,6 +74,10 @@
         .industries-table {
             width: 100%;
         }
+    }
+
+    .outside-money {
+        width: 300px;
     }
 }
 
