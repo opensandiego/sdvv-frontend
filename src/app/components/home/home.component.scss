@@ -129,6 +129,36 @@
   font-weight: 500;
 }
 
+@media (max-width: 1200px) {
+  .sidenav-container {
+    .mat-accordion {
+      .mat-expansion-panel {
+        .mat-expansion-panel-content {
+          .mat-expansion-panel-header {
+            font-size: 12px;
+            padding: 0 16px;
+          }
+          .mat-expansion-panel-body {
+            padding: 0px;
+          }
+        }
+        .mat-expansion-panel-header {
+          font-size: 12px;
+          padding: 0 12px;
+        }
+        .mat-expansion-panel-body {
+          padding: 0px;
+      
+          ul li {
+            font-size: 12px;
+            padding: 0 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 /*Footer*/
 .footer {
