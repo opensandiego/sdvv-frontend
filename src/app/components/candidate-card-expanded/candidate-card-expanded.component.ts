@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
+import { Color } from 'ng2-charts';
 import { Candidate } from '../../candidate';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
@@ -73,13 +73,16 @@ export class CandidateCardExpandedComponent implements OnInit {
         anchor: 'end',
         align: 'end',
         textAlign: 'center',
+
         font: {
           size: 15,
+          weight: 'bold',
         },
+
         formatter: (val, ctx) => {
           return ctx.dataset.label === 'Raised' ? `Raised\n$${val}` : `Spent\n$${val}`;
         },
-      }
+      },
     },
 
     scales: {
@@ -98,6 +101,40 @@ export class CandidateCardExpandedComponent implements OnInit {
     },
   }
 
+  // In v. Out District
+  doughnutChartType: ChartType = 'doughnut';
+  doughnutChartData: any[] = [500000, 10000];
+
+  doughnutChartColors: Color[] = [
+    { backgroundColor: ['#3392ff', '#bfd63b'] },
+  ];
+
+  doughnutChartOptions: any = {
+    responsive: true,
+
+    legend: {
+      display: false,
+    },
+
+    tooltips: {
+      enabled: false,
+    },
+
+    plugins: {
+      datalabels: {
+        anchor: 'start',
+        align: 'start',
+
+        font: {
+          size: 15,
+          weight: 'bold',
+        },
+
+        formatter: (val) => `$${this.kNumberFormatter(val)}`,
+      },
+    },
+  }
+
   // Oppose v. Support Chart
   stackedHorizontalBarChartType: ChartType = 'horizontalBar';
   stackedHorizontalBarChartData: ChartDataSets[] = [
@@ -108,12 +145,12 @@ export class CandidateCardExpandedComponent implements OnInit {
         anchor: 'start',
         align: 'start',
         textAlign: 'right',
+
         font: {
           size: 16,
         },
-        formatter: (val) => {
-          return `Oppose\n$${val.toLocaleString('en')}`;
-        },
+
+        formatter: (val) => `Oppose\n$${this.kNumberFormatter(val)}`,
       },
     },
     {
@@ -123,12 +160,12 @@ export class CandidateCardExpandedComponent implements OnInit {
         anchor: 'end',
         align: 'end',
         textAlign: 'left',
+
         font: {
           size: 16,
         },
-        formatter: (val) => {
-          return `Support\n$${val.toLocaleString('en')}`;
-        },
+        
+        formatter: (val) => `Support\n$${this.kNumberFormatter(val)}`,
       },
     },
   ];
@@ -187,6 +224,10 @@ export class CandidateCardExpandedComponent implements OnInit {
       'amount',
       'percentage',
     ];
+  }
+
+  kNumberFormatter(num: number) {
+    return Math.abs(num) > 9999 ? Math.sign(num)*((Math.abs(num)/1000)) + 'K' : Math.sign(num)*Math.abs(num)
   }
 
 }

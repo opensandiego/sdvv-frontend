@@ -76,6 +76,25 @@
     </table>
   </div>
 
+  <div class="in-out-district">
+    <div class="title-header">
+      <p>In v. Out District</p>
+    </div>
+
+    <div class="in-out-district-graph">
+      <canvas baseChart
+        width="230"
+        height="230"
+        [chartType]="doughnutChartType"
+        [data]="doughnutChartData"
+        [colors]="doughnutChartColors"
+        [options]="doughnutChartOptions"
+        [plugins]="chartPlugins"
+      >
+      </canvas>
+    </div>
+  </div>
+
   <div class="outside-money">
     <div class="title-header">
       <p>Outside Money</p>
