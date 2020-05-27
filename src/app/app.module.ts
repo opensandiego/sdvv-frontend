@@ -12,6 +12,7 @@ import {
   MatSidenavModule,
   MatTableModule,
   MatToolbarModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './components/home/home.component';
@@ -54,6 +55,7 @@ import { CandidateCardExpandedComponent } from './components/candidate-card-expa
     MatSidenavModule,
     MatTableModule,
     MatToolbarModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
