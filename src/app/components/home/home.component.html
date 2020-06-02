@@ -1,15 +1,19 @@
 <div class="header-nav">
   <div routerLinkActive="active-link" routerLink="/splash"><img class="logo" src="../../../assets/home/VV_Logo_Reversed@2x.png" alt="Voter's Voice Initiative" width="120"
     height="auto"></div>
-  <div class="nav_links"><a href="about">About</a></div>
-  <div class="nav_links"><a href="faq">FAQ</a></div>
+  <nav>
+    <div class="nav_links" (click)="drawer.toggle()"><i class="fas fa-bars"></i> All Races</div>
+    <div class="nav_links"><a href="about">About</a></div>
+    <div class="nav_links"><a href="faq">FAQ</a></div>
+  </nav>
 </div>
 
 <mat-drawer-container class="sidenav-container">
-  <mat-drawer #drawer mode="side" disableClose="true" opened="true">
+  <mat-drawer #drawer mode="side" disableClose="false" opened="true">
     <mat-nav-list [disableRipple]="true">
-          
     <mat-accordion displayMode="flat">
+      <mat-expansion-panel hideToggle="true">
+      </mat-expansion-panel>
       <mat-expansion-panel hideToggle="true">
         <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/mayor">
           <mat-panel-title>
@@ -42,11 +46,9 @@
             City Council
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <!-- <mat-list-item>
 
-        </mat-list-item> -->
         <mat-expansion-panel class="mat-elevation-z0" hideToggle="true">
-          <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
+          <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px" class="tall-header">
               <span class="full-width">District Finder</span>
               <i class="fas fa-map-marked-alt"></i>
           </mat-expansion-panel-header>

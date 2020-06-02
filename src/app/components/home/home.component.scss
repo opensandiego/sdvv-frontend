@@ -136,16 +136,23 @@
         .mat-expansion-panel-content {
           .mat-expansion-panel-header {
             font-size: 12px;
-            padding: 0 16px;
+            padding: 5px 16px 0px 16px;
           }
+
           .mat-expansion-panel-body {
             padding: 0px;
           }
+
+          .fa-map-marked-alt {
+            padding-top: 4px;
+          }
         }
+
         .mat-expansion-panel-header {
           font-size: 12px;
           padding: 0 12px;
         }
+
         .mat-expansion-panel-body {
           padding: 0px;
       
@@ -157,6 +164,21 @@
       }
     }
   }
+}
+
+.header-nav {
+  nav {
+    display: flex;
+    flex-direction: row;
+    .nav_links {
+      color: white;
+      margin: 0px 20px;
+      a {
+        margin: 0;
+      }
+    }
+  }
+
 }
 
 
