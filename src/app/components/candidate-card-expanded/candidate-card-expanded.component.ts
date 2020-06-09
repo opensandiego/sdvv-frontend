@@ -52,6 +52,7 @@ export class CandidateCardExpandedComponent implements OnInit {
 
   barChartOptions: ChartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
 
     title: {
       display: true,
@@ -103,7 +104,7 @@ export class CandidateCardExpandedComponent implements OnInit {
 
   // In v. Out District
   doughnutChartType: ChartType = 'doughnut';
-  doughnutChartData: any[] = [500000, 10000];
+  doughnutChartData: number[] = [500000, 10000];
 
   doughnutChartColors: Color[] = [
     { backgroundColor: ['#3392ff', '#bfd63b'] },
@@ -111,6 +112,7 @@ export class CandidateCardExpandedComponent implements OnInit {
 
   doughnutChartOptions: any = {
     responsive: true,
+    maintainAspectRatio: false,
 
     legend: {
       display: false,
@@ -130,7 +132,9 @@ export class CandidateCardExpandedComponent implements OnInit {
           weight: 'bold',
         },
 
-        formatter: (val) => `$${this.kNumberFormatter(val)}`,
+        formatter: (val, ctx) => {
+          return ctx.dataIndex === 0 ? `In:\n$${this.kNumberFormatter(val)}` : `Out:\n$${this.kNumberFormatter(val)}`;
+        },
       },
     },
   }
@@ -177,6 +181,7 @@ export class CandidateCardExpandedComponent implements OnInit {
 
   stackedHorizontalBarChartOptions: ChartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
 
     layout: {
       padding: {

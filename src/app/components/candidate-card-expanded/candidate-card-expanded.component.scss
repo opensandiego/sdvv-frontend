@@ -3,13 +3,10 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 .candidate-card-expanded {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    padding: 15px 25px 15px 25px;
     width: 1470px;
     margin: 10px;
-    padding: 15px 25px 15px 25px;
+    text-align: center;
     background: #fff;
     box-shadow: $vvshadow;
 
@@ -30,16 +27,14 @@
         color: $vvdarkgrey;
     }
 
-    .title-header {
+    .title {
+        padding: 0;
         font-size: 16px;
         font-weight: bold;
         color: $vvdarkblue;
     }
 
     .candidate {
-        width: 150px;
-        padding: 15px 25px 15px 25px;
-    
         img {
             width: 110px;
             border-radius: 50%;
@@ -47,42 +42,82 @@
     }
 
     .raised-spent {
+        padding-top: 25px;
+
         .raised-spent-footer {
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
             padding-left: 10px;
+        }
 
-            p {
-                margin: 0;
-            }
+        p {
+            margin: 0;
+        }
 
-            .raised-spent-footer-title {
-                font-size: 13px;
-            }
+        .raised-spent-footer-title {
+            font-size: 13px;
+        }
 
-            .raised-spent-footer-content {
-                font-size: 20px;
-                font-weight: bold;
-            }
+        .raised-spent-footer-content {
+            font-size: 20px;
+            font-weight: bold;
         }
     }
 
     .industries {
-        width: 25%;
-
         .industries-table {
             width: 100%;
         }
     }
 
     .outside-money {
-        width: 300px;
+        text-align: left;
+
+        p {
+            margin-bottom: 5px;
+        }
+    }
+
+    .raised-donors {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .raised {
+            padding-right: 5px;
+
+            .raised-title {
+                margin-bottom: 2px;
+                text-align: left;
+            }
+    
+            .raised-amount {
+                font-weight: bold;
+                text-align: left;
+            }
+        }
+
+        .donors {
+            padding-left: 5px;
+
+            .donors-title {
+                margin-bottom: 2px;
+                text-align: right;
+            }
+    
+            .donors-amount {
+                font-weight: bold;
+                text-align: right;
+            }
+        }
     }
 }
 
 .website-link {
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
     vertical-align: middle;
     align-items: center;
     margin-bottom: 10px;
@@ -98,4 +133,10 @@
     width: 140px;
     background-color: $vvblue;
     color: #fff;
+}
+
+.divider {
+    width: 100%;
+    border: 1px solid #e4e4e4;
+    margin: 30px 0px;
 }
