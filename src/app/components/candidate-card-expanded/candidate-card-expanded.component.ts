@@ -175,7 +175,7 @@ export class CandidateCardExpandedComponent implements OnInit {
   ];
 
   stackedHorizontalBarChartColors: Color[] = [
-    { backgroundColor: '#6964ad' },
+    { backgroundColor: '#FF7119' },
     { backgroundColor: '#336399' },
   ];
 

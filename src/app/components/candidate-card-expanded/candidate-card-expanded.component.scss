@@ -4,7 +4,7 @@
 
 .candidate-card-expanded {
     padding: 15px 25px 15px 25px;
-    width: 1470px;
+    width: 95%;
     margin: 10px;
     text-align: center;
     background: #fff;
@@ -42,7 +42,7 @@
     }
 
     .raised-spent {
-        padding-top: 25px;
+        padding-top: 20px;
 
         .raised-spent-footer {
             display: flex;
@@ -72,10 +72,15 @@
     }
 
     .outside-money {
+        margin: 20px;
         text-align: left;
 
         p {
             margin-bottom: 5px;
+        }
+
+        .content {
+            font-size: medium;
         }
     }
 
