@@ -24,10 +24,22 @@ For more information with Voter's Voice Initiative visit [https://sdvotersvoice.
 * npm 6.9.0+
 
 ### Setup
-For Mac's running OS 10.15 or later run the following command (you will need npm installed).
-
+1. Clone directory from github
+2. change to the sdvv-frontend directory
+```
+cd sdvv-frontend
+```
+3. Run npm install to install all the dependencies 
+```
+npm install
+```
+4. Install angular
 ```
 npm install -g @angular/cli
+```
+5. Star the angular server
+```
+ng serve --open
 ```
 
 ### Contributing
