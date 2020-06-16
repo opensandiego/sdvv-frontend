@@ -21,4 +21,8 @@ export class MayorComponent implements OnInit {
     this.isExpanded = !this.isExpanded
   }
 
+  onClose(event: boolean) {
+    this.isExpanded = event;
+  }
+
 }

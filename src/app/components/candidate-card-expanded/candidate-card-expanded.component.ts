@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Color } from 'ng2-charts';
 import { Candidate } from '../../candidate';
+
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 const placeholder_data = [
@@ -20,6 +21,7 @@ const placeholder_data = [
 })
 export class CandidateCardExpandedComponent implements OnInit {
   @Input() candidate: Candidate;
+  @Output() isExpanded = new EventEmitter<boolean>();
 
   // Industry Table
   displayedColumns: string[]
@@ -233,6 +235,10 @@ export class CandidateCardExpandedComponent implements OnInit {
 
   kNumberFormatter(num: number) {
     return Math.abs(num) > 9999 ? Math.sign(num)*((Math.abs(num)/1000)) + 'K' : Math.sign(num)*Math.abs(num)
+  }
+
+  close() {
+    this.isExpanded.emit(false);
   }
 
 }
