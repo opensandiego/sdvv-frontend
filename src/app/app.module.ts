@@ -25,6 +25,7 @@ import { DistrictOneComponent } from './components/city-council/district-one/dis
 import { DistrictTwoComponent } from './components/city-council/district-two/district-two.component';
 import { CandidateCardComponent } from './components/candidate-card/candidate-card.component';
 import { CandidateCardExpandedComponent } from './components/candidate-card-expanded/candidate-card-expanded.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 @NgModule({
   exports: [
@@ -34,6 +35,7 @@ import { CandidateCardExpandedComponent } from './components/candidate-card-expa
     AppComponent,
     HomeComponent,
     SplashComponent,
+    FaqComponent,
     MayorComponent,
     CityAttorneyComponent,
     CityCouncilComponent,
