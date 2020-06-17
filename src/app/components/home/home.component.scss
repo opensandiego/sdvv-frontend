@@ -2,12 +2,20 @@
 @import "../../styles/elements";
 @import "../../styles/global";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+.router-link-active {
+  color: $vvyellow !important;
+}
 
 .main_section{
   background-color: $vvbackground;
 }
 .full-width{
   padding: 0px;
+}
+.logo{
+  &:focus{
+    outline: none !important;
+  }
 }
 .sidenav-container {
   height: 100vh;
@@ -217,14 +225,13 @@
   margin: 20px 20px 20px 0px;
   display: inline-block;
   
-  a {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.5;
-    text-decoration: none;
-    color: $vvblue;
-  }
-}
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+  color: $vvblue;
+
 
 
 .footer_logo {
@@ -241,12 +248,16 @@
 /*Hover States*/
 
 .subheadline p a:hover,
-.nav_links a:hover,
-.footer_links a:hover {
+.nav_links:hover,
+.footer_links:hover {
   text-decoration: underline;
 }
 
 
+
+
+
+}
 
 /*CTA Stack*/
 @media only screen and (max-width: 636px) {
