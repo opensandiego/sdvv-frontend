@@ -127,3 +127,20 @@
     margin:0px !important;
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .choose{
+    grid-template-columns: 1fr !important;
+    row-gap: 20px;
+    div{
+      border-bottom:2px solid $vvbackground !important;
+      border-right:none!important;
+      padding-bottom: 40px;
+    }
+    div:last-child{
+      border-bottom:none!important;
+      padding-bottom: 0px;
+    }
+  }
+  
+}

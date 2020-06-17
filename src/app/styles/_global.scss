@@ -1,9 +1,14 @@
+*:focus{
+    outline: none;
+}
+
+
 h1{
     color:$vvdarkblue;
     padding:0px;
     margin:0px;
     text-align:center;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -15,7 +20,7 @@ h1{
     text-align: left;
     background-color: $vvdarkblue;
     align-items: center;
-    a {
+    .nav_links {
         margin-left: 20px;
         margin-right: 20px;
         color: #ffffff;
@@ -23,6 +28,10 @@ h1{
         font-weight: 100;
         &:hover {
             text-decoration: underline;
+            color: $vvyellow;
+          }
+          &:active {
+            
             color: $vvyellow;
           }
       }
@@ -34,4 +43,15 @@ h1{
     padding:0px;
     margin:0px;
     text-align:center;
+}
+
+a{
+    color: $vvlightblue;
+
+    &:hover{
+        color: $vvblue;
+    }
+    &:visited{
+        color: $vvlightblue;
+    }
 }
