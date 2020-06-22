@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import json
 
 import pandas as pd
@@ -28,6 +29,6 @@ def update_json(spreadsheet_path, json_path):
 
 if __name__ == "__main__":
     update_json(
-        "/home/bolun/programming/sdvv-backend/downloads/static/efile_SD_CSD_2019.xlsx",
+        "../assets/data/netfile_2020.xlsx",
         "../assets/data/donor_candidate_calculation.json",
     )
