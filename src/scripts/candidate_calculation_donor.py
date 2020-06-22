@@ -3,9 +3,6 @@ import json
 
 import pandas as pd
 
-# TODO: Do I output all of these to a single json file or multiple json files?
-# TODO: Do I need to lowercase the names?
-
 
 def num_unique_names(spreadsheet_path):
     return len(
