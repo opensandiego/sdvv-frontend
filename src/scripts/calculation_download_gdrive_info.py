@@ -3,8 +3,6 @@ import csv
 import json
 from urllib import request
 
-SHEET_URL = "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0"
-
 
 def get_csv_columns(csv_dict_reader, *args):
     rows = [[] for _ in args]
@@ -14,8 +12,8 @@ def get_csv_columns(csv_dict_reader, *args):
     return rows
 
 
-def update_json_file(file_path):
-    with request.urlopen(SHEET_URL) as f:
+def update_json_file(file_path, sheet_url):
+    with request.urlopen(sheet_url) as f:
         csv_sheet = f.read()
     sheet = csv.DictReader(csv_sheet.decode("utf-8").splitlines())
     try:
@@ -33,4 +31,7 @@ def update_json_file(file_path):
 
 
 if __name__ == "__main__":
-    update_json_file("../assets/data/candidate_information.json")
+    update_json_file(
+        "../assets/data/candidate_information.json",
+        "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0",
+    )
