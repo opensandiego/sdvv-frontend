@@ -1,19 +1,19 @@
-<div class="candidate-card">
+<div class="candidate-card" *ngIf="canRender">
+
   <div class="candidate">
-    <img src="../../assets/candidate-card/candidate.jpg" alt="just a placeholder image for now">
-    <h1>{{candidate.name}}</h1>
-    <h2>{{candidate.title}}</h2>
+    <img [src]="imageUrl" alt="just a placeholder image for now">
+    <h1>{{data[0]["candidate name"]}}</h1>
+    <h2>{{data[0].description}}</h2>
   </div>
   <div class="candidate-numbers">
     <div class="raised">
       <h2>Raised</h2>
-      <h3>${{candidate.raised | number}}</h3>
+      <h3>{{data[0]["raised vs spent"][0].Raised}}</h3>
     </div>
     <div class="donors">
       <h2>Donors</h2>
-      <h3>{{candidate.donors}}</h3>
+      <h3>{{data[0]["raised vs spent"][0].Donors}}</h3>
     </div>
   </div>
-  <a class="cta">See Details</a>
-
+  <a class="cta">See Details</a> 
 </div>
