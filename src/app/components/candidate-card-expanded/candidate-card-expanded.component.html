@@ -1,5 +1,5 @@
-<div class="candidate-card-expanded p-grid p-nogutter">
-  <div class="candidate p-grid p-justify-center p-align-center p-col-2">
+<div class="candidate-card-expanded p-grid p-justify-center p-align-center p-nogutter">
+  <div class="candidate p-grid p-justify-center p-align-center p-col-12 p-xl-2 p-lg-2">
     <div class="p-col-12">
       <div>
         <img src="../../assets/candidate-card/candidate.jpg" alt="just a placeholder image for now">
@@ -19,7 +19,7 @@
   </div>
 
 
-  <div class="raised-spent p-grid p-justify-center p-align-center p-col-3">
+  <div class="raised-spent p-grid p-justify-center p-align-center p-col-12 p-xl-3 p-lg-3">
     <div class="p-col-8">
       <div class="title">
         <p>
@@ -62,7 +62,7 @@
   </div>
 
 
-  <div class="industries p-grid p-justify-center p-col-4">
+  <div class="industries p-grid p-justify-center p-col-12 p-xl-4 p-lg-4">
     <div class="p-col-12">
       <div class="title">
         <p>
@@ -107,7 +107,7 @@
   </div>
 
 
-  <div class="in-out-district p-col-3">
+  <div class="in-out-district p-col-12 p-xl-3 p-lg-3">
     <div class="title">
       <p>
         In v. Out District
@@ -145,7 +145,7 @@
   <div class="p-col-12 divider"></div>
 
 
-  <div class="outside-money p-col-3">
+  <div class="outside-money p-col-12 p-xl-3 p-lg-3">
     <div class="title">
       <p>
         Outside Money
@@ -169,32 +169,28 @@
   </div>
 
 
-  <div class="raised-donors p-col-3">
-    <div class="raised">
+  <div class="raised-donors p-grid p-justify-center p-align-center p-col-12 p-xl-3 p-lg-3">
+    <div class="raised p-col-6" style="vertical-align: middle;">
       <p class="raised-title">Raised</p>
       <div class="raised-amount">$150,000</div>
     </div>
   
-    <div class="donors">
+    <div class="donors p-col-6">
       <p class="donors-title">Donors</p>
       <div class="donors-amount">3250</div>
     </div>
   </div>
   
 
-  <div class="p-grid p-justify-center p-align-center p-col-4">
-    <div class="p-col-12">
-      <div>
-        <canvas baseChart
-          width="300"
-          height="60"
-          [chartType]="stackedHorizontalBarChartType"
-          [datasets]="stackedHorizontalBarChartData"
-          [colors]="stackedHorizontalBarChartColors"
-          [options]="stackedHorizontalBarChartOptions"
-          [plugins]="chartPlugins"
-        ></canvas>
-      </div>
+  <div class="oppose-support p-grid p-justify-center p-align-center p-col-12 p-xl-5 p-lg-5">
+    <div class="oppose-support-chart p-col-12">
+      <canvas baseChart style="width: 200px;"
+        [chartType]="stackedHorizontalBarChartType"
+        [datasets]="stackedHorizontalBarChartData"
+        [colors]="stackedHorizontalBarChartColors"
+        [options]="stackedHorizontalBarChartOptions"
+        [plugins]="chartPlugins"
+      ></canvas>
     </div>
   </div>
 </div>

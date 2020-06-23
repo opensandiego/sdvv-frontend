@@ -1,10 +1,11 @@
-<div class="candidate-card">
-  <div class="candidate">
+<div class="candidate-card p-grid p-justify-center p-align-center p-nogutter">
+  <div class="candidate p-col-12">
     <img src="../../assets/candidate-card/candidate.jpg" alt="just a placeholder image for now">
     <h1>{{candidate.name}}</h1>
     <h2>{{candidate.title}}</h2>
   </div>
-  <div class="candidate-numbers">
+
+  <div class="candidate-numbers p-col-8 p-lg-10 p-xl-10">
     <div class="raised">
       <h2>Raised</h2>
       <h3>${{candidate.raised | number}}</h3>
@@ -14,6 +15,7 @@
       <h3>{{candidate.donors}}</h3>
     </div>
   </div>
-  <a class="cta" (click)="outputCandidateData()">See Details</a>
 
+  <!-- <a class="cta" (click)="outputCandidateData()">See Details</a> -->
+  <button class="candidate-button p-col-12" mat-flat-button (click)="outputCandidateData()">See Details</button>
 </div>

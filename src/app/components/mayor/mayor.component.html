@@ -1,12 +1,12 @@
-<div class="candidate-cards">
-  <app-candidate-card-expanded *ngIf="isExpanded" [candidate]="candidate" (isExpanded)="onClose($event)"></app-candidate-card-expanded>
-  <app-candidate-card (emitCandidateData)="getCandidate($event)"></app-candidate-card>
-  <app-candidate-card></app-candidate-card>
-  <app-candidate-card></app-candidate-card>
-  <app-candidate-card></app-candidate-card>
-  <app-candidate-card></app-candidate-card>
-  <app-candidate-card></app-candidate-card>
-  <app-candidate-card></app-candidate-card>
-  <app-candidate-card></app-candidate-card>
+<div class="candidate-cards p-grid p-nogutter">
+  <app-candidate-card-expanded class="p-col-12" *ngIf="isExpanded" [candidate]="candidate" (isExpanded)="onClose($event)"></app-candidate-card-expanded>
+  <app-candidate-card class="p-col-12 p-lg-2 p-md-4" (emitCandidateData)="getCandidate($event)"></app-candidate-card>
+  <app-candidate-card class="p-col-12 p-lg-2 p-md-4"></app-candidate-card>
+  <app-candidate-card class="p-col-12 p-lg-2 p-md-4"></app-candidate-card>
+  <app-candidate-card class="p-col-12 p-lg-2 p-md-4"></app-candidate-card>
+  <app-candidate-card class="p-col-12 p-lg-2 p-md-4"></app-candidate-card>
+  <app-candidate-card class="p-col-12 p-lg-2 p-md-4"></app-candidate-card>
+  <app-candidate-card class="p-col-12 p-lg-2 p-md-4"></app-candidate-card>
+  <app-candidate-card class="p-col-12 p-lg-2 p-md-4"></app-candidate-card>
 </div>
 

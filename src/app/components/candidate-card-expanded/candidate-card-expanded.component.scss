@@ -4,7 +4,6 @@
 
 .candidate-card-expanded {
     padding: 15px 25px 15px 25px;
-    width: 1470px;
     margin: 10px;
     text-align: center;
     background: #fff;
@@ -46,8 +45,6 @@
     }
 
     .raised-spent {
-        padding-top: 20px;
-
         .raised-spent-footer {
             display: flex;
             flex-direction: row;
@@ -99,12 +96,12 @@
 
             .raised-title {
                 margin-bottom: 2px;
-                text-align: left;
+                text-align: right;
             }
     
             .raised-amount {
                 font-weight: bold;
-                text-align: left;
+                text-align: right;
             }
         }
 
@@ -113,18 +110,20 @@
 
             .donors-title {
                 margin-bottom: 2px;
-                text-align: right;
+                text-align: left;
             }
     
             .donors-amount {
                 font-weight: bold;
-                text-align: right;
+                text-align: left;
             }
         }
     }
 
     .close {
-        margin-left: 20px;
+        position: absolute;
+        top: 30px;
+        right: 45px;
     }
 }
 
@@ -148,6 +147,10 @@
     color: #fff;
 }
 
+.full-details-btn:hover {
+    background-color: $vvlightblue;
+}
+
 .divider {
     width: 100%;
     border: 1px solid #e4e4e4;
@@ -156,4 +159,43 @@
 
 ::ng-deep .mat-tooltip {
     font-size: 16px;
+}
+
+@media only screen and (min-width: 992px) {
+    .raised-spent {
+        padding-top: 20px;
+    }
+
+    .oppose-support-chart {
+        width: 500px;
+        height: 80px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .candidate {
+        padding-top: 30px;
+    }
+
+    .raised-spent {
+        padding-top: 50px;
+    }
+
+    .industries {
+        padding-top: 30px;
+    }
+
+    .in-out-district {
+        padding-top: 30px;
+    }
+
+    .oppose-support {
+        padding-top: 25px;
+
+        .oppose-support-chart {
+            margin-left: 35px;
+            width: 440px;
+            height: 80px;
+        }
+    }
 }
