@@ -1,33 +1,35 @@
 #!/usr/bin/env python3
-import json
 
 import pandas as pd
 
 
-def num_unique_names(spreadsheet_path):
+def donors(spreadsheet_path):
     return (
         pd.concat(
             pd.read_excel(
                 spreadsheet_path,
                 ["A-Contributions", "C-Contributions", "I-Contributions"],
-                usecols=["Tran_NamL", "Tran_NamF"],
+                usecols=["Tran_NamL", "Tran_NamF", "Filer_NamL"],
             ).values()
         )
+        .set_index("Filer_NamL")
         .apply(lambda x: x.str.cat(sep=" "), axis=1)
-        .unique()
-        .size
     )
 
 
-def update_json(spreadsheet_path, json_path, function):
-    unique_values = function(spreadsheet_path)
-    with open(json_path, "w") as f:
-        json.dump(unique_values, f)
+def num_of_unique_values_by_index(series):
+    def series_count(index):
+        try:
+            unique = series[index].unique()
+        except AttributeError:
+            return 1
+        return unique.size
+
+    values = series.index.unique().map(series_count)
+    return pd.Series(values, series.index.unique())
 
 
 if __name__ == "__main__":
-    update_json(
-        "../assets/data/netfile_2020.xlsx",
-        "../assets/data/donor_candidate_calculation.json",
-        num_unique_names,
+    num_of_unique_values_by_index(donors("../assets/data/netfile_2020.xlsx")).to_json(
+        "../assets/data/donor_candidate_calculation.json"
     )
