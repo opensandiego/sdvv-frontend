@@ -1,37 +1,48 @@
 #!/usr/bin/env python3
-import csv
 import json
+import math
+import os
+from math import isnan
 from urllib import request
 
-
-def get_csv_columns(csv_dict_reader, *args):
-    rows = [[] for _ in args]
-    for row in csv_dict_reader:
-        for i, arg in enumerate(args):
-            rows[i].append(row[arg])
-    return rows
+import pandas as pd
 
 
-def update_json_file(file_path, sheet_url):
-    with request.urlopen(sheet_url) as f:
-        csv_sheet = f.read()
-    sheet = csv.DictReader(csv_sheet.decode("utf-8").splitlines())
+def replace_nan(value, replace):
     try:
-        with open(file_path) as f:
-            json_file = json.load(f)
-    except FileNotFoundError:
-        json_file = {}
-    (
-        json_file["candidate name"],
-        json_file["description"],
-        json_file["website"],
-    ) = get_csv_columns(sheet, "Candidate_Name", "Description", "Website")
-    with open(file_path, "w") as f:
-        json.dump(json_file, f)
+        if math.isnan(value):
+            return replace
+    except TypeError:
+        pass
+    return value
+
+
+def update_json_files(folder_path, sheet_url):
+    os.makedirs(folder_path, exist_ok=True)
+    with request.urlopen(sheet_url) as f:
+        csv_df = pd.read_csv(
+            f, usecols=("Description", "Website", "Candidate_Name")
+        ).dropna(how='all').set_index("Candidate_Name")
+    for candidate in csv_df.index:
+        description = replace_nan(csv_df.loc[candidate]["Description"], "")
+        website = replace_nan(csv_df.loc[candidate]["Website"], "")
+        path = "{}{}.json".format(folder_path, candidate)
+        try:
+            json_file = open(path)
+        except FileNotFoundError:
+            json_dict = {}
+        else:
+            with json_file as f:
+                json_dict = json.load(f)
+        json_dict["candidate name"] = candidate
+        json_dict["description"] = description
+        json_dict["website"] = website
+        with open(path, "w") as f:
+            json.dump(json_dict, f)
 
 
 if __name__ == "__main__":
-    update_json_file(
-        "../assets/data/candidate_information.json",
+    update_json_files(
+        "../assets/data/candidates/",
         "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0",
     )
