@@ -2,7 +2,6 @@
 import json
 import math
 import os
-from math import isnan
 from urllib import request
 
 import pandas as pd
@@ -20,9 +19,11 @@ def replace_nan(value, replace):
 def update_json_files(folder_path, sheet_url):
     os.makedirs(folder_path, exist_ok=True)
     with request.urlopen(sheet_url) as f:
-        csv_df = pd.read_csv(
-            f, usecols=("Description", "Website", "Candidate_Name")
-        ).dropna(how='all').set_index("Candidate_Name")
+        csv_df = (
+            pd.read_csv(f, usecols=("Description", "Website", "Candidate_Name"))
+            .dropna(how="all")
+            .set_index("Candidate_Name")
+        )
     for candidate in csv_df.index:
         description = replace_nan(csv_df.loc[candidate]["Description"], "")
         website = replace_nan(csv_df.loc[candidate]["Website"], "")
