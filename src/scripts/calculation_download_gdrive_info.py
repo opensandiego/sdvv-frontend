@@ -20,13 +20,19 @@ def update_json_files(folder_path, sheet_url):
     os.makedirs(folder_path, exist_ok=True)
     with request.urlopen(sheet_url) as f:
         csv_df = (
-            pd.read_csv(f, usecols=("Description", "Website", "Candidate_Name"))
+            pd.read_csv(
+                f,
+                usecols=(
+                    "Description",
+                    "Website",
+                    "Candidate_Name",
+                    "Committee Name (Filer_Name)",
+                ),
+            )
             .dropna(how="all")
             .set_index("Candidate_Name")
         )
     for candidate in csv_df.index:
-        description = replace_nan(csv_df.loc[candidate]["Description"], "")
-        website = replace_nan(csv_df.loc[candidate]["Website"], "")
         path = "{}{}.json".format(folder_path, candidate)
         try:
             json_file = open(path)
@@ -36,8 +42,11 @@ def update_json_files(folder_path, sheet_url):
             with json_file as f:
                 json_dict = json.load(f)
         json_dict["candidate name"] = candidate
-        json_dict["description"] = description
-        json_dict["website"] = website
+        json_dict["description"] = replace_nan(csv_df.loc[candidate]["Description"], "")
+        json_dict["website"] = replace_nan(csv_df.loc[candidate]["Website"], "")
+        json_dict["committee name"] = replace_nan(
+            csv_df.loc[candidate]["Committee Name (Filer_Name)"], ""
+        )
         with open(path, "w") as f:
             json.dump(json_dict, f)
 
