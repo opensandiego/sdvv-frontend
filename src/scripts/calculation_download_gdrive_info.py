@@ -16,22 +16,26 @@ def replace_nan(value, replace):
     return value
 
 
+def read_candidate_csv(file):
+    return (
+        pd.read_csv(
+            file,
+            usecols=(
+                "Description",
+                "Website",
+                "Candidate_Name",
+                "Committee Name (Filer_Name)",
+            ),
+        )
+        .dropna(how="all")
+        .set_index("Candidate_Name")
+    )
+
+
 def update_json_files(folder_path, sheet_url):
     os.makedirs(folder_path, exist_ok=True)
     with request.urlopen(sheet_url) as f:
-        csv_df = (
-            pd.read_csv(
-                f,
-                usecols=(
-                    "Description",
-                    "Website",
-                    "Candidate_Name",
-                    "Committee Name (Filer_Name)",
-                ),
-            )
-            .dropna(how="all")
-            .set_index("Candidate_Name")
-        )
+        csv_df = read_candidate_csv(f)
     for candidate in csv_df.index:
         path = "{}{}.json".format(folder_path, candidate)
         try:
