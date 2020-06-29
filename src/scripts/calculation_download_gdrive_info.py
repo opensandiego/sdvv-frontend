@@ -2,6 +2,7 @@
 import json
 import math
 import os
+import typing
 from urllib import request
 
 import pandas as pd
@@ -25,6 +26,7 @@ def read_candidate_csv(file):
                 "Website",
                 "Candidate_Name",
                 "Committee Name (Filer_Name)",
+                "Office",
             ),
         )
         .dropna(how="all")
@@ -32,19 +34,50 @@ def read_candidate_csv(file):
     )
 
 
-def update_json_files(folder_path, sheet_url):
-    os.makedirs(folder_path, exist_ok=True)
-    with request.urlopen(sheet_url) as f:
-        csv_df = read_candidate_csv(f)
-    for candidate in csv_df.index:
-        path = "{}{}.json".format(folder_path, candidate)
+def normalize(string, nan_replacement=None):
+    try:
+        if nan_replacement is not None and math.isnan(string):
+            return nan_replacement
+    except TypeError:
+        pass
+    return string.replace(" ", "_").lower()
+
+
+class JsonFilesNT(typing.NamedTuple):
+    contents: dict
+    path: str
+
+
+def generate_json_files(base_directory, candidate_csv):
+    files = {}
+    for candidate in candidate_csv.index:
+        dir_path = "{}{}/{}/".format(
+            base_directory,
+            normalize(candidate_csv.loc[candidate]["Office"], "other"),
+            normalize(candidate),
+        )
+        os.makedirs(dir_path, exist_ok=True)
+        json_path = "{}{}.json".format(dir_path, normalize(candidate))
         try:
-            json_file = open(path)
+            file = open(json_path)
         except FileNotFoundError:
+            with open(json_path, "w") as f:
+                f.write("{}")
             json_dict = {}
         else:
-            with json_file as f:
+            with file as f:
                 json_dict = json.load(f)
+        files[candidate] = JsonFilesNT(json_dict, json_path)
+
+    return files
+
+
+def update_json_files(folder_path, sheet_url):
+    with request.urlopen(sheet_url) as f:
+        csv_df = read_candidate_csv(f)
+    files = generate_json_files(folder_path, csv_df)
+    for candidate in csv_df.index:
+        json_dict, path = files[candidate]
         json_dict["candidate name"] = candidate
         json_dict["description"] = replace_nan(csv_df.loc[candidate]["Description"], "")
         json_dict["website"] = replace_nan(csv_df.loc[candidate]["Website"], "")
@@ -57,6 +90,6 @@ def update_json_files(folder_path, sheet_url):
 
 if __name__ == "__main__":
     update_json_files(
-        "../assets/data/candidates/",
+        "../assets/candidates/2020/",
         "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0",
     )
