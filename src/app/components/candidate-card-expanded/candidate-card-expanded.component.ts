@@ -78,7 +78,7 @@ export class CandidateCardExpandedComponent implements OnInit {
         textAlign: 'center',
 
         font: {
-          size: 15,
+          size: 16,
           weight: 'bold',
         },
 
@@ -130,12 +130,12 @@ export class CandidateCardExpandedComponent implements OnInit {
         align: 'start',
 
         font: {
-          size: 15,
+          size: 16,
           weight: 'bold',
         },
 
         formatter: (val, ctx) => {
-          return ctx.dataIndex === 0 ? `In:\n$${this.kNumberFormatter(val)}` : `Out:\n$${this.kNumberFormatter(val)}`;
+          return ctx.dataIndex === 0 ? `In\n$${this.kNumberFormatter(val)}` : `Out\n$${this.kNumberFormatter(val)}`;
         },
       },
     },
@@ -154,6 +154,7 @@ export class CandidateCardExpandedComponent implements OnInit {
 
         font: {
           size: 16,
+          weight: 'bold',
         },
 
         formatter: (val) => `Oppose\n$${this.kNumberFormatter(val)}`,
@@ -169,6 +170,7 @@ export class CandidateCardExpandedComponent implements OnInit {
 
         font: {
           size: 16,
+          weight: 'bold',
         },
         
         formatter: (val) => `Support\n$${this.kNumberFormatter(val)}`,

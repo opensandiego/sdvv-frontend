@@ -86,28 +86,19 @@
     }
 
     .raised-donors {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-
         .raised {
-            padding-right: 5px;
-
             .raised-title {
                 margin-bottom: 2px;
-                text-align: right;
+                text-align: left;
             }
     
             .raised-amount {
                 font-weight: bold;
-                text-align: right;
+                text-align: left;
             }
         }
 
         .donors {
-            padding-left: 5px;
-
             .donors-title {
                 margin-bottom: 2px;
                 text-align: left;
@@ -154,13 +145,14 @@
 .divider {
     width: 100%;
     border: 1px solid #e4e4e4;
-    margin: 30px 0px;
+    margin: 30px 0 10px;
 }
 
-::ng-deep .mat-tooltip {
-    font-size: 16px;
+.remove-border {
+    border: none;
 }
 
+// Expanded Card Adjustments for Bigger Screens
 @media only screen and (min-width: 992px) {
     .raised-spent {
         padding-top: 20px;
@@ -172,6 +164,7 @@
     }
 }
 
+// Expanded Card Adjustments for Smaller Screens
 @media only screen and (max-width: 768px) {
     .candidate {
         padding-top: 30px;
@@ -189,6 +182,12 @@
         padding-top: 30px;
     }
 
+    .raised-donors {
+        .raised {
+            padding-left: 80px;
+        }
+    }
+
     .oppose-support {
         padding-top: 25px;
 
@@ -198,4 +197,8 @@
             height: 80px;
         }
     }
+}
+
+::ng-deep .mat-tooltip {
+    font-size: 16px;
 }
