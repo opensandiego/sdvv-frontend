@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+import json
+import pathlib
+
 import pandas as pd
 
 
@@ -29,7 +32,25 @@ def num_of_unique_values_by_index(series):
     return pd.Series(values, series.index.unique())
 
 
+def to_json(series, key_field, directory):
+    for path in pathlib.Path(directory).rglob("*.json"):
+        with open(path) as f:
+            file = json.load(f)
+        if isinstance(file, dict) and key_field in file and file[key_field] in series:
+            # change this to change where the donor count goes
+            file.setdefault("raised vs spent", [{}])
+            value = series[file[key_field]]
+            # This is to convert numpy types into their python version
+            file["raised vs spent"][0]["Donors"] = (
+                value.item() if hasattr(value, "item") else value
+            )
+        with open(path, "w") as f:
+            json.dump(file, f)
+
+
 if __name__ == "__main__":
-    num_of_unique_values_by_index(donors("../assets/data/netfile_2020.xlsx")).to_json(
-        "../assets/data/donor_candidate_calculation.json"
+    to_json(
+        num_of_unique_values_by_index(donors("../assets/data/netfile_2020.xlsx")),
+        "committee name",
+        "../assets/candidates/2020/",
     )
