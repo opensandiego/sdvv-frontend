@@ -1,39 +1,35 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Candidate } from '../../candidate';
-
 @Component({
   selector: 'app-candidate-card',
   templateUrl: './candidate-card.component.html',
   styleUrls: ['./candidate-card.component.scss']
 })
+
 export class CandidateCardComponent implements OnInit {
-  @Output() private emitCandidateData = new EventEmitter<Candidate>();
+  private canRender = false;
+  data: any[];
   
-  candidate: Candidate = {
-    name: 'John Jones',
-    title: 'Former Fire Fighter and Active Reservist',
-    raised: 150000,
-    donors: 3250,
-    spent: 125000,
-    donationAvg: 200,
-    donationTech: 200000,
-    donationFinance: 200000,
-    donationEnergy: 200000,
-    donationConstruction: 200000,
-    donationOther: 200000,
-    inDistrict: 500000,
-    outDistrict: 1000,
-    oppose: 5000,
-    support: 200000,
-  }
-  
-  constructor() { }
+  @Input() imageUrl: string = "../../assets/candidate-card/candidate.jpg";
+  @Input() jsonFile: string;
+  @Output() private emitCandidateData = new EventEmitter<any>();
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get("assets/candidates/2020/mayor/" + this.jsonFile)
+      .toPromise()
+      .then(res => {
+        this.data = [];
+        this.data.push(res);
+        console.log(this.data);
+        this.canRender = true;
+      });
   }
 
   outputCandidateData() {
-    this.emitCandidateData.emit(this.candidate);
+    this.emitCandidateData.emit(this.data);
   }
 
 }
