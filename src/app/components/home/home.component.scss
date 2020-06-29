@@ -139,8 +139,12 @@
 
 @media (max-width: 1200px) {
   .sidenav-container {
+    mat-drawer {
+      width: 150px;
+    }
     .mat-accordion {
       .mat-expansion-panel {
+        width: 150px;
         .mat-expansion-panel-content {
           .mat-expansion-panel-header {
             font-size: 12px;
