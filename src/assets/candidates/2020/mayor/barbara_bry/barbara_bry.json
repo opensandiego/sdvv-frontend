@@ -1,1 +1,30 @@
-{"candidate name": "Barbara Bry", "description": "Councilmember/Businesswoman\r", "website": "https://barbarabry.com", "raised vs spent": [{"Raised": "$0", "Spent": 3477751.06, "Donors": "0", "Average Donor": "$0"}], "by industry": [{"industry 1": ["name", "$0", "0%"], "industry 2": ["name", "$0", "0%"], "industry 3": ["name", "$0", "0%"], "industry 4": ["name", "$0", "0%"], "industry 5": ["name", "$0", "0%"]}], "in vs out district": [{"in": "$0", "out": "$0"}], "oppose": "$0", "support": "$0", "committee name": "Barbara Bry for San Diego Mayor 2020"}
+{
+	"candidate name": "none",
+	"description": "none",
+	"website":"none",
+	"raised vs spent": [
+		{
+			"Raised": "$0",
+      "Spent": "$0",
+      "Donors": "0",
+      "Average Donor": "$0"
+		}
+	],
+	"by industry":[
+		{
+			"industry 1": ["name", "$0", "0%"],
+      "industry 2": ["name", "$0", "0%"],
+      "industry 3": ["name", "$0", "0%"],
+      "industry 4": ["name", "$0", "0%"],
+      "industry 5": ["name", "$0", "0%"]
+		}
+	],
+  "in vs out district":[
+    {
+      "in":"$0",
+      "out":"$0"
+      }
+    ],
+  "oppose":"$0",
+  "support":"$0"
+}
