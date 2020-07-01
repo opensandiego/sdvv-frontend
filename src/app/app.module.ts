@@ -1,32 +1,31 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import {
-  MatIconModule,
-  MatListModule,
-  MatSidenavModule,
-  MatToolbarModule,
-} from '@angular/material';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { HomeComponent } from './components/home/home.component';
-import { SplashComponent } from './components/splash/splash.component';
-import { MayorComponent } from './components/mayor/mayor.component';
-import { CityAttorneyComponent } from './components/city-attorney/city-attorney.component';
-import { CityCouncilComponent } from './components/city-council/city-council.component';
-import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
-import { DistrictOneComponent } from './components/city-council/district-one/district-one.component';
-import { DistrictTwoComponent } from './components/city-council/district-two/district-two.component';
-import { CandidateCardComponent } from './components/candidate-card/candidate-card.component';
-import { FaqComponent } from './components/faq/faq.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { HomeComponent } from "./components/home/home.component";
+import { SplashComponent } from "./components/splash/splash.component";
+import { MayorComponent } from "./components/mayor/mayor.component";
+import { CityAttorneyComponent } from "./components/city-attorney/city-attorney.component";
+import { CityCouncilComponent } from "./components/city-council/city-council.component";
+import { UnderConstructionComponent } from "./components/under-construction/under-construction.component";
+import { DistrictOneComponent } from "./components/city-council/district-one/district-one.component";
+import { DistrictTwoComponent } from "./components/city-council/district-two/district-two.component";
+import { CandidateCardComponent } from "./components/candidate-card/candidate-card.component";
+import { FaqComponent } from "./components/faq/faq.component";
+
+import { AngularFireModule } from "@angular/fire";
+import { environment } from "../environments/environment";
 
 @NgModule({
-  exports: [
-    MatExpansionModule,
-  ],
+  exports: [MatExpansionModule],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -39,10 +38,10 @@ import { FaqComponent } from './components/faq/faq.component';
     DistrictOneComponent,
     DistrictTwoComponent,
     CandidateCardComponent,
-   
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -53,6 +52,6 @@ import { FaqComponent } from './components/faq/faq.component';
     MatToolbarModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
