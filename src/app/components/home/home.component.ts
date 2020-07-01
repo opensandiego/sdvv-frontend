@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   isExpanded: boolean = false;
   showSubmenu: boolean = false;
 
-  @ViewChild('drawer') sidenav: MatDrawer;
+  @ViewChild('drawer', { static: true }) sidenav: MatDrawer;
 
   constructor() { }
 
