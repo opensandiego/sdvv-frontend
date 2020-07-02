@@ -29,7 +29,7 @@ def to_json(series, key_field, directory):
             file.setdefault("raised vs spent", [{}])
             file["raised vs spent"][0]["Spent"] = series[file[key_field]]
         with open(path, "w") as f:
-            json.dump(file, f)
+            json.dump(file, f, indent=2)
 
 
 if __name__ == "__main__":
