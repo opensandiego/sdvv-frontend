@@ -79,13 +79,15 @@ def update_json_files(folder_path, sheet_url):
     for candidate in csv_df.index:
         json_dict, path = files[candidate]
         json_dict["candidate name"] = candidate
+        json_dict["first"] = candidate.split(" ")[0]
+        json_dict["last"] = candidate.split(" ")[-1]
         json_dict["description"] = replace_nan(csv_df.loc[candidate]["Description"], "")
         json_dict["website"] = replace_nan(csv_df.loc[candidate]["Website"], "")
         json_dict["committee name"] = replace_nan(
             csv_df.loc[candidate]["Committee Name (Filer_Name)"], ""
         )
         with open(path, "w") as f:
-            json.dump(json_dict, f)
+            json.dump(json_dict, f, indent=2)
 
 
 if __name__ == "__main__":
