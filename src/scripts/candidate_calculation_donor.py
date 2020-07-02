@@ -45,7 +45,7 @@ def to_json(series, key_field, directory):
                 value.item() if hasattr(value, "item") else value
             )
         with open(path, "w") as f:
-            json.dump(file, f)
+            json.dump(file, f, indent=2)
 
 
 if __name__ == "__main__":
