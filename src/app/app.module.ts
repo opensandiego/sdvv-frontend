@@ -22,7 +22,7 @@ import { CandidateCardComponent } from "./components/candidate-card/candidate-ca
 import { FaqComponent } from "./components/faq/faq.component";
 
 import { AngularFireModule } from "@angular/fire";
-import { environment } from "../environments/environment";
+import { environment } from "@environments/environment";
 
 @NgModule({
   exports: [MatExpansionModule],
@@ -54,4 +54,4 @@ import { environment } from "../environments/environment";
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
