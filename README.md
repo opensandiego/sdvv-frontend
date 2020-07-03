@@ -19,9 +19,13 @@ Currently, campaign finance information for candidates running for local offices
 
 For more information with Voter's Voice Initiative visit [https://sdvotersvoice.org/](https://sdvotersvoice.org/)
 
-### Prerequisites
-* Angular 9.0.2
-* npm 6.9.0+
+### This Github repo is a fork, and will be used to test Github / FireBase integration.  App was migrated to Angular 10 on Ubuntu Server 20.04
+
+### Prequisites
+* Angular CLI: 10.0.0
+* Node: 14.2.0
+* Angular: 10.0.2
+* npm 6.14.5+
 
 ### Setup
 1. Clone directory from github
@@ -39,7 +43,7 @@ npm install -g @angular/cli
 ```
 5. Star the angular server
 ```
-ng serve --open
+ng serve --open [--host 192.168.1.xxx, default is localhost]
 ```
 
 ### Contributing

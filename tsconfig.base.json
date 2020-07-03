@@ -19,6 +19,11 @@
       "dom"
     ],
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@environments/*": [
+        "./src/environments/*"
+      ]
+    }
   }
 }

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  environmentName: 'Development',
-  environmentUrl: 'http://localhost',
+  environmentName: 'firebase',
+  environmentUrl: 'http://sdvv-firebase-git.web.app',
   firebase: {
     apiKey: 'AIzaSyDD1Cxs3-Nx2R99K1UoxhfOs8Q68fJezyw',
     authDomain: 'sdvv-firebase-git.firebaseapp.com',
