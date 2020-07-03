@@ -38,9 +38,25 @@
     }
 
     .candidate {
-        img {
-            width: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .candidate-image-container {
+            height: 125px;
+            width: 125px;
+        }
+
+        .candidate-image {
+            display: flex;
+            height: 125px;
+            width: 125px;
             border-radius: 50%;
+            overflow: hidden;
+
+            img {
+                object-fit: contain;
+            }
         }
     }
 
@@ -155,7 +171,7 @@
 // Expanded Card Adjustments for Bigger Screens
 @media only screen and (min-width: 992px) {
     .raised-spent {
-        padding-top: 20px;
+        padding-top: 5px;
     }
 
     .oppose-support-chart {

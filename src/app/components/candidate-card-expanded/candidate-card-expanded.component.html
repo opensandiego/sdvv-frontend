@@ -1,11 +1,13 @@
 <div class="candidate-card-expanded p-grid p-justify-center p-align-center p-nogutter">
-  <div class="candidate p-grid p-justify-center p-align-center p-col-12 p-xl-2 p-lg-2">
-    <div class="p-col-12">
-      <div>
-        <img src="../../assets/candidate-card/candidate.jpg" alt="just a placeholder image for now">
+  <div class="p-grid p-justify-center p-align-center p-col-12 p-xl-2 p-lg-2">
+    <div class="candidate p-col-12">
+      <div class="candidate-image-container">
+        <div class="candidate-image">
+          <img [src]="candidateImg" alt="candidate picture">
+        </div>
       </div>
-      <h1>{{ candidate.name }}</h1>
-      <h2>{{ candidate.title }}</h2>
+      <h1>{{ candidate[0]['candidate name'] }}</h1>
+      <h2>{{ candidate[0].title }}</h2>
   
       <div class="website-link">
         <mat-icon>link</mat-icon>
@@ -50,7 +52,7 @@
       <div class="raised-spent-footer">
         <div>
           <p class="raised-spent-footer-title">Donors</p>
-          <p class="raised-spent-footer-content">{{ candidate.donors }}</p>
+          <p class="raised-spent-footer-content">{{ candidate[0]['raised vs spent'][0].Donors }}</p>
         </div>
   
         <div>
@@ -126,8 +128,8 @@
 
     <div>
       <canvas baseChart
-        width="230"
-        height="230"
+        width="260"
+        height="260"
         [chartType]="doughnutChartType"
         [data]="doughnutChartData"
         [colors]="doughnutChartColors"

@@ -24,9 +24,9 @@
 
 .candidate-card {
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 150px;
+    // display: flex;
+    // flex-direction: column;
+    // width: 150px;
     height: 300px;
     margin: 10px;
     padding: 15px 25px 15px 25px;
@@ -58,16 +58,25 @@
         .raised h3 {
             color: $vvgreen;
         }
-    }  
-    a {
-        @include button-styles;
-        padding: 10px 30px;
+    } 
+    .candidate-button {
         max-width: 200px;
         margin: 10px 0;
         background-color: $vvblue;
         color: #fff;
     }
-    a:hover {
+    .candidate-button:hover {
         background-color: $vvlightblue;
     }
+    // a {
+    //     @include button-styles;
+    //     padding: 10px 30px;
+    //     max-width: 200px;
+    //     margin: 10px 0;
+    //     background-color: $vvblue;
+    //     color: #fff;
+    // }
+    // a:hover {
+    //     background-color: $vvlightblue;
+    // }
 }

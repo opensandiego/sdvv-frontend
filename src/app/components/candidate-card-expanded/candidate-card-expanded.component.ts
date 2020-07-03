@@ -21,6 +21,7 @@ const placeholder_data = [
 })
 export class CandidateCardExpandedComponent implements OnInit {
   @Input() candidate: Candidate;
+  @Input() candidateImg: string;
   @Output() isExpanded = new EventEmitter<boolean>();
 
   // Industry Table

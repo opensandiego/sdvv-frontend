@@ -14,6 +14,7 @@ export class CandidateCardComponent implements OnInit {
   @Input() imageUrl: string = "../../assets/candidate-card/candidate.jpg";
   @Input() jsonFile: string;
   @Output() private emitCandidateData = new EventEmitter<any>();
+  @Output() private emitCandidateImg = new EventEmitter<any>();
 
   constructor(private http: HttpClient) { }
 
@@ -25,11 +26,13 @@ export class CandidateCardComponent implements OnInit {
         this.data.push(res);
         console.log(this.data);
         this.canRender = true;
+        console.log(this.data)
       });
   }
 
   outputCandidateData() {
     this.emitCandidateData.emit(this.data);
+    this.emitCandidateImg.emit(this.imageUrl);
   }
 
 }
