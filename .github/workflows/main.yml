@@ -1,0 +1,57 @@
+# This is San Diego Voters Voice Github Action for 
+# deployment to Firebase
+name: deploy_to_firebase_hosting
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+# TODO:  Add push when changes are made to dist/sdvv-front directory
+#        basically a new release
+#Customize workflow trigger
+on:
+  push:
+    tags: 
+      - release-to-firebase-hosting-*
+    branches:
+      - master
+      - release/*
+
+jobs:
+  build:
+    #Run on ubuntu
+    runs-on: ubuntu-latest
+    # Setup Checkout action
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Checkout Repo
+      uses: actions/checkout@master
+    #Setup Node.js
+    - uses: actions/setup-node@master
+      with:
+        node-version: 14.2.x
+    - name: Install dependancies
+      run: npm install
+    - name: Build
+      run: npm run build --configuration=production 
+    - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download artifact
+        uses: actions/download-artifact@master
+        with:
+          name: dist 
+          path: dist 
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:development -m "Development Deployed via Github"
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

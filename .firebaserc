@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "sdvv-firebase-git"
+  },
+  "targets": {
+    "sdvv-firebase-git": {
+      "hosting": {
+        "production": [
+          "sdvv-frontend"
+        ],
+        "development": [
+          "sdvv-firebase-git"
+        ]
+      }
+    }
   }
 }
