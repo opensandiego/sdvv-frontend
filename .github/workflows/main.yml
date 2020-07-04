@@ -17,23 +17,19 @@ on:
 
 jobs:
   build:
-    #Run on ubuntu
+    name: build
     runs-on: ubuntu-latest
-    # Setup Checkout action
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your
+    # job can access it
     - name: Checkout Repo
       uses: actions/checkout@master
-    #Setup Node.js
-    - uses: actions/setup-node@master
-      with:
-        node-version: 14.2.x
     - name: Install dependancies
       run: npm install
     - name: Build
       run: npm run build --configuration=production 
     - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@master 
         with:
           name: dist
           path: dist
@@ -44,7 +40,7 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
-      - name: Download artifact
+      - name: Download Artifact
         uses: actions/download-artifact@master
         with:
           name: dist 
@@ -52,6 +48,6 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:development -m "Development Deployed via Github"
+          args: deploy --only hosting:development -m "Development Deployed via Github Action"
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
