@@ -41,11 +41,20 @@ npm install
 ```
 npm install -g @angular/cli
 ```
-5. Star the angular server
+5. Start the angular server
 ```
 ng serve --open [--host 192.168.1.xxx, default is localhost]
 ```
-
+6. Automated deploy to Firebase Production site using Github Action workflow.
+-   **Note** Tag must contain string "deploy-to-firebase-prod-hosting-".  `git push` branch after it is tagged.
+```
+git tag -a deploy-to-firebase-prod-hosting- -m "Deploy to Firebase Production hosting"
+```
+7. Alternate deployment from terminal command line using Firebase command:
+-   **Note** FIREBASE_TOKEN must be setup before deploy.
+```
+firebase deploy --token ${FIREBASE_TOKEN} --only hosting:production  -m "Production Release" --non-interactive
+```
 ### Contributing
 
 [Contributing](https://github.com/opensandiego/sdvv-frontend/blob/master/CONTRIBUTING.md)

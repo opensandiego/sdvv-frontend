@@ -1,6 +1,6 @@
-# This is San Diego Voters Voice Github Action for 
+# This is San Diego Voters Voice Github Action for
 # deployment to Firebase
-name: deploy_to_firebase_hosting
+name: deploy_to_firebase_prod_hosting
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -9,8 +9,8 @@ name: deploy_to_firebase_hosting
 #Customize workflow trigger
 on:
   push:
-    tags: 
-      - release-to-firebase-hosting-*
+    tags:
+      - deploy-to-firebase--prod-hosting-*
     branches:
       - master
       - release/*
@@ -20,16 +20,16 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your
-    # job can access it
-    - name: Checkout Repo
-      uses: actions/checkout@master
-    - name: Install dependancies
-      run: npm install
-    - name: Build
-      run: npm run build --configuration=production 
-    - name: Archive Production Artifact
-      uses: actions/upload-artifact@master 
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your
+      # job can access it
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install dependancies
+        run: npm install
+      - name: Build
+        run: npm run build --configuration=production
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
         with:
           name: dist
           path: dist
@@ -43,11 +43,11 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@master
         with:
-          name: dist 
-          path: dist 
+          name: dist
+          path: dist
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting:development -m "Development Deployed via Github Action"
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

@@ -14,7 +14,6 @@ export const environment = {
     storageBucket: "sdvv-firebase-git.appspot.com",
     messagingSenderId: "375018032962",
     appId: "1:375018032962:web:a2c898c27a2529bcdc02db"
-
   }
 }
 
