@@ -48,6 +48,6 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:development -m "Development Deployed via Github Action"
+          args: deploy --only hosting:production -m "Github - ${{GITHUB_ACTOR}} - ${{GITHUB_REF}}" --non-interactive
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
