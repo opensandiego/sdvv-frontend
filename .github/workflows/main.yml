@@ -27,7 +27,7 @@ jobs:
       - name: Install dependancies
         run: npm install
       - name: Build
-        run: npm run build --c=production
+        run: npm run build -- --c=production
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
