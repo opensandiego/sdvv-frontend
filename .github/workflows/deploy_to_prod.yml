@@ -1,0 +1,59 @@
+# This is San Diego Voters Voice Github Action for
+# deployment to Firebase
+name: deploy_to_prod_hosting
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+# TODO:  Add push when changes are made to dist/sdvv-front directory
+#        basically a new release
+#Customize workflow trigger
+on:
+  push:
+    tags:
+      - deploy-to-prod-hosting-*
+#    branches:
+#      - master
+#      - release/*
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your
+      # job can access it
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install dependancies
+        run: npm install
+      - name: Build
+        #TODO: Fixme, ensure development configuration is being applied
+        run: npm run build -- --c=production
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: dist
+          path: dist
+      - name: "Check env. vars"
+        run: set | grep -i release 
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:production -m "Github-${release_env}-${release_ver}"--non-interactive
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          #TODO Fixme, ensure comments are passed in to -m parameter
+          release_eng: ${{ env.github.actor }}
+          release_ver: ${{ env.github.ref }}

@@ -7,13 +7,13 @@ export const environment = {
   environmentName: 'Development',
   environmentUrl: 'http://localhost',
   firebase: {
-    apiKey: "AIzaSyDD1Cxs3-Nx2R99K1UoxhfOs8Q68fJezyw",
-    authDomain: "sdvv-firebase-git.firebaseapp.com",
-    databaseURL: "https://sdvv-firebase-git.firebaseio.com",
-    projectId: "sdvv-firebase-git",
-    storageBucket: "sdvv-firebase-git.appspot.com",
-    messagingSenderId: "375018032962",
-    appId: "1:375018032962:web:a2c898c27a2529bcdc02db"
+    apiKey: "AIzaSyBYqwpqbwkyRyg0jbQqIKKDeLtYrkfp-rU",
+    authDomain: "sdvv-firebase-git-67eef.firebaseapp.com",
+    databaseURL: "https://sdvv-firebase-git-67eef.firebaseio.com",
+    projectId: "sdvv-firebase-git-67eef",
+    storageBucket: "sdvv-firebase-git-67eef.appspot.com",
+    messagingSenderId: "951355815101",
+    appId: "1:951355815101:web:da8440de4b45fa438cb3d4"
   }
 }
 

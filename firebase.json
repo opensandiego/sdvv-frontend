@@ -2,9 +2,12 @@
   "hosting": [
     {
       "target": "development",
-      "site": "sdvv-firebase-git",
       "public": "dist/sdvv-frontend",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -14,9 +17,12 @@
     },
     {
       "target": "production",
-      "site": "sdvv-frontend",
       "public": "dist/sdvv-frontend",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",

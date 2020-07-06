@@ -1,6 +1,6 @@
 # This is San Diego Voters Voice Github Action for
 # deployment to Firebase
-name: deploy_to_firebase_prod_hosting
+name: deploy_to_dev_hosting
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -10,10 +10,10 @@ name: deploy_to_firebase_prod_hosting
 on:
   push:
     tags:
-      - deploy-to-firebase-prod-hosting-*
-    branches:
-      - master
-      - release/*
+      - deploy-to-dev-hosting-*
+#    branches:
+#      - master
+#      - release/*
 
 jobs:
   build:
@@ -27,7 +27,8 @@ jobs:
       - name: Install dependancies
         run: npm install
       - name: Build
-        run: npm run build -- --c=production
+        #TODO: Fixme, ensure development configuration is being applied
+        run: npm run build -- --c=development
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
@@ -50,10 +51,9 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:production -m "Github-${RELEASE_ENG}-${RELEASE_VER}"--non-interactive
+          args: deploy --only hosting:development -m "Github-${release_env}-${release_ver}"--non-interactive
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          #TODO Fix comments to pass in -m parameter
-          GitAction
+          #TODO Fixme, ensure comments are passed in to -m parameter
           release_eng: ${{ env.github.actor }}
           release_ver: ${{ env.github.ref }}
