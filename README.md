@@ -22,7 +22,7 @@ For more information with Voter's Voice Initiative visit [https://sdvotersvoice.
 ### This Github repo is a fork, and will be used to test Github / FireBase integration.  App was migrated to Angular 10 on Ubuntu Server 20.04
 
 ### Prequisites
-* Angular CLI: 10.0.0
+* Angular CLI: 10.0.0+
 * Node: 14.2.0
 * Angular: 10.0.2
 * npm 6.14.5+
@@ -46,13 +46,16 @@ npm install -g @angular/cli
 ng serve --open [--host 192.168.1.xxx, default is localhost]
 ```
 6. Automated deploy to Firebase Production site using Github Action workflow.
--   **Note** Tag must contain string "deploy-to-firebase-prod-hosting-".  `git push` branch after it is tagged.
+-   **Note** Tag must contain string "deploy-to-[prod or dev]-hosting-".  `git push` branch after it is tagged.
 ```
-git tag -a deploy-to-firebase-prod-hosting- -m "Deploy to Firebase Production hosting"
+git tag -a deploy-to-dev-hosting-vx.x.x -m "Deploy to Development hosting"
+git tag -a deploy-to-prod-hosting-vx.x.x -m "Deploy to Production hosting"
+
 ```
 7. Alternate deployment from terminal command line using Firebase command:
 -   **Note** FIREBASE_TOKEN must be setup before deploy.
 ```
+firebase deploy --token ${FIREBASE_TOKEN} --only hosting:development  -m "Development Release" --non-interactive
 firebase deploy --token ${FIREBASE_TOKEN} --only hosting:production  -m "Production Release" --non-interactive
 ```
 ### Contributing
