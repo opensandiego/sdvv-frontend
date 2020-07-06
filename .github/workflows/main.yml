@@ -54,5 +54,6 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           #TODO Fix comments to pass in -m parameter
+          GitAction
           release_eng: ${{ env.github.actor }}
           release_ver: ${{ env.github.ref }}
