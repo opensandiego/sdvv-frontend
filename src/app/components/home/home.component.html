@@ -18,39 +18,34 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <ul>
-          <li><a>John Jones</a></li>
-          <li><a>John Jones</a></li>
-          <li><a>John Jones</a></li>
+          <li><a>Barbara Bry</a></li>
+          <li><a>Tasha Williamson</a></li>
+          <li><a>Todd Gloria</a></li>
         </ul>
       </mat-expansion-panel>
 
       <mat-expansion-panel hideToggle="true">
-        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/city-attorney">
+        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/under-construction">
           <mat-panel-title>
             City Attorney
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <ul>
-          <li><a>John Jones</a></li>
-          <li><a>John Jones</a></li>
-          <li><a>John Jones</a></li>
-        </ul>
       </mat-expansion-panel>
     
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true">
-        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px">
+        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/under-construction">
           <mat-panel-title>
             City Council
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <mat-expansion-panel class="mat-elevation-z0" hideToggle="true">
+        <!-- <mat-expansion-panel class="mat-elevation-z0" hideToggle="true">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px" class="tall-header">
               <span class="full-width">District Finder</span>
               <i class="fas fa-map-marked-alt"></i>
           </mat-expansion-panel-header>
-        </mat-expansion-panel>
-        <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="active-link">
+        </mat-expansion-panel> -->
+        <!-- <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="active-link">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 1
           </mat-expansion-panel-header>
@@ -70,7 +65,7 @@
             <li>Candidate E</li>
             <li>Candidate F</li>
           </ul>
-        </mat-expansion-panel>
+        </mat-expansion-panel> -->
       </mat-expansion-panel>
     </mat-accordion>
     </mat-nav-list>
