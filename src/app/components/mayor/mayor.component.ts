@@ -19,7 +19,7 @@ export class MayorComponent implements OnInit {
 
   getCandidate(candidate: Candidate) {
     this.candidate = candidate;
-    this.isExpanded = !this.isExpanded
+    this.isExpanded = true;
   }
 
   getCandidateImg(img: string) {

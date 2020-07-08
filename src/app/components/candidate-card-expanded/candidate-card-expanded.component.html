@@ -7,7 +7,7 @@
         </div>
       </div>
       <h1>{{ candidate[0]['candidate name'] }}</h1>
-      <h2>{{ candidate[0].title }}</h2>
+      <h2>{{ candidate[0].description }}</h2>
   
       <div class="website-link">
         <mat-icon>link</mat-icon>
@@ -37,7 +37,7 @@
         </p>
       </div>
   
-      <div>
+      <div class="raised-spent-chart">
         <canvas baseChart
           width="120"
           height="220"
@@ -86,7 +86,8 @@
         <ng-container matColumnDef="colorCode">
           <th mat-header-cell *matHeaderCellDef>Color Code</th>
           <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index" [style.color]="element.colorCode">
-            <mat-icon>fiber_manual_record</mat-icon>
+            <!-- <mat-icon>fiber_manual_record</mat-icon> -->
+            <mat-icon>{{ element.icon }}</mat-icon>
           </td>
         </ng-container>
   
