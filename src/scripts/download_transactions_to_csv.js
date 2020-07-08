@@ -45,7 +45,7 @@ function doGetRequest({
 async function downloadTransactions(aid, year){
 
   const location = '../assets/data/';
-  const fileName = `netfile_api_transactions_${year}.csv`;
+  const fileName = `netfile_api_${year}.csv`;
   const pageSize = 1000;
   
   const recordCount = (JSON.parse(await doGetRequest({
