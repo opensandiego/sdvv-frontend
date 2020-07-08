@@ -7,11 +7,11 @@ import { Candidate } from '../../candidate';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 const placeholder_data = [
-  { colorCode: '#007431', icon: 'computer', industry: 'Technology', amount: 200000, percentage: 0.5 },
-  { colorCode: '#00903d', icon: 'account_balance', industry: 'Finance', amount: 200000, percentage: 0.2 },
-  { colorCode: '#00af4a', icon: 'power', industry: 'Energy', amount: 200000, percentage: null },
-  { colorCode: '#00d359', icon: 'construction', industry: 'Construction', amount: 200000, percentage: null },
-  { colorCode: '#00fc6a', icon: 'miscellaneous_services', industry: 'Other', amount: 200000, percentage: null },
+  { icon: 'computer', industry: 'Technology', amount: 200000, percentage: 0.5 },
+  { icon: 'account_balance', industry: 'Finance', amount: 200000, percentage: 0.2 },
+  { icon: 'power', industry: 'Energy', amount: 200000, percentage: null },
+  { icon: 'construction', industry: 'Construction', amount: 200000, percentage: null },
+  { icon: 'miscellaneous_services', industry: 'Other', amount: 200000, percentage: null },
 ];
 
 @Component({
@@ -229,7 +229,7 @@ export class CandidateCardExpandedComponent implements OnInit {
 
   setDisplayedColumns() {
     this.displayedColumns = [
-      'colorCode',
+      'icon',
       'industry',
       'amount',
       'percentage',

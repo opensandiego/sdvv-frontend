@@ -83,11 +83,10 @@
 
     <div class="p-col-12 p-xl-10 p-lg-10">
       <table class="industries-table" mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="colorCode">
-          <th mat-header-cell *matHeaderCellDef>Color Code</th>
-          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index" [style.color]="element.colorCode">
-            <!-- <mat-icon>fiber_manual_record</mat-icon> -->
-            <mat-icon>{{ element.icon }}</mat-icon>
+        <ng-container matColumnDef="icon">
+          <th mat-header-cell *matHeaderCellDef>Icon</th>
+          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">
+            <mat-icon class="industries-icon">{{ element.icon }}</mat-icon>
           </td>
         </ng-container>
   
