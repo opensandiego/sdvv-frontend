@@ -74,12 +74,10 @@ async function downloadTransactions(aid, year){
     });
     
     if ( currentPageIndex === 0 ) {
-      writeStream.write(csvData.split('\n')[0]);
+      writeStream.write( csvData.split('\n')[0] );
     }
 
-    writeStream.write(
-      csvData.substring( csvData.indexOf('\n') + 1 )
-    );
+    writeStream.write( csvData.substring( csvData.indexOf('\n') + 1 ) );
 
   }
   
