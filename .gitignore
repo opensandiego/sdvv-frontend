@@ -35,6 +35,17 @@ speed-measure-plugin.json
 .history/*
 *.code-workspace
 
+#Firebase Emulators
+*-debug.log
+
+#Cypress
+/cypress/screenshots/*
+/cypress/integration/examples/*
+/cypress/fixtures/profile.json
+/cypress/fixtures/example.json
+/cypress/fixtures/users.json
+/cypress/plugins/*
+
 # misc
 /.sass-cache
 /connect.lock

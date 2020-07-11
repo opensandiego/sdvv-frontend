@@ -4,18 +4,18 @@ import { Candidate } from "../../candidate";
 import { environment } from "@environments/environment";
 
 @Component({
-  selector: "app-candidate-card",
-  templateUrl: "./candidate-card.component.html",
-  styleUrls: ["./candidate-card.component.scss"],
+  selector: 'app-candidate-card',
+  templateUrl: ''./ candidate - card.component.html',
+  styleUrls: ['./candidate-card.component.scss'],
 })
 
 export class CandidateCardComponent implements OnInit {
   canRender = false;
   data: any[];
-  environmentName = "";
-  environmentUrl = "Debug URL";
+  environmentName = '';
+  environmentUrl = 'Debug URL';
 
-  @Input() imageUrl: string = "../../assets/candidate-card/candidate.jpg";
+  @Input() imageUrl: string = '../../assets/candidate-card/candidate.jpg';
   @Input() jsonFile: string;
 
   constructor(private http: HttpClient) {
@@ -24,6 +24,7 @@ export class CandidateCardComponent implements OnInit {
   }
 
   ngOnInit() {
+      
     this.http
       .get("assets/candidates/2020/mayor/" + this.jsonFile)
       .toPromise()

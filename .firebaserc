@@ -10,6 +10,9 @@
         ],
         "development": [
           "sdvv-frontend-dev2"
+        ],
+        "test": [
+          "sdvv-frontend-dev2"
         ]
       }
     }

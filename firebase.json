@@ -36,16 +36,22 @@
   },
   "emulators": {
     "firestore": {
-      "port": 8080
+      "port": 8081,
+      "host": "0.0.0.0"
     },
     "database": {
-      "port": 9000
+      "port": 9000,
+      "host": "0.0.0.0"
     },
     "hosting": {
-      "port": 5000
+      "port": 5000,
+      "host": "0.0.0.0"
     },
     "ui": {
       "enabled": true
-    }
+    },
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "appAssociation": "AUTO"
   }
 }
