@@ -2,6 +2,7 @@
 Template for contributing guide for all projects
 -->
 
+
 ### Introduction
 
 Welcome to the San Diego Voter's Voice Initiative! We are a coalition of non-partisan organizations working together to create a website that will provide transparency for campaign contributions and expenditures with local San Diego candidates.
@@ -13,13 +14,19 @@ Welcome to the San Diego Voter's Voice Initiative! We are a coalition of non-par
 * [League of Women's Voters](https://www.lwv.org/)
 * [Open San Diego](https://opensandiego.org/)
 
+##Deployment to Development Hosting on Firebase
+![deploy_to_dev_hosting](https://github.com/pmelendez2/sdvv-frontend/workflows/deploy_to_dev_hosting/badge.svg)
+
+##Deployment to Production Hosting on Firebase
+![deploy_to_prod_hosting](https://github.com/pmelendez2/sdvv-frontend/workflows/deploy_to_prod_hosting/badge.svg)
+
 #### Background Information
 
 Currently, campaign finance information for candidates running for local offices as well as money spent by outside groups to support or defeat them is not readily accessible to the public.  When the amount of money being spent as well as the source is not known, voters feel disenfranchised by the election process.  Making campaign finance data easy to find and read will increase public trust and confidence in the election process.
 
 For more information with Voter's Voice Initiative visit [https://sdvotersvoice.org/](https://sdvotersvoice.org/)
 
-### This Github repo is a fork, and will be used to test Github / FireBase integration.  App was migrated to Angular 10 on Ubuntu Server 20.04
+### This Github repo is a fork, and will be used to test Github / FireBase /Cypress CI integration.  App was migrated to Angular 10 on Ubuntu Server 20.04
 
 ### Prequisites
 * Angular CLI: 10.0.0+
@@ -46,10 +53,10 @@ npm install -g @angular/cli
 ng serve --open [--host 192.168.1.xxx, default is localhost]
 ```
 6. Automated deploy to Firebase Production site using Github Action workflow.
--   **Note** Tag must contain string "deploy-to-[prod or dev]-hosting-".  `git push` branch after it is tagged.
+-   **Note** Tag must contain string "deploy-to-[prod or dev]-hosting".  `git push` branch after it is tagged.
 ```
-git tag -a deploy-to-dev-hosting-vx.x.x -m "Deploy to Development hosting"
-git tag -a deploy-to-prod-hosting-vx.x.x -m "Deploy to Production hosting"
+git tag -a deploy-to-dev-hosting -m "Deploy to Development hosting"
+git tag -a deploy-to-prod-hosting -m "Deploy to Production hosting"
 
 ```
 7. Alternate deployment from terminal command line using Firebase command:

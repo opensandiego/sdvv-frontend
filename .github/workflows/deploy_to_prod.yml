@@ -10,38 +10,85 @@ name: deploy_to_prod_hosting
 on:
   push:
     tags:
-      - deploy-to-prod-hosting-*
-#    branches:
-#      - master
-#      - release/*
-
+      - deploy-to-prod-hosting-v*
+    #branches:
+    #  - master
 jobs:
   build:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: Generate build number
-        uses: einaregilsson/build-number@v2
-        with:
-          token: ${{secrets.github_token}}
-          prefix: front-end
-      - name: Print new build number
-        run: echo "Build number is $BUILD_NUMBER"
       # Checks-out repository under $GITHUB_WORKSPACE
+      # and run Cypress e2e Tests
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install dependancies
         run: npm install
       - name: Build
         run: npm run build -- --c=production
+      #TODO: Not sure if we need to save Production artifacts on failed build
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
           name: dist
           path: dist
-  deploy:
-    name: Deploy
+  smoke_test:
+    name: smoketest
     needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        #Note: Firefox currently has a bug in Cypress, which causes
+        # it to fail.  It should be fixed in next release (sometime late Jul-20)
+        browser: [ chrome, firefox]
+    steps:
+      - name: Start test serve
+        run: npm run e2e:serve &
+      - name: E2E test with ${{matrix.browser}}
+        uses: cypress-io/github-action@v2
+        with:
+          browser: ${{matrix.browser}}
+          spec: cypress/integration/sdvv-frontend_spec.js
+          headless: true
+          record: true  
+          quiet: true
+          tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
+      #Always save Chrome and Firefox test artifacts
+      - name: Checkout Artifacts
+        uses: actions/checkout@v2
+      - name: Save E2E Artifacts
+        uses: cypress-io/github-action@v2
+        # After the test run completes store videos and any screenshots
+        # NOTE: screenshots will be generated only if E2E test failed
+        # thus we store screenshots only on failures
+      - name: Upload Screenshots (if generated)
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+        # Test run video was always captured, so this action uses "always()" condition
+      - name: Upload Video
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+      env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          # When running against Firebase site UID of User to login as during tests
+          # CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
+          # Service Account (used for creating custom auth tokens)
+          # SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+          # Branch settings
+          GITHUB_REF: ${{ github.ref }}
+          CI: true
+  deploy:
+    name: deploy
+    #May need to omit e2e_artifacts from needs, as e2e test can fail,
+    #but we may still like to deploy
+    needs: [build, smoke_test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -56,4 +103,7 @@ jobs:
         with:
           args: deploy --only hosting:production -m "Github-${{github.actor}}-${{github.run_id}}" --non-interactive
         env:
+          #pass Firebase token to allow updating Firebase site
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

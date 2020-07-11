@@ -1,7 +1,7 @@
-describe('Production Deployment - Smoke Test', () => {
+describe('Build -Smoke Test', () => {
 
   beforeEach(() => {
-    cy.visit('https://sdvv-frontend-prod2.web.app')
+    cy.visit('http://localhost:4200')
   })
 
   it('Clicking FAQ navigates to new URL', () => {
