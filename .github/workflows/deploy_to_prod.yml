@@ -10,7 +10,7 @@ name: deploy_to_prod_hosting
 on:
   push:
     tags:
-      - deploy-to-prod-hosting-*
+      - deploy-to-prod-hosting*
 #    branches:
 #      - master
 #      - release/*

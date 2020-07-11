@@ -10,7 +10,7 @@ name: deploy_to_dev_hosting
 on:
   push:
     tags:
-      - deploy-to-dev-hosting-*
+      - deploy-to-dev-hosting*
 #    branches:
 #      - master
 #      - release/*
@@ -26,7 +26,6 @@ jobs:
       - name: Install dependancies
         run: npm install
       - name: Build
-        #TODO: Fixme, ensure development configuration is being applied
         #TODO: Probably don't need to archive development builds
         run: npm run build -- --c=development
       - name: Archive Development Artifact
