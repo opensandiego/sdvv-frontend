@@ -20,13 +20,6 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: Generate build number
-        uses: einaregilsson/build-number@v2
-        with:
-          token: ${{secrets.github_token}}
-          prefix: front-end
-      - name: Print new build number
-        run: echo "Build number is $BUILD_NUMBER"
       # Checks-out repository under $GITHUB_WORKSPACE
       - name: Checkout Repo
         uses: actions/checkout@master
@@ -52,12 +45,10 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: dist
-          path: dist
-      - name: "Check env. vars"
-        run: set | grep -i release 
+          path: dist 
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:development -m "Github-${{github.actor}}-${{needs.build.outputs.build_number}}" --non-interactive
+          args: deploy --only hosting:development -m "Github-${{github.actor}}-${{github.run_id}}" --non-interactive
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
