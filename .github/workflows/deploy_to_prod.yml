@@ -27,8 +27,7 @@ jobs:
           prefix: front-end
       - name: Print new build number
         run: echo "Build number is $BUILD_NUMBER"
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your
-      # job can access it
+      # Checks-out repository under $GITHUB_WORKSPACE
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install dependancies
@@ -55,6 +54,6 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:production -m "Github-${(github.actor}}-${{needs.build.outputs.build_number}}" --non-interactive
+          args: deploy --only hosting:production -m "Github-${{github.actor}}-${{needs.build.outputs.build_number}}" --non-interactive
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

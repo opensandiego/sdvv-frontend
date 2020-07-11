@@ -20,16 +20,23 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your
-      # job can access it
+      - name: Generate build number
+        uses: einaregilsson/build-number@v2
+        with:
+          token: ${{secrets.github_token}}
+          prefix: front-end
+      - name: Print new build number
+        run: echo "Build number is $BUILD_NUMBER"
+      # Checks-out repository under $GITHUB_WORKSPACE
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install dependancies
         run: npm install
       - name: Build
         #TODO: Fixme, ensure development configuration is being applied
+        #TODO: Probably don't need to archive development builds
         run: npm run build -- --c=development
-      - name: Archive Production Artifact
+      - name: Archive Development Artifact
         uses: actions/upload-artifact@master
         with:
           name: dist
@@ -51,9 +58,6 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:development -m "Github-${release_env}-${release_ver}"--non-interactive
+          args: deploy --only hosting:development -m "Github-${{github.actor}}-${{needs.build.outputs.build_number}}" --non-interactive
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          #TODO Fixme, ensure comments are passed in to -m parameter
-          release_eng: ${{ env.github.actor }}
-          release_ver: ${{ env.github.ref }}

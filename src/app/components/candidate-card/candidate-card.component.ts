@@ -5,7 +5,7 @@ import { environment } from "@environments/environment";
 
 @Component({
   selector: 'app-candidate-card',
-  templateUrl: ''./ candidate - card.component.html',
+  templateUrl: './candidate-card.component.html',
   styleUrls: ['./candidate-card.component.scss'],
 })
 
