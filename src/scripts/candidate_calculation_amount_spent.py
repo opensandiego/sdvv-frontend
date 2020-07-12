@@ -5,8 +5,7 @@ import pathlib
 
 import pandas as pd
 
-EXPENDITURE_TYPE = "EXPN"
-TYPE_COLUMN = "Rec_Type"
+from shared_calculations import EXPENDITURE_TYPE, TYPE_COLUMN, filter_sum_series
 
 
 def raw_contributions(spreadsheet_path):
@@ -19,10 +18,6 @@ def raw_contributions(spreadsheet_path):
     ).set_index("Filer_NamL")
 
     return pd.Series(df["Amount"], index=df.index)
-
-
-def filter_sum_series(series, key):
-    return series.groupby(key).sum()
 
 
 def to_json(series, key_field, directory):

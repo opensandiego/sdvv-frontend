@@ -5,8 +5,7 @@ import pathlib
 
 import pandas as pd
 
-CONTRIBUTION_TYPE = "RCPT"
-TYPE_COLUMN = "Rec_Type"
+from shared_calculations import CONTRIBUTION_TYPE, TYPE_COLUMN
 
 
 def donors(spreadsheet_path):

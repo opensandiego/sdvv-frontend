@@ -5,8 +5,7 @@ import pathlib
 
 import pandas as pd
 
-CONTRIBUTION_TYPE = "RCPT"
-TYPE_COLUMN = "Rec_Type"
+from shared_calculations import CONTRIBUTION_TYPE, TYPE_COLUMN, filter_sum_series
 
 
 def raw_contributions(spreadsheet_path):
@@ -18,10 +17,6 @@ def raw_contributions(spreadsheet_path):
         ).values()
     ).set_index("Filer_NamL")
     return pd.Series(df["Tran_Amt2"], index=df.index)
-
-
-def filter_sum_series(series, key):
-    return series.groupby(key).sum()
 
 
 def to_json(series, key_field, directory):
