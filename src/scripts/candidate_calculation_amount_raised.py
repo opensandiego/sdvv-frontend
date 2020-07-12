@@ -5,6 +5,9 @@ import pathlib
 
 import pandas as pd
 
+CONTRIBUTION_TYPE = "RCPT"
+TYPE_COLUMN = "Rec_Type"
+
 
 def raw_contributions(spreadsheet_path):
     df = pd.concat(
