@@ -27,10 +27,10 @@ jobs:
       - name: Build
         run: npm run build -- --c=development
       - name: Start Firebase emulators
-          uses: cypress-io/github-actions@v2
-            with: 
-              start: npm run firebase:emulators
-              wait-on: http://localhost:5000
+        uses: cypress-io/github-action@v2
+          with: 
+            start: npm run firebase:emulators
+            wait-on: http://localhost:5000
         env:
           #TODO: Since we are running in firebase emulators we may not
           #      need to pass CYPRESS env. vars, as those are just for running
@@ -74,11 +74,9 @@ jobs:
           #Checkout Repo
           - uses: actions/checkout@v2
           - uses: cypress-io/github-action@v2
-          # after the test run completes store videos and any screenshots
+          # After the test run completes store videos and any screenshots
           # NOTE: screenshots will be generated only if E2E test failed
           # thus we store screenshots only on failures
-          # Alternative: create and commit an empty cypress/screenshots folder
-          # to always have something to upload
           - uses: actions/upload-artifact@v1
             if: failure()
             with:

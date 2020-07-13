@@ -27,20 +27,20 @@ jobs:
       - name: Build
         run: npm run build -- --c=production
       - name: Start Firebase emulators
-          uses: cypress-io/github-actions@v2
-            with: 
-              start: npm run firebase:emulators
-              wait-on: http://localhost:5000
+        uses: cypress-io/github-action@v2
+          with: 
+            start: npm run firebase:emulators
+            wait-on: http://localhost:5000
         env:
           #TODO: Since we are running in firebase emulators we may not
           #      need to pass CYPRESS env. vars, as those are just for running
           #      against Firebase sites on-line
           # pass the Dashboard record key as an environment variable
-          #CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
           # UID of User to login as during tests
-          #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
+          # CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
           # Service Account (used for creating custom auth tokens)
-          #SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+          # SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
           # Branch settings
           GITHUB_HEAD_REF: ${{ github.head_ref }}
           GITHUB_REF: ${{ github.ref }}
@@ -74,11 +74,9 @@ jobs:
           #Checkout Repo
           - uses: actions/checkout@v2
           - uses: cypress-io/github-action@v2
-          # after the test run completes store videos and any screenshots
+          # After the test run completes store videos and any screenshots
           # NOTE: screenshots will be generated only if E2E test failed
           # thus we store screenshots only on failures
-          # Alternative: create and commit an empty cypress/screenshots folder
-          # to always have something to upload
           - uses: actions/upload-artifact@v1
             if: failure()
             with:
