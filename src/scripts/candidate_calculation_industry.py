@@ -6,7 +6,13 @@ import pathlib
 
 import pandas as pd
 
-from shared_calculations import CONTRIBUTION_TYPE, CSV_PATHS, read_csv_dfs
+from shared_calculations import (
+    CONTRIBUTION_TYPE,
+    CSV_PATHS,
+    read_csv_dfs,
+    DIRECTORY,
+    JSON_KEY,
+)
 
 
 def process_name_df(df):
@@ -47,6 +53,6 @@ if __name__ == "__main__":
         process_industry_contributions(
             read_csv_dfs(CSV_PATHS, CONTRIBUTION_TYPE, "Tran_Occ", "Tran_Amt2"),
         ),
-        "committee name",
-        "../assets/candidates/2020/",
+        JSON_KEY,
+        DIRECTORY,
     )
