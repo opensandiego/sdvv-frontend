@@ -13,6 +13,11 @@ JSON_KEY = "committee name"
 
 DIRECTORY = "../assets/candidates/2020/"
 
+CSV_PATHS = (
+    "../assets/data/netfile_api_2020.csv",
+    "../assets/data/netfile_api_2019.csv",
+)
+
 
 def read_csv_dfs(paths, *columns, index_column=CSV_KEY):
     columns += (index_column,)
