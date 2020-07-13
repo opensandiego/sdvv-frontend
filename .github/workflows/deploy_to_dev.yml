@@ -61,14 +61,14 @@ jobs:
         browser: [ chrome, firefox]
     steps:
       - name: E2E test with ${{matrix.browser}}
-          uses: cypress-io/github-action@v2
-          with:
-            browser: ${{matrix.browser}}
-            spec: cypress/integration/sdvv-frontend_spec.js
-            headless: true
-            record: true
-            quiet: true
-            tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
+        uses: cypress-io/github-action@v2
+        with:
+          browser: ${{matrix.browser}}
+          spec: cypress/integration/sdvv-frontend_spec.js
+          headless: true
+          record: true
+          quiet: true
+          tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
       #Always save Chrome and Firefox test artifacts
       - name: Save E2E Artifacts
           #Checkout Repo
