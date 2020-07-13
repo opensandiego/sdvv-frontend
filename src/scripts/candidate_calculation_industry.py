@@ -6,17 +6,7 @@ import pathlib
 
 import pandas as pd
 
-from shared_calculations import CONTRIBUTION_TYPE, TYPE_COLUMN
-
-
-def raw_industry_contributions(spreadsheet_path):
-    return pd.concat(
-        pd.read_excel(
-            spreadsheet_path,
-            ["A-Contributions", "C-Contributions", "I-Contributions"],
-            usecols=["Tran_Occ", "Filer_NamL", "Tran_Amt2"],
-        ).values()
-    ).set_index("Filer_NamL")
+from shared_calculations import CONTRIBUTION_TYPE, CSV_PATHS, read_csv_dfs
 
 
 def process_name_df(df):
@@ -55,7 +45,7 @@ def to_json(dataframe, key_field, directory):
 if __name__ == "__main__":
     to_json(
         process_industry_contributions(
-            raw_industry_contributions("../assets/data/netfile_2020.xlsx")
+            read_csv_dfs(CSV_PATHS, CONTRIBUTION_TYPE, "Tran_Occ", "Tran_Amt2"),
         ),
         "committee name",
         "../assets/candidates/2020/",
