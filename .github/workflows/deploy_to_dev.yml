@@ -27,7 +27,7 @@ jobs:
       - name: Build
         run: npm run build -- --c=development
       - name: Start Cypress emulators
-        - uses: cypress-io/github-actions@v2
+        uses: cypress-io/github-actions@v2
           with: 
             start: npm run firebase:emulators
             wait-on: http://localhost:5000
