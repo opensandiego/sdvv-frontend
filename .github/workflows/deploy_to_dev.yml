@@ -28,9 +28,9 @@ jobs:
         run: npm run build -- --c=development
       - name: Start Firebase emulators
         uses: cypress-io/github-action@v2
-          with: 
-            start: npm run firebase:emulators
-            wait-on: http://localhost:5000
+        with: 
+          start: npm run firebase:emulators
+          wait-on: http://localhost:5000
         env:
           #TODO: Since we are running in firebase emulators we may not
           #      need to pass CYPRESS env. vars, as those are just for running
