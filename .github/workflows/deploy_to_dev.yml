@@ -10,44 +10,108 @@ name: deploy_to_dev_hosting
 on:
   push:
     tags:
-      - deploy-to-dev-hosting*
-#    branches:
-#      - master
+      - deploy-to-dev-hosting-v*
+    branches:
+       - master
 #      - release/*
-
 jobs:
   build:
     name: build
     runs-on: ubuntu-latest
     steps:
       # Checks-out repository under $GITHUB_WORKSPACE
+      # and runs Cypress e2e tests
       - name: Checkout Repo
         uses: actions/checkout@master
-      - name: Install dependancies
         run: npm install
       - name: Build
-        #TODO: Probably don't need to archive development builds
         run: npm run build -- --c=development
+      - name: Start Cypress emulators
+        - uses: cypress-io/github-actions@v2
+          with: 
+            start: npm run firebase:emulators
+            wait-on: http://localhost:5000
+        env:
+          #TODO: Since we are running in firebase emulators we may not
+          #      need to pass CYPRESS env. vars, as those are just for running
+          #      against Firebase sites on-line
+          # pass the Dashboard record key as an environment variable
+          #CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          # UID of User to login as during tests
+          #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
+          # Service Account (used for creating custom auth tokens)
+          SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+          # Branch settings
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+          GITHUB_REF: ${{ github.ref }}
+      #TODO: Not sure if we need to save Dev artifacts on failed build
       - name: Archive Development Artifact
         uses: actions/upload-artifact@master
         with:
           name: dist
           path: dist
-  deploy:
-    name: Deploy
+  smoke_test:
+    name: smoketest
     needs: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        #Note: Firefox currently has a bug in Cypress, which causes
+        # it to fail.  It should be fixed in next release (sometime late Jul-20)
+        browser: [ chrome, firefox]
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: Download Artifact
-        uses: actions/download-artifact@master
-        with:
-          name: dist
-          path: dist 
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting:development -m "Github-${{github.actor}}-${{github.run_id}}" --non-interactive
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: E2E test with ${{matrix.browser}}
+          uses: cypress-io/github-action@v2
+          with:
+            browser: ${{matrix.browser}}
+            spec: cypress/integration/sdvv-frontend_spec.js
+            headless: true
+            record: true
+            quiet: true
+            tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
+      #Always save Chrome and Firefox test artifacts
+      - name: Save E2E Artifacts
+          #Checkout Repo
+          - uses: actions/checkout@v2
+          - uses: cypress-io/github-action@v2
+          # after the test run completes store videos and any screenshots
+          # NOTE: screenshots will be generated only if E2E test failed
+          # thus we store screenshots only on failures
+          # Alternative: create and commit an empty cypress/screenshots folder
+          # to always have something to upload
+          - uses: actions/upload-artifact@v1
+            if: failure()
+            with:
+              name: cypress-screenshots
+              path: cypress/screenshots
+          # Test run video was always captured, so this action uses "always()" condition
+          - uses: actions/upload-artifact@v1
+            if: always()
+            with:
+              name: cypress-videos
+              path: cypress/videos
+  deploy:
+    name: Deploy
+    #May need to omit e2e_artifacts from needs, as e2e test can fail,
+    #but we may still like to deploy
+    needs: [build, smoke_test]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@master
+    - name: Download Artifact
+      uses: actions/download-artifact@master
+      with:
+        name: dist
+        path: dist 
+    - name: Deploy to Firebase
+      uses: w9jds/firebase-action@master
+      with:
+        args: deploy --only hosting:development -m "Github-${{github.actor}}-${{github.run_id}}" --non-interactive
+      env:
+        #pass Firebase token to allow updating Firebase site
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        # pass the Cypress Dashboard record key as an environment variable
+        CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
+        # pass GitHub token to allow accurately detecting a build vs a re-run build
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

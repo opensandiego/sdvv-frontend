@@ -28,17 +28,54 @@ jobs:
       - name: Print new build number
         run: echo "Build number is $BUILD_NUMBER"
       # Checks-out repository under $GITHUB_WORKSPACE
+      # and run Cypress e2e Tests
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install dependancies
         run: npm install
       - name: Build
         run: npm run build -- --c=production
+      - name: Cypress e2e run with Chrome
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          spec: cypress/integration/sdvv-frontend_spec.js
+          headless: true
+          quiet: true
+          tag: Github-${{github.actor}}-${{github.run_id}}
+      - name: Cypress e2e run with Firefox
+        uses: cypress-io/github-action@v2
+        with:
+          browser: firefox
+          spec: cypress/integration/sdvv-frontend_spec.js
+          headless: true
+          quiet: true
+          tag: Github-${{github.actor}}-${{github.run_id}}
+      - name: Save E2E Artifacts
+          uses: actions/checkout@v1
+          uses: cypress-io/github-action@v2
+          # after the test run completes
+          # store videos and any screenshots
+          # NOTE: screenshots will be generated only if E2E test failed
+          # thus we store screenshots only on failures
+          # Alternative: create and commit an empty cypress/screenshots folder
+          # to always have something to upload
+          uses: actions/upload-artifact@v1
+          if: failure()
+          with:
+            name: cypress-screenshots
+            path: cypress/screenshots
+        # Test run video was always captured, so this action uses "always()" condition
+          uses: actions/upload-artifact@v1
+          if: always()
+          with:
+            name: cypress-videos
+            path: cypress/videos
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
           name: dist
-          path: dist
+          path: dist 
   deploy:
     name: Deploy
     needs: build
@@ -56,4 +93,9 @@ jobs:
         with:
           args: deploy --only hosting:production -m "Github-${{github.actor}}-${{github.run_id}}" --non-interactive
         env:
+          #pass Firebase token to allow updating Firebase site
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          # pass the Cypress Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

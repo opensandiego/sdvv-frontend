@@ -1,4 +1,8 @@
 {
-    "chromeWebSecurity": false,
-    "baseUrl": "http://localhost:5000"
+  "baseUrl": "http://localhost:5000",
+  "projectId": "j37hrm",
+  "firefoxGcInterval": {
+    "runMode": null,
+    "openMode": null
+  }
 }

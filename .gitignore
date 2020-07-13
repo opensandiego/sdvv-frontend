@@ -39,12 +39,11 @@ speed-measure-plugin.json
 *-debug.log
 
 #Cypress
-/cypress/screenshots/*
-/cypress/integration/examples/*
-/cypress/fixtures/profile.json
-/cypress/fixtures/example.json
-/cypress/fixtures/users.json
-/cypress/plugins/*
+/cypress/screenshots
+/cypress/integation/examples
+/cypress/fixtures
+/cypress/plugins
+serviceAccount.json
 
 # misc
 /.sass-cache
