@@ -28,7 +28,6 @@ jobs:
         run: npm run build -- --c=production
       - name: Start Firebase emulators
         run: npm run fb:emulators &
-          wait-on: http://localhost:5000
         env:
           #TODO: Since we are running in firebase emulators we may not
           #      need to pass CYPRESS env. vars, as those are just for running
