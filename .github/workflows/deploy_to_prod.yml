@@ -64,14 +64,14 @@ jobs:
           browser: ${{matrix.browser}}
           spec: cypress/integration/sdvv-frontend_spec.js
           headless: true
-          record: true
+          record: true  
           quiet: true
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
       #Always save Chrome and Firefox test artifacts
       - name: Checkout Artifacts
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       - name: Save E2E Artifacts
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         # After the test run completes store videos and any screenshots
         # NOTE: screenshots will be generated only if E2E test failed
         # thus we store screenshots only on failures
