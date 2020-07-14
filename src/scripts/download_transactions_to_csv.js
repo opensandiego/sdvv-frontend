@@ -2,17 +2,7 @@ const https = require('https');
 const fs = require('fs');
 
 
-function doGetRequest({
-  urlPrefix,
-  aid,
-  year,
-  pageIndex = 0,
-  pageSize = 1,
-  fileFormat = 'csv'
-  }) {
-
-  const showSuperceded = false; // false = Most Recently amended version of the transactions only (same as Export Amended)
-  const requestUrl = `${urlPrefix}?Aid=${aid}&Year=${year}&CurrentPageIndex=${pageIndex}&PageSize=${pageSize}&&ShowSuperceded=${showSuperceded}&format=${fileFormat}`;
+function doGetRequest(requestUrl) {
 
   return new Promise( (resolve, reject) => {
     https.get(requestUrl, (res) => {
@@ -29,7 +19,7 @@ function doGetRequest({
       });
 
       res.on('end', () => {
-        resolve( data );
+        resolve(data);
       });
       
       res.on('error', (err) => {
@@ -41,42 +31,78 @@ function doGetRequest({
 
 }
 
+/** 
+ * showSuperceded
+ * false = Only get the most Recently amended versions of transactions (same as Export Amended)
+ * true = Include all transactions including those that have been ammeded by later filings
+ * 
+ * */ 
 
-async function downloadTransactions(aid, year){
+function getTransactionYearRequestUrl({
+  aid,
+  year,
+  pageIndex = 0,
+  pageSize = 1,
+  fileFormat,
+  showSuperceded
+  }) {
 
-  const location = '../assets/data/';
-  const fileName = `netfile_api_${year}.csv`;
+  let urlPrefix = '';
+
+  if (fileFormat === 'csv') {
+    urlPrefix = 'https://netfile.com:443/Connect2/api/public/campaign/export/cal201/transaction/year/csv';
+  } else if (fileFormat === 'json') {
+    urlPrefix ='https://netfile.com:443/Connect2/api/public/campaign/export/cal201/transaction/year';
+  }
+
+  const queryString = `?Aid=${aid}&Year=${year}&CurrentPageIndex=${pageIndex}&PageSize=${pageSize}&&ShowSuperceded=${showSuperceded}&format=${fileFormat}`;
+
+  return urlPrefix + queryString;
+
+}
+
+async function downloadTransactions(aid, year, showSuperceded = false){
+
   const pageSize = 1000;
-  
-  const recordCount = (JSON.parse(await doGetRequest({
-    urlPrefix: 'https://netfile.com:443/Connect2/api/public/campaign/export/cal201/transaction/year',
+  const fileFolder = '../assets/data/';
+  const fileNamePrefix = 'netfile_api2';
+  const fileNameSuperceded = showSuperceded ? 'all_' : '';
+  const filePath = `${fileFolder}${fileNamePrefix}_${fileNameSuperceded}${year}.csv`;
+
+  const requestUrlJSON = getTransactionYearRequestUrl({
     aid: aid, 
     year: year,
-    fileFormat: 'json'
-  }))).totalMatchingCount;
+    fileFormat: 'json',
+    showSuperceded: showSuperceded
+  });
 
+  const recordCount = (JSON.parse(await doGetRequest(requestUrlJSON))).totalMatchingCount;
   const totalPages = Math.ceil(recordCount / pageSize);
 
-  let writeStream = fs.createWriteStream(location + fileName, {flags: 'w'});
+  let writeStream = fs.createWriteStream(filePath, {flags: 'w'});
 
-  console.log(`${recordCount} rows to write to \'${location}${fileName}\' using ${totalPages} API requests.`);
+  console.log(`${recordCount} rows to write to \'${filePath}\' using ${totalPages} API requests.`);
   
   for (let currentPageIndex = 0; currentPageIndex < totalPages; currentPageIndex++) {
     console.log('Requesting page: ' + currentPageIndex);
 
-    let csvData = await doGetRequest({
-      urlPrefix: 'https://netfile.com:443/Connect2/api/public/campaign/export/cal201/transaction/year/csv',
+    const requestUrlCSV = getTransactionYearRequestUrl({
       aid: aid, 
       year: year,
       pageIndex: currentPageIndex,
       pageSize: pageSize,
-      fileFormat: 'csv'
+      fileFormat: 'csv',
+      showSuperceded: showSuperceded
     });
+
+    let csvData = await doGetRequest(requestUrlCSV);
     
+    // Write column header row to file
     if ( currentPageIndex === 0 ) {
       writeStream.write( csvData.split('\n')[0] );
     }
 
+    // Write the non-header rows to file
     writeStream.write( csvData.substring( csvData.indexOf('\n') + 1 ) );
 
   }
