@@ -4,9 +4,9 @@ The NetFile data is generated from California's Electronic Filing System.
 
 Each form that is E-Filed is assigned a unique Filing ID. The filing in PDF format can be viewed by replacing {FilingId} in the Filing lookup url below with the Filing ID. This is useful to compare the downloaded data with the form. Except for recently filed forms the Filing ID will be show in red in the Date Stamp area near the top of the first page of the PDF.
 
-* Filing lookup: https://netfile.com/connect2/api/public/image/{FilingId}
+> Filing lookup: https://netfile.com/connect2/api/public/image/{FilingId}
 
-* Example: https://netfile.com/connect2/api/public/image/185639436
+> Example: https://netfile.com/connect2/api/public/image/185639436
 
 The committee that submitted the E-Filing has a unique I.D. Number that will be shown near the top right on most pages of the PDF. The committee is also know as the Filer.
 
@@ -21,12 +21,14 @@ The transaction data for the City of San Diego can be downloaded from Public Por
 ## Transactions in csv from the public data API
 
 The NetFile data can also be downloaded using the public data API's.<br>
-* https://netfile.com/Connect2/api/swagger-ui/#!/public
+> https://netfile.com/Connect2/api/swagger-ui/#!/public
 
 The data used to generate the files netfile_api_2019.csv and netfile_api_2020.csv is generated from:<br>
-* GET /public/campaign/export/cal201/transaction/year/csv
+> GET /public/campaign/export/cal201/transaction/year/csv
 
 ## Column Changes between xlsx and csv
+
+---
 
 The resulting csv files are each formatted as a single data set. They are not separated by transaction type.
 
@@ -40,7 +42,7 @@ Not all column names from the xlsx download match those in the csv file. Consult
 in the xlsx file and the matching column names in the csv file.
 
 Column name equivalence between xlsx download and API csv files
-|netfile_2020.xlsx|netfile_api_2020.csv| PDF Filings
+netfile_2020.xlsx|netfile_api_2020.csv| PDF Filings
 ---|---|---
 Filer_ID | FilerStateId|
 Filer_NamL | FilerName|
@@ -57,6 +59,8 @@ Source Filings:
 
 ## Applying Filters
 
+---
+
 ### Calculating Committee Contributions
 
 #### Transactions in xlsx (Excel)
@@ -70,7 +74,10 @@ Retrieve the csv data while using the ShowSuperceded=false query string.
 Calculate the committee contributions using the csv file from the API the rows will be filtered by FilerStateId to determine each committee. Next limit column Form_Type to values: A, C and I. Then sum the Tran_Amt1 column.
 
 ## Amended Transactions
-If a previously filed form needs to be updated then the form can be filed as an amendment. A filling that is an amendment will have a unique Filing ID that is different than the form that is being updated. The PDF of a 460 filing that is an amendment will have the Amendment box checked in area "2. Type of Statement" at the top of the first page. 
+
+---
+
+If a previously filed form needs to be updated then the form will be filed as an amendment. A filling that is an amendment will have a unique Filing ID that is different than the form that is being updated. The PDF of a 460 filing that is an amendment will have the Amendment box checked in area "2. Type of Statement" at the top of the first page. 
 
 The amendment status applies to the entire filing not just to a single transaction. All transactions on the amendment will also be included in the NetFile data even if there were no changes to the transaction. This will cause transactions that are on the amendment and the transactions on the filing being amended to show up more than once in the NetFile data.
 
@@ -91,14 +98,17 @@ The transactions in csv do not contain a column that indicates their amended sta
 
 The API does have a call that can be used to get the amended status of a filing. This can be done using the API call below. 
 
-* GET /public/filing/info/{FilingId}
+> GET /public/filing/info/{FilingId}
 
-For a given filing ID it will return data that include the following field:
-* amendedBy => if this filing has been amended then the ID of newer filing is here
-* amendmentSequenceNumber => this would correspond to the "Report_Num" column in the xlsx files
-* amends => if this filing amends an existing filing then the ID of older filing is here
-* filingId => this is the ID filing being queried in the API
-* sosFilerId => this is the FilerStateId in the transactions csv and Filer_ID in the xlsx download
+For a given filing ID it will return data that include the following fields:
+
+field name | comments
+---|---
+amendedBy | if this filing has been amended then the ID of the newer filing is here
+amendmentSequenceNumber | this would correspond to the "Report_Num" column in the xlsx files
+amends | if this filing amends an existing filing then the ID of older filing is here
+filingId | this is the ID filing being queried in the API
+sosFilerId | this is the FilerStateId in the transactions csv and Filer_ID in the xlsx download
 
 Example of initial: https://netfile.com/Connect2/api/public/filing/info/187018678
 * "amendedBy": **"187550016"**,
