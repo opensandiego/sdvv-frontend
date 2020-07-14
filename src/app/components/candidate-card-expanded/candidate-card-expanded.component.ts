@@ -7,11 +7,11 @@ import { Candidate } from '../../candidate';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 const placeholder_data = [
-  { icon: 'computer', industry: 'Technology', amount: 200000, percentage: 0.5 },
-  { icon: 'account_balance', industry: 'Finance', amount: 200000, percentage: 0.2 },
-  { icon: 'power', industry: 'Energy', amount: 200000, percentage: null },
-  { icon: 'construction', industry: 'Construction', amount: 200000, percentage: null },
-  { icon: 'miscellaneous_services', industry: 'Other', amount: 200000, percentage: null },
+  { colorCode: '#007431', industry: 'Technology', amount: 200000, percentage: 0.5 },
+  { colorCode: '#00903d', industry: 'Finance', amount: 200000, percentage: 0.2 },
+  { colorCode: '#00af4a', industry: 'Energy', amount: 200000, percentage: null },
+  { colorCode: '#00d359', industry: 'Construction', amount: 200000, percentage: null },
+  { colorCode: '#00fc6a', industry: 'Other', amount: 200000, percentage: null },
 ];
 
 @Component({
@@ -77,6 +77,7 @@ export class CandidateCardExpandedComponent implements OnInit {
         anchor: 'end',
         align: 'end',
         textAlign: 'center',
+        color: '#4e4e4e',
 
         font: {
           size: 16,
@@ -84,7 +85,7 @@ export class CandidateCardExpandedComponent implements OnInit {
         },
 
         formatter: (val, ctx) => {
-          return ctx.dataset.label === 'Raised' ? `Raised\n$${val}` : `Spent\n$${val}`;
+          return ctx.dataset.label === 'Raised' ? `Raised\n$${this.commaNumberFormatter(val)}` : `Spent\n$${this.commaNumberFormatter(val)}`;
         },
       },
     },
@@ -129,6 +130,7 @@ export class CandidateCardExpandedComponent implements OnInit {
       datalabels: {
         anchor: 'start',
         align: 'start',
+        color: '#4e4e4e',
 
         font: {
           size: 16,
@@ -152,6 +154,7 @@ export class CandidateCardExpandedComponent implements OnInit {
         anchor: 'start',
         align: 'start',
         textAlign: 'right',
+        color: '#4e4e4e',
 
         font: {
           size: 16,
@@ -168,6 +171,7 @@ export class CandidateCardExpandedComponent implements OnInit {
         anchor: 'end',
         align: 'end',
         textAlign: 'left',
+        color: '#4e4e4e',
 
         font: {
           size: 16,
@@ -229,7 +233,7 @@ export class CandidateCardExpandedComponent implements OnInit {
 
   setDisplayedColumns() {
     this.displayedColumns = [
-      'icon',
+      'colorCode',
       'industry',
       'amount',
       'percentage',
@@ -237,7 +241,11 @@ export class CandidateCardExpandedComponent implements OnInit {
   }
 
   kNumberFormatter(num: number) {
-    return Math.abs(num) > 9999 ? Math.sign(num)*((Math.abs(num)/1000)) + 'K' : Math.sign(num)*Math.abs(num)
+    return Math.abs(num) > 9999 ? Math.sign(num)*((Math.abs(num)/1000)) + 'K' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
+  }
+
+  commaNumberFormatter(num: number) {
+    return num.toLocaleString('en');
   }
 
   close() {

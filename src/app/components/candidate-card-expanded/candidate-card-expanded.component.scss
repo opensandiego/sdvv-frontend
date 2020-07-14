@@ -84,15 +84,30 @@
             font-size: 20px;
             font-weight: bold;
         }
+
+        .donors {
+            padding-right: 5px;
+        }
+
+        .avg-donation {
+            padding-left: 5px;
+        }
     }
 
     .industries {
         .industries-table {
             width: 100%;
+            text-align: left;
         }
 
-        .industries-icon {
-            color: $vvdarkblue;
+        .mat-cell {
+            font-size: 13px;
+            color: $vvgrey;
+        }
+
+        .mat-cell:last-child {
+            font-size: 20px;
+            font-weight: bold;
         }
     }
 
@@ -135,6 +150,11 @@
         }
     }
 
+    .helper-tip {
+        color: $vvgrey;
+        font-size: 10px;
+    }
+
     .close {
         position: absolute;
         top: 30px;
@@ -157,9 +177,8 @@
 }
 
 .full-details-btn {
-    width: 140px;
-    background-color: $vvblue;
-    color: #fff;
+    @include button-styles;
+    padding: 0 16px;
 }
 
 .full-details-btn:hover {

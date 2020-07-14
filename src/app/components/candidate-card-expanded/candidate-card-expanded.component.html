@@ -28,7 +28,7 @@
           Raised v. Spent
           <sup>
             <i
-              class="fa fa-question-circle"
+              class="helper-tip fa fa-question-circle"
               aria-hidden="true"
               matTooltip="Description goes here."
             >
@@ -50,12 +50,12 @@
       </div>
   
       <div class="raised-spent-footer">
-        <div>
+        <div class="donors">
           <p class="raised-spent-footer-title">Donors</p>
           <p class="raised-spent-footer-content">{{ candidate[0]['raised vs spent'][0].Donors }}</p>
         </div>
   
-        <div>
+        <div class="avg-donation">
           <p class="raised-spent-footer-title">Average Donation</p>
           <p class="raised-spent-footer-content">$200</p>
         </div>
@@ -71,7 +71,7 @@
           By Industry
           <sup>
             <i
-              class="fa fa-question-circle"
+              class="helper-tip fa fa-question-circle"
               aria-hidden="true"
               matTooltip="Description goes here."
             >
@@ -83,10 +83,10 @@
 
     <div class="p-col-12 p-xl-10 p-lg-10">
       <table class="industries-table" mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="icon">
-          <th mat-header-cell *matHeaderCellDef>Icon</th>
-          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">
-            <mat-icon class="industries-icon">{{ element.icon }}</mat-icon>
+        <ng-container matColumnDef="colorCode">
+          <th mat-header-cell *matHeaderCellDef>Color Code</th>
+          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index" [style.color]="element.colorCode">
+            <mat-icon>fiber_manual_record</mat-icon>
           </td>
         </ng-container>
   
@@ -117,7 +117,7 @@
         In v. Out District
         <sup>
           <i
-            class="fa fa-question-circle"
+            class="helper-tip fa fa-question-circle"
             aria-hidden="true"
             matTooltip="Description goes here."
           >
@@ -155,7 +155,7 @@
         Outside Money
         <sup>
           <i
-            class="fa fa-question-circle"
+            class="helper-tip fa fa-question-circle"
             aria-hidden="true"
             matTooltip="Description goes here."
           >

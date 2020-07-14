@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Candidate } from '../../candidate';
+import { CandidateService } from '../../services/candidate.service';
 import { CandidateCardComponent } from '../candidate-card/candidate-card.component';
 
 @Component({
@@ -12,9 +13,10 @@ export class MayorComponent implements OnInit {
   candidateImg: string;
   isExpanded: boolean = false;
 
-  constructor() { }
+  constructor(private candidateService: CandidateService) { }
 
   ngOnInit() {
+    this.candidateService.getMayorData().subscribe(res => console.log(res))
   }
 
   getCandidate(candidate: Candidate) {

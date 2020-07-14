@@ -57,10 +57,8 @@
         }
     } 
     .candidate-button {
-        max-width: 200px;
-        margin: 10px 0;
-        background-color: $vvblue;
-        color: #fff;
+        @include button-styles;
+        padding: 0 16px;
     }
     .candidate-button:hover {
         background-color: $vvlightblue;
