@@ -70,26 +70,28 @@ jobs:
           quiet: true
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
       #Always save Chrome and Firefox test artifacts
-      - name: Save E2E Artifacts
+      - name: Checkout Artifacts
         uses: actions/checkout@v3
+      - name: Save E2E Artifacts
         uses: cypress-io/github-action@v1
         # After the test run completes store videos and any screenshots
         # NOTE: screenshots will be generated only if E2E test failed
         # thus we store screenshots only on failures
+      - name: Upload Screenshots (if generated)
         uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
         # Test run video was always captured, so this action uses "always()" condition
+      - name: Upload Video
         uses: actions/upload-artifact@v1
         if: always()
         with:
           name: cypress-videos
           path: cypress/videos
   deploy:
-    name: Deploy
-    needs: build
+    name: deploy
     #May need to omit e2e_artifacts from needs, as e2e test can fail,
     #but we may still like to deploy
     needs: [build, smoke_test]
