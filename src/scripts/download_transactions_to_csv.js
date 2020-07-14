@@ -65,7 +65,7 @@ async function downloadTransactions(aid, year, showSuperceded = false){
 
   const pageSize = 1000;
   const fileFolder = '../assets/data/';
-  const fileNamePrefix = 'netfile_api2';
+  const fileNamePrefix = 'netfile_api';
   const fileNameSuperceded = showSuperceded ? 'all_' : '';
   const filePath = `${fileFolder}${fileNamePrefix}_${fileNameSuperceded}${year}.csv`;
 
@@ -122,4 +122,4 @@ module.exports = {
   downloadTransactionsByYear: function(year) { downloadTransactions(32, year) },
 };
 
-module.exports.download2020Transactions();
+module.exports.downloadTransactionsByYear(2020);
