@@ -21,7 +21,7 @@ jobs:
       matrix: 
         #Note: Firefox currently has a bug in Cypress, which causes
         # it to fail.  It should be fixed in next release (sometime late Jul-20)
-        browser: [ chrome, firefox ]
+        browser: [ chrome ]
     steps:
       #- name: Start Firebase emulators
       #  run: npm run fb:emulators &
@@ -32,7 +32,7 @@ jobs:
         with: 
           start: npm start -- --c=development
           wait-on: 'http://localhost:4200'
-          wait-on-timeout: 240
+          wait-on-timeout: 600
       - name: E2E test with ${{matrix.browser}}
         uses: cypress-io/github-action@v2
         with:
