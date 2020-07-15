@@ -33,9 +33,13 @@ jobs:
           start: npm start -- --c=development
           wait-on: 'http://localhost:4200'
           wait-on-timeout: 600
+          #just perform install
+          runTests: false
       - name: E2E test with ${{matrix.browser}}
         uses: cypress-io/github-action@v2
         with:
+          #We have already installed all dependancies above
+          install: false
           browser: ${{matrix.browser}}
           spec: cypress/integration/sdvv-frontend_spec.js
           headless: true
@@ -44,7 +48,6 @@ jobs:
           quiet: true
           env: host=localhost,port=4200
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
-          command: npm run e2e:${{matrix.browser}}
         #Always save Chrome and Firefox test artifacts
       - name: Save E2E Artifacts
         uses: cypress-io/github-action@v2
