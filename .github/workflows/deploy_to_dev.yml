@@ -35,7 +35,6 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build -- --c=development
-      #TODO: Not sure if we need to save Dev artifacts on failed build
       - name: Archive Development Artifact
         uses: actions/upload-artifact@master
         with:
@@ -73,7 +72,7 @@ jobs:
           quiet: true
           env: host=localhost,port=4200
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
-      #Always save Chrome and Firefox test artifacts
+        #Always save Chrome and Firefox test artifacts
       - name: Checkout Artifacts
         uses: actions/checkout@v2
       - name: Save E2E Artifacts
