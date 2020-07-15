@@ -23,14 +23,14 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: node_modules
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.OS }}-build-${{ env.cache-name }}-
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+            npm-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
+            cypress-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependancies
         run: npm install
       - name: Build
