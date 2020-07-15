@@ -48,6 +48,11 @@ jobs:
           quiet: true
           env: host=localhost,port=4200
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          GITHUB_REF: ${{ github.ref }}
+          CI: true    
         #Always save Chrome and Firefox test artifacts
       - name: Save E2E Artifacts
         uses: cypress-io/github-action@v2
@@ -60,6 +65,11 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          GITHUB_REF: ${{ github.ref }}
+          CI: true
         # Test run video was always captured, so this action uses "always()" condition
       - uses: actions/upload-artifact@v1
         if: always()
@@ -69,11 +79,6 @@ jobs:
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-          # When running against Firebase site UID of User to login as during tests
-          #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
-          # Service Account (used for creating custom auth tokens)
-          #SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
-          # Branch settings
           GITHUB_REF: ${{ github.ref }}
           CI: true
       - name: Archive Development Artifact
@@ -81,6 +86,11 @@ jobs:
         with:
           name: dist
           path: dist
+          env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          GITHUB_REF: ${{ github.ref }}
+          CI: true
   deploy:
     name: deploy
     #May need to omit e2e_artifacts from needs, as e2e test can fail,
@@ -104,3 +114,8 @@ jobs:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         # pass GitHub token to allow accurately detecting a build vs a re-run build
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # When running against Firebase site UID of User to login as during tests
+        #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
+        # Service Account (used for creating custom auth tokens)
+        #SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+        # Branch settings
