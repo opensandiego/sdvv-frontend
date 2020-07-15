@@ -50,9 +50,14 @@ jobs:
           headless: true
           record: true
           parallel: true
-          quiet: true
-          env: host=localhost,port=4200
-          tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}  
+          quiet: true 
+          tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}} 
+          env:
+            host=localhost,port=4200
+            # pass the Dashboard record key as an environment variable
+            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+            GITHUB_REF: ${{ github.ref }}
+            CI: true 
         #Always save Chrome and Firefox test artifacts
       - name: Save E2E Artifacts
         uses: cypress-io/github-action@v2
