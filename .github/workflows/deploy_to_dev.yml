@@ -46,8 +46,11 @@ jobs:
       #  run: npm run fb:emulators &
       - name: Checkout build to Smoketest
         uses: actions/checkout@v2
-      - name: Start serve
-        run: npm run e2e:serve
+      - name: Start test serve
+        uses: cypress-io/github-action@v2
+        with: 
+          start: npm start
+          wait-on: 'http://localhost:4200'
       - name: E2E test with ${{matrix.browser}}
         uses: cypress-io/github-action@v2
         with:
