@@ -14,43 +14,42 @@ on:
     #branches:
     #  - master
 jobs:
-  build:
-    name: build
-    runs-on: ubuntu-latest
-    steps:
-      # Checks-out repository under $GITHUB_WORKSPACE
-      # and run Cypress e2e Tests
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: npm-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            npm-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-            cypress-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-            ${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependancies
-        run: npm install
-      - name: Build
-        run: npm run build -- --c=production
-      #TODO: Not sure if we need to save Production artifacts on failed build
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: dist
-          path: dist
+# build:
+#    name: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      # Checks-out repository under $GITHUB_WORKSPACE
+#      # and run Cypress e2e Tests
+#      - name: Checkout Repo
+#        uses: actions/checkout@master
+#      - name: Cache node modules
+#        uses: actions/cache@v2
+#        with:
+#          path: node_modules
+#          key: npm-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
+#          restore-keys: |
+#            npm-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
+#            cypress-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
+#            ${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
+#      - name: Install dependancies
+#        run: npm install
+#      - name: Build
+#        run: npm run build -- --c=production
+#      #TODO: Not sure if we need to save Production artifacts on failed build
+#      - name: Archive Production Artifact
+#        uses: actions/upload-artifact@master
+#        with:
+#          name: dist
+#          path: dist
   smoke_test:
     name: smoketest
-    needs: build
+#     needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix: 
         #Note: Firefox currently has a bug in Cypress, which causes
         # it to fail.  It should be fixed in next release (sometime late Jul-20)
         browser: [ chrome, firefox ]
-        machines: [ 1,2 ]
     steps:
       - name: Checkout build to Smoketest
         uses: actions/checkout@v2
@@ -101,9 +100,14 @@ jobs:
             # Branch settings
             GITHUB_REF: ${{ github.ref }}
             CI: true
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist      
   deploy:
     name: deploy
-    needs: [build, smoke_test]
+    needs: [ smoke_test ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo

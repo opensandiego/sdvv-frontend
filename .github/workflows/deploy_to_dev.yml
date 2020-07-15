@@ -49,7 +49,6 @@ jobs:
         #Note: Firefox currently has a bug in Cypress, which causes
         # it to fail.  It should be fixed in next release (sometime late Jul-20)
         browser: [ chrome, firefox ]
-        machines: [ 1, 2 ]
     steps:
       #- name: Start Firebase emulators
       #  run: npm run fb:emulators &
