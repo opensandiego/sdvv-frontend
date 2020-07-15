@@ -103,8 +103,6 @@ jobs:
             CI: true
   deploy:
     name: deploy
-    #May need to omit e2e_artifacts from needs, as e2e test can fail,
-    #but we may still like to deploy
     needs: [build, smoke_test]
     runs-on: ubuntu-latest
     steps:

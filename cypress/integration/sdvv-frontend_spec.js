@@ -1,4 +1,4 @@
-describe('Build -Smoke Test', () => {
+describe('Build - Smoke Test', () => {
 
   beforeEach(() => {
     cy.visit('http://localhost:4200')
