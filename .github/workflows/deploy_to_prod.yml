@@ -43,7 +43,6 @@ jobs:
 #          path: dist
   smoke_test:
     name: smoketest
-#     needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix: 
@@ -53,7 +52,7 @@ jobs:
     steps:
       - name: Checkout build to Smoketest
         uses: actions/checkout@v2
-      - name: Start test serve
+      - name: Start serve
         uses: cypress-io/github-action@v2
         with: 
           start: npm start -- --c=development
@@ -69,9 +68,7 @@ jobs:
           parallel: true
           quiet: true
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
-      #Always save Chrome and Firefox test artifacts
-      - name: Checkout Artifacts
-        uses: actions/checkout@v2
+          command: npm run e2e:${{matrix.browser}}
       - name: Save E2E Artifacts
         uses: cypress-io/github-action@v2
         # After the test run completes store videos and any screenshots
