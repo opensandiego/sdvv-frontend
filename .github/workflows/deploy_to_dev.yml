@@ -44,9 +44,8 @@ jobs:
           quiet: true
           env: host=localhost,port=4200
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
+          command: npm run e2e:${{matrix.browser}}
         #Always save Chrome and Firefox test artifacts
-      - name: Checkout Artifacts
-        uses: actions/checkout@v2
       - name: Save E2E Artifacts
         uses: cypress-io/github-action@v2
         # After the test run completes store videos and any screenshots
