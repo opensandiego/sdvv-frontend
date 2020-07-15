@@ -45,7 +45,7 @@ jobs:
       #- name: Start Firebase emulators
       #  run: npm run fb:emulators &
       - name: Checkout build to Smoketest
-        uses: actions/checkoutv2
+        uses: actions/checkout@v2
       - name: Start serve
         run: npm run e2e:serve
       - name: E2E test with ${{matrix.browser}}
