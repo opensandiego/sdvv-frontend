@@ -42,8 +42,10 @@ jobs:
         # it to fail.  It should be fixed in next release (sometime late Jul-20)
         browser: [ chrome, firefox]
     steps:
+      - name: Checkout build to Smoketest
+        uses: actions/checkoutv2
       - name: Start test serve
-        run: npm run e2e:serve &
+        run: npm run e2e:serve
       - name: E2E test with ${{matrix.browser}}
         uses: cypress-io/github-action@v2
         with:
