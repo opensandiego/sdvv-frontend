@@ -14,35 +14,8 @@ on:
     branches:
        - master
 jobs:
-  build:
-    name: build
-    runs-on: ubuntu-latest
-    steps:
-      # Checks-out repository under $GITHUB_WORKSPACE
-      # and run Cypress e2e tests
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: npm-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            npm-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-            cypress-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-            ${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependancies
-        run: npm install
-      - name: Build
-        run: npm run build -- --c=development
-      - name: Archive Development Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: dist
-          path: dist
   smoke_test:
     name: smoketest
-    needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix: 
@@ -57,7 +30,7 @@ jobs:
       - name: Start test serve
         uses: cypress-io/github-action@v2
         with: 
-          start: npm start
+          start: npm start -- --c=development
           wait-on: 'http://localhost:4200'
           wait-on-timeout: 240
       - name: E2E test with ${{matrix.browser}}
@@ -101,11 +74,16 @@ jobs:
           # Branch settings
           GITHUB_REF: ${{ github.ref }}
           CI: true
+      - name: Archive Development Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
   deploy:
     name: deploy
     #May need to omit e2e_artifacts from needs, as e2e test can fail,
     #but we may still like to deploy
-    needs: [build, smoke_test]
+    needs: [ smoke_test ]
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo

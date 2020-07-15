@@ -56,7 +56,7 @@ jobs:
       - name: Start test serve
         uses: cypress-io/github-action@v2
         with: 
-          start: npm start
+          start: npm start -- --c=development
           wait-on: 'http://localhost:4200'
           wait-on-timeout: 240
       - name: E2E test with ${{matrix.browser}}
