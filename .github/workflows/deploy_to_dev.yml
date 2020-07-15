@@ -10,7 +10,7 @@ name: deploy_to_dev_hosting
 on:
   push:
     tags:
-      - deploy-to-dev-hosting-v*
+      - deploy-to-dev-hosting*
     branches:
        - master
 jobs:
