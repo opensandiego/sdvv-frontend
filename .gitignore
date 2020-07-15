@@ -7,6 +7,7 @@
 # Only exists if Bazel was run
 /bazel-out
 
+
 # dependencies
 /node_modules
 
@@ -41,7 +42,7 @@ speed-measure-plugin.json
 #Cypress
 /cypress/screenshots
 /cypress/videos
-/cypress/integation/examples
+/cypress/integation/examples/*
 /cypress/fixtures
 /cypress/plugins
 serviceAccount.json
