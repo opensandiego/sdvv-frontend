@@ -16,11 +16,11 @@ from shared_calculations import (
 
 
 def process_name_df(df):
-    sum_series = df.groupby("Tran_Occ")["Tran_Amt2"].sum().nlargest(5)
-    contribution_sum = df["Tran_Amt2"].sum()
+    sum_series = df.groupby("Tran_Occ")["Tran_Amt1"].sum().nlargest(5)
+    contribution_sum = df["Tran_Amt1"].sum()
     return pd.DataFrame(
         {
-            "Tran_Amt2": sum_series,
+            "Tran_Amt1": sum_series,
             "contribution_percent": sum_series.map(lambda x: x / contribution_sum),
         }
     )
@@ -51,7 +51,7 @@ def to_json(dataframe, key_field, directory):
 if __name__ == "__main__":
     to_json(
         process_industry_contributions(
-            read_csv_dfs(CSV_PATHS, CONTRIBUTION_TYPE, "Tran_Occ", "Tran_Amt2"),
+            read_csv_dfs(CSV_PATHS, CONTRIBUTION_TYPE, "Tran_Occ", "Tran_Amt1"),
         ),
         JSON_KEY,
         DIRECTORY,

@@ -9,5 +9,5 @@ from shared_calculations import (
 
 if __name__ == "__main__":
     to_raised_json(
-        summed_contributions(CSV_PATHS, "Tran_Amt2", CONTRIBUTION_TYPE), "Raised",
+        summed_contributions(CSV_PATHS, "Tran_Amt1", CONTRIBUTION_TYPE), "Raised",
     )

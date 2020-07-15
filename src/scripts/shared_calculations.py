@@ -3,10 +3,10 @@ import pathlib
 
 import pandas as pd
 
-CONTRIBUTION_TYPE = "RCPT"
-EXPENDITURE_TYPE = "EXPN"
+CONTRIBUTION_TYPE = ("A", "C", "I")
+EXPENDITURE_TYPE = ("D", "G", "E")
 
-TYPE_COLUMN = "Rec_Type"
+TYPE_COLUMN = "Form_Type"
 
 CSV_KEY = "FilerName"
 JSON_KEY = "committee name"
@@ -19,17 +19,16 @@ CSV_PATHS = (
 )
 
 
-def read_csv_dfs(paths, calc_type, *columns):
+def read_csv_dfs(paths, types, *columns):
     columns += (CSV_KEY, TYPE_COLUMN)
     df = pd.concat(
         pd.read_csv(path, usecols=columns).set_index(CSV_KEY) for path in paths
     )
-    filtered_df = df[df[TYPE_COLUMN] == calc_type]
-    return filtered_df.drop(columns=[TYPE_COLUMN])
+    return df.query("{} in {}".format(TYPE_COLUMN, types)).drop(columns=[TYPE_COLUMN])
 
 
-def summed_contributions(paths, column, calc_type):
-    df = read_csv_dfs(paths, calc_type, TYPE_COLUMN, column,)
+def summed_contributions(paths, column, types):
+    df = read_csv_dfs(paths, types, column)
     return pd.Series(df[column], index=df.index).groupby(CSV_KEY).sum()
 
 
