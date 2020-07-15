@@ -74,16 +74,16 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
-      env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-          # When running against Firebase site UID of User to login as during tests
-          # CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
-          # Service Account (used for creating custom auth tokens)
-          # SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
-          # Branch settings
-          GITHUB_REF: ${{ github.ref }}
-          CI: true
+        env:
+            # pass the Dashboard record key as an environment variable
+            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+            # When running against Firebase site UID of User to login as during tests
+            # CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
+            # Service Account (used for creating custom auth tokens)
+            # SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+            # Branch settings
+            GITHUB_REF: ${{ github.ref }}
+            CI: true
   deploy:
     name: deploy
     #May need to omit e2e_artifacts from needs, as e2e test can fail,
