@@ -42,22 +42,8 @@ jobs:
         # it to fail.  It should be fixed in next release (sometime late Jul-20)
         browser: [ chrome, firefox]
     steps:
-      - name: Start Firebase emulators
-        run: npm run fb:emulators &
-        env:
-          #TODO: Since we are running in firebase emulators we may not
-          #      need to pass CYPRESS env. vars, as those are just for running
-          #      against Firebase sites on-line
-          # pass the Dashboard record key as an environment variable
-          # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-          # UID of User to login as during tests
-          # CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
-          # Service Account (used for creating custom auth tokens)
-          # SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
-          # Branch settings
-          GITHUB_HEAD_REF: ${{ github.head_ref }}
-          GITHUB_REF: ${{ github.ref }}
-          CI: true
+      - name: Start test serve
+        run: npm run e2e:serve &
       - name: E2E test with ${{matrix.browser}}
         uses: cypress-io/github-action@v2
         with:
@@ -88,6 +74,16 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+      env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          # When running against Firebase site UID of User to login as during tests
+          # CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
+          # Service Account (used for creating custom auth tokens)
+          # SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+          # Branch settings
+          GITHUB_REF: ${{ github.ref }}
+          CI: true
   deploy:
     name: deploy
     #May need to omit e2e_artifacts from needs, as e2e test can fail,
