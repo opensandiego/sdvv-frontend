@@ -22,6 +22,11 @@ jobs:
         #Note: Firefox currently has a bug in Cypress, which causes
         # it to fail.  It should be fixed in next release (sometime late Jul-20)
         browser: [ chrome ]
+    env:
+      # pass the Dashboard record key as an environment variable
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+      GITHUB_REF: ${{ github.ref }}
+      CI: true
     steps:
       #- name: Start Firebase emulators
       #  run: npm run fb:emulators &
@@ -47,12 +52,7 @@ jobs:
           parallel: true
           quiet: true
           env: host=localhost,port=4200
-          tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
-        env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-          GITHUB_REF: ${{ github.ref }}
-          CI: true    
+          tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}  
         #Always save Chrome and Firefox test artifacts
       - name: Save E2E Artifacts
         uses: cypress-io/github-action@v2
@@ -65,38 +65,33 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-        env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-          GITHUB_REF: ${{ github.ref }}
-          CI: true
         # Test run video was always captured, so this action uses "always()" condition
       - uses: actions/upload-artifact@v1
         if: always()
         with:
           name: cypress-videos
           path: cypress/videos
-        env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-          GITHUB_REF: ${{ github.ref }}
-          CI: true
       - name: Archive Development Artifact
         uses: actions/upload-artifact@master
         with:
           name: dist
           path: dist
-          env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-          GITHUB_REF: ${{ github.ref }}
-          CI: true
   deploy:
     name: deploy
     #May need to omit e2e_artifacts from needs, as e2e test can fail,
     #but we may still like to deploy
     needs: [ smoke_test ]
     runs-on: ubuntu-latest
+    env:
+      #pass Firebase token to allow updating Firebase site
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      # pass GitHub token to allow accurately detecting a build vs a re-run build
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # When running against Firebase site UID of User to login as during tests
+      #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
+      # Service Account (used for creating custom auth tokens)
+      #SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+      # Branch settings
     steps:
     - name: Checkout Repo
       uses: actions/checkout@master
@@ -109,13 +104,3 @@ jobs:
       uses: w9jds/firebase-action@master
       with:
         args: deploy --only hosting:development -m "Github-${{github.actor}}-${{github.run_id}}" --non-interactive
-      env:
-        #pass Firebase token to allow updating Firebase site
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        # pass GitHub token to allow accurately detecting a build vs a re-run build
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # When running against Firebase site UID of User to login as during tests
-        #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
-        # Service Account (used for creating custom auth tokens)
-        #SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
-        # Branch settings
