@@ -15,7 +15,6 @@ import json
 import math
 import os
 import typing
-from urllib import request
 
 import pandas as pd
 
@@ -117,8 +116,7 @@ def update_json_files(folder_path, csv_url):
     :param folder_path: The str path of the folder the JSON files will be in.
     :param csv_url: The str url of the CSV file that the data will be taken from.
     """
-    with request.urlopen(csv_url) as f:
-        csv_df = read_candidate_csv(f)
+    csv_df = read_candidate_csv(csv_url)
     files = generate_json_files(folder_path, csv_df)
     for candidate in csv_df.index:
         json_dict, path = files[candidate]
