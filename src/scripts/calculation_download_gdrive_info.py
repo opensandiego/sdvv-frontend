@@ -20,7 +20,7 @@ import pandas as pd
 
 
 def replace_nan(value, replace):
-    """Replaces param value with param replace if value is NaN."""
+    """Returns the value if the value is not NaN, else returns replace."""
     try:
         if math.isnan(value):
             return replace
@@ -37,6 +37,7 @@ def read_candidate_csv(file):
 
     :param file: A CSV file path (including URLS) or object that has
     the columns being read.
+    :returns: The Pandas Dataframe with the CSV files information
     """
     return (
         pd.read_csv(
@@ -62,6 +63,7 @@ def normalize(string, nan_replacement=None):
 
     :param string: A str to be normalized.
     :param nan_replacement: The optional value NaN values are replaced with.
+    :returns: The string or the nan_replacement
     """
     try:
         if nan_replacement is not None and math.isnan(string):
@@ -85,6 +87,8 @@ def generate_json_files(base_directory, candidate_df):
     :param base_directory: The str path of the directory all the files
     and folders will be generated in.
     :param candidate_df: The Pandas Dataframe the data will be taken from.
+    :returns: A dictionary with the candidate name as the key and the
+    value being the corrosponding JsonFilesNT.
     """
     files = {}
     for candidate in candidate_df.index:
@@ -115,6 +119,7 @@ def update_json_files(folder_path, csv_url):
 
     :param folder_path: The str path of the folder the JSON files will be in.
     :param csv_url: The str url of the CSV file that the data will be taken from.
+    :returns: None
     """
     csv_df = read_candidate_csv(csv_url)
     files = generate_json_files(folder_path, csv_df)
