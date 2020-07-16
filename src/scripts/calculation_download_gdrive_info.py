@@ -88,6 +88,7 @@ def update_json_files(folder_path, sheet_url):
         )
         with open(path, "w") as f:
             json.dump(json_dict, f, indent=2)
+            f.write('\n')
 
 
 if __name__ == "__main__":
