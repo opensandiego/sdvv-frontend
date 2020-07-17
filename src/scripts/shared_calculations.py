@@ -48,3 +48,4 @@ def to_raised_json(series, field, directory=DIRECTORY):
             file["raised vs spent"][0][field] = to_py_type(series[file[JSON_KEY]])
         with open(path, "w") as f:
             json.dump(file, f, indent=2)
+            f.write('\n')

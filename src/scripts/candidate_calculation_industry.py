@@ -46,6 +46,7 @@ def to_json(dataframe, key_field, directory):
             }
         with open(path, "w") as f:
             json.dump(file, f, indent=2)
+            f.write('\n')
 
 
 if __name__ == "__main__":
