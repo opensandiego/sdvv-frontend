@@ -9,8 +9,8 @@ on:
   push:
     tags:
       - deploy-to-prod-hosting*
-    #branches:
-    #  - master
+    branches:
+      - master
 jobs:
   smoke_test:
     name: smoketest
@@ -27,7 +27,7 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build -- --c=production
-      - name: Archive Development Artifacts
+      - name: Archive Production Artifacts
         uses: actions/upload-artifact@master
         with:
           name: dist
@@ -40,6 +40,11 @@ jobs:
           wait-on-timeout: 600
           #just perform install
           runTests: false
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_REF: ${{ github.ref }}
+          CI: true
       - name: E2E test with ${{matrix.browser}}
         uses: cypress-io/github-action@v2
         with:
@@ -49,9 +54,9 @@ jobs:
           spec: cypress/integration/sdvv-frontend_spec.js
           env: host=localhost, port=4200
           headless: true
-          record: true 
-          quiet: true
-          tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
+          record: true
+          quiet: true 
+          tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}} 
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -71,7 +76,7 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_REF: ${{ github.ref }}
           CI: true
-        # Test run video was always captured, so this action uses "always()" condition
+        # Test run video is always captured, so this action uses "always()" condition
       - name: Upload Video
         uses: actions/upload-artifact@v1
         if: always()
@@ -79,20 +84,10 @@ jobs:
           name: cypress-videos
           path: cypress/videos
         env:
-            # pass the Dashboard record key as an environment variable
-            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-            GITHUB_REF: ${{ github.ref }}
-            CI: true
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: dist
-          path: dist
-        env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_REF: ${{ github.ref }}
-          CI: true      
+          CI: true
   deploy:
     name: deploy
     #May need to omit e2e_artifacts from needs, as e2e test can fail,
@@ -100,24 +95,24 @@ jobs:
     needs: [ smoke_test ]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: Download Artifact
-        uses: actions/download-artifact@master
-        with:
-          name: dist
-          path: dist
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting:production -m "Github-${{github.actor}}-${{github.run_id}}" --non-interactive
-        env:
-          #pass Firebase token to allow updating Firebase site
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          # pass GitHub token to allow accurately detecting a build vs a re-run build
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # When running against Firebase site UID of User to login as during tests
-          #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
-          # Service Account (used for creating custom auth tokens)
-          #SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
-          # Branch settings
+    - name: Checkout Repo
+      uses: actions/checkout@master
+    - name: Download Artifact
+      uses: actions/download-artifact@master
+      with:
+        name: dist
+        path: dist 
+    - name: Deploy to Firebase
+      uses: w9jds/firebase-action@master
+      with:
+        args: deploy --only hosting:production -m "Github-${{github.actor}}-${{github.run_id}}" --non-interactive
+      env:
+        #pass Firebase token to allow updating Firebase site
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        # pass GitHub token to allow accurately detecting a build vs a re-run build
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # When running against Firebase site UID of User to login as during tests
+        #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
+        # Service Account (used for creating custom auth tokens)
+        #SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+        # Branch settings
