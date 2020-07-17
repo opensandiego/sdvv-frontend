@@ -53,7 +53,8 @@ jobs:
           spec: cypress/integration/sdvv-frontend_spec.js
           env: host=localhost, port=4200
           headless: true
-          record: true
+          #change to true after 08/01/20, after recordings reset
+          record: false 
           quiet: true 
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}} 
         env:
