@@ -4,8 +4,6 @@ name: deploy_to_prod_hosting
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-# TODO:  Add push when changes are made to dist/sdvv-front directory
-#        basically a new release
 #Customize workflow trigger
 on:
   push:
@@ -14,33 +12,6 @@ on:
     #branches:
     #  - master
 jobs:
-# build:
-#    name: build
-#    runs-on: ubuntu-latest
-#    steps:
-#      # Checks-out repository under $GITHUB_WORKSPACE
-#      # and run Cypress e2e Tests
-#      - name: Checkout Repo
-#        uses: actions/checkout@master
-#      - name: Cache node modules
-#        uses: actions/cache@v2
-#        with:
-#          path: node_modules
-#          key: npm-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-#          restore-keys: |
-#            npm-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-#            cypress-${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-#            ${{ runner.OS }}-x64-${{ hashFiles('**/package-lock.json') }}
-#      - name: Install dependancies
-#        run: npm install
-#      - name: Build
-#        run: npm run build -- --c=production
-#      #TODO: Not sure if we need to save Production artifacts on failed build
-#      - name: Archive Production Artifact
-#        uses: actions/upload-artifact@master
-#        with:
-#          name: dist
-#          path: dist
   smoke_test:
     name: smoketest
     runs-on: ubuntu-latest
@@ -48,29 +19,44 @@ jobs:
       matrix: 
         #Note: Firefox currently has a bug in Cypress, which causes
         # it to fail.  It should be fixed in next release (sometime late Jul-20)
-        browser: [ chrome, firefox ]
+        browser: [ chrome, firefox  ]
     steps:
       - name: Checkout build to Smoketest
         uses: actions/checkout@v2
-      - name: Start serve
+      - name: Install dependancies
+        run: npm install
+      - name: Build
+        run: npm run build -- --c=production
+      - name: Archive Development Artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
+      - name: Start test serve
         uses: cypress-io/github-action@v2
         with: 
-          start: npm start -- --c=development
+          start: npm start -- --c=production
           wait-on: 'http://localhost:4200'
-          wait-on-timeout: 240
+          wait-on-timeout: 600
+          #just perform install
+          runTests: false
       - name: E2E test with ${{matrix.browser}}
         uses: cypress-io/github-action@v2
         with:
+          #We have already installed all dependancies above
+          install: false
           browser: ${{matrix.browser}}
           spec: cypress/integration/sdvv-frontend_spec.js
+          env: host=localhost, port=4200
           headless: true
           record: true 
-          parallel: true
           quiet: true
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}}
-          command: npm run e2e:${{matrix.browser}}
-      - name: Save E2E Artifacts
-        uses: cypress-io/github-action@v2
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_REF: ${{ github.ref }}
+          CI: true 
         # After the test run completes store videos and any screenshots
         # NOTE: screenshots will be generated only if E2E test failed
         # thus we store screenshots only on failures
@@ -80,6 +66,11 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_REF: ${{ github.ref }}
+          CI: true
         # Test run video was always captured, so this action uses "always()" condition
       - name: Upload Video
         uses: actions/upload-artifact@v1
@@ -89,21 +80,23 @@ jobs:
           path: cypress/videos
         env:
             # pass the Dashboard record key as an environment variable
-            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-            # When running against Firebase site UID of User to login as during tests
-            # CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
-            # Service Account (used for creating custom auth tokens)
-            # SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
-            # Branch settings
+            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
             GITHUB_REF: ${{ github.ref }}
             CI: true
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
           name: dist
-          path: dist      
+          path: dist
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_REF: ${{ github.ref }}
+          CI: true      
   deploy:
     name: deploy
+    #May need to omit e2e_artifacts from needs, as e2e test can fail,
+    #but we may still like to deploy
     needs: [ smoke_test ]
     runs-on: ubuntu-latest
     steps:
@@ -123,3 +116,8 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # When running against Firebase site UID of User to login as during tests
+          #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
+          # Service Account (used for creating custom auth tokens)
+          #SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+          # Branch settings

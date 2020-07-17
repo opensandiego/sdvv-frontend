@@ -4,15 +4,12 @@ name: deploy_to_dev_hosting
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-# TODO:  Add push when changes are made to dist/sdvv-front directory
-#        basically a new release
-#Customize workflow trigger
 on:
   push:
     tags:
       - deploy-to-dev-hosting*
-    branches:
-       - master
+#    branches:
+#     - master
 jobs:
   smoke_test:
     name: smoketest
@@ -21,13 +18,19 @@ jobs:
       matrix: 
         #Note: Firefox currently has a bug in Cypress, which causes
         # it to fail.  It should be fixed in next release (sometime late Jul-20)
-        browser: [ chrome ]
-
+        browser: [ chrome, firefox ]
     steps:
-      #- name: Start Firebase emulators
-      #  run: npm run fb:emulators &
       - name: Checkout build to Smoketest
         uses: actions/checkout@v2
+      - name: Install dependancies
+        run: npm install
+      - name: Build
+        run: npm run build -- --c=development
+      - name: Archive Development Artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
       - name: Start test serve
         uses: cypress-io/github-action@v2
         with: 
@@ -36,31 +39,32 @@ jobs:
           wait-on-timeout: 600
           #just perform install
           runTests: false
-      - name: E2E test with ${{matrix.browser}}
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_REF: ${{ github.ref }}
+          CI: true
+      - name: Smoke Test with ${{matrix.browser}}
         uses: cypress-io/github-action@v2
         with:
           #We have already installed all dependancies above
           install: false
           browser: ${{matrix.browser}}
           spec: cypress/integration/sdvv-frontend_spec.js
-          env:  host=localhost,port=4200
+          env: host=localhost, port=4200
           headless: true
           record: true
-          parallel: true
           quiet: true 
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}} 
         env:
           # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_REF: ${{ github.ref }}
           CI: true 
-        #Always save Chrome and Firefox test artifacts
-      - name: Save E2E Artifacts
-        uses: cypress-io/github-action@v2
         # After the test run completes store videos and any screenshots
         # NOTE: screenshots will be generated only if E2E test failed
         # thus we store screenshots only on failures
-      - name: Upload screenshots (if generated)
+      - name: Upload Screenshots (if generated)
         uses: actions/upload-artifact@v1
         if: failure()
         with:
@@ -68,28 +72,19 @@ jobs:
           path: cypress/screenshots
         env:
           # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_REF: ${{ github.ref }}
           CI: true
-        # Test run video was always captured, so this action uses "always()" condition
-      - uses: actions/upload-artifact@v1
+        # Test run video is always captured, so this action uses "always()" condition
+      - name: Upload Video
+        uses: actions/upload-artifact@v1
         if: always()
         with:
           name: cypress-videos
           path: cypress/videos
         env:
           # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-          GITHUB_REF: ${{ github.ref }}
-          CI: true
-      - name: Archive Development Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: dist
-          path: dist
-        env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_REF: ${{ github.ref }}
           CI: true
   deploy:
@@ -98,16 +93,6 @@ jobs:
     #but we may still like to deploy
     needs: [ smoke_test ]
     runs-on: ubuntu-latest
-    env:
-      #pass Firebase token to allow updating Firebase site
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      # pass GitHub token to allow accurately detecting a build vs a re-run build
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # When running against Firebase site UID of User to login as during tests
-      #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
-      # Service Account (used for creating custom auth tokens)
-      #SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
-      # Branch settings
     steps:
     - name: Checkout Repo
       uses: actions/checkout@master
@@ -120,3 +105,13 @@ jobs:
       uses: w9jds/firebase-action@master
       with:
         args: deploy --only hosting:development -m "Github-${{github.actor}}-${{github.run_id}}" --non-interactive
+      env:
+        #pass Firebase token to allow updating Firebase site
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        # pass GitHub token to allow accurately detecting a build vs a re-run build
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # When running against Firebase site UID of User to login as during tests
+        #CYPRESS_TEST_UID: ${{ secrets.TEST_UID }}
+        # Service Account (used for creating custom auth tokens)
+        #SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+        # Branch settings
