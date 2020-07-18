@@ -20,6 +20,7 @@ import { DistrictOneComponent } from "./components/city-council/district-one/dis
 import { DistrictTwoComponent } from "./components/city-council/district-two/district-two.component";
 import { CandidateCardComponent } from "./components/candidate-card/candidate-card.component";
 import { FaqComponent } from "./components/faq/faq.component";
+import { AboutComponent } from './components/about/about.component';
 
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "@environments/environment";
