@@ -7,7 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "fb:emulators": "firebase emulators:start",
+    "fb:serve": "firebase emulators:start",
     "e2e:serve": "npm start & wait-on http://localhost -p 4200",
     "cy:open": "cypress open",
     "cy:chrome": "cypress run --headless --record -b chrome -q -s cypress/integration/sdvv-frontend_spec.js",

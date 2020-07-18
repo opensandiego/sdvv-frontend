@@ -54,7 +54,7 @@ jobs:
           env: host=localhost, port=4200
           headless: true
           #change to true after 08/01/20, after recordings reset
-          record: false 
+          record: true 
           quiet: true 
           tag: Github-${{github.actor}}-${{github.run_id}}-${{matrix.browser}} 
         env:
