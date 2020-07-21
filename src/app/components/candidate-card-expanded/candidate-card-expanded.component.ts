@@ -25,7 +25,7 @@ export class CandidateCardExpandedComponent implements OnInit {
   @Output() isExpanded = new EventEmitter<boolean>();
 
   // Industry Table
-  displayedColumns: string[]
+  displayedColumns: string[];
   dataSource = new MatTableDataSource();
 
   // All Charts
@@ -240,10 +240,12 @@ export class CandidateCardExpandedComponent implements OnInit {
     ];
   }
 
+  // Method for adding a K at the end of values over 9999 (i.e. 10K, 100K)
   kNumberFormatter(num: number) {
     return Math.abs(num) > 9999 ? Math.sign(num)*((Math.abs(num)/1000)) + 'K' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
   }
 
+  // Method for adding comma separators for values over 999
   commaNumberFormatter(num: number) {
     return num.toLocaleString('en');
   }
