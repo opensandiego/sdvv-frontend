@@ -47,9 +47,11 @@ h1{
 
 a{
     color: $vvlightblue;
+    text-decoration: none;
 
     &:hover{
         color: $vvblue;
+        text-decoration: underline;
     }
     &:visited{
         color: $vvlightblue;

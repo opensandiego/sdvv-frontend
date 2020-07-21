@@ -10,6 +10,7 @@ import {
   MayorComponent,
   SplashComponent,
   FaqComponent,
+  AboutComponent,
   UnderConstructionComponent,
 } from './components';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'splash',pathMatch: 'full' },
   { path: 'splash', component: SplashComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'mayor', component: MayorComponent },
   { path: 'city-attorney', component: CityAttorneyComponent },
   { path: 'under-construction', component: UnderConstructionComponent },
