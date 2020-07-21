@@ -2,57 +2,70 @@
 @import "../../styles/elements";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
-.candidate{
-    img{
-        width: 110px;
+.candidate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .candidate-image-container {
+        height: 125px;
+        width: 125px;
+    }
+    .candidate-image {
+        display: flex;
+        height: 125px;
+        width: 125px;
         border-radius: 50%;
+        overflow: hidden;
+        img {
+            object-fit: contain;
+        }
     }
 }
 
-.candidate-card{
+.candidate-card {
     text-align: center;
     display: flex;
     flex-direction: column;
     width: 150px;
+    height: 300px;
     margin: 10px;
     padding: 15px 25px 15px 25px;
     background: #fff;
     box-shadow: $vvshadow;
-    h1{
+    h1 {
         font-size: 20px;
         color: $vvdarkblue;
     }
-    h2{
+    h2 {
         font-weight: normal;
         font-size: 12px;
         color: $vvgrey;
         margin: 5px 0px 10px 0px;
     }
-    h3{
+    h3 {
         font-size: 18px;
         color: $vvdarkgrey;
     }
-    .candidate-numbers{
+    .candidate-numbers {
         display: flex;
         justify-content: space-between;
-        div{
+        div {
             padding: 0 6px;
             h2, h3{
                 margin: 1px 0;
             }
         }
-        .raised h3{
+        .raised h3 {
             color: $vvgreen;
         }
     }  
-    a{
-
+    a {
         @include button-styles;
         padding: 10px 30px;
         max-width: 200px;
         margin: 10px 0;
     }
-    a:hover{
+    a:hover {
         background-color: $vvlightblue;
     }
 }

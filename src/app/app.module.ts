@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import {
   MatIconModule,
   MatListModule,
@@ -21,6 +22,7 @@ import { DistrictOneComponent } from './components/city-council/district-one/dis
 import { DistrictTwoComponent } from './components/city-council/district-two/district-two.component';
 import { CandidateCardComponent } from './components/candidate-card/candidate-card.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   exports: [
@@ -38,12 +40,14 @@ import { FaqComponent } from './components/faq/faq.component';
     DistrictOneComponent,
     DistrictTwoComponent,
     CandidateCardComponent,
+    AboutComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatExpansionModule,
     MatIconModule,
     MatListModule,
