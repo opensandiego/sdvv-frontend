@@ -156,26 +156,14 @@ function getOutsideExpenditures(candidatesWithPositions, transactions){
   let candidatesSums = candidatesWithPositions.map(candidate => {
  
     // Get the sum of the Contribution and Expenditure transactions that support a candidate (supportFilerIDs)
-    let supportSum = transactions.filter( (transaction) => {
-      
-      return candidate.supportFilerIDs.includes(transaction.FilerStateId);
-
-    }).reduce( (accumulator, currentValue) => {
-
-      return accumulator + Number.parseFloat(currentValue.Tran_Amt1);
-
-    }, 0);
+    let supportSum = transactions
+    .filter( (transaction) => candidate.supportFilerIDs.includes(transaction.FilerStateId))
+    .reduce( (accumulator, currentValue) => accumulator + Number.parseFloat(currentValue.Tran_Amt1), 0);
 
     // Get the sum of the Contribution and Expenditure transactions that oppose a candidate (opposedFilerIDs)
-    let opposedSum = transactions.filter( (transaction) => {
-      
-      return candidate.opposedFilerIDs.includes(transaction.FilerStateId);
-
-    }).reduce( (accumulator, currentValue) => {
-
-      return accumulator + Number.parseFloat(currentValue.Tran_Amt1);
-
-    }, 0);
+    let opposedSum = transactions
+    .filter( (transaction) => candidate.opposedFilerIDs.includes(transaction.FilerStateId) )
+    .reduce( (accumulator, currentValue) => accumulator + Number.parseFloat(currentValue.Tran_Amt1), 0 );
 
     return {
       candidateName: candidate.candidate,
