@@ -46,9 +46,7 @@ function getCommittees(){
  * @returns {Object[]} List of committee details
  */
 function filtercommitteesByCandidates(committees, candidates) {
-  return committees.filter( committee => {
-    return candidates.includes( committee.Candidate );    
-  });
+  return committees.filter( committee => candidates.includes( committee.Candidate ) );
 };
 
 
@@ -118,18 +116,13 @@ function getCandidatesWithPositions(committees, candidateNames) {
 
   candidateNames.forEach(candidate => {
 
-    let supportArr = committees.filter( row => {
-      return (row.Candidate === candidate && row.Support === '1')
-    }).map( row => {
-      return row.Filer_ID;
-    });
+    let supportArr = committees
+    .filter( row => (row.Candidate === candidate && row.Support === '1') )
+    .map( row => row.Filer_ID );
 
-    let opposedArr = committees.filter( row => {
-      return (row.Candidate === candidate && row.Support === '0')
-    }).map( row => {
-      return row.Filer_ID;
-    });
-
+    let opposedArr = committees
+    .filter( row => (row.Candidate === candidate && row.Support === '0') )
+    .map( row => row.Filer_ID );
 
     if (supportArr.length > 0 || opposedArr.length > 0) {
 
