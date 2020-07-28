@@ -9,7 +9,7 @@ import pandas as pd
 from shared_calculations import (
     CONTRIBUTION_TYPE,
     CSV_PATHS,
-    read_csv_dfs,
+    read_csv_df,
     to_raised_json,
 )
 
@@ -24,7 +24,7 @@ def donors(paths):
     :returns: A pandas Series with the index being the commitee the
     donor donated to and the values being the donor's (last first) name.
     """
-    df = read_csv_dfs(paths, CONTRIBUTION_TYPE, "Tran_NamL", "Tran_NamF")
+    df = read_csv_df(paths, CONTRIBUTION_TYPE, "Tran_NamL", "Tran_NamF")
     return df.apply(lambda x: x.str.cat(sep=" "), axis=1)
 
 
