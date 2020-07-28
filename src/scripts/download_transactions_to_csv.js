@@ -99,7 +99,7 @@ async function downloadTransactions(aid, year, showSuperceded = false){
     
     // Write column header row to file
     if ( currentPageIndex === 0 ) {
-      writeStream.write( csvData.split('\n')[0] );
+      writeStream.write( csvData.split('\n')[0] + '\n' );
     }
 
     // Write the non-header rows to file
