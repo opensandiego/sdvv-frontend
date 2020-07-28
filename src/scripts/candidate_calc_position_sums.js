@@ -177,6 +177,36 @@ function getOutsideExpenditures(candidatesWithPositions, transactions){
 }
 
 
+function saveOutsideExpenditurestoJSON(outsideExpenditures) {
+  const pathPrefix = '../assets/candidates/2020/mayor/';
+
+  for (const candidate of outsideExpenditures) {
+
+    const candidatePathName = candidate.candidateName.replace(' ', '_').toLowerCase();
+    const filePath = pathPrefix + `${candidatePathName}/${candidatePathName}.json`;
+
+    let updatedFileData;
+    try {
+
+      const fileData = fs.readFileSync(filePath, 'utf8' );
+
+      let json = JSON.parse(fileData);
+      json['support'] = "$" + candidate.supportSum.toString();
+      json['oppose'] = "$" + candidate.opposedSum.toString();
+      updatedFileData = JSON.stringify(json, null, 2);
+
+      fs.writeFileSync(filePath, updatedFileData + '\n', 'utf8');
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+  return null;
+}
+
+
 async function calculateCandidatePositions(){
 
   const candidateNames = await getCandidateNames();
@@ -204,7 +234,7 @@ async function calculateCandidatePositions(){
   console.log('*** outsideExpenditures');
   console.log(outsideExpenditures);
 
-  // saveOutsideExpenditurestoJSON(outsideExpenditures);
+  saveOutsideExpenditurestoJSON(outsideExpenditures);
 }
 
 calculateCandidatePositions();
