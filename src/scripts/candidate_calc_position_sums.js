@@ -1,35 +1,31 @@
 // @ts-check
 
 const fs = require('fs');
-const fsPromises = require('fs').promises;
 const parse = require('csv-parse');
 const parseSync = require('csv-parse/lib/sync');
 
-async function getCandidateNames() {
+
+function getCandidateNames() {
   const filePath = '../assets/data/candidate_information.csv';
-  const file = await fsPromises.open(filePath, 'r');
-  const fileData = await file.readFile('utf8');
-  await file.close();
+  const fileData = fs.readFileSync(filePath, 'utf8');
 
   const records = parseSync(fileData, {
-    columns: true, // Generates objects and infers columns names from the first line.
+    columns: true,
     skip_lines_with_empty_values: true,
-    on_record: (record) => [record['Candidate_Name']],
+    on_record: (record) => [record['Candidate_Name']]
   }).join(',').split(',');
 
   return records;
 }
 
-async function getCommittees(){
+
+function getCommittees(){
   const filePath = '../assets/data/outside_expenditures_total.csv';
-  const file = await fsPromises.open(filePath, 'r');
-  const fileData = await file.readFile('utf8');
-  await file.close();
+  const fileData = fs.readFileSync(filePath, 'utf8');
 
   const records = parseSync(fileData, {
     columns: true,
-      
-    on_record: (record) => {  // return as object
+    on_record: (record) => {
       if ( Number.isInteger( Number.parseInt(record['Filer_ID']) )) {
         const { Filer_ID, Candidate, Support, } = record;
         return { Filer_ID, Candidate, Support };
@@ -40,6 +36,7 @@ async function getCommittees(){
 
   return records;
 }
+
 
 /**
  * 
@@ -53,6 +50,7 @@ function filtercommitteesByCandidates(committees, candidates) {
     return candidates.includes( committee.Candidate );    
   });
 };
+
 
 /**
  * 
@@ -70,14 +68,12 @@ async function getFilteredTransactions() {
 
   for await(const fName of fileNames) {
 
-    const stream = fs.createReadStream( path + fName , { encoding: 'utf-8' }); //end: 1018, 
+    const stream = fs.createReadStream( path + fName , { encoding: 'utf-8' });
 
     const parser = stream.pipe(
       parse({
         columns: true,
         skip_lines_with_empty_values: true,
-        // from: 998,
-        // to_line: 1004,
         on_record: (record) => { 
           if ( transactionTypes.includes( record['Form_Type'] ) ) {
             const { NetFileKey, FilerStateId, Tran_Amt1, Form_Type, FilerName } = record;
@@ -99,6 +95,7 @@ async function getFilteredTransactions() {
 
   return output;
 }
+
 
 /**
  * @typedef {object} CommitteesExpending
@@ -143,7 +140,6 @@ function getCandidatesWithPositions(committees, candidateNames) {
       });
 
     } 
-
 
   });
   
@@ -209,11 +205,11 @@ function saveOutsideExpenditurestoJSON(outsideExpenditures) {
 
 async function calculateCandidatePositions(){
 
-  const candidateNames = await getCandidateNames();
+  const candidateNames = getCandidateNames();
   console.log('*** candidateNames');
   console.log(candidateNames);
 
-  let committees = await getCommittees();
+  let committees = getCommittees();
   console.log('*** All committees');
   console.log(committees);
   
