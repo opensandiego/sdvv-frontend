@@ -89,9 +89,9 @@ def to_json(dataframe, directory=DIRECTORY):
                 f"industry {i}": array[1].tolist()
                 for i, array in enumerate(value.iterrows(), start=1)
             }
-        with open(path, "w") as f:
-            json.dump(file, f, indent=2)
-            f.write("\n")
+            with open(path, "w") as f:
+                json.dump(file, f, indent=2)
+                f.write("\n")
 
 
 if __name__ == "__main__":
