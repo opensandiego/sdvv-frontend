@@ -86,7 +86,7 @@ def to_json(dataframe, directory=DIRECTORY):
             file.setdefault("by industry", [{}])
             value = dataframe.loc[file[JSON_KEY]]
             file["by industry"][0] = {
-                f"industry {i}": array[1].tolist()
+                f"industry {i}": [str(x) for x in array[1]]
                 for i, array in enumerate(value.iterrows(), start=1)
             }
             with open(path, "w") as f:
