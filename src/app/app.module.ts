@@ -8,6 +8,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
+import { AboutComponent } from './components/about/about.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,6 +45,8 @@ import { UnderConstructionComponent } from './components/under-construction/unde
     DistrictTwoComponent,
     CandidateCardComponent,
     CandidateCardExpandedComponent,
+    AboutComponent,
+   
   ],
   imports: [
     BrowserModule,
