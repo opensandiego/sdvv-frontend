@@ -118,6 +118,12 @@ async function downloadTransactions(aid, year, showSuperceded = false){
 
 module.exports = {
   downloadTransactionsByYear: function(year) { downloadTransactions(32, year) },
+
+  downloadTransactions2020Election: async (aid = 32) => {
+    await downloadTransactions(aid, 2019);
+    await downloadTransactions(aid, 2020);
+  },
+
 };
 
-module.exports.downloadTransactionsByYear(2020);
+module.exports.downloadTransactions2020Election();
