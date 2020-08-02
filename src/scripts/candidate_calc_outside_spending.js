@@ -1,14 +1,23 @@
-// @ts-check
 
 const fs = require('fs');
+const fetch = require('node-fetch');
 const parse = require('csv-parse');
 const parseSync = require('csv-parse/lib/sync');
-const { toFixed } = require('core-js/fn/number/epsilon');
 
+/**
+ * 
+ *  @returns {Promise <string[]>}
+ */
+async function getCandidateNames() {
+  const SHEET_URL = "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0";
+  let response, fileData;
 
-function getCandidateNames() {
-  const filePath = '../assets/data/candidate_information.csv';
-  const fileData = fs.readFileSync(filePath, 'utf8');
+  try {
+    response = await fetch(SHEET_URL);
+    fileData = await response.text();
+  } catch (error) {
+    console.log(error);
+  }
 
   const records = parseSync(fileData, {
     columns: true,
@@ -20,6 +29,19 @@ function getCandidateNames() {
 }
 
 
+/**
+ * @typedef Transactions
+ * @type {object}
+ * @property {string} Tran_Amt1 - Decimal number in a string example '1234.56'
+ * @property {string} Candidate_Full_Name - Name of the Candidate as 'First Last'
+ * @property {string} Sup_Opp_Cd - Either 'S' or 'O'
+ */
+
+
+/**
+ * 
+ *  @returns {Promise <Transactions[]>}
+ */
 async function getFilteredTransactions() {
   
   const path = '../assets/data/';
@@ -42,13 +64,15 @@ async function getFilteredTransactions() {
           // check if the value in column Form_Type matches one of the values in transactionTypes
           if ( transactionTypes.includes( record['Form_Type'] ) ) {            
 
-            const { NetFileKey, FilerStateId, FilerName, 
+            const { 
+              NetFileKey, FilerStateId, FilerName, // only use these 3 for testing
               Tran_Amt1, Cand_NamL, Cand_NamF, Sup_Opp_Cd } = record;
 
             // The Candidate names in Cand_NamL, Cand_NamF are not constant. For some the names is only in Cand_NamL for others it is split between Cand_NamL and Cand_NamF. This assignment makes them consistant.
             let Candidate_Full_Name = Cand_NamF === '' ? Cand_NamL : `${Cand_NamF} ${Cand_NamL}`;
 
-            return { NetFileKey, FilerStateId, FilerName, 
+            return { 
+              NetFileKey, FilerStateId, FilerName, // only use these 3 for testing
               Tran_Amt1, Candidate_Full_Name, Sup_Opp_Cd }; 
 
           }
@@ -70,6 +94,19 @@ async function getFilteredTransactions() {
 }
 
 
+/**
+ * @typedef {object} CandidateSpending
+ * @property {string} candidateName - Name of the Candidate as 'First Last'
+ * @property {number} supportSum - Decimal number for the sum of all spending in suppport of a candidate
+ * @property {number} opposedSum - Decimal number for the sum of all spending in opposition to a candidate
+ */
+
+/**
+ * 
+ * @param {string[]} candidateNames - 
+ * @param {Transactions[]} transactions - 
+ * @returns {CandidateSpending[]}
+ */
 function getSpendingAmounts(candidateNames, transactions) {
 
   let candidateSums = candidateNames.map( candidate =>  {
@@ -97,6 +134,10 @@ function getSpendingAmounts(candidateNames, transactions) {
 }
 
 
+/**
+ * 
+ * @param {CandidateSpending[]} outsideSpending 
+ */
 function saveOutsideSpendingtoJSON(outsideSpending) {
   const pathPrefix = '../assets/candidates/2020/mayor/';
 
@@ -123,24 +164,23 @@ function saveOutsideSpendingtoJSON(outsideSpending) {
 
   }
 
-  return null;
 }
 
 
 async function main(){
-  
-  const candidateNames = getCandidateNames();
-  console.log('*** candidateNames');
-  console.log(candidateNames);
+
+  const candidateNames = await getCandidateNames();  
+    console.log('*** candidateNames');
+    console.log(candidateNames);
 
   let transactions = await getFilteredTransactions();
-  console.log('*** getFilteredTransactions');
-  console.log(transactions.slice(0, 1));
-  console.log('Filtered transactions found: '+ transactions.length);
+    console.log('*** getFilteredTransactions');
+    console.log(transactions.slice(0, 1));
+    console.log('Filtered transactions found: '+ transactions.length);
 
   const outsideSpending = getSpendingAmounts(candidateNames, transactions);
-  console.log('*** outsideSpending');
-  console.log(outsideSpending);
+    console.log('*** outsideSpending');
+    console.log(outsideSpending);
 
   saveOutsideSpendingtoJSON(outsideSpending);
 }
