@@ -18,6 +18,7 @@ export class MayorComponent implements OnInit {
     'assets/candidates/2020/mayor/tasha_williamson/tasha_williamson.png',
     'assets/candidates/2020/mayor/todd_gloria/todd_gloria.png',
   ];
+  
   isExpanded: boolean = false;
 
   constructor(private candidateService: CandidateService) { }
