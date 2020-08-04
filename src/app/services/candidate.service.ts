@@ -8,7 +8,16 @@ export class CandidateService {
 
   constructor(public http: HttpClient) { }
 
-  getMayorData() {
-    return this.http.get(`assets/candidates/2020/mayor/barbara_bry/barbara_bry.json`)
+  // Mayoral Candidates
+  getBarbaraBryData() {
+    return this.http.get(`assets/candidates/2020/mayor/barbara_bry/barbara_bry.json`);
+  }
+
+  getTashaWilliamsonData() {
+    return this.http.get('assets/candidates/2020/mayor/tasha_williamson/tasha_williamson.json');
+  }
+
+  getToddGloriaData() {
+    return this.http.get('assets/candidates/2020/mayor/todd_gloria/todd_gloria.json');
   }
 }

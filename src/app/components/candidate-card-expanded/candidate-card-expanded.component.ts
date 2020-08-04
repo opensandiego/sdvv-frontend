@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Color } from 'ng2-charts';
-import { Candidate } from '../../candidate';
-
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Candidate } from '../../candidate';
+import { Color } from 'ng2-charts';
+import { MatTableDataSource } from '@angular/material';
 
 const placeholder_data = [
   { colorCode: '#007431', industry: 'Technology', amount: 200000, percentage: 0.5 },
@@ -23,6 +22,8 @@ export class CandidateCardExpandedComponent implements OnInit {
   @Input() candidate: Candidate;
   @Input() candidateImg: string;
   @Output() isExpanded = new EventEmitter<boolean>();
+
+  test = ''
 
   // Industry Table
   displayedColumns: string[];
@@ -227,10 +228,12 @@ export class CandidateCardExpandedComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.setChartsData();
     this.setDisplayedColumns();
-    this.dataSource.data = placeholder_data;
+    this.setTableData();
   }
 
+  // Setting By Industry Table
   setDisplayedColumns() {
     this.displayedColumns = [
       'colorCode',
@@ -240,12 +243,69 @@ export class CandidateCardExpandedComponent implements OnInit {
     ];
   }
 
-  // Method for adding a K at the end of values over 9999 (i.e. 10K, 100K)
+  setTableData() {
+    const topFiveIndustries = [
+      {
+        colorCode: '#007431',
+        industry: this.candidate['by industry'][0]['industry 1'][0],
+        amount: Number(this.candidate['by industry'][0]['industry 1'][1]),
+        percentage: Number(this.candidate['by industry'][0]['industry 1'][2]),
+      },
+      {
+        colorCode: '#007431',
+        industry: this.candidate['by industry'][0]['industry 2'][0],
+        amount: Number(this.candidate['by industry'][0]['industry 2'][1]),
+        percentage: Number(this.candidate['by industry'][0]['industry 2'][2]),
+      },
+      {
+        colorCode: '#007431',
+        industry: this.candidate['by industry'][0]['industry 3'][0],
+        amount: Number(this.candidate['by industry'][0]['industry 3'][1]),
+        percentage: Number(this.candidate['by industry'][0]['industry 3'][2]),
+      },
+      {
+        colorCode: '#007431',
+        industry: this.candidate['by industry'][0]['industry 4'][0],
+        amount: Number(this.candidate['by industry'][0]['industry 4'][1]),
+        percentage: Number(this.candidate['by industry'][0]['industry 4'][2]),
+      },
+      {
+        colorCode: '#007431',
+        industry: this.candidate['by industry'][0]['industry 5'][0],
+        amount: Number(this.candidate['by industry'][0]['industry 5'][1]),
+        percentage: Number(this.candidate['by industry'][0]['industry 5'][2]),
+      },
+    ];
+
+    this.dataSource.data = topFiveIndustries;
+  }
+
+  // Setting Chart Data
+  setChartsData() {
+    // Raised v. Spent
+    this.barChartData[0].data[0] = this.currencyToNumber(this.candidate['raised vs spent'][0].Raised);
+    this.barChartData[1].data[0] = this.currencyToNumber(this.candidate['raised vs spent'][0].Spent);
+
+    // In V. Out District
+    this.doughnutChartData[0] = this.currencyToNumber(this.candidate['in vs out district'][0].in);
+    this.doughnutChartData[1] = this.currencyToNumber(this.candidate['in vs out district'][0].out);
+
+    // Oppose v. Support
+    this.stackedHorizontalBarChartData[0].data[0] = this.currencyToNumber(this.candidate['oppose']);
+    this.stackedHorizontalBarChartData[1].data[0] = this.currencyToNumber(this.candidate['support']);
+  }
+
+  // Convert Currency String to Number
+  currencyToNumber(currencyString: string) {
+    return Number(currencyString.replace(/[^0-9\.-]+/g,""))
+  }
+
+  // Adding K At The End of Values Over 9999 (i.e. 10K, 100K)
   kNumberFormatter(num: number) {
     return Math.abs(num) > 9999 ? Math.sign(num)*((Math.abs(num)/1000)) + 'K' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
   }
 
-  // Method for adding comma separators for values over 999
+  // Adding Comma Separators for Values Over 999
   commaNumberFormatter(num: number) {
     return num.toLocaleString('en');
   }

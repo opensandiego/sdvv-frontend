@@ -1,26 +1,29 @@
-<div class="candidate-card p-grid p-justify-center p-align-center p-nogutter" *ngIf="canRender">
+<div class="candidate-card p-grid p-justify-center p-align-center p-nogutter">
 
   <div class="candidate p-col-12">
     <div class="candidate-image-container">
       <div class="candidate-image">
-        <img [src]="imageUrl" alt="candidate picture">
+        <img [src]="candidateImg" alt="candidate picture">
       </div>
     </div>
-    <h1>{{data[0].first}}</h1>
-    <h1>{{data[0].last}}</h1>
-    <h2>{{data[0].description}}</h2>
+
+    <h1>{{candidate.first}}</h1>
+    <h1>{{candidate.last}}</h1>
+    <h2>{{candidate.description}}</h2>
   </div>
 
-  <div class="candidate-numbers p-col-8 p-lg-10 p-xl-10">
+  <div class="candidate-numbers p-col-8 p-lg-12 p-xl-10">
     <div class="raised">
       <h2>Raised</h2>
-      <h3>{{data[0]["raised vs spent"][0].Raised}}</h3>
+      <h3>{{candidate["raised vs spent"][0].Raised}}</h3>
     </div>
+
     <div class="donors">
       <h2>Donors</h2>
-      <h3>{{data[0]["raised vs spent"][0].Donors}}</h3>
+      <h3>{{candidate["raised vs spent"][0].Donors}}</h3>
     </div>
   </div>
 
   <button class="candidate-button p-col-12" mat-flat-button (click)="outputCandidateData()">See Details</button>
+
 </div>
