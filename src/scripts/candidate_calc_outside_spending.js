@@ -167,22 +167,15 @@ function saveOutsideSpendingtoJSON(outsideSpending) {
 }
 
 
-async function main(){
+async function calculateOutsideSpending(){
 
   const candidateNames = await getCandidateNames();  
-    console.log('*** candidateNames');
-    console.log(candidateNames);
 
   let transactions = await getFilteredTransactions();
-    console.log('*** getFilteredTransactions');
-    console.log(transactions.slice(0, 1));
-    console.log('Filtered transactions found: '+ transactions.length);
 
   const outsideSpending = getSpendingAmounts(candidateNames, transactions);
-    console.log('*** outsideSpending');
-    console.log(outsideSpending);
 
   saveOutsideSpendingtoJSON(outsideSpending);
 }
 
-main();
+calculateOutsideSpending();
