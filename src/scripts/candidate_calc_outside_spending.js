@@ -127,8 +127,7 @@ function getSpendingAmounts(candidateNames, transactions) {
       opposedSum
     };
     
-  })
-  .filter( candidate => candidate.supportSum > 0 || candidate.opposedSum > 0 );
+  });
 
   return candidateSums;
 }
