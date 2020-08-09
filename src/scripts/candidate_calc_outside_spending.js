@@ -12,8 +12,8 @@ const netFile_API_csv_filenames = ['netfile_api_2019.csv', 'netfile_api_2020.csv
 
 
 /**
- * 
- *  @returns {Promise <string[]>}
+ * Reads from a Google Sheet and returns a list of candidate names in an array of strings.
+ * @returns {Promise <string[]>}
  */
 async function getCandidateNames() {
   const SHEET_URL = candidate_information_url;
@@ -46,8 +46,8 @@ async function getCandidateNames() {
 
 
 /**
- * 
- *  @returns {Promise <Transactions[]>}
+ * Reads transactions from csv files and returns those that represent outside spending
+ * @returns {Promise <Transactions[]>}
  */
 async function getFilteredTransactions() {
   
@@ -109,7 +109,7 @@ async function getFilteredTransactions() {
  */
 
 /**
- * 
+ * Reads a list of candidates and a list of transactions. Returns the total spent on supporting or opposing each candidate.
  * @param {string[]} candidateNames - 
  * @param {Transactions[]} transactions - 
  * @returns {CandidateSpending[]}
@@ -141,7 +141,7 @@ function getSpendingAmounts(candidateNames, transactions) {
 
 
 /**
- * 
+ * For each candidate this writes the total outside spending to support and oppose them.  
  * @param {CandidateSpending[]} outsideSpending 
  */
 function saveOutsideSpendingToJSON(outsideSpending) {
@@ -180,7 +180,9 @@ function saveOutsideSpendingToJSON(outsideSpending) {
 
 }
 
-
+/**
+ * Primary function of script
+ */
 async function calculateOutsideSpending(){
 
   const candidateNames = await getCandidateNames();  
