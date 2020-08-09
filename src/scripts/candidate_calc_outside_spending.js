@@ -143,7 +143,9 @@ function saveOutsideSpendingToJSON(outsideSpending) {
 
   for (const candidate of outsideSpending) {
 
-    const candidatePathName = candidate.candidateName.replace(' ', '_').toLowerCase();
+    // Replace all spaces in candidate names with underscores '_'
+    const candidatePathName = candidate.candidateName.split(' ').join('_').toLowerCase();
+
     const filePath = pathPrefix + `${candidatePathName}/${candidatePathName}.json`;
 
     let updatedFileData;
