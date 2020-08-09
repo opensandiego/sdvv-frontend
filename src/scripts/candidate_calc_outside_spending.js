@@ -68,7 +68,7 @@ async function getFilteredTransactions() {
               NetFileKey, FilerStateId, FilerName, // only use these 3 for testing
               Tran_Amt1, Cand_NamL, Cand_NamF, Sup_Opp_Cd } = record;
 
-            // The Candidate names in Cand_NamL, Cand_NamF are not constant. For some the names is only in Cand_NamL for others it is split between Cand_NamL and Cand_NamF. This assignment makes them consistant.
+            // The Candidate names in Cand_NamL, Cand_NamF are not constant. For some the names is only in Cand_NamL for others it is split between Cand_NamL and Cand_NamF. This assignment makes them consistent.
             let Candidate_Full_Name = Cand_NamF === '' ? Cand_NamL : `${Cand_NamF} ${Cand_NamL}`;
 
             return { 
@@ -97,7 +97,7 @@ async function getFilteredTransactions() {
 /**
  * @typedef {object} CandidateSpending
  * @property {string} candidateName - Name of the Candidate as 'First Last'
- * @property {number} supportSum - Decimal number for the sum of all spending in suppport of a candidate
+ * @property {number} supportSum - Decimal number for the sum of all spending in support of a candidate
  * @property {number} opposedSum - Decimal number for the sum of all spending in opposition to a candidate
  */
 
@@ -138,7 +138,7 @@ function getSpendingAmounts(candidateNames, transactions) {
  * 
  * @param {CandidateSpending[]} outsideSpending 
  */
-function saveOutsideSpendingtoJSON(outsideSpending) {
+function saveOutsideSpendingToJSON(outsideSpending) {
   const pathPrefix = '../assets/candidates/2020/mayor/';
 
   for (const candidate of outsideSpending) {
@@ -148,6 +148,12 @@ function saveOutsideSpendingtoJSON(outsideSpending) {
 
     let updatedFileData;
     try {
+
+      // Skip candidates who do not have a JSON file.
+      if ( !fs.existsSync(filePath) ) {
+        // console.log(`No data saved for ${candidate.candidateName} since '${filePath}' does not exist.`);
+        continue;
+      }
 
       const fileData = fs.readFileSync(filePath, 'utf8' );
 
@@ -175,7 +181,7 @@ async function calculateOutsideSpending(){
 
   const outsideSpending = getSpendingAmounts(candidateNames, transactions);
 
-  saveOutsideSpendingtoJSON(outsideSpending);
+  saveOutsideSpendingToJSON(outsideSpending);
 }
 
 calculateOutsideSpending();
