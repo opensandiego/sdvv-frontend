@@ -4,12 +4,19 @@ const fetch = require('node-fetch');
 const parse = require('csv-parse');
 const parseSync = require('csv-parse/lib/sync');
 
+const candidate_information_url = "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0";
+const assets_path = '../assets/data/';
+const candidates_path = '../assets/candidates/';
+const election_year = '2020';
+const netFile_API_csv_filenames = ['netfile_api_2019.csv', 'netfile_api_2020.csv'];
+
+
 /**
  * 
  *  @returns {Promise <string[]>}
  */
 async function getCandidateNames() {
-  const SHEET_URL = "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0";
+  const SHEET_URL = candidate_information_url;
   let response, fileData;
 
   try {
@@ -44,8 +51,8 @@ async function getCandidateNames() {
  */
 async function getFilteredTransactions() {
   
-  const path = '../assets/data/';
-  const fileNames = ['netfile_api_2019.csv', 'netfile_api_2020.csv'];
+  const path = assets_path;
+  const fileNames = netFile_API_csv_filenames;
 
   const transactionTypes = ['F496'];
 
@@ -138,7 +145,7 @@ function getSpendingAmounts(candidateNames, transactions) {
  * @param {CandidateSpending[]} outsideSpending 
  */
 function saveOutsideSpendingToJSON(outsideSpending) {
-  const pathPrefix = '../assets/candidates/2020/mayor/';
+  const pathPrefix = candidates_path + election_year + '/mayor/';
 
   for (const candidate of outsideSpending) {
 
