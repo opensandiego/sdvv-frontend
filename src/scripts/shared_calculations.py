@@ -62,10 +62,17 @@ def summed_contributions(paths, types, column):
 
     :param column: The column to process
 
-    :returns: Pandas Series of the summed values with index column `CSV_KEY`
+    :returns: Pandas Series of the summed values with index column `CSV_KEY`.
+    The values are rounded, being converted to int64.
     """
     df = read_csv_df(paths, types, column)
-    return pd.Series(df[column], index=df.index).groupby(CSV_KEY).sum()
+    return (
+        pd.Series(df[column], index=df.index)
+        .groupby(CSV_KEY)
+        .sum()
+        .round()
+        .astype("int64")
+    )
 
 
 def to_py_type(value):
