@@ -166,8 +166,8 @@ function saveOutsideSpendingToJSON(outsideSpending) {
       const fileData = fs.readFileSync(filePath, 'utf8' );
 
       let json = JSON.parse(fileData);
-      json['support'] = candidate.supportSum.toFixed(2);
-      json['oppose'] =  candidate.opposedSum.toFixed(2);
+      json['support'] = candidate.supportSum.toFixed();
+      json['oppose'] =  candidate.opposedSum.toFixed();
       updatedFileData = JSON.stringify(json, null, 2);
 
       fs.writeFileSync(filePath, updatedFileData + '\n', 'utf8');
