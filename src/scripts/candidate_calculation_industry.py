@@ -34,7 +34,9 @@ def process_occupation_df(df):
     contributions and column `contribution_percent` being the corrosponding
     percentage of the total contributions they each contributed.
     """
-    sum_series = df.groupby("Tran_Occ")["Tran_Amt1"].sum().nlargest(5)
+    sum_series = (
+        df.groupby("Tran_Occ")["Tran_Amt1"].sum().nlargest(5).round().astype("int64")
+    )
     contribution_sum = df["Tran_Amt1"].sum()
     return pd.DataFrame(
         {
