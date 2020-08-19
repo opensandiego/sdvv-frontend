@@ -9,7 +9,8 @@ first name,
 last name,
 description,
 website,
-and commitee name.
+in general,
+and commitee name fields.
 """
 import json
 import math
@@ -48,6 +49,7 @@ def read_candidate_csv(file):
                 "Candidate_Name",
                 "Committee Name (Filer_Name)",
                 "Office",
+                "In General",
             ),
         )
         .dropna(how="all")
@@ -132,6 +134,9 @@ def update_json_files(folder_path, csv_url):
         json_dict["website"] = replace_nan(csv_df.loc[candidate]["Website"], "")
         json_dict["committee name"] = replace_nan(
             csv_df.loc[candidate]["Committee Name (Filer_Name)"], ""
+        )
+        json_dict["in general"] = (
+            replace_nan(csv_df.loc[candidate]["In General"], "").lower() == "yes"
         )
         with open(path, "w") as f:
             json.dump(json_dict, f, indent=2)
