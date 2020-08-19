@@ -3,6 +3,8 @@
 Calculates the amount raised by each candidate by summing contributions
 from column `Tran_Amt1` in the CSV files and stores it in the
 candidate JSON files under field `file["raised vs spent"][0]["Raised"]`.
+
+The summed contributions are rounded to the nearest whole number.
 """
 
 from shared_calculations import (
