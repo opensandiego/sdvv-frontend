@@ -4,6 +4,8 @@ Calculates the top five industries (taken from occupations) the candidate
 gets donations from, how much each industry donates, and the percentage
 of all the candidate's donations the industry donates in the candidate
 JSON files under field `file["by industry"][0]`.
+
+How much each industry donates is rounded to the nearest whole number.
 """
 
 import json
@@ -31,10 +33,13 @@ def process_occupation_df(df):
     summable column `Tran_Amt1` (the contributions).
 
     :returns: A dataframe with column `top_occupations` being the top 5
-    contributions and column `contribution_percent` being the corrosponding
-    percentage of the total contributions they each contributed.
+    contributions rounded to the nearest whole (int) number and column
+    `contribution_percent` being the corrosponding percentage of the
+    total contributions they each contributed.
     """
-    sum_series = df.groupby("Tran_Occ")["Tran_Amt1"].sum().nlargest(5)
+    sum_series = (
+        df.groupby("Tran_Occ")["Tran_Amt1"].sum().nlargest(5).round().astype("int64")
+    )
     contribution_sum = df["Tran_Amt1"].sum()
     return pd.DataFrame(
         {
