@@ -80,17 +80,14 @@ async function getFilteredTransactions() {
           // check if the value in column Form_Type matches one of the values in transactionTypes
           if ( transactionTypes.includes( record['Form_Type'] ) ) {            
 
-            const { 
-              Tran_Amt1, Cand_NamL, Cand_NamF, Sup_Opp_Cd } = record;
+            const { Tran_Amt1, Cand_NamL, Cand_NamF, Sup_Opp_Cd } = record;
 
             // The Candidate names in Cand_NamL, Cand_NamF are not constant. 
             // For some the name is only in Cand_NamL for others it is split between Cand_NamL and Cand_NamF. 
             // This assignment makes them consistent.
             let Candidate_Full_Name = Cand_NamF === '' ? Cand_NamL : `${Cand_NamF} ${Cand_NamL}`;
 
-            return { 
-              Tran_Amt1, Candidate_Full_Name, Sup_Opp_Cd }; 
-
+            return { Tran_Amt1, Candidate_Full_Name, Sup_Opp_Cd }; 
           }
         }
       })
