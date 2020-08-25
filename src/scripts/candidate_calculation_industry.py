@@ -34,7 +34,7 @@ def process_occupation_df(df):
 
     :returns: A dataframe with column `top_occupations` being the top 5
     contributions rounded to the nearest whole (int) number and column
-    `contribution_percent` being the corrosponding percentage of the
+    `contribution_percent` being the corrosponding (int) percentage of the
     total contributions they each contributed.
     """
     sum_series = (
@@ -44,7 +44,9 @@ def process_occupation_df(df):
     return pd.DataFrame(
         {
             "top_occupations": sum_series,
-            "contribution_percent": sum_series.map(lambda x: x / contribution_sum),
+            "contribution_percent": sum_series.map(
+                lambda x: round((x / contribution_sum) * 100)
+            ),
         }
     )
 
