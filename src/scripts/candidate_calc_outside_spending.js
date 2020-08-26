@@ -23,7 +23,7 @@ const NETFILE_API_CSV_FILENAMES = ['netfile_api_2019.csv', 'netfile_api_2020.csv
  * @returns {Promise <Candidates[]>}
  */
 async function getCandidateInformation() {
-let response, fileData;
+  let response, fileData;
 
   try {
     response = await fetch(CANDIDATE_INFORMATION_URL);
@@ -118,11 +118,10 @@ async function getFilteredTransactions() {
 
 /**
  * Reads a list of candidates and a list of transactions. Returns the total spent on supporting or opposing each candidate.
- * @param {string[]} candidateNames - 
+ * @param {string[]} candidateInformation - 
  * @param {Transactions[]} transactions - 
  * @returns {CandidateSpending[]}
  */
-// function getSpendingAmounts(candidateNames, transactions) {
 function getSpendingAmounts(candidateInformation, transactions) {
 
   let candidateSums = candidateInformation.map( candidate =>  {
@@ -196,7 +195,7 @@ async function calculateOutsideSpending(){
 
   const candidateInformation = await getCandidateInformation();
 
-  let transactions = await getFilteredTransactions();
+  const transactions = await getFilteredTransactions();
 
   const outsideSpending = getSpendingAmounts(candidateInformation, transactions);
 
