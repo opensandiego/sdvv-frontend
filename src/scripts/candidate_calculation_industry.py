@@ -4,6 +4,8 @@ Calculates the top five industries (taken from occupations) the candidate
 gets donations from, how much each industry donates, and the percentage
 of all the candidate's donations the industry donates in the candidate
 JSON files under field `file["by industry"][0]`.
+
+How much each industry donates is rounded to the nearest whole number.
 """
 
 import json
@@ -31,15 +33,20 @@ def process_occupation_df(df):
     summable column `Tran_Amt1` (the contributions).
 
     :returns: A dataframe with column `top_occupations` being the top 5
-    contributions and column `contribution_percent` being the corrosponding
-    percentage of the total contributions they each contributed.
+    contributions rounded to the nearest whole (int) number and column
+    `contribution_percent` being the corrosponding (int) percentage of the
+    total contributions they each contributed.
     """
-    sum_series = df.groupby("Tran_Occ")["Tran_Amt1"].sum().nlargest(5)
+    sum_series = (
+        df.groupby("Tran_Occ")["Tran_Amt1"].sum().nlargest(5).round().astype("int64")
+    )
     contribution_sum = df["Tran_Amt1"].sum()
     return pd.DataFrame(
         {
             "top_occupations": sum_series,
-            "contribution_percent": sum_series.map(lambda x: x / contribution_sum),
+            "contribution_percent": sum_series.map(
+                lambda x: round((x / contribution_sum) * 100)
+            ),
         }
     )
 
@@ -86,12 +93,12 @@ def to_json(dataframe, directory=DIRECTORY):
             file.setdefault("by industry", [{}])
             value = dataframe.loc[file[JSON_KEY]]
             file["by industry"][0] = {
-                f"industry {i}": array[1].tolist()
+                f"industry {i}": [str(x) for x in array[1]]
                 for i, array in enumerate(value.iterrows(), start=1)
             }
-        with open(path, "w") as f:
-            json.dump(file, f, indent=2)
-            f.write("\n")
+            with open(path, "w") as f:
+                json.dump(file, f, indent=2)
+                f.write("\n")
 
 
 if __name__ == "__main__":

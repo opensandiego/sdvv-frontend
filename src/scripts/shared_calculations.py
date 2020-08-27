@@ -62,17 +62,17 @@ def summed_contributions(paths, types, column):
 
     :param column: The column to process
 
-    :returns: Pandas Series of the summed values with index column `CSV_KEY`
+    :returns: Pandas Series of the summed values with index column `CSV_KEY`.
+    The values are rounded, being converted to int64.
     """
     df = read_csv_df(paths, types, column)
-    return pd.Series(df[column], index=df.index).groupby(CSV_KEY).sum()
-
-
-def to_py_type(value):
-    """Convert numpy types to normal types."""
-    if type(value).__module__ == "numpy" and hasattr(value, "item"):
-        return value.item()
-    return value
+    return (
+        pd.Series(df[column], index=df.index)
+        .groupby(CSV_KEY)
+        .sum()
+        .round()
+        .astype("int64")
+    )
 
 
 def to_raised_json(series, field, directory=DIRECTORY):
@@ -102,7 +102,7 @@ def to_raised_json(series, field, directory=DIRECTORY):
             file = json.load(f)
         if isinstance(file, dict) and file.get(JSON_KEY) in series:
             file.setdefault("raised vs spent", [{}])
-            file["raised vs spent"][0][field] = to_py_type(series[file[JSON_KEY]])
+            file["raised vs spent"][0][field] = str(series[file[JSON_KEY]])
             with open(path, "w") as f:
                 json.dump(file, f, indent=2)
                 f.write("\n")
