@@ -18,6 +18,7 @@ DIRECTORY = "../assets/candidates/2020/"
 CSV_PATHS = (
     "../assets/data/netfile_api_2020.csv",
     "../assets/data/netfile_api_2019.csv",
+    "../assets/data/netfile_api_2018.csv",
 )
 
 
