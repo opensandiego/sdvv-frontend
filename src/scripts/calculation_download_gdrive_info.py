@@ -135,9 +135,11 @@ def update_json_files(folder_path, csv_url):
         json_dict["committee name"] = replace_nan(
             csv_df.loc[candidate]["Committee Name (Filer_Name)"], ""
         )
+
         json_dict["in general"] = (
             replace_nan(csv_df.loc[candidate]["In General"], "").lower() == "yes"
         )
+
         with open(path, "w") as f:
             json.dump(json_dict, f, indent=2)
             f.write("\n")
