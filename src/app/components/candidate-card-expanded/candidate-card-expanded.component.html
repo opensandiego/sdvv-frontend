@@ -1,0 +1,204 @@
+<div class="candidate-card-expanded p-grid p-justify-center p-align-center p-nogutter">
+
+  <div class="p-grid p-justify-center p-align-center p-col-12 p-xl-2 p-lg-2">
+    <div class="candidate p-col-12">
+      <div class="candidate-image-container">
+        <div class="candidate-image">
+          <img [src]="candidateImg" alt="candidate picture">
+        </div>
+      </div>
+      <h1>{{ candidate['candidate name'] }}</h1>
+      <h2>{{ candidate.description }}</h2>
+  
+      <div class="website-link">
+        <mat-icon>link</mat-icon>
+        <a href="">Website</a>
+      </div>
+  
+      <div>
+        <button class="full-details-btn" routerLink="/under-construction" mat-flat-button>See Full Details</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="raised-spent p-grid p-justify-center p-align-center p-col-12 p-xl-3 p-lg-3">
+    <div class="p-col-8">
+      <div class="title">
+        <p>
+          Raised v. Spent
+          <sup>
+            <i
+              class="helper-tip fa fa-question-circle"
+              aria-hidden="true"
+              matTooltip="Description goes here."
+            >
+            </i>
+          </sup>
+        </p>
+      </div>
+  
+      <div class="raised-spent-chart">
+        <canvas baseChart
+          width="120"
+          height="220"
+          [chartType]="barChartType"
+          [datasets]="barChartData"
+          [colors]="barChartColors"
+          [options]="barChartOptions"
+          [plugins]="chartPlugins"
+        ></canvas>
+      </div>
+  
+      <div class="raised-spent-footer">
+        <div class="donors">
+          <p class="raised-spent-footer-title">Donors</p>
+          <p class="raised-spent-footer-content">{{ candidate['raised vs spent'][0].Donors }}</p>
+        </div>
+  
+        <div class="avg-donation">
+          <p class="raised-spent-footer-title">Average Donation</p>
+          <p class="raised-spent-footer-content">{{ candidate['raised vs spent'][0]['Average Donor'] }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="industries p-grid p-justify-center p-col-12 p-xl-4 p-lg-4">
+    <div class="p-col-12">
+      <div class="title">
+        <p>
+          By Industry
+          <sup>
+            <i
+              class="helper-tip fa fa-question-circle"
+              aria-hidden="true"
+              matTooltip="Description goes here."
+            >
+            </i>
+          </sup>
+        </p>
+      </div>
+    </div>
+
+    <div class="p-col-12 p-xl-10 p-lg-10">
+      <table class="industries-table" mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="colorCode">
+          <th mat-header-cell *matHeaderCellDef>Color Code</th>
+          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index" [style.color]="element.colorCode">
+            <mat-icon>fiber_manual_record</mat-icon>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="industry">
+          <th mat-header-cell *matHeaderCellDef>Industry</th>
+          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.industry }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Amount</th>
+          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.amount | currency }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="percentage">
+          <th mat-header-cell *matHeaderCellDef>Percentage</th>
+          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.percentage | percent }}</td>
+        </ng-container>
+  
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="in-out-district p-col-12 p-xl-3 p-lg-3 p-md-6">
+    <div class="title">
+      <p>
+        In v. Out District
+        <sup>
+          <i
+            class="helper-tip fa fa-question-circle"
+            aria-hidden="true"
+            matTooltip="Description goes here."
+          >
+          </i>
+        </sup>
+      </p>
+    </div>
+
+    <div>
+      <canvas baseChart
+        width="260"
+        height="260"
+        [chartType]="doughnutChartType"
+        [data]="doughnutChartData"
+        [colors]="doughnutChartColors"
+        [options]="doughnutChartOptions"
+        [plugins]="chartPlugins"
+      >
+      </canvas>
+    </div>
+  </div>
+
+
+  <div class="close">
+    <i style="font-size: 25px;" class="fa fa-times-circle" aria-hidden="true" (click)="close()"></i>
+  </div>
+
+
+  <div class="p-col-12 divider"></div>
+
+
+  <div class="outside-money p-col-12 p-xl-3 p-lg-3">
+    <div class="title">
+      <p>
+        Outside Money
+        <sup>
+          <i
+            class="helper-tip fa fa-question-circle"
+            aria-hidden="true"
+            matTooltip="Description goes here."
+          >
+          </i>
+        </sup>
+      </p>
+    </div>
+
+    <div class="content">
+      The Amount of money raised by independent
+      expenditure committees spent on intiatives in
+      support or opposition of a candidate but not
+      contributing directly to their campaign.
+    </div>
+  </div>
+
+
+  <div class="raised-donors p-grid p-justify-center p-align-center p-col-12 p-xl-3 p-lg-3">
+    <div class="raised p-col-6 p-xl-3 p-lg-3 p-md-3">
+      <p class="raised-title">Raised</p>
+      <!-- <div class="raised-amount">{{ candidate['raised vs spent'].Raised }}</div> -->
+      <div class="raised-amount">$150,000</div>
+    </div>
+  
+    <div class="donors p-col-6 p-xl-3 p-lg-3 p-md-3">
+      <p class="donors-title">Donors</p>
+      <!-- <div class="donors-amount">{{ candidate['raised vs spent'].Donors }}</div> -->
+      <div class="donors-amount">3250</div>
+    </div>
+  </div>
+  
+
+  <div class="oppose-support p-grid p-justify-center p-align-center p-col-12 p-xl-5 p-lg-5">
+    <div class="oppose-support-chart p-col-12">
+      <canvas baseChart
+        [chartType]="stackedHorizontalBarChartType"
+        [datasets]="stackedHorizontalBarChartData"
+        [colors]="stackedHorizontalBarChartColors"
+        [options]="stackedHorizontalBarChartOptions"
+        [plugins]="chartPlugins"
+      ></canvas>
+    </div>
+  </div>
+
+</div>

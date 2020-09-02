@@ -30,9 +30,6 @@
 
 .candidate-card {
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 150px;
     height: 300px;
     margin: 10px;
     padding: 15px 25px 15px 25px;
@@ -64,14 +61,12 @@
         .raised h3 {
             color: $vvgreen;
         }
-    }  
-    a {
+    } 
+    .candidate-button {
         @include button-styles;
-        padding: 10px 30px;
-        max-width: 200px;
-        margin: 10px 0;
+        padding: 0 16px;
     }
-    a:hover {
+    .candidate-button:hover {
         background-color: $vvlightblue;
         text-decoration: none;
     }
