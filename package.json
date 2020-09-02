@@ -28,6 +28,8 @@
     "chartjs-plugin-datalabels": "^0.7.0",
     "core-js": "^2.5.4",
     "ng2-charts": "^2.2.3",
+    "csv": "^5.3.2",
+    "node-fetch": "^2.6.0",
     "primeflex": "^1.0.0",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.2",
