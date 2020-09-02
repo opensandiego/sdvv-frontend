@@ -158,7 +158,7 @@ function saveOutsideSpendingToJSON(outsideSpending) {
   
   for (const candidate of outsideSpending) {
 
-    // Replace all spaces in candidate names and office with underscores '_'
+    // Replace all spaces in candidate name and office with underscores '_'
     const candidatePathName = candidate.candidateName.split(' ').join('_').toLowerCase();
     const office = candidate.office.split(' ').join('_').toLowerCase();
 
