@@ -1,6 +1,4 @@
-import { Component, OnInit, Input, Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Candidate } from '../../candidate';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-candidate-card',
   templateUrl: './candidate-card.component.html',
@@ -8,22 +6,18 @@ import { Candidate } from '../../candidate';
 })
 
 export class CandidateCardComponent implements OnInit {
-  private canRender = false;
-  data: any[];
-  
-  @Input() imageUrl: string = "../../assets/candidate-card/candidate.jpg";
-  @Input() jsonFile: string;
-  constructor(private http: HttpClient) { }
+  @Input() candidate: any;
+  @Input() candidateImg: string;
+  @Output() private emitCandidateData = new EventEmitter<any>();
+  @Output() private emitCandidateImage = new EventEmitter<any>();
+
+  constructor() { }
 
   ngOnInit() {
-    this.http.get("assets/candidates/2020/mayor/" + this.jsonFile)
-      .toPromise()
-      .then(res => {
-        this.data = [];
-        this.data.push(res);
-        console.log(this.data);
-        this.canRender = true;
-      });
   }
 
+  outputCandidateData() {
+    this.emitCandidateData.emit(this.candidate);
+    this.emitCandidateImage.emit(this.candidateImg);
+  }
 }

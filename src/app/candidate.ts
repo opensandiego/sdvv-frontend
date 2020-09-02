@@ -3,4 +3,4 @@ export interface Candidate {
     title: string;
     raised: string;
     donors: string;
-  }
+}
