@@ -16,8 +16,14 @@
         width: 125px;
         border-radius: 50%;
         overflow: hidden;
+        border: 1px solid $vvbackground;
+        
         img {
-            object-fit: contain;
+            object-fit: cover;
+            object-position: center top;
+            width: 100%;
+            height: auto;
+            background-color: $vvbackground;
         }
     }
 }
@@ -67,5 +73,6 @@
     }
     a:hover {
         background-color: $vvlightblue;
+        text-decoration: none;
     }
 }

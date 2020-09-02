@@ -1,6 +1,7 @@
 <div class="header-nav">
+  <i class="fa fa-bars bar-toggle" (click)="drawer.toggle()"></i>
   <div><img class="logo" src="../../../assets/home/VV_Logo_Reversed@2x.png" alt="Voter's Voice Initiative" width="120"
-    height="auto" routerLinkActive="active-link" routerLink="/splash"></div>
+    height="auto" routerLinkActive="active-link" routerLink="/splash" ></div>
   <a class="nav_links"  routerLink="/about" routerLinkActive="router-link-active">About</a>
   <a class="nav_links" routerLink="/faq" routerLinkActive="router-link-active">FAQ</a>
 </div>
@@ -37,7 +38,7 @@
         </ul>
       </mat-expansion-panel>
     
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true" >
         <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px">
           <mat-panel-title>
             City Council
@@ -50,7 +51,7 @@
               <i class="fas fa-map-marked-alt"></i>
           </mat-expansion-panel-header>
         </mat-expansion-panel>
-        <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="active-link">
+        <mat-expansion-panel class="mat-elevation-z0">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 1
           </mat-expansion-panel-header>
@@ -61,7 +62,7 @@
           </ul>
         </mat-expansion-panel>
 
-        <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="active-link">
+        <mat-expansion-panel class="mat-elevation-z0">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 2
           </mat-expansion-panel-header>
