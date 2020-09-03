@@ -1,0 +1,47 @@
+{
+  "candidate name": "Chris Olsen",
+  "first": "Chris",
+  "last": "Olsen",
+  "description": "City Budget Analyst/Educator",
+  "website": "https://votechrisolsen.com/",
+  "committee name": "Chris Olsen for City Council 2020",
+  "in general": false,
+  "raised vs spent": [
+    {
+      "Raised": "85929",
+      "Spent": "102933",
+      "Donors": "235"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "Analyst",
+        "12605",
+        "15"
+      ],
+      "industry 2": [
+        "Retired",
+        "11700",
+        "14"
+      ],
+      "industry 3": [
+        "Consultant",
+        "6400",
+        "7"
+      ],
+      "industry 4": [
+        "President",
+        "4300",
+        "5"
+      ],
+      "industry 5": [
+        "Attorney",
+        "3395",
+        "4"
+      ]
+    }
+  ],
+  "support": "45121",
+  "oppose": "0"
+}

@@ -1,0 +1,47 @@
+{
+  "candidate name": "Sean Elo",
+  "first": "Sean",
+  "last": "Elo",
+  "description": "Board Trustee, San Diego Community College District",
+  "website": "https://seanelo.com/",
+  "committee name": "Sean Elo for City Council 2020",
+  "in general": false,
+  "raised vs spent": [
+    {
+      "Raised": "31395",
+      "Spent": "46381",
+      "Donors": "116"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "Retired",
+        "2800",
+        "9"
+      ],
+      "industry 2": [
+        "Executive Director",
+        "2128",
+        "7"
+      ],
+      "industry 3": [
+        "Attorney",
+        "2075",
+        "7"
+      ],
+      "industry 4": [
+        "President",
+        "1450",
+        "5"
+      ],
+      "industry 5": [
+        "Chief Executive Officer",
+        "1200",
+        "4"
+      ]
+    }
+  ],
+  "support": "0",
+  "oppose": "25800"
+}

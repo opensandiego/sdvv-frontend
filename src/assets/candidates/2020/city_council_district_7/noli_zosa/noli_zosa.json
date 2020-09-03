@@ -1,0 +1,47 @@
+{
+  "candidate name": "Noli Zosa",
+  "first": "Noli",
+  "last": "Zosa",
+  "description": "Small Business Owner",
+  "website": "https://www.noli2020.com/ ",
+  "committee name": "Noli Zosa for Council 2020",
+  "in general": false,
+  "raised vs spent": [
+    {
+      "Raised": "325733",
+      "Spent": "324588",
+      "Donors": "670"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "Retired",
+        "52283",
+        "16"
+      ],
+      "industry 2": [
+        "President",
+        "31825",
+        "10"
+      ],
+      "industry 3": [
+        "CEO",
+        "16380",
+        "5"
+      ],
+      "industry 4": [
+        "Attorney",
+        "13275",
+        "4"
+      ],
+      "industry 5": [
+        "Homemaker",
+        "13260",
+        "4"
+      ]
+    }
+  ],
+  "support": "37684",
+  "oppose": "0"
+}

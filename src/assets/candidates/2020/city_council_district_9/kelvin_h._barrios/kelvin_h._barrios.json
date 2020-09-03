@@ -1,0 +1,47 @@
+{
+  "candidate name": "Kelvin H. Barrios",
+  "first": "Kelvin",
+  "last": "Barrios",
+  "description": "Community Outreach Director",
+  "website": "https://www.kelvinbarrios.com/",
+  "committee name": "Kelvin Barrios for San Diego City Council 2020",
+  "in general": false,
+  "raised vs spent": [
+    {
+      "Raised": "96828",
+      "Spent": "112457",
+      "Donors": "148"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "CEO",
+        "7600",
+        "8"
+      ],
+      "industry 2": [
+        "President",
+        "7400",
+        "8"
+      ],
+      "industry 3": [
+        "Retired",
+        "6800",
+        "7"
+      ],
+      "industry 4": [
+        "Principal",
+        "6200",
+        "6"
+      ],
+      "industry 5": [
+        "Real Estate",
+        "4800",
+        "5"
+      ]
+    }
+  ],
+  "support": "0",
+  "oppose": "0"
+}

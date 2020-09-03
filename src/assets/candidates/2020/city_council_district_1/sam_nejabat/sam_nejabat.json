@@ -1,0 +1,47 @@
+{
+  "candidate name": "Sam Nejabat",
+  "first": "Sam",
+  "last": "Nejabat",
+  "description": "Small Business Owner",
+  "website": "samnejabat.com\r",
+  "committee name": "Sam Nejabat for City Council 2020",
+  "in general": false,
+  "raised vs spent": [
+    {
+      "Raised": "336803",
+      "Spent": "505595",
+      "Donors": "35"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "Chief Executive Officer",
+        "320903",
+        "95"
+      ],
+      "industry 2": [
+        "Not Employed",
+        "5650",
+        "2"
+      ],
+      "industry 3": [
+        "Physician",
+        "1950",
+        "1"
+      ],
+      "industry 4": [
+        "Owner",
+        "1200",
+        "0"
+      ],
+      "industry 5": [
+        "Real Estate",
+        "1200",
+        "0"
+      ]
+    }
+  ],
+  "support": "0",
+  "oppose": "0"
+}

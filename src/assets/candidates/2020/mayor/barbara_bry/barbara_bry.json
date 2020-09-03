@@ -1,41 +1,41 @@
 {
   "candidate name": "Barbara Bry",
-  "description": "Councilmember/Businesswoman\r",
+  "description": "Councilmember/Businesswoman",
   "website": "https://barbarabry.com",
   "raised vs spent": [
     {
-      "Raised": "$0",
-      "Spent": "$0",
-      "Donors": "0",
+      "Raised": "1517859",
+      "Spent": "1921696",
+      "Donors": "1806",
       "Average Donor": "$0"
     }
   ],
   "by industry": [
     {
       "industry 1": [
-        "name",
-        "$0",
-        "0%"
+        "Retired",
+        "363157",
+        "24"
       ],
       "industry 2": [
-        "name",
-        "$0",
-        "0%"
+        "Councilmember",
+        "120000",
+        "8"
       ],
       "industry 3": [
-        "name",
-        "$0",
-        "0%"
+        "Attorney",
+        "98208",
+        "6"
       ],
       "industry 4": [
-        "name",
-        "$0",
-        "0%"
+        "Chief Executive Officer",
+        "83231",
+        "5"
       ],
       "industry 5": [
-        "name",
-        "$0",
-        "0%"
+        "Not Employed",
+        "68195",
+        "4"
       ]
     }
   ],
@@ -45,10 +45,10 @@
       "out": "$0"
     }
   ],
-  "oppose": "$0",
-  "support": "$0",
+  "oppose": "0",
+  "support": "153675",
   "committee name": "Barbara Bry for San Diego Mayor 2020",
   "first": "Barbara",
   "last": "Bry",
-  "in general": true
+  "in general": false
 }

@@ -1,0 +1,47 @@
+{
+  "candidate name": "Issac Wang",
+  "first": "Issac",
+  "last": "Wang",
+  "description": "Technology Entrepreneur/ Naval Reservist",
+  "website": "https://www.isaac.vote/",
+  "committee name": "Isaac Wang for City Council District 5 2020",
+  "in general": false,
+  "raised vs spent": [
+    {
+      "Raised": "38880",
+      "Spent": "58210",
+      "Donors": "43"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "Management Consultant",
+        "27122",
+        "70"
+      ],
+      "industry 2": [
+        "Not Employed",
+        "3800",
+        "10"
+      ],
+      "industry 3": [
+        "Retired",
+        "1413",
+        "4"
+      ],
+      "industry 4": [
+        "Physician",
+        "1000",
+        "3"
+      ],
+      "industry 5": [
+        "President",
+        "750",
+        "2"
+      ]
+    }
+  ],
+  "support": "0",
+  "oppose": "0"
+}
