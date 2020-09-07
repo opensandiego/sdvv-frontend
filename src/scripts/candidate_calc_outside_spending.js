@@ -7,7 +7,7 @@ const parseSync = require('csv-parse/lib/sync');
 const CANDIDATE_INFORMATION_URL = "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0";
 const ASSETS_PATH = '../assets/data';
 const CANDIDATES_PATH = '../assets/candidates';
-const NETFILE_API_CSV_FILENAMES = ['netfile_api_2019.csv', 'netfile_api_2020.csv'];
+const NETFILE_API_CSV_FILENAMES = ['netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv'];
 
 
 /**
@@ -158,10 +158,11 @@ function saveOutsideSpendingToJSON(outsideSpending) {
   
   for (const candidate of outsideSpending) {
 
-    // Replace all spaces in candidate names with underscores '_'
+    // Replace all spaces in candidate name and office with underscores '_'
     const candidatePathName = candidate.candidateName.split(' ').join('_').toLowerCase();
+    const office = candidate.office.split(' ').join('_').toLowerCase();
 
-    const filePath = `${CANDIDATES_PATH}/${candidate.year}/${candidate.office}/${candidatePathName}/${candidatePathName}.json`;
+    const filePath = `${CANDIDATES_PATH}/${candidate.year}/${office}/${candidatePathName}/${candidatePathName}.json`;
 
     let updatedFileData;
     try {
