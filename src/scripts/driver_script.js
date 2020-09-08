@@ -12,11 +12,11 @@ async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
   let fileNamesDownloaded = [];
 
   for await (fileName of fileNames) {
-    const fileExists = await bucket.file(fileName).exists();
+    const fileExists = await bucket.file(`data/${fileName}`).exists();
 
     if (!fileExists[0]) { continue }
 
-    await bucket.file(fileName).download({
+    await bucket.file(`data/${fileName}`).download({
       destination: `${filePath}/${fileName}`
     });
 

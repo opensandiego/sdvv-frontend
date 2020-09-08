@@ -8,6 +8,8 @@ const admin = require('firebase-admin');
  * To download a private key go to the Firebase project setting and 
  * then to the Service accounts tab. Click on 'Generate new private key'
  * Place the downloaded JSON file in the same folder as this file.
+ * You might need to update the require line below to match the
+ * downloaded .json private key file name.
  */
 
 var serviceAccount = require("./san-diego-voters-voice-firebase-adminsdk-b05n3-106714a374.json");
