@@ -1,56 +1,32 @@
-const {execFileSync} = require("child_process");
-const firebase = require('./firebaseStorageAccess.js');
 const fs = require('fs');
+const fetch = require('node-fetch');
+const { execFileSync } = require("child_process");
 
-// IF one of these CSV files fail to download then some of the scripts using them will fail
+// If one of these CSV files fail to download then some of the scripts using them will fail
 const CSV_FILE_NAMES = [ 'netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv' ];
 const ASSETS_PATH = '../assets/data';
 
-
 async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
-  const bucket = firebase.initializeStorage_voters_voice().bucket();
-  let fileNamesDownloaded = [];
+  const encodedPath = 'data%2F';
 
   for await (fileName of fileNames) {
-    const fileExists = await bucket.file(`data/${fileName}`).exists();
+    const firebaseStorageLocation = 
+      `https://firebasestorage.googleapis.com/v0/b/san-diego-voters-voice.appspot.com/o/${encodedPath}${fileName}?alt=media`;
 
-    if (!fileExists[0]) { continue }
+    const fetchResponse = await fetch(firebaseStorageLocation);
+    const body = await fetchResponse.text();
 
-    await bucket.file(`data/${fileName}`).download({
-      destination: `${filePath}/${fileName}`
-    });
+    fs.writeFileSync(`${filePath}/${fileName}`, body);
 
-    console.log(`${fileName} downloaded`)
-
-    fileNamesDownloaded.push(fileName);
-
+    console.log(`${fileName} downloaded to '${filePath}/${fileName}'`);
   }
 
-  return fileNamesDownloaded;
-}
-
-function deleteLocalCSVFiles (fileNames, filePath){
-  
-  fileNames.forEach(fileName => {
-    const path = `${filePath}/${fileName}`;
-
-    try {
-      fs.unlinkSync(path);
-      console.log(`successfully deleted ${path}`);
-    } catch (error) {
-      console.error('there was an error:', error.message);
-    }
-
-  });
 }
 
 (async () => {
     
   try {
-    const downloadedFileNames = await downloadCSVFromFirebaseCloudStorage(CSV_FILE_NAMES, ASSETS_PATH);
-
-    // // This can take about 10 minutes to complete
-    // execFileSync('node', ['download_transactions_to_csv.js']);
+    await downloadCSVFromFirebaseCloudStorage(CSV_FILE_NAMES, ASSETS_PATH);
     
     // Run 'calculation_download_gdrive_info.py' first since it updates/creates the JSON files 
     // and sets committee name to use as key in later scripts.
@@ -63,8 +39,6 @@ function deleteLocalCSVFiles (fileNames, filePath){
     execFileSync('python', ['candidate_calculation_industry.py']);
     
     execFileSync('node', ['candidate_calc_outside_spending.js']);
-
-    deleteLocalCSVFiles(downloadedFileNames, ASSETS_PATH);
 
   } catch(err) {
     console.error(err);
