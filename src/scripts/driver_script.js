@@ -18,7 +18,7 @@ async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
 
     fs.writeFileSync(`${filePath}/${fileName}`, body);
 
-    console.log(`${fileName} downloaded to '${filePath}/${fileName}'`);
+    console.log(`Remote file '${fileName}' downloaded to '${filePath}/${fileName}'`);
   }
 
 }
@@ -39,6 +39,8 @@ async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
     execFileSync('python', ['candidate_calculation_industry.py']);
     
     execFileSync('node', ['candidate_calc_outside_spending.js']);
+
+    console.log('Update of Candidate JSON files complete.')
 
   } catch(err) {
     console.error(err);
