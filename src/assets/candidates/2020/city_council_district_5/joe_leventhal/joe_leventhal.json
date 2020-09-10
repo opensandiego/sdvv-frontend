@@ -1,0 +1,47 @@
+{
+  "candidate name": "Joe Leventhal",
+  "first": "Joe",
+  "last": "Leventhal",
+  "description": "Attorney/Small Business Owner",
+  "website": "https://joeforsandiego.com/",
+  "committee name": "Leventhal for Council 2020",
+  "in general": true,
+  "raised vs spent": [
+    {
+      "Raised": "338554",
+      "Spent": "254234",
+      "Donors": "712"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "Attorney",
+        "41570",
+        "12.0"
+      ],
+      "industry 2": [
+        "Retired",
+        "39889",
+        "12.0"
+      ],
+      "industry 3": [
+        "President",
+        "18600",
+        "5.0"
+      ],
+      "industry 4": [
+        "Real Estate",
+        "17336",
+        "5.0"
+      ],
+      "industry 5": [
+        "CEO",
+        "12850",
+        "4.0"
+      ]
+    }
+  ],
+  "support": "0",
+  "oppose": "0"
+}

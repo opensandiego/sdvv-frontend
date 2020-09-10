@@ -1,9 +1,11 @@
 {
   "candidate name": "Rich Riel",
-  "description": "",
-  "website": " https://richriel.com/",
-  "committee name": "Riel for mayor 2020",
+  "description": "Computer Tech",
+  "website": "https://richriel.com/",
+  "committee name": "Riel for Mayor 2020",
   "first": "Rich",
   "last": "Riel",
-  "in general": false
+  "in general": false,
+  "support": "0",
+  "oppose": "0"
 }
