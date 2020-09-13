@@ -10,6 +10,7 @@ import { MatDrawer } from '@angular/material';
 export class HomeComponent implements OnInit {
   isExpanded: boolean = false;
   showSubmenu: boolean = false;
+  panelOpenState: boolean = false;
 
   @ViewChild('drawer') sidenav: MatDrawer;
 

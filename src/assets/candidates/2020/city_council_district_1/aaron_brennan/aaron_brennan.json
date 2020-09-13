@@ -1,0 +1,47 @@
+{
+  "candidate name": "Aaron Brennan",
+  "first": "Aaron",
+  "last": "Brennan",
+  "description": "Firefighter/ Naval Reserve Officer",
+  "website": "https://aaronforsandiego.com/events",
+  "committee name": "Aaron Brennan for City Council 2020",
+  "in general": false,
+  "raised vs spent": [
+    {
+      "Raised": "83144",
+      "Spent": "129384",
+      "Donors": "221"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "City Council Candidate",
+        "18685",
+        "22.0"
+      ],
+      "industry 2": [
+        "Retired",
+        "10143",
+        "12.0"
+      ],
+      "industry 3": [
+        "Physician",
+        "8450",
+        "10.0"
+      ],
+      "industry 4": [
+        "Owner",
+        "3053",
+        "4.0"
+      ],
+      "industry 5": [
+        "Consultant",
+        "2740",
+        "3.0"
+      ]
+    }
+  ],
+  "support": "16478",
+  "oppose": "0"
+}
