@@ -98,7 +98,7 @@
   
         <ng-container matColumnDef="amount">
           <th mat-header-cell *matHeaderCellDef>Amount</th>
-          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.amount | currency }}</td>
+          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.amount | currency:'USD':'symbol':'1.0-0' }}</td>
         </ng-container>
   
         <ng-container matColumnDef="percentage">
