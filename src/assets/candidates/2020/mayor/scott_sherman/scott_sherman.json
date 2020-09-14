@@ -8,31 +8,31 @@
   "in general": false,
   "raised vs spent": [
     {
-      "Raised": "344042",
-      "Spent": "557465",
-      "Donors": "1401"
+      "Raised": "364504",
+      "Spent": "579417",
+      "Donors": "1430"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Retired",
-        "95449",
+        "102244",
         "28.0"
       ],
       "industry 2": [
-        "CEO",
-        "14415",
-        "4.0"
+        "Real Estate",
+        "16900",
+        "5.0"
       ],
       "industry 3": [
-        "Real Estate",
-        "14400",
+        "CEO",
+        "15815",
         "4.0"
       ],
       "industry 4": [
         "Owner",
-        "14133",
+        "14633",
         "4.0"
       ],
       "industry 5": [
