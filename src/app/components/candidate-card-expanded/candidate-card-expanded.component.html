@@ -103,7 +103,7 @@
   
         <ng-container matColumnDef="percentage">
           <th mat-header-cell *matHeaderCellDef>Percentage</th>
-          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.percentage | percent }}</td>
+          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.percentage | number:'1.0-0' }}%</td>
         </ng-container>
   
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
