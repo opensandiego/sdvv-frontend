@@ -1,41 +1,41 @@
 {
   "candidate name": "Todd Gloria",
-  "description": "",
+  "description": "Assemblymember",
   "website": "https://toddgloria.com/",
   "raised vs spent": [
     {
-      "Raised": "$0",
-      "Spent": "$0",
-      "Donors": "0",
+      "Raised": "1500495",
+      "Spent": "1459610",
+      "Donors": "2378",
       "Average Donor": "$0"
     }
   ],
   "by industry": [
     {
       "industry 1": [
-        "name",
-        "$0",
-        "0%"
+        "Retired",
+        "205499",
+        "14.0"
       ],
       "industry 2": [
-        "name",
-        "$0",
-        "0%"
+        "Attorney",
+        "121541",
+        "8.0"
       ],
       "industry 3": [
-        "name",
-        "$0",
-        "0%"
+        "President",
+        "71915",
+        "5.0"
       ],
       "industry 4": [
-        "name",
-        "$0",
-        "0%"
+        "CEO",
+        "69885",
+        "5.0"
       ],
       "industry 5": [
-        "name",
-        "$0",
-        "0%"
+        "Homemaker",
+        "44118",
+        "3.0"
       ]
     }
   ],
@@ -45,8 +45,8 @@
       "out": "$0"
     }
   ],
-  "oppose": "$0",
-  "support": "$0",
+  "oppose": "0",
+  "support": "510771",
   "committee name": "Todd Gloria for Mayor 2020",
   "first": "Todd",
   "last": "Gloria",
