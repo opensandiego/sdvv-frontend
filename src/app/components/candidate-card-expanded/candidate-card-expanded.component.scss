@@ -55,7 +55,12 @@
             overflow: hidden;
 
             img {
-                object-fit: contain;
+  
+                object-fit: cover;
+                object-position: center top;
+                width: 100%;
+                height: auto;
+                background-color: #ECEFF2;
             }
         }
     }

@@ -23,6 +23,7 @@ export class CandidateCardExpandedComponent implements OnInit {
   @Input() candidateImg: string;
   @Output() isExpanded = new EventEmitter<boolean>();
 
+
   // Industry Table
   displayedColumns: string[];
   dataSource = new MatTableDataSource();
