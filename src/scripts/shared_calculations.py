@@ -30,6 +30,8 @@ def read_csv_df(paths, types, *columns):
     against `TYPE_COLUMN`. `TYPE_COLUMN` isn't included in the returned
     dataframe.
 
+    To read into a series, see `read_csv_series`
+
     :param paths: Iterable of file objects or paths.
 
     :param types: Container of values that the TYPE_COLUMN of the
@@ -45,6 +47,30 @@ def read_csv_df(paths, types, *columns):
     )
     # String interpolation using @var failed for an unknown reason so it isn't used
     return df.query("{} in {}".format(TYPE_COLUMN, types)).drop(columns=[TYPE_COLUMN])
+
+
+def read_csv_series(paths, types, column):
+    """
+    Read a series' from the specified CSV files with the specified columns and type.
+
+    The series's index column is `CSV_KEY`. The types are filtered
+    against `TYPE_COLUMN`. `TYPE_COLUMN` isn't included in the returned
+    dataframe.
+
+    To read into a dataframe, see `read_csv_df`
+
+    :param paths: Iterable of file objects or paths.
+
+    :param types: Container of values that the TYPE_COLUMN of the
+    dataframe is filtered against.
+
+    :param column: The column to read from the CSV file.
+
+    :returns: A pandas series with the index of `CSV_KEY` and the values
+    of param `column`.
+    """
+    read_df = read_csv_df(paths, types, column)
+    return pd.Series(read_df[column], index=read_df.index)
 
 
 def summed_contributions(paths, types, column):
@@ -98,12 +124,44 @@ def to_raised_json(series, field, directory=DIRECTORY):
 
     :returns: None.
     """
+
+    def process_candidate(candidate_dict):
+        if candidate_dict.get(JSON_KEY) not in series:
+            return None
+        candidate_dict.setdefault("raised vs spent", [{}])
+        candidate_dict["raised vs spent"][0][field] = str(
+            series[candidate_dict[JSON_KEY]]
+        )
+        return candidate_dict
+
+    candidate_files_map(process_candidate, directory=directory)
+
+
+def candidate_files_map(function, directory=DIRECTORY):
+    """
+    Maps a function over all the candidate JSON files and writes the returned value
+
+    This takes a param `function` and calls that function over the parsed
+    contents of all the candidate JSON files. If the function returns None,
+    the contents of the candidate JSON file is unchanged. Else, the function's
+    return value is written to the candidate JSON file.
+
+    A candidate JSON file is defined as a JSON file in param `directory`
+    and at the top level has a JSON object (dictionary).
+
+    :param function: A function that takes a single dictionary argument and
+    returns a dictionary or None.
+
+    :param directory: String directory that will be searched for candidate JSON files.
+
+    :returns: None.
+    """
     for path in pathlib.Path(directory).rglob("*.json"):
-        with open(path) as f:
-            file = json.load(f)
-        if isinstance(file, dict) and file.get(JSON_KEY) in series:
-            file.setdefault("raised vs spent", [{}])
-            file["raised vs spent"][0][field] = str(series[file[JSON_KEY]])
-            with open(path, "w") as f:
-                json.dump(file, f, indent=2)
-                f.write("\n")
+        with open(path, "r+") as file:
+            candidate_dict = json.load(file)
+            if isinstance(candidate_dict, dict):
+                new_json_dict = function(candidate_dict)
+                if new_json_dict is not None:
+                    file.seek(0)
+                    json.dump(new_json_dict, file, indent=2)
+                    file.write("\n")
