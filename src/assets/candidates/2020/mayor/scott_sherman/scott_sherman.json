@@ -1,0 +1,47 @@
+{
+  "candidate name": "Scott Sherman",
+  "first": "Scott",
+  "last": "Sherman",
+  "description": "City Councilman",
+  "website": "https://www.sherman2020.com/",
+  "committee name": "Sherman for Mayor 2020",
+  "in general": false,
+  "raised vs spent": [
+    {
+      "Raised": "364504",
+      "Spent": "579417",
+      "Donors": "1430"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "Retired",
+        "102244",
+        "28.0"
+      ],
+      "industry 2": [
+        "Real Estate",
+        "16900",
+        "5.0"
+      ],
+      "industry 3": [
+        "CEO",
+        "15815",
+        "4.0"
+      ],
+      "industry 4": [
+        "Owner",
+        "14633",
+        "4.0"
+      ],
+      "industry 5": [
+        "Homemaker",
+        "11623",
+        "3.0"
+      ]
+    }
+  ],
+  "support": "0",
+  "oppose": "17706"
+}
