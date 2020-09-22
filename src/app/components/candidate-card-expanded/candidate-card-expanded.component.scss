@@ -104,6 +104,10 @@
             font-size: 13px;
             color: $vvgrey;
         }
+        
+        .mat-cell:nth-last-child(2) {
+            text-align: right;
+        }
 
         .mat-cell:last-child {
             font-size: 20px;
