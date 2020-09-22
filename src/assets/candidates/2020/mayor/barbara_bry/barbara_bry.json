@@ -1,6 +1,6 @@
 {
   "candidate name": "Barbara Bry",
-  "description": "Councilmember/Businesswoman",
+  "description": "Councilmember/ Businesswoman",
   "website": "https://barbarabry.com",
   "raised vs spent": [
     {
@@ -15,27 +15,27 @@
       "industry 1": [
         "Retired",
         "363157",
-        "24.0"
+        "24"
       ],
       "industry 2": [
         "Councilmember",
         "120000",
-        "8.0"
+        "8"
       ],
       "industry 3": [
         "Attorney",
         "98208",
-        "6.0"
+        "6"
       ],
       "industry 4": [
         "Chief Executive Officer",
         "83231",
-        "5.0"
+        "5"
       ],
       "industry 5": [
         "Not Employed",
         "68195",
-        "4.0"
+        "4"
       ]
     }
   ],

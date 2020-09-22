@@ -15,27 +15,27 @@
       "industry 1": [
         "None",
         "1970",
-        "24.0"
+        "24"
       ],
       "industry 2": [
         "Owner",
         "1000",
-        "12.0"
+        "12"
       ],
       "industry 3": [
         "Not Employed",
         "650",
-        "8.0"
+        "8"
       ],
       "industry 4": [
         "Teacher",
         "600",
-        "7.0"
+        "7"
       ],
       "industry 5": [
         "Insurance Agent",
         "589",
-        "7.0"
+        "7"
       ]
     }
   ],
