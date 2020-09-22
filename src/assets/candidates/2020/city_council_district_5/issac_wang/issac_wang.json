@@ -18,27 +18,27 @@
       "industry 1": [
         "Management Consultant",
         "27122",
-        "70.0"
+        "70"
       ],
       "industry 2": [
         "Not Employed",
         "3800",
-        "10.0"
+        "10"
       ],
       "industry 3": [
         "Retired",
         "1413",
-        "4.0"
+        "4"
       ],
       "industry 4": [
         "Physician",
         "1000",
-        "3.0"
+        "3"
       ],
       "industry 5": [
         "President",
         "750",
-        "2.0"
+        "2"
       ]
     }
   ],

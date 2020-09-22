@@ -15,27 +15,27 @@
       "industry 1": [
         "Retired",
         "205499",
-        "14.0"
+        "14"
       ],
       "industry 2": [
         "Attorney",
         "121541",
-        "8.0"
+        "8"
       ],
       "industry 3": [
         "President",
         "71915",
-        "5.0"
+        "5"
       ],
       "industry 4": [
         "CEO",
         "69885",
-        "5.0"
+        "5"
       ],
       "industry 5": [
         "Homemaker",
         "44118",
-        "3.0"
+        "3"
       ]
     }
   ],
@@ -46,7 +46,7 @@
     }
   ],
   "oppose": "0",
-  "support": "510771",
+  "support": "519721",
   "committee name": "Todd Gloria for Mayor 2020",
   "first": "Todd",
   "last": "Gloria",
