@@ -18,7 +18,7 @@ async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
 
     fs.writeFileSync(`${filePath}/${fileName}`, body);
 
-    console.log(`Remote file '${fileName}' downloaded to '${filePath}/${fileName}'`);
+    console.log(`Downloading remote file '${fileName}' from Firebase Storage \n To '${filePath}/${fileName}'`);
   }
 
 }
@@ -52,6 +52,8 @@ function getPythonCommand() {
     return; 
   }
 
+  console.log('Updating Candidate JSON files...');
+
   /**
    * 'calculation_download_gdrive_info.py' needs to be first since it updates/creates 
    * the JSON files and sets committee name to use as key in later scripts.
@@ -77,6 +79,6 @@ function getPythonCommand() {
     execSync(`node ${scriptFile}`, { cwd: __dirname });
   });
 
-  console.log('Update of Candidate JSON files complete.');
+  console.log('Update of Candidate JSON files complete!');
 
 })();
