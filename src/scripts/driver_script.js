@@ -7,7 +7,7 @@ const CSV_FILE_NAMES = [ 'netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfil
 const ASSETS_PATH = '../assets/data';
 
 async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
-  const encodedPath = 'data%2F';
+  const encodedPath = encodeURIComponent('data/');
 
   for await (fileName of fileNames) {
     const firebaseStorageLocation = 
@@ -61,13 +61,21 @@ function getPythonCommand() {
     'candidate_calculation_amount_raised.py', 
     'candidate_calculation_amount_spent.py', 
     'candidate_calculation_donor.py', 
-    'candidate_calculation_industry.py' ];
+    'candidate_calculation_industry.py',
+  ];
 
   pythonScripts.forEach( scriptFile => {
     execSync(`${pythonCommand} ${scriptFile}`);
   });
 
-  execSync(`node candidate_calc_outside_spending.js`);
+  
+  const nodeScripts = [
+    'candidate_calc_outside_spending.js',
+  ];
+
+  nodeScripts.forEach( scriptFile => {
+    execSync(`node ${scriptFile}`);
+  });
 
   console.log('Update of Candidate JSON files complete.');
 
