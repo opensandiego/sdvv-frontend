@@ -4,7 +4,7 @@ const { execSync } = require("child_process");
 
 // If one of these CSV files fails to download then some of the scripts using them will fail
 const CSV_FILE_NAMES = [ 'netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv' ];
-const ASSETS_PATH = '../assets/data';
+const ASSETS_PATH = `${__dirname}/../assets/data`;
 
 async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
   const encodedPath = encodeURIComponent('data/');
@@ -65,16 +65,16 @@ function getPythonCommand() {
   ];
 
   pythonScripts.forEach( scriptFile => {
-    execSync(`${pythonCommand} ${scriptFile}`);
+    execSync(`${pythonCommand} ${scriptFile}`, { cwd: __dirname });
   });
 
-  
+
   const nodeScripts = [
     'candidate_calc_outside_spending.js',
   ];
 
   nodeScripts.forEach( scriptFile => {
-    execSync(`node ${scriptFile}`);
+    execSync(`node ${scriptFile}`, { cwd: __dirname });
   });
 
   console.log('Update of Candidate JSON files complete.');
