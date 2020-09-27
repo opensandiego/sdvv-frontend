@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CandidateTree } from '../candidate';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +9,16 @@ export class CandidateService {
 
   constructor(public http: HttpClient) { }
 
+  getAll() {
+    return this.http.get("assets/candidates/2020/candidates.json").toPromise();
+  }
+
   // Mayoral Candidates
-  getBarbaraBryData() {
-    return this.http.get(`assets/candidates/2020/mayor/barbara_bry/barbara_bry.json`);
-  }
-
-  getTashaWilliamsonData() {
-    return this.http.get('assets/candidates/2020/mayor/tasha_williamson/tasha_williamson.json');
-  }
-
-  getToddGloriaData() {
-    return this.http.get('assets/candidates/2020/mayor/todd_gloria/todd_gloria.json');
+  getMayors() {
+    return this.getAll().then(
+      (all: Record<string, CandidateTree>) => Promise.all(
+        Object.values(all["mayor"].candidates).map(url => this.http.get(url).toPromise())
+      )
+    )
   }
 }

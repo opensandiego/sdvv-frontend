@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material';
+import { CandidateService } from '../../services/candidate.service';
+import { Candidate, CandidateTree } from '../../candidate';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +14,11 @@ export class HomeComponent implements OnInit {
   showSubmenu: boolean = false;
   panelOpenState: boolean = false;
 
+  candidates: Record<string, CandidateTree>;
+
   @ViewChild('drawer') sidenav: MatDrawer;
 
-  constructor() { }
+  constructor(private candidateService: CandidateService) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event): void {
@@ -28,6 +32,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.candidateService.getAll().then(
+      (all: Record<string, CandidateTree>) => {
+        this.candidates = all;
+      }
+    )
   }
 
 }

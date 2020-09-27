@@ -1,0 +1,18 @@
+{
+    "mayor": {
+        "title": "Mayor",
+        "candidates": {
+            "Barbara Bry": "assets/candidates/2020/mayor/barbara_bry/barbara_bry.json",
+            "Tasha Williamson": "assets/candidates/2020/mayor/tasha_williamson/tasha_williamson.json",
+            "Todd Gloria": "assets/candidates/2020/mayor/todd_gloria/todd_gloria.json"
+        }
+    },
+    "city-attorney": {
+        "title": "City Attorney",
+        "candidates": {
+            "Cory Briggs": "assets/candidates/2020/city_attorney/cory_briggs/cory_briggs.json",
+            "Marra W. Elliot": "assets/candidates/2020/city_attorney/marra_w._elliot/marra_w._elliot.json",
+            "Pete Mesich": "assets/candidates/2020/city_attorney/pete_mesich/pete_mesich.json"
+        }
+    }
+}

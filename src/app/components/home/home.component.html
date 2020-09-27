@@ -10,33 +10,18 @@
   <mat-drawer #drawer mode="side" align="start" disableClose="false" opened>
     <mat-nav-list [disableRipple]="true">
     <mat-accordion displayMode="flat">
-      <mat-expansion-panel hideToggle="true">
-      </mat-expansion-panel>
-      <mat-expansion-panel hideToggle="true">
-        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/mayor">
-          <mat-panel-title>
-            Mayor
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <ul>
-          <li><a>John Jones</a></li>
-          <li><a>John Jones</a></li>
-          <li><a>John Jones</a></li>
-        </ul>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel hideToggle="true">
-        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/city-attorney">
-          <mat-panel-title>
-            City Attorney
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <ul>
-          <li><a>John Jones</a></li>
-          <li><a>John Jones</a></li>
-          <li><a>John Jones</a></li>
-        </ul>
-      </mat-expansion-panel>
+      <div *ngFor="let candidateType of candidates | keyvalue">
+        <mat-expansion-panel hideToggle="true">
+          <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/{candidateType.key}">
+            <mat-panel-title>
+              {{candidateType.value.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue">
+            <li><a>{{candidate.key}}</a></li>
+          </ul>
+        </mat-expansion-panel>
+      </div>
     
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true">
         <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/city-council">
