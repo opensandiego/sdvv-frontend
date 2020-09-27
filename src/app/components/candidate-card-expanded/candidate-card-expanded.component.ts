@@ -108,7 +108,11 @@ export class CandidateCardExpandedComponent {
 
   // In v. Out District
   doughnutChartType: ChartType = 'doughnut';
-  doughnutChartData: number[] = [500000, 10000];
+  doughnutChartData: ChartDataSets[] = [
+    {
+      data: [5000, 1200],
+    }
+  ];
 
   doughnutChartColors: Color[] = [
     { backgroundColor: ['#3392ff', '#bfd63b'] },
@@ -295,8 +299,10 @@ export class CandidateCardExpandedComponent {
 
     // In V. Out District
     this.doughnutChartData = [
-      this.currencyToNumber(c['in vs out district'][0].in),
-      this.currencyToNumber(c['in vs out district'][0].out)
+      {data: [
+        this.currencyToNumber(c['in vs out district'][0].in),
+        this.currencyToNumber(c['in vs out district'][0].out)
+      ]}
     ];
 
     // Oppose v. Support
