@@ -1,5 +1,5 @@
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Candidate } from '../../candidate';
 import { Color } from 'ng2-charts';
@@ -18,11 +18,11 @@ const placeholder_data = [
   templateUrl: './candidate-card-expanded.component.html',
   styleUrls: ['./candidate-card-expanded.component.scss']
 })
-export class CandidateCardExpandedComponent implements OnInit {
-  @Input() candidate: Candidate;
+export class CandidateCardExpandedComponent {
   @Input() candidateImg: string;
   @Output() isExpanded = new EventEmitter<boolean>();
 
+  private _c: Candidate;
 
   // Industry Table
   displayedColumns: string[];
@@ -138,7 +138,7 @@ export class CandidateCardExpandedComponent implements OnInit {
         },
 
         formatter: (val, ctx) => {
-          return ctx.dataIndex === 0 ? `In\n$${this.kNumberFormatter(val)}` : `Out\n$${this.kNumberFormatter(val)}`;
+          return ctx.dataIndex === 0 ? `In\n$${this.mNumberFormatter(val)}` : `Out\n$${this.mNumberFormatter(val)}`;
         },
       },
     },
@@ -161,7 +161,7 @@ export class CandidateCardExpandedComponent implements OnInit {
           weight: 'bold',
         },
 
-        formatter: (val) => `Oppose\n$${this.kNumberFormatter(val)}`,
+        formatter: (val) => `Oppose\n$${this.mNumberFormatter(val)}`,
       },
     },
     {
@@ -178,7 +178,7 @@ export class CandidateCardExpandedComponent implements OnInit {
           weight: 'bold',
         },
         
-        formatter: (val) => `Support\n$${this.kNumberFormatter(val)}`,
+        formatter: (val) => `Support\n$${this.mNumberFormatter(val)}`,
       },
     },
   ];
@@ -226,10 +226,16 @@ export class CandidateCardExpandedComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.setChartsData();
+  get candidate() {
+    return this._c;
+  }
+
+  @Input() set candidate(c: Candidate) {
+    this._c = c;
+    console.debug(c);
+    this.setChartsData(c);
     this.setDisplayedColumns();
-    this.setTableData();
+    this.setTableData(c);
   }
 
   // Setting By Industry Table
@@ -242,37 +248,37 @@ export class CandidateCardExpandedComponent implements OnInit {
     ];
   }
 
-  setTableData() {
+  setTableData(c: Candidate) {
     const topFiveIndustries = [
       {
         colorCode: '#007431',
-        industry: this.candidate['by industry'][0]['industry 1'][0],
-        amount: Number(this.candidate['by industry'][0]['industry 1'][1]),
-        percentage: Number(this.candidate['by industry'][0]['industry 1'][2]),
+        industry: c['by industry'][0]['industry 1'][0],
+        amount: Number(c['by industry'][0]['industry 1'][1]),
+        percentage: Number(c['by industry'][0]['industry 1'][2]),
       },
       {
         colorCode: '#00903d',
-        industry: this.candidate['by industry'][0]['industry 2'][0],
-        amount: Number(this.candidate['by industry'][0]['industry 2'][1]),
-        percentage: Number(this.candidate['by industry'][0]['industry 2'][2]),
+        industry: c['by industry'][0]['industry 2'][0],
+        amount: Number(c['by industry'][0]['industry 2'][1]),
+        percentage: Number(c['by industry'][0]['industry 2'][2]),
       },
       {
         colorCode: '#00af4a',
-        industry: this.candidate['by industry'][0]['industry 3'][0],
-        amount: Number(this.candidate['by industry'][0]['industry 3'][1]),
-        percentage: Number(this.candidate['by industry'][0]['industry 3'][2]),
+        industry: c['by industry'][0]['industry 3'][0],
+        amount: Number(c['by industry'][0]['industry 3'][1]),
+        percentage: Number(c['by industry'][0]['industry 3'][2]),
       },
       {
         colorCode: '#00d359',
-        industry: this.candidate['by industry'][0]['industry 4'][0],
-        amount: Number(this.candidate['by industry'][0]['industry 4'][1]),
-        percentage: Number(this.candidate['by industry'][0]['industry 4'][2]),
+        industry: c['by industry'][0]['industry 4'][0],
+        amount: Number(c['by industry'][0]['industry 4'][1]),
+        percentage: Number(c['by industry'][0]['industry 4'][2]),
       },
       {
         colorCode: '#00fc6a',
-        industry: this.candidate['by industry'][0]['industry 5'][0],
-        amount: Number(this.candidate['by industry'][0]['industry 5'][1]),
-        percentage: Number(this.candidate['by industry'][0]['industry 5'][2]),
+        industry: c['by industry'][0]['industry 5'][0],
+        amount: Number(c['by industry'][0]['industry 5'][1]),
+        percentage: Number(c['by industry'][0]['industry 5'][2]),
       },
     ];
 
@@ -280,18 +286,24 @@ export class CandidateCardExpandedComponent implements OnInit {
   }
 
   // Setting Chart Data
-  setChartsData() {
+  setChartsData(c: Candidate) {
     // Raised v. Spent
-    this.barChartData[0].data[0] = this.currencyToNumber(this.candidate['raised vs spent'][0].Raised);
-    this.barChartData[1].data[0] = this.currencyToNumber(this.candidate['raised vs spent'][0].Spent);
+    this.barChartData = [
+      {...this.barChartData[0], data: [this.currencyToNumber(c['raised vs spent'][0].Raised)]},
+      {...this.barChartData[1], data: [this.currencyToNumber(c['raised vs spent'][0].Spent)]}
+    ];
 
     // In V. Out District
-    this.doughnutChartData[0] = this.currencyToNumber(this.candidate['in vs out district'][0].in);
-    this.doughnutChartData[1] = this.currencyToNumber(this.candidate['in vs out district'][0].out);
+    this.doughnutChartData = [
+      this.currencyToNumber(c['in vs out district'][0].in),
+      this.currencyToNumber(c['in vs out district'][0].out)
+    ];
 
     // Oppose v. Support
-    this.stackedHorizontalBarChartData[0].data[0] = this.currencyToNumber(this.candidate['oppose']);
-    this.stackedHorizontalBarChartData[1].data[0] = this.currencyToNumber(this.candidate['support']);
+    this.stackedHorizontalBarChartData = [
+      {...this.stackedHorizontalBarChartData[0], data: [this.currencyToNumber(c['oppose'])]},
+      {...this.stackedHorizontalBarChartData[1], data: [this.currencyToNumber(c['support'])]}
+    ];
   }
 
   // Convert Currency String to Number
@@ -300,8 +312,8 @@ export class CandidateCardExpandedComponent implements OnInit {
   }
 
   // Adding K At The End of Values Over 9999 (i.e. 10K, 100K)
-  kNumberFormatter(num: number) {
-    return Math.abs(num) > 9999 ? Math.sign(num)*((Math.abs(num)/1000)) + 'K' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
+  mNumberFormatter(num: number) {
+    return Math.abs(num) > 1e6 ? Math.sign(num)*((Math.abs(num)/1e6)) + 'M' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
   }
 
   // Adding Comma Separators for Values Over 999
