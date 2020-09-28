@@ -12,7 +12,7 @@
   
       <div class="website-link">
         <mat-icon>link</mat-icon>
-        <a href="">Website</a>
+        <a href="{{ candidate['website'] }}">Website</a>
       </div>
   
       <div>
@@ -98,12 +98,12 @@
   
         <ng-container matColumnDef="amount">
           <th mat-header-cell *matHeaderCellDef>Amount</th>
-          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.amount | currency }}</td>
+          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.amount | currency:'USD':'symbol':'1.0-0' }}</td>
         </ng-container>
   
         <ng-container matColumnDef="percentage">
           <th mat-header-cell *matHeaderCellDef>Percentage</th>
-          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.percentage | percent }}</td>
+          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.percentage | number:'1.0-0' }}%</td>
         </ng-container>
   
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
@@ -132,7 +132,7 @@
         width="260"
         height="260"
         [chartType]="doughnutChartType"
-        [data]="doughnutChartData"
+        [datasets]="doughnutChartData"
         [colors]="doughnutChartColors"
         [options]="doughnutChartOptions"
         [plugins]="chartPlugins"

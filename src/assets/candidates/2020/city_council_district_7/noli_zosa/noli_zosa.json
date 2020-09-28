@@ -8,37 +8,37 @@
   "in general": true,
   "raised vs spent": [
     {
-      "Raised": "325733",
-      "Spent": "324588",
-      "Donors": "670"
+      "Raised": "368993",
+      "Spent": "373990",
+      "Donors": "746"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Retired",
-        "52283",
-        "16.0"
+        "66618",
+        "18"
       ],
       "industry 2": [
         "President",
-        "31825",
-        "10.0"
+        "34275",
+        "9"
       ],
       "industry 3": [
         "CEO",
-        "16380",
-        "5.0"
+        "18930",
+        "5"
       ],
       "industry 4": [
         "Attorney",
-        "13275",
-        "4.0"
+        "15665",
+        "4"
       ],
       "industry 5": [
         "Homemaker",
-        "13260",
-        "4.0"
+        "13860",
+        "4"
       ]
     }
   ],

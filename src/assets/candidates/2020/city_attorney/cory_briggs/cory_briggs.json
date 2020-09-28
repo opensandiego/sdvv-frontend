@@ -2,43 +2,43 @@
   "candidate name": "Cory Briggs",
   "first": "Cory",
   "last": "Briggs",
-  "description": "Attorney/Taxpayer Advocate\r",
+  "description": "Attorney/ Taxpayer Advocate\n",
   "website": "https://corybriggs.com/",
   "committee name": "Cory Briggs for City Attorney 2020",
   "in general": true,
   "raised vs spent": [
     {
-      "Raised": "72561",
-      "Spent": "226507",
-      "Donors": "106"
+      "Raised": "114041",
+      "Spent": "272376",
+      "Donors": "146"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Attorney",
-        "38635",
-        "53.0"
+        "63185",
+        "55"
       ],
       "industry 2": [
         "Retired",
-        "15632",
-        "22.0"
+        "22012",
+        "19"
       ],
       "industry 3": [
         "CEO",
-        "1500",
-        "2.0"
+        "3450",
+        "3"
       ],
       "industry 4": [
-        "Accountant",
-        "1150",
-        "2.0"
+        "Community Organizer",
+        "1650",
+        "1"
       ],
       "industry 5": [
-        "Consumer Advocate",
-        "1150",
-        "2.0"
+        "Executive Director",
+        "1207",
+        "1"
       ]
     }
   ],
