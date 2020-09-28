@@ -27,7 +27,7 @@ export class MayorComponent implements OnInit {
       mayors => {
         this.candidates = mayors;
       }
-    )
+    );
   }
 
   getCandidate(candidate: Candidate) {

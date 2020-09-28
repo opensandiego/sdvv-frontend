@@ -1,3 +1,11 @@
-<p>
-  council-district-one works!
-</p>
+<div class="candidate-cards p-grid p-justify-center p-nogutter">
+
+  <!-- Expanded Candidate Card -->
+  <app-candidate-card-expanded class="p-col-12" *ngIf="isExpanded" [candidate]="candidate" [candidateImg]="candidateImg" (isExpanded)="onClose($event)"></app-candidate-card-expanded>
+
+  <!-- Primary Candidate Card -->
+  <div class="p-col-12 p-lg-2 p-md-4" *ngFor="let candidate of candidates; let i = index">
+    <app-candidate-card *ngIf="candidate" [candidate]="candidate" [candidateImg]="candidateImages[i]" (emitCandidateData)="getCandidate($event)" (emitCandidateImage)="getCandidateImg($event)"></app-candidate-card>
+  </div>
+
+</div>
