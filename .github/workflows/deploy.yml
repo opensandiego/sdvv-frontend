@@ -1,4 +1,4 @@
-name: Firebase Deployment
+name: Firebase Deployment to dev
 on: 
   push:
     branches: [ github-actions ]
