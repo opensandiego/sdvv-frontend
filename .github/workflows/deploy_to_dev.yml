@@ -1,4 +1,4 @@
-name: Firebase Deployment to dev
+name: Firebase Deployment to development site 
 on: 
   push:
     branches: [ dev ]
