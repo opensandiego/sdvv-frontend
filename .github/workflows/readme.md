@@ -1,1 +1,3 @@
-![Firebase Deployment to dev](https://github.com/opensandiego/sdvv-frontend/workflows/Firebase%20Deployment%20to%20dev/badge.svg)
+
+* [Production website](https://san-diego-voters-voice.web.app/)
+* [Development website](https://dev-sdvotersvoice.web.app)
