@@ -1,7 +1,7 @@
 name: Firebase Deployment to dev
 on: 
   push:
-    branches: [ github-actions ]
+    branches: [ dev ]
 
 jobs:
   deploy: 
