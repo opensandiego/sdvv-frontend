@@ -10,18 +10,20 @@
   <mat-drawer #drawer mode="side" align="start" disableClose="false" opened>
     <mat-nav-list [disableRipple]="true">
     <mat-accordion displayMode="flat">
-      <div *ngFor="let candidateType of candidates | keyvalue">
-        <mat-expansion-panel hideToggle="true">
-          <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/{candidateType.key}">
-            <mat-panel-title>
-              {{candidateType.value.title}}
-            </mat-panel-title>
-          </mat-expansion-panel-header>
+      <mat-expansion-panel hideToggle="true">
+        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/mayor">
+          <mat-panel-title>
+              Mayor
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let candidateType of candidates | keyvalue">
           <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue">
-            <li><a>{{candidate.key}}</a></li>
+            <li *ngIf="candidateType.key === 'mayor'">
+              <a>{{candidate.key}}</a>
+            </li>
           </ul>
-        </mat-expansion-panel>
-      </div>
+        </ng-container>
+      </mat-expansion-panel>
     
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true">
         <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link">

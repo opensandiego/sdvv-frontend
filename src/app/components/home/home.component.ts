@@ -39,4 +39,6 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  log(val) {console.log(val)}
+
 }

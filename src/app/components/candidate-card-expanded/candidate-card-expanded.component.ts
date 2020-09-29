@@ -298,12 +298,14 @@ export class CandidateCardExpandedComponent {
     ];
 
     // In V. Out District
-    this.doughnutChartData = [
-      {data: [
-        this.currencyToNumber(c['in vs out district'][0].in),
-        this.currencyToNumber(c['in vs out district'][0].out)
-      ]}
-    ];
+    if (c['in vs out district']) {
+      this.doughnutChartData = [
+        {data: [
+          this.currencyToNumber(c['in vs out district'][0].in),
+          this.currencyToNumber(c['in vs out district'][0].out)
+        ]}
+      ];
+    }
 
     // Oppose v. Support
     this.stackedHorizontalBarChartData = [

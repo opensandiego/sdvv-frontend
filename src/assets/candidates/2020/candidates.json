@@ -18,13 +18,7 @@
     "city-council-district-1": {
         "title": "City Council - District One",
         "candidates": {
-            "Aaron Brennan": "assets/candidates/2020/city_council_district_1/aaron_brennan/aaron_brennan.json",
-            "Harid Puentes": "assets/candidates/2020/city_council_district_1/harid_puentes/harid_puentes.json",
-            "James P. Rudolph": "assets/candidates/2020/city_council_district_1/james_p._rudolph/james_p._rudolph.json",
             "Joe Lacava": "assets/candidates/2020/city_council_district_1/joe_lacava/joe_lacava.json",
-            "Lijun 'Lily' Zhou": "assets/candidates/2020/city_council_district_1/lijun_(lily)_zhou/lijun_(lily)_zhou.json",
-            "Louis Rodolico": "assets/candidates/2020/city_council_district_1/louis_rodolico/louis_rodolico.json",
-            "Sam Nejabat": "assets/candidates/2020/city_council_district_1/sam_nejabat/sam_nejabat.json",
             "Will Moore": "assets/candidates/2020/city_council_district_1/will_moore/will_moore.json"
         }
     }
