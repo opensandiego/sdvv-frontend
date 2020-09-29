@@ -3,6 +3,7 @@ import { MatDrawer } from '@angular/material';
 import { CandidateService } from '../../services/candidate.service';
 import { Candidate, CandidateTree } from '../../candidate';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
