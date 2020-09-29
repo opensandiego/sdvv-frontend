@@ -106,6 +106,7 @@
           <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.percentage | number:'1.0-0' }}%</td>
         </ng-container>
   
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
