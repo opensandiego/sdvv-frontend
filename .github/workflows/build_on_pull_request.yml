@@ -6,7 +6,7 @@ on:
 jobs:
   deploy: 
     runs-on: ubuntu-latest
-    name: Runing NPM Build
+    name: Running NPM Build
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
