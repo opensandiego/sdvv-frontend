@@ -1,7 +1,7 @@
 name: Test Build  
 on: 
   pull_request:
-    branches: [ github-actions ]
+    branches: [ dev, github-actions ]
 
 jobs:
   deploy: 
