@@ -1,4 +1,4 @@
-name: Test Building of site   
+name: Test Build  
 on: 
   pull_request:
     branches: [ github-actions ]
@@ -6,7 +6,7 @@ on:
 jobs:
   deploy: 
     runs-on: ubuntu-latest
-    name: Run NPM Build Script
+    name: Runing NPM Build
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
