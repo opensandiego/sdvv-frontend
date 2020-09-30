@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   isExpanded: boolean = false;
   showSubmenu: boolean = false;
   panelOpenState: boolean = false;
+  officeStep: number = 0;
+  councilDistrictStep: number = 0;
 
   candidates: Record<string, CandidateTree>;
 
@@ -40,6 +42,14 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  log(val) {console.log(val)}
+  // Have active-link class apply to only an opened candidate office panel by setting an assigned step for each candidate office section
+  setOfficeStep(index) {
+    this.officeStep = index;
+  }
+
+  // Have only one city council district side panel open at any time by setting an assigned step for each panel distrct
+  setCouncilDistrictStep(index) {
+    this.councilDistrictStep = index;
+  }
 
 }

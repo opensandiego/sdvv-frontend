@@ -10,14 +10,14 @@
   <mat-drawer #drawer mode="side" align="start" disableClose="false" opened>
     <mat-nav-list [disableRipple]="true">
     <mat-accordion displayMode="flat">
-      <mat-expansion-panel hideToggle="true">
-        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link" routerLink="/mayor">
+      <mat-expansion-panel (opened)="setOfficeStep(1)" hideToggle="true">
+        <mat-expansion-panel-header [ngClass]="{ 'active-link' : officeStep === 1 }" collapsedHeight="50px" expandedHeight="50px" routerLink="/mayor">
           <mat-panel-title>
               Mayor
           </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-container *ngFor="let candidateType of candidates | keyvalue">
-          <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue">
+          <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue; let i = index">
             <li *ngIf="candidateType.key === 'mayor'">
               <a>{{candidate.key}}</a>
             </li>
@@ -25,31 +25,33 @@
         </ng-container>
       </mat-expansion-panel>
     
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true">
-        <mat-expansion-panel-header collapsedHeight="50px" expandedHeight="50px" routerLinkActive="active-link">
+      <mat-expansion-panel (opened)="setOfficeStep(2)" (closed)="setCouncilDistrictStep(0)" hideToggle="true">
+        <mat-expansion-panel-header [ngClass]="{ 'active-link' : officeStep === 2 }" collapsedHeight="50px" expandedHeight="50px">
           <mat-panel-title>
             City Council
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <mat-expansion-panel class="mat-elevation-z0" hideToggle="true">
+        <!-- <mat-expansion-panel class="mat-elevation-z0" hideToggle="true">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px" class="tall-header">
               <span class="full-width">District Finder</span>
               <i class="fas fa-map-marked-alt"></i>
           </mat-expansion-panel-header>
-        </mat-expansion-panel>
-        <mat-expansion-panel class="mat-elevation-z0" routerLink="/city-council-district-1">
+        </mat-expansion-panel> -->
+        <mat-expansion-panel [expanded]="councilDistrictStep === 1" (opened)="setCouncilDistrictStep(1)" class="mat-elevation-z0" routerLink="/city-council-district-1">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 1
           </mat-expansion-panel-header>
-          <ul>
-            <li>Candidate A</li>
-            <li>Candidate B</li>
-            <li>Candidate C</li>
-          </ul>
+          <ng-container *ngFor="let candidateType of candidates | keyvalue">
+            <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue; let i = index">
+              <li *ngIf="candidateType.key === 'city-council-district-1'">
+                <a>{{candidate.key}}</a>
+              </li>
+            </ul>
+          </ng-container>
         </mat-expansion-panel>
 
-        <mat-expansion-panel class="mat-elevation-z0" routerLink="/city-council-district-3">
+        <mat-expansion-panel [expanded]="councilDistrictStep === 2" (opened)="setCouncilDistrictStep(2)" class="mat-elevation-z0" routerLink="/city-council-district-3">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 3
           </mat-expansion-panel-header>
@@ -60,7 +62,7 @@
           </ul>
         </mat-expansion-panel>
 
-        <mat-expansion-panel class="mat-elevation-z0" routerLink="/city-council-district-5">
+        <mat-expansion-panel [expanded]="councilDistrictStep === 3" (opened)="setCouncilDistrictStep(3)" class="mat-elevation-z0" routerLink="/city-council-district-5">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 5
           </mat-expansion-panel-header>
@@ -71,7 +73,7 @@
           </ul>
         </mat-expansion-panel>
 
-        <mat-expansion-panel class="mat-elevation-z0" routerLink="/city-council-district-7">
+        <mat-expansion-panel [expanded]="councilDistrictStep === 4" (opened)="setCouncilDistrictStep(4)" class="mat-elevation-z0" routerLink="/city-council-district-7">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 7
           </mat-expansion-panel-header>
@@ -82,7 +84,7 @@
           </ul>
         </mat-expansion-panel>
 
-        <mat-expansion-panel class="mat-elevation-z0" routerLink="/city-council-district-9">
+        <mat-expansion-panel [expanded]="councilDistrictStep === 5" (opened)="setCouncilDistrictStep(5)" class="mat-elevation-z0" routerLink="/city-council-district-9">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 9
           </mat-expansion-panel-header>
