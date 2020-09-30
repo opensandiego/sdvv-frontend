@@ -1,0 +1,16 @@
+name: Test Building of site   
+on: 
+  pull_request:
+    branches: [ github-actions ]
+
+jobs:
+  deploy: 
+    runs-on: ubuntu-latest
+    name: Run NPM Build Script
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: npm ci
+      - run: npm run build
