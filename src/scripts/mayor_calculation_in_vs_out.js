@@ -2,22 +2,24 @@ const { toFixed } = require('core-js/fn/number/epsilon');
 const shared = require('./shared_routines.js');
 
 
+function createPropertyIfNotExist(object) {
+  if ( !object.hasOwnProperty("in vs out district") ) {
+    object["in vs out district"] = [ { } ];
+    console.log('Created', object) // for testing
+  }
+  return object;
+}
+
 // Used to write to the specific property in a given object
 function writeToIn( value, object ) {
-
-  if ( !object.hasOwnProperty["in vs out district"] ) {
-    object["in vs out district"] = [ { } ];
-  }
+  object = createPropertyIfNotExist(object);
 
   object["in vs out district"][0]["in"] = value;
   return object;
 }
 
 function writeToOut( value, object ) {
-
-  if ( !object.hasOwnProperty["in vs out district"] ) {
-    object["in vs out district"] = [ { } ];
-  }
+  object = createPropertyIfNotExist(object);
 
   object["in vs out district"][0]["out"] = value;
   return object;
@@ -48,7 +50,7 @@ function getZipCodes(){
   const transactionsWithinZipCodes = shared.filterListOnKeyByArray( transactions, 'Tran_Zip4', zipCodes);
   const transactionsNotWithinZipCodes = shared.filterListOnKeyByNotInArray( transactions, 'Tran_Zip4', zipCodes);
 
-  const mayorsWithSums = mayors.map( mayor => {
+  let mayorsWithSums = mayors.map( mayor => {
     mayor.inDistrict = '0';
     mayor.outOfDistrict = '0';
 
@@ -70,9 +72,6 @@ function getZipCodes(){
   
   mayorsWithSums.map( mayor => {
     let path = shared.getCandidateRelativeFilePath(mayor);
-
-  console.log( 'mayor', mayor );
-  console.log( 'path', path );
 
     shared.updateJSONFileWithValue( path, mayor.inDistrict, writeToIn ); // #6
     shared.updateJSONFileWithValue( path, mayor.outOfDistrict, writeToOut ); // #8    
