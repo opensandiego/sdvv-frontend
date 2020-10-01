@@ -34,6 +34,7 @@ function getZipCodes(){
   return zipCodesData.map( element => element.zip_code );
 }
 
+// Main entry function of script
 (async () => {
 
   const candidateInformation = await shared.getCandidateInformation(); // #1
@@ -44,25 +45,24 @@ function getZipCodes(){
   // #4, valid zip code list as an array of strings
   const zipCodes = getZipCodes();
     
-  let transactions = shared.getTransactions();
-  
+  let transactions = shared.getTransactions(); // #5
   
   const transactionsWithinZipCodes = shared.filterListOnKeyByArray( transactions, 'Tran_Zip4', zipCodes);
   const transactionsNotWithinZipCodes = shared.filterListOnKeyByNotInArray( transactions, 'Tran_Zip4', zipCodes);
 
-  let mayorsWithSums = mayors.map( mayor => {
+  let mayorsWithSums = mayors.map( mayor => { // #3
     mayor.inDistrict = '0';
     mayor.outOfDistrict = '0';
 
     const transactionsInDistrict = 
-      transactionsWithinZipCodes.filter( transaction => transaction['FilerName'] === mayor['Committee Name (Filer_Name)'] );
+      transactionsWithinZipCodes.filter( transaction => transaction['FilerName'] === mayor['Committee Name (Filer_Name)'] ); // #5
       
     const transactionsNotInDistrict = 
-      transactionsNotWithinZipCodes.filter( transaction => transaction['FilerName'] === mayor['Committee Name (Filer_Name)'] );
+      transactionsNotWithinZipCodes.filter( transaction => transaction['FilerName'] === mayor['Committee Name (Filer_Name)'] ); // #7
 
           
-    const transactionsInDistrictACI = shared.filterListOnKeyByArray( transactionsInDistrict, 'Form_Type', [ 'A', 'C', 'I' ] );
-    const transactionsNotInDistrictACI = shared.filterListOnKeyByArray( transactionsNotInDistrict, 'Form_Type', [ 'A', 'C', 'I' ] );
+    const transactionsInDistrictACI = shared.filterListOnKeyByArray( transactionsInDistrict, 'Form_Type', [ 'A', 'C', 'I' ] ); // #5
+    const transactionsNotInDistrictACI = shared.filterListOnKeyByArray( transactionsNotInDistrict, 'Form_Type', [ 'A', 'C', 'I' ] ); // #7
       
     mayor.inDistrict = shared.sumKeyInList( transactionsInDistrictACI, 'Tran_Amt1' ).toFixed(0);
     mayor.outOfDistrict = shared.sumKeyInList( transactionsNotInDistrictACI, 'Tran_Amt1' ).toFixed(0);
