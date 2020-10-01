@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/sdvv-frontend",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

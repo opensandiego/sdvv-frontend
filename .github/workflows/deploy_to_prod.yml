@@ -1,0 +1,22 @@
+name: Firebase Deployment to Production
+on: 
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy: 
+    runs-on: ubuntu-latest
+    name: Deployment to Firebase
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: npm ci
+      - run: npm run build
+        name: Deploying to Firebase
+      - uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting --project=production
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
