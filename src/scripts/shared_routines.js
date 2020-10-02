@@ -105,14 +105,14 @@ function updateJSONFileWithValue( fileName, value, funWriteToObject ) {
 }
 
 module.exports = {
-  getCandidateInformation: getCandidateInformation,
-  getDataFromURL: getDataFromURL,
-  getDataFromLocalFile: getAssetsDataFromLocalFile,
-  parseCSVDataToObjects: parseCSVDataToObjects,
-  getTransactions: getTransactions,
-  filterListOnKeyByArray: filterListOnKeyByArray,
-  getCandidateRelativeFilePath: getCandidateRelativeFilePath,
-  sumKeyInList: sumKeyInList,
-  updateJSONFileWithValue: updateJSONFileWithValue,
-  filterListOnKeyByNotInArray: filterListOnKeyByNotInArray,
+  getCandidateInformation,
+  getDataFromURL,
+  getAssetsDataFromLocalFile,
+  parseCSVDataToObjects,
+  getTransactions,
+  filterListOnKeyByArray,
+  getCandidateRelativeFilePath,
+  sumKeyInList,
+  updateJSONFileWithValue,
+  filterListOnKeyByNotInArray,
 };

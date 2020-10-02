@@ -27,7 +27,7 @@ function writeToOut( value, object ) {
 function getZipCodes(){
   const zipCodesFileName = 'sd_zipcodes.csv';
 
-  const csvZipCodes = shared.getDataFromLocalFile( zipCodesFileName ); 
+  const csvZipCodes = shared.getAssetsDataFromLocalFile( zipCodesFileName ); 
   const zipCodesData = shared.parseCSVDataToObjects( csvZipCodes );
   return zipCodesData.map( element => element.zip_code );
 }
