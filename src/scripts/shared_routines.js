@@ -34,7 +34,7 @@ async function getDataFromURL( url ) {
     response = await fetch(url);
     fileData = await response.text();
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 
   return fileData;

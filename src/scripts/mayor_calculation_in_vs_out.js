@@ -5,7 +5,6 @@ const shared = require('./shared_routines.js');
 function createPropertyIfNotExist(object) {
   if ( !object.hasOwnProperty("in vs out district") ) {
     object["in vs out district"] = [ { } ];
-    console.log('Created', object) // for testing
   }
   return object;
 }
@@ -79,7 +78,7 @@ async function calculateCandidateInVOut( office, zipCodes, transactions ) {
 // Main entry function of script
 (async () => {
 
-  let offices = [ 'mayor', 'City Council' ];
+  let offices = [ 'mayor', 'City Council', 'City Attorney' ];
 
   // #4, valid zip code list as an array of strings
   const zipCodes = getZipCodes();
