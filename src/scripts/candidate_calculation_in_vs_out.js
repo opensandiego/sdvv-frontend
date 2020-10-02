@@ -1,4 +1,3 @@
-const { toFixed } = require('core-js/fn/number/epsilon');
 const shared = require('./shared_routines.js');
 
 
