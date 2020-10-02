@@ -6,17 +6,9 @@ const parseSync = require('csv-parse/lib/sync');
 const ASSETS_PATH = '../assets/data';
 const NETFILE_API_CSV_FILENAMES = ['netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv'];
 
-/**
- * @typedef Candidates
- * @type {object}
- * @property {string} Candidate_Name - 
- * @property {string} Office - 
- * @property {string} Year - 
- */
 
 /**
  * Reads from a Google Sheet and returns an array of candidate information objects.
- * @returns {Promise <Candidates[]>}
  */
 async function getCandidateInformation() {
   const CANDIDATE_INFORMATION_URL = 
@@ -79,9 +71,15 @@ function getCandidateRelativeFilePath( candidate ) {
   // Replace all spaces in candidate name and office with underscores '_'
   const candidatePathName = candidate['Candidate_Name'].split(' ').join('_').toLowerCase();
   const office = candidate['Office'].split(' ').join('_').toLowerCase();
+  
+  if ( candidate['Office'].toLowerCase() === 'City Council'.toLowerCase() ) {
+    // The location of the City Council Candidates follows a different pattern than the other offices
+    return `${candidate['Year']}/${office}_district_${candidate['District']}/${candidatePathName}/${candidatePathName}.json`;
+  }
 
-  return `${candidate['Year']}/${office}/${candidatePathName}/${candidatePathName}.json`;
+  return `${candidate['Year']}/${office}/${candidatePathName}/${candidatePathName}.json`;;
 }
+
 
 function updateJSONFileWithValue( fileName, value, funWriteToObject ) {
   const CANDIDATES_PATH = '../assets/candidates';

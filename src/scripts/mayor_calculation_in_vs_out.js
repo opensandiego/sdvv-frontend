@@ -34,48 +34,60 @@ function getZipCodes(){
   return zipCodesData.map( element => element.zip_code );
 }
 
+async function calculateCandidateInVOut( office, zipCodes, transactions ) {
+  const zipCodeKey = 'Tran_Zip4';
+  const transactionAmountKey = 'Tran_Amt1';
+  const formTypeKey = 'Form_Type';
+  const formTypes = [ 'A', 'C', 'I' ];
+
+  const candidateInformation = await shared.getCandidateInformation(); // #1
+  const candidates = candidateInformation.filter(candidate => { // #2
+    return candidate.Office.toLocaleLowerCase() === office.toLocaleLowerCase();
+  });
+
+  const transactionsWithinZipCodes = shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodes);
+  const transactionsNotWithinZipCodes = shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodes);
+
+  let candidateWithSums = candidates.map( candidate => { // #3
+    candidate.inDistrict = '0';
+    candidate.outOfDistrict = '0';
+
+    const transactionsInDistrict = 
+      transactionsWithinZipCodes.filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #5
+      
+    const transactionsNotInDistrict = 
+      transactionsNotWithinZipCodes.filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #7
+
+    const transactionsInDistrictACI = shared.filterListOnKeyByArray( transactionsInDistrict, formTypeKey, formTypes ); // #5
+    const transactionsNotInDistrictACI = shared.filterListOnKeyByArray( transactionsNotInDistrict, formTypeKey, formTypes ); // #7
+      
+    candidate.inDistrict = shared.sumKeyInList( transactionsInDistrictACI, transactionAmountKey ).toFixed(0);
+    candidate.outOfDistrict = shared.sumKeyInList( transactionsNotInDistrictACI, transactionAmountKey ).toFixed(0);
+
+    return candidate;
+  });
+
+  candidateWithSums.map( candidate => {
+    let path = shared.getCandidateRelativeFilePath(candidate);
+
+    shared.updateJSONFileWithValue( path, candidate.inDistrict, writeToIn ); // #6
+    shared.updateJSONFileWithValue( path, candidate.outOfDistrict, writeToOut ); // #8
+  });
+
+}
+
 // Main entry function of script
 (async () => {
 
-  const candidateInformation = await shared.getCandidateInformation(); // #1
-  const mayors = candidateInformation.filter(candidate => { // #2
-    return candidate.Office.toLocaleLowerCase() === 'mayor';
-  });
+  let offices = [ 'mayor', 'City Council' ];
 
   // #4, valid zip code list as an array of strings
   const zipCodes = getZipCodes();
-    
+  
   let transactions = shared.getTransactions(); // #5
-  
-  const transactionsWithinZipCodes = shared.filterListOnKeyByArray( transactions, 'Tran_Zip4', zipCodes);
-  const transactionsNotWithinZipCodes = shared.filterListOnKeyByNotInArray( transactions, 'Tran_Zip4', zipCodes);
 
-  let mayorsWithSums = mayors.map( mayor => { // #3
-    mayor.inDistrict = '0';
-    mayor.outOfDistrict = '0';
-
-    const transactionsInDistrict = 
-      transactionsWithinZipCodes.filter( transaction => transaction['FilerName'] === mayor['Committee Name (Filer_Name)'] ); // #5
-      
-    const transactionsNotInDistrict = 
-      transactionsNotWithinZipCodes.filter( transaction => transaction['FilerName'] === mayor['Committee Name (Filer_Name)'] ); // #7
-
-          
-    const transactionsInDistrictACI = shared.filterListOnKeyByArray( transactionsInDistrict, 'Form_Type', [ 'A', 'C', 'I' ] ); // #5
-    const transactionsNotInDistrictACI = shared.filterListOnKeyByArray( transactionsNotInDistrict, 'Form_Type', [ 'A', 'C', 'I' ] ); // #7
-      
-    mayor.inDistrict = shared.sumKeyInList( transactionsInDistrictACI, 'Tran_Amt1' ).toFixed(0);
-    mayor.outOfDistrict = shared.sumKeyInList( transactionsNotInDistrictACI, 'Tran_Amt1' ).toFixed(0);
-
-    return mayor;
-  });
-  
-  mayorsWithSums.map( mayor => {
-    let path = shared.getCandidateRelativeFilePath(mayor);
-
-    shared.updateJSONFileWithValue( path, mayor.inDistrict, writeToIn ); // #6
-    shared.updateJSONFileWithValue( path, mayor.outOfDistrict, writeToOut ); // #8    
-
-  });
+  Promise.all(
+    offices.map( office => calculateCandidateInVOut( office, zipCodes, transactions ) )
+  ).then();
 
 })();
