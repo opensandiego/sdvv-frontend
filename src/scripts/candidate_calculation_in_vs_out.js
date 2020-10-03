@@ -5,6 +5,7 @@ function createPropertyIfNotExist(object) {
   if ( !object.hasOwnProperty("in vs out district") ) {
     object["in vs out district"] = [ { } ];
   }
+
   return object;
 }
 
@@ -13,6 +14,7 @@ function writeToInOut( value, object ) {
   object = createPropertyIfNotExist(object);
 
   object["in vs out district"][0] = value;
+
   return object;
 }
 
@@ -22,34 +24,29 @@ function getZipCodes(){
 
   const csvZipCodes = shared.getAssetsDataFromLocalFile( zipCodesFileName ); 
   const zipCodesData = shared.parseCSVDataToObjects( csvZipCodes );
+
   return zipCodesData.map( element => element.zip_code );
 }
 
 
 /**
- * Reads the name of an office, candidates for the office, and two list of mutually exclusive transactions. 
+ * Reads the name of an office, candidates for the office, and list of a list of transactions. 
  * For each candidate this determines which transactions are with the candidate ....
  * @param {string} office
  * @param {string[]} candidates 
- * @param {object[]} transactionsIn
- * @param {object[]} transactionsOut
+ * @param {object[][]} transactionsTypes
+ * @returns { []} 
  */
-async function calculateCandidateInVOut( office, candidates, transactionsIn, transactionsOut ) {
+function calculateCandidateInVOut( office, candidates, transactionsTypes ) {
 
   const transactionAmountKey = 'Tran_Amt1';
   const formTypeKey = 'Form_Type';
   const formTypes = [ 'A', 'C', 'I' ];
 
-  const transactionsTypes = [ 
-    { type: 'in',  transactions: transactionsIn }, 
-    { type: 'out', transactions: transactionsOut }, 
-  ];
-
-  candidates
+  return candidates
   .filter( candidate => candidate.Office.toLocaleLowerCase() === office.toLocaleLowerCase() ) // #2
   .map( candidate => { // #3
 
-    // new
     const entries = transactionsTypes.map( transactionsType => { 
 
       let transactionsFound = 
@@ -61,14 +58,19 @@ async function calculateCandidateInVOut( office, candidates, transactionsIn, tra
 
       return  [ transactionsType.type, sum ] ;
     });
+
     candidate.inAndOut = Object.fromEntries(entries);
     // Example values for candidate.inAndOut = { in: "0", out: "0" }
 
      return candidate;
+  });
+}
 
-  }).map( candidate => {
+function saveCandidatesDataToFiles( candidates ) {
 
-    let path = shared.getCandidateRelativeFilePath(candidate);
+  candidates.map( candidate => {
+
+    const path = shared.getCandidateRelativeFilePath(candidate);
 
     shared.updateJSONFileWithValue( path, candidate.inAndOut, writeToInOut ); // #8
 
@@ -80,7 +82,7 @@ async function calculateCandidateInVOut( office, candidates, transactionsIn, tra
 (async () => {
 
   const zipCodeKey = 'Tran_Zip4';
-  const offices = [ 'mayor', 'City Council', 'City Attorney' ];
+  const offices = [ 'Mayor', 'City Council', 'City Attorney' ];
 
   const candidates = await shared.getCandidateInformation(); // #1
 
@@ -89,12 +91,13 @@ async function calculateCandidateInVOut( office, candidates, transactionsIn, tra
   
   const transactions = shared.getTransactions(); // #5
 
-  const transactionsInZipCodes = shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodes);
-  const transactionsNotInZipCodes = shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodes);
+  const transactionsTypes = [ 
+    { type: 'in',  transactions: shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodes) }, 
+    { type: 'out', transactions: shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodes) }, 
+  ];
 
-  Promise.all(
-    offices.map( office => calculateCandidateInVOut( 
-      office, candidates, transactionsInZipCodes, transactionsNotInZipCodes ) )
-  ).then();
-
+  offices
+  .map( office => calculateCandidateInVOut( office, candidates, transactionsTypes ) )
+  .map( candidates => saveCandidatesDataToFiles(candidates) );
+ 
 })();
