@@ -52,7 +52,20 @@ function getPythonCommand() {
     return; 
   }
 
-  console.log('Updating Candidate JSON files...');
+  
+  const preUpdateNodeScripts = [
+    'remove_candidates_2020_folders.js',
+  ];
+
+  console.log('Removing Previous Candidate JSON files.');
+
+  // // Uncomment to clear out the Candidate JSON files/folders. The campaign_race_totals.json file is retained.
+  // preUpdateNodeScripts.forEach( scriptFile => {
+  //   execSync(`node ${scriptFile}`, { cwd: __dirname });
+  // });
+
+
+  console.log('Rebuilding Candidate JSON files...');
 
   /**
    * 'calculation_download_gdrive_info.py' needs to be first since it updates/creates 
