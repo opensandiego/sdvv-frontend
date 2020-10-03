@@ -75,8 +75,9 @@ function getCandidateRelativeFilePath( candidate ) {
   if ( candidate['Office'].toLowerCase() === 'City Council'.toLowerCase() ) {
     // The location of the City Council Candidates follows a different pattern than the other offices
     return `${candidate['Year']}/${office}_district_${candidate['District']}/${candidatePathName}/${candidatePathName}.json`;
+    // return `${candidate['Year']}/${office}/district_${candidate['District']}/${candidatePathName}/${candidatePathName}.json`; // This will replace the previous line in the future after other code is updated
   }
-  
+
   return `${candidate['Year']}/${office}/${candidatePathName}/${candidatePathName}.json`;;
 }
 

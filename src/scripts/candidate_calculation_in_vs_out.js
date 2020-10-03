@@ -32,29 +32,24 @@ function getZipCodes(){
   return zipCodesData.map( element => element.zip_code );
 }
 
-async function calculateCandidateInVOut( office, zipCodes, transactions ) {
-  const zipCodeKey = 'Tran_Zip4';
+async function calculateCandidateInVOut( office, transactionsIn, transactionsOut, candidates ) {
+
   const transactionAmountKey = 'Tran_Amt1';
   const formTypeKey = 'Form_Type';
   const formTypes = [ 'A', 'C', 'I' ];
 
-  const candidateInformation = await shared.getCandidateInformation(); // #1
-  const candidates = candidateInformation.filter(candidate => { // #2
-    return candidate.Office.toLocaleLowerCase() === office.toLocaleLowerCase();
-  });
+  candidates
+  .filter( candidate => candidate.Office.toLocaleLowerCase() === office.toLocaleLowerCase() ) // #2
+  .map( candidate => { // #3
 
-  const transactionsWithinZipCodes = shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodes);
-  const transactionsNotWithinZipCodes = shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodes);
-
-  let candidateWithSums = candidates.map( candidate => { // #3
     candidate.inDistrict = '0';
     candidate.outOfDistrict = '0';
 
     const transactionsInDistrict = 
-      transactionsWithinZipCodes.filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #5
+      transactionsIn.filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #5
       
     const transactionsNotInDistrict = 
-      transactionsNotWithinZipCodes.filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #7
+      transactionsOut.filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #7
 
     const transactionsInDistrictACI = shared.filterListOnKeyByArray( transactionsInDistrict, formTypeKey, formTypes ); // #5
     const transactionsNotInDistrictACI = shared.filterListOnKeyByArray( transactionsNotInDistrict, formTypeKey, formTypes ); // #7
@@ -63,13 +58,14 @@ async function calculateCandidateInVOut( office, zipCodes, transactions ) {
     candidate.outOfDistrict = shared.sumKeyInList( transactionsNotInDistrictACI, transactionAmountKey ).toFixed(0);
 
     return candidate;
-  });
 
-  candidateWithSums.map( candidate => {
+  }).map( candidate => {
+
     let path = shared.getCandidateRelativeFilePath(candidate);
 
     shared.updateJSONFileWithValue( path, candidate.inDistrict, writeToIn ); // #6
     shared.updateJSONFileWithValue( path, candidate.outOfDistrict, writeToOut ); // #8
+
   });
 
 }
@@ -77,15 +73,22 @@ async function calculateCandidateInVOut( office, zipCodes, transactions ) {
 // Main entry function of script
 (async () => {
 
-  let offices = [ 'mayor', 'City Council', 'City Attorney' ];
+  const zipCodeKey = 'Tran_Zip4';
+  const offices = [ 'mayor', 'City Council', 'City Attorney' ];
+
+  const candidateInformation = await shared.getCandidateInformation(); // #1
 
   // #4, valid zip code list as an array of strings
   const zipCodes = getZipCodes();
   
-  let transactions = shared.getTransactions(); // #5
+  const transactions = shared.getTransactions(); // #5
+
+  const transactionsInZipCodes = shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodes);
+  const transactionsNotInZipCodes = shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodes);
 
   Promise.all(
-    offices.map( office => calculateCandidateInVOut( office, zipCodes, transactions ) )
+    offices.map( office => calculateCandidateInVOut( 
+      office, transactionsInZipCodes, transactionsNotInZipCodes, candidateInformation ) )
   ).then();
 
 })();
