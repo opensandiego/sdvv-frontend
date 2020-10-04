@@ -1,24 +1,42 @@
 const shared = require('./shared_routines.js');
 
 
-function createPropertyIfNotExist(object) {
-  if ( !object.hasOwnProperty("in vs out district") ) {
-    object["in vs out district"] = [ { } ];
+ /**
+  * This checks to see if a 'key' exists in the 'object' and
+  *  if not then assign it a value to match that from a given json file.
+  * @param {object} object - this is a structured json file data
+  * @param {string} key 
+  * @returns {object}
+  */
+function createPropertyIfNotExist(object, key) {
+  if ( !object.hasOwnProperty(key) ) {
+    object[key] = [ { } ];
   }
 
   return object;
 }
 
-// Used to write to the specific property in a given object
+/**
+ * This updates the given object to add a value to specific property
+ *  in a given object. This is needed to match the format of the data
+ *  stored in the json file.
+ * @param {*} value 
+ * @param {object} object - this is from a json file
+ * @returns {object}
+ */
 function writeToInOut( value, object ) {
-  object = createPropertyIfNotExist(object);
+  const key = "in vs out district";
+  object = createPropertyIfNotExist(object, key);
 
-  object["in vs out district"][0] = value;
+  object[key][0] = value;
 
   return object;
 }
 
-
+/**
+ * This returns an array of string that contain the zip codes from a csv file.
+ * @returns {string[]} 
+ */
 function getZipCodes(){
   const zipCodesFileName = 'sd_zipcodes.csv';
 
@@ -30,14 +48,16 @@ function getZipCodes(){
 
 
 /**
- * Reads the name of an office, candidates for the office, and list of a list of transactions. 
- * For each candidate this determines which transactions are with the candidate ....
- * @param {string} office
- * @param {string[]} candidates 
- * @param {object[][]} transactionsTypes
- * @returns { []} 
+ * For each candidate that is running for the given office this sums the 'transactionAmountKey' 
+ *  field for each of the transactionsGroups where the 'formTypeKey' field is one of the 'formTypes'
+ * For every group in transactionsGroups this returns a key value pair where the key is from a 
+ *  group's type property and the key is the calculated sum.
+ * @param {string} office - Title of the office that candidates are running for
+ * @param {string[]} candidates - List of candidates with their related data fields
+ * @param {object[][]} transactionsGroups - Each group is an array of NetFile transaction data from the CSV files
+ * @returns {object[]} 
  */
-function calculateCandidateInVOut( office, candidates, transactionsTypes ) {
+function calculateCandidateGroupSum( office, candidates, sumKeyField, transactionsGroups ) {
 
   const transactionAmountKey = 'Tran_Amt1';
   const formTypeKey = 'Form_Type';
@@ -47,32 +67,42 @@ function calculateCandidateInVOut( office, candidates, transactionsTypes ) {
   .filter( candidate => candidate.Office.toLocaleLowerCase() === office.toLocaleLowerCase() ) // #2
   .map( candidate => { // #3
 
-    const entries = transactionsTypes.map( transactionsType => { 
+    const entries = transactionsGroups.map( group => { 
 
-      let transactionsFound = 
-        transactionsType.transactions.filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #5, #7
+      let transactionsFound = group.transactions
+        .filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #5, #7
       
       transactionsFound = shared.filterListOnKeyByArray( transactionsFound, formTypeKey, formTypes ); // #5, #7
 
-      const sum = shared.sumKeyInList( transactionsFound, transactionAmountKey ).toFixed(0);
-
-      return  [ transactionsType.type, sum ] ;
+      return  [ 
+        group.type, 
+        shared.sumKeyInList( transactionsFound, transactionAmountKey ) //.toFixed(0) // #5
+      ];
     });
 
-    candidate.inAndOut = Object.fromEntries(entries);
-    // Example values for candidate.inAndOut = { in: "0", out: "0" }
+    // Convert the entries array [ "group type a": "0", "group type b": "0" ]
+    //  into an object { "group type a": "0", "group type b": "0" }
+    candidate[sumKeyField] = Object.fromEntries(entries);
 
-     return candidate;
+    return candidate;
   });
 }
 
-function saveCandidatesDataToFiles( candidates ) {
+/**
+ * 
+ * @param {*} candidates 
+ * @param {string} keyFieldToSave 
+ */
+function saveCandidatesDataToFiles( candidates, keyFieldToSave ) {
 
   candidates.map( candidate => {
 
-    const path = shared.getCandidateRelativeFilePath(candidate);
-
-    shared.updateJSONFileWithValue( path, candidate.inAndOut, writeToInOut ); // #8
+    // #6, #8
+    shared.updateJSONFileWithValue( 
+      shared.getCandidateRelativeFilePath(candidate), 
+      candidate[keyFieldToSave], 
+      writeToInOut 
+    );
 
   });
 
@@ -83,21 +113,24 @@ function saveCandidatesDataToFiles( candidates ) {
 
   const zipCodeKey = 'Tran_Zip4';
   const offices = [ 'Mayor', 'City Council', 'City Attorney' ];
+  const sumsField = 'inAndOut';
 
-  const candidates = await shared.getCandidateInformation(); // #1
-
-  // #4, valid zip code list as an array of strings
-  const zipCodes = getZipCodes();
+  // The valid zip code list as an array of strings from a local CSV file
+  const zipCodes = getZipCodes(); // #4
   
-  const transactions = shared.getTransactions(); // #5
+  // From the local CSV files
+  const transactions = shared.getTransactions(); // #5 
 
-  const transactionsTypes = [ 
+  const transactionsGroups = [ 
     { type: 'in',  transactions: shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodes) }, 
     { type: 'out', transactions: shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodes) }, 
   ];
 
+  // From an online Google Sheet 
+  const candidates = await shared.getCandidateInformation(); // #1 
+
   offices
-  .map( office => calculateCandidateInVOut( office, candidates, transactionsTypes ) )
-  .map( candidates => saveCandidatesDataToFiles(candidates) );
+  .map( office => calculateCandidateGroupSum( office, candidates, sumsField, transactionsGroups ) )
+  .map( candidatesWithSums => saveCandidatesDataToFiles( candidatesWithSums, sumsField ) );
  
 })();
