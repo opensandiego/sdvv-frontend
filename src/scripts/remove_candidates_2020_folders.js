@@ -3,6 +3,10 @@ const del = require('del');
 
 const CANDIDATES_PATH = '../assets/candidates';
 
+/**
+ * This script removes the folders and json files within the CANDIDATES_PATH. 
+ *  This is needed to clear out any old assets that should not be referenced.
+ */
 (() => {
 
   const path = `${CANDIDATES_PATH}/2020`;
