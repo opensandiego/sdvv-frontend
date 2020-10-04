@@ -2,35 +2,35 @@ const shared = require('./shared_routines.js');
 
 
  /**
-  * This checks to see if a 'key' exists in the 'object' and
+  * This checks to see if a 'key' exists in the 'jsonData' and
   *  if not then assign it a value to match that from a given json file.
   * @param {object} object - this is a structured json file data
   * @param {string} key 
   * @returns {object}
   */
-function createPropertyIfNotExist(object, key) {
-  if ( !object.hasOwnProperty(key) ) {
-    object[key] = [ { } ];
+function createPropertyIfNotExist(jsonData, key) {
+  if ( !jsonData.hasOwnProperty(key) ) {
+    jsonData[key] = [ { } ];
   }
 
-  return object;
+  return jsonData;
 }
 
 /**
- * This updates the given object to add a value to specific property
- *  in a given object. This is needed to match the format of the data
+ * This updates the given 'jsonData' to add a value to specific property
+ *  in a given 'jsonData'. This is needed to match the format of the data
  *  stored in the json file.
- * @param {*} value 
- * @param {object} object - this is from a json file
+ * @param {string} value 
+ * @param {object} jsonData
  * @returns {object}
  */
-function writeToInOut( value, object ) {
+function writeToInOut( value, jsonData ) { //jsonData
   const key = "in vs out district";
-  object = createPropertyIfNotExist(object, key);
+  jsonData = createPropertyIfNotExist(jsonData, key);
 
-  object[key][0] = value;
+  jsonData[key][0] = value;
 
-  return object;
+  return jsonData;
 }
 
 /**

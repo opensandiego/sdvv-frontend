@@ -8,7 +8,27 @@ const NETFILE_API_CSV_FILENAMES = ['netfile_api_2018.csv', 'netfile_api_2019.csv
 
 
 /**
- * Reads from a Google Sheet and returns an array of candidate information objects.
+ * Fetches data from a url
+ * @param {string} url 
+ * @returns {object[]} 
+ */
+async function getDataFromURL( url ) {
+  let response, fileData;
+
+  response = await fetch(url);
+
+  if ( !response.ok ) {
+    throw `Error fetching\n url: ${url}\n Status: ${response.status} \n Response: ${response.statusText}`;
+  }
+
+  fileData = await response.text();
+
+  return fileData;
+}
+
+/**
+ * Reads Candidate data from a Google Sheet.
+ * @returns {object[]} - candidate information objects
  */
 async function getCandidateInformation() {
   const CANDIDATE_INFORMATION_URL = 
@@ -18,6 +38,10 @@ async function getCandidateInformation() {
   return parseCSVDataToObjects( data );
 }
 
+/**
+ * Reads transaction data from multiple CSV files stored locally.
+ * @returns {object[]} - transactions
+ */
 function getTransactions() {
   let transactionsSets = NETFILE_API_CSV_FILENAMES.map( fileName => {
     let data = getAssetsDataFromLocalFile( fileName );
@@ -27,19 +51,10 @@ function getTransactions() {
   return transactionsSets.flat();
 }
 
-async function getDataFromURL( url ) {
-  let response, fileData;
-
-  try {
-    response = await fetch(url);
-    fileData = await response.text();
-  } catch (error) {
-    console.error(error);
-  }
-
-  return fileData;
-}
-
+/**
+ * Reads from a given local filename within a predetermined path.
+ * @returns {object[]} - contents of the file
+ */
 function getAssetsDataFromLocalFile( filename ) {
   const filePath = `${ASSETS_PATH}/${filename}`
 
@@ -50,6 +65,11 @@ function getAssetsDataFromLocalFile( filename ) {
   return fs.readFileSync(filePath, 'utf8' );
 }
 
+/**
+ * Takes a string of CSV data and parses into an array of objects
+ * @param {string} csvData 
+ * @returns {object[]} - parsed objects
+ */
 function parseCSVDataToObjects( csvData ) {
   return records = parseSync(csvData, {
     columns: true,
@@ -57,20 +77,48 @@ function parseCSVDataToObjects( csvData ) {
   });
 }
 
+/**
+ * This filters a given list by limiting the results to list items
+ *  who's key field is within the filteringArray.
+ * @param {object[]} list 
+ * @param {string} key 
+ * @param {string[]} filteringArray 
+ * @returns {object[]} - subset of the given list
+ */
 function filterListOnKeyByArray( list, key, filteringArray ) {
   return list.filter( item => filteringArray.includes( item[key]) );
 }
 
+/**
+ * This filters a given list by limiting the results to list items
+ *  who's key field is NOT within the filteringArray.
+ * @param {object[]} list 
+ * @param {string} key 
+ * @param {string[]} filteringArray 
+ * @returns {object[]} - subset of the given list
+ */
 function filterListOnKeyByNotInArray( list, key, filteringArray ) {
   return list.filter( item => !filteringArray.includes( item[key]) );
 }
 
+/**
+ * This return the sum of the given key fields in the list
+ * @param {object[]} list 
+ * @param {string} key 
+ * @returns {number} 
+ */
 function sumKeyInList( list, key ) {
   return list.reduce( (accumulator, currentValue) => {
     return accumulator + parseFloat(currentValue[key])
   }, 0);
 }
 
+/**
+ * This takes a candidate object and uses it to determine the path and file name
+ *   that the corresponding json file should be located at.
+ * @param {object} candidate 
+ * @returns {string} - the combined location and json file name 
+ */
 function getCandidateRelativeFilePath( candidate ) {
   // Replace all spaces in candidate name and office with underscores '_'
   const candidatePathName = candidate['Candidate_Name'].split(' ').join('_').toLowerCase();
@@ -85,11 +133,26 @@ function getCandidateRelativeFilePath( candidate ) {
   return `${candidate['Year']}/${office}/${candidatePathName}/${candidatePathName}.json`;;
 }
 
+/**
+ * @callback writeToPropertyCallback
+ * @param {string} - value to write into json data
+ * @param {object} - json data to update
+ * @returns {object} - modified json data
+ */
 
-function updateJSONFileWithValue( fileName, value, funWriteToObject ) {
+
+/**
+ * Opens a local json file located at a given fileNamePath and generates and object from it.
+ *  This sets the value on the json object to a property determined by the callback function
+ *  funWriteToObject. Then the modified json data is saved back to the local file system.
+ * @param {string} fileNamePath
+ * @param {string} value
+ * @param {writeToPropertyCallback} funWriteToObject
+ */
+function updateJSONFileWithValue( fileNamePath, value, funWriteToObject ) {
   const CANDIDATES_PATH = '../assets/candidates';
 
-  const filePath = `${CANDIDATES_PATH}/${fileName}`;
+  const filePath = `${CANDIDATES_PATH}/${fileNamePath}`;
 
   if ( !fs.existsSync(filePath) ) {
     console.error(`File not found: ${filePath}`)
@@ -100,7 +163,7 @@ function updateJSONFileWithValue( fileName, value, funWriteToObject ) {
 
   let json = JSON.parse(fileData);
 
-  // Update the JSON file data by running the given function with the given value
+  // Update the JSON file data by running the given function with the given values
   json = funWriteToObject( value, json );
 
   updatedFileData = JSON.stringify(json, null, 2);
