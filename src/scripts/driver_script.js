@@ -57,9 +57,11 @@ function getPythonCommand() {
     'remove_candidates_2020_folders.js',
   ];
 
-  console.log('Removing Previous Candidate JSON files.');
-
-  // // Uncomment to clear out the Candidate JSON files/folders. The campaign_race_totals.json file is retained.
+  // // Uncomment to clear out the Candidate JSON files/folders before recreating them with new data. 
+  // // The campaign_race_totals.json file is retained.
+  // 
+  // console.log('Removing Previous Candidate JSON files.');
+  // 
   // preUpdateNodeScripts.forEach( scriptFile => {
   //   execSync(`node ${scriptFile}`, { cwd: __dirname });
   // });
