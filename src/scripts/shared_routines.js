@@ -43,6 +43,10 @@ async function getDataFromURL( url ) {
 function getAssetsDataFromLocalFile( filename ) {
   const filePath = `${ASSETS_PATH}/${filename}`
 
+  if ( !fs.existsSync(filePath) ) {
+    throw `File not found: ${filePath}`;
+  }
+
   return fs.readFileSync(filePath, 'utf8' );
 }
 
@@ -89,7 +93,7 @@ function updateJSONFileWithValue( fileName, value, funWriteToObject ) {
 
   if ( !fs.existsSync(filePath) ) {
     console.error(`File not found: ${filePath}`)
-    return; // or error!
+    return;
   }
 
   const fileData = fs.readFileSync(filePath, 'utf8' );
