@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "dev-sdvotersvoice",
+    "development": "dev-sdvotersvoice",
+    "production": "san-diego-voters-voice"
+  }
+}

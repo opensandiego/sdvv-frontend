@@ -4,10 +4,10 @@ const { execSync } = require("child_process");
 
 // If one of these CSV files fails to download then some of the scripts using them will fail
 const CSV_FILE_NAMES = [ 'netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv' ];
-const ASSETS_PATH = '../assets/data';
+const ASSETS_PATH = `${__dirname}/../assets/data`;
 
 async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
-  const encodedPath = 'data%2F';
+  const encodedPath = encodeURIComponent('data/');
 
   for await (fileName of fileNames) {
     const firebaseStorageLocation = 
@@ -18,7 +18,7 @@ async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
 
     fs.writeFileSync(`${filePath}/${fileName}`, body);
 
-    console.log(`Remote file '${fileName}' downloaded to '${filePath}/${fileName}'`);
+    console.log(`Downloading remote file '${fileName}' from Firebase Storage \n To '${filePath}/${fileName}'`);
   }
 
 }
@@ -52,6 +52,8 @@ function getPythonCommand() {
     return; 
   }
 
+  console.log('Updating Candidate JSON files...');
+
   /**
    * 'calculation_download_gdrive_info.py' needs to be first since it updates/creates 
    * the JSON files and sets committee name to use as key in later scripts.
@@ -63,14 +65,23 @@ function getPythonCommand() {
     'candidate_calculation_donor.py', 
     'candidate_calculation_industry.py',
     'average_donation_calculation.py',
-    'candidate_race_sum_calculation.py' ];
+    'candidate_race_sum_calculation.py',
+  ];
+
 
   pythonScripts.forEach( scriptFile => {
-    execSync(`${pythonCommand} ${scriptFile}`);
+    execSync(`${pythonCommand} ${scriptFile}`, { cwd: __dirname });
   });
 
-  execSync(`node candidate_calc_outside_spending.js`);
 
-  console.log('Update of Candidate JSON files complete.');
+  const nodeScripts = [
+    'candidate_calc_outside_spending.js',
+  ];
+
+  nodeScripts.forEach( scriptFile => {
+    execSync(`node ${scriptFile}`, { cwd: __dirname });
+  });
+
+  console.log('Update of Candidate JSON files complete!');
 
 })();
