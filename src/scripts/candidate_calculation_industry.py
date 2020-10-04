@@ -92,6 +92,7 @@ def to_json(dataframe, directory=DIRECTORY):
             f"industry {i}": [str(x) for x in array[1]]
             for i, array in enumerate(value.iterrows(), start=1)
         }
+        return candidate_dict
 
     candidate_files_map(process_candidate, directory=directory)
 
