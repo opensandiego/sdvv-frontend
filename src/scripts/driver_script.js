@@ -52,7 +52,7 @@ function getPythonCommand() {
     return; 
   }
 
-  console.log('Updating Candidate JSON files...');
+  console.log('Rebuilding Candidate JSON files...');
 
   /**
    * 'calculation_download_gdrive_info.py' needs to be first since it updates/creates 
