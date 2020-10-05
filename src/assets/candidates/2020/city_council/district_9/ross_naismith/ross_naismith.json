@@ -1,0 +1,54 @@
+{
+  "candidate name": "Ross Naismith",
+  "first": "Ross",
+  "last": "Naismith",
+  "description": "Music Teacher/ Non-Profit Executive",
+  "website": "https://vote4ross.com",
+  "committee name": "Ross Naismith for City Council 2020",
+  "in general": false,
+  "raised vs spent": [
+    {
+      "Raised": "3700",
+      "Spent": "5639",
+      "Donors": "6",
+      "Average Donor": "617"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "Professional Music Teacher",
+        "2100",
+        "57"
+      ],
+      "industry 2": [
+        "Minister",
+        "600",
+        "16"
+      ],
+      "industry 3": [
+        "Paralegal",
+        "600",
+        "16"
+      ],
+      "industry 4": [
+        "Chief Executive Officer",
+        "150",
+        "4"
+      ],
+      "industry 5": [
+        "Quality Manager",
+        "150",
+        "4"
+      ]
+    }
+  ],
+  "support": "0",
+  "oppose": "0",
+  "in vs out district": [
+    {
+      "in": "3300",
+      "out": "400"
+    }
+  ]
+}
