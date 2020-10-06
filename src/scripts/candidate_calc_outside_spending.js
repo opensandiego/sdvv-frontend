@@ -1,6 +1,12 @@
 
 const shared = require('./shared_routines.js');
 
+/**
+ * 
+ * @param {object[]} candidates 
+ * @param {string} keyFieldToSave 
+ * @param {object[]} transactions 
+ */
 function getCandidateSums( candidates, keyFieldToSave, transactions ) {
 
   const formTypeKey = 'Sup_Opp_Cd';
@@ -26,6 +32,12 @@ function getCandidateSums( candidates, keyFieldToSave, transactions ) {
 
 }
 
+/**
+ * 
+ * @param {object} sums 
+ * @param {object} jsonData 
+ * @returns {object}
+ */
 function writeSums( sums, jsonData ) {
 
   jsonData['support'] = sums['supportSum'];
@@ -45,14 +57,6 @@ function writeSums( sums, jsonData ) {
 
   let candidates = getCandidateSums(candidateInformation, sumsField, transactions);
 
-  candidates.map( candidate => {
-
-    shared.updateJSONFileWithValue( 
-      shared.getCandidateRelativeFilePath(candidate), 
-      candidate[sumsField], // data to save to json
-      writeSums // function to determine how the data will be saved
-    );
-
-  });
+  shared.saveCandidatesDataToFiles( candidates, sumsField, writeSums ) 
 
 })();
