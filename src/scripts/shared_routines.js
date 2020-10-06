@@ -127,21 +127,29 @@ function sumKeyInList( list, key ) {
 /**
  * This takes a candidate object and uses it to determine the path and file name
  *   that the corresponding json file should be located at.
- * @param {object} candidate 
+ * @param {object} candidate
+ * @param {boolean} useAlternateCityCouncilPath
  * @returns {string} - the combined location and json file name 
  */
-function getCandidateRelativeFilePath( candidate ) {
+function getCandidateRelativeFilePath( candidate, useAlternateCityCouncilPath = false ) {
   // Replace all spaces in candidate name and office with underscores '_'
   const candidatePathName = candidate['Candidate_Name'].split(' ').join('_').toLowerCase();
   const office = candidate['Office'].split(' ').join('_').toLowerCase();
 
+  // The location of the City Council Candidates follows a different pattern than the other offices
   if ( candidate['Office'].toLowerCase() === 'City Council'.toLowerCase() ) {
-    // The location of the City Council Candidates follows a different pattern than the other offices
-    return `${candidate['Year']}/${office}_district_${candidate['District']}/${candidatePathName}/${candidatePathName}.json`;
-    // return `${candidate['Year']}/${office}/district_${candidate['District']}/${candidatePathName}/${candidatePathName}.json`; // This will replace the previous line in the future after other code is updated
+
+    if ( useAlternateCityCouncilPath ) {
+      // This path uses an _ between the office and district, example: city_council_district_0
+      return `${candidate['Year']}/${office}_district_${candidate['District']}/${candidatePathName}/${candidatePathName}.json`;
+    }
+
+    // This path uses a / between the office and district, example: city_council/district_0
+    return `${candidate['Year']}/${office}/district_${candidate['District']}/${candidatePathName}/${candidatePathName}.json`; 
+
   }
 
-  return `${candidate['Year']}/${office}/${candidatePathName}/${candidatePathName}.json`;;
+  return `${candidate['Year']}/${office}/${candidatePathName}/${candidatePathName}.json`;
 }
 
 /**
@@ -183,6 +191,36 @@ function updateJSONFileWithValue( fileNamePath, value, funWriteToObject ) {
 
 }
 
+/**
+ * This calls a function to update the 'keyFieldToSave' of each of the 
+ *  'candidates' json data and saves the files.
+ * @param {object[]} candidates 
+ * @param {string} keyFieldToSave 
+ * @param {callback} callbackFn 
+ */
+function saveCandidatesDataToFiles( candidates, keyFieldToSave, callbackFn ) {
+
+  candidates.map( candidate => {
+
+    // #6, #8
+    updateJSONFileWithValue( 
+      getCandidateRelativeFilePath(candidate), 
+      candidate[keyFieldToSave], 
+      callbackFn 
+    );
+
+    // Also update the JSON data in the old city council folder path
+    updateJSONFileWithValue( 
+      getCandidateRelativeFilePath(candidate, true), 
+      candidate[keyFieldToSave], 
+      callbackFn
+    );
+
+  });
+
+}
+
+
 module.exports = {
   getCandidateInformation,
   getDataFromURL,
@@ -195,4 +233,5 @@ module.exports = {
   updateJSONFileWithValue,
   filterListOnKeyByNotInArray,
   addCandidateFullNamesToTransactions,
+  saveCandidatesDataToFiles,
 };

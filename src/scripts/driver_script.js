@@ -84,6 +84,7 @@ function getPythonCommand() {
 
   const nodeScripts = [
     'candidate_calc_outside_spending.js',
+    'candidate_calculation_in_vs_out.js',
   ];
 
   nodeScripts.forEach( scriptFile => {
