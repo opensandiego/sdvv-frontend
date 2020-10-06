@@ -165,3 +165,4 @@ def candidate_files_map(function, directory=DIRECTORY):
                     file.seek(0)
                     json.dump(new_json_dict, file, indent=2)
                     file.write("\n")
+                    file.truncate()
