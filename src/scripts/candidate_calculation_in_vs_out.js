@@ -24,7 +24,7 @@ function createPropertyIfNotExist(jsonData, key) {
  * @param {object} jsonData
  * @returns {object}
  */
-function writeToInOut( value, jsonData ) {
+function writeToInOutCallback( value, jsonData ) {
   const key = "in vs out district";
   jsonData = createPropertyIfNotExist(jsonData, key);
 
@@ -88,27 +88,6 @@ function calculateCandidateGroupSum( office, candidates, sumKeyField, transactio
   });
 }
 
-/**
- * This calls a function to update the 'keyFieldToSave' of each of the 
- *  'candidates' json data and saves the files.
- * @param {object[]} candidates 
- * @param {string} keyFieldToSave 
- */
-function saveCandidatesDataToFiles( candidates, keyFieldToSave ) {
-
-  candidates.map( candidate => {
-
-    // #6, #8
-    shared.updateJSONFileWithValue( 
-      shared.getCandidateRelativeFilePath(candidate), 
-      candidate[keyFieldToSave], 
-      writeToInOut 
-    );
-
-  });
-
-}
-
 // Main entry function of script
 (async () => {
 
@@ -132,6 +111,6 @@ function saveCandidatesDataToFiles( candidates, keyFieldToSave ) {
 
   offices
   .map( office => calculateCandidateGroupSum( office, candidates, sumsField, transactionsGroups ) )
-  .map( candidatesWithSums => saveCandidatesDataToFiles( candidatesWithSums, sumsField ) );
+  .map( candidatesWithSums => shared.saveCandidatesDataToFiles( candidatesWithSums, sumsField, writeToInOutCallback ) );
  
 })();
