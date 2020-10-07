@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material';
-import { CandidateService } from '../../services/candidate.service';
-import { Candidate, CandidateTree } from '../../candidate';
+import { CandidateService, SidenavService } from '../../services';
+import { CandidateTree } from '../../candidate';
 
 
 @Component({
@@ -22,8 +22,10 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('drawer') sidenav: MatDrawer;
 
-  constructor(private candidateService: CandidateService) {
-    // candidateService.changeEmitted$.subscribe(res => console.log(res, 'here is the res'))
+  constructor(
+    private candidateService: CandidateService,
+    private sidenavService: SidenavService,
+  ) {
   }
 
   @HostListener('window:resize', ['$event'])
@@ -57,7 +59,7 @@ export class HomeComponent implements OnInit {
 
   selectSidenavCandidate(candidateKey: string) {
     this.selectedCandidate = candidateKey;
-    this.candidateService.emitChangeFromSidenav(candidateKey);
+    this.sidenavService.emitChangeFromSidenav(candidateKey);
   }
 
 }

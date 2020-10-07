@@ -8,7 +8,6 @@ import { CandidateTree } from '../candidate';
 })
 export class CandidateService {
   emitChangeSidenav = new Subject<any>();
-  emitChangeOffice = new Subject<any>();
   changeEmittedFromSidenav$ = this.emitChangeSidenav.asObservable();
 
   constructor(public http: HttpClient) { }
