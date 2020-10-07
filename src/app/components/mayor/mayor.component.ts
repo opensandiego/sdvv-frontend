@@ -14,7 +14,7 @@ export class MayorComponent implements OnInit {
   
   candidateImages: string[] = [
     'assets/candidates/2020/mayor/barbara_bry/barbara_bry.png',
-    'assets/candidates/2020/mayor/tasha_williamson/tasha_williamson.png',
+    // 'assets/candidates/2020/mayor/tasha_williamson/tasha_williamson.png',
     'assets/candidates/2020/mayor/todd_gloria/todd_gloria.png',
   ];
   

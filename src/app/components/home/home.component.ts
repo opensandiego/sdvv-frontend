@@ -16,12 +16,15 @@ export class HomeComponent implements OnInit {
   panelOpenState: boolean = false;
   officeStep: number = 0;
   councilDistrictStep: number = 0;
+  selectedCandidate: string;
 
   candidates: Record<string, CandidateTree>;
 
   @ViewChild('drawer') sidenav: MatDrawer;
 
-  constructor(private candidateService: CandidateService) { }
+  constructor(private candidateService: CandidateService) {
+    // candidateService.changeEmitted$.subscribe(res => console.log(res, 'here is the res'))
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event): void {
@@ -50,6 +53,11 @@ export class HomeComponent implements OnInit {
   // Have only one city council district side panel open at any time by setting an assigned step for each panel distrct
   setCouncilDistrictStep(index) {
     this.councilDistrictStep = index;
+  }
+
+  selectSidenavCandidate(candidateKey: string) {
+    this.selectedCandidate = candidateKey;
+    this.candidateService.emitChangeFromSidenav(candidateKey);
   }
 
 }

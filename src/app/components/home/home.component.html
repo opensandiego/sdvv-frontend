@@ -19,14 +19,29 @@
         <ng-container *ngFor="let candidateType of candidates | keyvalue">
           <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue; let i = index">
             <li *ngIf="candidateType.key === 'mayor'">
-              <a>{{candidate.key}}</a>
+              <a (click)="selectSidenavCandidate(candidate.key)">{{candidate.key}}</a>
+            </li>
+          </ul>
+        </ng-container>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="setOfficeStep(2)" hideToggle="true">
+        <mat-expansion-panel-header [ngClass]="{ 'active-link' : officeStep === 2 }" collapsedHeight="50px" expandedHeight="50px" routerLink="/city-attorney">
+          <mat-panel-title>
+              City Attorney
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let candidateType of candidates | keyvalue">
+          <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue; let i = index">
+            <li *ngIf="candidateType.key === 'city-attorney'">
+              <a (click)="selectSidenavCandidate(candidate.key)">{{candidate.key}}</a>
             </li>
           </ul>
         </ng-container>
       </mat-expansion-panel>
     
-      <mat-expansion-panel (opened)="setOfficeStep(2)" (closed)="setCouncilDistrictStep(0)" hideToggle="true">
-        <mat-expansion-panel-header [ngClass]="{ 'active-link' : officeStep === 2 }" collapsedHeight="50px" expandedHeight="50px">
+      <mat-expansion-panel (opened)="setOfficeStep(3)" (closed)="setCouncilDistrictStep(0)" hideToggle="true">
+        <mat-expansion-panel-header [ngClass]="{ 'active-link' : officeStep === 3 }" collapsedHeight="50px" expandedHeight="50px">
           <mat-panel-title>
             City Council
           </mat-panel-title>
@@ -45,7 +60,7 @@
           <ng-container *ngFor="let candidateType of candidates | keyvalue">
             <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue; let i = index">
               <li *ngIf="candidateType.key === 'city-council-district-1'">
-                <a>{{candidate.key}}</a>
+                <a (click)="selectSidenavCandidate(candidate.key)">{{candidate.key}}</a>
               </li>
             </ul>
           </ng-container>
@@ -55,44 +70,52 @@
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 3
           </mat-expansion-panel-header>
-          <ul>
-            <li>Candidate D</li>
-            <li>Candidate E</li>
-            <li>Candidate F</li>
-          </ul>
+          <ng-container *ngFor="let candidateType of candidates | keyvalue">
+            <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue; let i = index">
+              <li *ngIf="candidateType.key === 'city-council-district-3'">
+                <a (click)="selectSidenavCandidate(candidate.key)">{{candidate.key}}</a>
+              </li>
+            </ul>
+          </ng-container>
         </mat-expansion-panel>
 
         <mat-expansion-panel [expanded]="councilDistrictStep === 3" (opened)="setCouncilDistrictStep(3)" class="mat-elevation-z0" routerLink="/city-council-district-5">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 5
           </mat-expansion-panel-header>
-          <ul>
-            <li>Candidate G</li>
-            <li>Candidate H</li>
-            <li>Candidate I</li>
-          </ul>
+          <ng-container *ngFor="let candidateType of candidates | keyvalue">
+            <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue; let i = index">
+              <li *ngIf="candidateType.key === 'city-council-district-5'">
+                <a (click)="selectSidenavCandidate(candidate.key)">{{candidate.key}}</a>
+              </li>
+            </ul>
+          </ng-container>
         </mat-expansion-panel>
 
         <mat-expansion-panel [expanded]="councilDistrictStep === 4" (opened)="setCouncilDistrictStep(4)" class="mat-elevation-z0" routerLink="/city-council-district-7">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 7
           </mat-expansion-panel-header>
-          <ul>
-            <li>Candidate J</li>
-            <li>Candidate K</li>
-            <li>Candidate L</li>
-          </ul>
+          <ng-container *ngFor="let candidateType of candidates | keyvalue">
+            <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue; let i = index">
+              <li *ngIf="candidateType.key === 'city-council-district-7'">
+                <a (click)="selectSidenavCandidate(candidate.key)">{{candidate.key}}</a>
+              </li>
+            </ul>
+          </ng-container>
         </mat-expansion-panel>
 
         <mat-expansion-panel [expanded]="councilDistrictStep === 5" (opened)="setCouncilDistrictStep(5)" class="mat-elevation-z0" routerLink="/city-council-district-9">
           <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
             District 9
           </mat-expansion-panel-header>
-          <ul>
-            <li>Candidate M</li>
-            <li>Candidate N</li>
-            <li>Candidate O</li>
-          </ul>
+          <ng-container *ngFor="let candidateType of candidates | keyvalue">
+            <ul *ngFor="let candidate of candidateType.value.candidates | keyvalue; let i = index">
+              <li *ngIf="candidateType.key === 'city-council-district-9'">
+                <a (click)="selectSidenavCandidate(candidate.key)">{{candidate.key}}</a>
+              </li>
+            </ul>
+          </ng-container>
         </mat-expansion-panel>
       </mat-expansion-panel>
     </mat-accordion>

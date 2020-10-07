@@ -236,7 +236,7 @@ export class CandidateCardExpandedComponent {
 
   @Input() set candidate(c: Candidate) {
     this._c = c;
-    console.debug(c);
+    // console.debug(c);
     this.setChartsData(c);
     this.setDisplayedColumns();
     this.setTableData(c);
