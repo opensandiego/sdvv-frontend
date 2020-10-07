@@ -64,7 +64,10 @@ function getPythonCommand() {
     'candidate_calculation_amount_spent.py', 
     'candidate_calculation_donor.py', 
     'candidate_calculation_industry.py',
+    'average_donation_calculation.py',
+    'candidate_race_sum_calculation.py',
   ];
+
 
   pythonScripts.forEach( scriptFile => {
     execSync(`${pythonCommand} ${scriptFile}`, { cwd: __dirname });
