@@ -1,40 +1,12 @@
 const https = require('https');
 const fs = require('fs');
-
-
-function doGetRequest(requestUrl) {
-
-  return new Promise( (resolve, reject) => {
-    https.get(requestUrl, (res) => {
-      let data = '';
-
-      if (res.statusCode === 200) {
-        console.log('Request status: OK');
-      } else {
-        console.log('Bad response. Status code: ', res.statusCode);
-      }
-
-      res.on('data', (chunk) => {
-        data += chunk;
-      });
-
-      res.on('end', () => {
-        resolve(data);
-      });
-      
-      res.on('error', (err) => {
-        reject(err);
-      })
-    });
-
-  });
-
-}
+const cliProgress = require('cli-progress');
+const shared = require('./shared_routines.js');
 
 /** 
  * showSuperceded
  * false = Only get the most Recently amended versions of transactions (same as Export Amended)
- * true = Include all transactions including those that have been ammeded by later filings
+ * true = Include all transactions including those that have been amended by later filings
  * 
  * */ 
 
@@ -62,12 +34,9 @@ function getTransactionYearRequestUrl({
 }
 
 async function downloadTransactions(aid, year, showSuperceded = false){
-
   const pageSize = 1000;
-  const fileFolder = '../assets/data/';
-  const fileNamePrefix = 'netfile_api';
   const fileNameSuperceded = showSuperceded ? 'all_' : '';
-  const filePath = `${fileFolder}${fileNamePrefix}_${fileNameSuperceded}${year}.csv`;
+  const filePath = `${shared.ASSETS_PATH}/data/netfile_api_${fileNameSuperceded}${year}.csv`;
 
   const requestUrlJSON = getTransactionYearRequestUrl({
     aid: aid, 
@@ -76,17 +45,23 @@ async function downloadTransactions(aid, year, showSuperceded = false){
     showSuperceded: showSuperceded
   });
 
-  const recordCount = (JSON.parse(await doGetRequest(requestUrlJSON))).totalMatchingCount;
+  const recordCount = (JSON.parse(await shared.doGetRequest(requestUrlJSON))).totalMatchingCount;
   const totalPages = Math.ceil(recordCount / pageSize);
 
-  let writeStream = fs.createWriteStream(filePath, {flags: 'w'});
+  let netFileData = [];
+  let num = 5;
+    
+  const bar1 = new cliProgress.SingleBar({
+    format: 'Downloading from NetFile API |' + ('{bar}') + '| {percentage}% || {value}/{total} Transactions for ' + year,
+    barCompleteChar: '\u2588',
+    barIncompleteChar: '\u2591',
+    hideCursor: true
+  });
+  bar1.start(recordCount, 0);
 
-  console.log(`${recordCount} rows to write to \'${filePath}\' using ${totalPages} API requests.`);
-  
   for (let currentPageIndex = 0; currentPageIndex < totalPages; currentPageIndex++) {
-    console.log('Requesting page: ' + currentPageIndex);
 
-    const requestUrlCSV = getTransactionYearRequestUrl({
+    const requestUrl = getTransactionYearRequestUrl({
       aid: aid, 
       year: year,
       pageIndex: currentPageIndex,
@@ -95,23 +70,24 @@ async function downloadTransactions(aid, year, showSuperceded = false){
       showSuperceded: showSuperceded
     });
 
-    let csvData = await doGetRequest(requestUrlCSV);
-    
-    // Write column header row to file
-    if ( currentPageIndex === 0 ) {
-      writeStream.write( csvData.split('\n')[0] + '\n' );
-    }
+    netFileData.push( await shared.doGetRequest(requestUrl) );
 
-    // Write the non-header rows to file
-    writeStream.write( csvData.substring( csvData.indexOf('\n') + 1 ) );
-
+    bar1.increment(pageSize);
   }
-  
-  writeStream.on('finish', () => {
-    console.log('File write done. Download complete.')
-  });
+  bar1.stop();
 
-  writeStream.end();
+  // Get the header row for the CSV data
+  const headerRow = ''.concat( netFileData[0].split('\n')[0] + '\n' );
+
+  const transactionsData = netFileData
+    .map( transactions => transactions.substring( transactions.indexOf('\n') + 1 ) )
+    .join('');
+
+  const fileData = headerRow + transactionsData;
+
+  // save file to disk
+  fs.writeFileSync(filePath, fileData, 'utf8');
+  console.log(`${recordCount} Transactions saved to:\n ${filePath}`)
 
 }
 
@@ -120,10 +96,13 @@ module.exports = {
   downloadTransactionsByYear: function(year) { downloadTransactions(32, year) },
 
   downloadTransactions2020Election: async (aid = 32) => {
-    await downloadTransactions(aid, 2019);
+    // await downloadTransactions(aid, 2019);
     await downloadTransactions(aid, 2020);
   },
 
 };
 
-module.exports.downloadTransactions2020Election();
+// const {argv} = require('yargs')
+(async () => {
+  module.exports.downloadTransactions2020Election();
+})();

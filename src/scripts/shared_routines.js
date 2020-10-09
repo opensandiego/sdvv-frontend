@@ -4,9 +4,38 @@ const pRetry = require('p-retry');
 const parse = require('csv-parse');
 const parseSync = require('csv-parse/lib/sync');
 
-const ASSETS_PATH = '../assets/data';
+const ASSETS_PATH = `${__dirname}/../assets`;
+const DATA_PATH = `${ASSETS_PATH}/data`;
+// const CANDIDATE_PATH = `${ASSETS_PATH}/candidates`;
 const NETFILE_API_CSV_FILENAMES = ['netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv'];
 
+/**
+ * Fetches data from a url with retries with exponential back off.
+ * @param {string} url 
+ * @returns {string} 
+ */
+async function doGetRequest(url) {
+
+  const doFetch = async (attempt) => {
+    if ( attempt > 1 ) {
+      console.log(` > fetch retry attempt: ${attempt}`);
+    }
+      
+    const fetchResponse = await fetch(url, {
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    // Abort retrying if the resource doesn't exist
+    if (fetchResponse.status === 404) {
+      throw new pRetry.AbortError(fetchResponse.statusText);
+    }
+
+    return (await fetchResponse.text());
+
+  }
+
+  return await pRetry( doFetch, {retries: 10} );
+}
 
 /**
  * Fetches data from a url
@@ -57,7 +86,8 @@ function getTransactions() {
  * @returns {object[]} - contents of the file
  */
 function getAssetsDataFromLocalFile( filename ) {
-  const filePath = `${ASSETS_PATH}/${filename}`
+  // const filePath = `${ASSETS_PATH}/${filename}`
+  const filePath = `${ASSETS_PATH}/data/${filename}`
 
   if ( !fs.existsSync(filePath) ) {
     throw `File not found: ${filePath}`;
@@ -223,4 +253,6 @@ module.exports = {
   updateJSONFileWithValue,
   filterListOnKeyByNotInArray,
   saveCandidatesDataToFiles,
+  doGetRequest,
+  ASSETS_PATH, DATA_PATH,
 };
