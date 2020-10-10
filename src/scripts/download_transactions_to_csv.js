@@ -33,7 +33,9 @@ function getTransactionYearRequestUrl({
 
 }
 
-async function downloadTransactions(aid, year, showSuperceded = false){
+async function downloadTransactions(options){
+  let { aid, year, showSuperceded } = options;
+
   const pageSize = 1000;
   const fileNameSuperceded = showSuperceded ? 'all_' : '';
   const filePath = `${shared.ASSETS_PATH}/data/netfile_api_${fileNameSuperceded}${year}.csv`;
@@ -49,7 +51,6 @@ async function downloadTransactions(aid, year, showSuperceded = false){
   const totalPages = Math.ceil(recordCount / pageSize);
 
   let netFileData = [];
-  let num = 5;
     
   const bar1 = new cliProgress.SingleBar({
     format: 'Downloading from NetFile API |' + ('{bar}') + '| {percentage}% || {value}/{total} Transactions for ' + year,
@@ -91,18 +92,47 @@ async function downloadTransactions(aid, year, showSuperceded = false){
 
 }
 
+function processInput() {
+  const currentYear = new Date().getFullYear();
+  const validYearRangeText = `2005 < year <= ${currentYear}`;
 
-module.exports = {
-  downloadTransactionsByYear: function(year) { downloadTransactions(32, year) },
+  var args = require('yargs')
+    .usage('Usage: $0 -aid num [-year num]')
+    .example('$0 -aid 32 -year 2019')
+    .option( 'aid' , {
+        demandOption: true,
+        describe: 'Agency ID code',
+        type: 'number'
+    })
+    .coerce('aid', arg => {
+      if (Number.isInteger(arg)) { return arg } 
+      else throw new Error(`aid must be a number (integer)`) 
+    })
+    .option( 'year', {
+        default: currentYear,
+        describe: `Year to download transactions for\n ${validYearRangeText}`,
+        type: 'number'
+    })
+    .coerce('year', arg => {
+      if (arg > 2005) { return arg } 
+      else throw new Error(`year must be within range: ${validYearRangeText}`) 
+    })
+    .epilog('For a list of AID codes see: https://netfile.com/Connect2/api/public/campaign/agencies ')
+    .version(false)
+    .argv;
 
-  downloadTransactions2020Election: async (aid = 32) => {
-    // await downloadTransactions(aid, 2019);
-    await downloadTransactions(aid, 2020);
-  },
+  if ( !(args.year && args.aid) ) {
+    throw new Error(`Missing valid command line arguments`);
+  }
 
-};
+  return { aid: args.aid, year: args.year, showSuperceded: false }
+}
 
-// const {argv} = require('yargs')
+
 (async () => {
-  module.exports.downloadTransactions2020Election();
+  const input = processInput();
+
+  // console.log('input:', input);
+
+  await downloadTransactions(input);
 })();
