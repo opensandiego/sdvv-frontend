@@ -86,7 +86,6 @@ function getTransactions() {
  * @returns {object[]} - contents of the file
  */
 function getAssetsDataFromLocalFile( filename ) {
-  // const filePath = `${ASSETS_PATH}/${filename}`
   const filePath = `${ASSETS_PATH}/data/${filename}`
 
   if ( !fs.existsSync(filePath) ) {
@@ -242,17 +241,17 @@ function saveCandidatesDataToFiles( candidates, keyFieldToSave, callbackFn ) {
 
 
 module.exports = {
-  getCandidateInformation,
+  doGetRequest,
   getDataFromURL,
   getAssetsDataFromLocalFile,
-  parseCSVDataToObjects,
   getTransactions,
-  filterListOnKeyByArray,
+  getCandidateInformation,
   getCandidateRelativeFilePath,
-  sumKeyInList,
-  updateJSONFileWithValue,
-  filterListOnKeyByNotInArray,
   saveCandidatesDataToFiles,
-  doGetRequest,
+  updateJSONFileWithValue,
+  parseCSVDataToObjects,
+  sumKeyInList,
+  filterListOnKeyByArray,
+  filterListOnKeyByNotInArray,
   ASSETS_PATH, DATA_PATH,
 };
