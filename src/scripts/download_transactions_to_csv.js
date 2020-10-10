@@ -110,8 +110,8 @@ function processInput() {
   const validYearRangeText = `2005 < year <= ${currentYear}`;
 
   var args = require('yargs')
-    .usage('Usage: $0 -aid num [-year num]')
-    .example('$0 -aid 32 -year 2019')
+    .usage('Usage: $0 --aid num [--year num]')
+    .example('$0 --aid 32 --year 2019')
     .option( 'aid' , {
         demandOption: true,
         describe: 'Agency ID code',
