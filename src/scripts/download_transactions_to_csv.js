@@ -1,4 +1,3 @@
-const https = require('https');
 const fs = require('fs');
 const cliProgress = require('cli-progress');
 const shared = require('./shared_routines.js');
@@ -61,7 +60,7 @@ async function downloadTransactions(options){
   const totalPages = Math.ceil(recordCount / pageSize);
 
   let netFileData = [];
-    
+
   const bar1 = new cliProgress.SingleBar({
     format: 'Downloading from NetFile API |' + ('{bar}') + '| {percentage}% || {value}/{total} Transactions for ' + year,
     barCompleteChar: '\u2588',
@@ -83,7 +82,8 @@ async function downloadTransactions(options){
 
     netFileData.push( await shared.doGetRequest(requestUrl) );
 
-    bar1.increment(pageSize);
+    bar1.increment( netFileData[netFileData.length-1].split("\n").length - 2 );
+
   }
   bar1.stop();
 
@@ -144,8 +144,6 @@ function processInput() {
 
 (async () => {
   const input = processInput();
-
-  // console.log('input:', input);
 
   await downloadTransactions(input);
 })();
