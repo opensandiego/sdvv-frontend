@@ -3,13 +3,15 @@ const fs = require('fs');
 const cliProgress = require('cli-progress');
 const shared = require('./shared_routines.js');
 
-/** 
- * showSuperceded
- * false = Only get the most Recently amended versions of transactions (same as Export Amended)
- * true = Include all transactions including those that have been amended by later filings
- * 
- * */ 
-
+/**
+ * Takes an object with multiple parameters and returns a NetFile API request URL from them.
+ * @param {number} param.aid 
+ * @param {number} param.year 
+ * @param {number} param.pageIndex 
+ * @param {number} param.pageSize
+ * @param {string} param.fileFormat - either 'csv' or 'json'
+ * @param {boolean} param.showSuperceded 
+ */
 function getTransactionYearRequestUrl({
   aid,
   year,
@@ -33,6 +35,14 @@ function getTransactionYearRequestUrl({
 
 }
 
+/**
+ * Downloads transaction data in CSV format from NetFile API using provided options and save to a local file.
+ * @param {number} options.aid - Agency ID code
+ * @param {number} options.year - Year to download transactions for
+ * @param {boolean} options.showSuperceded 
+ *    options.showSuperceded = false - Only get the most Recently amended versions of transactions (same as Export Amended)
+ *    options.showSuperceded = true - Include all transactions including those that have been amended by later filings
+ */
 async function downloadTransactions(options){
   let { aid, year, showSuperceded } = options;
 
@@ -92,6 +102,9 @@ async function downloadTransactions(options){
 
 }
 
+/**
+ * Uses the yargs package to process the command line parameters and returns them in a object.
+ */
 function processInput() {
   const currentYear = new Date().getFullYear();
   const validYearRangeText = `2005 < year <= ${currentYear}`;
