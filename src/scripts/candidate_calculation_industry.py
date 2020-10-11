@@ -8,18 +8,15 @@ JSON files under field `file["by industry"][0]`.
 How much each industry donates is rounded to the nearest whole number.
 """
 
-import json
-import pathlib
-
 import pandas as pd
-
 from shared_calculations import (
     CONTRIBUTION_TYPE,
+    CSV_KEY,
     CSV_PATHS,
-    read_csv_df,
     DIRECTORY,
     JSON_KEY,
-    CSV_KEY,
+    candidate_files_map,
+    read_csv_df,
 )
 
 
@@ -85,20 +82,19 @@ def to_json(dataframe, directory=DIRECTORY):
 
     :returns: None.
     """
-    for path in pathlib.Path(directory).rglob("*.json"):
-        with open(path) as f:
-            file = json.load(f)
-        if isinstance(file, dict) and file.get(JSON_KEY) in dataframe.index:
-            # change this to change where the donor count goes
-            file.setdefault("by industry", [{}])
-            value = dataframe.loc[file[JSON_KEY]]
-            file["by industry"][0] = {
-                f"industry {i}": [str(x) for x in array[1]]
-                for i, array in enumerate(value.iterrows(), start=1)
-            }
-            with open(path, "w") as f:
-                json.dump(file, f, indent=2)
-                f.write("\n")
+
+    def process_candidate(candidate_dict):
+        if candidate_dict.get(JSON_KEY) not in dataframe.index:
+            return None
+        candidate_dict.setdefault("by industry", [{}])
+        value = dataframe.loc[candidate_dict[JSON_KEY]]
+        candidate_dict["by industry"][0] = {
+            f"industry {i}": [str(x) for x in array[1]]
+            for i, array in enumerate(value.iterrows(), start=1)
+        }
+        return candidate_dict
+
+    candidate_files_map(process_candidate, directory=directory)
 
 
 if __name__ == "__main__":

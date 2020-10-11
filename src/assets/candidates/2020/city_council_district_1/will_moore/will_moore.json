@@ -10,7 +10,8 @@
     {
       "Raised": "164067",
       "Spent": "291006",
-      "Donors": "451"
+      "Donors": "451",
+      "Average Donor": "389"
     }
   ],
   "by industry": [
@@ -43,5 +44,11 @@
     }
   ],
   "support": "14867",
-  "oppose": "0"
+  "oppose": "0",
+  "in vs out district": [
+    {
+      "in": "123370",
+      "out": "40697"
+    }
+  ]
 }

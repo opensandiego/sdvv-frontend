@@ -2,7 +2,7 @@
   "candidate name": "Toni Duran",
   "first": "Toni",
   "last": "Duran",
-  "description": "State Senator\u2019s District Representative",
+  "description": "State Senator\u00e2\u20ac\u2122s District Representative",
   "website": "http://www.toniforsandiego.com/",
   "committee name": "Toni Duran for City Council 2020",
   "in general": true,
@@ -10,7 +10,8 @@
     {
       "Raised": "73237",
       "Spent": "66157",
-      "Donors": "208"
+      "Donors": "208",
+      "Average Donor": "285"
     }
   ],
   "by industry": [
@@ -43,5 +44,11 @@
     }
   ],
   "support": "0",
-  "oppose": "0"
+  "oppose": "0",
+  "in vs out district": [
+    {
+      "in": "64789",
+      "out": "8448"
+    }
+  ]
 }
