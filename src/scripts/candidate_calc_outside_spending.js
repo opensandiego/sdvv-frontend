@@ -2,10 +2,12 @@
 const shared = require('./shared_routines.js');
 
 /**
- * 
+ * This uses the list of 'candidates' and for each it finds the sum of the matching transaction and
+ *  stores it each candidates' 'keyFieldToSave' property. It then returns the updated candidates.
  * @param {object[]} candidates 
  * @param {string} keyFieldToSave 
  * @param {object[]} transactions 
+ * @returns {object[]}
  */
 function getCandidateSums( candidates, keyFieldToSave, transactions ) {
 
@@ -33,12 +35,13 @@ function getCandidateSums( candidates, keyFieldToSave, transactions ) {
 }
 
 /**
- * 
+ * This updates the given 'jsonData' object to add sums to specific properties. 
+ *  This is needed to match the format of the data stored in the json file. 
  * @param {object} sums 
  * @param {object} jsonData 
  * @returns {object}
  */
-function writeSums( sums, jsonData ) {
+function writeSumsCallback( sums, jsonData ) {
 
   jsonData['support'] = sums['supportSum'];
   jsonData['oppose'] =  sums['opposedSum'];
@@ -57,6 +60,6 @@ function writeSums( sums, jsonData ) {
 
   let candidates = getCandidateSums(candidateInformation, sumsField, transactions);
 
-  shared.saveCandidatesDataToFiles( candidates, sumsField, writeSums ) 
+  shared.saveCandidatesDataToFiles( candidates, sumsField, writeSumsCallback ) 
 
 })();
