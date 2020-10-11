@@ -1,6 +1,6 @@
 <div class="candidate-card-expanded p-grid p-justify-center p-align-center p-nogutter">
 
-  <div class="p-grid p-justify-center p-align-center p-col-12 p-xl-2 p-lg-2">
+  <div class="p-grid p-justify-center p-align-center p-col-12 p-xl-2">
     <div class="candidate p-col-12">
       <div class="candidate-image-container">
         <div class="candidate-image">
@@ -22,7 +22,7 @@
   </div>
 
 
-  <div class="raised-spent p-grid p-justify-center p-align-center p-col-12 p-xl-3 p-lg-3">
+  <div class="raised-spent p-grid p-justify-center p-align-center p-col-12 p-xl-3">
     <div class="p-col-8">
       <div class="title">
         <p>
@@ -65,7 +65,7 @@
   </div>
 
 
-  <div class="industries p-grid p-justify-center p-col-12 p-xl-4 p-lg-4">
+  <div class="industries p-grid p-justify-center p-col-12 p-xl-4">
     <div class="p-col-12">
       <div class="title">
         <p>
@@ -82,7 +82,7 @@
       </div>
     </div>
 
-    <div class="p-col-12 p-xl-10 p-lg-10">
+    <div class="p-col-12 p-xl-100">
       <table class="industries-table" mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="colorCode">
           <th mat-header-cell *matHeaderCellDef>Color Code</th>
@@ -113,7 +113,7 @@
   </div>
 
 
-  <div class="in-out-district p-col-12 p-xl-3 p-lg-3 p-md-6">
+  <div class="in-out-district p-col-12 p-xl-3 p-md-6">
     <div class="title">
       <p>
         In v. Out District
@@ -151,7 +151,7 @@
   <div class="p-col-12 divider"></div>
 
 
-  <div class="outside-money p-col-12 p-xl-3 p-lg-3">
+  <div class="outside-money p-col-12 p-xl-3">
     <div class="title">
       <p>
         Outside Money
@@ -175,20 +175,20 @@
   </div>
 
 
-  <div class="raised-donors p-grid p-justify-center p-align-center p-col-12 p-xl-3 p-lg-3">
-    <div class="raised p-col-6 p-xl-3 p-lg-3 p-md-3">
+  <div class="raised-donors p-grid p-justify-center p-align-center p-col-12 p-xl-3">
+    <div class="raised p-col-6 p-xl-3 p-md-3">
       <p class="raised-title">Raised</p>
       <div class="raised-amount">{{ candidate['raised vs spent'][0].Raised | currency:'USD':'symbol':'1.0-0' }}</div>
     </div>
   
-    <div class="donors p-col-6 p-xl-3 p-lg-3 p-md-3">
+    <div class="donors p-col-6 p-xl-3 p-md-3">
       <p class="donors-title">Donors</p>
       <div class="donors-amount">{{ candidate['raised vs spent'][0].Donors }}</div>
     </div>
   </div>
   
 
-  <div class="oppose-support p-grid p-justify-center p-align-center p-col-12 p-xl-5 p-lg-5">
+  <div class="oppose-support p-grid p-justify-center p-align-center p-col-12 p-xl-5">
     <div class="oppose-support-chart p-col-12">
       <canvas baseChart
         [chartType]="stackedHorizontalBarChartType"
