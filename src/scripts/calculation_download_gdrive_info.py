@@ -51,6 +51,7 @@ def read_candidate_csv(file):
                 "Office",
                 "In General",
                 "District",
+                "Year",
             ),
         )
         .dropna(how="all")
@@ -101,12 +102,11 @@ def generate_json_files(base_directory, candidate_df):
             if replace_nan(candidate_df.loc[candidate]["District"], False)
             else ""
         )
-        candidate_name = normalize(candidate)
-        dir_path = (
-            f"{base_directory}/{office_folder}/{council_folder}/{candidate_name}/"
-        )
+        name = normalize(candidate)
+        year = normalize(candidate_df.loc[candidate]["Year"], "other")
+        dir_path = f"{base_directory}/{year}/{office_folder}/{council_folder}/{name}/"
         os.makedirs(dir_path, exist_ok=True)
-        json_path = f"{dir_path}{candidate_name}.json"
+        json_path = f"{dir_path}{name}.json"
         try:
             file = open(json_path)
         except FileNotFoundError:
@@ -153,6 +153,6 @@ def update_json_files(folder_path, csv_url):
 
 if __name__ == "__main__":
     update_json_files(
-        "../assets/candidates/2020/",
+        "../assets/candidates/",
         "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0",
     )
