@@ -1,0 +1,54 @@
+{
+  "candidate name": "Will Moore",
+  "first": "Will",
+  "last": "Moore",
+  "description": "Small Business Counsel",
+  "website": "www.mooreforsandiego.com",
+  "committee name": "Moore for City Council 2020",
+  "in general": true,
+  "raised vs spent": [
+    {
+      "Raised": "164067",
+      "Spent": "291006",
+      "Donors": "451",
+      "Average Donor": "389"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "Attorney",
+        "22658",
+        "14"
+      ],
+      "industry 2": [
+        "Retired",
+        "16285",
+        "10"
+      ],
+      "industry 3": [
+        "President",
+        "6650",
+        "4"
+      ],
+      "industry 4": [
+        "Lawyer",
+        "4300",
+        "3"
+      ],
+      "industry 5": [
+        "Owner",
+        "4075",
+        "2"
+      ]
+    }
+  ],
+  "support": "14867",
+  "oppose": "0",
+  "in vs out district": [
+    {
+      "in": "123370",
+      "out": "40697"
+    }
+  ]
+}

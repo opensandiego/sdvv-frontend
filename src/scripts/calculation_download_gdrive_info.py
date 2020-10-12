@@ -50,6 +50,7 @@ def read_candidate_csv(file):
                 "Committee Name (Filer_Name)",
                 "Office",
                 "In General",
+                "District",
             ),
         )
         .dropna(how="all")
@@ -94,13 +95,18 @@ def generate_json_files(base_directory, candidate_df):
     """
     files = {}
     for candidate in candidate_df.index:
-        dir_path = "{}{}/{}/".format(
-            base_directory,
-            normalize(candidate_df.loc[candidate]["Office"], "other"),
-            normalize(candidate),
+        office_folder = normalize(candidate_df.loc[candidate]["Office"], "other")
+        council_folder = (
+            f"district_{candidate_df.loc[candidate]['District']}"
+            if replace_nan(candidate_df.loc[candidate]["District"], False)
+            else ""
+        )
+        candidate_name = normalize(candidate)
+        dir_path = (
+            f"{base_directory}/{office_folder}/{council_folder}/{candidate_name}/"
         )
         os.makedirs(dir_path, exist_ok=True)
-        json_path = "{}{}.json".format(dir_path, normalize(candidate))
+        json_path = f"{dir_path}{candidate_name}.json"
         try:
             file = open(json_path)
         except FileNotFoundError:

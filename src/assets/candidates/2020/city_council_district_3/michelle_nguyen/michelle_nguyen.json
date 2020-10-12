@@ -7,5 +7,11 @@
   "committee name": "Michelle Nguyen for San Diego City Council 2020",
   "in general": false,
   "support": "0",
-  "oppose": "0"
+  "oppose": "0",
+  "in vs out district": [
+    {
+      "in": "0",
+      "out": "0"
+    }
+  ]
 }

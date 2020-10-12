@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Candidate } from '../../candidate';
 import { CandidateService } from '../../services/candidate.service';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-mayor',
@@ -15,7 +14,7 @@ export class MayorComponent implements OnInit {
   
   candidateImages: string[] = [
     'assets/candidates/2020/mayor/barbara_bry/barbara_bry.png',
-    'assets/candidates/2020/mayor/tasha_williamson/tasha_williamson.png',
+    // 'assets/candidates/2020/mayor/tasha_williamson/tasha_williamson.png',
     'assets/candidates/2020/mayor/todd_gloria/todd_gloria.png',
   ];
   
@@ -24,18 +23,11 @@ export class MayorComponent implements OnInit {
   constructor(private candidateService: CandidateService) { }
 
   ngOnInit() {
-    this.loadCandidates();
-  }
-
-  loadCandidates() {
-    forkJoin(
-      this.candidateService.getBarbaraBryData(),
-      this.candidateService.getTashaWilliamsonData(),
-      this.candidateService.getToddGloriaData(),
-    ).subscribe(([barbaraBry, tashaWilliamson, toddGloria]) => {
-      const candidatesArray = [barbaraBry, tashaWilliamson, toddGloria];
-      this.candidates = candidatesArray;
-    });
+    this.candidateService.getMayors().then(
+      mayors => {
+        this.candidates = mayors;
+      }
+    );
   }
 
   getCandidate(candidate: Candidate) {
