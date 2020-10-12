@@ -98,9 +98,15 @@
           &:hover {
             font-weight: bold;
             color: $vvlightblue;
+            cursor: pointer;
           }
         }
       }
+    }
+
+    .candidate-selected {
+      font-weight: bold;
+      color: $vvlightblue;
     }
 }
 

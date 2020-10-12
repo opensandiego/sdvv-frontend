@@ -1,23 +1,81 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { CandidateTree } from '../candidate';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidateService {
+  emitChangeSidenav = new Subject<any>();
+  changeEmittedFromSidenav$ = this.emitChangeSidenav.asObservable();
 
   constructor(public http: HttpClient) { }
 
+  emitChangeFromSidenav(change: string) {
+    this.emitChangeSidenav.next(change);
+  }
+
+  getAll() {
+    return this.http.get("assets/candidates/2020/candidates.json").toPromise();
+  }
+
   // Mayoral Candidates
-  getBarbaraBryData() {
-    return this.http.get(`assets/candidates/2020/mayor/barbara_bry/barbara_bry.json`);
+  getMayors() {
+    return this.getAll().then(
+      (all: Record<string, CandidateTree>) => Promise.all(
+        Object.values(all["mayor"].candidates).map(url => this.http.get(url).toPromise())
+      )
+    );
   }
 
-  getTashaWilliamsonData() {
-    return this.http.get('assets/candidates/2020/mayor/tasha_williamson/tasha_williamson.json');
+  // City Attorney Candidates
+  getCityAttorneys() {
+    return this.getAll().then(
+      (all: Record<string, CandidateTree>) => Promise.all(
+        Object.values(all["city-attorney"].candidates).map(url => this.http.get(url).toPromise())
+      )
+    );
   }
 
-  getToddGloriaData() {
-    return this.http.get('assets/candidates/2020/mayor/todd_gloria/todd_gloria.json');
+  // City Council Candidates
+  getCityCouncilorsDistrict1() {
+    return this.getAll().then(
+      (all: Record<string, CandidateTree>) => Promise.all(
+        Object.values(all["city-council-district-1"].candidates).map(url => this.http.get(url).toPromise())
+      )
+    );
+  }
+
+  getCityCouncilorsDistrict3() {
+    return this.getAll().then(
+      (all: Record<string, CandidateTree>) => Promise.all(
+        Object.values(all["city-council-district-3"].candidates).map(url => this.http.get(url).toPromise())
+      )
+    );
+  }
+
+  getCityCouncilorsDistrict5() {
+    return this.getAll().then(
+      (all: Record<string, CandidateTree>) => Promise.all(
+        Object.values(all["city-council-district-5"].candidates).map(url => this.http.get(url).toPromise())
+      )
+    );
+  }
+
+  getCityCouncilorsDistrict7() {
+    return this.getAll().then(
+      (all: Record<string, CandidateTree>) => Promise.all(
+        Object.values(all["city-council-district-7"].candidates).map(url => this.http.get(url).toPromise())
+      )
+    );
+  }
+
+  getCityCouncilorsDistrict9() {
+    return this.getAll().then(
+      (all: Record<string, CandidateTree>) => Promise.all(
+        Object.values(all["city-council-district-9"].candidates).map(url => this.http.get(url).toPromise())
+      )
+    );
   }
 }

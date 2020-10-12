@@ -3,45 +3,52 @@
   "first": "Will",
   "last": "Moore",
   "description": "Small Business Counsel",
-  "website": "www.mooreforsandiego.com",
+  "website": "https://www.mooreforsandiego.com/",
   "committee name": "Moore for City Council 2020",
   "in general": true,
   "raised vs spent": [
     {
-      "Raised": "150983",
-      "Spent": "265565",
-      "Donors": "419"
+      "Raised": "164067",
+      "Spent": "291006",
+      "Donors": "451",
+      "Average Donor": "389"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Attorney",
-        "21799",
-        "14.0"
+        "22658",
+        "14"
       ],
       "industry 2": [
         "Retired",
-        "14160",
-        "9.0"
+        "16285",
+        "10"
       ],
       "industry 3": [
         "President",
-        "5800",
-        "4.0"
+        "6650",
+        "4"
       ],
       "industry 4": [
         "Lawyer",
-        "3750",
-        "2.0"
+        "4300",
+        "3"
       ],
       "industry 5": [
-        "Physician",
-        "3650",
-        "2.0"
+        "Owner",
+        "4075",
+        "2"
       ]
     }
   ],
   "support": "14867",
-  "oppose": "0"
+  "oppose": "0",
+  "in vs out district": [
+    {
+      "in": "123370",
+      "out": "40697"
+    }
+  ]
 }

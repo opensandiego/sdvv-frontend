@@ -10,7 +10,8 @@
     {
       "Raised": "3700",
       "Spent": "5639",
-      "Donors": "6"
+      "Donors": "6",
+      "Average Donor": "617"
     }
   ],
   "by industry": [
@@ -18,30 +19,36 @@
       "industry 1": [
         "Professional Music Teacher",
         "2100",
-        "57.0"
+        "57"
       ],
       "industry 2": [
         "Minister",
         "600",
-        "16.0"
+        "16"
       ],
       "industry 3": [
         "Paralegal",
         "600",
-        "16.0"
+        "16"
       ],
       "industry 4": [
         "Chief Executive Officer",
         "150",
-        "4.0"
+        "4"
       ],
       "industry 5": [
         "Quality Manager",
         "150",
-        "4.0"
+        "4"
       ]
     }
   ],
   "support": "0",
-  "oppose": "0"
+  "oppose": "0",
+  "in vs out district": [
+    {
+      "in": "3300",
+      "out": "400"
+    }
+  ]
 }

@@ -4,49 +4,49 @@
   "website": "https://toddgloria.com/",
   "raised vs spent": [
     {
-      "Raised": "1500495",
-      "Spent": "1459610",
-      "Donors": "2378",
-      "Average Donor": "$0"
+      "Raised": "1957286",
+      "Spent": "1765980",
+      "Donors": "2945",
+      "Average Donor": "561"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Retired",
-        "205499",
-        "14.0"
+        "275024",
+        "14"
       ],
       "industry 2": [
         "Attorney",
-        "121541",
-        "8.0"
+        "156556",
+        "8"
       ],
       "industry 3": [
         "President",
-        "71915",
-        "5.0"
+        "91665",
+        "5"
       ],
       "industry 4": [
         "CEO",
-        "69885",
-        "5.0"
+        "80460",
+        "4"
       ],
       "industry 5": [
         "Homemaker",
-        "44118",
-        "3.0"
+        "53968",
+        "3"
       ]
     }
   ],
   "in vs out district": [
     {
-      "in": "$0",
-      "out": "$0"
+      "in": "1669549",
+      "out": "287736"
     }
   ],
-  "oppose": "0",
-  "support": "510771",
+  "oppose": "28500",
+  "support": "655144",
   "committee name": "Todd Gloria for Mayor 2020",
   "first": "Todd",
   "last": "Gloria",

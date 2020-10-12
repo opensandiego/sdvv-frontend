@@ -55,7 +55,12 @@
             overflow: hidden;
 
             img {
-                object-fit: contain;
+  
+                object-fit: cover;
+                object-position: center top;
+                width: 100%;
+                height: auto;
+                background-color: #ECEFF2;
             }
         }
     }
@@ -103,6 +108,12 @@
         .mat-cell {
             font-size: 13px;
             color: $vvgrey;
+            padding:8px;
+        }
+        
+        .mat-cell:nth-last-child(2), .mat-cell:last-child, 
+        .mat-header-cell:nth-last-child(2), .mat-header-cell:last-child {
+            text-align: right;
         }
 
         .mat-cell:last-child {
