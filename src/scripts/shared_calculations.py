@@ -13,7 +13,7 @@ TYPE_COLUMN = "Form_Type"
 CSV_KEY = "FilerName"
 JSON_KEY = "committee name"
 
-DIRECTORY = "../assets/candidates/2020/"
+DIRECTORY = "../assets/candidates/"
 
 CSV_PATHS = (
     "../assets/data/netfile_api_2020.csv",
