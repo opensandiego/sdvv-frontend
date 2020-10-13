@@ -31,7 +31,7 @@
             <i
               class="helper-tip fa fa-question-circle"
               aria-hidden="true"
-              matTooltip="Description goes here."
+              matTooltip="Total campaign funds raised and spent by the candidate."
             >
             </i>
           </sup>
@@ -40,11 +40,10 @@
   
       <div class="raised-spent-chart">
         <canvas baseChart
-          width="120"
+          width="350"
           height="220"
           [chartType]="barChartType"
           [datasets]="barChartData"
-          [colors]="barChartColors"
           [options]="barChartOptions"
           [plugins]="chartPlugins"
         ></canvas>
@@ -69,12 +68,12 @@
     <div class="p-col-12">
       <div class="title">
         <p>
-          Donors by Group
+          Donations by Group
           <sup>
             <i
               class="helper-tip fa fa-question-circle"
               aria-hidden="true"
-              matTooltip="Description goes here."
+              matTooltip="Total contributions from the five largest groups of campaign donors.  Groups are determined by the industry segment of each donor's employer."
             >
             </i>
           </sup>
@@ -116,12 +115,12 @@
   <div class="in-out-district p-col-12 p-xl-3 p-lg-3 p-md-6">
     <div class="title">
       <p>
-        In v. Out District
+        In v. Out City
         <sup>
           <i
             class="helper-tip fa fa-question-circle"
             aria-hidden="true"
-            matTooltip="Description goes here."
+            matTooltip="Total campaign funds raised in the city of San Diego versus funds raised outside of city limits."
           >
           </i>
         </sup>
@@ -159,18 +158,11 @@
           <i
             class="helper-tip fa fa-question-circle"
             aria-hidden="true"
-            matTooltip="Description goes here."
+            matTooltip="Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign."
           >
           </i>
         </sup>
       </p>
-    </div>
-
-    <div class="content">
-      The Amount of money raised by independent
-      expenditure committees spent on intiatives in
-      support or opposition of a candidate but not
-      contributing directly to their campaign.
     </div>
   </div>
 
