@@ -6,6 +6,24 @@ const { execSync } = require("child_process");
 const CSV_FILE_NAMES = [ 'netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv' ];
 const ASSETS_PATH = `${__dirname}/../assets/data`;
 
+function processInput() {
+
+  var args = require('yargs')
+    .usage('Usage: $0 [--download boolean]')
+    .example('$0 --download false')
+    .example('$0 --download=true')
+    .option('download', {
+        default:  true,
+        describe: `Download csv files from Firebase Storage.`,
+        type: 'boolean'
+    })
+    .alias('d', 'download')
+    .version(false)
+    .argv;
+
+    return { downloadCSV: args.download }
+}
+
 async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
   const encodedPath = encodeURIComponent('data/');
 
@@ -43,7 +61,11 @@ function getPythonCommand() {
 
 
 (async () => {
-  await downloadCSVFromFirebaseCloudStorage(CSV_FILE_NAMES, ASSETS_PATH);
+  const input = processInput();
+
+  if (input.downloadCSV) {
+    await downloadCSVFromFirebaseCloudStorage(CSV_FILE_NAMES, ASSETS_PATH);
+  }
 
   const pythonCommand = getPythonCommand();
 
