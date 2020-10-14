@@ -95,7 +95,7 @@ export class CandidateCardExpandedComponent {
         
 
         formatter: (val, ctx) => {
-          return ctx.dataset.label === 'Raised' ? `Raised\n$${this.commaNumberFormatter(val)}` : `Spent\n$${this.commaNumberFormatter(val)}`;
+          return ctx.dataset.label === 'Raised' ? `Raised\n$${this.mNumberFormatter(val)}` : `Spent\n$${this.mNumberFormatter(val)}`;
         },
       },
     },
@@ -331,7 +331,7 @@ export class CandidateCardExpandedComponent {
 
   // Adding K At The End of Values Over 9999 (i.e. 10K, 100K)
   mNumberFormatter(num: number) {
-    return Math.abs(num) > 1e6 ? Math.sign(num)*((Math.abs(num)/1e6)) + 'M' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
+    return Math.abs(num) > 1e6 ? Math.sign(num)*((Math.round(num/1e4))/100) + 'M' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
   }
 
   // Adding Comma Separators for Values Over 999

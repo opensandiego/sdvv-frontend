@@ -4,7 +4,7 @@
     <div class="candidate p-col-12">
       <div class="candidate-image-container">
         <div class="candidate-image">
-          <img [src]="candidateImg" alt="candidate picture">
+          <img [src]="candidateImg" [alt]="candidate['candidate name']" onError="this.src='../../../assets/candidate-card/profile.png'">
         </div>
       </div>
       <h1>{{ candidate['candidate name'] }}</h1>
@@ -105,7 +105,7 @@
           <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.percentage | number:'1.0-0' }}%</td>
         </ng-container>
   
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>

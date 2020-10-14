@@ -3,7 +3,7 @@
   <div class="candidate p-col-12">
     <div class="candidate-image-container">
       <div class="candidate-image">
-        <img [src]="candidateImg" alt="candidate picture">
+        <img [src]="candidateImg" [alt]="candidate['candidate name']" onError="this.src='../../../assets/candidate-card/profile.png'">
       </div>
     </div>
 
