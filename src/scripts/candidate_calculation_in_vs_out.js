@@ -46,6 +46,12 @@ function getZipCodes(){
   return zipCodesData.map( element => element.zip_code );
 }
 
+function getZipCodesWithDistricts() {
+  const zipCodesFileName = 'sd_district_zipcodes.csv';
+
+  const fileData = shared.getAssetsDataFromLocalFile( zipCodesFileName ); 
+  return shared.parseCSVDataToObjects( fileData );
+}
 
 /**
  * For each candidate that is running for the given office this sums the 'transactionAmountKey' 
@@ -88,9 +94,31 @@ function calculateCandidateGroupSum( office, candidates, sumKeyField, transactio
   });
 }
 
+function getDistrictsWithZipCodes(zipCodesWithDistrict) {
+  // This is the header row of the cvs file excluding the first column header
+  const districtNames = (Object.keys(zipCodesWithDistrict[0])).slice(1);
+
+  const districtZipCodes = districtNames
+    .map( district => {
+      const zipCodes = zipCodesWithDistrict
+        .filter( zipData => zipData[district] === '1.0' )
+        .map( zipData => zipData['zipcode'] )
+
+      return { district, zipCodes }
+    })
+
+  return districtZipCodes;
+}
+
 // Main entry function of script
 (async () => {
+  let zipCodesWithDistrict = getZipCodesWithDistricts();
 
+  // Transform into:  // [ { district: "1", zipCodes: [ '12345', '23456', ...] }, { }, { } ] 
+  let districtsWithZipCodes = getDistrictsWithZipCodes(zipCodesWithDistrict); 
+  /* testing */ console.log('districtsWithZipCodes', districtsWithZipCodes);
+
+  return;
   const zipCodeKey = 'Tran_Zip4';
   const offices = [ 'Mayor', 'City Council', 'City Attorney' ];
   const sumsField = 'inAndOut';
@@ -98,13 +126,19 @@ function calculateCandidateGroupSum( office, candidates, sumKeyField, transactio
   // The valid zip code list as an array of strings from a local CSV file
   const zipCodes = getZipCodes(); // #4
   
+  // const zipCodesWithDistrict = getZipCodesWithDistricts();
+  // needs to be transformed into :  // [ { district: "1", zipCodes: [ '12345', '23456', ...] }, { }, { } ] 
+
   // From the local CSV files
   const transactions = shared.getTransactions(); // #5 
 
-  const transactionsGroups = [ 
+  const transactionsGroups = [ // inside vs outside of city
     { type: 'in',  transactions: shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodes) }, 
     { type: 'out', transactions: shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodes) }, 
   ];
+
+  // const districtsWithZipCodes = getDistrictsWithZipCodes(zipCodesWithDistrict);
+  // const cityCouncilTransactionsGroups ;
 
   // From an online Google Sheet 
   const candidates = await shared.getCandidateInformation(); // #1 
