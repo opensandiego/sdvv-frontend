@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { SidenavService } from '../../services';
+
 @Component({
   selector: 'app-candidate-card',
   templateUrl: './candidate-card.component.html',
@@ -11,7 +13,13 @@ export class CandidateCardComponent implements OnInit {
   @Output() private emitCandidateData = new EventEmitter<any>();
   @Output() private emitCandidateImage = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private sidenavService: SidenavService) {
+    sidenavService.changeEmittedFromSidenav$.subscribe(res => {
+      if (res === this.candidate['candidate name']) {
+        this.outputCandidateData();
+      }
+    })
+  }
 
   ngOnInit() {
   }
