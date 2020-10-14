@@ -113,10 +113,10 @@ function processInput() {
     .usage('Usage: $0 --aid num [--year num]')
     .example('$0 --aid 32 --year 2019')
     .option( 'aid' , {
-        demandOption: true,
         describe: 'Agency ID code',
         type: 'number'
     })
+    .default('aid', 32)
     .coerce('aid', arg => {
       if (Number.isInteger(arg)) { return arg } 
       else throw new Error(`aid must be a number (integer)`) 

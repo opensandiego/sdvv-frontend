@@ -20,7 +20,7 @@ jobs:
           node-version: '12'
       - run: npm ci
       - name: Downloading from NetFile API
-        run: "node ./src/scripts/download_transactions_to_csv.js --aid=32 --year=${{ matrix.year }}"
+        run: "npm run download-netfile-data -- --aid=32 --year=${{ matrix.year }}"
       - name: Uploading to GitHub Artifact
         uses: actions/upload-artifact@v2
         with:
