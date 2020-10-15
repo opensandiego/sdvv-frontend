@@ -46,6 +46,8 @@ function getZipCodes(){
   return zipCodesData.map( element => element.zip_code );
 }
 
+  // returned data structure:
+  // [ { zipcode: "12345", "district 1": "1.0", "district 2": "0.0", ... }, { }, ... ]
 function getZipCodesWithDistricts() {
   const zipCodesFileName = 'sd_district_zipcodes.csv';
 
@@ -94,6 +96,8 @@ function calculateCandidateGroupSum( office, candidates, sumKeyField, transactio
   });
 }
 
+  // returned data structure:
+  // [ { districtName: "district 1", zipCodes: [ '12345', '23456', ... ] }, { }, ... ] 
 function getDistrictsWithZipCodes(zipCodesWithDistrict) {
   // This is the header row of the cvs file excluding the first column header
   const districtNames = (Object.keys(zipCodesWithDistrict[0])).slice(1);
@@ -141,7 +145,7 @@ function getInVsOutSums(candidate, transactions, zipCodeKey, zipCodeList) {
 (async () => {
 
   const zipCodeKey = 'Tran_Zip4';
-  const offices = [ 'Mayor', 'City Council', 'City Attorney' ];
+  // const offices = [ 'Mayor', 'City Council', 'City Attorney' ];
   const officesWholeCity = [ 'Mayor', 'City Attorney' ];
   const officesPerDistrict = [ 'City Council' ];
   const sumsField = 'inAndOut';
@@ -150,9 +154,6 @@ function getInVsOutSums(candidate, transactions, zipCodeKey, zipCodeList) {
   const zipCodes = getZipCodes(); // #4
   
   let zipCodesWithDistrict = getZipCodesWithDistricts();
-  // zipCodesWithDistrict data structure:
-  // [ { zipcode: "12345", "district 1": "1.0", "district 2": "0.0", ... }, { }, ... ]
-  // /* testing */ console.log('zipCodesWithDistrict', zipCodesWithDistrict);
 
   // From the local CSV files
   const transactions = shared.getTransactions(); // #5 
@@ -162,20 +163,14 @@ function getInVsOutSums(candidate, transactions, zipCodeKey, zipCodeList) {
     { type: 'out', transactions: shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodes) }, 
   ];
 
-  // const districtsWithZipCodes = getDistrictsWithZipCodes(zipCodesWithDistrict);
-  // const cityCouncilTransactionsGroups ;
-
   let districtsWithZipCodes = getDistrictsWithZipCodes(zipCodesWithDistrict);
-  // zipCodesWithDistrict data structure:
-  // [ { districtName: "district 1", zipCodes: [ '12345', '23456', ... ] }, { }, ... ] 
-  // /* testing */ console.log('districtsWithZipCodes', districtsWithZipCodes);
 
   // From an online Google Sheet 
   const candidates = await shared.getCandidateInformation(); // #1 
 
   officesWholeCity
-  .map( office => calculateCandidateGroupSum( office, candidates, sumsField, transactionsGroups ) )
-  // .map( candidatesWithSums => shared.saveCandidatesDataToFiles( candidatesWithSums, sumsField, writeToInOutCallback ) );
+    .map( office => calculateCandidateGroupSum( office, candidates, sumsField, transactionsGroups ) )
+    .map( candidatesWithSums => shared.saveCandidatesDataToFiles( candidatesWithSums, sumsField, writeToInOutCallback ) );
 
 
   let candidatesWithDistricts = candidates
