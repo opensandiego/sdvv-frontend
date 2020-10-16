@@ -34,9 +34,9 @@ class CandidateRaceContributionSums(NamedTuple):
 
 
 def sum_race_contributions(
-    mayor_directory=DIRECTORY + "mayor/",
-    city_council_directory=DIRECTORY + "city_council*/",
-    city_attorney_directory=DIRECTORY + "mayor/",
+    mayor_directory=DIRECTORY + "*/mayor/",
+    city_council_directory=DIRECTORY + "*/city_council*/",
+    city_attorney_directory=DIRECTORY + "*/city_attorney/",
 ):
     """
     Sums the contributions for each race.
