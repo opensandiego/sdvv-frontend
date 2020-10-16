@@ -103,7 +103,7 @@ def generate_json_files(base_directory, candidate_df):
             else ""
         )
         name = normalize(candidate)
-        year = normalize(candidate_df.loc[candidate]["Year"], "other")
+        year = replace_nan(candidate_df.loc[candidate]["Year"], "other")
         dir_path = f"{base_directory}/{year}/{office_folder}/{council_folder}/{name}/"
         os.makedirs(dir_path, exist_ok=True)
         json_path = f"{dir_path}{name}.json"
