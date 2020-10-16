@@ -18,6 +18,7 @@ import os
 import typing
 
 import pandas as pd
+from shared_calculations import DIRECTORY
 
 
 def replace_nan(value, replace):
@@ -153,6 +154,6 @@ def update_json_files(folder_path, csv_url):
 
 if __name__ == "__main__":
     update_json_files(
-        "../assets/candidates/",
+        DIRECTORY,
         "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0",
     )
