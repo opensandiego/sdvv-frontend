@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CandidateService } from '../../services/candidate.service';
 
 @Component({
   selector: 'app-splash',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./splash.component.scss']
 })
 export class SplashComponent implements OnInit {
+  candidates: any;
 
-  constructor() { }
+  constructor(private candidateService: CandidateService) { }
 
   ngOnInit() {
+    this.candidateService.getAll().then(
+      all => {
+        this.candidates = Object
+          .keys(all)
+          .map(k => {
+            return {count: Object.keys(all[k]).length, ...all[k]};
+          });
+      }
+    );
   }
 
 }

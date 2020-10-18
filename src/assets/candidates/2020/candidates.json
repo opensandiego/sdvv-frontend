@@ -1,6 +1,7 @@
 {
     "mayor": {
         "title": "Mayor",
+        "total": 5,
         "candidates": {
             "Barbara Bry": "assets/candidates/2020/mayor/barbara_bry/barbara_bry.json",
             "Todd Gloria": "assets/candidates/2020/mayor/todd_gloria/todd_gloria.json"
@@ -8,6 +9,7 @@
     },
     "city-attorney": {
         "title": "City Attorney",
+        "total": 23,
         "candidates": {
             "Cory Briggs": "assets/candidates/2020/city_attorney/cory_briggs/cory_briggs.json",
             "Marra W. Elliot": "assets/candidates/2020/city_attorney/marra_w._elliot/marra_w._elliot.json"
@@ -15,6 +17,7 @@
     },
     "city-council-district-1": {
         "title": "City Council - District One",
+        "total": 6,
         "candidates": {
             "Joe LaCava": "assets/candidates/2020/city_council/district_1/joe_lacava/joe_lacava.json",
             "Will Moore": "assets/candidates/2020/city_council/district_1/will_moore/will_moore.json"

@@ -26,30 +26,14 @@
   <div class="ftm">
     <h1>Follow the Money</h1>
     <p class="ftm_caption">See how local campaigns are financed so you can be informed before you vote.</p>
-    <div class="choose">
+    <div class="choose" *ngFor="let candidateType of candidates | keyvalue">
         <div>
-            <h2 class="racename">Mayor</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/mayor"><i class="fa fa-university"></i>See Candidates</a>
+            <h2 class="racename">{{candidates[candidateType.key].title}}</h2> 
+            <a class="cta" routerLinkActive="active-link" routerLink="/{{candidateType}}"><i class="fa fa-university"></i>See Candidates</a>
             <p class="raised">Total Raised</p>
-            <h3 class="amount_raised">$1.5M</h3>
+            <h3 class="amount_raised">{{candidates[candidateType.key].total}}</h3>
             <p class="candidate_num">Candidates</p>
-            <h3>5</h3>
-        </div>
-        <div>
-            <h2 class="racename">City Attorney</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/city-attorney"><i class="fa fa-balance-scale"></i>See Candidates</a>
-            <p class="raised">Total Raised</p>
-            <h3 class="amount_raised">$1.5M</h3>
-            <p class="candidate_num">Candidates</p>
-            <h3>5</h3>
-        </div>
-        <div>
-            <h2 class="racename">City Council</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/city-council"><i class="fas fa-map-marked-alt"></i>Choose District</a>
-            <p class="raised">Total Raised</p>
-            <h3 class="amount_raised">$1.5M</h3>
-            <p class="candidate_num">Candidates</p>
-            <h3>5</h3>
+            <h3>{{candidates[candidateType.key].count}}</h3>
         </div>
     </div>
     <div class="sources"><p>All of our data is sourced directly from the <a href="https://ssl.netfile.com/static/agency/csd/" target="_blank">City of San Diego</a> public records.</p></div>
