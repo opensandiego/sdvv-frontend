@@ -95,7 +95,7 @@ def to_json(contribution_sums, path=DIRECTORY, file_name="campaign_race_totals.j
     Writes the race contributions to `campaign_race_totals.json`
 
     :param contribution_sums: A dictionary with keys of the election year
-    and values of the corrosponding `CandidateRaceContributionSums` object.
+    and values of the corresponding `CandidateRaceContributionSums` object.
 
     :param path: The path that contains folders for each election year.
 
