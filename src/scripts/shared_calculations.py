@@ -26,9 +26,9 @@ def read_csv_df(paths, types, *columns):
     """
     Read dataframe from specified CSV files with the specified columns and type.
 
-    The dataframe's index column is `CSV_KEY`. The types are filtered
-    against `TYPE_COLUMN`. `TYPE_COLUMN` isn't included in the returned
-    dataframe.
+    The dataframe's index column is `CSV_KEY`. The column is lower cased.
+    The types are filtered against `TYPE_COLUMN`.
+    `TYPE_COLUMN` isn't included in the returned dataframe.
 
     To read into a series, see `read_csv_series`
 
@@ -46,7 +46,11 @@ def read_csv_df(paths, types, *columns):
         pd.read_csv(path, usecols=columns).set_index(CSV_KEY) for path in paths
     )
     # String interpolation using @var failed for an unknown reason so it isn't used
-    return df.query("{} in {}".format(TYPE_COLUMN, types)).drop(columns=[TYPE_COLUMN])
+    filtered_df = df.query("{} in {}".format(TYPE_COLUMN, types)).drop(
+        columns=[TYPE_COLUMN]
+    )
+    filtered_df.index = filtered_df.index.str.lower()
+    return filtered_df
 
 
 def read_csv_series(paths, types, column):
@@ -149,6 +153,8 @@ def candidate_files_map(function, directory=DIRECTORY):
     A candidate JSON file is defined as a JSON file in param `directory`
     and at the top level has a JSON object (dictionary).
 
+    The field with its name in constant `JSON_KEY` is lower cased.
+
     :param function: A function that takes a single dictionary argument and
     returns a dictionary or None.
 
@@ -160,6 +166,8 @@ def candidate_files_map(function, directory=DIRECTORY):
         with open(path, "r+") as file:
             candidate_dict = json.load(file)
             if isinstance(candidate_dict, dict):
+                if JSON_KEY in candidate_dict:
+                    candidate_dict[JSON_KEY] = candidate_dict[JSON_KEY].lower()
                 new_json_dict = function(candidate_dict)
                 if new_json_dict is not None:
                     file.seek(0)
