@@ -159,7 +159,7 @@ def candidate_files_map(function, directory=DIRECTORY):
     for path in pathlib.Path(directory).rglob("*.json"):
         with open(path, "r+") as file:
             candidate_dict = json.load(file)
-            if isinstance(candidate_dict, dict):
+            if isinstance(candidate_dict, dict) and JSON_KEY in candidate_dict:
                 new_json_dict = function(candidate_dict)
                 if new_json_dict is not None:
                     file.seek(0)
