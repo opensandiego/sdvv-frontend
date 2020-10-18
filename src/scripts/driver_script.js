@@ -6,6 +6,7 @@ const { execSync } = require("child_process");
 const CSV_FILE_NAMES = [ 'netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv' ];
 const ASSETS_PATH = `${__dirname}/../assets/data`;
 
+
 function processInput() {
 
   var args = require('yargs')
@@ -24,7 +25,13 @@ function processInput() {
     return { downloadCSV: args.download }
 }
 
-async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
+ /**
+  * This downloads files from Firebase Storage and saves them to the local system.
+  * @param {string[]} fileNames - names of the files to download from Firebase
+  * @param {string} localFilePath - path on the local system to save the downloaded files into
+  */
+async function downloadCSVFromFirebaseCloudStorage (fileNames, localFilePath){
+
   const encodedPath = encodeURIComponent('data/');
 
   for await (fileName of fileNames) {
@@ -34,13 +41,19 @@ async function downloadCSVFromFirebaseCloudStorage (fileNames, filePath){
     const fetchResponse = await fetch(firebaseStorageLocation);
     const body = await fetchResponse.text();
 
-    fs.writeFileSync(`${filePath}/${fileName}`, body);
+    fs.writeFileSync(`${localFilePath}/${fileName}`, body);
 
-    console.log(`Downloading remote file '${fileName}' from Firebase Storage \n To '${filePath}/${fileName}'`);
+    console.log(`Downloading remote file '${fileName}' from Firebase Storage \n To '${localFilePath}/${fileName}'`);
   }
 
 }
 
+/**
+ * This runs several variations of Python commands and attempts to get the 
+ *  version of Python installed. This returns the first command that returns
+ *  a version of at least 3. This returns the command as a string.
+ * @returns {string}
+ */
 function getPythonCommand() {
   const commands = ['python', 'py -3', 'python3'];
   const pythonMinimumVersion = 3;
@@ -92,7 +105,7 @@ function getPythonCommand() {
 
 
   pythonScripts.forEach( scriptFile => {
-    execSync(`${pythonCommand} ${scriptFile}`, { cwd: __dirname });
+    execSync(`${pythonCommand} ${scriptFile}`, { cwd: __dirname, stdio: 'inherit' });
   });
 
 
@@ -102,7 +115,7 @@ function getPythonCommand() {
   ];
 
   nodeScripts.forEach( scriptFile => {
-    execSync(`node ${scriptFile}`, { cwd: __dirname });
+    execSync(`node ${scriptFile}`, { cwd: __dirname, stdio: 'inherit'});
   });
 
   console.log('Update of Candidate JSON files complete!');

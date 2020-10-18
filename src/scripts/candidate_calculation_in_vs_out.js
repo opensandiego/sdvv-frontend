@@ -17,9 +17,8 @@ function createPropertyIfNotExist(jsonData, key) {
 }
 
 /**
- * This updates the given 'jsonData' to add a value to specific property
- *  in a given 'jsonData'. This is needed to match the format of the data
- *  stored in the json file.
+ * This updates the given 'jsonData' to add a value to specific property.
+ *  This is needed to match the format of the data stored in the json file.
  * @param {string} value 
  * @param {object} jsonData
  * @returns {object}
