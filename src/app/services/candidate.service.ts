@@ -42,7 +42,7 @@ export class CandidateService {
   getCityCouncilorsDistrict1() {
     return this.getAll().then(
       (all: Record<string, CandidateTree>) => Promise.all(
-        Object.values(all["city-council-district-1"].candidates).map(url => this.http.get(url).toPromise())
+        Object.values(all["city-council/district-1"].candidates).map(url => this.http.get(url).toPromise())
       )
     );
   }
@@ -50,7 +50,7 @@ export class CandidateService {
   getCityCouncilorsDistrict3() {
     return this.getAll().then(
       (all: Record<string, CandidateTree>) => Promise.all(
-        Object.values(all["city-council-district-3"].candidates).map(url => this.http.get(url).toPromise())
+        Object.values(all["city-council/district-3"].candidates).map(url => this.http.get(url).toPromise())
       )
     );
   }
@@ -58,7 +58,7 @@ export class CandidateService {
   getCityCouncilorsDistrict5() {
     return this.getAll().then(
       (all: Record<string, CandidateTree>) => Promise.all(
-        Object.values(all["city-council-district-5"].candidates).map(url => this.http.get(url).toPromise())
+        Object.values(all["city-council/district-5"].candidates).map(url => this.http.get(url).toPromise())
       )
     );
   }
@@ -66,7 +66,7 @@ export class CandidateService {
   getCityCouncilorsDistrict7() {
     return this.getAll().then(
       (all: Record<string, CandidateTree>) => Promise.all(
-        Object.values(all["city-council-district-7"].candidates).map(url => this.http.get(url).toPromise())
+        Object.values(all["city-council/district-7"].candidates).map(url => this.http.get(url).toPromise())
       )
     );
   }
@@ -74,7 +74,7 @@ export class CandidateService {
   getCityCouncilorsDistrict9() {
     return this.getAll().then(
       (all: Record<string, CandidateTree>) => Promise.all(
-        Object.values(all["city-council-district-9"].candidates).map(url => this.http.get(url).toPromise())
+        Object.values(all["city-council/district-9"].candidates).map(url => this.http.get(url).toPromise())
       )
     );
   }

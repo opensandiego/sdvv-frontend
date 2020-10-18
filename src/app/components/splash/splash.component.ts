@@ -17,8 +17,26 @@ export class SplashComponent implements OnInit {
         this.candidates = Object
           .keys(all)
           .map(k => {
-            return {count: Object.keys(all[k]).length, ...all[k]};
-          });
+            return {
+              type: k,
+              count: Object.keys(all[k]).length,
+              title: all[k].title.split(" - ")[0],
+              total: all[k].total || 0,
+            };
+          })
+          .reduce(
+            (prev, cur) => {
+              const type = cur.type.split('/')[0];
+              if (!prev[type]) {
+                prev[type] = cur;
+              } else {
+                prev[type].count += cur.count;
+                prev[type].total += cur.total;
+              }
+              return prev;
+            },
+            {},
+          )
       }
     );
   }
