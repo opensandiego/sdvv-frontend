@@ -6,12 +6,33 @@ const { execSync } = require("child_process");
 const CSV_FILE_NAMES = [ 'netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv' ];
 const ASSETS_PATH = `${__dirname}/../assets/data`;
 
+
+function processInput() {
+
+  var args = require('yargs')
+    .usage('Usage: $0 [--skip-download boolean]')
+    .example('$0 --skip-download')
+    .example('$0 --sk')
+    .example('$0 --sk=true')
+    .option('skip-download', {
+        default:  false,
+        describe: `Do not download csv files.`,
+        type: 'boolean'
+    })
+    .alias('sk', 'skip-download')
+    .version(false)
+    .argv;
+
+    return { downloadCSV: !args['skip-download'] }
+}
+
  /**
   * This downloads files from Firebase Storage and saves them to the local system.
   * @param {string[]} fileNames - names of the files to download from Firebase
   * @param {string} localFilePath - path on the local system to save the downloaded files into
   */
 async function downloadCSVFromFirebaseCloudStorage (fileNames, localFilePath){
+
   const encodedPath = encodeURIComponent('data/');
 
   for await (fileName of fileNames) {
@@ -54,7 +75,11 @@ function getPythonCommand() {
 
 
 (async () => {
-  await downloadCSVFromFirebaseCloudStorage(CSV_FILE_NAMES, ASSETS_PATH);
+  const input = processInput();
+
+  if (input.downloadCSV) {
+    await downloadCSVFromFirebaseCloudStorage(CSV_FILE_NAMES, ASSETS_PATH);
+  }
 
   const pythonCommand = getPythonCommand();
 
