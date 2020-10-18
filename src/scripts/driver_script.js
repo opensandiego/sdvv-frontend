@@ -10,19 +10,20 @@ const ASSETS_PATH = `${__dirname}/../assets/data`;
 function processInput() {
 
   var args = require('yargs')
-    .usage('Usage: $0 [--download boolean]')
-    .example('$0 --download false')
-    .example('$0 --download=true')
-    .option('download', {
-        default:  true,
-        describe: `Download csv files from Firebase Storage.`,
+    .usage('Usage: $0 [--skip-download boolean]')
+    .example('$0 --skip-download')
+    .example('$0 --sk')
+    .example('$0 --sk=true')
+    .option('skip-download', {
+        default:  false,
+        describe: `Do not download csv files.`,
         type: 'boolean'
     })
-    .alias('d', 'download')
+    .alias('sk', 'skip-download')
     .version(false)
     .argv;
 
-    return { downloadCSV: args.download }
+    return { downloadCSV: !args['skip-download'] }
 }
 
  /**
