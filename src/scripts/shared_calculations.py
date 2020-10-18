@@ -110,12 +110,12 @@ def to_raised_json(series, field, directory=DIRECTORY):
     that are top level objects (dictionaries) and have constant `JSON_KEY`
     as a key. It uses the value of `JSON_KEY` in the JSON file as the key
     for the series and if the series has that key, updates the
-    corrosponding value in the JSON file. It updates the value under
+    corresponding value in the JSON file. It updates the value under
     `file["raised vs spent"][0]` and creates that field if it doesn't
     exist.
 
     :param series: A pandas Series with the indexes of the value
-    assocated with `JSON_KEY` in the JSON file.
+    associated with `JSON_KEY` in the JSON file.
 
     :param field: The field the values will be entered in the JSON file.
 
