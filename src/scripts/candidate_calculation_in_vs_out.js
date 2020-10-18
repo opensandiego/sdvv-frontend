@@ -77,7 +77,8 @@ function calculateCandidateGroupSum( office, candidates, sumKeyField, transactio
     const entries = transactionsGroups.map( group => { 
 
       let transactionsFound = group.transactions
-        .filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #5, #7
+        .filter( transaction => 
+          transaction['FilerName'].toLocaleLowerCase() === candidate['Committee Name (Filer_Name)'].toLocaleLowerCase() ); // #5, #7
       
       transactionsFound = shared.filterListOnKeyByArray( transactionsFound, formTypeKey, formTypes ); // #5, #7
 
@@ -144,22 +145,21 @@ function getInVsOutSums(candidate, transactions, zipCodeKey, zipCodeList) {
 (async () => {
 
   const zipCodeKey = 'Tran_Zip4';
-  // const offices = [ 'Mayor', 'City Council', 'City Attorney' ];
   const officesWholeCity = [ 'Mayor', 'City Attorney' ];
   const officesPerDistrict = [ 'City Council' ];
   const sumsField = 'inAndOut';
 
   // The valid zip code list as an array of strings from a local CSV file
-  const zipCodes = getZipCodes(); // #4
+  const zipCodesWholeCity = getZipCodes(); // #4
   
-  let zipCodesWithDistrict = getZipCodesWithDistricts();
+  const zipCodesWithDistrict = getZipCodesWithDistricts();
 
   // From the local CSV files
   const transactions = shared.getTransactions(); // #5 
 
   const transactionsGroups = [ // inside vs outside of city
-    { type: 'in',  transactions: shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodes) }, 
-    { type: 'out', transactions: shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodes) }, 
+    { type: 'in',  transactions: shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodesWholeCity) }, 
+    { type: 'out', transactions: shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodesWholeCity) }, 
   ];
 
   let districtsWithZipCodes = getDistrictsWithZipCodes(zipCodesWithDistrict);
