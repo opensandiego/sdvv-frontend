@@ -30,7 +30,7 @@
 
 .candidate-card {
     text-align: center;
-    height: 300px;
+    height: 320px;
     margin: 10px;
     padding: 15px 25px 15px 25px;
     background: #fff;
@@ -50,9 +50,14 @@
         font-size: 18px;
         color: $vvdarkgrey;
     }
+    .first{
+        margin-top:10px;
+    }
+
     .candidate-numbers {
         display: flex;
         justify-content: space-between;
+        margin-bottom:10px;
         div {
             padding: 0 6px;
             h2, h3{
