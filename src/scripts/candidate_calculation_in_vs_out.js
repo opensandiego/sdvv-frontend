@@ -1,57 +1,19 @@
 const shared = require('./shared_routines.js');
+const sharedInVOut = require('./candidate_calculation_in_vs_out_shared.js');
 
-
- /**
-  * This checks to see if a 'key' exists in the 'jsonData' and
-  *  if not then assign it a value to match that from a given json file.
-  * @param {object} object - this is a structured json file data
-  * @param {string} key 
-  * @returns {object}
-  */
-function createPropertyIfNotExist(jsonData, key) {
-  if ( !jsonData.hasOwnProperty(key) ) {
-    jsonData[key] = [ { } ];
-  }
-
-  return jsonData;
-}
 
 /**
- * This updates the given 'jsonData' to add a value to specific property.
- *  This is needed to match the format of the data stored in the json file.
- * @param {string} value 
- * @param {object} jsonData
- * @returns {object}
- */
-function writeToInOutCallback( value, jsonData ) {
-  const key = "in vs out district";
-  jsonData = createPropertyIfNotExist(jsonData, key);
-
-  jsonData[key][0] = value;
-
-  return jsonData;
-}
-
-/**
- * This returns an array of string that contain the zip codes from a csv file.
- * @returns {string[]} 
+ * This returns an array of strings that contain the zip codes from a local csv file.
+ * @returns {string[]} - [ '12345', '23456', ... ]
  */
 function getZipCodes(){
   const zipCodesFileName = 'sd_zipcodes.csv';
 
   const csvZipCodes = shared.getAssetsDataFromLocalFile( zipCodesFileName ); 
   const zipCodesData = shared.parseCSVDataToObjects( csvZipCodes );
+  // Example zipCodesData: [ { 'zip_code': '91901', 'city': 'Alpine', 'county': 'San Diego', 'state': 'CA' }, ... ]
 
   return zipCodesData.map( element => element.zip_code );
-}
-
-  // returned data structure:
-  // [ { zipcode: "12345", "district 1": "1.0", "district 2": "0.0", ... }, { }, ... ]
-function getZipCodesWithDistricts() {
-  const zipCodesFileName = 'sd_district_zipcodes.csv';
-
-  const fileData = shared.getAssetsDataFromLocalFile( zipCodesFileName ); 
-  return shared.parseCSVDataToObjects( fileData );
 }
 
 /**
@@ -96,64 +58,16 @@ function calculateCandidateGroupSum( office, candidates, sumKeyField, transactio
   });
 }
 
-  // returned data structure:
-  // [ { districtName: "district 1", zipCodes: [ '12345', '23456', ... ] }, { }, ... ] 
-function getDistrictsWithZipCodes(zipCodesWithDistrict) {
-  // This is the header row of the cvs file excluding the first column header
-  const districtNames = (Object.keys(zipCodesWithDistrict[0])).slice(1);
-
-  const districtZipCodes = districtNames
-    .map( district => {
-      const zipCodes = zipCodesWithDistrict
-        .filter( zipData => zipData[district] === '1.0' )
-        .map( zipData => zipData['zipcode'] )
-
-      return { districtName: district, zipCodes }
-    })
-
-  return districtZipCodes;
-}
-
-/**
- * 
- * @param {object} candidate 
- * @param {object[]} transactions 
- * @param {string} zipCodeKey 
- * @param {string[]} zipCodeList 
- */
-function getInVsOutSums(candidate, transactions, zipCodeKey, zipCodeList) {
-  const transactionAmountKey = 'Tran_Amt1';
-  const formTypeKey = 'Form_Type';
-  const formTypes = [ 'A', 'C', 'I' ];
-
-  // Find all transactions associated with a candidate
-  let transactionsFound = transactions
-    .filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #5, #7
-
-  transactionsFound = shared.filterListOnKeyByArray( transactionsFound, formTypeKey, formTypes ); // #5, #7
-    
-  const transactionsIn = shared.filterListOnKeyByArray( transactionsFound, zipCodeKey, zipCodeList);
-  const transactionsOut = shared.filterListOnKeyByNotInArray( transactionsFound, zipCodeKey, zipCodeList);
-
-  return {
-    in: shared.sumKeyInList( transactionsIn, transactionAmountKey ).toFixed(0),
-    out: shared.sumKeyInList( transactionsOut, transactionAmountKey ).toFixed(0),
-  }
-}
-
 // Main entry function of script
 (async () => {
 
   const zipCodeKey = 'Tran_Zip4';
   const officesWholeCity = [ 'Mayor', 'City Attorney' ];
-  const officesPerDistrict = [ 'City Council' ];
   const sumsField = 'inAndOut';
 
   // The valid zip code list as an array of strings from a local CSV file
   const zipCodesWholeCity = getZipCodes(); // #4
   
-  const zipCodesWithDistrict = getZipCodesWithDistricts();
-
   // From the local CSV files
   const transactions = shared.getTransactions(); // #5 
 
@@ -162,32 +76,11 @@ function getInVsOutSums(candidate, transactions, zipCodeKey, zipCodeList) {
     { type: 'out', transactions: shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodesWholeCity) }, 
   ];
 
-  let districtsWithZipCodes = getDistrictsWithZipCodes(zipCodesWithDistrict);
-
   // From an online Google Sheet 
   const candidates = await shared.getCandidateInformation(); // #1 
 
   officesWholeCity
     .map( office => calculateCandidateGroupSum( office, candidates, sumsField, transactionsGroups ) )
-    .map( candidatesWithSums => shared.saveCandidatesDataToFiles( candidatesWithSums, sumsField, writeToInOutCallback ) );
-
-
-  let candidatesWithDistricts = candidates
-    .filter( candidate => candidate['Office'] === officesPerDistrict[0] );
-
-  // /* testing */ console.log('candidatesWithDistricts[0]', candidatesWithDistricts[0]);
-  
-  candidatesWithDistricts = candidatesWithDistricts//.slice(0, 2)
-    .map( candidate => {
-      const zipCodeList = districtsWithZipCodes
-        .find( district => district.districtName.toLowerCase() === `district ${candidate['District']}`.toLowerCase() );
-
-      candidate[sumsField] = getInVsOutSums(candidate, transactions, zipCodeKey, zipCodeList['zipCodes']);
-      return candidate
-    });
-
-  // /* testing */  candidatesWithDistricts.forEach( candidate => console.log('candidate ', candidate));
-
-  shared.saveCandidatesDataToFiles( candidatesWithDistricts, sumsField, writeToInOutCallback );
+    .map( candidatesWithSums => shared.saveCandidatesDataToFiles( candidatesWithSums, sumsField, sharedInVOut.writeToInOutCallback ) );
 
 })();
