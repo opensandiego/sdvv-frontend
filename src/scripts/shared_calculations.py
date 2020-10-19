@@ -153,7 +153,9 @@ def candidate_files_map(function, directory=DIRECTORY):
     A candidate JSON file is defined as a JSON file in param `directory`
     and at the top level has a JSON object (dictionary).
 
-    The field with its name in constant `JSON_KEY` is lower cased.
+    The field with its name in constant `JSON_KEY` is lower cased when
+    passed to param `function`. The original case is restored when
+    writing to the JSON files. 
 
     :param function: A function that takes a single dictionary argument and
     returns a dictionary or None.
@@ -167,9 +169,12 @@ def candidate_files_map(function, directory=DIRECTORY):
             candidate_dict = json.load(file)
             if isinstance(candidate_dict, dict):
                 if JSON_KEY in candidate_dict:
-                    candidate_dict[JSON_KEY] = candidate_dict[JSON_KEY].lower()
+                    original_name = candidate_dict[JSON_KEY]
+                    candidate_dict[JSON_KEY] = original_name.lower()
                 new_json_dict = function(candidate_dict)
                 if new_json_dict is not None:
+                    if JSON_KEY in new_json_dict:
+                        new_json_dict[JSON_KEY] = original_name
                     file.seek(0)
                     json.dump(new_json_dict, file, indent=2)
                     file.write("\n")
