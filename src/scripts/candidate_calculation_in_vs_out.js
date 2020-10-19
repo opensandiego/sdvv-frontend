@@ -69,7 +69,8 @@ function calculateCandidateGroupSum( office, candidates, sumKeyField, transactio
     const entries = transactionsGroups.map( group => { 
 
       let transactionsFound = group.transactions
-        .filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #5, #7
+        .filter( transaction => 
+          transaction['FilerName'].toLocaleLowerCase() === candidate['Committee Name (Filer_Name)'].toLocaleLowerCase() ); // #5, #7
       
       transactionsFound = shared.filterListOnKeyByArray( transactionsFound, formTypeKey, formTypes ); // #5, #7
 
