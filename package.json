@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "update-data": "node src/scripts/driver_script.js"
+    "update-data": "node src/scripts/driver_script.js",
+    "cypress:open": "cypress open"
   },
   "private": true,
   "dependencies": {
