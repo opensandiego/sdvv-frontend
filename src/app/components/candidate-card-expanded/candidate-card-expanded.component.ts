@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Candidate } from '../../candidate';
 import { Color } from 'ng2-charts';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 
 const placeholder_data = [
   { colorCode: '#007431', industry: 'Technology', amount: 200000, percentage: 0.5 },

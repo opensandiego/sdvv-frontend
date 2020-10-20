@@ -6,7 +6,7 @@ describe('SidenavService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SidenavService = TestBed.get(SidenavService);
+    const service: SidenavService = TestBed.inject(SidenavService);
     expect(service).toBeTruthy();
   });
 });

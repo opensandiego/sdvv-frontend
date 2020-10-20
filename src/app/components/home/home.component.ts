@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
-import { MatDrawer } from '@angular/material';
+import { MatDrawer } from '@angular/material/sidenav';
 import { CandidateService, SidenavService } from '../../services';
 import { CandidateTree } from '../../candidate';
 
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   candidates: Record<string, CandidateTree>;
 
-  @ViewChild('drawer') sidenav: MatDrawer;
+  @ViewChild('drawer', { static: true }) sidenav: MatDrawer;
 
   constructor(
     private candidateService: CandidateService,
