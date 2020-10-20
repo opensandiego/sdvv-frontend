@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   candidates: Record<string, CandidateTree>;
 
-  @ViewChild('drawer') sidenav: MatDrawer;
+  @ViewChild('drawer', { static: true }) sidenav: MatDrawer;
 
   constructor(
     private candidateService: CandidateService,
