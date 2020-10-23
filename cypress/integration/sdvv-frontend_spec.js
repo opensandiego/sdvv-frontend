@@ -1,4 +1,4 @@
-describe('Build - Smoke Test', () => {
+describe('Run - Smoke Test', () => {
 
   const links = [
     { text: 'FAQ', url: '/faq' },
