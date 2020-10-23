@@ -6,26 +6,31 @@ on:
     branches: [ cypress-io-ci, cypress-setup ]
 
 jobs:
-  cypress-run-chrome:
+  cypress-run-browser:
     runs-on: ubuntu-latest
-    name: E2E on Chrome
+    strategy:
+      matrix:
+        browser: [ chrome ]
+    name: E2E on ${{matrix.browser}}
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Cypress run
+      - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with:
           start: npm run start
           wait-on: 'http://localhost:4200'
-          browser: chrome
+          browser: ${{matrix.browser}}
           headless: true
           spec: cypress/integration/sdvv-frontend_spec.js
-      - uses: actions/upload-artifact@v1
+      - name: Upload Screenshots (if generated)
+        uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-      - uses: actions/upload-artifact@v1
+      - name: Upload Video
+        uses: actions/upload-artifact@v1
         if: always()
         with:
           name: cypress-videos
