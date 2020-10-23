@@ -17,9 +17,8 @@ function createPropertyIfNotExist(jsonData, key) {
 }
 
 /**
- * This updates the given 'jsonData' to add a value to specific property
- *  in a given 'jsonData'. This is needed to match the format of the data
- *  stored in the json file.
+ * This updates the given 'jsonData' to add a value to specific property.
+ *  This is needed to match the format of the data stored in the json file.
  * @param {string} value 
  * @param {object} jsonData
  * @returns {object}
@@ -70,7 +69,8 @@ function calculateCandidateGroupSum( office, candidates, sumKeyField, transactio
     const entries = transactionsGroups.map( group => { 
 
       let transactionsFound = group.transactions
-        .filter( transaction => transaction['FilerName'] === candidate['Committee Name (Filer_Name)'] ); // #5, #7
+        .filter( transaction => 
+          transaction['FilerName'].toLocaleLowerCase() === candidate['Committee Name (Filer_Name)'].toLocaleLowerCase() ); // #5, #7
       
       transactionsFound = shared.filterListOnKeyByArray( transactionsFound, formTypeKey, formTypes ); // #5, #7
 

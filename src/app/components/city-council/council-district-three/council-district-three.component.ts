@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Candidate } from '../../candidate';
-import { CandidateService } from '../../services/candidate.service';
+import { Candidate } from '../../../candidate';
+import { CandidateService } from '../../../services/candidate.service';
 
 @Component({
-  selector: 'app-city-attorney',
-  templateUrl: './city-attorney.component.html',
-  styleUrls: ['./city-attorney.component.scss']
+  selector: 'app-council-district-three',
+  templateUrl: './council-district-three.component.html',
+  styleUrls: ['./council-district-three.component.scss']
 })
-export class CityAttorneyComponent implements OnInit {
+export class CouncilDistrictThreeComponent implements OnInit {
   candidates: any[];
   candidate: Candidate;
   candidateImg: string;
@@ -18,9 +18,9 @@ export class CityAttorneyComponent implements OnInit {
   constructor(private candidateService: CandidateService) { }
 
   ngOnInit() {
-    this.candidateService.getCityAttorneys().then(
-      attorneys => {
-        this.candidates = attorneys;
+    this.candidateService.getCityCouncilorsDistrict3().then(
+      district3Councilors => {
+        this.candidates = district3Councilors;
       }
     );
   }
