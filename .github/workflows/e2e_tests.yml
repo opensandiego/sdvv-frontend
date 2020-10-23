@@ -11,9 +11,9 @@ jobs:
         uses: actions/checkout@v1
       - name: Cypress run
         uses: cypress-io/github-action@v2
-          start: npm run start
-          wait-on: 'http://localhost:4200'        
         with:
+          start: npm run start
+          wait-on: 'http://localhost:4200'
           browser: chrome
           headless: true
           spec: cypress/integration/sdvv-frontend_spec.js
