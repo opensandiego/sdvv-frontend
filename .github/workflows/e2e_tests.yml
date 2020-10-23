@@ -1,6 +1,6 @@
 name: End-to-end tests
 on: [push, pull_request]
-  branches: [ cypress-io-ci, cypress-setup ]
+branches: [ cypress-io-ci, cypress-setup ]
 
 jobs:
   cypress-run-chrome:
