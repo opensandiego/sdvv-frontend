@@ -81,6 +81,7 @@ function getPythonCommand() {
     await downloadCSVFromFirebaseCloudStorage(CSV_FILE_NAMES, ASSETS_PATH);
   }
 
+  const nodeCommand = 'node';
   const pythonCommand = getPythonCommand();
 
   if (!pythonCommand) { 
@@ -88,36 +89,29 @@ function getPythonCommand() {
     return; 
   }
 
-  console.log('Rebuilding Candidate JSON files...');
-
   /**
    * 'calculation_download_gdrive_info.py' needs to be first since it updates/creates 
    * the JSON files and sets committee name to use as key in later scripts.
    */
-  const pythonScripts = [
-    'calculation_download_gdrive_info.py', 
-    'candidate_calculation_amount_raised.py', 
-    'candidate_calculation_amount_spent.py', 
-    'candidate_calculation_donor.py', 
-    'candidate_calculation_industry.py',
-    'average_donation_calculation.py',
-    'candidate_race_sum_calculation.py',
+
+  const scripts = [
+    { command: pythonCommand, fileName: 'calculation_download_gdrive_info.py' },
+    { command: pythonCommand, fileName: 'candidate_calculation_amount_raised.py' },
+    { command: pythonCommand, fileName: 'candidate_calculation_amount_spent.py' },
+    { command: pythonCommand, fileName: 'candidate_calculation_donor.py' },
+    { command: pythonCommand, fileName: 'candidate_calculation_industry.py' },
+    { command: pythonCommand, fileName: 'average_donation_calculation.py' },
+    { command: pythonCommand, fileName: 'candidate_race_sum_calculation.py' },
+    { command: nodeCommand, fileName: 'candidate_calc_outside_spending.js' },
+    { command: nodeCommand, fileName: 'candidate_calculation_in_vs_out.js' },
+    { command: nodeCommand, fileName: 'candidate_calculation_in_vs_out_district.js' },
   ];
 
+  console.log('Rebuilding Candidate JSON files...');
 
-  pythonScripts.forEach( scriptFile => {
-    execSync(`${pythonCommand} ${scriptFile}`, { cwd: __dirname, stdio: 'inherit' });
-  });
-
-
-  const nodeScripts = [
-    'candidate_calc_outside_spending.js',
-    'candidate_calculation_in_vs_out.js',
-    'candidate_calculation_in_vs_out_district.js',
-  ];
-
-  nodeScripts.forEach( scriptFile => {
-    execSync(`node ${scriptFile}`, { cwd: __dirname, stdio: 'inherit'});
+  scripts.forEach( script => {
+    console.log(` Running: ${script.command} ${script.fileName}`);
+    execSync(`${script.command} ${script.fileName}`, { cwd: __dirname, stdio: 'inherit' });
   });
 
   console.log('Update of Candidate JSON files complete!');
