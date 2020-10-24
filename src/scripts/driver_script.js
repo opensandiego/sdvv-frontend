@@ -85,7 +85,9 @@ function getPythonCommand() {
   const pythonCommand = getPythonCommand();
 
   if (!pythonCommand) { 
-    console.log(`Python version 3 not found`);
+    console.log(`Error: Python version 3 not found`);
+    process.exitCode = 1;
+
     return; 
   }
 
@@ -109,10 +111,21 @@ function getPythonCommand() {
 
   console.log('Rebuilding Candidate JSON files...');
 
-  scripts.forEach( script => {
-    console.log(` Running: ${script.command} ${script.fileName}`);
-    execSync(`${script.command} ${script.fileName}`, { cwd: __dirname, stdio: 'inherit' });
-  });
+  try{
+
+    scripts.forEach( script => {
+      console.log(` >> Running: ${script.command} ${script.fileName}`);
+      execSync(`${script.command} ${script.fileName}`, { cwd: __dirname, stdio: 'inherit' });
+    });
+
+  } catch (error) {
+
+    console.log(error.toString());
+    console.log('Error: Candidate JSON files update NOT complete!');
+    process.exitCode = 1;
+    return;
+
+  }
 
   console.log('Update of Candidate JSON files complete!');
 
