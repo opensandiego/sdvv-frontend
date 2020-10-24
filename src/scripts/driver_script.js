@@ -113,6 +113,7 @@ function getPythonCommand() {
   const nodeScripts = [
     'candidate_calc_outside_spending.js',
     'candidate_calculation_in_vs_out.js',
+    'candidate_calculation_in_vs_out_district.js',
   ];
 
   nodeScripts.forEach( scriptFile => {
