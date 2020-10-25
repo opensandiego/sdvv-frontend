@@ -39,19 +39,27 @@ export class CandidateCardExpandedComponent {
       label: 'Raised',
       barPercentage: 0.4,
       categoryPercentage: 1.0,
+      backgroundColor: 'rgba(40, 154, 88, 0.8)',
+      borderColor: 'rgba(40, 154, 88, 1)',
+      borderWidth:1,
+      hoverBackgroundColor:'rgba(40, 154, 88, 1)',
+      hoverBorderColor:'rgba(40, 154, 88, 1)',
+
     },
     {
       data: [125000],
       label: 'Spent',
       barPercentage: 0.4,
       categoryPercentage: 1.0,
+      backgroundColor: 'rgba(255, 44, 25, 0.8)',
+      borderColor: 'rgba(255, 44, 25, 1)',
+      borderWidth:1,
+      hoverBackgroundColor:'rgba(255, 44, 25, 1)',
+      hoverBorderColor:'rgba(255, 44, 25, 1)',
     },
   ];
 
-  barChartColors: Color[] = [
-    { backgroundColor: '#289a58' },
-    { backgroundColor: '#ff5647' },
-  ];
+
 
   barChartOptions: ChartOptions = {
     responsive: true,
@@ -78,11 +86,13 @@ export class CandidateCardExpandedComponent {
         align: 'end',
         textAlign: 'center',
         color: '#4e4e4e',
+        
 
         font: {
           size: 16,
           weight: 'bold',
         },
+        
 
         formatter: (val, ctx) => {
           return ctx.dataset.label === 'Raised' ? `Raised\n$${this.commaNumberFormatter(val)}` : `Spent\n$${this.commaNumberFormatter(val)}`;
@@ -236,7 +246,7 @@ export class CandidateCardExpandedComponent {
 
   @Input() set candidate(c: Candidate) {
     this._c = c;
-    console.debug(c);
+    // console.debug(c);
     this.setChartsData(c);
     this.setDisplayedColumns();
     this.setTableData(c);
@@ -298,12 +308,14 @@ export class CandidateCardExpandedComponent {
     ];
 
     // In V. Out District
-    this.doughnutChartData = [
-      {data: [
-        this.currencyToNumber(c['in vs out district'][0].in),
-        this.currencyToNumber(c['in vs out district'][0].out)
-      ]}
-    ];
+    if (c['in vs out district']) {
+      this.doughnutChartData = [
+        {data: [
+          this.currencyToNumber(c['in vs out district'][0].in),
+          this.currencyToNumber(c['in vs out district'][0].out)
+        ]}
+      ];
+    }
 
     // Oppose v. Support
     this.stackedHorizontalBarChartData = [
