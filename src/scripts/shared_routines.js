@@ -265,5 +265,6 @@ module.exports = {
   filterListOnKeyByArray,
   filterListOnKeyByNotInArray,
   addCandidateFullNamesToTransactions,
-  ASSETS_PATH, DATA_PATH,
+  ASSETS_PATH, DATA_PATH, 
+  NETFILE_API_CSV_FILENAMES,
 };
