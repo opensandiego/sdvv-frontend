@@ -1,4 +1,4 @@
-name: Firebase Deployment to Production
+name: Firebase Prod Deployment
 on: 
   push:
     branches: [ master ]
@@ -10,14 +10,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        
+      - uses: actions/setup-python@v2
+        with: 
+          python-version: '3.x'
+
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          # This path is specific to Ubuntu
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+            
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+        
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
       - run: npm ci
-      - run: npm run update-data
-      - run: npm run build
-        name: Deploying to Firebase
-      - uses: w9jds/firebase-action@master
+
+      - name: Updating csv and json data 
+        run: npm run update-data
+
+      - name: Building
+        run: npm run build
+
+      - name: Deploying to Firebase
+        uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting --project=production
         env:
