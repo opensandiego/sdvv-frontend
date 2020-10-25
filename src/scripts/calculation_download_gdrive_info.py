@@ -20,6 +20,31 @@ import typing
 import pandas as pd
 from shared_calculations import DIRECTORY
 
+EMPTY_MODEL_JSON = {
+    "candidate name": "",
+    "description": "",
+    "website": "",
+    "raised vs spent": [
+        {"Raised": "0", "Spent": "0", "Donors": "0", "Average Donor": "0"}
+    ],
+    "by industry": [
+        {
+            "industry 1": ["", "0", "0"],
+            "industry 2": ["", "0", "0"],
+            "industry 3": ["", "0", "0"],
+            "industry 4": ["", "0", "0"],
+            "industry 5": ["", "0", "0"],
+        }
+    ],
+    "in vs out district": [{"in": "0", "out": "0"}],
+    "oppose": "0",
+    "support": "0",
+    "committee name": "",
+    "first": "",
+    "last": "",
+    "in general": False,
+}
+
 
 def replace_nan(value, replace):
     """Returns the value if the value is not NaN, else returns replace."""
@@ -79,7 +104,12 @@ def normalize(string, nan_replacement=None):
 
 
 class JsonFilesNT(typing.NamedTuple):
-    """Named tuple that contains the contents of a JSON file and the file's path."""
+    """
+    Named tuple that contains the contents of a JSON file and the file's path
+
+    The contents field is not guaranteed to equal the actual contents of the file path.
+    The file path is also not guaranteed to exist.
+    """
 
     contents: dict
     path: str
@@ -111,12 +141,11 @@ def generate_json_files(base_directory, candidate_df):
         try:
             file = open(json_path)
         except FileNotFoundError:
-            with open(json_path, "w") as f:
-                f.write("{}")
-            json_dict = {}
+            json_dict = EMPTY_MODEL_JSON.copy()
         else:
             with file as f:
-                json_dict = json.load(f)
+                # Merges the dictionaries
+                json_dict = {**EMPTY_MODEL_JSON, **json.load(f)}
         files[candidate] = JsonFilesNT(json_dict, json_path)
 
     return files
