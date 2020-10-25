@@ -13,7 +13,7 @@ TYPE_COLUMN = "Form_Type"
 CSV_KEY = "FilerName"
 JSON_KEY = "committee name"
 
-DIRECTORY = "../assets/candidates/2020/"
+DIRECTORY = "../assets/candidates/"
 
 CSV_PATHS = (
     "../assets/data/netfile_api_2020.csv",
@@ -114,12 +114,12 @@ def to_raised_json(series, field, directory=DIRECTORY):
     that are top level objects (dictionaries) and have constant `JSON_KEY`
     as a key. It uses the value of `JSON_KEY` in the JSON file as the key
     for the series and if the series has that key, updates the
-    corrosponding value in the JSON file. It updates the value under
+    corresponding value in the JSON file. It updates the value under
     `file["raised vs spent"][0]` and creates that field if it doesn't
     exist.
 
     :param series: A pandas Series with the indexes of the value
-    assocated with `JSON_KEY` in the JSON file.
+    associated with `JSON_KEY` in the JSON file.
 
     :param field: The field the values will be entered in the JSON file.
 
@@ -167,10 +167,9 @@ def candidate_files_map(function, directory=DIRECTORY):
     for path in pathlib.Path(directory).rglob("*.json"):
         with open(path, "r+") as file:
             candidate_dict = json.load(file)
-            if isinstance(candidate_dict, dict):
-                if JSON_KEY in candidate_dict:
-                    original_name = candidate_dict[JSON_KEY]
-                    candidate_dict[JSON_KEY] = original_name.lower()
+            if isinstance(candidate_dict, dict) and JSON_KEY in candidate_dict:
+                original_name = candidate_dict[JSON_KEY]
+                candidate_dict[JSON_KEY] = original_name.lower()
                 new_json_dict = function(candidate_dict)
                 if new_json_dict is not None:
                     if JSON_KEY in new_json_dict:
