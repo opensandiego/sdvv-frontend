@@ -8,8 +8,8 @@
           <img [src]="candidateImg" [alt]="candidate['candidate name']" onError="this.src='../../../assets/candidate-card/profile.png'">
         </div>
       </div>
-      <h1 class="first">{{candidate.first}}</h1>
-      <h1>{{candidate.last}}</h1>
+      <h1 class="first">{{candidate['first']}}</h1>
+      <h1>{{candidate['last']}}</h1>
       <h2>{{ candidate['description'] }}</h2>
 
       <div class="candidate-numbers">
@@ -180,7 +180,7 @@
 
       <div class="raised">
         <h2>Total Expenditures</h2>
-        <h3>{{candidate.oppose| currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
+        <h3>{{candidate['oppose']| currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
       </div>
     </div>
   </div>
