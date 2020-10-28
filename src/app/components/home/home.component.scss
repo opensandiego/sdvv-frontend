@@ -25,15 +25,12 @@
 
     .mat-expansion-panel {
       border-radius: 0px !important;
-      box-shadow: none !important;
-      border-bottom: 1px solid #F5F5F5;
 
       .mat-expansion-panel-content {
         background: lighten($vvbackground, 3%);
         .mat-expansion-panel-body {
           padding: 0 20px 0;
           margin: 0 10px;
-        
         }
       
         i {
@@ -66,7 +63,7 @@
 
     .active-link {
       background-color: $vvlightblue !important;
-      
+      box-shadow: $vvshadowdark;
 
       .mat-content .mat-expansion-panel-header-title {
         color: $vvlightgrey;         

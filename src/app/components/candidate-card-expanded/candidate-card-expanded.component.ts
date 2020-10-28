@@ -39,32 +39,23 @@ export class CandidateCardExpandedComponent {
       label: 'Raised',
       barPercentage: 0.4,
       categoryPercentage: 1.0,
-      backgroundColor: 'rgba(40, 154, 88, 0.8)',
-      borderColor: 'rgba(40, 154, 88, 1)',
-      borderWidth:1,
-      hoverBackgroundColor:'rgba(40, 154, 88, 1)',
-      hoverBorderColor:'rgba(40, 154, 88, 1)',
-
     },
     {
-      data: [150000],
+      data: [125000],
       label: 'Spent',
       barPercentage: 0.4,
       categoryPercentage: 1.0,
-      backgroundColor: 'rgba(255, 44, 25, 0.8)',
-      borderColor: 'rgba(255, 44, 25, 1)',
-      borderWidth:1,
-      hoverBackgroundColor:'rgba(255, 44, 25, 1)',
-      hoverBorderColor:'rgba(255, 44, 25, 1)',
     },
   ];
 
-
+  barChartColors: Color[] = [
+    { backgroundColor: '#289a58' },
+    { backgroundColor: '#ff5647' },
+  ];
 
   barChartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    
 
     title: {
       display: true,
@@ -87,23 +78,20 @@ export class CandidateCardExpandedComponent {
         align: 'end',
         textAlign: 'center',
         color: '#4e4e4e',
-        
 
         font: {
           size: 16,
           weight: 'bold',
         },
-        
 
         formatter: (val, ctx) => {
-          return ctx.dataset.label === 'Raised' ? `Raised\n$${this.mNumberFormatter(val)}` : `Spent\n$${this.mNumberFormatter(val)}`;
+          return ctx.dataset.label === 'Raised' ? `Raised\n$${this.commaNumberFormatter(val)}` : `Spent\n$${this.commaNumberFormatter(val)}`;
         },
       },
     },
 
     scales: {
       xAxes: [{
-        
         ticks: {
           min: 0,
         },
@@ -112,8 +100,7 @@ export class CandidateCardExpandedComponent {
       yAxes: [{
         display: false,
         ticks: {
-          suggestedMin: 0,
-          suggestedMax: 3000000
+          min: 0,
         },
       }],
     },
@@ -165,46 +152,13 @@ export class CandidateCardExpandedComponent {
   stackedHorizontalBarChartType: ChartType = 'horizontalBar';
   stackedHorizontalBarChartData: ChartDataSets[] = [
     {
-      data: [200000],
-      barPercentage: 0.4,
-      categoryPercentage: 1.0,
-      backgroundColor: 'rgba(0, 119, 255, 0.8)',
-      borderColor: 'rgba(0, 119, 255, 1)',
-      borderWidth:1,
-      hoverBackgroundColor:'rgba(0, 119, 255, 1)',
-      hoverBorderColor:'rgba(0, 119, 255, 1)',
-
-      datalabels: {
-        anchor: 'end',
-        align: 'end',
-        textAlign: 'left',
-        color: '#ffffff',
-
-
-        font: {
-          size: 16,
-          weight: 'bold',
-        },
-        
-        formatter: (val) => `Support\n$${this.mNumberFormatter(val)}`,
-      },
-    },
-
-    {
       data: [5000],
-      barPercentage: 0.4,
-      categoryPercentage: 1.0,
-      backgroundColor: 'rgba(255, 113, 25, 0.8)',
-      borderColor: 'rgba(255, 113, 25, 1)',
-      borderWidth:1,
-      hoverBackgroundColor:'rgba(255, 113, 25, 1)',
-      hoverBorderColor:'rgba(255, 113, 25, 1)',
-
+      stack: 'oppose-support',
       datalabels: {
-        anchor: 'end',
-        align: 'end',
-        textAlign: 'left',
-        color: '#ffffff',
+        anchor: 'start',
+        align: 'start',
+        textAlign: 'right',
+        color: '#4e4e4e',
 
         font: {
           size: 16,
@@ -214,9 +168,29 @@ export class CandidateCardExpandedComponent {
         formatter: (val) => `Oppose\n$${this.mNumberFormatter(val)}`,
       },
     },
-   
+    {
+      data: [200000],
+      stack: 'oppose-support',
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+        textAlign: 'left',
+        color: '#4e4e4e',
+
+        font: {
+          size: 16,
+          weight: 'bold',
+        },
+        
+        formatter: (val) => `Support\n$${this.mNumberFormatter(val)}`,
+      },
+    },
   ];
 
+  stackedHorizontalBarChartColors: Color[] = [
+    { backgroundColor: '#FF7119' },
+    { backgroundColor: '#336399' },
+  ];
 
   stackedHorizontalBarChartOptions: ChartOptions = {
     responsive: true,
@@ -224,8 +198,8 @@ export class CandidateCardExpandedComponent {
 
     layout: {
       padding: {
-        left: 0,
-        right: 20,
+        left: 100,
+        right: 100,
       },
     },
 
@@ -240,22 +214,16 @@ export class CandidateCardExpandedComponent {
     scales: {
       xAxes: [{
         display: false,
-        
-        ticks: {
-          suggestedMin: 0,
-          suggestedMax: 900000
+        gridLines: {
+          color: "rgba(0, 0, 0, 0)",
         }
       }],
 
       yAxes: [{
         display: false,
         gridLines: {
-          color: "#727272",
-        },
-        ticks: {
-          min: 0,
+          color: "rgba(0, 0, 0, 0)",
         }
-
       }],
     },
   }
@@ -341,8 +309,8 @@ export class CandidateCardExpandedComponent {
 
     // Oppose v. Support
     this.stackedHorizontalBarChartData = [
-      {...this.stackedHorizontalBarChartData[0], data: [this.currencyToNumber(c['support'])]},
-      {...this.stackedHorizontalBarChartData[1], data: [this.currencyToNumber(c['oppose'])]}
+      {...this.stackedHorizontalBarChartData[0], data: [this.currencyToNumber(c['oppose'])]},
+      {...this.stackedHorizontalBarChartData[1], data: [this.currencyToNumber(c['support'])]}
     ];
   }
 
@@ -353,7 +321,7 @@ export class CandidateCardExpandedComponent {
 
   // Adding K At The End of Values Over 9999 (i.e. 10K, 100K)
   mNumberFormatter(num: number) {
-    return Math.abs(num) > 1e6 ? Math.sign(num)*((Math.round(num/1e4))/100) + 'M' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
+    return Math.abs(num) > 1e6 ? Math.sign(num)*((Math.abs(num)/1e6)) + 'M' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
   }
 
   // Adding Comma Separators for Values Over 999
