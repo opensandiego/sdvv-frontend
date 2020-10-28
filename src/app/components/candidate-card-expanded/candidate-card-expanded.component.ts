@@ -124,6 +124,7 @@ export class CandidateCardExpandedComponent {
   doughnutChartData: ChartDataSets[] = [
     {
       data: [5000, 1200],
+      
     }
   ];
 
@@ -134,6 +135,8 @@ export class CandidateCardExpandedComponent {
   doughnutChartOptions: any = {
     responsive: true,
     maintainAspectRatio: false,
+    cutoutPercentage:60,
+    animation:{animateRotate:false},
 
     legend: {
       display: false,
@@ -148,10 +151,12 @@ export class CandidateCardExpandedComponent {
         anchor: 'start',
         align: 'start',
         color: '#4e4e4e',
+        textAlign:'center',
 
         font: {
           size: 16,
           weight: 'bold',
+          
         },
 
         formatter: (val, ctx) => {
