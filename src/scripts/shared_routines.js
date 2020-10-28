@@ -107,6 +107,17 @@ function parseCSVDataToObjects( csvData ) {
   });
 }
 
+function addCandidateFullNamesToTransactions(transactions){
+  return transactions.map( transaction => {
+
+    transaction.Candidate_Full_Name =
+      transaction.Cand_NamF === '' ? transaction.Cand_NamL : 
+        `${transaction.Cand_NamF} ${transaction.Cand_NamL}`;
+
+    return transaction;
+  });
+}
+
 /**
  * This filters a given list by limiting the results to list items
  *  who's key field is within the filteringArray.
@@ -253,5 +264,7 @@ module.exports = {
   sumKeyInList,
   filterListOnKeyByArray,
   filterListOnKeyByNotInArray,
-  ASSETS_PATH, DATA_PATH,
+  addCandidateFullNamesToTransactions,
+  ASSETS_PATH, DATA_PATH, 
+  NETFILE_API_CSV_FILENAMES,
 };
