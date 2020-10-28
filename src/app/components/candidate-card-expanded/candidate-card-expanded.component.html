@@ -180,7 +180,7 @@
 
       <div class="raised">
         <h2>Total Expenditures</h2>
-        <h3>{{candidate['oppose']| currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
+        <h3>{{(ConvertToInt(candidate['oppose'])+ConvertToInt(candidate['support']))| currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
       </div>
     </div>
   </div>

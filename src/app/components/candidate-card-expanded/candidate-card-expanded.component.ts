@@ -369,5 +369,10 @@ export class CandidateCardExpandedComponent {
   close() {
     this.isExpanded.emit(false);
   }
+  
+  //convert string to int
+  ConvertToInt(val){
+    return parseInt(val);
+  }
 
 }
