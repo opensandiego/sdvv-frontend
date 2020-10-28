@@ -159,7 +159,7 @@
         .chart-container-outside{
             
             height:10vh; 
-            width:45vw;
+            width:58vw;
             border-left:1px solid #727272;
             margin-left:40px;
            
@@ -168,7 +168,7 @@
         
         .outside-grid{
             display: grid;
-            grid-template-columns:50vw 0.8fr 0.8fr;
+            grid-template-columns:60vw 0.8fr;
             justify-self: stretch;
            
 
@@ -253,26 +253,9 @@
         height:25vh !important; 
         width:60vw !important;  
     }
-    .chart-container-outside{
-        width:48vw !important;
-        align-self: stretch;
-       
-    }
+ 
 
-    .outside-grid{
-        grid-template-columns:1fr !important;
-        
-        .donors{
-            padding:30px!important;
-            text-align: center !important;
-        }
-        .raised{
-            padding:30px !important;
-            text-align: center !important;
-            border-left: none !important;
-          
-        }
-    }
+    
 
    
  

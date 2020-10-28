@@ -173,7 +173,6 @@
         <canvas baseChart
           [chartType]="stackedHorizontalBarChartType"
           [datasets]="stackedHorizontalBarChartData"
-          [colors]="stackedHorizontalBarChartColors"
           [options]="stackedHorizontalBarChartOptions"
           [plugins]="chartPlugins"
         ></canvas>
@@ -183,14 +182,6 @@
         <h2>Total Expenditures</h2>
         <h3>{{candidate.oppose| currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
       </div>
-
-      <div class="donors">
-        <h2>Contributors</h2>
-        <h3>{{candidate["raised vs spent"][0].Donors}}</h3>
-      </div>
-    
-     
-  
     </div>
   </div>
 
