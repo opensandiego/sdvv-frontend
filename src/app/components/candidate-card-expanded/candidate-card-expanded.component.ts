@@ -47,7 +47,7 @@ export class CandidateCardExpandedComponent {
 
     },
     {
-      data: [125000],
+      data: [150000],
       label: 'Spent',
       barPercentage: 0.4,
       categoryPercentage: 1.0,
@@ -64,6 +64,7 @@ export class CandidateCardExpandedComponent {
   barChartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    
 
     title: {
       display: true,
@@ -102,6 +103,7 @@ export class CandidateCardExpandedComponent {
 
     scales: {
       xAxes: [{
+        
         ticks: {
           min: 0,
         },
@@ -110,7 +112,8 @@ export class CandidateCardExpandedComponent {
       yAxes: [{
         display: false,
         ticks: {
-          min: 0,
+          suggestedMin: 0,
+          suggestedMax: 3000000
         },
       }],
     },
@@ -162,30 +165,21 @@ export class CandidateCardExpandedComponent {
   stackedHorizontalBarChartType: ChartType = 'horizontalBar';
   stackedHorizontalBarChartData: ChartDataSets[] = [
     {
-      data: [5000],
-      stack: 'oppose-support',
-      datalabels: {
-        anchor: 'start',
-        align: 'start',
-        textAlign: 'right',
-        color: '#4e4e4e',
-
-        font: {
-          size: 16,
-          weight: 'bold',
-        },
-
-        formatter: (val) => `Oppose\n$${this.mNumberFormatter(val)}`,
-      },
-    },
-    {
       data: [200000],
-      stack: 'oppose-support',
+      barPercentage: 0.4,
+      categoryPercentage: 1.0,
+      backgroundColor: 'rgba(0, 119, 255, 0.8)',
+      borderColor: 'rgba(0, 119, 255, 1)',
+      borderWidth:1,
+      hoverBackgroundColor:'rgba(0, 119, 255, 1)',
+      hoverBorderColor:'rgba(0, 119, 255, 1)',
+
       datalabels: {
         anchor: 'end',
         align: 'end',
         textAlign: 'left',
-        color: '#4e4e4e',
+        color: '#ffffff',
+
 
         font: {
           size: 16,
@@ -195,12 +189,34 @@ export class CandidateCardExpandedComponent {
         formatter: (val) => `Support\n$${this.mNumberFormatter(val)}`,
       },
     },
+
+    {
+      data: [5000],
+      barPercentage: 0.4,
+      categoryPercentage: 1.0,
+      backgroundColor: 'rgba(255, 113, 25, 0.8)',
+      borderColor: 'rgba(255, 113, 25, 1)',
+      borderWidth:1,
+      hoverBackgroundColor:'rgba(255, 113, 25, 1)',
+      hoverBorderColor:'rgba(255, 113, 25, 1)',
+
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+        textAlign: 'left',
+        color: '#ffffff',
+
+        font: {
+          size: 16,
+          weight: 'bold',
+        },
+
+        formatter: (val) => `Oppose\n$${this.mNumberFormatter(val)}`,
+      },
+    },
+   
   ];
 
-  stackedHorizontalBarChartColors: Color[] = [
-    { backgroundColor: '#FF7119' },
-    { backgroundColor: '#336399' },
-  ];
 
   stackedHorizontalBarChartOptions: ChartOptions = {
     responsive: true,
@@ -208,8 +224,8 @@ export class CandidateCardExpandedComponent {
 
     layout: {
       padding: {
-        left: 100,
-        right: 100,
+        left: 0,
+        right: 20,
       },
     },
 
@@ -224,16 +240,22 @@ export class CandidateCardExpandedComponent {
     scales: {
       xAxes: [{
         display: false,
-        gridLines: {
-          color: "rgba(0, 0, 0, 0)",
+        
+        ticks: {
+          suggestedMin: 0,
+          suggestedMax: 900000
         }
       }],
 
       yAxes: [{
         display: false,
         gridLines: {
-          color: "rgba(0, 0, 0, 0)",
+          color: "#727272",
+        },
+        ticks: {
+          min: 0,
         }
+
       }],
     },
   }
@@ -319,8 +341,8 @@ export class CandidateCardExpandedComponent {
 
     // Oppose v. Support
     this.stackedHorizontalBarChartData = [
-      {...this.stackedHorizontalBarChartData[0], data: [this.currencyToNumber(c['oppose'])]},
-      {...this.stackedHorizontalBarChartData[1], data: [this.currencyToNumber(c['support'])]}
+      {...this.stackedHorizontalBarChartData[0], data: [this.currencyToNumber(c['support'])]},
+      {...this.stackedHorizontalBarChartData[1], data: [this.currencyToNumber(c['oppose'])]}
     ];
   }
 

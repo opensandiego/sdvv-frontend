@@ -2,12 +2,22 @@
 @import "../../styles/elements";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
+.vv-grid{
+    display: grid;
+    grid-template-columns:180px 1fr 1fr 1fr;
+    align-self: start;
+    justify-items: center;
+    padding:20px;
+    
+
+}
 .candidate-card-expanded {
     padding: 15px 25px 15px 25px;
     margin: 10px;
     text-align: center;
     background: #fff;
     box-shadow: $vvshadow;
+ 
 
     h1 {
         font-size: 20px;
@@ -41,6 +51,28 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 0px 0px 15px 25px;
+
+        .first{
+            margin-top:10px;
+        }
+      
+        .candidate-numbers {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom:10px;
+            div {
+                padding: 0 6px;
+                h2, h3{
+                    margin: 1px 0;
+                }
+            }
+            .raised h3 {
+                color: $vvgreen;
+            }
+        } 
+
+
         
         .candidate-image-container {
             height: 125px;
@@ -64,38 +96,24 @@
             }
         }
     }
+  
+    .chart-container{
+        position: relative; 
+        height:20vh; 
+        width:20vw;
+        margin:auto;
+    }
 
-    .raised-spent {
-        .raised-spent-chart {
-            padding-top: 20px;
+    .raised-spent{
+        .chart-container-raised{
+            position: relative; 
+            height:21vh; 
+            width:12vw;
+            max-height: 200px;
+            margin:auto;
         }
-
-        .raised-spent-footer {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            padding-left: 10px;
-        }
-
-        p {
-            margin: 0;
-        }
-
-        .raised-spent-footer-title {
-            font-size: 13px;
-        }
-
-        .raised-spent-footer-content {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .donors {
-            padding-right: 5px;
-        }
-
-        .avg-donation {
-            padding-left: 5px;
+        .raised-spent-footer-title,.raised-spent-footer-content{
+            margin:5px 0px;
         }
     }
 
@@ -121,41 +139,56 @@
             font-weight: bold;
         }
     }
+    .outside-money{
+        grid-column: 1 / 5;
+        border:1px solid #efefef;
+        margin-bottom: 10px;
+        padding-bottom: 30px;
+        justify-self: stretch;
+        background-color: $vvdarkgrey;
+        color:#fff;
 
-    .outside-money {
-        margin: 20px;
-        text-align: left;
-
-        p {
-            margin-bottom: 5px;
+        .title, .helper-tip, .donors, .raised{
+            color:#fff;
+            h2, h3{
+                color:#fff;
+                margin: 0px 0px 5px 0px;
+            }
         }
+
+        .chart-container-outside{
+            
+            height:10vh; 
+            width:58vw;
+            border-left:1px solid #727272;
+            margin-left:40px;
+           
+            
+        }
+        
+        .outside-grid{
+            display: grid;
+            grid-template-columns:60vw 0.8fr;
+            justify-self: stretch;
+           
+
+            .donors{
+                
+                padding:20px 0px 20px 30px;
+                text-align: left;
+                align-self: center;
+            }
+            .raised{
+                padding:20px 0px 20px 30px;
+                text-align: left;
+                border-left: 1px solid #727272;
+                align-self: center;
+            }
+        }
+        
+
     }
-
-    .raised-donors {
-        .raised {
-            .raised-title {
-                margin-bottom: 2px;
-                text-align: left;
-            }
     
-            .raised-amount {
-                font-weight: bold;
-                text-align: left;
-            }
-        }
-
-        .donors {
-            .donors-title {
-                margin-bottom: 2px;
-                text-align: left;
-            }
-    
-            .donors-amount {
-                font-weight: bold;
-                text-align: left;
-            }
-        }
-    }
 
     .helper-tip {
         color: $vvgrey;
@@ -174,7 +207,7 @@
     justify-content: center;
     vertical-align: middle;
     align-items: center;
-    margin-bottom: 10px;
+    margin-top: 10px;
     font-size: 14px;
     color: $vvlightblue;
 
@@ -202,51 +235,30 @@
     border: none;
 }
 
-// Expanded Card Adjustments for Bigger Screens
-@media only screen and (min-width: 992px) {
-    .raised-spent {
-        padding-top: 30px;
-    }
 
-    .oppose-support-chart {
-        width: 500px;
-        height: 80px;
-    }
-}
 
 // Expanded Card Adjustments for Smaller Screens
-@media only screen and (max-width: 768px) {
-    .candidate {
-        padding-top: 30px;
+@media only screen and (max-width: 1200px) {
+   .vv-grid{
+    display:block !important;
+   }
+   .in-out-district{
+       margin-bottom:40px;
+   }
+   .chart-container{
+        height:20vh !important; 
+        width:60vw !important;
+    }   
+    .chart-container-raised{
+        height:25vh !important; 
+        width:60vw !important;  
     }
+ 
 
-    .raised-spent {
-        padding-top: 50px;
-    }
+    
 
-    .industries {
-        padding-top: 30px;
-    }
-
-    .in-out-district {
-        padding-top: 30px;
-    }
-
-    .raised-donors {
-        .raised {
-            padding-left: 80px;
-        }
-    }
-
-    .oppose-support {
-        padding-top: 25px;
-
-        .oppose-support-chart {
-            margin-left: 35px;
-            width: 440px;
-            height: 80px;
-        }
-    }
+   
+ 
 }
 
 ::ng-deep .mat-tooltip {

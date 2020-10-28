@@ -7,12 +7,12 @@
       </div>
     </div>
 
-    <h1>{{candidate.first}}</h1>
+    <h1 class="first">{{candidate.first}}</h1>
     <h1>{{candidate.last}}</h1>
     <h2>{{candidate.description}}</h2>
   </div>
 
-  <div class="candidate-numbers p-col-8  p-xl-10">
+  <div class="candidate-numbers">
     <div class="raised">
       <h2>Raised</h2>
       <h3>{{candidate["raised vs spent"][0].Raised | currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
@@ -24,6 +24,6 @@
     </div>
   </div>
 
-  <button class="candidate-button p-col-12" mat-flat-button (click)="outputCandidateData()">See Details</button>
+  <button class="candidate-button" mat-flat-button (click)="outputCandidateData()">See Details</button>
 
 </div>
