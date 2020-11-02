@@ -14,9 +14,7 @@
       <mat-accordion displayMode="flat">
 
         <ng-container *ngFor="let candidateType of modifiedData | keyvalue; let i= index">
-          <!-- <ng-template *ngIf="candidateType.key.toLowerCase() !=='city council'; else cityCouncilBlock">
-            <mat-expansion-panel (opened)="setOfficeStep(i)" hideToggle="true" >
-          </ng-template> -->
+         
           <!-- <ng-template #cityCouncilBlock> -->
           <mat-expansion-panel (opened)="setOfficeStep(i)" hideToggle="true" (closed)="candidateType.key.toLowerCase() ==='city council'?setCouncilDistrictStep(0): otherOfficeClicked(candidateType.key)">
             <!-- </ng-template> -->
@@ -56,7 +54,7 @@
              
                 <ul *ngFor="let attorney of candidate.value.candidates | keyvalue; let x= index">
                   <li>
-                    <a (click)="selectSidenavCandidate(candidate.value.title)"> {{attorney.key}}</a>
+                    <a (click)="selectSidenavCandidate(attorney.key)"> {{attorney.key}}</a>
                   </li>
                 </ul>
               <!-- city council -->
