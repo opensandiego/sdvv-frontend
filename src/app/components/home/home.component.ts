@@ -83,10 +83,7 @@ export class HomeComponent implements OnInit {
         this.modifiedData[entry["0"]]= entry["1"];
       }else{
         entry["1"]["name"]= entry["1"].title.slice(15);
-        let stringOne=entry["1"].title.replace(' ' ,'-').slice(0,22);
-        let stringTwo= entry["1"].title.slice(24);
-        let hyphenatedString= `${stringOne}-${stringTwo}`;
-
+        let hyphenatedString=this.createTitle(entry);
         entry["1"].title=  hyphenatedString.replace(/\s/g, '').toLowerCase().trim();
        
         this.modifiedData["city council"]["candidates"][entry["0"]]=entry["1"];
@@ -112,6 +109,12 @@ export class HomeComponent implements OnInit {
         
   }
 
+  private createTitle(entry:[string, CandidateTree]){
+    let stringOne=entry["1"].title.replace(' ' ,'-').slice(0,22);
+    let stringTwo= entry["1"].title.slice(24);
+    let hyphenatedString= `${stringOne}-${stringTwo}`;
+    return hyphenatedString;
+  }
   otherOfficeClicked(office:string){
     // 
   }
