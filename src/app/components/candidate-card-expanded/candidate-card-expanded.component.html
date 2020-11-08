@@ -1,29 +1,42 @@
-<div class="candidate-card-expanded p-grid p-justify-center p-align-center p-nogutter">
+<div class="candidate-card-expanded vv-grid">
 
-  <div class="p-grid p-justify-center p-align-center p-col-12 p-xl-2 p-lg-2">
-    <div class="candidate p-col-12">
+  <div>
+    <div class="candidate">
+
       <div class="candidate-image-container">
         <div class="candidate-image">
-          <img [src]="candidateImg" alt="candidate picture">
+          <img [src]="candidateImg" [alt]="candidate['candidate name']" onError="this.src='../../../assets/candidate-card/profile.png'">
         </div>
       </div>
-      <h1>{{ candidate['candidate name'] }}</h1>
+      <h1 class="first">{{candidate['first']}}</h1>
+      <h1>{{candidate['last']}}</h1>
       <h2>{{ candidate['description'] }}</h2>
+
+      <div class="candidate-numbers">
+        <div class="raised">
+          <h2>Raised</h2>
+          <h3>{{candidate["raised vs spent"][0].Raised | currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
+        </div>
+
+        <div class="donors">
+          <h2>Donors</h2>
+          <h3>{{candidate["raised vs spent"][0].Donors}}</h3>
+        </div>
+      </div>
   
+      
+      <div>
+        <button class="full-details-btn" routerLink="/under-construction" mat-flat-button>See Full Details</button>
+      </div>
       <div class="website-link">
         <mat-icon>link</mat-icon>
         <a href="{{ candidate['website'] }}">Website</a>
       </div>
   
-      <div>
-        <button class="full-details-btn" routerLink="/under-construction" mat-flat-button>See Full Details</button>
-      </div>
     </div>
   </div>
+  <div class="raised-spent">
 
-
-  <div class="raised-spent p-grid p-justify-center p-align-center p-col-12 p-xl-3 p-lg-3">
-    <div class="p-col-8">
       <div class="title">
         <p>
           Raised v. Spent
@@ -31,58 +44,49 @@
             <i
               class="helper-tip fa fa-question-circle"
               aria-hidden="true"
-              matTooltip="Description goes here."
+              matTooltip="Total campaign funds raised and spent by the candidate."
             >
             </i>
           </sup>
         </p>
       </div>
   
-      <div class="raised-spent-chart">
+      <div class="raised-spent-chart chart-container-raised">
         <canvas baseChart
-          width="120"
-          height="220"
+          width="350"
+          height="550"
           [chartType]="barChartType"
           [datasets]="barChartData"
-          [colors]="barChartColors"
           [options]="barChartOptions"
           [plugins]="chartPlugins"
         ></canvas>
       </div>
   
       <div class="raised-spent-footer">
-        <div class="donors">
-          <p class="raised-spent-footer-title">Donors</p>
-          <p class="raised-spent-footer-content">{{ candidate['raised vs spent'][0].Donors }}</p>
-        </div>
-  
         <div class="avg-donation">
-          <p class="raised-spent-footer-title">Average Donation</p>
-          <p class="raised-spent-footer-content">{{ candidate['raised vs spent'][0]['Average Donor'] }}</p>
+          <h2 class="raised-spent-footer-title">Average Donation</h2>
+          <h3 class="raised-spent-footer-content">{{ candidate['raised vs spent'][0]['Average Donor'] | currency:'USD':'symbol':'1.0-0' }}</h3>
         </div>
       </div>
-    </div>
   </div>
-
-
-  <div class="industries p-grid p-justify-center p-col-12 p-xl-4 p-lg-4">
-    <div class="p-col-12">
+  <div class="industries">
       <div class="title">
         <p>
-          Donors by Group
+          Donations by Group
           <sup>
             <i
               class="helper-tip fa fa-question-circle"
               aria-hidden="true"
-              matTooltip="Description goes here."
+              matTooltip="Total contributions from the five largest groups of campaign donors.  Groups are determined by the industry segment of each donor's employer."
             >
             </i>
           </sup>
         </p>
       </div>
-    </div>
+  
 
-    <div class="p-col-12 p-xl-10 p-lg-10">
+
+    <div>
       <table class="industries-table" mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="colorCode">
           <th mat-header-cell *matHeaderCellDef>Color Code</th>
@@ -106,29 +110,30 @@
           <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.percentage | number:'1.0-0' }}%</td>
         </ng-container>
   
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
   </div>
 
 
-  <div class="in-out-district p-col-12 p-xl-3 p-lg-3 p-md-6">
+  <div class="in-out-district">
+
     <div class="title">
       <p>
-        In v. Out District
+        In v. Out City
         <sup>
           <i
             class="helper-tip fa fa-question-circle"
             aria-hidden="true"
-            matTooltip="Description goes here."
+            matTooltip="Total campaign funds raised in the city of San Diego versus funds raised outside of city limits."
           >
           </i>
         </sup>
       </p>
     </div>
 
-    <div>
+    <div class="chart-container">
       <canvas baseChart
         width="260"
         height="260"
@@ -146,12 +151,10 @@
   <div class="close">
     <i style="font-size: 25px;" class="fa fa-times-circle" aria-hidden="true" (click)="close()"></i>
   </div>
+  
 
 
-  <div class="p-col-12 divider"></div>
-
-
-  <div class="outside-money p-col-12 p-xl-3 p-lg-3">
+  <div class="outside-money">
     <div class="title">
       <p>
         Outside Money
@@ -159,45 +162,26 @@
           <i
             class="helper-tip fa fa-question-circle"
             aria-hidden="true"
-            matTooltip="Description goes here."
+            matTooltip="Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign."
           >
           </i>
         </sup>
       </p>
     </div>
+    <div class="outside-grid">
+      <div  class="chart-container-outside">
+        <canvas baseChart
+          [chartType]="stackedHorizontalBarChartType"
+          [datasets]="stackedHorizontalBarChartData"
+          [options]="stackedHorizontalBarChartOptions"
+          [plugins]="chartPlugins"
+        ></canvas>
+      </div>
 
-    <div class="content">
-      The Amount of money raised by independent
-      expenditure committees spent on intiatives in
-      support or opposition of a candidate but not
-      contributing directly to their campaign.
+      <div class="raised">
+        <h2>Total Expenditures</h2>
+        <h3>{{(ConvertToInt(candidate['oppose'])+ConvertToInt(candidate['support']))| currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
+      </div>
     </div>
   </div>
 
-
-  <div class="raised-donors p-grid p-justify-center p-align-center p-col-12 p-xl-3 p-lg-3">
-    <div class="raised p-col-6 p-xl-3 p-lg-3 p-md-3">
-      <p class="raised-title">Raised</p>
-      <div class="raised-amount">{{ candidate['raised vs spent'][0].Raised | currency:'USD':'symbol':'1.0-0' }}</div>
-    </div>
-  
-    <div class="donors p-col-6 p-xl-3 p-lg-3 p-md-3">
-      <p class="donors-title">Donors</p>
-      <div class="donors-amount">{{ candidate['raised vs spent'][0].Donors }}</div>
-    </div>
-  </div>
-  
-
-  <div class="oppose-support p-grid p-justify-center p-align-center p-col-12 p-xl-5 p-lg-5">
-    <div class="oppose-support-chart p-col-12">
-      <canvas baseChart
-        [chartType]="stackedHorizontalBarChartType"
-        [datasets]="stackedHorizontalBarChartData"
-        [colors]="stackedHorizontalBarChartColors"
-        [options]="stackedHorizontalBarChartOptions"
-        [plugins]="chartPlugins"
-      ></canvas>
-    </div>
-  </div>
-
-</div>

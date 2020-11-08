@@ -8,28 +8,28 @@
   "in general": true,
   "raised vs spent": [
     {
-      "Raised": "106488",
-      "Spent": "124806",
-      "Donors": "154",
-      "Average Donor": "648"
+      "Raised": "121333",
+      "Spent": "205282",
+      "Donors": "157",
+      "Average Donor": "451"
     }
   ],
   "by industry": [
     {
       "industry 1": [
-        "CEO",
-        "7700",
-        "7"
+        "Director of Policy & Community Engagement",
+        "22200",
+        "18"
       ],
       "industry 2": [
-        "President",
-        "7400",
-        "7"
+        "CEO",
+        "7700",
+        "6"
       ],
       "industry 3": [
-        "Director of Policy & Community Engagement",
-        "7200",
-        "7"
+        "President",
+        "7400",
+        "6"
       ],
       "industry 4": [
         "Retired",
@@ -39,7 +39,7 @@
       "industry 5": [
         "Principal",
         "6350",
-        "6"
+        "5"
       ]
     }
   ],
@@ -47,8 +47,8 @@
   "oppose": "0",
   "in vs out district": [
     {
-      "in": "101688",
-      "out": "4800"
+      "in": "31843",
+      "out": "89490"
     }
   ]
 }
