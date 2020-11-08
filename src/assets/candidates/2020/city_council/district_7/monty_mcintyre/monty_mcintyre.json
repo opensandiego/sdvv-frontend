@@ -1,17 +1,13 @@
 {
   "candidate name": "Monty McIntyre",
-  "first": "Monty",
-  "last": "McIntyre",
   "description": "Mediator/ Arbitrator/ Business Owner",
   "website": "https://votemonty2020.com/",
-  "committee name": "Monty McIntyre for City Council 2020",
-  "in general": false,
   "raised vs spent": [
     {
       "Raised": "108437",
       "Spent": "132917",
       "Donors": "230",
-      "Average Donor": "655"
+      "Average Donor": "379"
     }
   ],
   "by industry": [
@@ -43,12 +39,16 @@
       ]
     }
   ],
-  "support": "29184",
-  "oppose": "0",
   "in vs out district": [
     {
-      "in": "103312",
-      "out": "5125"
+      "in": "44827",
+      "out": "63610"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "29184",
+  "committee name": "Monty McIntyre for City Council 2020",
+  "first": "Monty",
+  "last": "McIntyre",
+  "in general": false
 }

@@ -1,54 +1,54 @@
 {
   "candidate name": "Stephen Whitburn",
-  "first": "Stephen",
-  "last": "Whitburn",
   "description": "Whitburn for City Council 2020",
   "website": "http://whitburnforcouncil.com/",
-  "committee name": "Whitburn for City Council 2020",
-  "in general": true,
   "raised vs spent": [
     {
-      "Raised": "209009",
-      "Spent": "167059",
-      "Donors": "302",
-      "Average Donor": "592"
+      "Raised": "224884",
+      "Spent": "207064",
+      "Donors": "321",
+      "Average Donor": "372"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Retired",
-        "33629",
-        "16"
+        "34329",
+        "15"
       ],
       "industry 2": [
         "Director",
-        "29356",
-        "14"
+        "30356",
+        "13"
       ],
       "industry 3": [
         "Attorney",
-        "16175",
-        "8"
+        "16725",
+        "7"
       ],
       "industry 4": [
         "Not Employed",
-        "7749",
+        "7949",
         "4"
       ],
       "industry 5": [
         "Real Estate",
-        "5551",
+        "6751",
         "3"
       ]
     }
   ],
-  "support": "16073",
-  "oppose": "0",
   "in vs out district": [
     {
-      "in": "198745",
-      "out": "10264"
+      "in": "88280",
+      "out": "136604"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "51644",
+  "committee name": "Whitburn for City Council 2020",
+  "first": "Stephen",
+  "last": "Whitburn",
+  "in general": true
 }

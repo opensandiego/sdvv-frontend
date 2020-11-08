@@ -2,16 +2,53 @@
   "candidate name": "Rich Riel",
   "description": "Computer Tech",
   "website": "https://richriel.com/",
+  "raised vs spent": [
+    {
+      "Raised": "1550",
+      "Spent": "16300",
+      "Donors": "5",
+      "Average Donor": "310"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "philosopher",
+        "1050",
+        "68"
+      ],
+      "industry 2": [
+        "Politician",
+        "200",
+        "13"
+      ],
+      "industry 3": [
+        "Author",
+        "100",
+        "6"
+      ],
+      "industry 4": [
+        "Lawyer",
+        "100",
+        "6"
+      ],
+      "industry 5": [
+        "loan broker",
+        "100",
+        "6"
+      ]
+    }
+  ],
+  "in vs out district": [
+    {
+      "in": "1350",
+      "out": "200"
+    }
+  ],
+  "oppose": "0",
+  "support": "0",
   "committee name": "Riel for Mayor 2020",
   "first": "Rich",
   "last": "Riel",
-  "in general": false,
-  "support": "0",
-  "oppose": "0",
-  "in vs out district": [
-    {
-      "in": "0",
-      "out": "0"
-    }
-  ]
+  "in general": false
 }

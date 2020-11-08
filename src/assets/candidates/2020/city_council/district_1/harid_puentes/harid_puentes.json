@@ -1,17 +1,13 @@
 {
   "candidate name": "Harid Puentes",
-  "first": "Harid",
-  "last": "Puentes",
   "description": "Tech Executive",
   "website": "https://www.hpuentes.com/",
-  "committee name": "Puentes for City Council 2020",
-  "in general": false,
   "raised vs spent": [
     {
       "Raised": "28108",
       "Spent": "23057",
       "Donors": "95",
-      "Average Donor": "360"
+      "Average Donor": "205"
     }
   ],
   "by industry": [
@@ -43,12 +39,16 @@
       ]
     }
   ],
-  "support": "0",
-  "oppose": "0",
   "in vs out district": [
     {
-      "in": "15718",
-      "out": "12390"
+      "in": "7262",
+      "out": "20846"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "0",
+  "committee name": "Puentes for City Council 2020",
+  "first": "Harid",
+  "last": "Puentes",
+  "in general": false
 }

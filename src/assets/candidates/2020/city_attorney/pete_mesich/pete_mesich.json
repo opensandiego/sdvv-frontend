@@ -1,17 +1,54 @@
 {
   "candidate name": "Pete Mesich",
-  "first": "Pete",
-  "last": "Mesich",
   "description": "Attorney",
   "website": "http://petemesichforcityattorney.com/",
-  "committee name": "None",
-  "in general": false,
-  "support": "0",
-  "oppose": "0",
+  "raised vs spent": [
+    {
+      "Raised": "0",
+      "Spent": "0",
+      "Donors": "0",
+      "Average Donor": "0"
+    }
+  ],
+  "by industry": [
+    {
+      "industry 1": [
+        "",
+        "0",
+        "0"
+      ],
+      "industry 2": [
+        "",
+        "0",
+        "0"
+      ],
+      "industry 3": [
+        "",
+        "0",
+        "0"
+      ],
+      "industry 4": [
+        "",
+        "0",
+        "0"
+      ],
+      "industry 5": [
+        "",
+        "0",
+        "0"
+      ]
+    }
+  ],
   "in vs out district": [
     {
       "in": "0",
       "out": "0"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "0",
+  "committee name": "None",
+  "first": "Pete",
+  "last": "Mesich",
+  "in general": false
 }
