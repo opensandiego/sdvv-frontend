@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   showSubmenu: boolean = false;
   panelOpenState: boolean = false;
   officeStep: number = 0;
-  councilDistrictStep: number = 0;
+  councilDistrictStep: number = -1;
   selectedCandidate: string;
 
   candidates: Record<string, CandidateTree>;
