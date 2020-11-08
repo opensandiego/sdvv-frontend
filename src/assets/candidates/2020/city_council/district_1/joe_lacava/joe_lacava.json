@@ -1,54 +1,54 @@
 {
   "candidate name": "Joe LaCava",
-  "first": "Joe",
-  "last": "LaCava",
   "description": "Civil Engineer/ Business Owner",
   "website": "https://www.joelacava.com/",
-  "committee name": "Joe LaCava for City Council 2020",
-  "in general": true,
   "raised vs spent": [
     {
-      "Raised": "215425",
-      "Spent": "175380",
-      "Donors": "558",
-      "Average Donor": "288"
+      "Raised": "243205",
+      "Spent": "264789",
+      "Donors": "617",
+      "Average Donor": "187"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Retired",
-        "87253",
-        "41"
+        "96088",
+        "40"
       ],
       "industry 2": [
         "Attorney",
-        "10588",
+        "11588",
         "5"
       ],
       "industry 3": [
         "Architect",
-        "7800",
-        "4"
+        "8250",
+        "3"
       ],
       "industry 4": [
         "Real Estate",
-        "5899",
+        "7149",
         "3"
       ],
       "industry 5": [
         "Owner",
-        "5424",
-        "3"
+        "5924",
+        "2"
       ]
     }
   ],
-  "support": "29681",
-  "oppose": "0",
   "in vs out district": [
     {
-      "in": "208908",
-      "out": "6517"
+      "in": "161495",
+      "out": "81709"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "36429",
+  "committee name": "Joe LaCava for City Council 2020",
+  "first": "Joe",
+  "last": "LaCava",
+  "in general": true
 }

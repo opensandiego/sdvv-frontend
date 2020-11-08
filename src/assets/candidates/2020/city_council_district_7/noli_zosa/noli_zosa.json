@@ -8,47 +8,47 @@
   "in general": true,
   "raised vs spent": [
     {
-      "Raised": "368993",
-      "Spent": "373990",
-      "Donors": "746",
-      "Average Donor": "397"
+      "Raised": "411253",
+      "Spent": "501089",
+      "Donors": "843",
+      "Average Donor": "301"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Retired",
-        "66468",
+        "74818",
         "18"
       ],
       "industry 2": [
         "President",
-        "34275",
-        "9"
+        "39125",
+        "10"
       ],
       "industry 3": [
         "CEO",
-        "18930",
+        "21430",
         "5"
       ],
       "industry 4": [
         "Attorney",
-        "15665",
+        "17715",
         "4"
       ],
       "industry 5": [
-        "Homemaker",
-        "13860",
+        "Owner",
+        "16059",
         "4"
       ]
     }
   ],
-  "support": "70583",
-  "oppose": "13557",
+  "support": "119629",
+  "oppose": "79212",
   "in vs out district": [
     {
-      "in": "284350",
-      "out": "84643"
+      "in": "39769",
+      "out": "371484"
     }
   ]
 }

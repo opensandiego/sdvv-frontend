@@ -1,17 +1,13 @@
 {
   "candidate name": "Andrew Gade",
-  "first": "Andrew",
-  "last": "Gade",
   "description": "Small Business Owner",
   "website": "https://andrewgade.com/",
-  "committee name": "Andrew Gade for City Council 2020",
-  "in general": false,
   "raised vs spent": [
     {
       "Raised": "2601",
       "Spent": "2601",
       "Donors": "1",
-      "Average Donor": "1916"
+      "Average Donor": "520"
     }
   ],
   "by industry": [
@@ -28,12 +24,16 @@
       ]
     }
   ],
-  "support": "2454",
-  "oppose": "0",
   "in vs out district": [
     {
       "in": "2601",
       "out": "0"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "2454",
+  "committee name": "Andrew Gade for City Council 2020",
+  "first": "Andrew",
+  "last": "Gade",
+  "in general": false
 }
