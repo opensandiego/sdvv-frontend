@@ -1,11 +1,7 @@
 {
   "candidate name": "Sam Bedwell",
-  "first": "Sam",
-  "last": "Bedwell",
   "description": "Small Business Entrepreneur",
   "website": "www.sambedwell.com",
-  "committee name": "Bedwell for City Council 2020",
-  "in general": false,
   "raised vs spent": [
     {
       "Raised": "8100",
@@ -43,12 +39,16 @@
       ]
     }
   ],
-  "support": "0",
-  "oppose": "0",
   "in vs out district": [
     {
-      "in": "8100",
-      "out": "0"
+      "in": "100",
+      "out": "8000"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "0",
+  "committee name": "Bedwell for City Council 2020",
+  "first": "Sam",
+  "last": "Bedwell",
+  "in general": false
 }
