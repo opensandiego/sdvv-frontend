@@ -114,15 +114,6 @@ export class HomeComponent implements OnInit {
 
   }
 
-
-  // private createTitle(entry: [string, CandidateTree]) {
-  //   let stringOne = entry["1"].title.replace(' ', '-').slice(0, 22);
-  //   let stringTwo = entry["1"].title.slice(24);
-  //   let hyphenatedString = `${stringOne}-${stringTwo}`;
-  //   console.log("hyphenatedString", hyphenatedString);
-  //   return hyphenatedString.replace(/\s/g, '').toLowerCase().trim();
-  // }
-
   asIsOrder(a, b) {
     return 1;
   }
