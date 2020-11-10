@@ -8,10 +8,11 @@ const ASSETS_PATH = `${__dirname}/../assets`;
 const DATA_PATH = `${ASSETS_PATH}/data`;
 // const CANDIDATE_PATH = `${ASSETS_PATH}/candidates`;
 const NETFILE_API_CSV_FILENAMES = ['netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv'];
+const YEAR = '2020';
 
 /**
  * Fetches data from a url with retries with exponential back off.
- * @param {string} url 
+ * @param {string} url
  * @returns {string} 
  */
 async function doGetRequest(url) {
@@ -265,6 +266,7 @@ module.exports = {
   filterListOnKeyByArray,
   filterListOnKeyByNotInArray,
   addCandidateFullNamesToTransactions,
-  ASSETS_PATH, DATA_PATH, 
+  ASSETS_PATH, DATA_PATH,
   NETFILE_API_CSV_FILENAMES,
+  YEAR,
 };

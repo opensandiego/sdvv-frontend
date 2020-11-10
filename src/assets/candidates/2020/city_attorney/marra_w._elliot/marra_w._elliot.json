@@ -1,54 +1,54 @@
 {
   "candidate name": "Marra W. Elliot",
-  "first": "Marra",
-  "last": "Elliot",
   "description": " San Diego City Attorney",
   "website": "https://maraelliott.com",
-  "committee name": "Mara Elliott for City Attorney 2020",
-  "in general": true,
   "raised vs spent": [
     {
-      "Raised": "492264",
-      "Spent": "356005",
-      "Donors": "672",
-      "Average Donor": "576"
+      "Raised": "518165",
+      "Spent": "584151",
+      "Donors": "708",
+      "Average Donor": "444"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Attorney",
-        "133050",
+        "137500",
         "27"
       ],
       "industry 2": [
         "Retired",
-        "56720",
-        "12"
+        "57320",
+        "11"
       ],
       "industry 3": [
         "President",
-        "22794",
-        "5"
+        "23044",
+        "4"
       ],
       "industry 4": [
         "CEO",
-        "19750",
+        "20600",
         "4"
       ],
       "industry 5": [
         "Lawyer",
-        "17225",
+        "17325",
         "3"
       ]
     }
   ],
-  "support": "0",
-  "oppose": "0",
   "in vs out district": [
     {
-      "in": "413084",
-      "out": "79180"
+      "in": "437535",
+      "out": "80630"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "0",
+  "committee name": "Mara Elliott for City Attorney 2020",
+  "first": "Marra",
+  "last": "Elliot",
+  "in general": true
 }

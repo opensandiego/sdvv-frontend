@@ -81,6 +81,7 @@ function getPythonCommand() {
     { command: nodeCommand, fileName: 'candidate_calc_outside_spending.js' },
     { command: nodeCommand, fileName: 'candidate_calculation_in_vs_out.js' },
     { command: nodeCommand, fileName: 'candidate_calculation_in_vs_out_district.js' },
+    { command: nodeCommand, fileName: 'update_last_updated.js' },
   ];
 
   console.log('Rebuilding Candidate JSON files...');

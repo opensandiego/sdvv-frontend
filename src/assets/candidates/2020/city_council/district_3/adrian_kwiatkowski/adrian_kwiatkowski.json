@@ -1,17 +1,13 @@
 {
   "candidate name": "Adrian Kwiatkowski",
-  "first": "Adrian",
-  "last": "Kwiatkowski",
   "description": "CEO Non-Profit Management/ Strategist",
   "website": "https://adrianforcitycouncil.com/",
-  "committee name": "Adrian Kwiatkowski for City Council 2020",
-  "in general": false,
   "raised vs spent": [
     {
       "Raised": "67829",
       "Spent": "77894",
       "Donors": "162",
-      "Average Donor": "531"
+      "Average Donor": "300"
     }
   ],
   "by industry": [
@@ -43,12 +39,16 @@
       ]
     }
   ],
-  "support": "0",
-  "oppose": "0",
   "in vs out district": [
     {
-      "in": "63229",
-      "out": "4600"
+      "in": "27224",
+      "out": "40605"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "0",
+  "committee name": "Adrian Kwiatkowski for City Council 2020",
+  "first": "Adrian",
+  "last": "Kwiatkowski",
+  "in general": false
 }
