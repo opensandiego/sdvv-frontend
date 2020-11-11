@@ -18,7 +18,7 @@
           <mat-expansion-panel (opened)="setOfficeStep(i)" hideToggle="true" (closed)="setCouncilDistrictStep(-1)">
 
             <mat-expansion-panel-header [ngClass]="{'active-link':officeStep===i}" collapsedHeight="50px" expandedHeight="50px" 
-               [routerLink]=" candidateType.key.toLowerCase() ==='city council'? []: '/'+ candidateType.key">
+               [routerLink]="candidateType.value.deepTree? []: '/'+ candidateType.key">
               <mat-panel-title>
                 {{candidateType.value.title}}
               </mat-panel-title>
