@@ -1,59 +1,87 @@
 <div class="splashpage">
   <div class="whorwe" [style.backgroundSize]="'cover'">
-      <h1>Who's Behind the Voters' Voice Initiatives?</h1>
-      <p class="vv-description">The Voters’ Voice Initiatives is a non-partisan coalition (including <a href="https://represent.us/">Represent.us</a> and the 
-        <a href="https://www.lwv.org/">League of Women Voters</a>) working to give “We The People” a greater voice in our local government by:</p>
-        <div class="goals">
-            <div>
-                <i class="fa fa-binoculars bullet-icon"></i>
-                <p class="bullet">Improving Transparency in Campaign Finance</p>
-            </div>
-            <div>
-                <i class="fa fa-money bullet-icon"></i>
-                <p class="bullet">Providing Full Disclosure on the Flow of Money</p>
-            </div>
-            <div>
-                <i class="fa fa-handshake-o bullet-icon"></i>
-                <p class="bullet">Reducing the Potential for Corruption</p>
-            </div>
-            <div>
-                <i class="fa fa-gavel bullet-icon"></i>
-                <p class="bullet">Increasing Accountability in Government</p>
-            </div>
-        </div>
-      <a routerLink="/about">Learn About Us</a>
+    <h1>Who's Behind the Voters' Voice Initiatives?</h1>
+    <p class="vv-description">
+      The Voters’ Voice Initiatives is a non-partisan coalition (including
+      <a href="https://represent.us/">Represent.us</a> and the
+      <a href="https://www.lwv.org/">League of Women Voters</a>) working to give
+      “We The People” a greater voice in our local government by:
+    </p>
+    <div class="goals">
+      <div>
+        <i class="fa fa-binoculars bullet-icon"></i>
+        <p class="bullet">Improving Transparency in Campaign Finance</p>
+      </div>
+      <div>
+        <i class="fa fa-money bullet-icon"></i>
+        <p class="bullet">Providing Full Disclosure on the Flow of Money</p>
+      </div>
+      <div>
+        <i class="fa fa-handshake-o bullet-icon"></i>
+        <p class="bullet">Reducing the Potential for Corruption</p>
+      </div>
+      <div>
+        <i class="fa fa-gavel bullet-icon"></i>
+        <p class="bullet">Increasing Accountability in Government</p>
+      </div>
+    </div>
+    <a routerLink="/about">Learn About Us</a>
   </div>
   <div class="ftm">
     <h1>Follow the Money</h1>
-    <p class="ftm_caption">See how local campaigns are financed so you can be informed before you vote.</p>
+    <p class="ftm_caption">
+      See how local campaigns are financed so you can be informed before you
+      vote.
+    </p>
     <div class="choose">
-        <div>
-            <h2 class="racename">Mayor</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/mayor"><i class="fa fa-university"></i>See Candidates</a>
-            <p class="raised">Total Raised</p>
-            <h3 class="amount_raised">$1.5M</h3>
-            <p class="candidate_num">Candidates</p>
-            <h3>5</h3>
-        </div>
-        <div>
-            <h2 class="racename">City Attorney</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/city-attorney"><i class="fa fa-balance-scale"></i>See Candidates</a>
-            <p class="raised">Total Raised</p>
-            <h3 class="amount_raised">$1.5M</h3>
-            <p class="candidate_num">Candidates</p>
-            <h3>5</h3>
-        </div>
-        <div>
-            <h2 class="racename">City Council</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/city-council"><i class="fas fa-map-marked-alt"></i>Choose District</a>
-            <p class="raised">Total Raised</p>
-            <h3 class="amount_raised">$1.5M</h3>
-            <p class="candidate_num">Candidates</p>
-            <h3>5</h3>
-        </div>
+      <div>
+        <h2 class="racename">Mayor</h2>
+        <a class="cta" routerLinkActive="active-link" routerLink="/mayor"
+          ><i class="fa fa-university"></i>See Candidates</a
+        >
+        <p class="raised">Total Raised</p>
+        <h3 class="amount_raised">
+          ${{ mayorTotal | roundCurrencyDisplay: 2 }}
+        </h3>
+        <p class="candidate_num">Candidates</p>
+        <h3>5</h3>
+      </div>
+      <div>
+        <h2 class="racename">City Attorney</h2>
+        <a
+          class="cta"
+          routerLinkActive="active-link"
+          routerLink="/city-attorney"
+          ><i class="fa fa-balance-scale"></i>See Candidates</a
+        >
+        <p class="raised">Total Raised</p>
+        <h3 class="amount_raised">
+          ${{ cityAttorneyTotal | roundCurrencyDisplay: 2 }}
+        </h3>
+        <p class="candidate_num">Candidates</p>
+        <h3>5</h3>
+      </div>
+      <div>
+        <h2 class="racename">City Council</h2>
+        <a class="cta" routerLinkActive="active-link" routerLink="/city-council"
+          ><i class="fas fa-map-marked-alt"></i>Choose District</a
+        >
+        <p class="raised">Total Raised</p>
+        <h3 class="amount_raised">
+          ${{ cityCouncilTotal | roundCurrencyDisplay: 2 }}
+        </h3>
+        <p class="candidate_num">Candidates</p>
+        <h3>5</h3>
+      </div>
     </div>
-    <div class="sources"><p>All of our data is sourced directly from the <a href="https://ssl.netfile.com/static/agency/csd/" target="_blank">City of San Diego</a> public records.</p></div>
-
-</div>
- 
+    <div class="sources">
+      <p>
+        All of our data is sourced directly from the
+        <a href="https://ssl.netfile.com/static/agency/csd/" target="_blank"
+          >City of San Diego</a
+        >
+        public records.
+      </p>
+    </div>
+  </div>
 </div>
