@@ -7,33 +7,32 @@ import {
   MatTableModule,
   MatToolbarModule,
   MatTooltipModule,
-} from '@angular/material';
-import { AboutComponent } from './components/about/about.component';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-import { CandidateCardComponent } from './components/candidate-card/candidate-card.component';
-import { CandidateCardExpandedComponent } from './components/candidate-card-expanded/candidate-card-expanded.component';
-import { ChartsModule } from 'ng2-charts';
-import { CityAttorneyComponent } from './components/city-attorney/city-attorney.component';
-import { FaqComponent } from './components/faq/faq.component';
-import { HomeComponent } from './components/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
-import { MayorComponent } from './components/mayor/mayor.component';
-import { NgModule } from '@angular/core';
-import { SplashComponent } from './components/splash/splash.component';
-import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
-import { CouncilDistrictOneComponent } from './components/city-council/council-district-one/council-district-one.component';
-import { CouncilDistrictThreeComponent } from './components/city-council/council-district-three/council-district-three.component';
-import { CouncilDistrictFiveComponent } from './components/city-council/council-district-five/council-district-five.component';
-import { CouncilDistrictSevenComponent } from './components/city-council/council-district-seven/council-district-seven.component';
-import { CouncilDistrictNineComponent } from './components/city-council/council-district-nine/council-district-nine.component';
+} from "@angular/material";
+import { AboutComponent } from "./components/about/about.component";
+import { AppComponent } from "./app.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserModule } from "@angular/platform-browser";
+import { CandidateCardComponent } from "./components/candidate-card/candidate-card.component";
+import { CandidateCardExpandedComponent } from "./components/candidate-card-expanded/candidate-card-expanded.component";
+import { ChartsModule } from "ng2-charts";
+import { CityAttorneyComponent } from "./components/city-attorney/city-attorney.component";
+import { FaqComponent } from "./components/faq/faq.component";
+import { HomeComponent } from "./components/home/home.component";
+import { HttpClientModule } from "@angular/common/http";
+import { MayorComponent } from "./components/mayor/mayor.component";
+import { NgModule } from "@angular/core";
+import { SplashComponent } from "./components/splash/splash.component";
+import { UnderConstructionComponent } from "./components/under-construction/under-construction.component";
+import { CouncilDistrictOneComponent } from "./components/city-council/council-district-one/council-district-one.component";
+import { CouncilDistrictThreeComponent } from "./components/city-council/council-district-three/council-district-three.component";
+import { CouncilDistrictFiveComponent } from "./components/city-council/council-district-five/council-district-five.component";
+import { CouncilDistrictSevenComponent } from "./components/city-council/council-district-seven/council-district-seven.component";
+import { CouncilDistrictNineComponent } from "./components/city-council/council-district-nine/council-district-nine.component";
+import { RoundCurrencyDisplayPipe } from "./pipes/round-currency-display.pipe";
 
 @NgModule({
-  exports: [
-    MatExpansionModule,
-  ],
+  exports: [MatExpansionModule],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -50,7 +49,7 @@ import { CouncilDistrictNineComponent } from './components/city-council/council-
     CouncilDistrictFiveComponent,
     CouncilDistrictSevenComponent,
     CouncilDistrictNineComponent,
-   
+    RoundCurrencyDisplayPipe,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +67,6 @@ import { CouncilDistrictNineComponent } from './components/city-council/council-
     MatTooltipModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
