@@ -1,53 +1,102 @@
 <div class="header-nav">
   <i class="fa fa-bars bar-toggle" (click)="drawer.toggle()"></i>
   <div>
-    <img class="logo" src="../../../assets/home/VV_Logo_Reversed@2x.png" alt="Voter's Voice Initiative" width="120" height="auto"
-      routerLinkActive="active-link" routerLink="/splash">
+    <img
+      class="logo"
+      src="../../../assets/home/VV_Logo_Reversed@2x.png"
+      alt="Voter's Voice Initiative"
+      width="120"
+      height="auto"
+      routerLinkActive="active-link"
+      routerLink="/splash"
+    />
   </div>
-  <a class="nav_links" routerLink="/about" routerLinkActive="router-link-active">About</a>
-  <a class="nav_links" routerLink="/faq" routerLinkActive="router-link-active">FAQ</a>
+  <a class="nav_links" routerLink="/about" routerLinkActive="router-link-active"
+    >About</a
+  >
+  <a class="nav_links" routerLink="/faq" routerLinkActive="router-link-active"
+    >FAQ</a
+  >
 </div>
 
 <mat-drawer-container class="sidenav-container">
   <mat-drawer #drawer mode="side" align="start" disableClose="false" opened>
     <mat-nav-list [disableRipple]="true">
       <mat-accordion displayMode="flat">
-
-        <ng-container *ngFor="let candidateType of sortedObj | keyvalue: asIsOrder; let i= index">
-
-          <mat-expansion-panel (opened)="setOfficeStep(i)" hideToggle="true" (closed)="setCouncilDistrictStep(-1)">
-
-            <mat-expansion-panel-header [ngClass]="{'active-link':officeStep===i}" collapsedHeight="50px" expandedHeight="50px" 
-               [routerLink]="candidateType.value.deepTree? []: '/'+ candidateType.key">
+        <ng-container
+          *ngFor="
+            let candidateType of sortedObj | keyvalue: asIsOrder;
+            let i = index
+          "
+        >
+          <mat-expansion-panel
+            (opened)="setOfficeStep(i)"
+            hideToggle="true"
+            (closed)="setCouncilDistrictStep(-1)"
+          >
+            <mat-expansion-panel-header
+              [ngClass]="{ 'active-link': officeStep === i }"
+              collapsedHeight="50px"
+              expandedHeight="50px"
+              [routerLink]="
+                candidateType.value.deepTree ? [] : '/' + candidateType.key
+              "
+            >
               <mat-panel-title>
-                {{candidateType.value.title}}
+                {{ candidateType.value.title }}
               </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ng-container *ngIf="!candidateType.value.deepTree; else elseBlockContainer">
-              <ul *ngFor="let member of candidateType.value.candidates | keyvalue; let j=index">
+            <ng-container
+              *ngIf="!candidateType.value.deepTree; else elseBlockContainer"
+            >
+              <ul
+                *ngFor="
+                  let member of candidateType.value.candidates | keyvalue;
+                  let j = index
+                "
+              >
                 <li>
-                  <a (click)="selectSidenavCandidate(member.key)">{{member.key}}</a>
+                  <a (click)="selectSidenavCandidate(member.key)">{{
+                    member.key
+                  }}</a>
                 </li>
               </ul>
             </ng-container>
 
             <!-- city council subcategory and its sub properties -->
             <ng-template #elseBlockContainer>
-              <mat-expansion-panel *ngFor="let candidate of candidateType.value.candidates | keyvalue; let j=index" [expanded]="councilDistrictStep===j"
-                (opened)="setCouncilDistrictStep(j)" class="mat-elevation-z0" [routerLink]="'/'+ candidate.key">
-                <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
-                  {{candidate.value.name}}
+              <mat-expansion-panel
+                *ngFor="
+                  let candidate of candidateType.value.candidates | keyvalue;
+                  let j = index
+                "
+                [expanded]="councilDistrictStep === j"
+                (opened)="setCouncilDistrictStep(j)"
+                class="mat-elevation-z0"
+                [routerLink]="'/' + candidate.key"
+              >
+                <mat-expansion-panel-header
+                  collapsedHeight="30px"
+                  expandedHeight="30px"
+                >
+                  {{ candidate.value.name }}
                 </mat-expansion-panel-header>
-                <ul *ngFor="let member of candidate.value.candidates | keyvalue; let x= index">
+                <ul
+                  *ngFor="
+                    let member of candidate.value.candidates | keyvalue;
+                    let x = index
+                  "
+                >
                   <li>
-                    <a (click)="selectSidenavCandidate(member.key)">{{member.key}}</a>
+                    <a (click)="selectSidenavCandidate(member.key)">{{
+                      member.key
+                    }}</a>
                   </li>
                 </ul>
               </mat-expansion-panel>
             </ng-template>
             <!-- city council -->
-
           </mat-expansion-panel>
         </ng-container>
       </mat-accordion>
@@ -66,21 +115,39 @@
             <a routerLink="/faq">FAQ</a>
           </div>
           <div class="footer_links last">
-            <a href="https://registertovote.ca.gov/" target="_blank" rel="noopener noreferrer">Register to Vote</a>
+            <a
+              href="https://registertovote.ca.gov/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Register to Vote</a
+            >
           </div>
         </div>
         <div>
-          <h3>Brought to you by the Voters' Voice Initiatives and San Diego’s Public Ethics Commission</h3>
-          <p>The San Diego Campaign Finance Dashboard is being developed by volunteers in a non-partisan coalition as a service
-            to our community. Data has been gathered from public records posted by the
-            <a href="https://ssl.netfile.com/static/agency/csd/"
-              target="_blank">City of San Diego Clerk’s Office
-            </a> in order to create the graphs and summaries for each candidate’s campaign.</p>
+          <h3>
+            Brought to you by the Voters' Voice Initiatives and San Diego’s
+            Public Ethics Commission
+          </h3>
+          <p>
+            The San Diego Campaign Finance Dashboard is being developed by
+            volunteers in a non-partisan coalition as a service to our
+            community. Data has been gathered from public records posted by the
+            <a href="https://ssl.netfile.com/static/agency/csd/" target="_blank"
+              >City of San Diego Clerk’s Office
+            </a>
+            in order to create the graphs and summaries for each candidate’s
+            campaign.
+          </p>
         </div>
       </div>
       <div class="footer_logo">
-        <img src="../../../assets/home/VV_Logo_Color@2x.png" alt="Voter's Voice Initiative" width="120" height="auto">
-        <p class="updated">Last Updated 00/00/0000</p>
+        <img
+          src="../../../assets/home/VV_Logo_Color@2x.png"
+          alt="Voter's Voice Initiative"
+          width="120"
+          height="auto"
+        />
+        <p class="updated">Last Updated {{ lastUpdatedDate }}</p>
       </div>
     </div>
   </mat-drawer-content>

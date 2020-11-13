@@ -1,14 +1,20 @@
-import { Component, HostListener, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
-import { MatDrawer } from '@angular/material';
-import { CandidateService, SidenavService } from '../../services';
-import { CandidateTree } from '../../candidate';
-
+import {
+  Component,
+  HostListener,
+  OnInit,
+  ViewEncapsulation,
+  ViewChild,
+} from "@angular/core";
+import { MatDrawer } from "@angular/material";
+import { CandidateService, SidenavService } from "../../services";
+import { CandidateTree } from "../../candidate";
+import campaignRaceTotals from "../../../assets/candidates/2020/campaign_race_totals.json";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit {
   isExpanded: boolean = false;
@@ -22,15 +28,16 @@ export class HomeComponent implements OnInit {
   modifiedData: {} = {};
   sortedObj: {} = {};
 
-  @ViewChild('drawer') sidenav: MatDrawer;
+  lastUpdatedDate: string;
+
+  @ViewChild("drawer") sidenav: MatDrawer;
 
   constructor(
     private candidateService: CandidateService,
-    private sidenavService: SidenavService,
-  ) {
-  }
+    private sidenavService: SidenavService
+  ) {}
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener("window:resize", ["$event"])
   onResize(event): void {
     if (this.sidenav !== undefined) {
       if (event.target.innerWidth <= 1000) {
@@ -42,13 +49,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.candidateService.getAll().then(
-      (all: Record<string, CandidateTree>) => {
+    this.candidateService
+      .getAll()
+      .then((all: Record<string, CandidateTree>) => {
         this.candidates = all;
 
         this.massageCandidateData();
-      }
-    )
+      });
+    this.lastUpdatedDate = campaignRaceTotals["last update"];
   }
 
   // Have active-link class apply to only an opened candidate office panel by setting an assigned step for each candidate office section
@@ -74,7 +82,6 @@ export class HomeComponent implements OnInit {
   //  city-attorney:{}
   //}
   massageCandidateData() {
-
     this.modifiedData["city council"] = {} as CandidateTree;
     this.modifiedData["city council"]["title"] = "City Council";
     this.modifiedData["city council"]["name"] = "City Council";
@@ -83,21 +90,20 @@ export class HomeComponent implements OnInit {
 
     const entries = Object.entries(this.candidates);
 
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (!entry["0"].toLowerCase().includes("last")) {
         if (!entry["0"].toLowerCase().includes("city-council")) {
           this.modifiedData[entry["0"]] = entry["1"];
-          this.modifiedData[entry["0"]]["deeptree"]= false;
+          this.modifiedData[entry["0"]]["deeptree"] = false;
         } else {
-          this.modifiedData["city council"]["candidates"][entry["0"]] = entry["1"];
+          this.modifiedData["city council"]["candidates"][entry["0"]] =
+            entry["1"];
         }
       }
-
     });
 
     this.sortedObj = this.sortObj(this.modifiedData);
   }
-
 
   private sortObj(modifiedObject) {
     let temp = {};
@@ -106,12 +112,11 @@ export class HomeComponent implements OnInit {
       return b.charCodeAt(0) - a.charCodeAt(0);
     });
 
-    sortedEntries.forEach(x => {
+    sortedEntries.forEach((x) => {
       temp[x] = modData[x];
     });
 
     return temp;
-
   }
 
   asIsOrder(a, b) {
