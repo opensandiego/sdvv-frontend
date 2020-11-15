@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidenavService } from '../../services';
 
 @Component({
   selector: 'app-splash',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SplashComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private sidenavService: SidenavService,
+  ) { }
 
   ngOnInit() {
+  }
+
+  selectOffice(officeType: string) {
+    this.sidenavService.emitCandidateTypeSplash(officeType);
   }
 
 }

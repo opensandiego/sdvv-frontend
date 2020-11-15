@@ -14,11 +14,11 @@ export class CandidateCardComponent implements OnInit {
   @Output() private emitCandidateImage = new EventEmitter<any>();
 
   constructor(private sidenavService: SidenavService) {
-    sidenavService.changeEmittedFromSidenav$.subscribe(res => {
+    sidenavService.candidateKeyEmittedFromSidenav$.subscribe(res => {
       if (res === this.candidate['candidate name']) {
         this.outputCandidateData();
       }
-    })
+    });
   }
 
   ngOnInit() {
@@ -27,5 +27,6 @@ export class CandidateCardComponent implements OnInit {
   outputCandidateData() {
     this.emitCandidateData.emit(this.candidate);
     this.emitCandidateImage.emit(this.candidateImg);
+    this.sidenavService.emitCandidateNameCard(this.candidate['candidate name']);
   }
 }

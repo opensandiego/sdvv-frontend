@@ -1,20 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { CandidateTree } from '../candidate';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidateService {
-  emitChangeSidenav = new Subject<any>();
-  changeEmittedFromSidenav$ = this.emitChangeSidenav.asObservable();
 
   constructor(public http: HttpClient) { }
-
-  emitChangeFromSidenav(change: string) {
-    this.emitChangeSidenav.next(change);
-  }
 
   getAll() {
     return this.http.get("assets/candidates/2020/candidates.json").toPromise();

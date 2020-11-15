@@ -13,10 +13,10 @@ import { CandidateTree } from '../../candidate';
 export class HomeComponent implements OnInit {
   isExpanded: boolean = false;
   showSubmenu: boolean = false;
-  panelOpenState: boolean = false;
   officeStep: number = -1;
   councilDistrictStep: number = -1;
   selectedCandidate: string;
+  officeType: string;
 
   candidates: Record<string, CandidateTree>;
   modifiedData: {} = {};
@@ -28,6 +28,13 @@ export class HomeComponent implements OnInit {
     private candidateService: CandidateService,
     private sidenavService: SidenavService,
   ) {
+    sidenavService.candidateNameEmittedFromCard$.subscribe(res => {
+      this.selectedCandidate = res;
+    });
+
+    sidenavService.candidateTypeEmittedFromSplash$.subscribe(res => {
+      this.officeType = res;
+    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -52,8 +59,13 @@ export class HomeComponent implements OnInit {
   }
 
   // Have active-link class apply to only an opened candidate office panel by setting an assigned step for each candidate office section
-  setOfficeStep(index) {
+  setOfficeStep(index,) {
     this.officeStep = index;
+  }
+
+  // Assign officeType variable with the value of the candidateType.key when opening office panel to check expanded condition on the mat-expansion-panel
+  setOfficeType(type) {
+    this.officeType = type;
   }
 
   // Have only one city council district side panel open at any time by setting an assigned step for each panel distrct
@@ -61,9 +73,17 @@ export class HomeComponent implements OnInit {
     this.councilDistrictStep = index;
   }
 
+  // Apply highlight style to candidate name when selected, open candidate card when candidate name is clicked
   selectSidenavCandidate(candidateKey: string) {
     this.selectedCandidate = candidateKey;
-    this.sidenavService.emitChangeFromSidenav(candidateKey);
+    this.sidenavService.emitCandidateKeySidenav(candidateKey);
+  }
+
+  // Reset sidenav when navigating away from any of the candidate offices, close panels and remove style highlight
+  resetSidenav() {
+    this.officeStep = null;
+    this.officeType = null;
+    this.selectedCandidate = null;
   }
 
   // data is turned into a key value pair
