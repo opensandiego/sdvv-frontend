@@ -2,7 +2,7 @@
   <i class="fa fa-bars bar-toggle" (click)="drawer.toggle()"></i>
   <div>
     <img class="logo" src="../../../assets/home/VV_Logo_Reversed@2x.png" alt="Voter's Voice Initiative" width="120" height="auto"
-      routerLinkActive="active-link" routerLink="/splash">
+      routerLinkActive="active-link" routerLink="/splash" (click)="setOfficeStep(-1)">
   </div>
   <a class="nav_links" routerLink="/about" routerLinkActive="router-link-active">About</a>
   <a class="nav_links" routerLink="/faq" routerLinkActive="router-link-active">FAQ</a>
@@ -15,10 +15,9 @@
 
         <ng-container *ngFor="let candidateType of sortedObj | keyvalue: asIsOrder; let i= index">
 
-          <mat-expansion-panel (opened)="setOfficeStep(i)" hideToggle="true" (closed)="setCouncilDistrictStep(-1)">
+          <mat-expansion-panel routerLinkActive #rla="routerLinkActive" [expanded]="officeStep===i || rla.isActive" (opened)="setOfficeStep(i)" hideToggle="true" (closed)="setCouncilDistrictStep(-1)">
 
-            <mat-expansion-panel-header [ngClass]="{'active-link':officeStep===i}" collapsedHeight="50px" expandedHeight="50px" 
-               [routerLink]="candidateType.value.deepTree? []: '/'+ candidateType.key">
+            <mat-expansion-panel-header [ngClass]="{'active-link': officeStep===i || rla.isActive}" collapsedHeight="50px" expandedHeight="50px" [routerLink]="'/'+ candidateType.key">
               <mat-panel-title>
                 {{candidateType.value.title}}
               </mat-panel-title>
@@ -34,8 +33,8 @@
 
             <!-- city council subcategory and its sub properties -->
             <ng-template #elseBlockContainer>
-              <mat-expansion-panel *ngFor="let candidate of candidateType.value.candidates | keyvalue; let j=index" [expanded]="councilDistrictStep===j"
-                (opened)="setCouncilDistrictStep(j)" class="mat-elevation-z0" [routerLink]="'/'+ candidate.key">
+              <mat-expansion-panel *ngFor="let candidate of candidateType.value.candidates | keyvalue; let j=index" routerLinkActive [routerLinkActiveOptions]="{exact: true}" #rla="routerLinkActive" [expanded]="councilDistrictStep===j || rla.isActive"
+                (opened)="setCouncilDistrictStep(j)" class="mat-elevation-z0" [routerLink]="'/' + candidate.key">
                 <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
                   {{candidate.value.name}}
                 </mat-expansion-panel-header>

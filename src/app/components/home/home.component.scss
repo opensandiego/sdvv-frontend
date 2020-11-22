@@ -33,9 +33,9 @@
         .mat-expansion-panel-body {
           padding: 0 20px 0;
           margin: 0 10px;
-        
+
         }
-      
+
         i {
           opacity: 0.7;
         }
@@ -66,10 +66,10 @@
 
     .active-link {
       background-color: $vvlightblue !important;
-      
+
 
       .mat-content .mat-expansion-panel-header-title {
-        color: $vvlightgrey;         
+        color: $vvlightgrey;
       }
     }
 
@@ -84,10 +84,10 @@
         background-color: lighten($vvlightblue, 10%) !important;
 
         .mat-content .mat-expansion-panel-header-title {
-          color: $vvlightgrey;         
+          color: $vvlightgrey;
         }
       }
-      
+
     }
 
     .mat-expansion-panel-body {
@@ -186,7 +186,7 @@
 
         .mat-expansion-panel-body {
           padding: 0px;
-      
+
           ul li {
             font-size: 12px;
             padding: 0 16px;
@@ -257,7 +257,7 @@
 .footer_links {
   margin: 20px 20px 20px 0px;
   display: inline-block;
-  
+
 
   font-weight: 400;
   font-size: 14px;
@@ -311,7 +311,7 @@
   .footer {
     grid-template-columns: 1fr;
     text-align: center;
-   
+
     h3 {
       font-size: 14px;
       margin-right: 0px;
