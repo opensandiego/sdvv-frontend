@@ -10,3 +10,4 @@ export * from './city-council/council-district-three/council-district-three.comp
 export * from './city-council/council-district-five/council-district-five.component';
 export * from './city-council/council-district-seven/council-district-seven.component';
 export * from './city-council/council-district-nine/council-district-nine.component';
+export * from './city-council-district/city-council-district.component';

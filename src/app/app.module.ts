@@ -29,6 +29,7 @@ import { CouncilDistrictThreeComponent } from './components/city-council/council
 import { CouncilDistrictFiveComponent } from './components/city-council/council-district-five/council-district-five.component';
 import { CouncilDistrictSevenComponent } from './components/city-council/council-district-seven/council-district-seven.component';
 import { CouncilDistrictNineComponent } from './components/city-council/council-district-nine/council-district-nine.component';
+import { CityCouncilDistrictComponent } from './components/city-council-district/city-council-district.component';
 
 @NgModule({
   exports: [
@@ -50,6 +51,7 @@ import { CouncilDistrictNineComponent } from './components/city-council/council-
     CouncilDistrictFiveComponent,
     CouncilDistrictSevenComponent,
     CouncilDistrictNineComponent,
+    CityCouncilDistrictComponent,
    
   ],
   imports: [
