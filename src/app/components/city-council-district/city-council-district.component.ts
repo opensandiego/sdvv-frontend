@@ -34,12 +34,12 @@ export class CityCouncilDistrictComponent implements OnInit {
     });
   }
 
-  getCandidate(candidate: Candidate) {
+  setCandidate(candidate: Candidate) {
     this.candidate = candidate;
     this.isExpanded = true;
   }
 
-  getCandidateImg(img: string) {
+  setCandidateImg(img: string) {
     this.candidateImg = img;
   }
 
