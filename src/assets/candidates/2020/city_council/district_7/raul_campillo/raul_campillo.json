@@ -1,54 +1,54 @@
 {
   "candidate name": "Raul Campillo",
-  "first": "Raul",
-  "last": "Campillo",
   "description": "Deputy City Attorney",
   "website": "https://runwithraul.com/",
-  "committee name": "Raul Campillo for City Council District 7 2020",
-  "in general": true,
   "raised vs spent": [
     {
-      "Raised": "20291",
-      "Spent": "54237",
-      "Donors": "16",
-      "Average Donor": "1229"
+      "Raised": "48456",
+      "Spent": "111361",
+      "Donors": "91",
+      "Average Donor": "433"
     }
   ],
   "by industry": [
     {
       "industry 1": [
-        "Not Employed",
-        "600",
-        "3"
+        "Retired",
+        "2163",
+        "4"
       ],
       "industry 2": [
-        "President",
-        "600",
+        "Attorney",
+        "1695",
         "3"
       ],
       "industry 3": [
-        "Principal",
-        "600",
+        "Not Employed",
+        "1550",
         "3"
       ],
       "industry 4": [
-        "Attorney",
-        "330",
+        "Business owner",
+        "1200",
         "2"
       ],
       "industry 5": [
-        "Teacher",
-        "300",
-        "1"
+        "Real Estate",
+        "850",
+        "2"
       ]
     }
   ],
-  "support": "0",
-  "oppose": "16943",
   "in vs out district": [
     {
-      "in": "18991",
-      "out": "1300"
+      "in": "31528",
+      "out": "16928"
     }
-  ]
+  ],
+  "oppose": "60729",
+  "support": "20179",
+  "committee name": "Raul Campillo for City Council District 7 2020",
+  "first": "Raul",
+  "last": "Campillo",
+  "in general": true
 }

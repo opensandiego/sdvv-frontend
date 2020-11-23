@@ -1,17 +1,13 @@
 {
   "candidate name": "Sam Nejabat",
-  "first": "Sam",
-  "last": "Nejabat",
   "description": "Small Business Owner",
   "website": "samnejabat.com\r",
-  "committee name": "Sam Nejabat for City Council 2020",
-  "in general": false,
   "raised vs spent": [
     {
       "Raised": "336803",
       "Spent": "505595",
       "Donors": "35",
-      "Average Donor": "26884"
+      "Average Donor": "7017"
     }
   ],
   "by industry": [
@@ -43,12 +39,16 @@
       ]
     }
   ],
-  "support": "0",
-  "oppose": "0",
   "in vs out district": [
     {
-      "in": "330303",
-      "out": "6500"
+      "in": "328053",
+      "out": "8750"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "0",
+  "committee name": "Sam Nejabat for City Council 2020",
+  "first": "Sam",
+  "last": "Nejabat",
+  "in general": false
 }

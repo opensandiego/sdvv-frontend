@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "update-data": "node src/scripts/driver_script.js"
+    "update-data": "node src/scripts/driver_script.js",
+    "download-netfile-data": "node src/scripts/download_transactions_to_csv.js"
   },
   "private": true,
   "dependencies": {

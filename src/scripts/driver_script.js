@@ -1,11 +1,4 @@
-const fs = require('fs');
-const fetch = require('node-fetch');
 const { execSync } = require("child_process");
-
-// If one of these CSV files fails to download then some of the scripts using them will fail
-const CSV_FILE_NAMES = [ 'netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv' ];
-const ASSETS_PATH = `${__dirname}/../assets/data`;
-
 
 function processInput() {
 
@@ -24,29 +17,6 @@ function processInput() {
     .argv;
 
     return { downloadCSV: !args['skip-download'] }
-}
-
- /**
-  * This downloads files from Firebase Storage and saves them to the local system.
-  * @param {string[]} fileNames - names of the files to download from Firebase
-  * @param {string} localFilePath - path on the local system to save the downloaded files into
-  */
-async function downloadCSVFromFirebaseCloudStorage (fileNames, localFilePath){
-
-  const encodedPath = encodeURIComponent('data/');
-
-  for await (fileName of fileNames) {
-    const firebaseStorageLocation = 
-      `https://firebasestorage.googleapis.com/v0/b/san-diego-voters-voice.appspot.com/o/${encodedPath}${fileName}?alt=media`;
-
-    const fetchResponse = await fetch(firebaseStorageLocation);
-    const body = await fetchResponse.text();
-
-    fs.writeFileSync(`${localFilePath}/${fileName}`, body);
-
-    console.log(`Downloading remote file '${fileName}' from Firebase Storage \n To '${localFilePath}/${fileName}'`);
-  }
-
 }
 
 /**
@@ -77,47 +47,60 @@ function getPythonCommand() {
 (async () => {
   const input = processInput();
 
-  if (input.downloadCSV) {
-    await downloadCSVFromFirebaseCloudStorage(CSV_FILE_NAMES, ASSETS_PATH);
-  }
-
+  const nodeCommand = 'node';
   const pythonCommand = getPythonCommand();
 
   if (!pythonCommand) { 
-    console.log(`Python version 3 not found`);
+
+    console.log(`Error: Python version 3 not found`);
+    process.exitCode = 1;
+
     return; 
   }
 
+  /**
+   * 'calculation_download_gdrive_info.py' needs to be run after preScripts since it 
+   * updates/creates the JSON files and sets committee name to use as key in later scripts.
+   */
+  
+  let preScripts = [];
+
+  if (input.downloadCSV) {
+    preScripts.push( { command: nodeCommand, fileName: 'download_csv_from_firebase.js' } );
+  }
+
+  const scripts = [
+    ... preScripts,
+    { command: pythonCommand, fileName: 'calculation_download_gdrive_info.py' },
+    { command: pythonCommand, fileName: 'candidate_calculation_amount_raised.py' },
+    { command: pythonCommand, fileName: 'candidate_calculation_amount_spent.py' },
+    { command: pythonCommand, fileName: 'candidate_calculation_donor.py' },
+    { command: pythonCommand, fileName: 'candidate_calculation_industry.py' },
+    { command: pythonCommand, fileName: 'average_donation_calculation.py' },
+    { command: pythonCommand, fileName: 'candidate_race_sum_calculation.py' },
+    { command: nodeCommand, fileName: 'candidate_calc_outside_spending.js' },
+    { command: nodeCommand, fileName: 'candidate_calculation_in_vs_out.js' },
+    { command: nodeCommand, fileName: 'candidate_calculation_in_vs_out_district.js' },
+    { command: nodeCommand, fileName: 'update_last_updated.js' },
+  ];
+
   console.log('Rebuilding Candidate JSON files...');
 
-  /**
-   * 'calculation_download_gdrive_info.py' needs to be first since it updates/creates 
-   * the JSON files and sets committee name to use as key in later scripts.
-   */
-  const pythonScripts = [
-    'calculation_download_gdrive_info.py', 
-    'candidate_calculation_amount_raised.py', 
-    'candidate_calculation_amount_spent.py', 
-    'candidate_calculation_donor.py', 
-    'candidate_calculation_industry.py',
-    'average_donation_calculation.py',
-    'candidate_race_sum_calculation.py',
-  ];
+  try{
 
+    scripts.forEach( script => {
+      console.log(` >> Running: ${script.command} ${script.fileName}`);
+      execSync(`${script.command} ${script.fileName}`, { cwd: __dirname, stdio: 'inherit' });
+    });
 
-  pythonScripts.forEach( scriptFile => {
-    execSync(`${pythonCommand} ${scriptFile}`, { cwd: __dirname, stdio: 'inherit' });
-  });
+  } catch (error) {
 
+    console.log(error.toString());
+    console.log('Error: Candidate JSON files update NOT complete!');
+    process.exitCode = 1;
 
-  const nodeScripts = [
-    'candidate_calc_outside_spending.js',
-    'candidate_calculation_in_vs_out.js',
-  ];
-
-  nodeScripts.forEach( scriptFile => {
-    execSync(`node ${scriptFile}`, { cwd: __dirname, stdio: 'inherit'});
-  });
+    return;
+  }
 
   console.log('Update of Candidate JSON files complete!');
 
