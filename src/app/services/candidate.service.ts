@@ -38,6 +38,16 @@ export class CandidateService {
     );
   }
 
+  getCityCouncilorsByDistrict(districtNumber: string) {
+    let districtName = `city-council-district-${districtNumber}`;
+
+    return this.getAll().then(
+      (all: Record<string, CandidateTree>) => Promise.all(
+        Object.values(all[districtName].candidates).map(url => this.http.get(url).toPromise())
+      )
+    );
+  }
+
   // City Council Candidates
   getCityCouncilorsDistrict1() {
     return this.getAll().then(
