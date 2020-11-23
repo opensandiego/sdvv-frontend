@@ -13,6 +13,7 @@ import {
   CouncilDistrictFiveComponent,
   CouncilDistrictSevenComponent,
   CouncilDistrictNineComponent,
+  CityCouncilDistrictComponent,
 } from './components';
 
 
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'city-council-district-3', component: CouncilDistrictThreeComponent },
   { path: 'city-council-district-5', component: CouncilDistrictFiveComponent },
   { path: 'city-council-district-7', component: CouncilDistrictSevenComponent },
-  { path: 'city-council-district-9', component: CouncilDistrictNineComponent }
+  { path: 'city-council-district-9', component: CouncilDistrictNineComponent },
+  { path: 'city-council/district/:id', component: CityCouncilDistrictComponent },
 ];
 
 @NgModule({
