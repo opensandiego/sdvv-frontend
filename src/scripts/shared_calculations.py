@@ -13,7 +13,7 @@ TYPE_COLUMN = "Form_Type"
 CSV_KEY = "FilerName"
 JSON_KEY = "committee name"
 
-DIRECTORY = "../assets/candidates/2020/"
+DIRECTORY = "../assets/candidates/"
 
 CSV_PATHS = (
     "../assets/data/netfile_api_2020.csv",
@@ -26,9 +26,9 @@ def read_csv_df(paths, types, *columns):
     """
     Read dataframe from specified CSV files with the specified columns and type.
 
-    The dataframe's index column is `CSV_KEY`. The types are filtered
-    against `TYPE_COLUMN`. `TYPE_COLUMN` isn't included in the returned
-    dataframe.
+    The dataframe's index column is `CSV_KEY`. The column is lower cased.
+    The types are filtered against `TYPE_COLUMN`.
+    `TYPE_COLUMN` isn't included in the returned dataframe.
 
     To read into a series, see `read_csv_series`
 
@@ -46,7 +46,11 @@ def read_csv_df(paths, types, *columns):
         pd.read_csv(path, usecols=columns).set_index(CSV_KEY) for path in paths
     )
     # String interpolation using @var failed for an unknown reason so it isn't used
-    return df.query("{} in {}".format(TYPE_COLUMN, types)).drop(columns=[TYPE_COLUMN])
+    filtered_df = df.query("{} in {}".format(TYPE_COLUMN, types)).drop(
+        columns=[TYPE_COLUMN]
+    )
+    filtered_df.index = filtered_df.index.str.lower()
+    return filtered_df
 
 
 def read_csv_series(paths, types, column):
@@ -110,12 +114,12 @@ def to_raised_json(series, field, directory=DIRECTORY):
     that are top level objects (dictionaries) and have constant `JSON_KEY`
     as a key. It uses the value of `JSON_KEY` in the JSON file as the key
     for the series and if the series has that key, updates the
-    corrosponding value in the JSON file. It updates the value under
+    corresponding value in the JSON file. It updates the value under
     `file["raised vs spent"][0]` and creates that field if it doesn't
     exist.
 
     :param series: A pandas Series with the indexes of the value
-    assocated with `JSON_KEY` in the JSON file.
+    associated with `JSON_KEY` in the JSON file.
 
     :param field: The field the values will be entered in the JSON file.
 
@@ -149,6 +153,10 @@ def candidate_files_map(function, directory=DIRECTORY):
     A candidate JSON file is defined as a JSON file in param `directory`
     and at the top level has a JSON object (dictionary).
 
+    The field with its name in constant `JSON_KEY` is lower cased when
+    passed to param `function`. The original case is restored when
+    writing to the JSON files. 
+
     :param function: A function that takes a single dictionary argument and
     returns a dictionary or None.
 
@@ -159,9 +167,13 @@ def candidate_files_map(function, directory=DIRECTORY):
     for path in pathlib.Path(directory).rglob("*.json"):
         with open(path, "r+") as file:
             candidate_dict = json.load(file)
-            if isinstance(candidate_dict, dict):
+            if isinstance(candidate_dict, dict) and JSON_KEY in candidate_dict:
+                original_name = candidate_dict[JSON_KEY]
+                candidate_dict[JSON_KEY] = original_name.lower()
                 new_json_dict = function(candidate_dict)
                 if new_json_dict is not None:
+                    if JSON_KEY in new_json_dict:
+                        new_json_dict[JSON_KEY] = original_name
                     file.seek(0)
                     json.dump(new_json_dict, file, indent=2)
                     file.write("\n")

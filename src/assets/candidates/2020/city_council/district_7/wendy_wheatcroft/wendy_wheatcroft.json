@@ -1,17 +1,13 @@
 {
   "candidate name": "Wendy Wheatcroft",
-  "first": "Wendy",
-  "last": "Wheatcroft",
   "description": "Teacher",
   "website": "https://www.wendy4sd.com/",
-  "committee name": "Wendy Wheatcroft for SD City Council 2020",
-  "in general": false,
   "raised vs spent": [
     {
       "Raised": "49653",
       "Spent": "60901",
       "Donors": "166",
-      "Average Donor": "332"
+      "Average Donor": "122"
     }
   ],
   "by industry": [
@@ -43,12 +39,16 @@
       ]
     }
   ],
-  "support": "0",
-  "oppose": "0",
   "in vs out district": [
     {
-      "in": "38805",
-      "out": "10848"
+      "in": "12891",
+      "out": "36762"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "0",
+  "committee name": "Wendy Wheatcroft for SD City Council 2020",
+  "first": "Wendy",
+  "last": "Wheatcroft",
+  "in general": false
 }

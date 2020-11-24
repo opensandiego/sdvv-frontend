@@ -1,50 +1,20 @@
 const shared = require('./shared_routines.js');
+const sharedInVOut = require('./candidate_calculation_in_vs_out_shared.js');
 
-
- /**
-  * This checks to see if a 'key' exists in the 'jsonData' and
-  *  if not then assign it a value to match that from a given json file.
-  * @param {object} object - this is a structured json file data
-  * @param {string} key 
-  * @returns {object}
-  */
-function createPropertyIfNotExist(jsonData, key) {
-  if ( !jsonData.hasOwnProperty(key) ) {
-    jsonData[key] = [ { } ];
-  }
-
-  return jsonData;
-}
 
 /**
- * This updates the given 'jsonData' to add a value to specific property.
- *  This is needed to match the format of the data stored in the json file.
- * @param {string} value 
- * @param {object} jsonData
- * @returns {object}
- */
-function writeToInOutCallback( value, jsonData ) {
-  const key = "in vs out district";
-  jsonData = createPropertyIfNotExist(jsonData, key);
-
-  jsonData[key][0] = value;
-
-  return jsonData;
-}
-
-/**
- * This returns an array of string that contain the zip codes from a csv file.
- * @returns {string[]} 
+ * This returns an array of strings that contain the zip codes from a local csv file.
+ * @returns {string[]} - [ '12345', '23456', ... ]
  */
 function getZipCodes(){
   const zipCodesFileName = 'sd_zipcodes.csv';
 
   const csvZipCodes = shared.getAssetsDataFromLocalFile( zipCodesFileName ); 
   const zipCodesData = shared.parseCSVDataToObjects( csvZipCodes );
+  // Example zipCodesData: [ { 'zip_code': '91901', 'city': 'Alpine', 'county': 'San Diego', 'state': 'CA' }, ... ]
 
   return zipCodesData.map( element => element.zip_code );
 }
-
 
 /**
  * For each candidate that is running for the given office this sums the 'transactionAmountKey' 
@@ -92,25 +62,25 @@ function calculateCandidateGroupSum( office, candidates, sumKeyField, transactio
 (async () => {
 
   const zipCodeKey = 'Tran_Zip4';
-  const offices = [ 'Mayor', 'City Council', 'City Attorney' ];
+  const officesWholeCity = [ 'Mayor', 'City Attorney' ];
   const sumsField = 'inAndOut';
 
   // The valid zip code list as an array of strings from a local CSV file
-  const zipCodes = getZipCodes(); // #4
+  const zipCodesWholeCity = getZipCodes(); // #4
   
   // From the local CSV files
   const transactions = shared.getTransactions(); // #5 
 
-  const transactionsGroups = [ 
-    { type: 'in',  transactions: shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodes) }, 
-    { type: 'out', transactions: shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodes) }, 
+  const transactionsGroups = [ // inside vs outside of city
+    { type: 'in',  transactions: shared.filterListOnKeyByArray( transactions, zipCodeKey, zipCodesWholeCity) }, 
+    { type: 'out', transactions: shared.filterListOnKeyByNotInArray( transactions, zipCodeKey, zipCodesWholeCity) }, 
   ];
 
   // From an online Google Sheet 
   const candidates = await shared.getCandidateInformation(); // #1 
 
-  offices
-  .map( office => calculateCandidateGroupSum( office, candidates, sumsField, transactionsGroups ) )
-  .map( candidatesWithSums => shared.saveCandidatesDataToFiles( candidatesWithSums, sumsField, writeToInOutCallback ) );
- 
+  officesWholeCity
+    .map( office => calculateCandidateGroupSum( office, candidates, sumsField, transactionsGroups ) )
+    .map( candidatesWithSums => shared.saveCandidatesDataToFiles( candidatesWithSums, sumsField, sharedInVOut.writeToInOutCallback ) );
+
 })();
