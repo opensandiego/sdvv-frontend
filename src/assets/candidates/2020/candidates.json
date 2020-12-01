@@ -1,60 +1,53 @@
 {
-    "mayor": {
-        "title": "Mayor",
-        "name": "Mayor",
-        "candidates": {
-            "Barbara Bry": "assets/candidates/2020/mayor/barbara_bry/barbara_bry.json",
-            "Todd Gloria": "assets/candidates/2020/mayor/todd_gloria/todd_gloria.json"
-        }
-    },
-    "city-attorney": {
-        "title": "City Attorney",
-        "name": "City Attorney",
-        "candidates": {
-            "Cory Briggs": "assets/candidates/2020/city_attorney/cory_briggs/cory_briggs.json",
-            "Marra W. Elliot": "assets/candidates/2020/city_attorney/marra_w._elliot/marra_w._elliot.json"
-        }
-    },
-    "city-council-district-1": {
-        "title": "City Council - District One",
-        "name": "District One",
-        "candidates": {
-            "Joe LaCava": "assets/candidates/2020/city_council/district_1/joe_lacava/joe_lacava.json",
-            "Will Moore": "assets/candidates/2020/city_council/district_1/will_moore/will_moore.json"
-        }
-    },
-    "city-council-district-3": {
-        "title": "City Council - District Three",
-        "name": "District Three",
-        "candidates": {
-            "Toni Duran": "assets/candidates/2020/city_council/district_3/toni_duran/toni_duran.json",
-            "Stephen Whitburn": "assets/candidates/2020/city_council/district_3/stephen_whitburn/stephen_whitburn.json"
-        }
-    },
-    "city-council-district-5": {
-        "title": "City Council - District Five",
-        "name": "District Five",
-        "candidates": {
-            "Joe Leventhal": "assets/candidates/2020/city_council/district_5/joe_leventhal/joe_leventhal.json",
-            "Marni von Wilpert": "assets/candidates/2020/city_council/district_5/marni_von_wilpert/marni_von_wilpert.json"
-        }
-    },
-    "city-council-district-7": {
-        "title": "City Council - District Seven",
-        "name": "District Seven",
-        "candidates": {
-            "Raul Campillo": "assets/candidates/2020/city_council/district_7/raul_campillo/raul_campillo.json",
-            "Noli Zosa": "assets/candidates/2020/city_council/district_7/noli_zosa/noli_zosa.json"
-        }
-    },
-    "city-council-district-9": {
-        "title": "City Council - District Nine",
-        "name": "District Nine",
-        "candidates": {
-            "Kelvin H. Barrios": "assets/candidates/2020/city_council/district_9/kelvin_h._barrios/kelvin_h._barrios.json",
-            "Sean Elo": "assets/candidates/2020/city_council/district_9/sean_elo/sean_elo.json"
-        }
-    },
-  "last-updated": "11/7/2020",
-  "last-updated-iso": "2020-11-08T05:58:04.134Z"
+  "mayor": {
+    "title": "Mayor",
+    "candidates": {
+      "Barbara Bry": "assets/candidates/2020/mayor/barbara_bry/barbara_bry.json",
+      "Todd Gloria": "assets/candidates/2020/mayor/todd_gloria/todd_gloria.json"
+    }
+  },
+  "city-attorney": {
+    "title": "City Attorney",
+    "candidates": {
+      "Cory Briggs": "assets/candidates/2020/city_attorney/cory_briggs/cory_briggs.json",
+      "Marra W. Elliot": "assets/candidates/2020/city_attorney/marra_w._elliot/marra_w._elliot.json"
+    }
+  },
+  "city-council-district-1": {
+    "title": "City Council - District One",
+    "candidates": {
+      "Joe LaCava": "assets/candidates/2020/city_council/district_1/joe_lacava/joe_lacava.json",
+      "Will Moore": "assets/candidates/2020/city_council/district_1/will_moore/will_moore.json"
+    }
+  },
+  "city-council-district-3": {
+    "title": "City Council - District Three",
+    "candidates": {
+      "Toni Duran": "assets/candidates/2020/city_council/district_3/toni_duran/toni_duran.json",
+      "Stephen Whitburn": "assets/candidates/2020/city_council/district_3/stephen_whitburn/stephen_whitburn.json"
+    }
+  },
+  "city-council-district-5": {
+    "title": "City Council - District Five",
+    "candidates": {
+      "Joe Leventhal": "assets/candidates/2020/city_council/district_5/joe_leventhal/joe_leventhal.json",
+      "Marni von Wilpert": "assets/candidates/2020/city_council/district_5/marni_von_wilpert/marni_von_wilpert.json"
+    }
+  },
+  "city-council-district-7": {
+    "title": "City Council - District Seven",
+    "candidates": {
+      "Raul Campillo": "assets/candidates/2020/city_council/district_7/raul_campillo/raul_campillo.json",
+      "Noli Zosa": "assets/candidates/2020/city_council/district_7/noli_zosa/noli_zosa.json"
+    }
+  },
+  "city-council-district-9": {
+    "title": "City Council - District Nine",
+    "candidates": {
+      "Kelvin H. Barrios": "assets/candidates/2020/city_council/district_9/kelvin_h._barrios/kelvin_h._barrios.json",
+      "Sean Elo": "assets/candidates/2020/city_council/district_9/sean_elo/sean_elo.json"
+    }
+  },
+  "last-updated": "11/23/2020",
+  "last-updated-iso": "2020-11-24T05:09:13.258Z"
 }
