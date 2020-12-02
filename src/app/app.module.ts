@@ -22,11 +22,7 @@ import { MayorComponent } from './components/mayor/mayor.component';
 import { NgModule } from '@angular/core';
 import { SplashComponent } from './components/splash/splash.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
-import { CouncilDistrictOneComponent } from './components/city-council/council-district-one/council-district-one.component';
-import { CouncilDistrictThreeComponent } from './components/city-council/council-district-three/council-district-three.component';
-import { CouncilDistrictFiveComponent } from './components/city-council/council-district-five/council-district-five.component';
-import { CouncilDistrictSevenComponent } from './components/city-council/council-district-seven/council-district-seven.component';
-import { CouncilDistrictNineComponent } from './components/city-council/council-district-nine/council-district-nine.component';
+import { CityCouncilDistrictComponent } from './components/city-council-district/city-council-district.component';
 
 @NgModule({
   exports: [
@@ -43,11 +39,7 @@ import { CouncilDistrictNineComponent } from './components/city-council/council-
     CandidateCardComponent,
     CandidateCardExpandedComponent,
     AboutComponent,
-    CouncilDistrictOneComponent,
-    CouncilDistrictThreeComponent,
-    CouncilDistrictFiveComponent,
-    CouncilDistrictSevenComponent,
-    CouncilDistrictNineComponent,
+    CityCouncilDistrictComponent,
    
   ],
   imports: [
