@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
           this.modifiedData[entry["0"]] = entry["1"];
           this.modifiedData[entry["0"]]["deeptree"]= false;
         } else {
-          this.modifiedData["city council"]["candidates"][entry["0"]] = entry["1"];
+          this.modifiedData["city council"]["candidates"][entry["0"].slice(-1)] = entry["1"];
         }
       }
 
