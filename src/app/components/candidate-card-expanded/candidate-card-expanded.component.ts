@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Candidate } from '../../candidate';
 import { Color } from 'ng2-charts';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 
 const placeholder_data = [
   { colorCode: '#007431', industry: 'Technology', amount: 200000, percentage: 0.5 },
@@ -47,7 +47,7 @@ export class CandidateCardExpandedComponent {
 
     },
     {
-      data: [125000],
+      data: [150000],
       label: 'Spent',
       barPercentage: 0.4,
       categoryPercentage: 1.0,
@@ -64,6 +64,7 @@ export class CandidateCardExpandedComponent {
   barChartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    
 
     title: {
       display: true,
@@ -95,13 +96,14 @@ export class CandidateCardExpandedComponent {
         
 
         formatter: (val, ctx) => {
-          return ctx.dataset.label === 'Raised' ? `Raised\n$${this.commaNumberFormatter(val)}` : `Spent\n$${this.commaNumberFormatter(val)}`;
+          return ctx.dataset.label === 'Raised' ? `Raised\n$${this.mNumberFormatter(val)}` : `Spent\n$${this.mNumberFormatter(val)}`;
         },
       },
     },
 
     scales: {
       xAxes: [{
+        
         ticks: {
           min: 0,
         },
@@ -110,7 +112,8 @@ export class CandidateCardExpandedComponent {
       yAxes: [{
         display: false,
         ticks: {
-          min: 0,
+          suggestedMin: 0,
+          suggestedMax: 3000000
         },
       }],
     },
@@ -121,6 +124,7 @@ export class CandidateCardExpandedComponent {
   doughnutChartData: ChartDataSets[] = [
     {
       data: [5000, 1200],
+      
     }
   ];
 
@@ -131,6 +135,8 @@ export class CandidateCardExpandedComponent {
   doughnutChartOptions: any = {
     responsive: true,
     maintainAspectRatio: false,
+    cutoutPercentage:60,
+    animation:{animateRotate:false},
 
     legend: {
       display: false,
@@ -145,10 +151,12 @@ export class CandidateCardExpandedComponent {
         anchor: 'start',
         align: 'start',
         color: '#4e4e4e',
+        textAlign:'center',
 
         font: {
           size: 16,
           weight: 'bold',
+          
         },
 
         formatter: (val, ctx) => {
@@ -162,30 +170,21 @@ export class CandidateCardExpandedComponent {
   stackedHorizontalBarChartType: ChartType = 'horizontalBar';
   stackedHorizontalBarChartData: ChartDataSets[] = [
     {
-      data: [5000],
-      stack: 'oppose-support',
-      datalabels: {
-        anchor: 'start',
-        align: 'start',
-        textAlign: 'right',
-        color: '#4e4e4e',
-
-        font: {
-          size: 16,
-          weight: 'bold',
-        },
-
-        formatter: (val) => `Oppose\n$${this.mNumberFormatter(val)}`,
-      },
-    },
-    {
       data: [200000],
-      stack: 'oppose-support',
+      barPercentage: 0.4,
+      categoryPercentage: 1.0,
+      backgroundColor: 'rgba(0, 119, 255, 0.8)',
+      borderColor: 'rgba(0, 119, 255, 1)',
+      borderWidth:1,
+      hoverBackgroundColor:'rgba(0, 119, 255, 1)',
+      hoverBorderColor:'rgba(0, 119, 255, 1)',
+
       datalabels: {
         anchor: 'end',
         align: 'end',
         textAlign: 'left',
-        color: '#4e4e4e',
+        color: '#ffffff',
+
 
         font: {
           size: 16,
@@ -195,12 +194,34 @@ export class CandidateCardExpandedComponent {
         formatter: (val) => `Support\n$${this.mNumberFormatter(val)}`,
       },
     },
+
+    {
+      data: [5000],
+      barPercentage: 0.4,
+      categoryPercentage: 1.0,
+      backgroundColor: 'rgba(255, 113, 25, 0.8)',
+      borderColor: 'rgba(255, 113, 25, 1)',
+      borderWidth:1,
+      hoverBackgroundColor:'rgba(255, 113, 25, 1)',
+      hoverBorderColor:'rgba(255, 113, 25, 1)',
+
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+        textAlign: 'left',
+        color: '#ffffff',
+
+        font: {
+          size: 16,
+          weight: 'bold',
+        },
+
+        formatter: (val) => `Oppose\n$${this.mNumberFormatter(val)}`,
+      },
+    },
+   
   ];
 
-  stackedHorizontalBarChartColors: Color[] = [
-    { backgroundColor: '#FF7119' },
-    { backgroundColor: '#336399' },
-  ];
 
   stackedHorizontalBarChartOptions: ChartOptions = {
     responsive: true,
@@ -208,8 +229,8 @@ export class CandidateCardExpandedComponent {
 
     layout: {
       padding: {
-        left: 100,
-        right: 100,
+        left: 0,
+        right: 20,
       },
     },
 
@@ -224,16 +245,22 @@ export class CandidateCardExpandedComponent {
     scales: {
       xAxes: [{
         display: false,
-        gridLines: {
-          color: "rgba(0, 0, 0, 0)",
+        
+        ticks: {
+          suggestedMin: 0,
+          suggestedMax: 900000
         }
       }],
 
       yAxes: [{
         display: false,
         gridLines: {
-          color: "rgba(0, 0, 0, 0)",
+          color: "#727272",
+        },
+        ticks: {
+          min: 0,
         }
+
       }],
     },
   }
@@ -319,8 +346,8 @@ export class CandidateCardExpandedComponent {
 
     // Oppose v. Support
     this.stackedHorizontalBarChartData = [
-      {...this.stackedHorizontalBarChartData[0], data: [this.currencyToNumber(c['oppose'])]},
-      {...this.stackedHorizontalBarChartData[1], data: [this.currencyToNumber(c['support'])]}
+      {...this.stackedHorizontalBarChartData[0], data: [this.currencyToNumber(c['support'])]},
+      {...this.stackedHorizontalBarChartData[1], data: [this.currencyToNumber(c['oppose'])]}
     ];
   }
 
@@ -331,7 +358,7 @@ export class CandidateCardExpandedComponent {
 
   // Adding K At The End of Values Over 9999 (i.e. 10K, 100K)
   mNumberFormatter(num: number) {
-    return Math.abs(num) > 1e6 ? Math.sign(num)*((Math.abs(num)/1e6)) + 'M' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
+    return Math.abs(num) > 1e6 ? Math.sign(num)*((Math.round(num/1e4))/100) + 'M' : this.commaNumberFormatter(Math.sign(num)*Math.abs(num));
   }
 
   // Adding Comma Separators for Values Over 999
@@ -341,6 +368,11 @@ export class CandidateCardExpandedComponent {
 
   close() {
     this.isExpanded.emit(false);
+  }
+  
+  //convert string to int
+  ConvertToInt(val){
+    return parseInt(val);
   }
 
 }

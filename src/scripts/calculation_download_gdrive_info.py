@@ -17,7 +17,32 @@ import math
 import os
 import typing
 
-import pandas as pd
+from shared_calculations import DIRECTORY, GOOGLE_SHEET_URL, read_candidate_csv
+
+EMPTY_MODEL_JSON = {
+    "candidate name": "",
+    "description": "",
+    "website": "",
+    "raised vs spent": [
+        {"Raised": "0", "Spent": "0", "Donors": "0", "Average Donor": "0"}
+    ],
+    "by industry": [
+        {
+            "industry 1": ["", "0", "0"],
+            "industry 2": ["", "0", "0"],
+            "industry 3": ["", "0", "0"],
+            "industry 4": ["", "0", "0"],
+            "industry 5": ["", "0", "0"],
+        }
+    ],
+    "in vs out district": [{"in": "0", "out": "0"}],
+    "oppose": "0",
+    "support": "0",
+    "committee name": "",
+    "first": "",
+    "last": "",
+    "in general": False,
+}
 
 
 def replace_nan(value, replace):
@@ -28,34 +53,6 @@ def replace_nan(value, replace):
     except TypeError:
         pass
     return value
-
-
-def read_candidate_csv(file):
-    """
-    Reads a Pandas Dataframe from a CSV file with candidate information.
-
-    If the row is completely empty, drops it.
-
-    :param file: A CSV file path (including URLS) or object that has
-    the columns being read.
-    :returns: The Pandas Dataframe with the CSV files information
-    """
-    return (
-        pd.read_csv(
-            file,
-            usecols=(
-                "Description",
-                "Website",
-                "Candidate_Name",
-                "Committee Name (Filer_Name)",
-                "Office",
-                "In General",
-                "District",
-            ),
-        )
-        .dropna(how="all")
-        .set_index("Candidate_Name")
-    )
 
 
 def normalize(string, nan_replacement=None):
@@ -77,7 +74,12 @@ def normalize(string, nan_replacement=None):
 
 
 class JsonFilesNT(typing.NamedTuple):
-    """Named tuple that contains the contents of a JSON file and the file's path."""
+    """
+    Named tuple that contains the contents of a JSON file and the file's path
+
+    The contents field is not guaranteed to equal the actual contents of the file path.
+    The file path is also not guaranteed to exist.
+    """
 
     contents: dict
     path: str
@@ -101,21 +103,19 @@ def generate_json_files(base_directory, candidate_df):
             if replace_nan(candidate_df.loc[candidate]["District"], False)
             else ""
         )
-        candidate_name = normalize(candidate)
-        dir_path = (
-            f"{base_directory}/{office_folder}/{council_folder}/{candidate_name}/"
-        )
+        name = normalize(candidate)
+        year = replace_nan(candidate_df.loc[candidate]["Year"], "other")
+        dir_path = f"{base_directory}/{year}/{office_folder}/{council_folder}/{name}/"
         os.makedirs(dir_path, exist_ok=True)
-        json_path = f"{dir_path}{candidate_name}.json"
+        json_path = f"{dir_path}{name}.json"
         try:
             file = open(json_path)
         except FileNotFoundError:
-            with open(json_path, "w") as f:
-                f.write("{}")
-            json_dict = {}
+            json_dict = EMPTY_MODEL_JSON.copy()
         else:
             with file as f:
-                json_dict = json.load(f)
+                # Merges the dictionaries
+                json_dict = {**EMPTY_MODEL_JSON, **json.load(f)}
         files[candidate] = JsonFilesNT(json_dict, json_path)
 
     return files
@@ -153,6 +153,5 @@ def update_json_files(folder_path, csv_url):
 
 if __name__ == "__main__":
     update_json_files(
-        "../assets/candidates/2020/",
-        "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0",
+        DIRECTORY, GOOGLE_SHEET_URL,
     )

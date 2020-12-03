@@ -27,7 +27,7 @@ describe('Run - Smoke Test', () => {
   const cityCouncilDistricts = [ '1', '3', '5', '7', '9']
 
   cityCouncilDistricts.forEach( cityCouncilDistrict => {
-    const url = `/city-council-district-${cityCouncilDistrict}`
+    const url = `/city-council/district/${cityCouncilDistrict}`
     it(`Visit District ${cityCouncilDistrict} Candidates URL`, () => {
       cy.visit(url)
       cy.url().should('include', url)
