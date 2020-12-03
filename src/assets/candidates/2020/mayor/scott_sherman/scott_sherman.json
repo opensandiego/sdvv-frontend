@@ -1,17 +1,13 @@
 {
   "candidate name": "Scott Sherman",
-  "first": "Scott",
-  "last": "Sherman",
   "description": "City Councilman",
   "website": "https://www.sherman2020.com/",
-  "committee name": "Sherman for Mayor 2020",
-  "in general": false,
   "raised vs spent": [
     {
       "Raised": "364504",
       "Spent": "579417",
       "Donors": "1430",
-      "Average Donor": "264"
+      "Average Donor": "204"
     }
   ],
   "by industry": [
@@ -43,12 +39,16 @@
       ]
     }
   ],
-  "support": "0",
-  "oppose": "17706",
   "in vs out district": [
     {
       "in": "347660",
       "out": "16845"
     }
-  ]
+  ],
+  "oppose": "17706",
+  "support": "0",
+  "committee name": "Sherman for Mayor 2020",
+  "first": "Scott",
+  "last": "Sherman",
+  "in general": false
 }

@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../styles/variables";
 
 
 @mixin button-styles{
@@ -12,6 +12,7 @@
     max-width:200px;
     margin:auto;
     box-shadow: $vvshadow;
+    min-width: 170px;
 
 
     &:hover {

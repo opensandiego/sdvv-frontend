@@ -60,5 +60,5 @@ def to_json(series, directory=DIRECTORY):
 
 if __name__ == "__main__":
     to_json(
-        average_donation(read_csv_series(CSV_PATHS, CONTRIBUTION_TYPE, "Tran_Amt2"))
+        average_donation(read_csv_series(CSV_PATHS, CONTRIBUTION_TYPE, "Tran_Amt1"))
     )

@@ -7,5 +7,6 @@ export interface Candidate {
 
 export interface CandidateTree {
     title: string;
+    name: string;
     candidates: Record<string, string>;
 }

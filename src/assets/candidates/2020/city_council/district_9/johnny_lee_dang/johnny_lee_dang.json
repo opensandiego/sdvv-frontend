@@ -1,17 +1,13 @@
 {
   "candidate name": "Johnny Lee Dang",
-  "first": "Johnny",
-  "last": "Dang",
   "description": "Scientist",
   "website": "https://www.johnnylee2020.com/",
-  "committee name": "Johnny Lee for City Council 2020",
-  "in general": false,
   "raised vs spent": [
     {
       "Raised": "14736",
       "Spent": "10482",
       "Donors": "38",
-      "Average Donor": "2013"
+      "Average Donor": "220"
     }
   ],
   "by industry": [
@@ -43,12 +39,16 @@
       ]
     }
   ],
-  "support": "0",
-  "oppose": "0",
   "in vs out district": [
     {
-      "in": "10938",
-      "out": "3798"
+      "in": "6730",
+      "out": "8006"
     }
-  ]
+  ],
+  "oppose": "0",
+  "support": "0",
+  "committee name": "Johnny Lee for City Council 2020",
+  "first": "Johnny",
+  "last": "Dang",
+  "in general": false
 }
