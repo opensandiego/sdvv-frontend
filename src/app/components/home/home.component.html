@@ -35,7 +35,7 @@
             <!-- city council subcategory and its sub properties -->
             <ng-template #elseBlockContainer>
               <mat-expansion-panel *ngFor="let candidate of candidateType.value.candidates | keyvalue; let j=index" [expanded]="councilDistrictStep===j"
-                (opened)="setCouncilDistrictStep(j)" class="mat-elevation-z0" [routerLink]="'/'+ candidate.key">
+                (opened)="setCouncilDistrictStep(j)" class="mat-elevation-z0" [routerLink]="['city-council/district', candidate.key]">
                 <mat-expansion-panel-header [ngClass]="{ 'district-selected': councilDistrictStep === j }" collapsedHeight="30px" expandedHeight="30px">
                   {{candidate.value.name}}
                 </mat-expansion-panel-header>

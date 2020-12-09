@@ -32,42 +32,12 @@ export class CandidateService {
   }
 
   // City Council Candidates
-  getCityCouncilorsDistrict1() {
-    return this.getAll().then(
-      (all: Record<string, CandidateTree>) => Promise.all(
-        Object.values(all["city-council-district-1"].candidates).map(url => this.http.get(url).toPromise())
-      )
-    );
-  }
+  getCityCouncilorsByDistrict(districtNumber: string) {
+    let districtName = `city-council-district-${districtNumber}`;
 
-  getCityCouncilorsDistrict3() {
     return this.getAll().then(
       (all: Record<string, CandidateTree>) => Promise.all(
-        Object.values(all["city-council-district-3"].candidates).map(url => this.http.get(url).toPromise())
-      )
-    );
-  }
-
-  getCityCouncilorsDistrict5() {
-    return this.getAll().then(
-      (all: Record<string, CandidateTree>) => Promise.all(
-        Object.values(all["city-council-district-5"].candidates).map(url => this.http.get(url).toPromise())
-      )
-    );
-  }
-
-  getCityCouncilorsDistrict7() {
-    return this.getAll().then(
-      (all: Record<string, CandidateTree>) => Promise.all(
-        Object.values(all["city-council-district-7"].candidates).map(url => this.http.get(url).toPromise())
-      )
-    );
-  }
-
-  getCityCouncilorsDistrict9() {
-    return this.getAll().then(
-      (all: Record<string, CandidateTree>) => Promise.all(
-        Object.values(all["city-council-district-9"].candidates).map(url => this.http.get(url).toPromise())
+        Object.values(all[districtName].candidates).map(url => this.http.get(url).toPromise())
       )
     );
   }

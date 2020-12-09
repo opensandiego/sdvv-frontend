@@ -8,11 +8,7 @@ import {
   FaqComponent,
   AboutComponent,
   UnderConstructionComponent,
-  CouncilDistrictOneComponent,
-  CouncilDistrictThreeComponent,
-  CouncilDistrictFiveComponent,
-  CouncilDistrictSevenComponent,
-  CouncilDistrictNineComponent,
+  CityCouncilDistrictComponent,
 } from './components';
 
 
@@ -24,15 +20,11 @@ const routes: Routes = [
   { path: 'mayor', component: MayorComponent },
   { path: 'city-attorney', component: CityAttorneyComponent },
   { path: 'under-construction', component: UnderConstructionComponent },
-  { path: 'city-council-district-1', component: CouncilDistrictOneComponent },
-  { path: 'city-council-district-3', component: CouncilDistrictThreeComponent },
-  { path: 'city-council-district-5', component: CouncilDistrictFiveComponent },
-  { path: 'city-council-district-7', component: CouncilDistrictSevenComponent },
-  { path: 'city-council-district-9', component: CouncilDistrictNineComponent }
+  { path: 'city-council/district/:id', component: CityCouncilDistrictComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

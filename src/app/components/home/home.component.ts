@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
-import { MatDrawer } from '@angular/material';
+import { MatDrawer } from '@angular/material/sidenav';
 import { CandidateService, SidenavService } from '../../services';
 import { CandidateTree } from '../../candidate';
 
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   modifiedData: {} = {};
   sortedObj: {} = {};
 
-  @ViewChild('drawer') sidenav: MatDrawer;
+  @ViewChild('drawer', { static: true }) sidenav: MatDrawer;
 
   constructor(
     private candidateService: CandidateService,
@@ -109,7 +109,7 @@ export class HomeComponent implements OnInit {
           this.modifiedData[entry["0"]] = entry["1"];
           this.modifiedData[entry["0"]]["deeptree"]= false;
         } else {
-          this.modifiedData["city council"]["candidates"][entry["0"]] = entry["1"];
+          this.modifiedData["city council"]["candidates"][entry["0"].slice(-1)] = entry["1"];
         }
       }
 

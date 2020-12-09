@@ -15,6 +15,8 @@ JSON_KEY = "committee name"
 
 DIRECTORY = "../assets/candidates/"
 
+GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0"
+
 CSV_PATHS = (
     "../assets/data/netfile_api_2020.csv",
     "../assets/data/netfile_api_2019.csv",
@@ -155,7 +157,7 @@ def candidate_files_map(function, directory=DIRECTORY):
 
     The field with its name in constant `JSON_KEY` is lower cased when
     passed to param `function`. The original case is restored when
-    writing to the JSON files. 
+    writing to the JSON files.
 
     :param function: A function that takes a single dictionary argument and
     returns a dictionary or None.
@@ -178,3 +180,32 @@ def candidate_files_map(function, directory=DIRECTORY):
                     json.dump(new_json_dict, file, indent=2)
                     file.write("\n")
                     file.truncate()
+
+
+def read_candidate_csv(file):
+    """
+    Reads a Pandas Dataframe from a CSV file with candidate information.
+
+    If the row is completely empty, drops it.
+
+    :param file: A CSV file path (including URLS) or object that has
+    the columns being read.
+    :returns: The Pandas Dataframe with the CSV files information
+    """
+    return (
+        pd.read_csv(
+            file,
+            usecols=(
+                "Description",
+                "Website",
+                "Candidate_Name",
+                "Committee Name (Filer_Name)",
+                "Office",
+                "In General",
+                "District",
+                "Year",
+            ),
+        )
+        .dropna(how="all")
+        .set_index("Candidate_Name")
+    )
