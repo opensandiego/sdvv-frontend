@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CandidateTree } from '../candidate';
 
 @Injectable({
@@ -47,5 +48,16 @@ export class CandidateService {
         Object.values(all[districtName].candidates).map(url => this.http.get(url).toPromise())
       )
     );
+  }
+
+  getLastUpdated(): Observable<any> {
+    const campaignTotalsFilePath = "assets/candidates/2020/campaign_race_totals.json";
+
+    const lastUpdate = this.http.get<any>(campaignTotalsFilePath)
+      .pipe( // transform the property names used from those in the json file
+        map(result => result["last update"])
+      );
+
+    return lastUpdate;
   }
 }
