@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CandidateService } from '../../services/candidate.service';
 
 @Component({
   selector: 'app-splash',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SplashComponent implements OnInit {
 
-  constructor() { }
+  constructor(private candidateService: CandidateService) { }
+
+  campaignTotals = {
+    mayor: '0',
+    cityAttorney: '0',
+    cityCouncil: '0'
+  }
 
   ngOnInit() {
+    this.candidateService.getCampaignTotals()
+      .subscribe(totals => this.campaignTotals = totals);
   }
 
 }
