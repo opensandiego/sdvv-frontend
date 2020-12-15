@@ -22,7 +22,7 @@ export class CandidateService {
 
     const campaignTotals = this.http.get<any>(campaignTotalsFilePath)
       .pipe( // transform the property names used from those in the json file
-        map( result => {
+        map(result => {
           return {
             'mayor': result['mayor'],
             'cityAttorney': result['city attorney'],
@@ -32,6 +32,12 @@ export class CandidateService {
       );
 
     return campaignTotals;
+  }
+
+  getCampaignTotalsByOffice(office: string): Observable<any> {
+    return this.getCampaignTotals().pipe(
+      map(offices => offices[office])
+    )
   }
 
   getAll() {
