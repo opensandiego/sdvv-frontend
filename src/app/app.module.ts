@@ -23,6 +23,7 @@ import { NgModule } from '@angular/core';
 import { SplashComponent } from './components/splash/splash.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { CityCouncilDistrictComponent } from './components/city-council-district/city-council-district.component';
+import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 
 @NgModule({
   exports: [
@@ -40,7 +41,7 @@ import { CityCouncilDistrictComponent } from './components/city-council-district
     CandidateCardExpandedComponent,
     AboutComponent,
     CityCouncilDistrictComponent,
-   
+    RoundCurrencyDisplayPipe,
   ],
   imports: [
     BrowserModule,
