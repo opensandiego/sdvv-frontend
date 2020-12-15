@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CandidateTree } from '../candidate';
 
 @Injectable({
@@ -14,6 +15,23 @@ export class CandidateService {
 
   emitChangeFromSidenav(change: string) {
     this.emitChangeSidenav.next(change);
+  }
+
+  getCampaignTotals(): Observable<any> {
+    const campaignTotalsFilePath = "assets/candidates/2020/campaign_race_totals.json";
+
+    const campaignTotals = this.http.get<any>(campaignTotalsFilePath)
+      .pipe( // transform the property names used from those in the json file
+        map( result => {
+          return {
+            'mayor': result['mayor'],
+            'cityAttorney': result['city attorney'],
+            'cityCouncil': result['city council']
+          }
+        })
+      );
+
+    return campaignTotals;
   }
 
   getAll() {
