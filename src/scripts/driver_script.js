@@ -78,6 +78,7 @@ function getPythonCommand() {
     { command: pythonCommand, fileName: 'candidate_calculation_industry.py' },
     { command: pythonCommand, fileName: 'average_donation_calculation.py' },
     { command: pythonCommand, fileName: 'candidate_race_sum_calculation.py' },
+    { command: pythonCommand, fileName: 'number_of_candidates_calculation.py' },
     { command: nodeCommand, fileName: 'candidate_calc_outside_spending.js' },
     { command: nodeCommand, fileName: 'candidate_calculation_in_vs_out.js' },
     { command: nodeCommand, fileName: 'candidate_calculation_in_vs_out_district.js' },
