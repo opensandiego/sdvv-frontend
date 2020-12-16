@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "update-data": "node src/scripts/driver_script.js",
-    "download-netfile-data": "node src/scripts/download_transactions_to_csv.js"
+    "download-netfile-data": "node src/scripts/download_transactions_to_csv.js",
+    "cypress:open": "cypress open"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +49,7 @@
     "cli-progress": "^3.8.2",
     "codelyzer": "^6.0.0",
     "csv-parse": "^4.12.0",
+    "cypress": "^6.0.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.1.1",
