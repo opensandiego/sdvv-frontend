@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   officeStep: number = -1;
   councilDistrictStep: number = -1;
   selectedCandidate: string;
+  lastUpdatedDate: string = '00/00/00';
 
   candidates: Record<string, CandidateTree>;
   modifiedData: {} = {};
@@ -49,6 +50,9 @@ export class HomeComponent implements OnInit {
         this.massageCandidateData();
       }
     )
+
+    this.candidateService.getLastUpdated()
+      .subscribe(date => this.lastUpdatedDate = date);
   }
 
   // Have active-link class apply to only an opened candidate office panel by setting an assigned step for each candidate office section
