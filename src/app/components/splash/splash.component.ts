@@ -16,9 +16,20 @@ export class SplashComponent implements OnInit {
     cityCouncil: '0'
   }
 
+  candidateCounts = {
+    mayor: '0',
+    cityAttorney: '0',
+    cityCouncil: '0'
+  }
+
   ngOnInit() {
+
     this.candidateService.getCampaignTotals()
       .subscribe(totals => this.campaignTotals = totals);
+
+    this.candidateService.getNumberOfCandidates()
+      .subscribe(counts => this.candidateCounts = counts);
+
   }
 
 }
