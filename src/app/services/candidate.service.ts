@@ -17,6 +17,29 @@ export class CandidateService {
     this.emitChangeSidenav.next(change);
   }
 
+  getCampaignTotals(): Observable<any> {
+    const campaignTotalsFilePath = "assets/candidates/2020/campaign_race_totals.json";
+
+    const campaignTotals = this.http.get<any>(campaignTotalsFilePath)
+      .pipe( // transform the property names used from those in the json file
+        map(result => {
+          return {
+            'mayor': result['mayor'],
+            'cityAttorney': result['city attorney'],
+            'cityCouncil': result['city council']
+          }
+        })
+      );
+
+    return campaignTotals;
+  }
+
+  getCampaignTotalsByOffice(office: string): Observable<any> {
+    return this.getCampaignTotals().pipe(
+      map(offices => offices[office])
+    )
+  }
+
   getAll() {
     return this.http.get("assets/candidates/2020/candidates.json").toPromise();
   }
