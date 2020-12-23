@@ -1,9 +1,9 @@
 name: End-to-end tests
 on: 
   push:
-    branches: [ cypress-io-ci ]
+    branches: [ dev ]
   pull_request:
-    branches: [ cypress-io-ci ]
+    branches: [ dev ]
 
 jobs:
   cypress-run-browser:
