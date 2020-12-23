@@ -8,22 +8,22 @@
   "in general": true,
   "raised vs spent": [
     {
-      "Raised": "178867",
+      "Raised": "178417",
       "Spent": "410844",
-      "Donors": "479",
-      "Average Donor": "200"
+      "Donors": "476",
+      "Average Donor": "202"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Attorney",
-        "23658",
+        "23608",
         "13"
       ],
       "industry 2": [
         "Retired",
-        "18160",
+        "18060",
         "10"
       ],
       "industry 3": [
@@ -47,8 +47,8 @@
   "oppose": "5747",
   "in vs out district": [
     {
-      "in": "43919",
-      "out": "134948"
+      "in": "43869",
+      "out": "134548"
     }
   ]
 }
