@@ -111,6 +111,12 @@
       font-weight: bold;
       color: $vvlightblue;
     }
+
+    .district-selected {
+      background: lighten($vvbackground, 3%) !important;
+      border-bottom: 2px $vvlightblue solid;
+      font-style: italic;
+    }
 }
 
   .submenu {

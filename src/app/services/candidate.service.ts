@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CandidateTree } from '../candidate';
 
@@ -8,14 +8,8 @@ import { CandidateTree } from '../candidate';
   providedIn: 'root'
 })
 export class CandidateService {
-  emitChangeSidenav = new Subject<any>();
-  changeEmittedFromSidenav$ = this.emitChangeSidenav.asObservable();
 
   constructor(public http: HttpClient) { }
-
-  emitChangeFromSidenav(change: string) {
-    this.emitChangeSidenav.next(change);
-  }
 
   getCampaignTotals(): Observable<any> {
     const campaignTotalsFilePath = "assets/candidates/2020/campaign_race_totals.json";

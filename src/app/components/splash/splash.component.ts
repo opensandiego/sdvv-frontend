@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidenavService } from '../../services';
 import { CandidateService } from '../../services/candidate.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { CandidateService } from '../../services/candidate.service';
 })
 export class SplashComponent implements OnInit {
 
-  constructor(private candidateService: CandidateService) { }
+  constructor(
+    private sidenavService: SidenavService,
+    private candidateService: CandidateService
+  ) { }
 
   campaignTotals = {
     mayor: '0',
@@ -30,6 +34,10 @@ export class SplashComponent implements OnInit {
     this.candidateService.getNumberOfCandidates()
       .subscribe(counts => this.candidateCounts = counts);
 
+  }
+
+  selectOffice(officeType: string) {
+    this.sidenavService.emitCandidateTypeSplash(officeType);
   }
 
 }

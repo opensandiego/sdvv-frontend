@@ -2,10 +2,10 @@
   <i class="fa fa-bars bar-toggle" (click)="drawer.toggle()"></i>
   <div>
     <img class="logo" src="../../../assets/home/VV_Logo_Reversed@2x.png" alt="Voter's Voice Initiative" width="120" height="auto"
-      routerLinkActive="active-link" routerLink="/splash">
+      routerLinkActive="active-link" routerLink="/splash" (click)="resetSidenav()">
   </div>
-  <a class="nav_links" routerLink="/about" routerLinkActive="router-link-active">About</a>
-  <a class="nav_links" routerLink="/faq" routerLinkActive="router-link-active">FAQ</a>
+  <a class="nav_links" routerLink="/about" routerLinkActive="router-link-active" (click)="resetSidenav()">About</a>
+  <a class="nav_links" routerLink="/faq" routerLinkActive="router-link-active" (click)="resetSidenav()">FAQ</a>
 </div>
 
 <mat-drawer-container class="sidenav-container">
@@ -15,7 +15,7 @@
 
         <ng-container *ngFor="let candidateType of sortedObj | keyvalue: asIsOrder; let i= index">
 
-          <mat-expansion-panel (opened)="setOfficeStep(i)" hideToggle="true" (closed)="setCouncilDistrictStep(-1)">
+          <mat-expansion-panel [expanded]="officeType === candidateType.key" (opened)="setOfficeStep(i); setOfficeType(candidateType.key)" hideToggle="true" (closed)="setCouncilDistrictStep(-1)">
 
             <mat-expansion-panel-header [ngClass]="{'active-link':officeStep===i}" collapsedHeight="50px" expandedHeight="50px" 
                [routerLink]="candidateType.value.deepTree? []: '/'+ candidateType.key">
@@ -27,7 +27,7 @@
             <ng-container *ngIf="!candidateType.value.deepTree; else elseBlockContainer">
               <ul *ngFor="let member of candidateType.value.candidates | keyvalue; let j=index">
                 <li>
-                  <a (click)="selectSidenavCandidate(member.key)">{{member.key}}</a>
+                  <a [ngClass]="{ 'candidate-selected': selectedCandidate === member.key }" (click)="selectSidenavCandidate(member.key)">{{member.key}}</a>
                 </li>
               </ul>
             </ng-container>
@@ -36,12 +36,12 @@
             <ng-template #elseBlockContainer>
               <mat-expansion-panel *ngFor="let candidate of candidateType.value.candidates | keyvalue; let j=index" [expanded]="councilDistrictStep===j"
                 (opened)="setCouncilDistrictStep(j)" class="mat-elevation-z0" [routerLink]="['city-council/district', candidate.key]">
-                <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="30px">
+                <mat-expansion-panel-header [ngClass]="{ 'district-selected': councilDistrictStep === j }" collapsedHeight="30px" expandedHeight="30px">
                   {{candidate.value.name}}
                 </mat-expansion-panel-header>
                 <ul *ngFor="let member of candidate.value.candidates | keyvalue; let x= index">
                   <li>
-                    <a (click)="selectSidenavCandidate(member.key)">{{member.key}}</a>
+                    <a [ngClass]="{ 'candidate-selected': selectedCandidate === member.key }" (click)="selectSidenavCandidate(member.key)">{{member.key}}</a>
                   </li>
                 </ul>
               </mat-expansion-panel>
