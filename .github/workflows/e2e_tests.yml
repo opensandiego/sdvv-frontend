@@ -1,0 +1,38 @@
+name: End-to-end tests
+on: 
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+jobs:
+  cypress-run-browser:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [ chrome ]
+    name: E2E on ${{matrix.browser}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm run start
+          wait-on: 'http://localhost:4200'
+          browser: ${{matrix.browser}}
+          headless: true
+          spec: cypress/integration/sdvv-frontend_spec.js
+      - name: Upload Screenshots (if generated)
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      - name: Upload Video
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          
