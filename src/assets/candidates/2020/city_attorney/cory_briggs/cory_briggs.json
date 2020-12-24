@@ -4,28 +4,28 @@
   "website": "https://corybriggs.com/",
   "raised vs spent": [
     {
-      "Raised": "121541",
-      "Spent": "297127",
-      "Donors": "158",
-      "Average Donor": "533"
+      "Raised": "261516",
+      "Spent": "352045",
+      "Donors": "161",
+      "Average Donor": "1072"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Attorney",
-        "63785",
-        "52"
+        "201885",
+        "77"
       ],
       "industry 2": [
         "Retired",
-        "25712",
-        "21"
+        "26387",
+        "10"
       ],
       "industry 3": [
         "CEO",
         "3450",
-        "3"
+        "1"
       ],
       "industry 4": [
         "Community Organizer",
@@ -33,16 +33,16 @@
         "1"
       ],
       "industry 5": [
-        "Executive Director",
-        "1207",
+        "President",
+        "1500",
         "1"
       ]
     }
   ],
   "in vs out district": [
     {
-      "in": "107541",
-      "out": "14000"
+      "in": "246916",
+      "out": "14600"
     }
   ],
   "oppose": "0",
