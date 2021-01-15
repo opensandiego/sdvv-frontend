@@ -4,9 +4,9 @@
   "website": "https://joeforsandiego.com/",
   "raised vs spent": [
     {
-      "Raised": "459861",
-      "Spent": "651624",
-      "Donors": "1006",
+      "Raised": "495864",
+      "Spent": "767580",
+      "Donors": "1087",
       "Average Donor": "296"
     }
   ],
@@ -14,35 +14,35 @@
     {
       "industry 1": [
         "Retired",
-        "62804",
-        "14"
+        "66279",
+        "13"
       ],
       "industry 2": [
         "Attorney",
-        "46610",
+        "48010",
         "10"
       ],
       "industry 3": [
         "President",
-        "22668",
+        "23668",
         "5"
       ],
       "industry 4": [
         "Real Estate",
-        "20636",
-        "4"
+        "23211",
+        "5"
       ],
       "industry 5": [
-        "CEO",
-        "16725",
-        "4"
+        "Homemaker",
+        "17075",
+        "3"
       ]
     }
   ],
   "in vs out district": [
     {
-      "in": "113311",
-      "out": "346550"
+      "in": "118156",
+      "out": "377708"
     }
   ],
   "oppose": "46778",
