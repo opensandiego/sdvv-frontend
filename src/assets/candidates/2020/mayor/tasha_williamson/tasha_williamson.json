@@ -4,10 +4,10 @@
   "website": "https://www.tasha4mayor.com/",
   "raised vs spent": [
     {
-      "Raised": "8317",
-      "Spent": "7464",
+      "Raised": "8457",
+      "Spent": "7664",
       "Donors": "35",
-      "Average Donor": "198"
+      "Average Donor": "188"
     }
   ],
   "by industry": [
@@ -15,7 +15,7 @@
       "industry 1": [
         "None",
         "1970",
-        "24"
+        "23"
       ],
       "industry 2": [
         "Owner",
@@ -41,7 +41,7 @@
   ],
   "in vs out district": [
     {
-      "in": "7867",
+      "in": "8007",
       "out": "450"
     }
   ],

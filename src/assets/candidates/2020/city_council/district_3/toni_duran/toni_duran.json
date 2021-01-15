@@ -4,9 +4,9 @@
   "website": "http://www.toniforsandiego.com/",
   "raised vs spent": [
     {
-      "Raised": "77397",
-      "Spent": "88512",
-      "Donors": "221",
+      "Raised": "78906",
+      "Spent": "116714",
+      "Donors": "224",
       "Average Donor": "150"
     }
   ],
@@ -14,7 +14,7 @@
     {
       "industry 1": [
         "Retired",
-        "12445",
+        "12615",
         "16"
       ],
       "industry 2": [
@@ -33,16 +33,16 @@
         "5"
       ],
       "industry 5": [
-        "Executive Director",
-        "2650",
-        "3"
+        "President & CEO",
+        "3250",
+        "4"
       ]
     }
   ],
   "in vs out district": [
     {
-      "in": "34402",
-      "out": "42996"
+      "in": "34597",
+      "out": "44309"
     }
   ],
   "oppose": "0",

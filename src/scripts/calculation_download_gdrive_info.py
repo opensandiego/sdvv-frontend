@@ -17,8 +17,7 @@ import math
 import os
 import typing
 
-import pandas as pd
-from shared_calculations import DIRECTORY
+from shared_calculations import DIRECTORY, GOOGLE_SHEET_URL, read_candidate_csv
 
 EMPTY_MODEL_JSON = {
     "candidate name": "",
@@ -54,35 +53,6 @@ def replace_nan(value, replace):
     except TypeError:
         pass
     return value
-
-
-def read_candidate_csv(file):
-    """
-    Reads a Pandas Dataframe from a CSV file with candidate information.
-
-    If the row is completely empty, drops it.
-
-    :param file: A CSV file path (including URLS) or object that has
-    the columns being read.
-    :returns: The Pandas Dataframe with the CSV files information
-    """
-    return (
-        pd.read_csv(
-            file,
-            usecols=(
-                "Description",
-                "Website",
-                "Candidate_Name",
-                "Committee Name (Filer_Name)",
-                "Office",
-                "In General",
-                "District",
-                "Year",
-            ),
-        )
-        .dropna(how="all")
-        .set_index("Candidate_Name")
-    )
 
 
 def normalize(string, nan_replacement=None):
@@ -183,6 +153,5 @@ def update_json_files(folder_path, csv_url):
 
 if __name__ == "__main__":
     update_json_files(
-        DIRECTORY,
-        "https://docs.google.com/spreadsheets/d/1mENueYg0PhXE_MA9AypWWBJvBLdY03b8H_N_aIW-Ohw/export?format=csv&gid=0",
+        DIRECTORY, GOOGLE_SHEET_URL,
     )

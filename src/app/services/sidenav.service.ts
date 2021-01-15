@@ -5,12 +5,25 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class SidenavService {
-  emitChangeSidenav = new Subject<any>();
-  changeEmittedFromSidenav$ = this.emitChangeSidenav.asObservable();
+  emitCandidateKeyFromSidenav = new Subject<any>();
+  emitCandidateNameFromCard = new Subject<any>();
+  emitCandidateTypeFromSplash = new Subject<any>();
+
+  candidateKeyEmittedFromSidenav$ = this.emitCandidateKeyFromSidenav.asObservable();
+  candidateNameEmittedFromCard$ = this.emitCandidateNameFromCard.asObservable();
+  candidateTypeEmittedFromSplash$ = this.emitCandidateTypeFromSplash.asObservable();
 
   constructor() { }
 
-  emitChangeFromSidenav(change: string) {
-    this.emitChangeSidenav.next(change);
+  emitCandidateKeySidenav(key: string) {
+    this.emitCandidateKeyFromSidenav.next(key);
+  }
+
+  emitCandidateNameCard(key: string) {
+    this.emitCandidateNameFromCard.next(key);
+  }
+
+  emitCandidateTypeSplash(key: string) {
+    this.emitCandidateTypeFromSplash.next(key);
   }
 }

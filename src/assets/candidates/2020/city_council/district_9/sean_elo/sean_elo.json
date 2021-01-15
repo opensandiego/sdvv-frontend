@@ -4,9 +4,9 @@
   "website": "https://seanelo.com/",
   "raised vs spent": [
     {
-      "Raised": "94764",
-      "Spent": "130447",
-      "Donors": "287",
+      "Raised": "94785",
+      "Spent": "131945",
+      "Donors": "288",
       "Average Donor": "172"
     }
   ],
@@ -42,7 +42,7 @@
   "in vs out district": [
     {
       "in": "21763",
-      "out": "73002"
+      "out": "73022"
     }
   ],
   "oppose": "25800",

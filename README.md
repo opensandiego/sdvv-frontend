@@ -13,6 +13,11 @@ Welcome to the San Diego Voter's Voice Initiative! We are a coalition of non-par
 * [League of Women's Voters](https://www.lwv.org/)
 * [Open San Diego](https://opensandiego.org/)
 
+**Links**
+* Production website: https://san-diego-voters-voice.web.app/
+* Development branch (dev) website: https://dev-sdvotersvoice.web.app/
+* [UI Design Prototype](https://xd.adobe.com/view/2515850f-37db-4f50-5de2-93d5cec8d021-5324/)
+
 #### Background Information
 
 Currently, campaign finance information for candidates running for local offices as well as money spent by outside groups to support or defeat them is not readily accessible to the public.  When the amount of money being spent as well as the source is not known, voters feel disenfranchised by the election process.  Making campaign finance data easy to find and read will increase public trust and confidence in the election process.
@@ -20,7 +25,7 @@ Currently, campaign finance information for candidates running for local offices
 For more information with Voter's Voice Initiative visit [https://sdvotersvoice.org/](https://sdvotersvoice.org/)
 
 ### Prerequisites
-* Angular 9.0.2
+* Angular 11.0.2
 * npm 6.9.0+
 
 ### Setup

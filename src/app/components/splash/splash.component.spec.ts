@@ -1,14 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SplashComponent } from './splash.component';
+import { RoundCurrencyDisplayPipe } from '../../pipes/round-currency-display.pipe';
 
 describe('SplashComponent', () => {
   let component: SplashComponent;
   let fixture: ComponentFixture<SplashComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SplashComponent ]
+      imports: [ HttpClientTestingModule ],
+      declarations: [ SplashComponent, RoundCurrencyDisplayPipe ]
     })
     .compileComponents();
   }));

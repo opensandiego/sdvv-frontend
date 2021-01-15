@@ -29,27 +29,27 @@
     <div class="choose">
         <div>
             <h2 class="racename">Mayor</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/mayor"><i class="fa fa-university"></i>See Candidates</a>
+            <a class="cta" routerLinkActive="active-link" routerLink="/mayor" (click)="selectOffice('mayor')"><i class="fa fa-university"></i>See Candidates</a>
             <p class="raised">Total Raised</p>
-            <h3 class="amount_raised">$1.5M</h3>
+            <h3 class="amount_raised">${{ campaignTotals.mayor | roundCurrencyDisplay: 1 }}</h3>
             <p class="candidate_num">Candidates</p>
-            <h3>5</h3>
+            <h3>{{ candidateCounts.mayor }}</h3>
         </div>
         <div>
             <h2 class="racename">City Attorney</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/city-attorney"><i class="fa fa-balance-scale"></i>See Candidates</a>
+            <a class="cta" routerLinkActive="active-link" routerLink="/city-attorney" (click)="selectOffice('city-attorney')"><i class="fa fa-balance-scale"></i>See Candidates</a>
             <p class="raised">Total Raised</p>
-            <h3 class="amount_raised">$1.5M</h3>
+            <h3 class="amount_raised">${{ campaignTotals.cityAttorney | roundCurrencyDisplay: 1 }}</h3>
             <p class="candidate_num">Candidates</p>
-            <h3>5</h3>
+            <h3>{{ candidateCounts.cityAttorney }}</h3>
         </div>
         <div>
             <h2 class="racename">City Council</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/city-council"><i class="fas fa-map-marked-alt"></i>Choose District</a>
+            <a class="cta" routerLinkActive="active-link" routerLink="/city-council" (click)="selectOffice('city council')"><i class="fas fa-map-marked-alt"></i>Choose District</a>
             <p class="raised">Total Raised</p>
-            <h3 class="amount_raised">$1.5M</h3>
+            <h3 class="amount_raised">${{ campaignTotals.cityCouncil | roundCurrencyDisplay: 1 }}</h3>
             <p class="candidate_num">Candidates</p>
-            <h3>5</h3>
+            <h3>{{ candidateCounts.cityCouncil }}</h3>
         </div>
     </div>
     <div class="sources"><p>All of our data is sourced directly from the <a href="https://ssl.netfile.com/static/agency/csd/" target="_blank">City of San Diego</a> public records.</p></div>
