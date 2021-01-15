@@ -4,45 +4,45 @@
   "website": "https://barbarabry.com",
   "raised vs spent": [
     {
-      "Raised": "2448920",
-      "Spent": "4044292",
-      "Donors": "2316",
-      "Average Donor": "520"
+      "Raised": "2898035",
+      "Spent": "4544455",
+      "Donors": "2371",
+      "Average Donor": "593"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Councilmember",
-        "570000",
-        "23"
+        "965329",
+        "33"
       ],
       "industry 2": [
         "Retired",
-        "486687",
-        "20"
+        "501059",
+        "17"
       ],
       "industry 3": [
         "Attorney",
-        "121577",
-        "5"
+        "125410",
+        "4"
       ],
       "industry 4": [
         "Chief Executive Officer",
-        "103973",
+        "108473",
         "4"
       ],
       "industry 5": [
         "Not Employed",
-        "94338",
-        "4"
+        "96663",
+        "3"
       ]
     }
   ],
   "in vs out district": [
     {
-      "in": "2314575",
-      "out": "134344"
+      "in": "2748406",
+      "out": "149629"
     }
   ],
   "oppose": "844545",
