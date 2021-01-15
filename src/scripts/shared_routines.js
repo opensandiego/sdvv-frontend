@@ -1,41 +1,64 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 const pRetry = require('p-retry');
-const parse = require('csv-parse');
 const parseSync = require('csv-parse/lib/sync');
 
 const ASSETS_PATH = `${__dirname}/../assets`;
 const DATA_PATH = `${ASSETS_PATH}/data`;
-// const CANDIDATE_PATH = `${ASSETS_PATH}/candidates`;
 const NETFILE_API_CSV_FILENAMES = ['netfile_api_2018.csv', 'netfile_api_2019.csv', 'netfile_api_2020.csv'];
 const YEAR = '2020';
 
 /**
- * Fetches data from a url with retries with exponential back off.
- * @param {string} url
+ * Performs Fetch from a URL.
+ * @param {string} url 
  * @returns {string} 
  */
-async function doGetRequest(url) {
+async function doFetch(url) {
 
-  const doFetch = async (attempt) => {
-    if ( attempt > 1 ) {
-      console.log(` > fetch retry attempt: ${attempt}`);
-    }
-      
-    const fetchResponse = await fetch(url, {
-      headers: { 'Content-Type': 'application/json' },
-    })
+  const fetchResponse = await fetch(url, {
+    headers: { 'Content-Type': 'application/json' },
+  })
 
-    // Abort retrying if the resource doesn't exist
-    if (fetchResponse.status === 404) {
-      throw new pRetry.AbortError(fetchResponse.statusText);
-    }
+  // Abort retrying if the resource doesn't exist
+  if (fetchResponse.status === 404) {
+    throw new pRetry.AbortError(fetchResponse.statusText);
 
-    return (await fetchResponse.text());
-
+  // cause a retry if the response is not 200
+  } else if (fetchResponse.status !== 200) {
+    throw new Error(fetchResponse.statusText);
   }
 
-  return await pRetry( doFetch, {retries: 10} );
+  return fetchResponse.text();
+}
+
+/**
+ * Fetches data from a url with retries with exponential back off.
+ * @param {string} url
+ * @param {object} [options]
+ * @param {number} [options.retries = 10]
+ * @returns {string} 
+ */
+async function doGetRequest(url, {retries = 10} = {}) {
+
+  // Call this function just before each failed attempt then retry doFetch
+  const doOnEachFailedAttempt = (error) => {
+    console.log(`Fetch attempt ${error.attemptNumber} failed. There are ${error.retriesLeft} retries left.`);
+  }
+
+  try {
+    // Main function for doGetRequest
+    return await pRetry( 
+      () => doFetch(url), 
+      { retries, minTimeout: 1000, onFailedAttempt: doOnEachFailedAttempt } 
+    );
+
+  } catch (error) {
+    console.log(error.toString());
+    console.log('Error: doGetRequest > Fetch Retry.');
+    console.log('Error: This maybe a network error or the maximum number of retries have been reached.');
+    throw error;
+  }
+
 }
 
 /**
