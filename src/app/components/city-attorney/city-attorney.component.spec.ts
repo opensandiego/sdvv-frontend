@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CityAttorneyComponent } from './city-attorney.component';
@@ -8,6 +9,7 @@ describe('CityAttorneyComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
       declarations: [ CityAttorneyComponent ]
     })
     .compileComponents();
