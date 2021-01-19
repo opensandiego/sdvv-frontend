@@ -46,6 +46,66 @@
             ],
             "ngname": "roundCurrencyDisplay",
             "sourceCode": "import { Pipe, PipeTransform } from \"@angular/core\";\r\n\r\n@Pipe({\r\n  name: \"roundCurrencyDisplay\",\r\n})\r\nexport class RoundCurrencyDisplayPipe implements PipeTransform {\r\n  transform(input: any, args?: any): any {\r\n    var exp,\r\n      oneMillion = 1000000,\r\n      suffixes = [\"k\", \"M\", \"G\", \"T\", \"P\", \"E\"];\r\n\r\n    if (Number.isNaN(input)) {\r\n      return null;\r\n    }\r\n \r\n    if (input < oneMillion) {\r\n      return Number(input).toLocaleString('en-US');\r\n    }\r\n\r\n    exp = Math.floor(Math.log(input) / Math.log(1000));\r\n\r\n    return (input / Math.pow(1000, exp)).toFixed(args) + suffixes[exp - 1];\r\n  }\r\n}\r\n"
+        },
+        {
+            "name": "RoundCurrencyPipe",
+            "id": "pipe-RoundCurrencyPipe-63d563b36244d3db1f408a054cb8fb84",
+            "file": "src/app/vv-charts/round-currency.pipe.ts",
+            "type": "pipe",
+            "description": "",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "input",
+                            "type": "any"
+                        },
+                        {
+                            "name": "args",
+                            "type": "any",
+                            "optional": true
+                        },
+                        {
+                            "name": "threshold",
+                            "type": "any",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 7,
+                    "jsdoctags": [
+                        {
+                            "name": "input",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "args",
+                            "type": "any",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "threshold",
+                            "type": "any",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ngname": "roundCurrency",
+            "sourceCode": "import { Pipe, PipeTransform } from \"@angular/core\";\r\n\r\n@Pipe({\r\n  name: \"roundCurrency\",\r\n})\r\nexport class RoundCurrencyPipe implements PipeTransform {\r\n  transform(input: any, args?: any, threshold?: any): any {\r\n    var exp,\r\n      oneMillion = 1000000,\r\n      minimum = Number.isNaN(threshold) ? oneMillion : Number(threshold),\r\n      suffixes = [\"k\", \"M\", \"G\", \"T\", \"P\", \"E\"];\r\n\r\n    if (Number.isNaN(input)) {\r\n      return null;\r\n    }\r\n \r\n    // if (input < oneMillion) {\r\n    if (input < minimum || input < 1000) {\r\n      return Number(input).toLocaleString('en-US');\r\n    }\r\n\r\n    exp = Math.floor(Math.log(input) / Math.log(1000));\r\n\r\n    return (input / Math.pow(1000, exp)).toFixed(args) + suffixes[exp - 1];\r\n  }\r\n}\r\n"
         }
     ],
     "interfaces": [
@@ -2125,6 +2185,193 @@
             "templateData": "<div class=\"candidate-cards p-grid p-justify-left p-nogutter\">\r\n\r\n  <!-- Expanded Candidate Card -->\r\n  <app-candidate-card-expanded class=\"p-col-12\" *ngIf=\"isExpanded\" [candidate]=\"candidate\" [candidateImg]=\"candidateImg\" (isExpanded)=\"onClose($event)\"></app-candidate-card-expanded>\r\n\r\n  <!-- Primary Candidate Card -->\r\n  <div *ngFor=\"let candidate of candidates; let i = index\">\r\n    <app-candidate-card *ngIf=\"candidate\" [candidate]=\"candidate\" [candidateImg]=\"candidateImages[i]\" (emitCandidateData)=\"getCandidate($event)\" (emitCandidateImage)=\"getCandidateImg($event)\"></app-candidate-card>\r\n  </div>\r\n\r\n</div>\r\n"
         },
         {
+            "name": "RaisedInOutDonutComponent",
+            "id": "component-RaisedInOutDonutComponent-b3ad2617d08571f495646c44588d01ce",
+            "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "raised-in-out-donut",
+            "styleUrls": [
+                "./raised-in-out-donut.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./raised-in-out-donut.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "areaName",
+                    "line": 17,
+                    "type": "string"
+                },
+                {
+                    "name": "inside",
+                    "line": 15,
+                    "type": "number"
+                },
+                {
+                    "name": "jurisdiction",
+                    "line": 18,
+                    "type": "string"
+                },
+                {
+                    "name": "jurisdictionSuffix",
+                    "line": 19,
+                    "type": "string"
+                },
+                {
+                    "name": "outside",
+                    "line": 16,
+                    "type": "number"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "chartPlugins",
+                    "defaultValue": "[ pluginDataLabels ]",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 76
+                },
+                {
+                    "name": "doughnutChartColors",
+                    "defaultValue": "[\r\n    { backgroundColor: ['#3392ff', '#bfd63b'] },\r\n  ]",
+                    "type": "Color[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "doughnutChartData",
+                    "defaultValue": "[{\r\n    data: [1,1],\r\n  }]",
+                    "type": "ChartDataSets[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "doughnutChartLabels",
+                    "type": "Label[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "doughnutChartOptions",
+                    "defaultValue": "{\r\n    // responsive: true,\r\n    responsive: false,\r\n    maintainAspectRatio: false,\r\n    cutoutPercentage: 60,\r\n    animation: {\r\n      animateRotate: true,\r\n    },\r\n\r\n    legend: {\r\n      display: false,\r\n    },\r\n\r\n    tooltips: {\r\n      enabled: false,\r\n    },\r\n\r\n    plugins: {\r\n      datalabels: {\r\n        anchor: 'start',\r\n        align: 'start',\r\n        color: '#4e4e4e',\r\n        textAlign:'center',\r\n        display: 'auto',\r\n\r\n        font: {\r\n          size: 16,\r\n          weight: 'bold',\r\n        },\r\n\r\n        formatter: (value, context) => {\r\n          return this.doughnutChartLabels[context.dataIndex];\r\n        },\r\n      },\r\n    },\r\n  }",
+                    "type": "ChartOptions",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                },
+                {
+                    "name": "doughnutChartType",
+                    "defaultValue": "'doughnut'",
+                    "type": "ChartType",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "jurisdictionComplete",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "title",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "tooltipText",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "mNumberFormatter",
+                    "args": [
+                        {
+                            "name": "num",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 98,
+                    "jsdoctags": [
+                        {
+                            "name": "num",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 81
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnChanges, Input } from '@angular/core';\r\n\r\nimport * as pluginDataLabels from 'chartjs-plugin-datalabels';\r\nimport { ChartOptions, ChartType, ChartDataSets } from 'chart.js';\r\nimport { Color, Label } from 'ng2-charts';\r\n\r\nimport { RoundCurrencyPipe } from '../round-currency.pipe'\r\n\r\n@Component({\r\n  selector: 'raised-in-out-donut',\r\n  templateUrl: './raised-in-out-donut.component.html',\r\n  styleUrls: ['./raised-in-out-donut.component.scss'],\r\n})\r\nexport class RaisedInOutDonutComponent implements OnChanges {\r\n  @Input() inside: number;\r\n  @Input() outside: number;\r\n  @Input() areaName: string; // Example: City of San Diego\r\n  @Input() jurisdiction: string; // Example: City, District\r\n  @Input() jurisdictionSuffix?: string; // Example '1', '5'\r\n\r\n\r\n  title: string;\r\n  tooltipText: string;\r\n  jurisdictionComplete: string;\r\n\r\n\r\n  doughnutChartType: ChartType = 'doughnut';\r\n  doughnutChartData: ChartDataSets[] = [{\r\n    data: [1,1],\r\n  }];\r\n  \r\n  doughnutChartLabels: Label[];\r\n\r\n\r\n  doughnutChartColors: Color[] = [\r\n    { backgroundColor: ['#3392ff', '#bfd63b'] },\r\n  ];\r\n\r\n  doughnutChartOptions: ChartOptions = {\r\n    // responsive: true,\r\n    responsive: false,\r\n    maintainAspectRatio: false,\r\n    cutoutPercentage: 60,\r\n    animation: {\r\n      animateRotate: true,\r\n    },\r\n\r\n    legend: {\r\n      display: false,\r\n    },\r\n\r\n    tooltips: {\r\n      enabled: false,\r\n    },\r\n\r\n    plugins: {\r\n      datalabels: {\r\n        anchor: 'start',\r\n        align: 'start',\r\n        color: '#4e4e4e',\r\n        textAlign:'center',\r\n        display: 'auto',\r\n\r\n        font: {\r\n          size: 16,\r\n          weight: 'bold',\r\n        },\r\n\r\n        formatter: (value, context) => {\r\n          return this.doughnutChartLabels[context.dataIndex];\r\n        },\r\n      },\r\n    },\r\n  }\r\n\r\n  chartPlugins = [ pluginDataLabels ];\r\n\r\n\r\n  constructor(private currencyDisplayPipe: RoundCurrencyPipe) {}\r\n\r\n  ngOnChanges() {\r\n    \r\n    this.jurisdictionComplete = this.jurisdiction;\r\n    this.jurisdictionComplete += (this.jurisdictionSuffix) ? ` ${this.jurisdictionSuffix}` : '';\r\n    \r\n    this.title = `In vs. Out of ${this.jurisdictionComplete}`;\r\n    this.tooltipText = `Total campaign funds raised in the ${this.areaName} versus funds raised outside of city limits.`;\r\n    \r\n    this.doughnutChartData[0].data = [this.inside, this.outside];\r\n\r\n    this.doughnutChartLabels = [\r\n      `In\\n$${this.mNumberFormatter(this.inside)}`,\r\n      `Out\\n$${this.mNumberFormatter(this.outside)}`\r\n    ];\r\n\r\n  }\r\n\r\n  mNumberFormatter(num: number) {\r\n    return this.currencyDisplayPipe.transform(num, 1, '10000');\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../styles/variables\";\r\n@import \"../../styles/elements\";\r\n@import \"~@fortawesome/fontawesome-free/css/all.min.css\";\r\n\r\ni {\r\n    cursor: pointer;\r\n}\r\n\r\n.title {\r\n    padding: 0;\r\n    font-size: 18px;\r\n    font-weight: bold;\r\n    color: $vvdarkblue;\r\n}\r\n\r\n.chart-container{\r\n    position: relative; \r\n    height:20vh; \r\n    width:20vw;\r\n    margin:auto;\r\n}\r\n\r\n.helper-tip {\r\n    color: $vvgrey;\r\n    font-size: 10px;\r\n}\r\n\r\n\r\n// Expanded Card Adjustments for Smaller Screens\r\n@media only screen and (max-width: 1200px) {\r\n   .in-out-district{\r\n       margin-bottom:40px;\r\n   }\r\n   .chart-container{\r\n        height:20vh !important; \r\n        width:60vw !important;\r\n    }\r\n    .chart-container-raised{\r\n        height:25vh !important; \r\n        width:60vw !important;  \r\n    } \r\n}\r\n\r\n::ng-deep .mat-tooltip {\r\n    font-size: 16px;\r\n}\r\n",
+                    "styleUrl": "./raised-in-out-donut.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "currencyDisplayPipe",
+                        "type": "RoundCurrencyPipe"
+                    }
+                ],
+                "line": 76,
+                "jsdoctags": [
+                    {
+                        "name": "currencyDisplayPipe",
+                        "type": "RoundCurrencyPipe",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnChanges"
+            ],
+            "templateData": "<div class=\"in-out-district\">\r\n\r\n  <div class=\"title\">\r\n    <p> {{title}}\r\n      <sup>\r\n        <i\r\n        class=\"helper-tip fa fa-question-circle\"\r\n        aria-hidden=\"true\"\r\n        [matTooltip]=\"tooltipText\"\r\n        > </i>\r\n      </sup>\r\n    </p>\r\n  </div>\r\n\r\n  <div class=\"chart-container\">\r\n    <canvas #canvas baseChart \r\n      width=\"260\" \r\n      height=\"260\"\r\n      [chartType]=\"doughnutChartType\"\r\n      [datasets]=\"doughnutChartData\"      \r\n      [options]=\"doughnutChartOptions\"\r\n      [colors]=\"doughnutChartColors\"\r\n      [plugins]=\"chartPlugins\"\r\n    > </canvas>\r\n  </div> \r\n</div>\r\n"
+        },
+        {
             "name": "SplashComponent",
             "id": "component-SplashComponent-ef14843ad9988f25fbc3a8177783b1cf",
             "file": "src/app/components/splash/splash.component.ts",
@@ -2409,12 +2656,77 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "AmountOver999",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AmountOver9999",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AmountOver99999",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AmountOver999999",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AmountsUnder1000",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "CheckCityNameInTooltip",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "CityNoSuffix",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/test.ts",
                 "type": "",
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "DistrictWithSuffix",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})",
+                "description": "<p>Each of the named exports below is a what Storybook calls a story. \nThese are like test cases. Each will show up under the title in the\ndefault export above. </p>\n<p>Each story below reuses the Template above</p>\n"
             },
             {
                 "name": "environment",
@@ -2433,6 +2745,46 @@
                 "defaultValue": "{\r\n  production: false\r\n}"
             },
             {
+                "name": "EqualInAndOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "HighInsideLowOutside",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LargeDifferenceFavoringInside",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LargeDifferenceFavoringOutside",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LowInsideHighOutside",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "placeholder_data",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2446,12 +2798,137 @@
                 "subtype": "variable",
                 "file": "src/test.ts",
                 "type": "any"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "Story<RaisedInOutDonutComponent>",
+                "defaultValue": "(args: RaisedInOutDonutComponent) => ({\r\n  component: RaisedInOutDonutComponent,\r\n  moduleMetadata: {\r\n    declarations: [],\r\n    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],\r\n    providers: [RoundCurrencyPipe],\r\n  },\r\n  props: args,\r\n})",
+                "description": "<p>imports: for dependencies that would usually be provided in the module containing the component\nproviders: for component dependencies</p>\n<p>The same template is used for the component stories below it.</p>\n"
             }
         ],
         "functions": [],
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts": [
+                {
+                    "name": "AmountOver999",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AmountOver9999",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AmountOver99999",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AmountOver999999",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AmountsUnder1000",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "CheckCityNameInTooltip",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "CityNoSuffix",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "DistrictWithSuffix",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})",
+                    "description": "<p>Each of the named exports below is a what Storybook calls a story. \nThese are like test cases. Each will show up under the title in the\ndefault export above. </p>\n<p>Each story below reuses the Template above</p>\n"
+                },
+                {
+                    "name": "EqualInAndOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "HighInsideLowOutside",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LargeDifferenceFavoringInside",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LargeDifferenceFavoringOutside",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LowInsideHighOutside",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                    "type": "Story<RaisedInOutDonutComponent>",
+                    "defaultValue": "(args: RaisedInOutDonutComponent) => ({\r\n  component: RaisedInOutDonutComponent,\r\n  moduleMetadata: {\r\n    declarations: [],\r\n    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],\r\n    providers: [RoundCurrencyPipe],\r\n  },\r\n  props: args,\r\n})",
+                    "description": "<p>imports: for dependencies that would usually be provided in the module containing the component\nproviders: for component dependencies</p>\n<p>The same template is used for the component stories below it.</p>\n"
+                }
+            ],
             "src/test.ts": [
                 {
                     "name": "context",
@@ -2553,7 +3030,7 @@
         ]
     },
     "coverage": {
-        "count": 0,
+        "count": 4,
         "status": "low",
         "files": [
             {
@@ -2744,6 +3221,164 @@
                 "name": "SidenavService",
                 "coveragePercent": 0,
                 "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AmountOver999",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AmountOver9999",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AmountOver99999",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AmountOver999999",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AmountsUnder1000",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CheckCityNameInTooltip",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CityNoSuffix",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DistrictWithSuffix",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "EqualInAndOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "HighInsideLowOutside",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LargeDifferenceFavoringInside",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LargeDifferenceFavoringOutside",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LowInsideHighOutside",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RaisedInOutDonutComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/18",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/round-currency.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "RoundCurrencyPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
