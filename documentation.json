@@ -2185,6 +2185,165 @@
             "templateData": "<div class=\"candidate-cards p-grid p-justify-left p-nogutter\">\r\n\r\n  <!-- Expanded Candidate Card -->\r\n  <app-candidate-card-expanded class=\"p-col-12\" *ngIf=\"isExpanded\" [candidate]=\"candidate\" [candidateImg]=\"candidateImg\" (isExpanded)=\"onClose($event)\"></app-candidate-card-expanded>\r\n\r\n  <!-- Primary Candidate Card -->\r\n  <div *ngFor=\"let candidate of candidates; let i = index\">\r\n    <app-candidate-card *ngIf=\"candidate\" [candidate]=\"candidate\" [candidateImg]=\"candidateImages[i]\" (emitCandidateData)=\"getCandidate($event)\" (emitCandidateImage)=\"getCandidateImg($event)\"></app-candidate-card>\r\n  </div>\r\n\r\n</div>\r\n"
         },
         {
+            "name": "OutsideMoneyBarComponent",
+            "id": "component-OutsideMoneyBarComponent-d3b250857824362152195ba764832a29",
+            "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "outside-money-bar",
+            "styleUrls": [
+                "./outside-money-bar.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./outside-money-bar.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "oppose",
+                    "line": 15,
+                    "type": "number"
+                },
+                {
+                    "name": "support",
+                    "line": 14,
+                    "type": "number"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "chartPlugins",
+                    "defaultValue": "[ pluginDataLabels ]",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 105
+                },
+                {
+                    "name": "stackedHorizontalBarChartData",
+                    "defaultValue": "[\r\n    {\r\n      data: [1],\r\n      barPercentage: 0.4,\r\n      categoryPercentage: 1.0,\r\n      backgroundColor: 'rgba(0, 119, 255, 0.8)',\r\n      borderColor: 'rgba(0, 119, 255, 1)',\r\n      borderWidth:1,\r\n      hoverBackgroundColor:'rgba(0, 119, 255, 1)',\r\n      hoverBorderColor:'rgba(0, 119, 255, 1)',\r\n    },\r\n\r\n    {\r\n      data: [1],\r\n      barPercentage: 0.4,\r\n      categoryPercentage: 1.0,\r\n      backgroundColor: 'rgba(255, 113, 25, 0.8)',\r\n      borderColor: 'rgba(255, 113, 25, 1)',\r\n      borderWidth:1,\r\n      hoverBackgroundColor:'rgba(255, 113, 25, 1)',\r\n      hoverBorderColor:'rgba(255, 113, 25, 1)',\r\n    },\r\n   \r\n  ]",
+                    "type": "ChartDataSets[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "stackedHorizontalBarChartOptions",
+                    "defaultValue": "{\r\n    responsive: true,\r\n    maintainAspectRatio: false,\r\n\r\n    layout: {\r\n      padding: {\r\n        left: 0,\r\n        right: 20,\r\n      },\r\n    },\r\n\r\n    legend: {\r\n      display: false,\r\n    },\r\n\r\n    tooltips: {\r\n      enabled: false,\r\n    },\r\n\r\n    scales: {\r\n      xAxes: [{\r\n        display: false,\r\n        \r\n        ticks: {\r\n          suggestedMin: 0,\r\n          suggestedMax: 900000\r\n        }\r\n      }],\r\n\r\n      yAxes: [{\r\n        display: false,\r\n        gridLines: {\r\n          color: \"#727272\",\r\n        },\r\n        ticks: {\r\n          min: 0,\r\n        }\r\n\r\n      }],\r\n    },\r\n    plugins: { datalabels: {\r\n      anchor: 'end',\r\n      align: 'end',\r\n      textAlign: 'left',\r\n      color: '#ffffff',\r\n\r\n      font: {\r\n        size: 16,\r\n        weight: 'bold',\r\n      },\r\n\r\n      formatter: function(value, context) {\r\n        return context.dataset.label;\r\n      }\r\n    }}\r\n  }",
+                    "type": "ChartOptions",
+                    "optional": false,
+                    "description": "",
+                    "line": 48
+                },
+                {
+                    "name": "stackedHorizontalBarChartType",
+                    "defaultValue": "'horizontalBar'",
+                    "type": "ChartType",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'Outside Money'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "tooltipText",
+                    "defaultValue": "'Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign.'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "totalExpenditures",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "mNumberFormatter",
+                    "args": [
+                        {
+                            "name": "num",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 125,
+                    "jsdoctags": [
+                        {
+                            "name": "num",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 110
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnChanges, Input } from '@angular/core';\r\n\r\nimport * as pluginDataLabels from 'chartjs-plugin-datalabels';\r\nimport { ChartOptions, ChartType, ChartDataSets } from 'chart.js';\r\n\r\nimport { RoundCurrencyPipe } from '../round-currency.pipe';\r\n\r\n@Component({\r\n  selector: 'outside-money-bar',\r\n  templateUrl: './outside-money-bar.component.html',\r\n  styleUrls: ['./outside-money-bar.component.scss'],\r\n})\r\nexport class OutsideMoneyBarComponent implements OnChanges {\r\n  @Input() support: number;\r\n  @Input() oppose: number;\r\n  \r\n  title: string = 'Outside Money';\r\n  tooltipText: string = 'Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign.';\r\n  totalExpenditures: string;\r\n\r\n\r\n  stackedHorizontalBarChartType: ChartType = 'horizontalBar';\r\n  stackedHorizontalBarChartData: ChartDataSets[] = [\r\n    {\r\n      data: [1],\r\n      barPercentage: 0.4,\r\n      categoryPercentage: 1.0,\r\n      backgroundColor: 'rgba(0, 119, 255, 0.8)',\r\n      borderColor: 'rgba(0, 119, 255, 1)',\r\n      borderWidth:1,\r\n      hoverBackgroundColor:'rgba(0, 119, 255, 1)',\r\n      hoverBorderColor:'rgba(0, 119, 255, 1)',\r\n    },\r\n\r\n    {\r\n      data: [1],\r\n      barPercentage: 0.4,\r\n      categoryPercentage: 1.0,\r\n      backgroundColor: 'rgba(255, 113, 25, 0.8)',\r\n      borderColor: 'rgba(255, 113, 25, 1)',\r\n      borderWidth:1,\r\n      hoverBackgroundColor:'rgba(255, 113, 25, 1)',\r\n      hoverBorderColor:'rgba(255, 113, 25, 1)',\r\n    },\r\n   \r\n  ];\r\n\r\n  stackedHorizontalBarChartOptions: ChartOptions = {\r\n    responsive: true,\r\n    maintainAspectRatio: false,\r\n\r\n    layout: {\r\n      padding: {\r\n        left: 0,\r\n        right: 20,\r\n      },\r\n    },\r\n\r\n    legend: {\r\n      display: false,\r\n    },\r\n\r\n    tooltips: {\r\n      enabled: false,\r\n    },\r\n\r\n    scales: {\r\n      xAxes: [{\r\n        display: false,\r\n        \r\n        ticks: {\r\n          suggestedMin: 0,\r\n          suggestedMax: 900000\r\n        }\r\n      }],\r\n\r\n      yAxes: [{\r\n        display: false,\r\n        gridLines: {\r\n          color: \"#727272\",\r\n        },\r\n        ticks: {\r\n          min: 0,\r\n        }\r\n\r\n      }],\r\n    },\r\n    plugins: { datalabels: {\r\n      anchor: 'end',\r\n      align: 'end',\r\n      textAlign: 'left',\r\n      color: '#ffffff',\r\n\r\n      font: {\r\n        size: 16,\r\n        weight: 'bold',\r\n      },\r\n\r\n      formatter: function(value, context) {\r\n        return context.dataset.label;\r\n      }\r\n    }}\r\n  }\r\n\r\n  chartPlugins = [ pluginDataLabels ];\r\n\r\n\r\n  constructor(private currencyDisplayPipe: RoundCurrencyPipe) {}\r\n\r\n  ngOnChanges() {\r\n\r\n    this.stackedHorizontalBarChartData[0].data = [this.support];\r\n    this.stackedHorizontalBarChartData[0].label = \r\n      `Support\\n$${this.mNumberFormatter(this.support)}`;\r\n\r\n    this.stackedHorizontalBarChartData[1].data = [this.oppose];\r\n    this.stackedHorizontalBarChartData[1].label = \r\n      `Oppose\\n$${this.mNumberFormatter(this.oppose)}`;\r\n\r\n    const total = this.support + this.oppose;\r\n    this.totalExpenditures = `$${this.mNumberFormatter(total)}`;\r\n\r\n  }\r\n\r\n  mNumberFormatter(num: number) {\r\n    return this.currencyDisplayPipe.transform(num, 1, '10000');\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../styles/variables\";\r\n@import \"../../styles/elements\";\r\n@import \"~@fortawesome/fontawesome-free/css/all.min.css\";\r\n\r\n.title {\r\n  padding: 0;\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n  color: $vvdarkblue;\r\n}\r\n\r\n.helper-tip {\r\n  color: $vvgrey;\r\n  font-size: 10px;\r\n}\r\n\r\nh2 {\r\n  font-weight: normal;\r\n  font-size: 12px;\r\n  color: $vvgrey;\r\n  margin: 5px 0px 10px 0px;\r\n}\r\n\r\nh3 {\r\n  font-size: 18px;\r\n  color: $vvdarkgrey;\r\n}\r\n\r\ni {\r\n  cursor: pointer;\r\n}\r\n\r\n.outside-money{\r\n  grid-column: 1 / 5;\r\n  border:1px solid #efefef;\r\n  margin-bottom: 10px;\r\n  padding-bottom: 30px;\r\n  justify-self: stretch;\r\n  background-color: $vvdarkgrey;\r\n  color:#fff;\r\n\r\n  .title, .helper-tip, .raised{\r\n      color:#fff;\r\n      h2, h3{\r\n          color:#fff;\r\n          margin: 0px 0px 5px 0px;\r\n      }\r\n  }\r\n\r\n  .chart-container-outside{\r\n      height:10vh; \r\n      width:58vw;\r\n      border-left:1px solid #727272;\r\n      margin-left:40px;\r\n  }\r\n  \r\n  .outside-grid{\r\n      display: grid;\r\n      grid-template-columns:60vw 0.8fr;\r\n      justify-self: stretch;\r\n     \r\n      .raised{\r\n          padding:20px 0px 20px 30px;\r\n          text-align: left;\r\n          border-left: 1px solid #727272;\r\n          align-self: center;\r\n      }\r\n  }\r\n}\r\n",
+                    "styleUrl": "./outside-money-bar.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "currencyDisplayPipe",
+                        "type": "RoundCurrencyPipe"
+                    }
+                ],
+                "line": 105,
+                "jsdoctags": [
+                    {
+                        "name": "currencyDisplayPipe",
+                        "type": "RoundCurrencyPipe",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnChanges"
+            ],
+            "templateData": "<div class=\"outside-money\">\r\n  <div class=\"title\">\r\n    <p>\r\n      {{title}}\r\n      <sup>\r\n        <i\r\n          class=\"helper-tip fa fa-question-circle\"\r\n          aria-hidden=\"true\"\r\n          [matTooltip]=\"tooltipText\"\r\n        >\r\n        </i>\r\n      </sup>\r\n    </p>\r\n  </div>\r\n  <div class=\"outside-grid\">\r\n    <div  class=\"chart-container-outside\">\r\n      <canvas baseChart\r\n        [chartType]=\"stackedHorizontalBarChartType\"\r\n        [datasets]=\"stackedHorizontalBarChartData\"\r\n        [options]=\"stackedHorizontalBarChartOptions\"\r\n        [plugins]=\"chartPlugins\"\r\n      ></canvas>\r\n    </div>\r\n\r\n    <div class=\"raised\">\r\n      <h2>Total Expenditures</h2>\r\n      <!-- <h3> {{ total | currency : 'USD' : 'symbol' : '1.0-0' }}</h3> -->\r\n      <h3> {{ totalExpenditures }}</h3>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
             "name": "RaisedInOutDonutComponent",
             "id": "component-RaisedInOutDonutComponent-b3ad2617d08571f495646c44588d01ce",
             "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.ts",
@@ -2696,6 +2855,30 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "BothExtremeHigh",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "BothHigh",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "BothLow",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "CheckCityNameInTooltip",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2745,10 +2928,26 @@
                 "defaultValue": "{\r\n  production: false\r\n}"
             },
             {
+                "name": "Equal",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "EqualInAndOut",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "ExtremeUnbalanced",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -2785,6 +2984,14 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "OpposeHigher",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "placeholder_data",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2798,6 +3005,30 @@
                 "subtype": "variable",
                 "file": "src/test.ts",
                 "type": "any"
+            },
+            {
+                "name": "SupportAt9M",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "SupportHigher",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "Story<OutsideMoneyBarComponent>",
+                "defaultValue": "(args: OutsideMoneyBarComponent) => ({\r\n  component: OutsideMoneyBarComponent,\r\n  moduleMetadata: {\r\n    declarations: [],\r\n    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],\r\n    providers: [RoundCurrencyPipe],\r\n  },\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -2929,6 +3160,80 @@
                     "description": "<p>imports: for dependencies that would usually be provided in the module containing the component\nproviders: for component dependencies</p>\n<p>The same template is used for the component stories below it.</p>\n"
                 }
             ],
+            "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts": [
+                {
+                    "name": "BothExtremeHigh",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "BothHigh",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "BothLow",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Equal",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "ExtremeUnbalanced",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "OpposeHigher",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "SupportAt9M",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "SupportHigher",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                    "type": "Story<OutsideMoneyBarComponent>",
+                    "defaultValue": "(args: OutsideMoneyBarComponent) => ({\r\n  component: OutsideMoneyBarComponent,\r\n  moduleMetadata: {\r\n    declarations: [],\r\n    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],\r\n    providers: [RoundCurrencyPipe],\r\n  },\r\n  props: args,\r\n})"
+                }
+            ],
             "src/test.ts": [
                 {
                     "name": "context",
@@ -3030,7 +3335,7 @@
         ]
     },
     "coverage": {
-        "count": 4,
+        "count": 3,
         "status": "low",
         "files": [
             {
@@ -3221,6 +3526,105 @@
                 "name": "SidenavService",
                 "coveragePercent": 0,
                 "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BothExtremeHigh",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BothHigh",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BothLow",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Equal",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ExtremeUnbalanced",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "OpposeHigher",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SupportAt9M",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SupportHigher",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "OutsideMoneyBarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
                 "status": "low"
             },
             {
