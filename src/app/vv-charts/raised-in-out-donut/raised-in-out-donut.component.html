@@ -1,0 +1,26 @@
+<div class="in-out-district">
+
+  <div class="title">
+    <p> {{title}}
+      <sup>
+        <i
+        class="helper-tip fa fa-question-circle"
+        aria-hidden="true"
+        [matTooltip]="tooltipText"
+        > </i>
+      </sup>
+    </p>
+  </div>
+
+  <div class="chart-container">
+    <canvas #canvas baseChart 
+      width="260" 
+      height="260"
+      [chartType]="doughnutChartType"
+      [datasets]="doughnutChartData"      
+      [options]="doughnutChartOptions"
+      [colors]="doughnutChartColors"
+      [plugins]="chartPlugins"
+    > </canvas>
+  </div> 
+</div>
