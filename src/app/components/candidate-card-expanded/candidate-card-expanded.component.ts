@@ -136,7 +136,7 @@ export class CandidateCardExpandedComponent {
     responsive: true,
     maintainAspectRatio: false,
     cutoutPercentage:60,
-    animation:{animateRotate:false},
+    animation:{animateRotate:true},
 
     legend: {
       display: false,
@@ -336,11 +336,9 @@ export class CandidateCardExpandedComponent {
 
     // In V. Out District
     if (c['in vs out district']) {
-      this.doughnutChartData = [
-        {data: [
-          this.currencyToNumber(c['in vs out district'][0].in),
-          this.currencyToNumber(c['in vs out district'][0].out)
-        ]}
+      this.doughnutChartData[0].data = [
+        this.currencyToNumber(c['in vs out district'][0].in),
+        this.currencyToNumber(c['in vs out district'][0].out)
       ];
     }
 
