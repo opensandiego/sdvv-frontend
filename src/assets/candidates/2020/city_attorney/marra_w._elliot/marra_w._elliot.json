@@ -4,45 +4,45 @@
   "website": "https://maraelliott.com",
   "raised vs spent": [
     {
-      "Raised": "518165",
-      "Spent": "584151",
-      "Donors": "708",
-      "Average Donor": "444"
+      "Raised": "528115",
+      "Spent": "755207",
+      "Donors": "719",
+      "Average Donor": "443"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Attorney",
-        "137500",
-        "27"
+        "139500",
+        "26"
       ],
       "industry 2": [
         "Retired",
-        "57320",
+        "58870",
         "11"
       ],
       "industry 3": [
         "President",
-        "23044",
+        "23294",
         "4"
       ],
       "industry 4": [
         "CEO",
-        "20600",
+        "21100",
         "4"
       ],
       "industry 5": [
-        "Lawyer",
-        "17325",
+        "Homemaker",
+        "18172",
         "3"
       ]
     }
   ],
   "in vs out district": [
     {
-      "in": "437535",
-      "out": "80630"
+      "in": "445985",
+      "out": "82130"
     }
   ],
   "oppose": "0",

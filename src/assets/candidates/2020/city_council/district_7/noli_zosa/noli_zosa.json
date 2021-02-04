@@ -4,45 +4,45 @@
   "website": "https://www.noli2020.com/ ",
   "raised vs spent": [
     {
-      "Raised": "411253",
-      "Spent": "501089",
-      "Donors": "843",
-      "Average Donor": "301"
+      "Raised": "453938",
+      "Spent": "643518",
+      "Donors": "889",
+      "Average Donor": "314"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Retired",
-        "74818",
-        "18"
+        "78743",
+        "17"
       ],
       "industry 2": [
         "President",
-        "39125",
-        "10"
+        "41275",
+        "9"
       ],
       "industry 3": [
         "CEO",
-        "21430",
+        "21880",
         "5"
       ],
       "industry 4": [
         "Attorney",
-        "17715",
+        "19215",
         "4"
       ],
       "industry 5": [
         "Owner",
-        "16059",
+        "19009",
         "4"
       ]
     }
   ],
   "in vs out district": [
     {
-      "in": "39769",
-      "out": "371484"
+      "in": "68619",
+      "out": "385319"
     }
   ],
   "oppose": "79212",
