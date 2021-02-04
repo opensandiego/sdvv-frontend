@@ -8,8 +8,8 @@
   "in general": false,
   "raised vs spent": [
     {
-      "Raised": "85929",
-      "Spent": "102933",
+      "Raised": "86179",
+      "Spent": "103186",
       "Donors": "235",
       "Average Donor": "253"
     }
@@ -18,7 +18,7 @@
     {
       "industry 1": [
         "Analyst",
-        "12605",
+        "12855",
         "15"
       ],
       "industry 2": [
@@ -47,7 +47,7 @@
   "oppose": "0",
   "in vs out district": [
     {
-      "in": "42619",
+      "in": "42869",
       "out": "43310"
     }
   ]

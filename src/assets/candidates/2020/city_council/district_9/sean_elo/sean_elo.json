@@ -4,45 +4,45 @@
   "website": "https://seanelo.com/",
   "raised vs spent": [
     {
-      "Raised": "94785",
-      "Spent": "131945",
-      "Donors": "288",
-      "Average Donor": "172"
+      "Raised": "116797",
+      "Spent": "167136",
+      "Donors": "349",
+      "Average Donor": "173"
     }
   ],
   "by industry": [
     {
       "industry 1": [
         "Retired",
-        "9300",
-        "10"
+        "9950",
+        "9"
       ],
       "industry 2": [
         "Attorney",
-        "6435",
+        "8475",
         "7"
       ],
       "industry 3": [
         "President",
-        "4275",
+        "5675",
         "5"
       ],
       "industry 4": [
-        "Executive Director",
-        "2978",
-        "3"
+        "Chief Executive Officer",
+        "4770",
+        "4"
       ],
       "industry 5": [
-        "Not Employed",
-        "2920",
-        "3"
+        "Real Estate",
+        "4450",
+        "4"
       ]
     }
   ],
   "in vs out district": [
     {
-      "in": "21763",
-      "out": "73022"
+      "in": "24490",
+      "out": "92308"
     }
   ],
   "oppose": "25800",
