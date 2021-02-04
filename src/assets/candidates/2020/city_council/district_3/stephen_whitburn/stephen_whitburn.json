@@ -4,10 +4,10 @@
   "website": "http://whitburnforcouncil.com/",
   "raised vs spent": [
     {
-      "Raised": "224494",
-      "Spent": "207899",
-      "Donors": "318",
-      "Average Donor": "372"
+      "Raised": "228094",
+      "Spent": "304023",
+      "Donors": "327",
+      "Average Donor": "368"
     }
   ],
   "by industry": [
@@ -24,13 +24,13 @@
       ],
       "industry 3": [
         "Attorney",
-        "16525",
+        "16625",
         "7"
       ],
       "industry 4": [
         "Not Employed",
         "7949",
-        "4"
+        "3"
       ],
       "industry 5": [
         "Real Estate",
@@ -41,8 +41,8 @@
   ],
   "in vs out district": [
     {
-      "in": "88390",
-      "out": "136104"
+      "in": "90090",
+      "out": "138004"
     }
   ],
   "oppose": "0",
