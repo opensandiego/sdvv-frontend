@@ -8,37 +8,37 @@
   "in general": true,
   "raised vs spent": [
     {
-      "Raised": "48456",
-      "Spent": "111361",
-      "Donors": "91",
-      "Average Donor": "433"
+      "Raised": "112122",
+      "Spent": "267911",
+      "Donors": "147",
+      "Average Donor": "590"
     }
   ],
   "by industry": [
     {
       "industry 1": [
-        "Retired",
-        "2163",
+        "Attorney",
+        "4170",
         "4"
       ],
       "industry 2": [
-        "Attorney",
-        "1695",
-        "3"
+        "Consultant",
+        "2600",
+        "2"
       ],
       "industry 3": [
-        "Not Employed",
-        "1550",
-        "3"
+        "Real Estate",
+        "2300",
+        "2"
       ],
       "industry 4": [
-        "Business owner",
-        "1200",
+        "Not Employed",
+        "2250",
         "2"
       ],
       "industry 5": [
-        "Real Estate",
-        "850",
+        "Retired",
+        "2163",
         "2"
       ]
     }
@@ -47,8 +47,8 @@
   "oppose": "60729",
   "in vs out district": [
     {
-      "in": "31528",
-      "out": "16928"
+      "in": "79150",
+      "out": "32972"
     }
   ]
 }
