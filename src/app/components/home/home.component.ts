@@ -12,6 +12,7 @@ import { CandidateTree } from '../../candidate';
 })
 export class HomeComponent implements OnInit {
   isExpanded: boolean = false;
+  isSidenavOpened: boolean;
   showSubmenu: boolean = false;
   officeStep: number = -1;
   councilDistrictStep: number = -1;
@@ -89,8 +90,10 @@ export class HomeComponent implements OnInit {
   // Apply sidenav opening mode based on screen width
   setSidenavOpeningMode() {
     if (this.screenWidth < 1200) {
+      this.isSidenavOpened = false;
       this.sidenavMode = 'over';
     } else {
+      this.isSidenavOpened = true;
       this.sidenavMode = 'side'
     }
   }
