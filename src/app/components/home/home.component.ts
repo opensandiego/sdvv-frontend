@@ -19,8 +19,6 @@ export class HomeComponent implements OnInit {
   selectedCandidate: string;
   officeType: string;
   lastUpdatedDate: string = '00/00/00';
-  screenWidth: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  sidenavMode: string = '';
 
   candidates: Record<string, CandidateTree>;
   modifiedData: {} = {};
@@ -44,16 +42,17 @@ export class HomeComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event): void {
     if (this.sidenav !== undefined) {
-      if (event.target.innerWidth <= 1000) {
+      if (event.target.innerWidth <= 1200) {
         this.sidenav.close();
+        this.sidenav.mode = 'over';
       } else {
         this.sidenav.open();
+        this.sidenav.mode = 'side';
       }
     }
   }
 
   ngOnInit() {
-    this.setSidenavOpeningMode();
     this.candidateService.getAll().then(
       (all: Record<string, CandidateTree>) => {
         this.candidates = all;
@@ -85,17 +84,6 @@ export class HomeComponent implements OnInit {
   selectSidenavCandidate(candidateKey: string) {
     this.selectedCandidate = candidateKey;
     this.sidenavService.emitCandidateKeySidenav(candidateKey);
-  }
-
-  // Apply sidenav opening mode based on screen width
-  setSidenavOpeningMode() {
-    if (this.screenWidth < 1200) {
-      this.isSidenavOpened = false;
-      this.sidenavMode = 'over';
-    } else {
-      this.isSidenavOpened = true;
-      this.sidenavMode = 'side'
-    }
   }
 
   // Reset sidenav when navigating away from any of the candidate offices, close panels and remove style highlight
