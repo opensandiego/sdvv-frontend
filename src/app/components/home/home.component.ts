@@ -53,6 +53,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setSidenavInitialOptions();
+    
     this.candidateService.getAll().then(
       (all: Record<string, CandidateTree>) => {
         this.candidates = all;
@@ -63,6 +65,12 @@ export class HomeComponent implements OnInit {
 
     this.candidateService.getLastUpdated()
       .subscribe(date => this.lastUpdatedDate = date);
+  }
+
+  // Set initial sidenav options onint
+  setSidenavInitialOptions() {
+    this.sidenav.open();
+    this.sidenav.mode = 'side';
   }
 
   // Have active-link class apply to only an opened candidate office panel by setting an assigned step for each candidate office section
