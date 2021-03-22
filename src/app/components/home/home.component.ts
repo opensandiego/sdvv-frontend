@@ -12,6 +12,7 @@ import { CandidateTree } from '../../candidate';
 })
 export class HomeComponent implements OnInit {
   isExpanded: boolean = false;
+  isSidenavOpened: boolean;
   showSubmenu: boolean = false;
   officeStep: number = -1;
   councilDistrictStep: number = -1;
@@ -41,15 +42,19 @@ export class HomeComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event): void {
     if (this.sidenav !== undefined) {
-      if (event.target.innerWidth <= 1000) {
+      if (event.target.innerWidth <= 1200) {
         this.sidenav.close();
+        this.sidenav.mode = 'over';
       } else {
         this.sidenav.open();
+        this.sidenav.mode = 'side';
       }
     }
   }
 
   ngOnInit() {
+    this.setSidenavInitialOptions();
+    
     this.candidateService.getAll().then(
       (all: Record<string, CandidateTree>) => {
         this.candidates = all;
@@ -60,6 +65,12 @@ export class HomeComponent implements OnInit {
 
     this.candidateService.getLastUpdated()
       .subscribe(date => this.lastUpdatedDate = date);
+  }
+
+  // Set initial sidenav options onint
+  setSidenavInitialOptions() {
+    this.sidenav.open();
+    this.sidenav.mode = 'side';
   }
 
   // Have active-link class apply to only an opened candidate office panel by setting an assigned step for each candidate office section
