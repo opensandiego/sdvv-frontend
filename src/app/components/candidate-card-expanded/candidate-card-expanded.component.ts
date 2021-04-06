@@ -22,7 +22,7 @@ export class CandidateCardExpandedComponent {
   @Input() candidateImg: string;
   @Output() isExpanded = new EventEmitter<boolean>();
 
-  private _c: Candidate;
+  public _c: Candidate;
 
   // Industry Table
   displayedColumns: string[];
