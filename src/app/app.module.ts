@@ -24,7 +24,7 @@ import { SplashComponent } from './components/splash/splash.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { CityCouncilDistrictComponent } from './components/city-council-district/city-council-district.component';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
-import { TotalSpentListComponent } from './components/shared/total-spent-list/total-spent-list.component';
+import { TotalSpentListComponent } from './vv-charts/total-spent-list/total-spent-list.component';
 
 @NgModule({
   exports: [

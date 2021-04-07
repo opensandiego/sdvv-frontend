@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Candidate } from '../../../candidate';
+import { Candidate } from '../../candidate';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
