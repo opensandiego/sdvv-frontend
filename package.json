@@ -59,7 +59,7 @@
     "cli-progress": "^3.8.2",
     "codelyzer": "^6.0.0",
     "csv-parse": "^4.14.2",
-    "cypress": "^6.2.0",
+    "cypress": "^7.0.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.2",
