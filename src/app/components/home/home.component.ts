@@ -3,6 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { CandidateService, SidenavService } from '../../services';
 import { CandidateTree } from '../../candidate';
 
+import { faMapMarkedAlt, faBars, } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,9 @@ export class HomeComponent implements OnInit {
   candidates: Record<string, CandidateTree>;
   modifiedData: {} = {};
   sortedObj: {} = {};
+
+  // faMapMarkedAlt = faMapMarkedAlt;
+  faBars = faBars;
 
   @ViewChild('drawer', { static: true }) sidenav: MatDrawer;
 
