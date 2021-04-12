@@ -24,7 +24,7 @@ import { SplashComponent } from './components/splash/splash.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { CityCouncilDistrictComponent } from './components/city-council-district/city-council-district.component';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
-import { TotalSpentListComponent } from './vv-charts/total-spent-list/total-spent-list.component';
+import { VvChartsModule } from './vv-charts/vv-charts.module';
 
 @NgModule({
   exports: [
@@ -43,7 +43,6 @@ import { TotalSpentListComponent } from './vv-charts/total-spent-list/total-spen
     AboutComponent,
     CityCouncilDistrictComponent,
     RoundCurrencyDisplayPipe,
-    TotalSpentListComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +58,7 @@ import { TotalSpentListComponent } from './vv-charts/total-spent-list/total-spen
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
+    VvChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
