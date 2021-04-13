@@ -3,11 +3,11 @@ import { Candidate } from '../../candidate';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-total-spent-list',
-  templateUrl: './total-spent-list.component.html',
-  styleUrls: ['./total-spent-list.component.scss']
+  selector: 'app-donations-by-group',
+  templateUrl: './donations-by-group.component.html',
+  styleUrls: ['./donations-by-group.component.scss']
 })
-export class TotalSpentListComponent implements OnInit {
+export class DonationsByGroupComponent implements OnInit {
   private _c: Candidate;
   get candidate() {
     return this._c;

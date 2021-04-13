@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 // import { OutsideMoneyBarComponent } from './outside-money-bar/outside-money-bar.component';
-import { TotalSpentListComponent } from './total-spent-list/total-spent-list.component';
+import { DonationsByGroupComponent } from './donations-by-group/donations-by-group.component';
 
 @NgModule({
   declarations: [
     // OutsideMoneyBarComponent,
-    TotalSpentListComponent,
+    DonationsByGroupComponent,
   ],
   imports: [
     CommonModule,
@@ -17,7 +17,7 @@ import { TotalSpentListComponent } from './total-spent-list/total-spent-list.com
   ],
   exports: [
     // OutsideMoneyBarComponent,
-    TotalSpentListComponent,
+    DonationsByGroupComponent,
   ],
 })
 export class VvChartsModule { }
