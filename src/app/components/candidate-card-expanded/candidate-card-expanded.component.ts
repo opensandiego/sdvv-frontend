@@ -4,6 +4,8 @@ import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Candidate } from '../../candidate';
 import { Color } from 'ng2-charts';
 
+import { faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-candidate-card-expanded',
   templateUrl: './candidate-card-expanded.component.html',
@@ -14,7 +16,8 @@ export class CandidateCardExpandedComponent {
   @Output() isExpanded = new EventEmitter<boolean>();
 
   public _c: Candidate;
-
+  faQuestionCircle = faQuestionCircle;
+  faTimesCircle = faTimesCircle;
   // All Charts
   chartPlugins = [pluginDataLabels];
 

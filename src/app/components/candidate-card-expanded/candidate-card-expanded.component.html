@@ -42,10 +42,11 @@
           Raised v. Spent
           <sup>
             <i
-              class="helper-tip fa fa-question-circle"
+              class="helper-tip"
               aria-hidden="true"
               matTooltip="Total campaign funds raised and spent by the candidate."
             >
+              <fa-icon [icon]="faQuestionCircle"></fa-icon>
             </i>
           </sup>
         </p>
@@ -79,10 +80,11 @@
         In v. Out City
         <sup>
           <i
-            class="helper-tip fa fa-question-circle"
+            class="helper-tip"
             aria-hidden="true"
             matTooltip="Total campaign funds raised in the city of San Diego versus funds raised outside of city limits."
           >
+            <fa-icon [icon]="faQuestionCircle"></fa-icon>
           </i>
         </sup>
       </p>
@@ -104,7 +106,9 @@
 
 
   <div class="close">
-    <i style="font-size: 25px;" class="fa fa-times-circle" aria-hidden="true" (click)="close()"></i>
+    <i style="font-size: 25px;" aria-hidden="true" (click)="close()">
+      <fa-icon [icon]="faTimesCircle"></fa-icon>
+    </i>
   </div>
   
 
@@ -115,10 +119,11 @@
         Outside Money
         <sup>
           <i
-            class="helper-tip fa fa-question-circle"
+            class="helper-tip"
             aria-hidden="true"
             matTooltip="Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign."
           >
+            <fa-icon [icon]="faQuestionCircle"></fa-icon>
           </i>
         </sup>
       </p>
