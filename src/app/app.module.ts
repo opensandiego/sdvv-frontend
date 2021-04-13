@@ -25,6 +25,7 @@ import { SplashComponent } from './components/splash/splash.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { CityCouncilDistrictComponent } from './components/city-council-district/city-council-district.component';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
+import { VvChartsModule } from './vv-charts/vv-charts.module';
 
 @NgModule({
   exports: [
@@ -59,6 +60,7 @@ import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
+    VvChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
