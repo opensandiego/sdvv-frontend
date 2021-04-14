@@ -42,10 +42,11 @@
           Raised v. Spent
           <sup>
             <i
-              class="helper-tip fa fa-question-circle"
+              class="helper-tip"
               aria-hidden="true"
               matTooltip="Total campaign funds raised and spent by the candidate."
             >
+              <fa-icon [icon]="faQuestionCircle"></fa-icon>
             </i>
           </sup>
         </p>
@@ -69,53 +70,8 @@
         </div>
       </div>
   </div>
-  <div class="industries">
-      <div class="title">
-        <p>
-          Donations by Group
-          <sup>
-            <i
-              class="helper-tip fa fa-question-circle"
-              aria-hidden="true"
-              matTooltip="Total contributions from the five largest groups of campaign donors.  Groups are determined by the industry segment of each donor's employer."
-            >
-            </i>
-          </sup>
-        </p>
-      </div>
-  
 
-
-    <div>
-      <table class="industries-table" mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="colorCode">
-          <th mat-header-cell *matHeaderCellDef>Color Code</th>
-          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index" [style.color]="element.colorCode">
-            <mat-icon>fiber_manual_record</mat-icon>
-          </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="industry">
-          <th mat-header-cell *matHeaderCellDef>Industry</th>
-          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.industry }}</td>
-        </ng-container>
-  
-        <ng-container matColumnDef="amount">
-          <th mat-header-cell *matHeaderCellDef>Amount</th>
-          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.amount | currency:'USD':'symbol':'1.0-0' }}</td>
-        </ng-container>
-  
-        <ng-container matColumnDef="percentage">
-          <th mat-header-cell *matHeaderCellDef>Percentage</th>
-          <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index">{{ element.percentage | number:'1.0-0' }}%</td>
-        </ng-container>
-  
-        
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-    </div>
-  </div>
-
+  <app-donations-by-group [candidate]="_c"></app-donations-by-group>
 
   <div class="in-out-district">
 
@@ -124,10 +80,11 @@
         In v. Out City
         <sup>
           <i
-            class="helper-tip fa fa-question-circle"
+            class="helper-tip"
             aria-hidden="true"
             matTooltip="Total campaign funds raised in the city of San Diego versus funds raised outside of city limits."
           >
+            <fa-icon [icon]="faQuestionCircle"></fa-icon>
           </i>
         </sup>
       </p>
@@ -149,7 +106,9 @@
 
 
   <div class="close">
-    <i style="font-size: 25px;" class="fa fa-times-circle" aria-hidden="true" (click)="close()"></i>
+    <i style="font-size: 25px;" aria-hidden="true" (click)="close()">
+      <fa-icon [icon]="faTimesCircle"></fa-icon>
+    </i>
   </div>
   
 
@@ -160,10 +119,11 @@
         Outside Money
         <sup>
           <i
-            class="helper-tip fa fa-question-circle"
+            class="helper-tip"
             aria-hidden="true"
             matTooltip="Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign."
           >
+            <fa-icon [icon]="faQuestionCircle"></fa-icon>
           </i>
         </sup>
       </p>

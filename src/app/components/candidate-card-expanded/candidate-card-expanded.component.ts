@@ -3,15 +3,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Candidate } from '../../candidate';
 import { Color } from 'ng2-charts';
-import { MatTableDataSource } from '@angular/material/table';
 
-const placeholder_data = [
-  { colorCode: '#007431', industry: 'Technology', amount: 200000, percentage: 0.5 },
-  { colorCode: '#00903d', industry: 'Finance', amount: 200000, percentage: 0.2 },
-  { colorCode: '#00af4a', industry: 'Energy', amount: 200000, percentage: null },
-  { colorCode: '#00d359', industry: 'Construction', amount: 200000, percentage: null },
-  { colorCode: '#00fc6a', industry: 'Other', amount: 200000, percentage: null },
-];
+import { faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-candidate-card-expanded',
@@ -22,12 +15,9 @@ export class CandidateCardExpandedComponent {
   @Input() candidateImg: string;
   @Output() isExpanded = new EventEmitter<boolean>();
 
-  private _c: Candidate;
-
-  // Industry Table
-  displayedColumns: string[];
-  dataSource = new MatTableDataSource();
-
+  public _c: Candidate;
+  faQuestionCircle = faQuestionCircle;
+  faTimesCircle = faTimesCircle;
   // All Charts
   chartPlugins = [pluginDataLabels];
 
@@ -275,55 +265,6 @@ export class CandidateCardExpandedComponent {
     this._c = c;
     // console.debug(c);
     this.setChartsData(c);
-    this.setDisplayedColumns();
-    this.setTableData(c);
-  }
-
-  // Setting By Industry Table
-  setDisplayedColumns() {
-    this.displayedColumns = [
-      'colorCode',
-      'industry',
-      'amount',
-      'percentage',
-    ];
-  }
-
-  setTableData(c: Candidate) {
-    const topFiveIndustries = [
-      {
-        colorCode: '#007431',
-        industry: c['by industry'][0]['industry 1'][0],
-        amount: Number(c['by industry'][0]['industry 1'][1]),
-        percentage: Number(c['by industry'][0]['industry 1'][2]),
-      },
-      {
-        colorCode: '#00903d',
-        industry: c['by industry'][0]['industry 2'][0],
-        amount: Number(c['by industry'][0]['industry 2'][1]),
-        percentage: Number(c['by industry'][0]['industry 2'][2]),
-      },
-      {
-        colorCode: '#00af4a',
-        industry: c['by industry'][0]['industry 3'][0],
-        amount: Number(c['by industry'][0]['industry 3'][1]),
-        percentage: Number(c['by industry'][0]['industry 3'][2]),
-      },
-      {
-        colorCode: '#00d359',
-        industry: c['by industry'][0]['industry 4'][0],
-        amount: Number(c['by industry'][0]['industry 4'][1]),
-        percentage: Number(c['by industry'][0]['industry 4'][2]),
-      },
-      {
-        colorCode: '#00fc6a',
-        industry: c['by industry'][0]['industry 5'][0],
-        amount: Number(c['by industry'][0]['industry 5'][1]),
-        percentage: Number(c['by industry'][0]['industry 5'][2]),
-      },
-    ];
-
-    this.dataSource.data = topFiveIndustries;
   }
 
   // Setting Chart Data
