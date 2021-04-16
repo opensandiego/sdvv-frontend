@@ -3,6 +3,7 @@ import { Component, OnChanges, Input } from '@angular/core';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { RoundCurrencyPipe } from '../round-currency.pipe'
 
@@ -18,6 +19,7 @@ export class RaisedInOutDonutComponent implements OnChanges {
   @Input() jurisdiction: string; // Example: City, District
   @Input() jurisdictionSuffix?: string; // Example '1', '5'
 
+  faQuestionCircle = faQuestionCircle;
 
   title: string;
   tooltipText: string;

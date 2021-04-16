@@ -4,10 +4,12 @@
     <p> {{title}}
       <sup>
         <i
-        class="helper-tip fa fa-question-circle"
-        aria-hidden="true"
-        [matTooltip]="tooltipText"
-        > </i>
+          class="helper-tip"
+          aria-hidden="true"
+          [matTooltip]="tooltipText"
+        >
+          <fa-icon [icon]="faQuestionCircle"></fa-icon>
+        </i>
       </sup>
     </p>
   </div>
