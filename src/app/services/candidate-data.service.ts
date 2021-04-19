@@ -5,7 +5,7 @@ import { map, toArray, mergeMap, filter, } from 'rxjs/operators';
 /**
  * candidate-data.service: This service obtains data from the candidate-store.service and 
  *  provides the application with access to the data. This service is intended to be used 
- *  and an intermediatory for accessing the source data used in the application. Data 
+ *  as an intermediatory for accessing the source data used in the application. Data 
  *  provided by this service is in the form of observables that match specific interfaces.
  * 
  */
