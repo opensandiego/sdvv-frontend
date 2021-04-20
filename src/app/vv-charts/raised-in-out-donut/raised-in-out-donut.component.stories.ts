@@ -6,6 +6,7 @@ import { RoundCurrencyPipe } from '../round-currency.pipe'; // component depende
 import { ChartsModule } from 'ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 /**
  * This file can be used as a template to copy and then customize to test a component. The 
@@ -53,7 +54,7 @@ const Template: Story<RaisedInOutDonutComponent> = (args: RaisedInOutDonutCompon
   component: RaisedInOutDonutComponent,
   moduleMetadata: {
     declarations: [],
-    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],
+    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule, FontAwesomeModule],
     providers: [RoundCurrencyPipe],
   },
   props: args,
