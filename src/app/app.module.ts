@@ -27,6 +27,8 @@ import { CityCouncilDistrictComponent } from './components/city-council-district
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 import { VvChartsModule } from './vv-charts/vv-charts.module';
 
+import { CandidateNavigationComponent } from './components/candidate-navigation/candidate-navigation.component';
+
 @NgModule({
   exports: [
     MatExpansionModule,
@@ -44,6 +46,7 @@ import { VvChartsModule } from './vv-charts/vv-charts.module';
     AboutComponent,
     CityCouncilDistrictComponent,
     RoundCurrencyDisplayPipe,
+    CandidateNavigationComponent,
   ],
   imports: [
     BrowserModule,
