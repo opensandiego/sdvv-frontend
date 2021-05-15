@@ -1,7 +1,6 @@
 @import "../../styles/variables";
 @import "../../styles/elements";
 @import "../../styles/global";
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 .splashpage{
   padding:20px 40px 0px 30px;
@@ -33,11 +32,9 @@
       margin: auto;
     }
 
-    .bullet-icon{
+    .bullet-icon > fa-icon{
       display: block;
-      margin:20px auto;
-      font-size: 30px;
-     
+      margin: 20px auto;
     }
   }
 
@@ -115,10 +112,9 @@
           a{
             text-decoration: none;
           }
-          i{
-            padding:0px;
-            margin:0px 8px 0px 0px;
-            font-size:14px;
+          fa-icon{
+            padding: 0px;
+            margin: 0px 4px 0px 0px;
           }
       }
       .cta:hover{

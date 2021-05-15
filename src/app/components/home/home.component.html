@@ -1,5 +1,8 @@
 <div class="header-nav">
-  <i class="fa fa-bars bar-toggle" (click)="drawer.toggle()"></i>
+  <i class="bar-toggle" (click)="drawer.toggle()">
+    <fa-icon [icon]="faBars"></fa-icon>
+  </i>
+  
   <div>
     <img class="logo" src="../../../assets/home/VV_Logo_Reversed@2x.png" alt="Voter's Voice Initiative" width="120" height="auto"
       routerLinkActive="active-link" routerLink="/splash" (click)="resetSidenav()">
@@ -9,7 +12,7 @@
 </div>
 
 <mat-drawer-container class="sidenav-container">
-  <mat-drawer #drawer mode="side" align="start" disableClose="false" opened>
+  <mat-drawer #drawer align="start" disableClose="false">
     <mat-nav-list [disableRipple]="true">
       <mat-accordion displayMode="flat">
 

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CandidateCardComponent } from './components/candidate-card/candidate-card.component';
 import { CandidateCardExpandedComponent } from './components/candidate-card-expanded/candidate-card-expanded.component';
 import { ChartsModule } from 'ng2-charts';
@@ -24,6 +25,9 @@ import { SplashComponent } from './components/splash/splash.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { CityCouncilDistrictComponent } from './components/city-council-district/city-council-district.component';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
+import { VvChartsModule } from './vv-charts/vv-charts.module';
+
+import { CandidateNavigationComponent } from './components/candidate-navigation/candidate-navigation.component';
 
 @NgModule({
   exports: [
@@ -42,11 +46,13 @@ import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
     AboutComponent,
     CityCouncilDistrictComponent,
     RoundCurrencyDisplayPipe,
+    CandidateNavigationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
     ChartsModule,
     MatButtonModule,
     HttpClientModule,
@@ -57,6 +63,7 @@ import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
+    VvChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

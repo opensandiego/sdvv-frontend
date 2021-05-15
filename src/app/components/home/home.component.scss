@@ -1,7 +1,6 @@
 @import "../../styles/variables";
 @import "../../styles/elements";
 @import "../../styles/global";
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
 .router-link-active {
   color: $vvyellow !important;
 }
@@ -165,11 +164,23 @@
   }
   .sidenav-container {
     mat-drawer {
-      width: 150px;
+      @media only screen and (min-width: 1201px) {
+        width: 150px;
+      }
+
+      @media only screen and (max-width: 1200px) {
+        width: 200px;
+      }
     }
     .mat-accordion {
       .mat-expansion-panel {
-        width: 150px;
+        @media only screen and (min-width: 1201px) {
+          width: 150px;
+        }
+
+        @media only screen and (max-width: 1200px) {
+          width: 200px;
+        }
         .mat-expansion-panel-content {
           .mat-expansion-panel-header {
             font-size: 12px;

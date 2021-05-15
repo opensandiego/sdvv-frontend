@@ -5,19 +5,27 @@
         <a href="https://www.lwv.org/">League of Women Voters</a>) working to give “We The People” a greater voice in our local government by:</p>
         <div class="goals">
             <div>
-                <i class="fa fa-binoculars bullet-icon"></i>
+                <i class="bullet-icon">
+                    <fa-icon [icon]="faBinoculars" size="2x"></fa-icon>
+                </i>
                 <p class="bullet">Improving Transparency in Campaign Finance</p>
             </div>
             <div>
-                <i class="fa fa-money bullet-icon"></i>
+                <i class="bullet-icon">
+                    <fa-icon [icon]="faMoneyBill" size="2x"></fa-icon>
+                </i>
                 <p class="bullet">Providing Full Disclosure on the Flow of Money</p>
             </div>
             <div>
-                <i class="fa fa-handshake-o bullet-icon"></i>
+                <i class="bullet-icon">
+                    <fa-icon [icon]="faHandshake" size="2x"></fa-icon>
+                </i>
                 <p class="bullet">Reducing the Potential for Corruption</p>
             </div>
             <div>
-                <i class="fa fa-gavel bullet-icon"></i>
+                <i class="bullet-icon">
+                    <fa-icon [icon]="faGavel" size="2x"></fa-icon>
+                </i>
                 <p class="bullet">Increasing Accountability in Government</p>
             </div>
         </div>
@@ -29,7 +37,10 @@
     <div class="choose">
         <div>
             <h2 class="racename">Mayor</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/mayor" (click)="selectOffice('mayor')"><i class="fa fa-university"></i>See Candidates</a>
+            <a class="cta" routerLinkActive="active-link" routerLink="/mayor" (click)="selectOffice('mayor')">
+                <fa-icon [icon]="faUniversity"></fa-icon>
+                See Candidates
+            </a>
             <p class="raised">Total Raised</p>
             <h3 class="amount_raised">${{ campaignTotals.mayor | roundCurrencyDisplay: 1 }}</h3>
             <p class="candidate_num">Candidates</p>
@@ -37,7 +48,10 @@
         </div>
         <div>
             <h2 class="racename">City Attorney</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/city-attorney" (click)="selectOffice('city-attorney')"><i class="fa fa-balance-scale"></i>See Candidates</a>
+            <a class="cta" routerLinkActive="active-link" routerLink="/city-attorney" (click)="selectOffice('city-attorney')">
+                <fa-icon [icon]="faBalanceScale"></fa-icon>
+                See Candidates
+            </a>
             <p class="raised">Total Raised</p>
             <h3 class="amount_raised">${{ campaignTotals.cityAttorney | roundCurrencyDisplay: 1 }}</h3>
             <p class="candidate_num">Candidates</p>
@@ -45,7 +59,10 @@
         </div>
         <div>
             <h2 class="racename">City Council</h2> 
-            <a class="cta" routerLinkActive="active-link" routerLink="/city-council" (click)="selectOffice('city council')"><i class="fas fa-map-marked-alt"></i>Choose District</a>
+            <a class="cta" routerLinkActive="active-link" routerLink="/city-council" (click)="selectOffice('city council')">
+                <fa-icon [icon]="faMapMarkedAlt"></fa-icon>
+                Choose District
+            </a>
             <p class="raised">Total Raised</p>
             <h3 class="amount_raised">${{ campaignTotals.cityCouncil | roundCurrencyDisplay: 1 }}</h3>
             <p class="candidate_num">Candidates</p>
