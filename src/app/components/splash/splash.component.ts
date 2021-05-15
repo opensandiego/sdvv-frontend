@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { SidenavService } from '../../services';
 import { CandidateService } from '../../services/candidate.service';
 
-import { faBinoculars, faMoneyBill, faHandshake, faGavel } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faBinoculars, faMoneyBill, faHandshake, faGavel, 
+  faUniversity, faBalanceScale, faMapMarkedAlt 
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-splash',
@@ -10,10 +13,14 @@ import { faBinoculars, faMoneyBill, faHandshake, faGavel } from '@fortawesome/fr
   styleUrls: ['./splash.component.scss']
 })
 export class SplashComponent implements OnInit {
+  // fortawesome icons
   faBinoculars = faBinoculars; 
   faMoneyBill = faMoneyBill; 
   faHandshake = faHandshake; 
   faGavel = faGavel;
+  faUniversity = faUniversity;
+  faBalanceScale = faBalanceScale;
+  faMapMarkedAlt = faMapMarkedAlt;
 
   constructor(
     private sidenavService: SidenavService,
