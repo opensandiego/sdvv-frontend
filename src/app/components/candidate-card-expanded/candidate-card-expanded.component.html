@@ -1,5 +1,4 @@
 <div class="candidate-card-expanded vv-grid">
-
   <div>
     <div class="candidate">
 
@@ -8,6 +7,7 @@
           <img [src]="candidateImg" [alt]="candidate['candidate name']" onError="this.src='../../../assets/candidate-card/profile.png'">
         </div>
       </div>
+
       <h1 class="first">{{candidate['first']}}</h1>
       <h1>{{candidate['last']}}</h1>
       <h2>{{ candidate['description'] }}</h2>
@@ -23,53 +23,24 @@
           <h3>{{candidate["raised vs spent"][0].Donors}}</h3>
         </div>
       </div>
-  
       
       <div>
         <button class="full-details-btn" routerLink="/under-construction" mat-flat-button>See Full Details</button>
       </div>
+
       <div class="website-link">
         <mat-icon>link</mat-icon>
         <a href="{{ candidate['website'] }}">Website</a>
       </div>
-  
     </div>
   </div>
-  <div class="raised-spent">
 
-      <div class="title">
-        <p>
-          Raised v. Spent
-          <sup>
-            <i
-              class="helper-tip"
-              aria-hidden="true"
-              matTooltip="Total campaign funds raised and spent by the candidate."
-            >
-              <fa-icon [icon]="faQuestionCircle"></fa-icon>
-            </i>
-          </sup>
-        </p>
-      </div>
-  
-      <div class="raised-spent-chart chart-container-raised">
-        <canvas baseChart
-          width="350"
-          height="550"
-          [chartType]="barChartType"
-          [datasets]="barChartData"
-          [options]="barChartOptions"
-          [plugins]="chartPlugins"
-        ></canvas>
-      </div>
-  
-      <div class="raised-spent-footer">
-        <div class="avg-donation">
-          <h2 class="raised-spent-footer-title">Average Donation</h2>
-          <h3 class="raised-spent-footer-content">{{ candidate['raised vs spent'][0]['Average Donor'] | currency:'USD':'symbol':'1.0-0' }}</h3>
-        </div>
-      </div>
-  </div>
+  <app-raised-vs-spent
+    [raised]="_c['raised vs spent'][0].Raised"
+    [spent]="_c['raised vs spent'][0].Spent"
+    [averageDonation]="_c['raised vs spent'][0]['Average Donor']"
+  >
+  </app-raised-vs-spent>
 
   <app-donations-by-group [candidate]="_c"></app-donations-by-group>
 
@@ -81,15 +52,12 @@
   >
   </raised-in-out-donut>
 
-
   <div class="close">
     <i style="font-size: 25px;" aria-hidden="true" (click)="close()">
       <fa-icon [icon]="faTimesCircle"></fa-icon>
     </i>
   </div>
   
-
-
   <div class="outside-money">
     <div class="title">
       <p>
@@ -105,6 +73,7 @@
         </sup>
       </p>
     </div>
+
     <div class="outside-grid">
       <div  class="chart-container-outside">
         <canvas baseChart
@@ -120,5 +89,4 @@
         <h3>{{(ConvertToInt(candidate['oppose'])+ConvertToInt(candidate['support']))| currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
       </div>
     </div>
-  </div>
-
+</div>

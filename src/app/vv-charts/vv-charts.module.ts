@@ -9,6 +9,7 @@ import { ChartsModule } from 'ng2-charts';
 import { DonationsByGroupComponent } from './donations-by-group/donations-by-group.component';
 import { OutsideMoneyBarComponent } from './outside-money-bar/outside-money-bar.component';
 import { RaisedInOutDonutComponent } from './raised-in-out-donut/raised-in-out-donut.component';
+import { RaisedVsSpentComponent } from './raised-vs-spent/raised-vs-spent.component';
 import { RoundCurrencyPipe } from './round-currency.pipe';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { RoundCurrencyPipe } from './round-currency.pipe';
     DonationsByGroupComponent,
     OutsideMoneyBarComponent,
     RaisedInOutDonutComponent,
+    RaisedVsSpentComponent,
     RoundCurrencyPipe,
   ],
   imports: [
@@ -30,6 +32,7 @@ import { RoundCurrencyPipe } from './round-currency.pipe';
     DonationsByGroupComponent,
     OutsideMoneyBarComponent,
     RaisedInOutDonutComponent,
+    RaisedVsSpentComponent,
   ],
   providers: [RoundCurrencyPipe]
 })
