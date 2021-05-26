@@ -14,7 +14,9 @@
     </div>
 
     <div class="chart-container">
-        <canvas #canvas baseChart
+        <canvas baseChart
+          width="350"
+          height="550"
           [chartType]="barChartType"
           [datasets]="barChartData"
           [options]="barChartOptions"

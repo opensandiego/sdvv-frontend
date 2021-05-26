@@ -40,3 +40,11 @@ i {
     color: $vvgrey;
     font-size: 10px;
 }
+
+
+// Expanded Card Adjustments for Smaller Screens
+@media only screen and (max-width: 1200px) {
+    .chart-container{
+        width:50vw;
+    }
+ }
