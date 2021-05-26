@@ -95,49 +95,7 @@
             }
         }
     }
-  
-    .chart-container{
-        position: relative; 
-        height:20vh; 
-        width:20vw;
-        margin:auto;
-    }
 
-    .raised-spent{
-        .chart-container-raised{
-            position: relative; 
-            height:21vh; 
-            width:12vw;
-            max-height: 200px;
-            margin:auto;
-        }
-        .raised-spent-footer-title,.raised-spent-footer-content{
-            margin:5px 0px;
-        }
-    }
-
-    .industries {
-        .industries-table {
-            width: 100%;
-            text-align: left;
-        }
-
-        .mat-cell {
-            font-size: 13px;
-            color: $vvgrey;
-            padding:8px;
-        }
-        
-        .mat-cell:nth-last-child(2), .mat-cell:last-child, 
-        .mat-header-cell:nth-last-child(2), .mat-header-cell:last-child {
-            text-align: right;
-        }
-
-        .mat-cell:last-child {
-            font-size: 20px;
-            font-weight: bold;
-        }
-    }
     .outside-money{
         grid-column: 1 / 5;
         border:1px solid #efefef;

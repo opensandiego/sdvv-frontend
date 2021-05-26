@@ -2,7 +2,6 @@ import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Candidate } from '../../candidate';
-import { Color } from 'ng2-charts';
 
 import { faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,141 +19,6 @@ export class CandidateCardExpandedComponent {
   faTimesCircle = faTimesCircle;
   // All Charts
   chartPlugins = [pluginDataLabels];
-
-  // Raised v. Spent Chart
-  barChartType: ChartType = 'bar';
-  barChartData: ChartDataSets[] = [
-    {
-      data: [150000],
-      label: 'Raised',
-      barPercentage: 0.4,
-      categoryPercentage: 1.0,
-      backgroundColor: 'rgba(40, 154, 88, 0.8)',
-      borderColor: 'rgba(40, 154, 88, 1)',
-      borderWidth:1,
-      hoverBackgroundColor:'rgba(40, 154, 88, 1)',
-      hoverBorderColor:'rgba(40, 154, 88, 1)',
-
-    },
-    {
-      data: [150000],
-      label: 'Spent',
-      barPercentage: 0.4,
-      categoryPercentage: 1.0,
-      backgroundColor: 'rgba(255, 44, 25, 0.8)',
-      borderColor: 'rgba(255, 44, 25, 1)',
-      borderWidth:1,
-      hoverBackgroundColor:'rgba(255, 44, 25, 1)',
-      hoverBorderColor:'rgba(255, 44, 25, 1)',
-    },
-  ];
-
-
-
-  barChartOptions: ChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    
-
-    title: {
-      display: true,
-      fontSize: 15,
-      fontColor: '#16375d',
-      fontStyle: 'bold',
-    },
-
-    legend: {
-      display: false,
-    },
-
-    tooltips: {
-      enabled: false,
-    },
-
-    plugins: {
-      datalabels: {
-        anchor: 'end',
-        align: 'end',
-        textAlign: 'center',
-        color: '#4e4e4e',
-        
-
-        font: {
-          size: 16,
-          weight: 'bold',
-        },
-        
-
-        formatter: (val, ctx) => {
-          return ctx.dataset.label === 'Raised' ? `Raised\n$${this.mNumberFormatter(val)}` : `Spent\n$${this.mNumberFormatter(val)}`;
-        },
-      },
-    },
-
-    scales: {
-      xAxes: [{
-        
-        ticks: {
-          min: 0,
-        },
-      }],
-
-      yAxes: [{
-        display: false,
-        ticks: {
-          suggestedMin: 0,
-          suggestedMax: 3000000
-        },
-      }],
-    },
-  }
-
-  // In v. Out District
-  doughnutChartType: ChartType = 'doughnut';
-  doughnutChartData: ChartDataSets[] = [
-    {
-      data: [5000, 1200],
-      
-    }
-  ];
-
-  doughnutChartColors: Color[] = [
-    { backgroundColor: ['#3392ff', '#bfd63b'] },
-  ];
-
-  doughnutChartOptions: any = {
-    responsive: true,
-    maintainAspectRatio: false,
-    cutoutPercentage:60,
-    animation:{animateRotate:true},
-
-    legend: {
-      display: false,
-    },
-
-    tooltips: {
-      enabled: false,
-    },
-
-    plugins: {
-      datalabels: {
-        anchor: 'start',
-        align: 'start',
-        color: '#4e4e4e',
-        textAlign:'center',
-
-        font: {
-          size: 16,
-          weight: 'bold',
-          
-        },
-
-        formatter: (val, ctx) => {
-          return ctx.dataIndex === 0 ? `In\n$${this.mNumberFormatter(val)}` : `Out\n$${this.mNumberFormatter(val)}`;
-        },
-      },
-    },
-  }
 
   // Oppose v. Support Chart
   stackedHorizontalBarChartType: ChartType = 'horizontalBar';
@@ -269,20 +133,6 @@ export class CandidateCardExpandedComponent {
 
   // Setting Chart Data
   setChartsData(c: Candidate) {
-    // Raised v. Spent
-    this.barChartData = [
-      {...this.barChartData[0], data: [this.currencyToNumber(c['raised vs spent'][0].Raised)]},
-      {...this.barChartData[1], data: [this.currencyToNumber(c['raised vs spent'][0].Spent)]}
-    ];
-
-    // In V. Out District
-    if (c['in vs out district']) {
-      this.doughnutChartData[0].data = [
-        this.currencyToNumber(c['in vs out district'][0].in),
-        this.currencyToNumber(c['in vs out district'][0].out)
-      ];
-    }
-
     // Oppose v. Support
     this.stackedHorizontalBarChartData = [
       {...this.stackedHorizontalBarChartData[0], data: [this.currencyToNumber(c['support'])]},
