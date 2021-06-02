@@ -31,36 +31,36 @@ export const  candidateAssets: CandidateAssetsPaths[] = [
     calculationsPath: 'assets/candidates/2020/city_council/district_1/will_moore/will_moore.json',
     imagePath: '',
   },
-  // {
-  //   id: '',
-  //   calculationsPath: 'assets/candidates/2020/city_council/district_3/toni_duran/toni_duran.json',
-  //   imagePath: '',
-  // },
+  {
+    id: '2802658952',
+    calculationsPath: 'assets/candidates/2020/city_council/district_3/toni_duran/toni_duran.json',
+    imagePath: '',
+  },
   {
     id: '3087659774',
     calculationsPath: 'assets/candidates/2020/city_council/district_3/stephen_whitburn/stephen_whitburn.json',
     imagePath: '',
   },
-  // {
-  //   id: '',
-  //   calculationsPath: 'assets/candidates/2020/city_council/district_5/joe_leventhal/joe_leventhal.json',
-  //   imagePath: '',
-  // },
-  // {
-  //   id: '',
-  //   calculationsPath: 'assets/candidates/2020/city_council/district_5/marni_von_wilpert/marni_von_wilpert.json',
-  //   imagePath: '',
-  // },
-  // {
-  //   id: '',
-  //   calculationsPath: 'assets/candidates/2020/city_council/district_7/raul_campillo/raul_campillo.json',
-  //   imagePath: '',
-  // },
-  // {
-  //   id: '',
-  //   calculationsPath: 'assets/candidates/2020/city_council/district_7/noli_zosa/noli_zosa.json',
-  //   imagePath: '',
-  // },
+  {
+    id: '2085859416',
+    calculationsPath: 'assets/candidates/2020/city_council/district_5/joe_leventhal/joe_leventhal.json',
+    imagePath: '',
+  },
+  {
+    id: '537761956',
+    calculationsPath: 'assets/candidates/2020/city_council/district_5/marni_von_wilpert/marni_von_wilpert.json',
+    imagePath: '',
+  },
+  {
+    id: '1063720306',
+    calculationsPath: 'assets/candidates/2020/city_council/district_7/raul_campillo/raul_campillo.json',
+    imagePath: '',
+  },
+  {
+    id: '296840038',
+    calculationsPath: 'assets/candidates/2020/city_council/district_7/noli_zosa/noli_zosa.json',
+    imagePath: '',
+  },
   {
     id: '1372856752',
     calculationsPath: 'assets/candidates/2020/city_council/district_9/kelvin_h._barrios/kelvin_h._barrios.json',
