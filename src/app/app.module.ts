@@ -28,6 +28,7 @@ import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 import { VvChartsModule } from './vv-charts/vv-charts.module';
 
 import { CandidateNavigationComponent } from './components/candidate-navigation/candidate-navigation.component';
+import { OfficeComponent } from './components/office/office.component';
 
 @NgModule({
   exports: [
@@ -47,6 +48,7 @@ import { CandidateNavigationComponent } from './components/candidate-navigation/
     CityCouncilDistrictComponent,
     RoundCurrencyDisplayPipe,
     CandidateNavigationComponent,
+    OfficeComponent,
   ],
   imports: [
     BrowserModule,

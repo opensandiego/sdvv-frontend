@@ -9,6 +9,7 @@ import {
   AboutComponent,
   UnderConstructionComponent,
   CityCouncilDistrictComponent,
+  OfficeComponent,
 } from './components';
 
 
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'mayor', component: MayorComponent },
   { path: 'city-attorney', component: CityAttorneyComponent },
+  { path: ':office', component: OfficeComponent },
+  { path: ':office/:candidateId', component: OfficeComponent },
   { path: 'under-construction', component: UnderConstructionComponent },
   { path: 'city-council/district/:id', component: CityCouncilDistrictComponent },
 ];
