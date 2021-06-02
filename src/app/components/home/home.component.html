@@ -13,48 +13,9 @@
 
 <mat-drawer-container class="sidenav-container">
   <mat-drawer #drawer align="start" disableClose="false">
-    <mat-nav-list [disableRipple]="true">
-      <mat-accordion displayMode="flat">
 
-        <ng-container *ngFor="let candidateType of sortedObj | keyvalue: asIsOrder; let i= index">
+    <app-candidate-navigation></app-candidate-navigation>
 
-          <mat-expansion-panel [expanded]="officeType === candidateType.key" (opened)="setOfficeStep(i); setOfficeType(candidateType.key)" hideToggle="true" (closed)="setCouncilDistrictStep(-1)">
-
-            <mat-expansion-panel-header [ngClass]="{'active-link':officeStep===i}" collapsedHeight="50px" expandedHeight="50px" 
-               [routerLink]="candidateType.value.deepTree? []: '/'+ candidateType.key">
-              <mat-panel-title>
-                {{candidateType.value.title}}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <ng-container *ngIf="!candidateType.value.deepTree; else elseBlockContainer">
-              <ul *ngFor="let member of candidateType.value.candidates | keyvalue; let j=index">
-                <li>
-                  <a [ngClass]="{ 'candidate-selected': selectedCandidate === member.key }" (click)="selectSidenavCandidate(member.key)">{{member.key}}</a>
-                </li>
-              </ul>
-            </ng-container>
-
-            <!-- city council subcategory and its sub properties -->
-            <ng-template #elseBlockContainer>
-              <mat-expansion-panel *ngFor="let candidate of candidateType.value.candidates | keyvalue; let j=index" [expanded]="councilDistrictStep===j"
-                (opened)="setCouncilDistrictStep(j)" class="mat-elevation-z0" [routerLink]="['city-council/district', candidate.key]">
-                <mat-expansion-panel-header [ngClass]="{ 'district-selected': councilDistrictStep === j }" collapsedHeight="30px" expandedHeight="30px">
-                  {{candidate.value.name}}
-                </mat-expansion-panel-header>
-                <ul *ngFor="let member of candidate.value.candidates | keyvalue; let x= index">
-                  <li>
-                    <a [ngClass]="{ 'candidate-selected': selectedCandidate === member.key }" (click)="selectSidenavCandidate(member.key)">{{member.key}}</a>
-                  </li>
-                </ul>
-              </mat-expansion-panel>
-            </ng-template>
-            <!-- city council -->
-
-          </mat-expansion-panel>
-        </ng-container>
-      </mat-accordion>
-    </mat-nav-list>
   </mat-drawer>
 
   <mat-drawer-content class="main_section">
