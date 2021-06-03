@@ -1,4 +1,5 @@
-import { Meta, Story } from '@storybook/angular';
+import { Meta, Story } from '@storybook/angular/types-6-0';
+import { moduleMetadata } from '@storybook/angular';
 
 import { OutsideMoneyBarComponent } from './outside-money-bar.component';
 import { RoundCurrencyPipe } from '../round-currency.pipe';
@@ -10,19 +11,20 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export default {
   title: 'Charts/Outside Money',
   component: OutsideMoneyBarComponent,
+  decorators: [
+    moduleMetadata({
+      declarations: [],
+      imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],
+      providers: [RoundCurrencyPipe],
+    }),
+  ], 
   argTypes: {
-    support: { control: 'number' },
-    oppose: { control: 'number' },
+    support: { type: 'number' },
+    oppose: { type: 'number' },
   },
 } as Meta;
 
 const Template: Story<OutsideMoneyBarComponent> = (args: OutsideMoneyBarComponent) => ({
-  component: OutsideMoneyBarComponent,
-  moduleMetadata: {
-    declarations: [],
-    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],
-    providers: [RoundCurrencyPipe],
-  },
   props: args,
 })
 
