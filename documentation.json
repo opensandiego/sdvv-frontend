@@ -150,6 +150,263 @@
             "methods": []
         },
         {
+            "name": "CandidateAssetsPaths",
+            "id": "interface-CandidateAssetsPaths-5132922e88c1d38407eea2fb3bba8232",
+            "file": "src/app/interfaces/candidateAssetPaths.ts",
+            "type": "interface",
+            "sourceCode": "export interface CandidateAssetsPaths {\r\n  id: string;\r\n  calculationsPath: string;\r\n  imagePath: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "calculationsPath",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "imagePath",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "CandidateCard",
+            "id": "interface-CandidateCard-852df1778f2d535ed9f449576c606024",
+            "file": "src/app/interfaces/candidateCard.ts",
+            "type": "interface",
+            "sourceCode": "export interface CandidateCard {\r\n  id: string;\r\n  name: string;\r\n  description: string;\r\n  raised: number;\r\n  donors: number;\r\n  candidateImgURL: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "candidateImgURL",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "description",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "donors",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "raised",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "CandidateJSON",
+            "id": "interface-CandidateJSON-f0ed91d64b61b4663aa0426f660caad2",
+            "file": "src/app/interfaces/candidateJSON.ts",
+            "type": "interface",
+            "sourceCode": "export interface CandidateJSON {\r\n  \"by industry\": [\r\n    { \"industry 1\": string[] },\r\n    { \"industry 2\": string[] },\r\n    { \"industry 3\": string[] },\r\n    { \"industry 4\": string[] },\r\n    { \"industry 5\": string[] },\r\n  ],\r\n  \"candidate name\": string,\r\n  \"committee name\": string,\r\n  \"description\": string,\r\n  \"first\": string,\r\n  \"in general\": boolean,\r\n  \"in vs out district\": [{\r\n    \"in\": string,\r\n    \"out\": string,\r\n  }],\r\n  \"last\": string,\r\n  \"oppose\": string,\r\n  \"raised vs spent\": [{\r\n    \"Raised\": string,\r\n    \"Spent\": string,\r\n    \"Donors\": string,\r\n    \"Average Donor\": string\r\n  }],\r\n  \"support\": string,\r\n  \"website\": string,\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "by industry",
+                    "type": "[literal type, literal type, literal type, literal type, literal type]",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "candidate name",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "committee name",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "description",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "first",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "in general",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "in vs out district",
+                    "type": "[literal type]",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "last",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "oppose",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "raised vs spent",
+                    "type": "[literal type]",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "support",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "website",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "CandidateNavigation",
+            "id": "interface-CandidateNavigation-cec1c71f0e605098328d33fd6951d102",
+            "file": "src/app/interfaces/candidateNavigation.ts",
+            "type": "interface",
+            "sourceCode": "export interface CandidateNavigation {\r\n  id: string;\r\n  fullName: string;\r\n  officeType: string;\r\n  fullOfficeName: string;\r\n  seat: { name: string, type: string };\r\n  inGeneralElection: boolean;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "fullName",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "fullOfficeName",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "inGeneralElection",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "officeType",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "seat",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "CandidateNavigationWithRoute",
+            "id": "interface-CandidateNavigationWithRoute-9943543333f440d59cd1905559294c7d",
+            "file": "src/app/components/candidate-navigation/candidate-navigation.component.ts",
+            "type": "interface",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { toArray } from 'rxjs/operators';\r\n\r\nimport { CandidateNavigation } from '../../interfaces/candidateNavigation'\r\nimport { CandidateDataService } from '../../services/candidate-data.service';\r\n\r\ninterface CandidateNavigationWithRoute extends CandidateNavigation {\r\n  routeLink: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-candidate-navigation',\r\n  templateUrl: './candidate-navigation.component.html',\r\n})\r\nexport class CandidateNavigationComponent implements OnInit {\r\n  offices = [];\r\n  selectedOffice: string = '';\r\n  selectedSeatName: string = '';\r\n  selectedCandidateId: string = '';\r\n  seatType: string = 'District';\r\n\r\n  constructor(\r\n    private candidateDataService: CandidateDataService ) { }\r\n\r\n  addRoute(candidate: CandidateNavigation): CandidateNavigationWithRoute {\r\n    let path = `${candidate.officeType}`;\r\n\r\n    if (candidate.seat !== null) {\r\n      path += `_${candidate.seat.type}-${candidate.seat.name}`;\r\n    }\r\n\r\n    return {\r\n      ...candidate,\r\n      routeLink: `${path}/${candidate.id}`.toLowerCase().split(' ').join('-'),\r\n      seat: candidate.seat ? { ...candidate.seat } : null,\r\n    };\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.candidateDataService.getCandidates().pipe( toArray() ).subscribe(candidates => {\r\n      const officeTitles: string[] = candidates.map(candidate => candidate.officeType).sort().reverse();\r\n      const distinctOfficeTitles: string[] = [... new Set(officeTitles)]; // remove duplicates\r\n      \r\n      const candidatesWithRoute = candidates.map(candidate => this.addRoute(candidate));\r\n\r\n      this.offices = this.getOffices(candidatesWithRoute, distinctOfficeTitles);\r\n    })\r\n  }\r\n\r\n  getOffices(candidates: CandidateNavigation[], officeTitles: string[]) {\r\n    const offices = officeTitles.map(officeTitle => {\r\n      let seatsWithCandidates = null;\r\n\r\n      let candidatesForOffice: CandidateNavigation[] = candidates\r\n        .filter(candidate => candidate.officeType === officeTitle);\r\n\r\n      const hasSeats: boolean = candidatesForOffice.some(candidate => candidate.seat !== null);\r\n\r\n      if (hasSeats) {\r\n        const seatNames: string[] = candidatesForOffice.map(candidate => candidate.seat.name);\r\n\r\n        const distinctSeatNames: string[] = [... new Set(seatNames)].sort(); // remove duplicates\r\n        seatsWithCandidates = distinctSeatNames\r\n          .map(seatName => ({\r\n            title: `${this.seatType} ${seatName}`,\r\n            route: `${officeTitle}_${this.seatType}-${seatName}`.toLowerCase().split(' ').join('-'),\r\n            candidates: candidatesForOffice.filter(candidate => candidate.seat.name === seatName),\r\n            hasSeats: false,\r\n            seats: null,\r\n        }));\r\n      }\r\n\r\n      return {\r\n        title: officeTitle,\r\n        route: officeTitle.toLowerCase().split(' ').join('-'),\r\n        candidates: candidatesForOffice,\r\n        hasSeats,\r\n        seats: seatsWithCandidates,\r\n      }\r\n    });\r\n\r\n    return offices;\r\n  }\r\n\r\n  setSelectedOffice(officeTitle: string) {\r\n    this.selectedOffice = officeTitle;\r\n  }\r\n  setSelectedSeat(seatName: string) {\r\n    this.selectedSeatName = seatName;\r\n  }\r\n  setSelectedCandidate(candidateId: string) {\r\n    this.selectedCandidateId = candidateId;\r\n  }\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "routeLink",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": [],
+            "extends": "CandidateNavigation"
+        },
+        {
             "name": "CandidateTree",
             "id": "interface-CandidateTree-32cd8119131c5916f178848d0e646cbf",
             "file": "src/app/candidate.ts",
@@ -181,9 +438,337 @@
             "indexSignatures": [],
             "kind": 150,
             "methods": []
+        },
+        {
+            "name": "DonationsByGroup",
+            "id": "interface-DonationsByGroup-28401e49a87d627fbaeffd80b90d35f7",
+            "file": "src/app/vv-charts/interfaces/donationsByGroup.ts",
+            "type": "interface",
+            "sourceCode": "interface Group {\r\n  name: string,\r\n  amount: number,\r\n  percent: number,\r\n}\r\n\r\nexport interface DonationsByGroup {\r\n  id: string;\r\n  groups: Array<Group>;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "groups",
+                    "type": "Array<Group>",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "Group",
+            "id": "interface-Group-28401e49a87d627fbaeffd80b90d35f7",
+            "file": "src/app/vv-charts/interfaces/donationsByGroup.ts",
+            "type": "interface",
+            "sourceCode": "interface Group {\r\n  name: string,\r\n  amount: number,\r\n  percent: number,\r\n}\r\n\r\nexport interface DonationsByGroup {\r\n  id: string;\r\n  groups: Array<Group>;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "amount",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "percent",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "OutsideMoney",
+            "id": "interface-OutsideMoney-ff24c038fc3eafb9f9914f37c1364754",
+            "file": "src/app/vv-charts/interfaces/outsideMoney.ts",
+            "type": "interface",
+            "sourceCode": "export interface OutsideMoney {\r\n  id: string;\r\n  support: number;\r\n  oppose: number;\r\n  scale?: number;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "oppose",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "scale",
+                    "type": "number",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "support",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "RaisedInOut",
+            "id": "interface-RaisedInOut-0dbd08c70d54f84dff048f68ffd87033",
+            "file": "src/app/vv-charts/interfaces/raisedInOut.ts",
+            "type": "interface",
+            "sourceCode": "export interface RaisedInOut {\r\n  id: string;\r\n  inside: number;\r\n  outside: number;\r\n  areaName: string; // Example: 'City of San Diego'\r\n  jurisdiction: string; // Example: 'City' || 'District'\r\n  jurisdictionSuffix?: string; // Examples: '1', '5'\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "areaName",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "inside",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "jurisdiction",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "jurisdictionSuffix",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "outside",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
         }
     ],
     "injectables": [
+        {
+            "name": "CandidateDataService",
+            "id": "injectable-CandidateDataService-be08c8c3e876eb294fac6fef7972e74c",
+            "file": "src/app/services/candidate-data.service.ts",
+            "properties": [
+                {
+                    "name": "areaName",
+                    "defaultValue": "'City of San Diego'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "CandidateStore",
+                    "type": "CandidateStoreService",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "defaultJurisdiction",
+                    "defaultValue": "'City'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getCandidateCards",
+                    "args": [
+                        {
+                            "name": "office",
+                            "type": "string",
+                            "optional": true
+                        },
+                        {
+                            "name": "seat",
+                            "type": "string",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<CandidateCard>",
+                    "typeParameters": [],
+                    "line": 50,
+                    "jsdoctags": [
+                        {
+                            "name": "office",
+                            "type": "string",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "seat",
+                            "type": "string",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getCandidates",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<CandidateNavigation>",
+                    "typeParameters": [],
+                    "line": 32
+                },
+                {
+                    "name": "getDonationsByGroupChart",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<DonationsByGroup>",
+                    "typeParameters": [],
+                    "line": 110,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getOutsideMoneyChart",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<OutsideMoney>",
+                    "typeParameters": [],
+                    "line": 95,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getRaisedInOutChart",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<RaisedInOut>",
+                    "typeParameters": [],
+                    "line": 77,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { Observable, } from 'rxjs';\r\nimport { map, toArray, mergeMap, filter, } from 'rxjs/operators';\r\n\r\n/**\r\n * candidate-data.service: This service obtains data from the candidate-store.service and \r\n *  provides the application with access to the data. This service is intended to be used \r\n *  as an intermediatory for accessing the source data used in the application. Data \r\n *  provided by this service is in the form of observables that match specific interfaces.\r\n * \r\n */\r\n\r\nimport { CandidateStoreService } from './candidate-store.service';\r\n\r\nimport { CandidateNavigation } from '../interfaces/candidateNavigation'\r\nimport { CandidateCard } from '../interfaces/candidateCard';\r\n\r\nimport { RaisedInOut } from '../vv-charts/interfaces/raisedInOut';\r\nimport { OutsideMoney } from '../vv-charts/interfaces/outsideMoney';\r\nimport { DonationsByGroup } from '../vv-charts/interfaces/donationsByGroup';\r\n\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class CandidateDataService {\r\n  private areaName = 'City of San Diego';\r\n  private defaultJurisdiction = 'City';\r\n\r\n  constructor(public CandidateStore: CandidateStoreService) { }\r\n\r\n  getCandidates(): Observable<CandidateNavigation> {\r\n    \r\n    return this.CandidateStore.getCandidateList().pipe(\r\n      toArray(),\r\n      mergeMap(candidates => {\r\n        return candidates.sort((firstCandidate, secondCandidate) => {\r\n          const firstCandidateName = firstCandidate.fullName.toLowerCase();\r\n          const secondCandidateName = secondCandidate.fullName.toLowerCase();\r\n    \r\n          if (firstCandidateName < secondCandidateName) return -1;\r\n          if (firstCandidateName > secondCandidateName) return 1;\r\n          return 0;\r\n        });\r\n      }),\r\n    )\r\n\r\n  }\r\n\r\n  getCandidateCards(office?: string, seat?: string): Observable<CandidateCard> {\r\n\r\n    return this.getCandidates().pipe(\r\n      filter(candidate => \r\n        office ? candidate.officeType.toLowerCase() === office.toLowerCase() : true\r\n      ),\r\n      filter(candidate => \r\n        seat ? candidate.seat.name.toLowerCase() === seat.toLowerCase() : true\r\n      ),\r\n      mergeMap(candidate => this.CandidateStore.getCandidateExpandedData(candidate.id).pipe(\r\n        map(expandedData => ({candidate, expandedData}))\r\n      )),\r\n      mergeMap( ({candidate, expandedData})  => this.CandidateStore.getCandidateImageUrl(candidate.id).pipe(\r\n        map(imageUrl => ({candidate, expandedData, imageUrl}))\r\n      )),\r\n      map( ({candidate, expandedData, imageUrl}) => ({\r\n        id: candidate.id,\r\n        name: candidate.fullName,\r\n        description: expandedData['description'],\r\n        raised: Number(expandedData['raised vs spent'][0]['Raised']),\r\n        donors: Number(expandedData['raised vs spent'][0]['Donors']),\r\n        candidateImgURL: imageUrl,\r\n      }))\r\n    );\r\n\r\n  }\r\n\r\n  getRaisedInOutChart(id: string): Observable<RaisedInOut> {\r\n\r\n    return this.CandidateStore.getCandidate(id).pipe(\r\n      mergeMap(candidate => this.CandidateStore.getCandidateExpandedData(candidate.id).pipe(\r\n        map(expandedData => ({candidate, expandedData}))\r\n      )),\r\n      map( ({candidate, expandedData}) => ({\r\n        id: candidate.id,\r\n        inside: Number(expandedData[\"in vs out district\"][0]['in']),\r\n        outside: Number(expandedData[\"in vs out district\"][0]['out']),\r\n        areaName: this.areaName,\r\n        jurisdiction: candidate?.seat ? candidate.seat.type : this.defaultJurisdiction,\r\n        jurisdictionSuffix: candidate?.seat?.name,\r\n      }))\r\n    );\r\n\r\n  }\r\n\r\n  getOutsideMoneyChart(id: string): Observable<OutsideMoney>  {\r\n\r\n    return this.CandidateStore.getCandidate(id).pipe(\r\n      mergeMap(candidate => this.CandidateStore.getCandidateExpandedData(candidate.id).pipe(\r\n        map(expandedData => ({candidate, expandedData}))\r\n      )),\r\n      map( ({candidate, expandedData}) => ({\r\n        id: candidate.id,\r\n        support: Number(expandedData[\"oppose\"]),\r\n        oppose: Number(expandedData[\"support\"])\r\n      }))\r\n    );\r\n\r\n  }\r\n\r\n  getDonationsByGroupChart(id: string): Observable<DonationsByGroup> {\r\n\r\n    return this.CandidateStore.getCandidate(id).pipe(\r\n      mergeMap(candidate => this.CandidateStore.getCandidateExpandedData(candidate.id).pipe(\r\n        map(expandedData => ({candidate, expandedData}))\r\n      )),\r\n      map( ({candidate, expandedData}) => {\r\n        const groups = Object.values(expandedData[\"by industry\"][0]).map(group => \r\n          ({\r\n            name: group[0],\r\n            amount: Number(group[1]),\r\n            percent:Number( group[2])\r\n          })\r\n        );\r\n\r\n        return { id: candidate.id, groups }\r\n      })\r\n    );\r\n\r\n  }\r\n\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "CandidateStore",
+                        "type": "CandidateStoreService"
+                    }
+                ],
+                "line": 28,
+                "jsdoctags": [
+                    {
+                        "name": "CandidateStore",
+                        "type": "CandidateStoreService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
         {
             "name": "CandidateService",
             "id": "injectable-CandidateService-fbca2523ed5a375084f8cf8ad11ab017",
@@ -328,6 +913,158 @@
                     }
                 ],
                 "line": 10,
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "CandidateStoreService",
+            "id": "injectable-CandidateStoreService-13115dd927c729ec725c421c798b4889",
+            "file": "src/app/services/candidate-store.service.ts",
+            "properties": [
+                {
+                    "name": "defaultImagePath",
+                    "defaultValue": "'assets/candidate-card/profile.png'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "http",
+                    "type": "HttpClient",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getCandidate",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<CandidateNavigation>",
+                    "typeParameters": [],
+                    "line": 51,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getCandidateExpandedData",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<CandidateJSON>",
+                    "typeParameters": [],
+                    "line": 59,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getCandidateImageUrl",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<string>",
+                    "typeParameters": [],
+                    "line": 68,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getCandidateList",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<CandidateNavigation>",
+                    "typeParameters": [],
+                    "line": 38
+                },
+                {
+                    "name": "hasCalculationsPath",
+                    "args": [
+                        {
+                            "name": "navigationItem",
+                            "type": "CandidateNavigation"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 31,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "navigationItem",
+                            "type": "CandidateNavigation",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { HttpClient, } from '@angular/common/http';\r\nimport { Injectable } from '@angular/core';\r\nimport { Observable, of, from, iif } from 'rxjs';\r\nimport { first, map, mergeMap } from 'rxjs/operators';\r\n\r\n/**\r\n * candidate-store.service: Provides access to data sources so that the dependents of this service \r\n *  can use the data without needing to know its source. Current data sources are imported .ts files \r\n *  and JSON files. Future sources will include data from an API. Data provided by this service is \r\n *  in the form of observables that match specific interfaces. The application's components should\r\n *  not directly access this service. This service is intended to be primarily accessed by the \r\n *  candidate-data.service.\r\n *  \r\n */\r\n\r\nimport { CandidateNavigation } from '../interfaces/candidateNavigation';\r\nimport { CandidateJSON } from '../interfaces/candidateJSON';\r\n\r\nimport { candidateNavigationItems } from '../../assets/candidates/mock-candidateNavigationItems';\r\nimport { candidateAssets } from '../../assets/candidates/mock-candidateAssetPaths';\r\n\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class CandidateStoreService {\r\n  private defaultImagePath = 'assets/candidate-card/profile.png';\r\n\r\n  constructor(public http: HttpClient) { }\r\n\r\n  private hasCalculationsPath(navigationItem: CandidateNavigation): boolean {\r\n\r\n    return candidateAssets\r\n      .some(asset => asset.id === navigationItem.id && asset.calculationsPath.length > 0);\r\n\r\n  }\r\n\r\n  getCandidateList(): Observable<CandidateNavigation> {\r\n\r\n    return from(candidateNavigationItems).pipe(\r\n      mergeMap(\r\n        navigationItem => iif(\r\n          () => this.hasCalculationsPath(navigationItem),\r\n          of(navigationItem),\r\n        )\r\n      ),\r\n    );\r\n\r\n  }\r\n\r\n  getCandidate(id: string): Observable<CandidateNavigation> {\r\n    \r\n    return from(candidateNavigationItems).pipe(\r\n      first(candidate => candidate.id === id),\r\n    );\r\n\r\n  }\r\n\r\n  getCandidateExpandedData(id: string): Observable<CandidateJSON> {\r\n\r\n    return from(candidateAssets).pipe(\r\n      first(candidate => candidate.id === id),\r\n      mergeMap(candidate => this.http.get<CandidateJSON>(candidate.calculationsPath)),\r\n    );\r\n\r\n  }\r\n\r\n  getCandidateImageUrl(id: string): Observable<string> {\r\n\r\n    return from(candidateAssets).pipe(\r\n      first(candidate => candidate.id === id),\r\n      map(candidate => \r\n        candidate.imagePath.length > 0 \r\n          ? candidate.imagePath \r\n          : this.defaultImagePath\r\n      ),\r\n    );\r\n\r\n  }\r\n\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient"
+                    }
+                ],
+                "line": 27,
                 "jsdoctags": [
                     {
                         "name": "http",
@@ -1040,6 +1777,231 @@
                 }
             },
             "templateData": "<div class=\"candidate-card-expanded vv-grid\">\r\n\r\n  <div>\r\n    <div class=\"candidate\">\r\n\r\n      <div class=\"candidate-image-container\">\r\n        <div class=\"candidate-image\">\r\n          <img [src]=\"candidateImg\" [alt]=\"candidate['candidate name']\" onError=\"this.src='../../../assets/candidate-card/profile.png'\">\r\n        </div>\r\n      </div>\r\n      <h1 class=\"first\">{{candidate['first']}}</h1>\r\n      <h1>{{candidate['last']}}</h1>\r\n      <h2>{{ candidate['description'] }}</h2>\r\n\r\n      <div class=\"candidate-numbers\">\r\n        <div class=\"raised\">\r\n          <h2>Raised</h2>\r\n          <h3>{{candidate[\"raised vs spent\"][0].Raised | currency : 'USD' : 'symbol' : '1.0-0'}}</h3>\r\n        </div>\r\n\r\n        <div class=\"donors\">\r\n          <h2>Donors</h2>\r\n          <h3>{{candidate[\"raised vs spent\"][0].Donors}}</h3>\r\n        </div>\r\n      </div>\r\n  \r\n      \r\n      <div>\r\n        <button class=\"full-details-btn\" routerLink=\"/under-construction\" mat-flat-button>See Full Details</button>\r\n      </div>\r\n      <div class=\"website-link\">\r\n        <mat-icon>link</mat-icon>\r\n        <a href=\"{{ candidate['website'] }}\">Website</a>\r\n      </div>\r\n  \r\n    </div>\r\n  </div>\r\n  <div class=\"raised-spent\">\r\n\r\n      <div class=\"title\">\r\n        <p>\r\n          Raised v. Spent\r\n          <sup>\r\n            <i\r\n              class=\"helper-tip\"\r\n              aria-hidden=\"true\"\r\n              matTooltip=\"Total campaign funds raised and spent by the candidate.\"\r\n            >\r\n              <fa-icon [icon]=\"faQuestionCircle\"></fa-icon>\r\n            </i>\r\n          </sup>\r\n        </p>\r\n      </div>\r\n  \r\n      <div class=\"raised-spent-chart chart-container-raised\">\r\n        <canvas baseChart\r\n          width=\"350\"\r\n          height=\"550\"\r\n          [chartType]=\"barChartType\"\r\n          [datasets]=\"barChartData\"\r\n          [options]=\"barChartOptions\"\r\n          [plugins]=\"chartPlugins\"\r\n        ></canvas>\r\n      </div>\r\n  \r\n      <div class=\"raised-spent-footer\">\r\n        <div class=\"avg-donation\">\r\n          <h2 class=\"raised-spent-footer-title\">Average Donation</h2>\r\n          <h3 class=\"raised-spent-footer-content\">{{ candidate['raised vs spent'][0]['Average Donor'] | currency:'USD':'symbol':'1.0-0' }}</h3>\r\n        </div>\r\n      </div>\r\n  </div>\r\n\r\n  <app-donations-by-group [candidate]=\"_c\"></app-donations-by-group>\r\n\r\n  <div class=\"in-out-district\">\r\n\r\n    <div class=\"title\">\r\n      <p>\r\n        In v. Out City\r\n        <sup>\r\n          <i\r\n            class=\"helper-tip\"\r\n            aria-hidden=\"true\"\r\n            matTooltip=\"Total campaign funds raised in the city of San Diego versus funds raised outside of city limits.\"\r\n          >\r\n            <fa-icon [icon]=\"faQuestionCircle\"></fa-icon>\r\n          </i>\r\n        </sup>\r\n      </p>\r\n    </div>\r\n\r\n    <div class=\"chart-container\">\r\n      <canvas baseChart\r\n        width=\"260\"\r\n        height=\"260\"\r\n        [chartType]=\"doughnutChartType\"\r\n        [datasets]=\"doughnutChartData\"\r\n        [colors]=\"doughnutChartColors\"\r\n        [options]=\"doughnutChartOptions\"\r\n        [plugins]=\"chartPlugins\"\r\n      >\r\n      </canvas>\r\n    </div>\r\n  </div>\r\n\r\n\r\n  <div class=\"close\">\r\n    <i style=\"font-size: 25px;\" aria-hidden=\"true\" (click)=\"close()\">\r\n      <fa-icon [icon]=\"faTimesCircle\"></fa-icon>\r\n    </i>\r\n  </div>\r\n  \r\n\r\n\r\n  <div class=\"outside-money\">\r\n    <div class=\"title\">\r\n      <p>\r\n        Outside Money\r\n        <sup>\r\n          <i\r\n            class=\"helper-tip\"\r\n            aria-hidden=\"true\"\r\n            matTooltip=\"Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign.\"\r\n          >\r\n            <fa-icon [icon]=\"faQuestionCircle\"></fa-icon>\r\n          </i>\r\n        </sup>\r\n      </p>\r\n    </div>\r\n    <div class=\"outside-grid\">\r\n      <div  class=\"chart-container-outside\">\r\n        <canvas baseChart\r\n          [chartType]=\"stackedHorizontalBarChartType\"\r\n          [datasets]=\"stackedHorizontalBarChartData\"\r\n          [options]=\"stackedHorizontalBarChartOptions\"\r\n          [plugins]=\"chartPlugins\"\r\n        ></canvas>\r\n      </div>\r\n\r\n      <div class=\"raised\">\r\n        <h2>Total Expenditures</h2>\r\n        <h3>{{(ConvertToInt(candidate['oppose'])+ConvertToInt(candidate['support']))| currency : 'USD' : 'symbol' : '1.0-0'}}</h3>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n"
+        },
+        {
+            "name": "CandidateNavigationComponent",
+            "id": "component-CandidateNavigationComponent-9943543333f440d59cd1905559294c7d",
+            "file": "src/app/components/candidate-navigation/candidate-navigation.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-candidate-navigation",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./candidate-navigation.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "offices",
+                    "defaultValue": "[]",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "seatType",
+                    "defaultValue": "'District'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "selectedCandidateId",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "selectedOffice",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "selectedSeatName",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "addRoute",
+                    "args": [
+                        {
+                            "name": "candidate",
+                            "type": "CandidateNavigation"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "CandidateNavigationWithRoute",
+                    "typeParameters": [],
+                    "line": 25,
+                    "jsdoctags": [
+                        {
+                            "name": "candidate",
+                            "type": "CandidateNavigation",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getOffices",
+                    "args": [
+                        {
+                            "name": "candidates",
+                            "type": "CandidateNavigation[]"
+                        },
+                        {
+                            "name": "officeTitles",
+                            "type": "string[]"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 50,
+                    "jsdoctags": [
+                        {
+                            "name": "candidates",
+                            "type": "CandidateNavigation[]",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "officeTitles",
+                            "type": "string[]",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39
+                },
+                {
+                    "name": "setSelectedCandidate",
+                    "args": [
+                        {
+                            "name": "candidateId",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 91,
+                    "jsdoctags": [
+                        {
+                            "name": "candidateId",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setSelectedOffice",
+                    "args": [
+                        {
+                            "name": "officeTitle",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 85,
+                    "jsdoctags": [
+                        {
+                            "name": "officeTitle",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setSelectedSeat",
+                    "args": [
+                        {
+                            "name": "seatName",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 88,
+                    "jsdoctags": [
+                        {
+                            "name": "seatName",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { toArray } from 'rxjs/operators';\r\n\r\nimport { CandidateNavigation } from '../../interfaces/candidateNavigation'\r\nimport { CandidateDataService } from '../../services/candidate-data.service';\r\n\r\ninterface CandidateNavigationWithRoute extends CandidateNavigation {\r\n  routeLink: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-candidate-navigation',\r\n  templateUrl: './candidate-navigation.component.html',\r\n})\r\nexport class CandidateNavigationComponent implements OnInit {\r\n  offices = [];\r\n  selectedOffice: string = '';\r\n  selectedSeatName: string = '';\r\n  selectedCandidateId: string = '';\r\n  seatType: string = 'District';\r\n\r\n  constructor(\r\n    private candidateDataService: CandidateDataService ) { }\r\n\r\n  addRoute(candidate: CandidateNavigation): CandidateNavigationWithRoute {\r\n    let path = `${candidate.officeType}`;\r\n\r\n    if (candidate.seat !== null) {\r\n      path += `_${candidate.seat.type}-${candidate.seat.name}`;\r\n    }\r\n\r\n    return {\r\n      ...candidate,\r\n      routeLink: `${path}/${candidate.id}`.toLowerCase().split(' ').join('-'),\r\n      seat: candidate.seat ? { ...candidate.seat } : null,\r\n    };\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.candidateDataService.getCandidates().pipe( toArray() ).subscribe(candidates => {\r\n      const officeTitles: string[] = candidates.map(candidate => candidate.officeType).sort().reverse();\r\n      const distinctOfficeTitles: string[] = [... new Set(officeTitles)]; // remove duplicates\r\n      \r\n      const candidatesWithRoute = candidates.map(candidate => this.addRoute(candidate));\r\n\r\n      this.offices = this.getOffices(candidatesWithRoute, distinctOfficeTitles);\r\n    })\r\n  }\r\n\r\n  getOffices(candidates: CandidateNavigation[], officeTitles: string[]) {\r\n    const offices = officeTitles.map(officeTitle => {\r\n      let seatsWithCandidates = null;\r\n\r\n      let candidatesForOffice: CandidateNavigation[] = candidates\r\n        .filter(candidate => candidate.officeType === officeTitle);\r\n\r\n      const hasSeats: boolean = candidatesForOffice.some(candidate => candidate.seat !== null);\r\n\r\n      if (hasSeats) {\r\n        const seatNames: string[] = candidatesForOffice.map(candidate => candidate.seat.name);\r\n\r\n        const distinctSeatNames: string[] = [... new Set(seatNames)].sort(); // remove duplicates\r\n        seatsWithCandidates = distinctSeatNames\r\n          .map(seatName => ({\r\n            title: `${this.seatType} ${seatName}`,\r\n            route: `${officeTitle}_${this.seatType}-${seatName}`.toLowerCase().split(' ').join('-'),\r\n            candidates: candidatesForOffice.filter(candidate => candidate.seat.name === seatName),\r\n            hasSeats: false,\r\n            seats: null,\r\n        }));\r\n      }\r\n\r\n      return {\r\n        title: officeTitle,\r\n        route: officeTitle.toLowerCase().split(' ').join('-'),\r\n        candidates: candidatesForOffice,\r\n        hasSeats,\r\n        seats: seatsWithCandidates,\r\n      }\r\n    });\r\n\r\n    return offices;\r\n  }\r\n\r\n  setSelectedOffice(officeTitle: string) {\r\n    this.selectedOffice = officeTitle;\r\n  }\r\n  setSelectedSeat(seatName: string) {\r\n    this.selectedSeatName = seatName;\r\n  }\r\n  setSelectedCandidate(candidateId: string) {\r\n    this.selectedCandidateId = candidateId;\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "candidateDataService",
+                        "type": "CandidateDataService"
+                    }
+                ],
+                "line": 20,
+                "jsdoctags": [
+                    {
+                        "name": "candidateDataService",
+                        "type": "CandidateDataService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<mat-nav-list [disableRipple]=\"true\">\r\n  <mat-accordion displayMode=\"flat\" class=\"candidate-navigation\">\r\n\r\n    <ng-container *ngFor=\"let office of offices;\">\r\n\r\n      <mat-expansion-panel\r\n        hideToggle=\"true\"  \r\n        (opened)=\"setSelectedOffice(office.title)\" \r\n      >\r\n\r\n        <mat-expansion-panel-header \r\n          collapsedHeight=\"50px\" \r\n          expandedHeight=\"50px\"\r\n          [ngClass]=\"{'active-link':office.title.toUpperCase() === selectedOffice.toUpperCase()}\"\r\n        >\r\n          <mat-panel-title>\r\n            <a routerLink=\"{{office.route}}\" routerLinkActive=\"active\">{{office.title}}</a>\r\n          </mat-panel-title>\r\n        </mat-expansion-panel-header>\r\n\r\n\r\n        <ng-container *ngIf=\"office.hasSeats; else elseNonSeatOffice\">\r\n          <mat-expansion-panel \r\n            *ngFor=\"let seat of office.seats;\" \r\n            [expanded]=\"selectedSeatName === seat.title\"\r\n            (opened)=\"setSelectedSeat(seat.title)\"\r\n            class=\"mat-elevation-z0\"\r\n          >\r\n          \r\n            <mat-expansion-panel-header \r\n              collapsedHeight=\"30px\" \r\n              expandedHeight=\"30px\"\r\n              [ngClass]=\"{ 'district-selected': selectedSeatName === seat.title }\"\r\n            >\r\n              <a routerLink=\"{{seat.route}}\" routerLinkActive=\"active\">\r\n                {{seat.title}}\r\n              </a>\r\n            </mat-expansion-panel-header>\r\n\r\n            <ng-container *ngTemplateOutlet=\"candidatesT; context: {office: seat}\">\r\n            </ng-container>\r\n\r\n          </mat-expansion-panel>         \r\n        </ng-container>\r\n\r\n        <ng-template #elseNonSeatOffice>\r\n          <ng-container *ngTemplateOutlet=\"candidatesT; context: {office: office}\">\r\n          </ng-container>\r\n        </ng-template>\r\n\r\n      </mat-expansion-panel>\r\n    </ng-container>\r\n  </mat-accordion>\r\n</mat-nav-list>\r\n\r\n\r\n<ng-template #candidatesT let-office=\"office\">\r\n  <div class=\"candidates\">\r\n    <ul *ngFor=\"let candidate of office.candidates;\" class=\"candidate-name\">\r\n      <li>\r\n        <a \r\n          routerLinkActive=\"active\"\r\n          routerLink=\"{{candidate.routeLink}}\" \r\n          [ngClass]=\"{ 'candidate-selected': selectedCandidateId === candidate.id }\"\r\n          (click)=\"setSelectedCandidate(candidate.id)\"\r\n        >\r\n          {{candidate.fullName}}\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</ng-template>\r\n"
         },
         {
             "name": "CityAttorneyComponent",
@@ -2314,7 +3276,7 @@
         },
         {
             "name": "RaisedInOutDonutComponent",
-            "id": "component-RaisedInOutDonutComponent-b3ad2617d08571f495646c44588d01ce",
+            "id": "component-RaisedInOutDonutComponent-a17a257bbfa3856031908ac40ace41ae",
             "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2333,27 +3295,27 @@
             "inputsClass": [
                 {
                     "name": "areaName",
-                    "line": 17,
-                    "type": "string"
-                },
-                {
-                    "name": "inside",
-                    "line": 15,
-                    "type": "number"
-                },
-                {
-                    "name": "jurisdiction",
                     "line": 18,
                     "type": "string"
                 },
                 {
-                    "name": "jurisdictionSuffix",
+                    "name": "inside",
+                    "line": 16,
+                    "type": "number"
+                },
+                {
+                    "name": "jurisdiction",
                     "line": 19,
                     "type": "string"
                 },
                 {
+                    "name": "jurisdictionSuffix",
+                    "line": 20,
+                    "type": "string"
+                },
+                {
                     "name": "outside",
-                    "line": 16,
+                    "line": 17,
                     "type": "number"
                 }
             ],
@@ -2365,7 +3327,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "",
-                    "line": 76
+                    "line": 78
                 },
                 {
                     "name": "doughnutChartColors",
@@ -2373,7 +3335,7 @@
                     "type": "Color[]",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 37
                 },
                 {
                     "name": "doughnutChartData",
@@ -2381,14 +3343,14 @@
                     "type": "ChartDataSets[]",
                     "optional": false,
                     "description": "",
-                    "line": 28
+                    "line": 30
                 },
                 {
                     "name": "doughnutChartLabels",
                     "type": "Label[]",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 34
                 },
                 {
                     "name": "doughnutChartOptions",
@@ -2396,7 +3358,7 @@
                     "type": "ChartOptions",
                     "optional": false,
                     "description": "",
-                    "line": 39
+                    "line": 41
                 },
                 {
                     "name": "doughnutChartType",
@@ -2404,28 +3366,36 @@
                     "type": "ChartType",
                     "optional": false,
                     "description": "",
-                    "line": 27
+                    "line": 29
+                },
+                {
+                    "name": "faQuestionCircle",
+                    "defaultValue": "faQuestionCircle",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
                 },
                 {
                     "name": "jurisdictionComplete",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 26
                 },
                 {
                     "name": "title",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 22
+                    "line": 24
                 },
                 {
                     "name": "tooltipText",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 25
                 }
             ],
             "methodsClass": [
@@ -2440,7 +3410,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 100,
                     "jsdoctags": [
                         {
                             "name": "num",
@@ -2457,7 +3427,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 81
+                    "line": 83
                 }
             ],
             "hostBindings": [],
@@ -2465,7 +3435,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnChanges, Input } from '@angular/core';\r\n\r\nimport * as pluginDataLabels from 'chartjs-plugin-datalabels';\r\nimport { ChartOptions, ChartType, ChartDataSets } from 'chart.js';\r\nimport { Color, Label } from 'ng2-charts';\r\n\r\nimport { RoundCurrencyPipe } from '../round-currency.pipe'\r\n\r\n@Component({\r\n  selector: 'raised-in-out-donut',\r\n  templateUrl: './raised-in-out-donut.component.html',\r\n  styleUrls: ['./raised-in-out-donut.component.scss'],\r\n})\r\nexport class RaisedInOutDonutComponent implements OnChanges {\r\n  @Input() inside: number;\r\n  @Input() outside: number;\r\n  @Input() areaName: string; // Example: City of San Diego\r\n  @Input() jurisdiction: string; // Example: City, District\r\n  @Input() jurisdictionSuffix?: string; // Example '1', '5'\r\n\r\n\r\n  title: string;\r\n  tooltipText: string;\r\n  jurisdictionComplete: string;\r\n\r\n\r\n  doughnutChartType: ChartType = 'doughnut';\r\n  doughnutChartData: ChartDataSets[] = [{\r\n    data: [1,1],\r\n  }];\r\n  \r\n  doughnutChartLabels: Label[];\r\n\r\n\r\n  doughnutChartColors: Color[] = [\r\n    { backgroundColor: ['#3392ff', '#bfd63b'] },\r\n  ];\r\n\r\n  doughnutChartOptions: ChartOptions = {\r\n    // responsive: true,\r\n    responsive: false,\r\n    maintainAspectRatio: false,\r\n    cutoutPercentage: 60,\r\n    animation: {\r\n      animateRotate: true,\r\n    },\r\n\r\n    legend: {\r\n      display: false,\r\n    },\r\n\r\n    tooltips: {\r\n      enabled: false,\r\n    },\r\n\r\n    plugins: {\r\n      datalabels: {\r\n        anchor: 'start',\r\n        align: 'start',\r\n        color: '#4e4e4e',\r\n        textAlign:'center',\r\n        display: 'auto',\r\n\r\n        font: {\r\n          size: 16,\r\n          weight: 'bold',\r\n        },\r\n\r\n        formatter: (value, context) => {\r\n          return this.doughnutChartLabels[context.dataIndex];\r\n        },\r\n      },\r\n    },\r\n  }\r\n\r\n  chartPlugins = [ pluginDataLabels ];\r\n\r\n\r\n  constructor(private currencyDisplayPipe: RoundCurrencyPipe) {}\r\n\r\n  ngOnChanges() {\r\n    \r\n    this.jurisdictionComplete = this.jurisdiction;\r\n    this.jurisdictionComplete += (this.jurisdictionSuffix) ? ` ${this.jurisdictionSuffix}` : '';\r\n    \r\n    this.title = `In vs. Out of ${this.jurisdictionComplete}`;\r\n    this.tooltipText = `Total campaign funds raised in the ${this.areaName} versus funds raised outside of city limits.`;\r\n    \r\n    this.doughnutChartData[0].data = [this.inside, this.outside];\r\n\r\n    this.doughnutChartLabels = [\r\n      `In\\n$${this.mNumberFormatter(this.inside)}`,\r\n      `Out\\n$${this.mNumberFormatter(this.outside)}`\r\n    ];\r\n\r\n  }\r\n\r\n  mNumberFormatter(num: number) {\r\n    return this.currencyDisplayPipe.transform(num, 1, '10000');\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnChanges, Input } from '@angular/core';\r\n\r\nimport * as pluginDataLabels from 'chartjs-plugin-datalabels';\r\nimport { ChartOptions, ChartType, ChartDataSets } from 'chart.js';\r\nimport { Color, Label } from 'ng2-charts';\r\nimport { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';\r\n\r\nimport { RoundCurrencyPipe } from '../round-currency.pipe'\r\n\r\n@Component({\r\n  selector: 'raised-in-out-donut',\r\n  templateUrl: './raised-in-out-donut.component.html',\r\n  styleUrls: ['./raised-in-out-donut.component.scss'],\r\n})\r\nexport class RaisedInOutDonutComponent implements OnChanges {\r\n  @Input() inside: number;\r\n  @Input() outside: number;\r\n  @Input() areaName: string; // Example: City of San Diego\r\n  @Input() jurisdiction: string; // Example: City, District\r\n  @Input() jurisdictionSuffix?: string; // Example '1', '5'\r\n\r\n  faQuestionCircle = faQuestionCircle;\r\n\r\n  title: string;\r\n  tooltipText: string;\r\n  jurisdictionComplete: string;\r\n\r\n\r\n  doughnutChartType: ChartType = 'doughnut';\r\n  doughnutChartData: ChartDataSets[] = [{\r\n    data: [1,1],\r\n  }];\r\n  \r\n  doughnutChartLabels: Label[];\r\n\r\n\r\n  doughnutChartColors: Color[] = [\r\n    { backgroundColor: ['#3392ff', '#bfd63b'] },\r\n  ];\r\n\r\n  doughnutChartOptions: ChartOptions = {\r\n    // responsive: true,\r\n    responsive: false,\r\n    maintainAspectRatio: false,\r\n    cutoutPercentage: 60,\r\n    animation: {\r\n      animateRotate: true,\r\n    },\r\n\r\n    legend: {\r\n      display: false,\r\n    },\r\n\r\n    tooltips: {\r\n      enabled: false,\r\n    },\r\n\r\n    plugins: {\r\n      datalabels: {\r\n        anchor: 'start',\r\n        align: 'start',\r\n        color: '#4e4e4e',\r\n        textAlign:'center',\r\n        display: 'auto',\r\n\r\n        font: {\r\n          size: 16,\r\n          weight: 'bold',\r\n        },\r\n\r\n        formatter: (value, context) => {\r\n          return this.doughnutChartLabels[context.dataIndex];\r\n        },\r\n      },\r\n    },\r\n  }\r\n\r\n  chartPlugins = [ pluginDataLabels ];\r\n\r\n\r\n  constructor(private currencyDisplayPipe: RoundCurrencyPipe) {}\r\n\r\n  ngOnChanges() {\r\n    \r\n    this.jurisdictionComplete = this.jurisdiction;\r\n    this.jurisdictionComplete += (this.jurisdictionSuffix) ? ` ${this.jurisdictionSuffix}` : '';\r\n    \r\n    this.title = `In vs. Out of ${this.jurisdictionComplete}`;\r\n    this.tooltipText = `Total campaign funds raised in the ${this.areaName} versus funds raised outside of city limits.`;\r\n    \r\n    this.doughnutChartData[0].data = [this.inside, this.outside];\r\n\r\n    this.doughnutChartLabels = [\r\n      `In\\n$${this.mNumberFormatter(this.inside)}`,\r\n      `Out\\n$${this.mNumberFormatter(this.outside)}`\r\n    ];\r\n\r\n  }\r\n\r\n  mNumberFormatter(num: number) {\r\n    return this.currencyDisplayPipe.transform(num, 1, '10000');\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2483,7 +3453,7 @@
                         "type": "RoundCurrencyPipe"
                     }
                 ],
-                "line": 76,
+                "line": 78,
                 "jsdoctags": [
                     {
                         "name": "currencyDisplayPipe",
@@ -2497,11 +3467,11 @@
             "implements": [
                 "OnChanges"
             ],
-            "templateData": "<div class=\"in-out-district\">\r\n\r\n  <div class=\"title\">\r\n    <p> {{title}}\r\n      <sup>\r\n        <i\r\n        class=\"helper-tip fa fa-question-circle\"\r\n        aria-hidden=\"true\"\r\n        [matTooltip]=\"tooltipText\"\r\n        > </i>\r\n      </sup>\r\n    </p>\r\n  </div>\r\n\r\n  <div class=\"chart-container\">\r\n    <canvas #canvas baseChart \r\n      width=\"260\" \r\n      height=\"260\"\r\n      [chartType]=\"doughnutChartType\"\r\n      [datasets]=\"doughnutChartData\"      \r\n      [options]=\"doughnutChartOptions\"\r\n      [colors]=\"doughnutChartColors\"\r\n      [plugins]=\"chartPlugins\"\r\n    > </canvas>\r\n  </div> \r\n</div>\r\n"
+            "templateData": "<div class=\"in-out-district\">\r\n\r\n  <div class=\"title\">\r\n    <p> {{title}}\r\n      <sup>\r\n        <i\r\n          class=\"helper-tip\"\r\n          aria-hidden=\"true\"\r\n          [matTooltip]=\"tooltipText\"\r\n        >\r\n          <fa-icon [icon]=\"faQuestionCircle\"></fa-icon>\r\n        </i>\r\n      </sup>\r\n    </p>\r\n  </div>\r\n\r\n  <div class=\"chart-container\">\r\n    <canvas #canvas baseChart \r\n      width=\"260\" \r\n      height=\"260\"\r\n      [chartType]=\"doughnutChartType\"\r\n      [datasets]=\"doughnutChartData\"      \r\n      [options]=\"doughnutChartOptions\"\r\n      [colors]=\"doughnutChartColors\"\r\n      [plugins]=\"chartPlugins\"\r\n    > </canvas>\r\n  </div> \r\n</div>\r\n"
         },
         {
             "name": "SplashComponent",
-            "id": "component-SplashComponent-a01df0c38d0ce7928217b3eb42299dab",
+            "id": "component-SplashComponent-abf96496bcdb4064d2e02f5f278dfb1e",
             "file": "src/app/components/splash/splash.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2526,7 +3496,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 30
                 },
                 {
                     "name": "candidateCounts",
@@ -2534,7 +3504,15 @@
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 36
+                },
+                {
+                    "name": "faBalanceScale",
+                    "defaultValue": "faBalanceScale",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
                 },
                 {
                     "name": "faBinoculars",
@@ -2542,7 +3520,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 17
                 },
                 {
                     "name": "faGavel",
@@ -2550,7 +3528,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 20
                 },
                 {
                     "name": "faHandshake",
@@ -2558,7 +3536,15 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 19
+                },
+                {
+                    "name": "faMapMarkedAlt",
+                    "defaultValue": "faMapMarkedAlt",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
                 },
                 {
                     "name": "faMoneyBill",
@@ -2566,7 +3552,15 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 18
+                },
+                {
+                    "name": "faUniversity",
+                    "defaultValue": "faUniversity",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
                 }
             ],
             "methodsClass": [
@@ -2576,7 +3570,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 35
+                    "line": 42
                 },
                 {
                     "name": "selectOffice",
@@ -2589,7 +3583,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 45,
+                    "line": 52,
                     "jsdoctags": [
                         {
                             "name": "officeType",
@@ -2606,11 +3600,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { SidenavService } from '../../services';\r\nimport { CandidateService } from '../../services/candidate.service';\r\n\r\nimport { faBinoculars, faMoneyBill, faHandshake, faGavel } from '@fortawesome/free-solid-svg-icons';\r\n\r\n@Component({\r\n  selector: 'app-splash',\r\n  templateUrl: './splash.component.html',\r\n  styleUrls: ['./splash.component.scss']\r\n})\r\nexport class SplashComponent implements OnInit {\r\n  faBinoculars = faBinoculars; \r\n  faMoneyBill = faMoneyBill; \r\n  faHandshake = faHandshake; \r\n  faGavel = faGavel;\r\n\r\n  constructor(\r\n    private sidenavService: SidenavService,\r\n    private candidateService: CandidateService\r\n  ) { }\r\n\r\n  campaignTotals = {\r\n    mayor: '0',\r\n    cityAttorney: '0',\r\n    cityCouncil: '0'\r\n  }\r\n\r\n  candidateCounts = {\r\n    mayor: '0',\r\n    cityAttorney: '0',\r\n    cityCouncil: '0'\r\n  }\r\n\r\n  ngOnInit() {\r\n\r\n    this.candidateService.getCampaignTotals()\r\n      .subscribe(totals => this.campaignTotals = totals);\r\n\r\n    this.candidateService.getNumberOfCandidates()\r\n      .subscribe(counts => this.candidateCounts = counts);\r\n\r\n  }\r\n\r\n  selectOffice(officeType: string) {\r\n    this.sidenavService.emitCandidateTypeSplash(officeType);\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { SidenavService } from '../../services';\r\nimport { CandidateService } from '../../services/candidate.service';\r\n\r\nimport { \r\n  faBinoculars, faMoneyBill, faHandshake, faGavel, \r\n  faUniversity, faBalanceScale, faMapMarkedAlt \r\n} from '@fortawesome/free-solid-svg-icons';\r\n\r\n@Component({\r\n  selector: 'app-splash',\r\n  templateUrl: './splash.component.html',\r\n  styleUrls: ['./splash.component.scss']\r\n})\r\nexport class SplashComponent implements OnInit {\r\n  // fortawesome icons\r\n  faBinoculars = faBinoculars; \r\n  faMoneyBill = faMoneyBill; \r\n  faHandshake = faHandshake; \r\n  faGavel = faGavel;\r\n  faUniversity = faUniversity;\r\n  faBalanceScale = faBalanceScale;\r\n  faMapMarkedAlt = faMapMarkedAlt;\r\n\r\n  constructor(\r\n    private sidenavService: SidenavService,\r\n    private candidateService: CandidateService\r\n  ) { }\r\n\r\n  campaignTotals = {\r\n    mayor: '0',\r\n    cityAttorney: '0',\r\n    cityCouncil: '0'\r\n  }\r\n\r\n  candidateCounts = {\r\n    mayor: '0',\r\n    cityAttorney: '0',\r\n    cityCouncil: '0'\r\n  }\r\n\r\n  ngOnInit() {\r\n\r\n    this.candidateService.getCampaignTotals()\r\n      .subscribe(totals => this.campaignTotals = totals);\r\n\r\n    this.candidateService.getNumberOfCandidates()\r\n      .subscribe(counts => this.candidateCounts = counts);\r\n\r\n  }\r\n\r\n  selectOffice(officeType: string) {\r\n    this.sidenavService.emitCandidateTypeSplash(officeType);\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../styles/variables\";\r\n@import \"../../styles/elements\";\r\n@import \"../../styles/global\";\r\n\r\n.splashpage{\r\n  padding:20px 40px 0px 30px;\r\n}\r\n.whorwe{\r\n \r\n  background-image: url(\"../../../assets/splash/bg-whorwe@2x.jpg\");\r\n  background-size: 100% 100%;\r\n    background-position: 50% 50%;\r\n  color:#fff;\r\n  margin: auto;\r\n  text-align:center;\r\n  padding:40px;\r\n  font-weight: 100;\r\n  box-shadow: $vvshadow;\r\n\r\n  .goals{\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr 1fr 1fr;\r\n    align-content: center;\r\n    column-gap: 20px;\r\n    margin: 0px auto 40px auto;\r\n    \r\n\r\n    .bullet{\r\n      font-weight:bold;\r\n      font-size:14px;\r\n      max-width:170px;\r\n      margin: auto;\r\n    }\r\n\r\n    .bullet-icon{\r\n      display: block;\r\n      margin:20px auto;\r\n      font-size: 30px;\r\n     \r\n    }\r\n  }\r\n\r\n\r\n  h1{\r\n    font-size:18px;\r\n    font-weight:bold;\r\n    padding:0;\r\n    margin-top:0px;\r\n    margin-bottom:20px;\r\n    color:#fff;\r\n\r\n  }\r\n  .vv-description{\r\n    margin-top:0px;\r\n    margin-bottom:20px;\r\n    font-size:14px;\r\n    line-height: 1.4;\r\n    max-width: 600px;\r\n    margin-left:auto;\r\n    margin-right:auto;\r\n \r\n  }\r\n  a {\r\n    color: $vvyellow;\r\n    text-decoration: none;\r\n    \r\n   \r\n    &:hover {\r\n        text-decoration: underline;\r\n      }\r\n  }\r\n}\r\n\r\n.ftm{\r\n  margin: 20px auto 20px auto;\r\n  text-align:center;\r\n  padding:40px 40px 60px 40px;\r\n  font-weight: 100;\r\n  box-shadow: $vvshadow;\r\n  color:#4E4E4E;\r\n  background-color: #fff;\r\n  h1{\r\n    margin: 0px;\r\n  }\r\n  p{\r\n    margin:10px 0px 20px 0px;\r\n    line-height: 1.4;\r\n  }\r\n  .ftm_caption{\r\n   \r\n    display: block;\r\n    margin:10px auto 20px auto;\r\n  }\r\n  .choose{\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    align-content: center;\r\n    \r\n\r\n    div{\r\n      border-right:2px solid $vvbackground;\r\n    }\r\n    div:last-child{\r\n      border-right:none;\r\n    }\r\n\r\n\r\n      .cta{\r\n\r\n          @include button-styles;\r\n          padding: 10px 20px;\r\n          max-width: 200px;\r\n          text-decoration: none;\r\n          a{\r\n            text-decoration: none;\r\n          }\r\n          i{\r\n            padding:0px;\r\n            margin:0px 8px 0px 0px;\r\n            font-size:14px;\r\n          }\r\n      }\r\n      .cta:hover{\r\n            background-color: $vvlightblue;\r\n        }\r\n}\r\n\r\n    .racename{\r\n        font-size: 20px;\r\n        margin-bottom: 30px;\r\n     \r\n  }\r\n  .raised{\r\n    margin:40px 0px  5px 0px;\r\n  }\r\n  .candidate_num{\r\n    margin:10px 0px  5px 0px;\r\n  }\r\n  h3{\r\n    font-size:20px;\r\n    margin: 0px;\r\n  }\r\n  .amount_raised{\r\n    color:#289A58;\r\n  }\r\n  \r\n}\r\n\r\n.sources{\r\n  margin-top:60px;\r\n  font-size:14px;\r\n  a{\r\n    color:$vvlightblue;\r\n  }\r\n  p{\r\n    margin:0px !important;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 1000px) {\r\n\r\n  .goals{\r\n    grid-template-columns: 1fr 1fr!important;\r\n    row-gap: 20px;\r\n    max-width:500px;\r\n   \r\n  }\r\n  .choose{\r\n    grid-template-columns: 1fr !important;\r\n    row-gap: 20px;\r\n    div{\r\n      border-bottom:2px solid $vvbackground !important;\r\n      border-right:none!important;\r\n      padding-bottom: 40px;\r\n    }\r\n    div:last-child{\r\n      border-bottom:none!important;\r\n      padding-bottom: 0px;\r\n    }\r\n  }\r\n  \r\n}\r\n\r\n@media only screen and (max-width: 400px) {\r\n\r\n\r\n  .goals{\r\n    grid-template-columns: 1fr!important;\r\n    row-gap: 20px;\r\n    max-width:500px;\r\n   \r\n  }\r\n\r\n\r\n}",
+                    "data": "@import \"../../styles/variables\";\r\n@import \"../../styles/elements\";\r\n@import \"../../styles/global\";\r\n\r\n.splashpage{\r\n  padding:20px 40px 0px 30px;\r\n}\r\n.whorwe{\r\n \r\n  background-image: url(\"../../../assets/splash/bg-whorwe@2x.jpg\");\r\n  background-size: 100% 100%;\r\n    background-position: 50% 50%;\r\n  color:#fff;\r\n  margin: auto;\r\n  text-align:center;\r\n  padding:40px;\r\n  font-weight: 100;\r\n  box-shadow: $vvshadow;\r\n\r\n  .goals{\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr 1fr 1fr;\r\n    align-content: center;\r\n    column-gap: 20px;\r\n    margin: 0px auto 40px auto;\r\n    \r\n\r\n    .bullet{\r\n      font-weight:bold;\r\n      font-size:14px;\r\n      max-width:170px;\r\n      margin: auto;\r\n    }\r\n\r\n    .bullet-icon > fa-icon{\r\n      display: block;\r\n      margin: 20px auto;\r\n    }\r\n  }\r\n\r\n\r\n  h1{\r\n    font-size:18px;\r\n    font-weight:bold;\r\n    padding:0;\r\n    margin-top:0px;\r\n    margin-bottom:20px;\r\n    color:#fff;\r\n\r\n  }\r\n  .vv-description{\r\n    margin-top:0px;\r\n    margin-bottom:20px;\r\n    font-size:14px;\r\n    line-height: 1.4;\r\n    max-width: 600px;\r\n    margin-left:auto;\r\n    margin-right:auto;\r\n \r\n  }\r\n  a {\r\n    color: $vvyellow;\r\n    text-decoration: none;\r\n    \r\n   \r\n    &:hover {\r\n        text-decoration: underline;\r\n      }\r\n  }\r\n}\r\n\r\n.ftm{\r\n  margin: 20px auto 20px auto;\r\n  text-align:center;\r\n  padding:40px 40px 60px 40px;\r\n  font-weight: 100;\r\n  box-shadow: $vvshadow;\r\n  color:#4E4E4E;\r\n  background-color: #fff;\r\n  h1{\r\n    margin: 0px;\r\n  }\r\n  p{\r\n    margin:10px 0px 20px 0px;\r\n    line-height: 1.4;\r\n  }\r\n  .ftm_caption{\r\n   \r\n    display: block;\r\n    margin:10px auto 20px auto;\r\n  }\r\n  .choose{\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    align-content: center;\r\n    \r\n\r\n    div{\r\n      border-right:2px solid $vvbackground;\r\n    }\r\n    div:last-child{\r\n      border-right:none;\r\n    }\r\n\r\n\r\n      .cta{\r\n\r\n          @include button-styles;\r\n          padding: 10px 20px;\r\n          max-width: 200px;\r\n          text-decoration: none;\r\n          a{\r\n            text-decoration: none;\r\n          }\r\n          fa-icon{\r\n            padding: 0px;\r\n            margin: 0px 4px 0px 0px;\r\n          }\r\n      }\r\n      .cta:hover{\r\n            background-color: $vvlightblue;\r\n        }\r\n}\r\n\r\n    .racename{\r\n        font-size: 20px;\r\n        margin-bottom: 30px;\r\n     \r\n  }\r\n  .raised{\r\n    margin:40px 0px  5px 0px;\r\n  }\r\n  .candidate_num{\r\n    margin:10px 0px  5px 0px;\r\n  }\r\n  h3{\r\n    font-size:20px;\r\n    margin: 0px;\r\n  }\r\n  .amount_raised{\r\n    color:#289A58;\r\n  }\r\n  \r\n}\r\n\r\n.sources{\r\n  margin-top:60px;\r\n  font-size:14px;\r\n  a{\r\n    color:$vvlightblue;\r\n  }\r\n  p{\r\n    margin:0px !important;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 1000px) {\r\n\r\n  .goals{\r\n    grid-template-columns: 1fr 1fr!important;\r\n    row-gap: 20px;\r\n    max-width:500px;\r\n   \r\n  }\r\n  .choose{\r\n    grid-template-columns: 1fr !important;\r\n    row-gap: 20px;\r\n    div{\r\n      border-bottom:2px solid $vvbackground !important;\r\n      border-right:none!important;\r\n      padding-bottom: 40px;\r\n    }\r\n    div:last-child{\r\n      border-bottom:none!important;\r\n      padding-bottom: 0px;\r\n    }\r\n  }\r\n  \r\n}\r\n\r\n@media only screen and (max-width: 400px) {\r\n\r\n\r\n  .goals{\r\n    grid-template-columns: 1fr!important;\r\n    row-gap: 20px;\r\n    max-width:500px;\r\n   \r\n  }\r\n\r\n\r\n}",
                     "styleUrl": "./splash.component.scss"
                 }
             ],
@@ -2628,7 +3622,7 @@
                         "type": "CandidateService"
                     }
                 ],
-                "line": 16,
+                "line": 23,
                 "jsdoctags": [
                     {
                         "name": "sidenavService",
@@ -2649,7 +3643,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"splashpage\">\r\n  <div class=\"whorwe\" [style.backgroundSize]=\"'cover'\">\r\n      <h1>Who's Behind the Voters' Voice Initiatives?</h1>\r\n      <p class=\"vv-description\">The Voters’ Voice Initiatives is a non-partisan coalition (including <a href=\"https://represent.us/\">Represent.us</a> and the \r\n        <a href=\"https://www.lwv.org/\">League of Women Voters</a>) working to give “We The People” a greater voice in our local government by:</p>\r\n        <div class=\"goals\">\r\n            <div>\r\n                <i class=\"bullet-icon\">\r\n                    <fa-icon [icon]=\"faBinoculars\"></fa-icon>\r\n                </i>\r\n                <p class=\"bullet\">Improving Transparency in Campaign Finance</p>\r\n            </div>\r\n            <div>\r\n                <i class=\"bullet-icon\">\r\n                    <fa-icon [icon]=\"faMoneyBill\"></fa-icon>\r\n                </i>\r\n                <p class=\"bullet\">Providing Full Disclosure on the Flow of Money</p>\r\n            </div>\r\n            <div>\r\n                <i class=\"bullet-icon\">\r\n                    <fa-icon [icon]=\"faHandshake\"></fa-icon>\r\n                </i>\r\n                <p class=\"bullet\">Reducing the Potential for Corruption</p>\r\n            </div>\r\n            <div>\r\n                <i class=\"bullet-icon\">\r\n                    <fa-icon [icon]=\"faGavel\"></fa-icon>\r\n                </i>\r\n                <p class=\"bullet\">Increasing Accountability in Government</p>\r\n            </div>\r\n        </div>\r\n      <a routerLink=\"/about\">Learn About Us</a>\r\n  </div>\r\n  <div class=\"ftm\">\r\n    <h1>Follow the Money</h1>\r\n    <p class=\"ftm_caption\">See how local campaigns are financed so you can be informed before you vote.</p>\r\n    <div class=\"choose\">\r\n        <div>\r\n            <h2 class=\"racename\">Mayor</h2> \r\n            <a class=\"cta\" routerLinkActive=\"active-link\" routerLink=\"/mayor\" (click)=\"selectOffice('mayor')\"><i class=\"fa fa-university\"></i>See Candidates</a>\r\n            <p class=\"raised\">Total Raised</p>\r\n            <h3 class=\"amount_raised\">${{ campaignTotals.mayor | roundCurrencyDisplay: 1 }}</h3>\r\n            <p class=\"candidate_num\">Candidates</p>\r\n            <h3>{{ candidateCounts.mayor }}</h3>\r\n        </div>\r\n        <div>\r\n            <h2 class=\"racename\">City Attorney</h2> \r\n            <a class=\"cta\" routerLinkActive=\"active-link\" routerLink=\"/city-attorney\" (click)=\"selectOffice('city-attorney')\"><i class=\"fa fa-balance-scale\"></i>See Candidates</a>\r\n            <p class=\"raised\">Total Raised</p>\r\n            <h3 class=\"amount_raised\">${{ campaignTotals.cityAttorney | roundCurrencyDisplay: 1 }}</h3>\r\n            <p class=\"candidate_num\">Candidates</p>\r\n            <h3>{{ candidateCounts.cityAttorney }}</h3>\r\n        </div>\r\n        <div>\r\n            <h2 class=\"racename\">City Council</h2> \r\n            <a class=\"cta\" routerLinkActive=\"active-link\" routerLink=\"/city-council\" (click)=\"selectOffice('city council')\"><i class=\"fas fa-map-marked-alt\"></i>Choose District</a>\r\n            <p class=\"raised\">Total Raised</p>\r\n            <h3 class=\"amount_raised\">${{ campaignTotals.cityCouncil | roundCurrencyDisplay: 1 }}</h3>\r\n            <p class=\"candidate_num\">Candidates</p>\r\n            <h3>{{ candidateCounts.cityCouncil }}</h3>\r\n        </div>\r\n    </div>\r\n    <div class=\"sources\"><p>All of our data is sourced directly from the <a href=\"https://ssl.netfile.com/static/agency/csd/\" target=\"_blank\">City of San Diego</a> public records.</p></div>\r\n\r\n</div>\r\n \r\n</div>"
+            "templateData": "<div class=\"splashpage\">\r\n  <div class=\"whorwe\" [style.backgroundSize]=\"'cover'\">\r\n      <h1>Who's Behind the Voters' Voice Initiatives?</h1>\r\n      <p class=\"vv-description\">The Voters’ Voice Initiatives is a non-partisan coalition (including <a href=\"https://represent.us/\">Represent.us</a> and the \r\n        <a href=\"https://www.lwv.org/\">League of Women Voters</a>) working to give “We The People” a greater voice in our local government by:</p>\r\n        <div class=\"goals\">\r\n            <div>\r\n                <i class=\"bullet-icon\">\r\n                    <fa-icon [icon]=\"faBinoculars\" size=\"2x\"></fa-icon>\r\n                </i>\r\n                <p class=\"bullet\">Improving Transparency in Campaign Finance</p>\r\n            </div>\r\n            <div>\r\n                <i class=\"bullet-icon\">\r\n                    <fa-icon [icon]=\"faMoneyBill\" size=\"2x\"></fa-icon>\r\n                </i>\r\n                <p class=\"bullet\">Providing Full Disclosure on the Flow of Money</p>\r\n            </div>\r\n            <div>\r\n                <i class=\"bullet-icon\">\r\n                    <fa-icon [icon]=\"faHandshake\" size=\"2x\"></fa-icon>\r\n                </i>\r\n                <p class=\"bullet\">Reducing the Potential for Corruption</p>\r\n            </div>\r\n            <div>\r\n                <i class=\"bullet-icon\">\r\n                    <fa-icon [icon]=\"faGavel\" size=\"2x\"></fa-icon>\r\n                </i>\r\n                <p class=\"bullet\">Increasing Accountability in Government</p>\r\n            </div>\r\n        </div>\r\n      <a routerLink=\"/about\">Learn About Us</a>\r\n  </div>\r\n  <div class=\"ftm\">\r\n    <h1>Follow the Money</h1>\r\n    <p class=\"ftm_caption\">See how local campaigns are financed so you can be informed before you vote.</p>\r\n    <div class=\"choose\">\r\n        <div>\r\n            <h2 class=\"racename\">Mayor</h2> \r\n            <a class=\"cta\" routerLinkActive=\"active-link\" routerLink=\"/mayor\" (click)=\"selectOffice('mayor')\">\r\n                <fa-icon [icon]=\"faUniversity\"></fa-icon>\r\n                See Candidates\r\n            </a>\r\n            <p class=\"raised\">Total Raised</p>\r\n            <h3 class=\"amount_raised\">${{ campaignTotals.mayor | roundCurrencyDisplay: 1 }}</h3>\r\n            <p class=\"candidate_num\">Candidates</p>\r\n            <h3>{{ candidateCounts.mayor }}</h3>\r\n        </div>\r\n        <div>\r\n            <h2 class=\"racename\">City Attorney</h2> \r\n            <a class=\"cta\" routerLinkActive=\"active-link\" routerLink=\"/city-attorney\" (click)=\"selectOffice('city-attorney')\">\r\n                <fa-icon [icon]=\"faBalanceScale\"></fa-icon>\r\n                See Candidates\r\n            </a>\r\n            <p class=\"raised\">Total Raised</p>\r\n            <h3 class=\"amount_raised\">${{ campaignTotals.cityAttorney | roundCurrencyDisplay: 1 }}</h3>\r\n            <p class=\"candidate_num\">Candidates</p>\r\n            <h3>{{ candidateCounts.cityAttorney }}</h3>\r\n        </div>\r\n        <div>\r\n            <h2 class=\"racename\">City Council</h2> \r\n            <a class=\"cta\" routerLinkActive=\"active-link\" routerLink=\"/city-council\" (click)=\"selectOffice('city council')\">\r\n                <fa-icon [icon]=\"faMapMarkedAlt\"></fa-icon>\r\n                Choose District\r\n            </a>\r\n            <p class=\"raised\">Total Raised</p>\r\n            <h3 class=\"amount_raised\">${{ campaignTotals.cityCouncil | roundCurrencyDisplay: 1 }}</h3>\r\n            <p class=\"candidate_num\">Candidates</p>\r\n            <h3>{{ candidateCounts.cityCouncil }}</h3>\r\n        </div>\r\n    </div>\r\n    <div class=\"sources\"><p>All of our data is sourced directly from the <a href=\"https://ssl.netfile.com/static/agency/csd/\" target=\"_blank\">City of San Diego</a> public records.</p></div>\r\n\r\n</div>\r\n \r\n</div>"
         },
         {
             "name": "UnderConstructionComponent",
@@ -2730,6 +3724,9 @@
                         },
                         {
                             "name": "CandidateCardExpandedComponent"
+                        },
+                        {
+                            "name": "CandidateNavigationComponent"
                         },
                         {
                             "name": "CityAttorneyComponent"
@@ -2827,6 +3824,15 @@
                     "elements": [
                         {
                             "name": "DonationsByGroupComponent"
+                        },
+                        {
+                            "name": "OutsideMoneyBarComponent"
+                        },
+                        {
+                            "name": "RaisedInOutDonutComponent"
+                        },
+                        {
+                            "name": "RoundCurrencyPipe"
                         }
                     ]
                 },
@@ -2839,6 +3845,12 @@
                     "elements": [
                         {
                             "name": "DonationsByGroupComponent"
+                        },
+                        {
+                            "name": "OutsideMoneyBarComponent"
+                        },
+                        {
+                            "name": "RaisedInOutDonutComponent"
                         }
                     ]
                 },
@@ -2918,6 +3930,22 @@
                 "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "candidateAssets",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/assets/candidates/mock-candidateAssetPaths.ts",
+                "type": "CandidateAssetsPaths[]",
+                "defaultValue": "[\r\n  {\r\n    id: '2423694785',\r\n    calculationsPath: 'assets/candidates/2020/mayor/barbara_bry/barbara_bry.json',\r\n    imagePath: 'assets/candidates/2020/mayor/barbara_bry/barbara_bry.png',\r\n  },\r\n  {\r\n    id: '3321057457',\r\n    calculationsPath: 'assets/candidates/2020/mayor/todd_gloria/todd_gloria.json',\r\n    imagePath:        'assets/candidates/2020/mayor/todd_gloria/todd_gloria.png',\r\n  },\r\n  {\r\n    id: '138487776',\r\n    calculationsPath: 'assets/candidates/2020/city_attorney/cory_briggs/cory_briggs.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '2857364706',\r\n    calculationsPath: 'assets/candidates/2020/city_attorney/marra_w._elliot/marra_w._elliot.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '1381287194',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_1/joe_lacava/joe_lacava.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '556961640',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_1/will_moore/will_moore.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '2802658952',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_3/toni_duran/toni_duran.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '3087659774',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_3/stephen_whitburn/stephen_whitburn.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '2085859416',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_5/joe_leventhal/joe_leventhal.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '537761956',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_5/marni_von_wilpert/marni_von_wilpert.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '1063720306',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_7/raul_campillo/raul_campillo.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '296840038',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_7/noli_zosa/noli_zosa.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '1372856752',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_9/kelvin_h._barrios/kelvin_h._barrios.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '4044118288',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_9/sean_elo/sean_elo.json',\r\n    imagePath: '',\r\n  },\r\n]"
+            },
+            {
+                "name": "candidateNavigationItems",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/assets/candidates/mock-candidateNavigationItems.ts",
+                "type": "CandidateNavigation[]",
+                "defaultValue": "[\r\n  {\r\n    \"fullName\": \"Barbara Bry\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"2423694785\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Todd Gloria\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"3321057457\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Jarvis Gandy\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"2578134929\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Rich Riel\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"758695280\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Scott Sherman\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"1544527469\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Gita Appelbaum Singh\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"1445910638\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Tasha Williamson\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"2095280904\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Kelvin Barrios\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"1372856752\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Sean Elo-Rivera\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"4044118288\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Sam Bedwell\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"3411381026\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Johnny Lee Dang\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"3215717116\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Andrew Gade\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"1500919237\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Ross Naismith\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"2538494495\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Alex Soto\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"3177441902\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Raul Campillo\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 7\",\r\n    \"id\": \"1063720306\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"7\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Noli Zosa\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 7\",\r\n    \"id\": \"296840038\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"7\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Monty McIntyre\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 7\",\r\n    \"id\": \"4294707016\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"7\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Wendy Wheatcroft\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 7\",\r\n    \"id\": \"378004078\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"7\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Joe Leventhal\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 5\",\r\n    \"id\": \"2085859416\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"5\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Marni Von Wilpert\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 5\",\r\n    \"id\": \"537761956\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"5\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Simon Moghadam\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 5\",\r\n    \"id\": \"1606351465\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"5\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Isaac Wang\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 5\",\r\n    \"id\": \"1082483514\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"5\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Toni Duran\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 3\",\r\n    \"id\": \"2802658952\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"3\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Stephen Whitburn\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 3\",\r\n    \"id\": \"3087659774\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"3\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Adrian Kwiatkowski\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 3\",\r\n    \"id\": \"984002427\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"3\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Michelle Nguyen\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 3\",\r\n    \"id\": \"2698283832\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"3\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Chris Olsen\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 3\",\r\n    \"id\": \"1176217471\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"3\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Joe LaCava\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"1381287194\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Will Moore\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"556961640\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Aaron Brennan\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"1251542570\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Sam Nejabat\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"3495060548\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Harid (H.) Puentes\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"3322626763\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Louis Rodolico\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"1806575076\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"James Rudolph\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"2312879338\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Lijun (Lily) Zhou\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"59372427\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Cory Briggs\",\r\n    \"fullOfficeName\": \"City Attorney San Diego\",\r\n    \"id\": \"138487776\",\r\n    \"officeType\": \"City Attorney\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Mara Elliott\",\r\n    \"fullOfficeName\": \"City Attorney San Diego\",\r\n    \"id\": \"2857364706\",\r\n    \"officeType\": \"City Attorney\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Pete Mesich\",\r\n    \"fullOfficeName\": \"City Attorney San Diego\",\r\n    \"id\": \"1921282720\",\r\n    \"officeType\": \"City Attorney\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  }\r\n]"
             },
             {
                 "name": "CheckCityNameInTooltip",
@@ -3061,7 +4089,7 @@
                 "subtype": "variable",
                 "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
                 "type": "Story<OutsideMoneyBarComponent>",
-                "defaultValue": "(args: OutsideMoneyBarComponent) => ({\r\n  component: OutsideMoneyBarComponent,\r\n  moduleMetadata: {\r\n    declarations: [],\r\n    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],\r\n    providers: [RoundCurrencyPipe],\r\n  },\r\n  props: args,\r\n})"
+                "defaultValue": "(args: OutsideMoneyBarComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -3069,7 +4097,7 @@
                 "subtype": "variable",
                 "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
                 "type": "Story<RaisedInOutDonutComponent>",
-                "defaultValue": "(args: RaisedInOutDonutComponent) => ({\r\n  component: RaisedInOutDonutComponent,\r\n  moduleMetadata: {\r\n    declarations: [],\r\n    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],\r\n    providers: [RoundCurrencyPipe],\r\n  },\r\n  props: args,\r\n})",
+                "defaultValue": "(args: RaisedInOutDonutComponent) => ({\r\n  props: args,\r\n})",
                 "description": "<p>imports: for dependencies that would usually be provided in the module containing the component\nproviders: for component dependencies</p>\n<p>The same template is used for the component stories below it.</p>\n"
             }
         ],
@@ -3189,7 +4217,7 @@
                     "subtype": "variable",
                     "file": "src/app/vv-charts/raised-in-out-donut/raised-in-out-donut.component.stories.ts",
                     "type": "Story<RaisedInOutDonutComponent>",
-                    "defaultValue": "(args: RaisedInOutDonutComponent) => ({\r\n  component: RaisedInOutDonutComponent,\r\n  moduleMetadata: {\r\n    declarations: [],\r\n    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],\r\n    providers: [RoundCurrencyPipe],\r\n  },\r\n  props: args,\r\n})",
+                    "defaultValue": "(args: RaisedInOutDonutComponent) => ({\r\n  props: args,\r\n})",
                     "description": "<p>imports: for dependencies that would usually be provided in the module containing the component\nproviders: for component dependencies</p>\n<p>The same template is used for the component stories below it.</p>\n"
                 }
             ],
@@ -3264,7 +4292,27 @@
                     "subtype": "variable",
                     "file": "src/app/vv-charts/outside-money-bar/outside-money-bar.component.stories.ts",
                     "type": "Story<OutsideMoneyBarComponent>",
-                    "defaultValue": "(args: OutsideMoneyBarComponent) => ({\r\n  component: OutsideMoneyBarComponent,\r\n  moduleMetadata: {\r\n    declarations: [],\r\n    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule],\r\n    providers: [RoundCurrencyPipe],\r\n  },\r\n  props: args,\r\n})"
+                    "defaultValue": "(args: OutsideMoneyBarComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/assets/candidates/mock-candidateAssetPaths.ts": [
+                {
+                    "name": "candidateAssets",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/assets/candidates/mock-candidateAssetPaths.ts",
+                    "type": "CandidateAssetsPaths[]",
+                    "defaultValue": "[\r\n  {\r\n    id: '2423694785',\r\n    calculationsPath: 'assets/candidates/2020/mayor/barbara_bry/barbara_bry.json',\r\n    imagePath: 'assets/candidates/2020/mayor/barbara_bry/barbara_bry.png',\r\n  },\r\n  {\r\n    id: '3321057457',\r\n    calculationsPath: 'assets/candidates/2020/mayor/todd_gloria/todd_gloria.json',\r\n    imagePath:        'assets/candidates/2020/mayor/todd_gloria/todd_gloria.png',\r\n  },\r\n  {\r\n    id: '138487776',\r\n    calculationsPath: 'assets/candidates/2020/city_attorney/cory_briggs/cory_briggs.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '2857364706',\r\n    calculationsPath: 'assets/candidates/2020/city_attorney/marra_w._elliot/marra_w._elliot.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '1381287194',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_1/joe_lacava/joe_lacava.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '556961640',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_1/will_moore/will_moore.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '2802658952',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_3/toni_duran/toni_duran.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '3087659774',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_3/stephen_whitburn/stephen_whitburn.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '2085859416',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_5/joe_leventhal/joe_leventhal.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '537761956',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_5/marni_von_wilpert/marni_von_wilpert.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '1063720306',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_7/raul_campillo/raul_campillo.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '296840038',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_7/noli_zosa/noli_zosa.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '1372856752',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_9/kelvin_h._barrios/kelvin_h._barrios.json',\r\n    imagePath: '',\r\n  },\r\n  {\r\n    id: '4044118288',\r\n    calculationsPath: 'assets/candidates/2020/city_council/district_9/sean_elo/sean_elo.json',\r\n    imagePath: '',\r\n  },\r\n]"
+                }
+            ],
+            "src/assets/candidates/mock-candidateNavigationItems.ts": [
+                {
+                    "name": "candidateNavigationItems",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/assets/candidates/mock-candidateNavigationItems.ts",
+                    "type": "CandidateNavigation[]",
+                    "defaultValue": "[\r\n  {\r\n    \"fullName\": \"Barbara Bry\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"2423694785\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Todd Gloria\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"3321057457\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Jarvis Gandy\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"2578134929\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Rich Riel\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"758695280\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Scott Sherman\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"1544527469\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Gita Appelbaum Singh\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"1445910638\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Tasha Williamson\",\r\n    \"fullOfficeName\": \"Mayor San Diego\",\r\n    \"id\": \"2095280904\",\r\n    \"officeType\": \"Mayor\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Kelvin Barrios\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"1372856752\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Sean Elo-Rivera\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"4044118288\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Sam Bedwell\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"3411381026\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Johnny Lee Dang\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"3215717116\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Andrew Gade\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"1500919237\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Ross Naismith\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"2538494495\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Alex Soto\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 9\",\r\n    \"id\": \"3177441902\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"9\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Raul Campillo\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 7\",\r\n    \"id\": \"1063720306\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"7\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Noli Zosa\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 7\",\r\n    \"id\": \"296840038\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"7\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Monty McIntyre\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 7\",\r\n    \"id\": \"4294707016\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"7\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Wendy Wheatcroft\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 7\",\r\n    \"id\": \"378004078\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"7\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Joe Leventhal\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 5\",\r\n    \"id\": \"2085859416\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"5\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Marni Von Wilpert\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 5\",\r\n    \"id\": \"537761956\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"5\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Simon Moghadam\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 5\",\r\n    \"id\": \"1606351465\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"5\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Isaac Wang\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 5\",\r\n    \"id\": \"1082483514\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"5\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Toni Duran\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 3\",\r\n    \"id\": \"2802658952\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"3\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Stephen Whitburn\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 3\",\r\n    \"id\": \"3087659774\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"3\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Adrian Kwiatkowski\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 3\",\r\n    \"id\": \"984002427\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"3\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Michelle Nguyen\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 3\",\r\n    \"id\": \"2698283832\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"3\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Chris Olsen\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 3\",\r\n    \"id\": \"1176217471\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"3\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Joe LaCava\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"1381287194\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Will Moore\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"556961640\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Aaron Brennan\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"1251542570\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Sam Nejabat\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"3495060548\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Harid (H.) Puentes\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"3322626763\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Louis Rodolico\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"1806575076\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"James Rudolph\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"2312879338\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Lijun (Lily) Zhou\",\r\n    \"fullOfficeName\": \"City Council San Diego - Dist 1\",\r\n    \"id\": \"59372427\",\r\n    \"officeType\": \"City Council\",\r\n    \"seat\": {\r\n      \"name\": \"1\",\r\n      \"type\": \"district\"\r\n    },\r\n    \"inGeneralElection\": false\r\n  },\r\n  {\r\n    \"fullName\": \"Cory Briggs\",\r\n    \"fullOfficeName\": \"City Attorney San Diego\",\r\n    \"id\": \"138487776\",\r\n    \"officeType\": \"City Attorney\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Mara Elliott\",\r\n    \"fullOfficeName\": \"City Attorney San Diego\",\r\n    \"id\": \"2857364706\",\r\n    \"officeType\": \"City Attorney\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": true\r\n  },\r\n  {\r\n    \"fullName\": \"Pete Mesich\",\r\n    \"fullOfficeName\": \"City Attorney San Diego\",\r\n    \"id\": \"1921282720\",\r\n    \"officeType\": \"City Attorney\",\r\n    \"seat\": null,\r\n    \"inGeneralElection\": false\r\n  }\r\n]"
                 }
             ],
             "src/test.ts": [
@@ -3337,20 +4385,12 @@
                         "component": "AboutComponent"
                     },
                     {
-                        "path": "mayor",
-                        "component": "MayorComponent"
-                    },
-                    {
-                        "path": "city-attorney",
-                        "component": "CityAttorneyComponent"
-                    },
-                    {
                         "path": "under-construction",
                         "component": "UnderConstructionComponent"
                     },
                     {
-                        "path": "city-council/district/:id",
-                        "component": "CityCouncilDistrictComponent"
+                        "path": "**",
+                        "component": "UnderConstructionComponent"
                     }
                 ],
                 "kind": "module"
@@ -3358,7 +4398,7 @@
         ]
     },
     "coverage": {
-        "count": 4,
+        "count": 3,
         "status": "low",
         "files": [
             {
@@ -3425,6 +4465,24 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/candidate-navigation/candidate-navigation.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CandidateNavigationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/candidate-navigation/candidate-navigation.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CandidateNavigationWithRoute",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/city-attorney/city-attorney.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -3475,7 +4533,7 @@
                 "linktype": "component",
                 "name": "SplashComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/10",
+                "coverageCount": "0/13",
                 "status": "low"
             },
             {
@@ -3488,12 +4546,66 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/interfaces/candidateAssetPaths.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CandidateAssetsPaths",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/interfaces/candidateCard.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CandidateCard",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/interfaces/candidateJSON.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CandidateJSON",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/interfaces/candidateNavigation.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CandidateNavigation",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/pipes/round-currency-display.pipe.ts",
                 "type": "pipe",
                 "linktype": "pipe",
                 "name": "RoundCurrencyDisplayPipe",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/candidate-data.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "CandidateDataService",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/candidate-store.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "CandidateStoreService",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {
@@ -3521,6 +4633,42 @@
                 "name": "DonationsByGroupComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/interfaces/donationsByGroup.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DonationsByGroup",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/interfaces/donationsByGroup.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Group",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/interfaces/outsideMoney.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "OutsideMoney",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/vv-charts/interfaces/raisedInOut.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "RaisedInOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -3768,7 +4916,7 @@
                 "linktype": "component",
                 "name": "RaisedInOutDonutComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/18",
+                "coverageCount": "0/19",
                 "status": "low"
             },
             {
@@ -3776,6 +4924,26 @@
                 "type": "pipe",
                 "linktype": "pipe",
                 "name": "RoundCurrencyPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/assets/candidates/mock-candidateAssetPaths.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "candidateAssets",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/assets/candidates/mock-candidateNavigationItems.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "candidateNavigationItems",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
