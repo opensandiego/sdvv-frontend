@@ -57,36 +57,12 @@
       <fa-icon [icon]="faTimesCircle"></fa-icon>
     </i>
   </div>
-  
+
   <div class="outside-money">
-    <div class="title">
-      <p>
-        Outside Money
-        <sup>
-          <i
-            class="helper-tip"
-            aria-hidden="true"
-            matTooltip="Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign."
-          >
-            <fa-icon [icon]="faQuestionCircle"></fa-icon>
-          </i>
-        </sup>
-      </p>
-    </div>
-
-    <div class="outside-grid">
-      <div  class="chart-container-outside">
-        <canvas baseChart
-          [chartType]="stackedHorizontalBarChartType"
-          [datasets]="stackedHorizontalBarChartData"
-          [options]="stackedHorizontalBarChartOptions"
-          [plugins]="chartPlugins"
-        ></canvas>
-      </div>
-
-      <div class="raised">
-        <h2>Total Expenditures</h2>
-        <h3>{{(ConvertToInt(candidate['oppose'])+ConvertToInt(candidate['support']))| currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
-      </div>
-    </div>
+    <outside-money-bar
+      [support]="currencyToNumber(_c['support'])"
+      [oppose]="currencyToNumber(_c['oppose'])"
+    >
+    </outside-money-bar>
+  </div>
 </div>

@@ -104,47 +104,6 @@
         justify-self: stretch;
         background-color: $vvdarkgrey;
         color:#fff;
-
-        .title, .helper-tip, .donors, .raised{
-            color:#fff;
-            h2, h3{
-                color:#fff;
-                margin: 0px 0px 5px 0px;
-            }
-        }
-
-
-        .chart-container-outside{
-            
-            height:10vh; 
-            width:58vw;
-            border-left:1px solid #727272;
-            margin-left:40px;
-           
-            
-        }
-        
-        .outside-grid{
-            display: grid;
-            grid-template-columns:60vw 0.8fr;
-            justify-self: stretch;
-           
-
-            .donors{
-                
-                padding:20px 0px 20px 30px;
-                text-align: left;
-                align-self: center;
-            }
-            .raised{
-                padding:20px 0px 20px 30px;
-                text-align: left;
-                border-left: 1px solid #727272;
-                align-self: center;
-            }
-        }
-        
-
     }
     
 
