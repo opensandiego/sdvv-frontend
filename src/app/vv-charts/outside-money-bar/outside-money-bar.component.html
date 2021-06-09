@@ -1,31 +1,29 @@
-<div class="outside-money">
-  <div class="title">
-    <p>
-      {{title}}
-      <sup>
-        <i
-          class="helper-tip fa fa-question-circle"
-          aria-hidden="true"
-          [matTooltip]="tooltipText"
-        >
-        </i>
-      </sup>
-    </p>
+<div class="title">
+  <p>
+    {{title}}
+    <sup>
+      <i
+        class="helper-tip fa fa-question-circle"
+        aria-hidden="true"
+        [matTooltip]="tooltipText"
+      >
+      </i>
+    </sup>
+  </p>
+</div>
+<div class="outside-grid">
+  <div  class="chart-container-outside">
+    <canvas baseChart
+      [chartType]="stackedHorizontalBarChartType"
+      [datasets]="stackedHorizontalBarChartData"
+      [options]="stackedHorizontalBarChartOptions"
+      [plugins]="chartPlugins"
+    ></canvas>
   </div>
-  <div class="outside-grid">
-    <div  class="chart-container-outside">
-      <canvas baseChart
-        [chartType]="stackedHorizontalBarChartType"
-        [datasets]="stackedHorizontalBarChartData"
-        [options]="stackedHorizontalBarChartOptions"
-        [plugins]="chartPlugins"
-      ></canvas>
-    </div>
 
-    <div class="raised">
-      <h2>Total Expenditures</h2>
-      <!-- <h3> {{ total | currency : 'USD' : 'symbol' : '1.0-0' }}</h3> -->
-      <h3> {{ totalExpenditures }}</h3>
-    </div>
+  <div class="raised">
+    <h2>Total Expenditures</h2>
+    <!-- <h3> {{ total | currency : 'USD' : 'symbol' : '1.0-0' }}</h3> -->
+    <h3> {{ totalExpenditures }}</h3>
   </div>
 </div>
