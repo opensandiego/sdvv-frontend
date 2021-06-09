@@ -1,6 +1,4 @@
-import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Candidate } from '../../candidate';
 
 import { faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
