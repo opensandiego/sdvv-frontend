@@ -1,0 +1,33 @@
+<div class="raised-spent">
+    <div class="title">
+        <p>{{ title }}
+            <sup>
+                <i
+                    class="helper-tip"
+                    aria-hidden="true"
+                    [matTooltip]="tooltipText"
+                >
+                    <fa-icon [icon]="faQuestionCircle"></fa-icon>
+                </i>
+            </sup>
+        </p>
+    </div>
+
+    <div class="chart-container">
+        <canvas baseChart
+          width="350"
+          height="550"
+          [chartType]="barChartType"
+          [datasets]="barChartData"
+          [options]="barChartOptions"
+          [plugins]="chartPlugins"
+        ></canvas>
+    </div>
+
+    <div class="raised-spent-footer">
+        <div class="avg-donation">
+          <h2 class="raised-spent-footer-title">Average Donation</h2>
+          <h3 class="raised-spent-footer-content">{{ averageDonation | currency:'USD':'symbol':'1.0-0' }}</h3>
+        </div>
+    </div>
+</div>
