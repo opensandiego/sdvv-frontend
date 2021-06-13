@@ -30,7 +30,7 @@
             <mat-expansion-panel-header 
               collapsedHeight="30px" 
               expandedHeight="30px"
-              [ngClass]="{ 'district-selected': selectedSeatName === seat.title }"
+              [ngClass]="{ 'district-selected': selectedSeatName === seat.seatName }"
             >
               <a routerLink="{{seat.route}}" routerLinkActive="active">
                 {{seat.title}}

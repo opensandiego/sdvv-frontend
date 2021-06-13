@@ -82,6 +82,7 @@ export class CandidateNavigationComponent implements OnInit {
         const distinctSeatNames: string[] = [... new Set(seatNames)].sort(); // remove duplicates
         seatsWithCandidates = distinctSeatNames
           .map(seatName => ({
+            seatName,
             title: `${this.seatType} ${seatName}`,
             route: `${officeTitle}_${this.seatType}-${seatName}`.toLowerCase().split(' ').join('-'),
             candidates: candidatesForOffice.filter(candidate => candidate.seat.name === seatName),
