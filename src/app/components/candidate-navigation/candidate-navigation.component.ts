@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { toArray } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { CandidateNavigation } from '../../interfaces/candidateNavigation'
 import { CandidateDataService } from '../../services/candidate-data.service';
@@ -24,6 +25,8 @@ export class CandidateNavigationComponent implements OnInit {
   constructor(
     private candidateDataService: CandidateDataService,
     private sidenavService: SidenavService,
+    private route: ActivatedRoute,
+    private router: Router,
     ) { }
 
   addRoute(candidate: CandidateNavigation): CandidateNavigationWithRoute {
@@ -108,4 +111,9 @@ export class CandidateNavigationComponent implements OnInit {
   setSelectedCandidate(candidateId: string) {
     this.selectedCandidateId = candidateId;
   }
+
+  changeRoute(routePath) {
+    this.router.navigate([`/${routePath}`], { relativeTo: this.route });
+  }
+
 }
