@@ -196,6 +196,11 @@
           }
         }
 
+        .mat-accordion .mat-expansion-panel {           
+          margin-top: 0px;
+          margin-bottom: 0px;
+        }
+
         .mat-expansion-panel-header {
           font-size: 12px;
           padding: 0 12px;

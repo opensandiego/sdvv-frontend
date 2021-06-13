@@ -6,6 +6,7 @@
       <mat-expansion-panel
         hideToggle="true"  
         (opened)="setSelectedOffice(office.title)" 
+        (opened)="changeRoute(office.route)" 
       >
 
         <mat-expansion-panel-header 
@@ -20,27 +21,31 @@
 
 
         <ng-container *ngIf="office.hasSeats; else elseNonSeatOffice">
-          <mat-expansion-panel 
-            *ngFor="let seat of office.seats;" 
-            [expanded]="selectedSeatName === seat.title"
-            (opened)="setSelectedSeat(seat.title)"
-            class="mat-elevation-z0"
-          >
-          
-            <mat-expansion-panel-header 
-              collapsedHeight="30px" 
-              expandedHeight="30px"
-              [ngClass]="{ 'district-selected': selectedSeatName === seat.title }"
+          <mat-accordion>
+
+            <mat-expansion-panel 
+              *ngFor="let seat of office.seats;" 
+              (opened)="setSelectedSeat(seat.title)"
+              (opened)="changeRoute(seat.route)"
+              class="mat-elevation-z0"
             >
-              <a routerLink="{{seat.route}}" routerLinkActive="active">
-                {{seat.title}}
-              </a>
-            </mat-expansion-panel-header>
 
-            <ng-container *ngTemplateOutlet="candidatesT; context: {office: seat}">
-            </ng-container>
+              <mat-expansion-panel-header 
+                collapsedHeight="30px" 
+                expandedHeight="30px"
+                [ngClass]="{ 'district-selected': selectedSeatName === seat.seatName }"
+              >
+                <a routerLink="{{seat.route}}" routerLinkActive="active">
+                  {{seat.title}}
+                </a>
+              </mat-expansion-panel-header>
 
-          </mat-expansion-panel>         
+              <ng-container *ngTemplateOutlet="candidatesT; context: {office: seat}">
+              </ng-container>
+
+            </mat-expansion-panel>
+
+          </mat-accordion>
         </ng-container>
 
         <ng-template #elseNonSeatOffice>
@@ -57,7 +62,7 @@
 <ng-template #candidatesT let-office="office">
   <div class="candidates">
     <ul *ngFor="let candidate of office.candidates;" class="candidate-name">
-      <li>
+      <li (click)="changeRoute(candidate.routeLink)">
         <a 
           routerLinkActive="active"
           routerLink="{{candidate.routeLink}}" 

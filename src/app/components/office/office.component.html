@@ -1,0 +1,17 @@
+<div class="candidate-cards p-grid p-justify-left p-nogutter">
+
+  <app-candidate-card-expanded class="p-col-12" 
+    *ngIf="selectedCandidateJSON && selectedImagePath" 
+    [candidate]="selectedCandidateJSON" 
+    [candidateImg]="selectedImagePath" 
+    (isExpanded)="onCloseExpanded()"
+  ></app-candidate-card-expanded>
+
+  <div *ngFor="let candidate of candidateCards">
+    <app-candidate-card
+      [candidateCard]="candidate" 
+      (emitCandidateId)="onOpenExpanded($event)"
+    ></app-candidate-card>
+  </div>
+
+</div>

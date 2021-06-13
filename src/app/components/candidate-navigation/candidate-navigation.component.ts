@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { toArray } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { CandidateNavigation } from '../../interfaces/candidateNavigation'
 import { CandidateDataService } from '../../services/candidate-data.service';
+
+import { SidenavService } from '../../services/sidenav.service';
 
 interface CandidateNavigationWithRoute extends CandidateNavigation {
   routeLink: string;
@@ -20,7 +23,11 @@ export class CandidateNavigationComponent implements OnInit {
   seatType: string = 'District';
 
   constructor(
-    private candidateDataService: CandidateDataService ) { }
+    private candidateDataService: CandidateDataService,
+    private sidenavService: SidenavService,
+    private route: ActivatedRoute,
+    private router: Router,
+    ) { }
 
   addRoute(candidate: CandidateNavigation): CandidateNavigationWithRoute {
     let path = `${candidate.officeType}`;
@@ -39,12 +46,25 @@ export class CandidateNavigationComponent implements OnInit {
   ngOnInit(): void {
     this.candidateDataService.getCandidates().pipe( toArray() ).subscribe(candidates => {
       const officeTitles: string[] = candidates.map(candidate => candidate.officeType).sort().reverse();
-      const distinctOfficeTitles: string[] = [... new Set(officeTitles)]; // remove duplicates
-      
+      const distinctOfficeTitles: string[] = [... new Set(officeTitles)];
+
       const candidatesWithRoute = candidates.map(candidate => this.addRoute(candidate));
 
       this.offices = this.getOffices(candidatesWithRoute, distinctOfficeTitles);
-    })
+    });
+
+    this.sidenavService.candidateChanged$.subscribe( 
+      candidateId => { this.setSelectedCandidate(candidateId); } 
+    );
+    
+    this.sidenavService.officeChanged$.subscribe(
+      office => { this.setSelectedOffice(office); }
+    );
+    
+    this.sidenavService.officeSeatChanged$.subscribe(
+      seat => { this.setSelectedSeat(seat); }
+    );
+
   }
 
   getOffices(candidates: CandidateNavigation[], officeTitles: string[]) {
@@ -62,6 +82,7 @@ export class CandidateNavigationComponent implements OnInit {
         const distinctSeatNames: string[] = [... new Set(seatNames)].sort(); // remove duplicates
         seatsWithCandidates = distinctSeatNames
           .map(seatName => ({
+            seatName,
             title: `${this.seatType} ${seatName}`,
             route: `${officeTitle}_${this.seatType}-${seatName}`.toLowerCase().split(' ').join('-'),
             candidates: candidatesForOffice.filter(candidate => candidate.seat.name === seatName),
@@ -82,13 +103,20 @@ export class CandidateNavigationComponent implements OnInit {
     return offices;
   }
 
-  setSelectedOffice(officeTitle: string) {
-    this.selectedOffice = officeTitle;
+  setSelectedOffice(office: string) {
+    this.selectedOffice = office;
   }
+
   setSelectedSeat(seatName: string) {
     this.selectedSeatName = seatName;
   }
+
   setSelectedCandidate(candidateId: string) {
     this.selectedCandidateId = candidateId;
   }
+
+  changeRoute(routePath) {
+    this.router.navigate([`/${routePath}`], { relativeTo: this.route });
+  }
+
 }
