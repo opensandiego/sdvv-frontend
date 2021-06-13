@@ -21,27 +21,31 @@
 
 
         <ng-container *ngIf="office.hasSeats; else elseNonSeatOffice">
-          <mat-expansion-panel 
-            *ngFor="let seat of office.seats;" 
-            (opened)="setSelectedSeat(seat.title)"
-            (opened)="changeRoute(seat.route)"
-            class="mat-elevation-z0"
-          >
-          
-            <mat-expansion-panel-header 
-              collapsedHeight="30px" 
-              expandedHeight="30px"
-              [ngClass]="{ 'district-selected': selectedSeatName === seat.seatName }"
+          <mat-accordion>
+
+            <mat-expansion-panel 
+              *ngFor="let seat of office.seats;" 
+              (opened)="setSelectedSeat(seat.title)"
+              (opened)="changeRoute(seat.route)"
+              class="mat-elevation-z0"
             >
-              <a routerLink="{{seat.route}}" routerLinkActive="active">
-                {{seat.title}}
-              </a>
-            </mat-expansion-panel-header>
 
-            <ng-container *ngTemplateOutlet="candidatesT; context: {office: seat}">
-            </ng-container>
+              <mat-expansion-panel-header 
+                collapsedHeight="30px" 
+                expandedHeight="30px"
+                [ngClass]="{ 'district-selected': selectedSeatName === seat.seatName }"
+              >
+                <a routerLink="{{seat.route}}" routerLinkActive="active">
+                  {{seat.title}}
+                </a>
+              </mat-expansion-panel-header>
 
-          </mat-expansion-panel>         
+              <ng-container *ngTemplateOutlet="candidatesT; context: {office: seat}">
+              </ng-container>
+
+            </mat-expansion-panel>
+
+          </mat-accordion>
         </ng-container>
 
         <ng-template #elseNonSeatOffice>
