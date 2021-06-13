@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+@import "../../styles/elements";
+
+h2 {
+    font-weight: normal;
+    font-size: 12px;
+    color: $vvgrey;
+    margin: 5px 0px 10px 0px;
+}
+
+h3 {
+    font-size: 18px;
+    color: $vvdarkgrey;
+}
+
+i {
+    cursor: pointer;
+}
+
+.title {
+    padding: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: $vvdarkblue;
+}
+
+.chart-container{
+    position: relative; 
+    height:21vh; 
+    width:12vw;
+    max-height: 200px;
+    margin:auto;
+}
+
+.raised-spent-footer-title,.raised-spent-footer-content{
+    margin:5px 0px;
+}
+
+.helper-tip {
+    color: $vvgrey;
+    font-size: 10px;
+}
+
+
+// Expanded Card Adjustments for Smaller Screens
+@media only screen and (max-width: 1200px) {
+    .chart-container{
+        width:50vw;
+    }
+ }

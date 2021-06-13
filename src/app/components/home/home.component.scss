@@ -17,7 +17,7 @@
   }
 }
 .sidenav-container {
-  height: 100vh;
+  height: 95vh;
   border: 1px solid rgba(0, 0, 0, 0.5);
 
   .mat-accordion {
@@ -194,6 +194,11 @@
           .fa-map-marked-alt {
             padding-top: 4px;
           }
+        }
+
+        .mat-accordion .mat-expansion-panel {           
+          margin-top: 0px;
+          margin-bottom: 0px;
         }
 
         .mat-expansion-panel-header {
