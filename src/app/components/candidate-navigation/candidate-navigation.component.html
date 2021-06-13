@@ -23,7 +23,6 @@
         <ng-container *ngIf="office.hasSeats; else elseNonSeatOffice">
           <mat-expansion-panel 
             *ngFor="let seat of office.seats;" 
-            [expanded]="selectedSeatName === seat.title"
             (opened)="setSelectedSeat(seat.title)"
             (opened)="changeRoute(seat.route)"
             class="mat-elevation-z0"
