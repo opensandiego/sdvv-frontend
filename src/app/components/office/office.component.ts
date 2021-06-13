@@ -54,9 +54,10 @@ export class OfficeComponent implements OnInit {
   }
 
   setCandidateCards(): void {   
+    this.candidateCards = [];
+    
     if (this.office === 'city council' && !this.seatName) return;
     
-    this.candidateCards = [];
     this.candidateDataService.getCandidateCards(this.office, this.seatName)
       .subscribe(candidate => this.candidateCards.push(candidate));
   }
