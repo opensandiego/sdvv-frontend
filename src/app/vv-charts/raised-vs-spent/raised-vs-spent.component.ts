@@ -107,7 +107,6 @@ export class RaisedVsSpentComponent implements OnChanges {
   constructor(private currencyDisplayPipe: RoundCurrencyPipe) { }
 
   ngOnChanges(): void {
-    console.log(this.averageDonation)
     this.title = 'Raised v. Spent';
     this.tooltipText = 'Total campaign funds raised and spent by the candidate.';
 
