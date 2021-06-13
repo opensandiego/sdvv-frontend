@@ -4,6 +4,8 @@ import { toArray } from 'rxjs/operators';
 import { CandidateNavigation } from '../../interfaces/candidateNavigation'
 import { CandidateDataService } from '../../services/candidate-data.service';
 
+import { SidenavService } from '../../services/sidenav.service';
+
 interface CandidateNavigationWithRoute extends CandidateNavigation {
   routeLink: string;
 }
@@ -20,7 +22,9 @@ export class CandidateNavigationComponent implements OnInit {
   seatType: string = 'District';
 
   constructor(
-    private candidateDataService: CandidateDataService ) { }
+    private candidateDataService: CandidateDataService,
+    private sidenavService: SidenavService,
+    ) { }
 
   addRoute(candidate: CandidateNavigation): CandidateNavigationWithRoute {
     let path = `${candidate.officeType}`;
@@ -44,7 +48,20 @@ export class CandidateNavigationComponent implements OnInit {
       const candidatesWithRoute = candidates.map(candidate => this.addRoute(candidate));
 
       this.offices = this.getOffices(candidatesWithRoute, distinctOfficeTitles);
-    })
+    });
+
+    this.sidenavService.candidateChanged$.subscribe( 
+      candidateId => { this.setSelectedCandidate(candidateId); } 
+    );
+    
+    this.sidenavService.officeChanged$.subscribe(
+      office => { this.setSelectedOffice(office); }
+    );
+    
+    this.sidenavService.officeSeatChanged$.subscribe(
+      seat => { this.setSelectedSeat(seat); }
+    );
+
   }
 
   getOffices(candidates: CandidateNavigation[], officeTitles: string[]) {
