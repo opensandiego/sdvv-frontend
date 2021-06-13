@@ -46,8 +46,8 @@ export class CandidateNavigationComponent implements OnInit {
   ngOnInit(): void {
     this.candidateDataService.getCandidates().pipe( toArray() ).subscribe(candidates => {
       const officeTitles: string[] = candidates.map(candidate => candidate.officeType).sort().reverse();
-      const distinctOfficeTitles: string[] = [... new Set(officeTitles)]; // remove duplicates
-      
+      const distinctOfficeTitles: string[] = [... new Set(officeTitles)];
+
       const candidatesWithRoute = candidates.map(candidate => this.addRoute(candidate));
 
       this.offices = this.getOffices(candidatesWithRoute, distinctOfficeTitles);
@@ -102,12 +102,14 @@ export class CandidateNavigationComponent implements OnInit {
     return offices;
   }
 
-  setSelectedOffice(officeTitle: string) {
-    this.selectedOffice = officeTitle;
+  setSelectedOffice(office: string) {
+    this.selectedOffice = office;
   }
+
   setSelectedSeat(seatName: string) {
     this.selectedSeatName = seatName;
   }
+
   setSelectedCandidate(candidateId: string) {
     this.selectedCandidateId = candidateId;
   }
