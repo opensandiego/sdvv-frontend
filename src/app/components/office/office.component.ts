@@ -7,6 +7,8 @@ import { CandidateStoreService } from '../../services/candidate-store.service';
 import { CandidateCard } from '../../interfaces/candidateCard';
 import { CandidateJSON } from '../../interfaces/candidateJSON';
 
+import { SidenavService } from '../../services/sidenav.service';
+
 interface pathParam {
   office: string; 
   seatType?: string;
@@ -32,6 +34,7 @@ export class OfficeComponent implements OnInit {
     private candidateDataService: CandidateDataService,
     private route: ActivatedRoute,
     private router: Router,
+    private sidenavService: SidenavService,
   ) { }
 
   parsePathParam(path: string): pathParam {
@@ -81,6 +84,8 @@ export class OfficeComponent implements OnInit {
 
     this.candidateStoreService.getCandidateExpandedData(candidateId)
       .subscribe(candidateJSON => this.selectedCandidateJSON = candidateJSON);
+
+    this.sidenavService.changeSelectedCandidate(candidateId);
 
     this.isExpanded = true;
     
