@@ -6,6 +6,7 @@
       <mat-expansion-panel
         hideToggle="true"  
         (opened)="setSelectedOffice(office.title)" 
+        (opened)="changeRoute(office.route)" 
       >
 
         <mat-expansion-panel-header 
@@ -24,6 +25,7 @@
             *ngFor="let seat of office.seats;" 
             [expanded]="selectedSeatName === seat.title"
             (opened)="setSelectedSeat(seat.title)"
+            (opened)="changeRoute(seat.route)"
             class="mat-elevation-z0"
           >
           
@@ -57,7 +59,7 @@
 <ng-template #candidatesT let-office="office">
   <div class="candidates">
     <ul *ngFor="let candidate of office.candidates;" class="candidate-name">
-      <li>
+      <li (click)="changeRoute(candidate.routeLink)">
         <a 
           routerLinkActive="active"
           routerLink="{{candidate.routeLink}}" 
