@@ -92,10 +92,10 @@ export class OfficeComponent implements OnInit {
   }
 
   onOpenExpanded(candidateId: string) {
-    this.router.navigate([`${this.officeUrl}/${candidateId}`]);
+    this.router.navigate([`/${this.officeUrl}`, candidateId], { relativeTo: this.route });
   }
 
   onCloseExpanded() {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate([`/${this.officeUrl}`], { relativeTo: this.route });
   }
 }
