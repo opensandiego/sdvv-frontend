@@ -10,6 +10,7 @@ import { faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-ico
 })
 export class CandidateCardExpandedComponent {
   @Input() candidateImg: string;
+  @Input() candidateId: string;
   @Output() isExpanded = new EventEmitter<boolean>();
 
   public _c: Candidate;

@@ -24,6 +24,7 @@ export class OfficeComponent implements OnInit {
 
   office: string;
   seatName: string;
+  selectedCandidateId: string;
   candidateCards: CandidateCard[] = [];
   selectedCandidateJSON: CandidateJSON;
   selectedImagePath: string;
@@ -104,6 +105,7 @@ export class OfficeComponent implements OnInit {
     this.sidenavService.changeSelectedCandidate(candidateId);
 
     this.isExpanded = true;
+    this.selectedCandidateId = candidateId;
     
   }
 
