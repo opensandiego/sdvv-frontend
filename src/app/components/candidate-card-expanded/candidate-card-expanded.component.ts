@@ -1,5 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Candidate } from '../../candidate';
+
+import { CandidateDataService } from '../../services/candidate-data.service';
+import { RaisedInOut } from '../../vv-charts/interfaces/raisedInOut';
+import { OutsideMoney } from '../../vv-charts/interfaces/outsideMoney';
 
 import { faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,23 +12,39 @@ import { faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-ico
   templateUrl: './candidate-card-expanded.component.html',
   styleUrls: ['./candidate-card-expanded.component.scss']
 })
-export class CandidateCardExpandedComponent {
+export class CandidateCardExpandedComponent implements OnChanges {
   @Input() candidateImg: string;
   @Input() candidateId: string;
-  @Output() isExpanded = new EventEmitter<boolean>();
-
-  public _c: Candidate;
-  faQuestionCircle = faQuestionCircle;
-  faTimesCircle = faTimesCircle;
-
-  constructor() { }
-
+  @Input() set candidate(c: Candidate) {
+    this._c = c;
+  }
   get candidate() {
     return this._c;
   }
+  @Output() isExpanded = new EventEmitter<boolean>();
 
-  @Input() set candidate(c: Candidate) {
-    this._c = c;
+  public _c: Candidate;
+  
+  public raisedInOutData: RaisedInOut;
+  public outsideMoneyData: OutsideMoney;
+
+  faQuestionCircle = faQuestionCircle;
+  faTimesCircle = faTimesCircle;
+
+  constructor(
+    private candidateDataService: CandidateDataService,
+  ) { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['candidateId']) {
+      let candidateId = changes['candidateId'].currentValue;
+
+      this.candidateDataService.getRaisedInOutChart(candidateId)
+        .subscribe( results => this.raisedInOutData = results);
+
+      this.candidateDataService.getOutsideMoneyChart(candidateId)
+        .subscribe( results => this.outsideMoneyData = results);
+    }
   }
 
   // Convert Currency String to Number

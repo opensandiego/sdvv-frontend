@@ -44,11 +44,11 @@
 
   <app-donations-by-group [candidate]="_c"></app-donations-by-group>
 
-  <raised-in-out-donut
-    [inside]="_c['in vs out district'][0].in"
-    [outside]="_c['in vs out district'][0].out"
-    [areaName]="'City of San Diego'"
-    [jurisdiction]="'City'"
+  <raised-in-out-donut *ngIf="raisedInOutData"
+    [inside]="raisedInOutData.inside"
+    [outside]="raisedInOutData.outside"
+    [areaName]="raisedInOutData.areaName"
+    [jurisdiction]="raisedInOutData.jurisdiction"
   >
   </raised-in-out-donut>
 
@@ -59,9 +59,9 @@
   </div>
 
   <div class="outside-money">
-    <outside-money-bar
-      [support]="currencyToNumber(_c['support'])"
-      [oppose]="currencyToNumber(_c['oppose'])"
+    <outside-money-bar *ngIf="outsideMoneyData"
+      [support]="outsideMoneyData['support']"
+      [oppose]="outsideMoneyData['oppose']"
     >
     </outside-money-bar>
   </div>
