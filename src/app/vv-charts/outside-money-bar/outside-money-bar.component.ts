@@ -13,6 +13,7 @@ import { RoundCurrencyPipe } from '../round-currency.pipe';
 export class OutsideMoneyBarComponent implements OnChanges {
   @Input() support: number;
   @Input() oppose: number;
+  scaleMultiplier = 1.15;
   
   title: string = 'Outside Money';
   tooltipText: string = 'Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign.';
@@ -51,7 +52,7 @@ export class OutsideMoneyBarComponent implements OnChanges {
 
     layout: {
       padding: {
-        left: 0,
+        left: 40,
         right: 20,
       },
     },
@@ -70,7 +71,6 @@ export class OutsideMoneyBarComponent implements OnChanges {
         
         ticks: {
           suggestedMin: 0,
-          suggestedMax: 900000
         }
       }],
 
@@ -107,7 +107,18 @@ export class OutsideMoneyBarComponent implements OnChanges {
 
   constructor(private currencyDisplayPipe: RoundCurrencyPipe) {}
 
+  setXAxesMaxScale() {
+    let maxExpenditure = Math.max(this.support, this.oppose, 1);
+
+    let xAxesScale = Math.round(maxExpenditure * this.scaleMultiplier);
+
+    this.stackedHorizontalBarChartOptions
+      .scales.xAxes[0].ticks.suggestedMax = xAxesScale;
+  }
+
   ngOnChanges() {
+
+    this.setXAxesMaxScale();
 
     this.stackedHorizontalBarChartData[0].data = [this.support];
     this.stackedHorizontalBarChartData[0].label = 
