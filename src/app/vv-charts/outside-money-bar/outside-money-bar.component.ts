@@ -108,7 +108,9 @@ export class OutsideMoneyBarComponent implements OnChanges {
   constructor(private currencyDisplayPipe: RoundCurrencyPipe) {}
 
   setXAxesMaxScale() {
-    const maxExpenditure = Math.max(this.support, this.oppose, 1);
+    const minimumPositiveValue = 1;
+
+    const maxExpenditure = Math.max(this.support, this.oppose, minimumPositiveValue);
 
     const xAxesScale = Math.round(maxExpenditure * this.scaleMultiplier);
 
