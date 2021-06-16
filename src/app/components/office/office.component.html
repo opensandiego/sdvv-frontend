@@ -3,6 +3,7 @@
   <app-candidate-card-expanded class="p-col-12" 
     *ngIf="selectedCandidateJSON && selectedImagePath" 
     [candidate]="selectedCandidateJSON" 
+    [candidateId]="selectedCandidateId" 
     [candidateImg]="selectedImagePath" 
     (isExpanded)="onCloseExpanded()"
   ></app-candidate-card-expanded>
