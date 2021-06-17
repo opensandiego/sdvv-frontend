@@ -5,6 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsModule } from 'ng2-charts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { DonationsByGroupComponent } from './donations-by-group/donations-by-group.component';
 import { OutsideMoneyBarComponent } from './outside-money-bar/outside-money-bar.component';
@@ -27,6 +28,9 @@ import { RoundCurrencyPipe } from './round-currency.pipe';
     MatTooltipModule,
     FontAwesomeModule,
     ChartsModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
   ],
   exports: [
     DonationsByGroupComponent,
