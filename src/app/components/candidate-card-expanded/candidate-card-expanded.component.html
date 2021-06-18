@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <app-raised-vs-spent
+  <app-raised-vs-spent *ngIf="raisedVsSpentData"
     [raised]="raisedVsSpentData.raised"
     [spent]="raisedVsSpentData.spent"
     [averageDonation]="raisedVsSpentData.averageDonation"
