@@ -117,8 +117,8 @@ export class CandidateDataService {
       )),
       map( ({candidate, expandedData}) => ({
         id: candidate.id,
-        support: Number(expandedData["oppose"]),
-        oppose: Number(expandedData["support"])
+        support: Number(expandedData["support"]),
+        oppose: Number(expandedData["oppose"]),
       }))
     );
 
