@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 import { Candidate } from '../../candidate';
 
 import { CandidateDataService } from '../../services/candidate-data.service';
+import { RaisedVsSpent } from '../../vv-charts/interfaces/raisedVsSpent';
 import { RaisedInOut } from '../../vv-charts/interfaces/raisedInOut';
 import { OutsideMoney } from '../../vv-charts/interfaces/outsideMoney';
 
@@ -25,6 +26,7 @@ export class CandidateCardExpandedComponent implements OnChanges {
 
   public _c: Candidate;
   
+  public raisedVsSpentData: RaisedVsSpent;
   public raisedInOutData: RaisedInOut;
   public outsideMoneyData: OutsideMoney;
 
@@ -38,6 +40,9 @@ export class CandidateCardExpandedComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['candidateId']) {
       let candidateId = changes['candidateId'].currentValue;
+
+      this.candidateDataService.getRaisedVsSpentChart(candidateId)
+        .subscribe( results => this.raisedVsSpentData = results);
 
       this.candidateDataService.getRaisedInOutChart(candidateId)
         .subscribe( results => this.raisedInOutData = results);

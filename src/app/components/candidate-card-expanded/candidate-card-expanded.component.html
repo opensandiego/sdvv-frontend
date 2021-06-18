@@ -36,9 +36,9 @@
   </div>
 
   <app-raised-vs-spent
-    [raised]="_c['raised vs spent'][0].Raised"
-    [spent]="_c['raised vs spent'][0].Spent"
-    [averageDonation]="_c['raised vs spent'][0]['Average Donor']"
+    [raised]="raisedVsSpentData.raised"
+    [spent]="raisedVsSpentData.spent"
+    [averageDonation]="raisedVsSpentData.averageDonation"
   >
   </app-raised-vs-spent>
 

@@ -15,6 +15,7 @@ import { CandidateStoreService } from './candidate-store.service';
 import { CandidateNavigation } from '../interfaces/candidateNavigation'
 import { CandidateCard } from '../interfaces/candidateCard';
 
+import { RaisedVsSpent } from '../vv-charts/interfaces/raisedVsSpent';
 import { RaisedInOut } from '../vv-charts/interfaces/raisedInOut';
 import { OutsideMoney } from '../vv-charts/interfaces/outsideMoney';
 import { DonationsByGroup } from '../vv-charts/interfaces/donationsByGroup';
@@ -69,6 +70,22 @@ export class CandidateDataService {
         raised: Number(expandedData['raised vs spent'][0]['Raised']),
         donors: Number(expandedData['raised vs spent'][0]['Donors']),
         candidateImgURL: imageUrl,
+      }))
+    );
+
+  }
+
+  getRaisedVsSpentChart(id: string): Observable<RaisedVsSpent> {
+
+    return this.CandidateStore.getCandidate(id).pipe(
+      mergeMap(candidate => this.CandidateStore.getCandidateExpandedData(candidate.id).pipe(
+        map(expandedData => ({candidate, expandedData}))
+      )),
+      map( ({candidate, expandedData}) => ({
+        id: candidate.id,
+        raised: Number(expandedData["raised vs spent"][0]['Raised']),
+        spent: Number(expandedData["raised vs spent"][0]['Spent']),
+        averageDonation: Number(expandedData["raised vs spent"][0]['Average Donor']),
       }))
     );
 
