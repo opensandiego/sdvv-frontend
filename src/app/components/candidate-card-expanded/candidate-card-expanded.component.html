@@ -42,7 +42,10 @@
   >
   </app-raised-vs-spent>
 
-  <app-donations-by-group [candidate]="_c"></app-donations-by-group>
+  <app-donations-by-group *ngIf="donationsByGroupData"
+    [donationGroups]="donationsByGroupData.groups"
+  >
+  </app-donations-by-group>
 
   <raised-in-out-donut *ngIf="raisedInOutData"
     [inside]="raisedInOutData.inside"

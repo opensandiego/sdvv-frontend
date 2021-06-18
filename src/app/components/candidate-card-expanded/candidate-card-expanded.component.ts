@@ -3,6 +3,7 @@ import { Candidate } from '../../candidate';
 
 import { CandidateDataService } from '../../services/candidate-data.service';
 import { RaisedVsSpent } from '../../vv-charts/interfaces/raisedVsSpent';
+import { DonationsByGroup } from '../../vv-charts/interfaces/donationsByGroup';
 import { RaisedInOut } from '../../vv-charts/interfaces/raisedInOut';
 import { OutsideMoney } from '../../vv-charts/interfaces/outsideMoney';
 
@@ -27,6 +28,7 @@ export class CandidateCardExpandedComponent implements OnChanges {
   public _c: Candidate;
   
   public raisedVsSpentData: RaisedVsSpent;
+  public donationsByGroupData: DonationsByGroup;
   public raisedInOutData: RaisedInOut;
   public outsideMoneyData: OutsideMoney;
 
@@ -43,6 +45,9 @@ export class CandidateCardExpandedComponent implements OnChanges {
 
       this.candidateDataService.getRaisedVsSpentChart(candidateId)
         .subscribe( results => this.raisedVsSpentData = results);
+
+      this.candidateDataService.getDonationsByGroupChart(candidateId)
+        .subscribe( results => this.donationsByGroupData = results);  
 
       this.candidateDataService.getRaisedInOutChart(candidateId)
         .subscribe( results => this.raisedInOutData = results);
