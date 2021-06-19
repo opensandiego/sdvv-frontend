@@ -48,15 +48,9 @@ export class CandidateDataService {
 
   }
 
-  getCandidateCards(office?: string, seat?: string): Observable<CandidateCard> {
+  getCandidateCard(candidateId: string): Observable<CandidateCard> {
 
-    return this.getCandidates().pipe(
-      filter(candidate => 
-        office ? candidate.officeType.toLowerCase() === office.toLowerCase() : true
-      ),
-      filter(candidate => 
-        seat ? candidate.seat.name.toLowerCase() === seat.toLowerCase() : true
-      ),
+    return this.CandidateStore.getCandidate(candidateId).pipe(
       mergeMap(candidate => this.CandidateStore.getCandidateExpandedData(candidate.id).pipe(
         map(expandedData => ({candidate, expandedData}))
       )),
@@ -71,6 +65,20 @@ export class CandidateDataService {
         donors: Number(expandedData['raised vs spent'][0]['Donors']),
         candidateImgURL: imageUrl,
       }))
+    );;
+
+  }
+
+  getCandidateCards(office?: string, seat?: string): Observable<CandidateCard> {
+
+    return this.getCandidates().pipe(
+      filter(candidate => 
+        office ? candidate.officeType.toLowerCase() === office.toLowerCase() : true
+      ),
+      filter(candidate => 
+        seat ? candidate.seat.name.toLowerCase() === seat.toLowerCase() : true
+      ),
+      mergeMap(candidate => this.getCandidateCard(candidate.id))
     );
 
   }
