@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CandidateDataService } from '../../services/candidate-data.service';
 import { RaisedVsSpent } from '../../vv-charts/interfaces/raisedVsSpent';
@@ -29,6 +30,7 @@ export class CandidateCardExpandedComponent implements OnChanges {
 
   constructor(
     private candidateDataService: CandidateDataService,
+    private router: Router,
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -58,7 +60,7 @@ export class CandidateCardExpandedComponent implements OnChanges {
   }
 
   showFullDetailsClicked( candidateId ) {
-
+    this.router.navigate([`/under-construction`]);
   }
 
   close() {

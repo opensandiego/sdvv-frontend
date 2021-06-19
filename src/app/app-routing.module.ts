@@ -15,9 +15,10 @@ const routes: Routes = [
   { path: 'splash', component: SplashComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'under-construction', component: UnderConstructionComponent },
   { path: ':office', component: OfficeComponent },
   { path: ':office/:candidateId', component: OfficeComponent },
-  { path: 'under-construction', component: UnderConstructionComponent },
+  { path: '**', redirectTo: 'splash' },
 ];
 
 @NgModule({
