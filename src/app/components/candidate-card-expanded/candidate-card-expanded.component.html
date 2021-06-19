@@ -3,7 +3,7 @@
   <div *ngIf="candidateCard" class="candidate-card-container">
     <app-candidate-card
       [candidateCard]="candidateCard" 
-      [inExpanded]="true"
+      [inExpandedCard]="true"
       (emitCandidateId)="showFullDetailsClicked($event)"
       ></app-candidate-card>
   </div>
