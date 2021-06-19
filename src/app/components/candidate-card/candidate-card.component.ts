@@ -10,6 +10,7 @@ import { CandidateCard } from '../../interfaces/candidateCard';
 
 export class CandidateCardComponent implements OnChanges {
   @Input() candidateCard: CandidateCard;
+  @Input() inExpandedCard?: boolean;
   @Output() private emitCandidateId = new EventEmitter<any>();
 
   candidateImg: string;
@@ -20,6 +21,8 @@ export class CandidateCardComponent implements OnChanges {
   raised: number;
   donors: number;
   website: string;
+
+  buttonText: string;
 
   ngOnChanges(changes: SimpleChanges) {
 
@@ -35,6 +38,8 @@ export class CandidateCardComponent implements OnChanges {
       this.donors = candidateCard.donors;
       this.website = candidateCard.website;
     }
+
+    this.buttonText = (this.inExpandedCard) ? 'See Full Details' : 'See Details';
   }
 
   selectCandidate() {

@@ -24,6 +24,9 @@
     </div>
   </div>
 
-  <button class="candidate-button" mat-flat-button (click)="selectCandidate()">See Details</button>
+  <button *ngIf="buttonText"
+    class="candidate-button" 
+    mat-flat-button (click)="selectCandidate()"
+  >{{buttonText}}</button>
 
 </div>
