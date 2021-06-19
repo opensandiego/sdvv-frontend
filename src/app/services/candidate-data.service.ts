@@ -64,6 +64,7 @@ export class CandidateDataService {
         raised: Number(expandedData['raised vs spent'][0]['Raised']),
         donors: Number(expandedData['raised vs spent'][0]['Donors']),
         candidateImgURL: imageUrl,
+        website: expandedData['website'],
       }))
     );;
 

@@ -19,6 +19,7 @@ export class CandidateCardComponent implements OnChanges {
   description: string;
   raised: number;
   donors: number;
+  website: string;
 
   ngOnChanges(changes: SimpleChanges) {
 
@@ -32,6 +33,7 @@ export class CandidateCardComponent implements OnChanges {
       this.description = candidateCard.description;
       this.raised = candidateCard.raised;
       this.donors = candidateCard.donors;
+      this.website = candidateCard.website;
     }
   }
 

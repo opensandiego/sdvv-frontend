@@ -5,4 +5,5 @@ export interface CandidateCard {
   raised: number;
   donors: number;
   candidateImgURL: string;
+  website: string;
 }
