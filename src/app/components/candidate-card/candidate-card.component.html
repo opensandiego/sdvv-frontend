@@ -1,4 +1,4 @@
-<div class="candidate-card p-grid p-justify-center p-align-center p-nogutter">
+<div class="candidate-card p-grid p-justify-center p-align-center p-nogutter" [ngClass]="{'in-expanded' : inExpandedCard}">
 
   <div class="candidate p-col-12">
     <div class="candidate-image-container">
@@ -24,6 +24,14 @@
     </div>
   </div>
 
-  <button class="candidate-button" mat-flat-button (click)="selectCandidate()">See Details</button>
+  <button *ngIf="buttonText"
+    class="candidate-button" 
+    mat-flat-button (click)="selectCandidate()"
+  >{{buttonText}}</button>
+
+  <div *ngIf="inExpandedCard && website" class="website-link">
+    <mat-icon>link</mat-icon>
+    <a href="{{website}}">Website</a>
+  </div>
 
 </div>

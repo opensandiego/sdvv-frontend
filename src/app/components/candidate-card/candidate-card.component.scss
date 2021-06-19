@@ -77,3 +77,28 @@
         text-decoration: none;
     }
 }
+
+.candidate-card.in-expanded {
+    margin: 0px;
+    padding: 0px 25px 0px 25px;
+    box-shadow: none;
+    height: auto;
+    
+    .candidate-image {
+        border: 0px;
+    }
+}
+
+.website-link {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: $vvlightblue;
+
+    .mat-icon {
+        padding-right: 5px;
+    }
+}

@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { Candidate } from '../../candidate';
+import { Router } from '@angular/router';
 
 import { CandidateDataService } from '../../services/candidate-data.service';
 import { RaisedVsSpent } from '../../vv-charts/interfaces/raisedVsSpent';
 import { DonationsByGroup } from '../../vv-charts/interfaces/donationsByGroup';
 import { RaisedInOut } from '../../vv-charts/interfaces/raisedInOut';
 import { OutsideMoney } from '../../vv-charts/interfaces/outsideMoney';
+import { CandidateCard } from '../../interfaces/candidateCard';
 
 import { faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,28 +16,21 @@ import { faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-ico
   styleUrls: ['./candidate-card-expanded.component.scss']
 })
 export class CandidateCardExpandedComponent implements OnChanges {
-  @Input() candidateImg: string;
   @Input() candidateId: string;
-  @Input() set candidate(c: Candidate) {
-    this._c = c;
-  }
-  get candidate() {
-    return this._c;
-  }
   @Output() isExpanded = new EventEmitter<boolean>();
 
-  public _c: Candidate;
-  
   public raisedVsSpentData: RaisedVsSpent;
   public donationsByGroupData: DonationsByGroup;
   public raisedInOutData: RaisedInOut;
   public outsideMoneyData: OutsideMoney;
+  public candidateCard: CandidateCard;
 
   faQuestionCircle = faQuestionCircle;
   faTimesCircle = faTimesCircle;
 
   constructor(
     private candidateDataService: CandidateDataService,
+    private router: Router,
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -54,12 +48,19 @@ export class CandidateCardExpandedComponent implements OnChanges {
 
       this.candidateDataService.getOutsideMoneyChart(candidateId)
         .subscribe( results => this.outsideMoneyData = results);
+
+      this.candidateDataService.getCandidateCard(candidateId)
+        .subscribe( results => this.candidateCard = results);
     }
   }
 
   // Convert Currency String to Number
   currencyToNumber(currencyString: string) {
     return Number(currencyString.replace(/[^0-9\.-]+/g,""))
+  }
+
+  showFullDetailsClicked( candidateId ) {
+    this.router.navigate([`/under-construction`]);
   }
 
   close() {
