@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 import { RoundCurrencyPipe } from '../../vv-charts/round-currency.pipe';
 
@@ -20,6 +21,7 @@ export class CandidateDetailsHeaderComponent implements OnChanges {
   public raisedAmount: string;
   public donorsCount: string;
   public averageDonationAmount: string;
+  faLink = faLink;
 
   constructor(
     private roundCurrencyPipe: RoundCurrencyPipe

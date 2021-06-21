@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CandidateDetailsHeaderComponent } from './candidate-details-header.component';
 import { RoundCurrencyPipe } from '../../vv-charts/round-currency.pipe';
@@ -13,7 +14,8 @@ export default {
     moduleMetadata({
       declarations: [],
       imports: [
-        BrowserAnimationsModule, 
+        BrowserAnimationsModule,
+        FontAwesomeModule,
       ],
       providers: [RoundCurrencyPipe],
     }),

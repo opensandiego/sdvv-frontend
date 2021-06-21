@@ -44,7 +44,11 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-around;  
+  justify-content: space-around;
+
+  .website fa-icon {
+    padding-right: MIN(.6em, 2vw);
+  }
 }
 
 .candidate-name {
@@ -55,6 +59,7 @@
 .raised, .donors, .average-donation {
   padding-left: 10px;
   padding-right: 10px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
