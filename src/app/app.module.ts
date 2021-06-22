@@ -26,6 +26,7 @@ import { VvChartsModule } from './vv-charts/vv-charts.module';
 
 import { CandidateNavigationComponent } from './components/candidate-navigation/candidate-navigation.component';
 import { OfficeComponent } from './components/office/office.component';
+import { CandidateDetailsHeaderComponent } from './components/candidate-details-header/candidate-details-header.component';
 
 @NgModule({
   exports: [
@@ -43,6 +44,7 @@ import { OfficeComponent } from './components/office/office.component';
     RoundCurrencyDisplayPipe,
     CandidateNavigationComponent,
     OfficeComponent,
+    CandidateDetailsHeaderComponent,
   ],
   imports: [
     BrowserModule,
