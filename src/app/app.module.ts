@@ -27,6 +27,7 @@ import { VvChartsModule } from './vv-charts/vv-charts.module';
 import { CandidateNavigationComponent } from './components/candidate-navigation/candidate-navigation.component';
 import { OfficeComponent } from './components/office/office.component';
 import { CandidateDetailsHeaderComponent } from './components/candidate-details-header/candidate-details-header.component';
+import { DetailsRaisedByIndustryComponent } from './components/details-raised-by-industry/details-raised-by-industry.component';
 
 @NgModule({
   exports: [
@@ -45,6 +46,7 @@ import { CandidateDetailsHeaderComponent } from './components/candidate-details-
     CandidateNavigationComponent,
     OfficeComponent,
     CandidateDetailsHeaderComponent,
+    DetailsRaisedByIndustryComponent,
   ],
   imports: [
     BrowserModule,
