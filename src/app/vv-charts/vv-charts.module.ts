@@ -41,6 +41,8 @@ import { RaisedByIndustryBarComponent } from './raised-by-industry-bar/raised-by
     OutsideMoneyBarComponent,
     RaisedInOutDonutComponent,
     RaisedVsSpentComponent,
+    TotalSpentDonutComponent,
+    RaisedByIndustryBarComponent,
   ],
   providers: [RoundCurrencyPipe]
 })
