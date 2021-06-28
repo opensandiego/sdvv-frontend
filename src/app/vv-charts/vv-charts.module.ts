@@ -15,6 +15,7 @@ import { RoundCurrencyPipe } from './round-currency.pipe';
 import { TotalSpentDonutComponent } from './total-spent-donut/total-spent-donut.component';
 import { RaisedByIndustryBarComponent } from './raised-by-industry-bar/raised-by-industry-bar.component';
 import { RaisedByLocationBarComponent } from './raised-by-location-bar/raised-by-location-bar.component';
+import { RaisedByOutsideMoneyBarComponent } from './raised-by-outside-money-bar/raised-by-outside-money-bar.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RaisedByLocationBarComponent } from './raised-by-location-bar/raised-by
     TotalSpentDonutComponent,
     RaisedByIndustryBarComponent,
     RaisedByLocationBarComponent,
+    RaisedByOutsideMoneyBarComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { RaisedByLocationBarComponent } from './raised-by-location-bar/raised-by
     TotalSpentDonutComponent,
     RaisedByIndustryBarComponent,
     RaisedByLocationBarComponent,
+    RaisedByOutsideMoneyBarComponent,
   ],
   providers: [RoundCurrencyPipe]
 })
