@@ -13,6 +13,7 @@ import { RaisedInOutDonutComponent } from './raised-in-out-donut/raised-in-out-d
 import { RaisedVsSpentComponent } from './raised-vs-spent/raised-vs-spent.component';
 import { RoundCurrencyPipe } from './round-currency.pipe';
 import { TotalSpentDonutComponent } from './total-spent-donut/total-spent-donut.component';
+import { RaisedByIndustryBarComponent } from './raised-by-industry-bar/raised-by-industry-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TotalSpentDonutComponent } from './total-spent-donut/total-spent-donut.
     RaisedVsSpentComponent,
     RoundCurrencyPipe,
     TotalSpentDonutComponent,
+    RaisedByIndustryBarComponent,
   ],
   imports: [
     CommonModule,
