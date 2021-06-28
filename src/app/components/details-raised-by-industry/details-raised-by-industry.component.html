@@ -1,0 +1,38 @@
+
+<div class="details-raised-by-industry-wrapper">
+  <div class="raised-by-industry-header-wrapper">
+    <div class="title">
+      <div class="top-title">Amount Raised</div>
+      <div class="bottom-title">By Industry
+        <sup>
+          <i
+            class="helper-tip"
+            aria-hidden="true"
+            [matTooltip]="tooltipText" 
+          ><fa-icon [icon]="faQuestionCircle"></fa-icon>
+          </i>
+        </sup>
+      </div>
+    </div>
+    <div class="sort-options">
+      <label class="label">Sort</label>
+      <div class="buttons">
+
+        <button mat-flat-button 
+          *ngFor="let sortButton of sortButtons"
+          [color]="(sortOrder === sortButton.order) ? 'primary' : ''" 
+          (click)="onSort(sortButton.order)" 
+        >
+        {{sortButton.text}}
+        <fa-icon [icon]="sortButton.icon"></fa-icon>
+       </button>
+
+      </div>
+    </div>
+  </div>
+  <div class="raised-by-industry-chart">
+    <app-raised-by-industry-bar
+      [raisedByIndustries]="raisedByIndustriesLocal"
+      ></app-raised-by-industry-bar>
+  </div>
+</div>
