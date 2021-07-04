@@ -35,7 +35,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
  * Controls allow the inputs to be changed from within the Storybook UI
  */
 export default {
-  title: 'Charts/In vs Out raised funds',
+  title: 'Chart-js/In vs Out Raised Funds Donut',
   component: RaisedInOutDonutComponent,
   decorators: [
     moduleMetadata({
