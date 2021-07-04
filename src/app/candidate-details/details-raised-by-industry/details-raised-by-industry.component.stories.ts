@@ -13,7 +13,7 @@ import { RaisedByIndustryBarComponent } from '../../vv-charts/raised-by-industry
 import * as RaisedByIndustryBarStories from '../../vv-charts/raised-by-industry-bar/raised-by-industry-bar.component.stories';
 
 export default {
-  title: 'Components/Details Raised By Industry',
+  title: 'Candidate Details/Raised By Industry',
   component: DetailsRaisedByIndustryComponent,
   decorators: [
     moduleMetadata({

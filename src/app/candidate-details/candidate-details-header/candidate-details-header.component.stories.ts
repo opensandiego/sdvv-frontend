@@ -8,7 +8,7 @@ import { CandidateDetailsHeaderComponent } from './candidate-details-header.comp
 import { RoundCurrencyPipe } from '../../vv-charts/round-currency.pipe';
 
 export default {
-  title: 'Components/Candidate Details Header',
+  title: 'Candidate Details/Details Header',
   component: CandidateDetailsHeaderComponent,
   decorators: [
     moduleMetadata({
