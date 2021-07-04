@@ -7,7 +7,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { RaisedByLocationBarComponent } from './raised-by-location-bar.component';
 
 export default {
-  title: 'Charts/Raised by Location (ECharts)',
+  title: 'ECharts/Raised by Location Bar',
   component: RaisedByLocationBarComponent,
   decorators: [
     moduleMetadata({

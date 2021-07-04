@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 export default {
-  title: 'Charts/Outside Money',
+  title: 'Chart-js/Outside Money Bar',
   component: OutsideMoneyBarComponent,
   decorators: [
     moduleMetadata({

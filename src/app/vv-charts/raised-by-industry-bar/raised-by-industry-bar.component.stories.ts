@@ -7,7 +7,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { RaisedByIndustryBarComponent } from './raised-by-industry-bar.component';
 
 export default {
-  title: 'Charts/Raised by Industry (ECharts)',
+  title: 'ECharts/Raised by Industry',
   component: RaisedByIndustryBarComponent,
   decorators: [
     moduleMetadata({
