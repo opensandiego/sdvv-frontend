@@ -1,0 +1,20 @@
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+  .text {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .tooltip-icon {
+    cursor: pointer;
+    padding-left: .5em;
+    font-size: 10px;
+  } 
+}
+
+::ng-deep .tooltip-text {
+  font-size: 16px;
+}
