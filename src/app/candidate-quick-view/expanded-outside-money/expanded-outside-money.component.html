@@ -1,0 +1,31 @@
+
+<div class="outside-money-container"
+  [style.backgroundColor]="backgroundColor"
+>
+
+  <app-expanded-chart-title
+    [titleText]="title"
+    [textColor]="textColor"
+    [tooltipText]="tooltipText"
+    [tooltipColor]="textColor"
+  ></app-expanded-chart-title>
+
+  <div class="content">
+    <div class="outside-money-chart">
+      <app-outside-spending-bar 
+        [support]="support"
+        [oppose]="oppose"
+        [backgroundColor]="backgroundColor"
+        [textColor]="textColor"       
+      ></app-outside-spending-bar>
+    </div>
+
+    <div class="expenditures-panel" [style.color]="textColor">
+      <div class="expenditures">
+        <div class="label">Total Expenditures</div>
+        <div class="amount">{{formattedCurrency(totalExpenditures)}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

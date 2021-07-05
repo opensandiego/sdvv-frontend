@@ -7,10 +7,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { VvChartsModule } from '../vv-charts/vv-charts.module';
 
 import { ExpandedChartTitleComponent } from './expanded-chart-title/expanded-chart-title.component';
+import { ExpandedOutsideMoneyComponent } from './expanded-outside-money/expanded-outside-money.component';
 
 @NgModule({
   declarations: [
     ExpandedChartTitleComponent,
+    ExpandedOutsideMoneyComponent,
   ],
   imports: [
     CommonModule,
@@ -19,6 +21,7 @@ import { ExpandedChartTitleComponent } from './expanded-chart-title/expanded-cha
     VvChartsModule,
   ],
   exports: [
+    ExpandedOutsideMoneyComponent,
   ],
 })
 export class CandidateQuickViewModule { }
