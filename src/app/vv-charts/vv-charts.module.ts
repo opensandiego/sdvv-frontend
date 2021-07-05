@@ -16,6 +16,7 @@ import { TotalSpentDonutComponent } from './total-spent-donut/total-spent-donut.
 import { RaisedByIndustryBarComponent } from './raised-by-industry-bar/raised-by-industry-bar.component';
 import { RaisedByLocationBarComponent } from './raised-by-location-bar/raised-by-location-bar.component';
 import { RaisedByOutsideMoneyBarComponent } from './raised-by-outside-money-bar/raised-by-outside-money-bar.component';
+import { OutsideSpendingBarComponent } from './outside-spending-bar/outside-spending-bar.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RaisedByOutsideMoneyBarComponent } from './raised-by-outside-money-bar/
     RaisedByIndustryBarComponent,
     RaisedByLocationBarComponent,
     RaisedByOutsideMoneyBarComponent,
+    OutsideSpendingBarComponent,
   ],
   imports: [
     CommonModule,
@@ -49,6 +51,7 @@ import { RaisedByOutsideMoneyBarComponent } from './raised-by-outside-money-bar/
     RaisedByIndustryBarComponent,
     RaisedByLocationBarComponent,
     RaisedByOutsideMoneyBarComponent,
+    OutsideSpendingBarComponent,
   ],
   providers: [RoundCurrencyPipe]
 })
