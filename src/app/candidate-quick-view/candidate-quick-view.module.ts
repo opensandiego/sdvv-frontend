@@ -8,11 +8,13 @@ import { VvChartsModule } from '../vv-charts/vv-charts.module';
 
 import { ExpandedChartTitleComponent } from './expanded-chart-title/expanded-chart-title.component';
 import { ExpandedOutsideMoneyComponent } from './expanded-outside-money/expanded-outside-money.component';
+import { ContributionsByGroupComponent } from './contributions-by-group/contributions-by-group.component';
 
 @NgModule({
   declarations: [
     ExpandedChartTitleComponent,
     ExpandedOutsideMoneyComponent,
+    ContributionsByGroupComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { ExpandedOutsideMoneyComponent } from './expanded-outside-money/expanded
   ],
   exports: [
     ExpandedOutsideMoneyComponent,
+    ContributionsByGroupComponent,
   ],
 })
 export class CandidateQuickViewModule { }

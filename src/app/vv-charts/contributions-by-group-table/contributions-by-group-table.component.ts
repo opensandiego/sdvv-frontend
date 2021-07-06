@@ -1,23 +1,32 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
-@Component({
-  selector: 'app-donations-by-group',
-  templateUrl: './donations-by-group.component.html',
-  styleUrls: ['./donations-by-group.component.scss']
-})
-export class DonationsByGroupComponent implements OnChanges {
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
-  @Input() donationGroups: object[];
+export interface ContributionGroup {
+  name: string;
+  amount: number;
+  percent: number;
+}
+
+@Component({
+  selector: 'app-contributions-by-group-table',
+  templateUrl: './contributions-by-group-table.component.html',
+  styleUrls: ['./contributions-by-group-table.component.scss']
+})
+export class ContributionsByGroupTableComponent implements OnChanges {
+
+  @Input() contributionGroups: ContributionGroup[];
 
   dataSource = new MatTableDataSource();
   displayedColumns: any[];
+  faCircle = faCircle;
 
   constructor() { }
 
   ngOnChanges(): void {
     this.setDisplayedColumns();
-    this.setTableData(this.donationGroups);
+    this.setTableData(this.contributionGroups);
   }
 
   setDisplayedColumns() {
@@ -29,7 +38,7 @@ export class DonationsByGroupComponent implements OnChanges {
     ];
   }
 
-  setTableData(groups: object[]) {
+  setTableData(groups: ContributionGroup[]) {
     const colorCodes = [ '#007431', '#00903d', '#00af4a', '#00d359', '#00fc6a' ];
 
     const topFiveIndustries = groups.map((group, index) =>

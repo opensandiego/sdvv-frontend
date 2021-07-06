@@ -1,8 +1,8 @@
 @import "../../styles/variables";
 @import "../../styles/elements";
 
-.industries {
-  .industries-table {
+.groups {
+  .groups-table {
     width: 100%;
     text-align: left;
   }
@@ -24,4 +24,10 @@
     font-size: 20px;
     font-weight: bold;
   }
+  
+  fa-icon {
+    font-size: 16px;
+  }  
 }
+
+

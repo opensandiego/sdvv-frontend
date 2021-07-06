@@ -7,7 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsModule } from 'ng2-charts';
 import { NgxEchartsModule } from 'ngx-echarts';
 
-import { DonationsByGroupComponent } from './donations-by-group/donations-by-group.component';
+import { ContributionsByGroupTableComponent } from './contributions-by-group-table/contributions-by-group-table.component';
 import { OutsideMoneyBarComponent } from './outside-money-bar/outside-money-bar.component';
 import { RaisedInOutDonutComponent } from './raised-in-out-donut/raised-in-out-donut.component';
 import { RaisedVsSpentComponent } from './raised-vs-spent/raised-vs-spent.component';
@@ -21,7 +21,7 @@ import { TotalRaisedBarComponent } from './total-raised-bar/total-raised-bar.com
 
 @NgModule({
   declarations: [
-    DonationsByGroupComponent,
+    ContributionsByGroupTableComponent,
     OutsideMoneyBarComponent,
     RaisedInOutDonutComponent,
     RaisedVsSpentComponent,
@@ -45,7 +45,7 @@ import { TotalRaisedBarComponent } from './total-raised-bar/total-raised-bar.com
     }),
   ],
   exports: [
-    DonationsByGroupComponent,
+    ContributionsByGroupTableComponent,
     OutsideMoneyBarComponent,
     RaisedInOutDonutComponent,
     RaisedVsSpentComponent,
