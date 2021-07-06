@@ -1,0 +1,47 @@
+.outside-money-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.outside-money-chart {
+  flex: 1 1 75%;
+  min-width: 40%;
+  max-width: 100%;
+
+  box-shadow: 1px 0 grey;
+  z-index: 2;
+}
+
+.expenditures-panel {
+  flex: 1 1 25%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .expenditures {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: .5em 1em 1em 1em;
+
+    .label {
+      font-size: 12px;
+      padding-bottom: .6em;
+    }
+    .amount {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+}
