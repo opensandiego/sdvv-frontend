@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DonationsByGroupComponent } from './donations-by-group.component';
+import { ContributionsByGroupTableComponent } from './contributions-by-group-table.component';
 
 describe('TotalSpentListComponent', () => {
-  let component: DonationsByGroupComponent;
-  let fixture: ComponentFixture<DonationsByGroupComponent>;
+  let component: ContributionsByGroupTableComponent;
+  let fixture: ComponentFixture<ContributionsByGroupTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DonationsByGroupComponent ]
+      declarations: [ ContributionsByGroupTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DonationsByGroupComponent);
+    fixture = TestBed.createComponent(ContributionsByGroupTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

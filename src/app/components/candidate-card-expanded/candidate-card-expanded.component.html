@@ -15,10 +15,9 @@
   >
   </app-raised-vs-spent>
 
-  <app-donations-by-group *ngIf="donationsByGroupData"
-    [donationGroups]="donationsByGroupData.groups"
-  >
-  </app-donations-by-group>
+  <app-contributions-by-group *ngIf="donationsByGroupData"
+    [contributionGroups]="donationsByGroupData.groups"
+  ></app-contributions-by-group>
 
   <raised-in-out-donut *ngIf="raisedInOutData"
     [inside]="raisedInOutData.inside"

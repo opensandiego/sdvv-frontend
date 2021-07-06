@@ -1,24 +1,10 @@
-<div class="industries">
-    <div class="title">
-      <p>
-        Donations by Group
-        <sup>
-          <i
-            class="helper-tip fa fa-question-circle"
-            aria-hidden="true"
-            matTooltip="Total contributions from the five largest groups of campaign donors.  Groups are determined by the industry segment of each donor's employer."
-          >
-          </i>
-        </sup>
-      </p>
-    </div>
-
+<div class="groups">
   <div>
-    <table class="industries-table" mat-table [dataSource]="dataSource">
+    <table class="groups-table" mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="colorCode">
         <th mat-header-cell *matHeaderCellDef>Color Code</th>
         <td [ngClass]="{'remove-border': i == dataSource.data.length - 1}" mat-cell *matCellDef="let element; let i = index" [style.color]="element.colorCode">
-          <mat-icon>fiber_manual_record</mat-icon>
+          <fa-icon [icon]="faCircle"></fa-icon>
         </td>
       </ng-container>
 
