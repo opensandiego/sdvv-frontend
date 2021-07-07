@@ -21,15 +21,15 @@ export class OutsideSpendingBarComponent implements OnChanges {
     grid: {
       left: 20,
       top: 10,
-      right: 60,
+      right: 75,
       bottom: 0,
       height: 125,
       containLabel: true,
     },
     xAxis: {
       show: false,
-      type: 'log',
-      logBase: 2,
+      // type: 'log',
+      // logBase: 2,
     },
     yAxis: {
       type: 'category',
@@ -38,7 +38,7 @@ export class OutsideSpendingBarComponent implements OnChanges {
         show: false
       },
       axisLabel: {
-        fontWeight: 'bolder',
+        show: false,
       },
     },
     tooltip: {
@@ -51,9 +51,19 @@ export class OutsideSpendingBarComponent implements OnChanges {
       label: {
         show: true,
         position: 'right',
-        formatter: (params) => getCompactFormattedCurrency(+params['value']),        
-        fontWeight: 'bold',
-        fontSize: 16,
+        formatter: (params) => 
+        `{a|${params['name']}} \n {b|${getCompactFormattedCurrency(+params['value'])}}`,     
+        align: 'left',
+        rich: {
+          a: {
+            fontSize: 12,
+          },
+          b: {
+            fontSize: 16,
+            fontWeight: 'bold',
+            padding: [5, 0, 5, 0],
+          },
+        },
       },
       barWidth: 20,
     }],
