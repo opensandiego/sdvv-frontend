@@ -1,6 +1,6 @@
 import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
-import { CandidateCard } from '../../interfaces/candidateCard';
+import type { CandidateCard } from '../../interfaces/candidateCard';
 
 @Component({
   selector: 'app-candidate-card',
