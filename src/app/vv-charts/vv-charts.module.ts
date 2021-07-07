@@ -18,6 +18,7 @@ import { RaisedByLocationBarComponent } from './raised-by-location-bar/raised-by
 import { RaisedByOutsideMoneyBarComponent } from './raised-by-outside-money-bar/raised-by-outside-money-bar.component';
 import { OutsideSpendingBarComponent } from './outside-spending-bar/outside-spending-bar.component';
 import { TotalRaisedBarComponent } from './total-raised-bar/total-raised-bar.component';
+import { RaisedVsSpentBarComponent } from './raised-vs-spent-bar/raised-vs-spent-bar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TotalRaisedBarComponent } from './total-raised-bar/total-raised-bar.com
     RaisedByOutsideMoneyBarComponent,
     OutsideSpendingBarComponent,
     TotalRaisedBarComponent,
+    RaisedVsSpentBarComponent,
   ],
   imports: [
     CommonModule,
@@ -55,6 +57,7 @@ import { TotalRaisedBarComponent } from './total-raised-bar/total-raised-bar.com
     RaisedByOutsideMoneyBarComponent,
     OutsideSpendingBarComponent,
     TotalRaisedBarComponent,
+    RaisedVsSpentBarComponent,
   ],
   providers: [RoundCurrencyPipe]
 })

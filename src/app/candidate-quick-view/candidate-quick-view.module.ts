@@ -9,12 +9,16 @@ import { VvChartsModule } from '../vv-charts/vv-charts.module';
 import { ExpandedChartTitleComponent } from './expanded-chart-title/expanded-chart-title.component';
 import { ExpandedOutsideMoneyComponent } from './expanded-outside-money/expanded-outside-money.component';
 import { ContributionsByGroupComponent } from './contributions-by-group/contributions-by-group.component';
+import { ExpandedAverageDonationComponent } from './expanded-average-donation/expanded-average-donation.component';
+import { ExpandedRaisedVsSpentComponent } from './expanded-raised-vs-spent/expanded-raised-vs-spent.component';
 
 @NgModule({
   declarations: [
     ExpandedChartTitleComponent,
     ExpandedOutsideMoneyComponent,
     ContributionsByGroupComponent,
+    ExpandedAverageDonationComponent,
+    ExpandedRaisedVsSpentComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +29,7 @@ import { ContributionsByGroupComponent } from './contributions-by-group/contribu
   exports: [
     ExpandedOutsideMoneyComponent,
     ContributionsByGroupComponent,
+    ExpandedRaisedVsSpentComponent,
   ],
 })
 export class CandidateQuickViewModule { }
