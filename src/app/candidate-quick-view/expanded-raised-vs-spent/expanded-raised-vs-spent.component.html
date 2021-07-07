@@ -1,0 +1,16 @@
+
+<div class="raised-vs-spent-wrapper">
+  <app-expanded-chart-title class="chart-title"
+    [titleText]="title"
+    [tooltipText]="tooltipText"
+  ></app-expanded-chart-title>
+
+  <app-raised-vs-spent-bar class="raised-vs-spent-chart"
+    [raised]="raised"
+    [spent]="spent"
+  ></app-raised-vs-spent-bar>
+
+  <app-expanded-average-donation class="average-footer"
+    [amount]="averageDonation"
+  ></app-expanded-average-donation>
+</div>
