@@ -23,6 +23,7 @@ export class RaisedInVsOutDonutComponent implements OnChanges {
     series: [
       {
         type: 'pie',
+        clockwise: false,
         label: {    
           formatter: (params) => 
               `{a|${params.data['name']}}\n` +
@@ -38,13 +39,15 @@ export class RaisedInVsOutDonutComponent implements OnChanges {
             },
           },
         },
-        emphasis: {
-          itemStyle: { opacity: .5, },
-        },
         labelLine: {
           show: false
         },
-        clockwise: false,
+        labelLayout: {
+          moveOverlap: 'shiftY',
+        },
+        emphasis: {
+          itemStyle: { opacity: .5, },
+        },        
         radius: ['50%', '90%'],
       },
     ],
