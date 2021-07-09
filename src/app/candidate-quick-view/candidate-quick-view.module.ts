@@ -11,6 +11,7 @@ import { ExpandedOutsideMoneyComponent } from './expanded-outside-money/expanded
 import { ContributionsByGroupComponent } from './contributions-by-group/contributions-by-group.component';
 import { ExpandedAverageDonationComponent } from './expanded-average-donation/expanded-average-donation.component';
 import { ExpandedRaisedVsSpentComponent } from './expanded-raised-vs-spent/expanded-raised-vs-spent.component';
+import { ExpandedRaisedInVsOutComponent } from './expanded-raised-in-vs-out/expanded-raised-in-vs-out.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ExpandedRaisedVsSpentComponent } from './expanded-raised-vs-spent/expan
     ContributionsByGroupComponent,
     ExpandedAverageDonationComponent,
     ExpandedRaisedVsSpentComponent,
+    ExpandedRaisedInVsOutComponent,
   ],
   imports: [
     CommonModule,
