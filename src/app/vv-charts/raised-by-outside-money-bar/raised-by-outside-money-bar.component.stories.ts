@@ -7,7 +7,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { RaisedByOutsideMoneyBarComponent } from './raised-by-outside-money-bar.component';
 
 export default {
-  title: 'ECharts/Raised by Outside Money',
+  title: 'ECharts/Raised by Outside Money Bar',
   component: RaisedByOutsideMoneyBarComponent,
   decorators: [
     moduleMetadata({
