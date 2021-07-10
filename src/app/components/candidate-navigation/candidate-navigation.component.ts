@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { toArray } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { CandidateNavigation } from '../../interfaces/candidateNavigation'
+import type { CandidateNavigation } from '../../interfaces/candidateNavigation'
 import { CandidateDataService } from '../../services/candidate-data.service';
 
 import { SidenavService } from '../../services/sidenav.service';

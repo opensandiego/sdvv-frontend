@@ -1,4 +1,4 @@
-import { CandidateAssetsPaths } from '../../app/interfaces/candidateAssetPaths'
+import type { CandidateAssetsPaths } from '../../app/interfaces/candidateAssetPaths'
 
 export const  candidateAssets: CandidateAssetsPaths[] = [
   {

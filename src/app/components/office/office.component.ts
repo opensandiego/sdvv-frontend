@@ -4,8 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { CandidateDataService } from '../../services/candidate-data.service';
 import { CandidateStoreService } from '../../services/candidate-store.service';
-import { CandidateCard } from '../../interfaces/candidateCard';
-import { CandidateJSON } from '../../interfaces/candidateJSON';
+import type { CandidateCard } from '../../interfaces/candidateCard';
+import type { CandidateJSON } from '../../interfaces/candidateJSON';
 
 import { SidenavService } from '../../services/sidenav.service';
 

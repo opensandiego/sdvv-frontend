@@ -13,8 +13,8 @@ import { first, map, mergeMap } from 'rxjs/operators';
  *  
  */
 
-import { CandidateNavigation } from '../interfaces/candidateNavigation';
-import { CandidateJSON } from '../interfaces/candidateJSON';
+import type { CandidateNavigation } from '../interfaces/candidateNavigation';
+import type { CandidateJSON } from '../interfaces/candidateJSON';
 
 import { candidateNavigationItems } from '../../assets/candidates/mock-candidateNavigationItems';
 import { candidateAssets } from '../../assets/candidates/mock-candidateAssetPaths';
