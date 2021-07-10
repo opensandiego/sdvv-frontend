@@ -32,6 +32,7 @@ import { ExpandedRaisedInVsOutComponent } from './expanded-raised-in-vs-out/expa
     ExpandedOutsideMoneyComponent,
     ContributionsByGroupComponent,
     ExpandedRaisedVsSpentComponent,
+    ExpandedRaisedInVsOutComponent,
   ],
 })
 export class CandidateQuickViewModule { }
