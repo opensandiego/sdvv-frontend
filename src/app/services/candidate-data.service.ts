@@ -12,13 +12,13 @@ import { map, toArray, mergeMap, filter, } from 'rxjs/operators';
 
 import { CandidateStoreService } from './candidate-store.service';
 
-import { CandidateNavigation } from '../interfaces/candidateNavigation'
-import { CandidateCard } from '../interfaces/candidateCard';
+import type { CandidateNavigation } from '../interfaces/candidateNavigation'
+import type { CandidateCard } from '../interfaces/candidateCard';
 
-import { RaisedVsSpent } from '../vv-charts/interfaces/raisedVsSpent';
-import { RaisedInOut } from '../vv-charts/interfaces/raisedInOut';
-import { OutsideMoney } from '../vv-charts/interfaces/outsideMoney';
-import { DonationsByGroup } from '../vv-charts/interfaces/donationsByGroup';
+import type { RaisedVsSpent } from '../vv-charts/interfaces/raisedVsSpent';
+import type { RaisedInOut } from '../vv-charts/interfaces/raisedInOut';
+import type { OutsideMoney } from '../vv-charts/interfaces/outsideMoney';
+import type { DonationsByGroup } from '../vv-charts/interfaces/donationsByGroup';
 
 
 @Injectable({

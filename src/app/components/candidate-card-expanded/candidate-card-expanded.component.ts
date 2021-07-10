@@ -2,11 +2,11 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 import { Router } from '@angular/router';
 
 import { CandidateDataService } from '../../services/candidate-data.service';
-import { RaisedVsSpent } from '../../vv-charts/interfaces/raisedVsSpent';
-import { DonationsByGroup } from '../../vv-charts/interfaces/donationsByGroup';
-import { RaisedInOut } from '../../vv-charts/interfaces/raisedInOut';
-import { OutsideMoney } from '../../vv-charts/interfaces/outsideMoney';
-import { CandidateCard } from '../../interfaces/candidateCard';
+import type { RaisedVsSpent } from '../../vv-charts/interfaces/raisedVsSpent';
+import type { DonationsByGroup } from '../../vv-charts/interfaces/donationsByGroup';
+import type { RaisedInOut } from '../../vv-charts/interfaces/raisedInOut';
+import type { OutsideMoney } from '../../vv-charts/interfaces/outsideMoney';
+import type { CandidateCard } from '../../interfaces/candidateCard';
 
 import { faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
