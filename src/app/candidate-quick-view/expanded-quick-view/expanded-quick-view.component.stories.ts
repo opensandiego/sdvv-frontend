@@ -7,11 +7,12 @@ import { from } from 'rxjs';
 import { ExpandedQuickViewComponent } from './expanded-quick-view.component';
 
 import { CandidateModule } from '../../candidate/candidate.module';
+import { CandidateQuickViewModule } from '../../candidate-quick-view/candidate-quick-view.module';
 
 import { CandidateDataService } from '../../services/candidate-data.service';
 
 import * as CandidateCardStories from 
-  '../candidate-card/candidate-card.component.stories';
+  '../../candidate/candidate-card/candidate-card.component.stories';
 import * as ExpandedRaisedVsSpentStories from 
   '../../candidate-quick-view/expanded-raised-vs-spent/expanded-raised-vs-spent.component.stories'
 import * as ContributionsByGroupStories from 
@@ -33,6 +34,7 @@ export default {
         RouterTestingModule,
         CommonModule,
         CandidateModule,
+        CandidateQuickViewModule,
       ],
       providers: [
 
@@ -40,7 +42,7 @@ export default {
           provide: CandidateDataService, useValue: {
             getCandidateCard: (id) => {
               return from( [CandidateCardStories.Default.args.candidateCard] )
-            },            
+            },
             getRaisedVsSpentChart: (id) => {
               return from( [ExpandedRaisedVsSpentStories.Default.args] )
             },

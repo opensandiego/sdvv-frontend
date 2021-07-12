@@ -7,15 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CandidateCardComponent } from './candidate-card/candidate-card.component';
-import { ExpandedQuickViewComponent } from './expanded-quick-view/expanded-quick-view.component';
 
 import { VvChartsModule } from '../vv-charts/vv-charts.module';
-import { CandidateQuickViewModule } from '../candidate-quick-view/candidate-quick-view.module';
 
 @NgModule({
   declarations: [
     CandidateCardComponent,
-    ExpandedQuickViewComponent,
   ],
   imports: [
     CommonModule,
@@ -25,11 +22,9 @@ import { CandidateQuickViewModule } from '../candidate-quick-view/candidate-quic
     FontAwesomeModule,
 
     VvChartsModule,
-    CandidateQuickViewModule,
   ],
   exports: [
     CandidateCardComponent,
-    ExpandedQuickViewComponent,
   ]
 })
 export class CandidateModule { }
