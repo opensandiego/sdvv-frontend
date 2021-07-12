@@ -27,7 +27,7 @@ export class RaisedInVsOutDonutComponent implements OnChanges {
         label: {    
           formatter: (params) => 
               `{a|${params.data['name']}}\n` +
-              `{b|${getFormattedCurrency(+params.data['value'])}}`,
+              `{b|${getFormattedCurrency(+params.data['value'], 1)}}`,
           rich: {
             a: {
               fontSize: '1em',

@@ -24,6 +24,7 @@ import { UnderConstructionComponent } from './components/under-construction/unde
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 import { VvChartsModule } from './vv-charts/vv-charts.module';
 import { CandidateQuickViewModule } from './candidate-quick-view/candidate-quick-view.module';
+import { CandidateModule } from './candidate/candidate.module';
 
 import { CandidateNavigationComponent } from './components/candidate-navigation/candidate-navigation.component';
 import { OfficeComponent } from './components/office/office.component';
@@ -62,6 +63,7 @@ import { OfficeComponent } from './components/office/office.component';
     MatTooltipModule,
     VvChartsModule,
     CandidateQuickViewModule,
+    CandidateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

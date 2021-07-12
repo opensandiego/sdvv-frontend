@@ -1,6 +1,7 @@
 
 <div class="outside-money-container"
   [style.backgroundColor]="backgroundColor"
+  [style.borderColor]="backgroundColor"
 >
 
   <app-expanded-chart-title
@@ -23,7 +24,7 @@
     <div class="expenditures-panel" [style.color]="textColor">
       <div class="expenditures">
         <div class="label">Total Expenditures</div>
-        <div class="amount">{{formattedCurrency(totalExpenditures)}}</div>
+        <div class="amount">{{formattedCurrency(totalExpenditures, 1)}}</div>
       </div>
     </div>
   </div>
