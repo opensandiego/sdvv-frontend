@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContributionsByGroupTableComponent } from './contributions-by-group-table.component';
 
-describe('TotalSpentListComponent', () => {
+describe('ContributionsByGroupTableComponent', () => {
   let component: ContributionsByGroupTableComponent;
   let fixture: ComponentFixture<ContributionsByGroupTableComponent>;
 

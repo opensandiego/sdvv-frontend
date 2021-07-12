@@ -45,7 +45,7 @@ export default {
               return from( [ExpandedRaisedVsSpentStories.Default.args] )
             },
             getDonationsByGroupChart: (id) => {
-              return from( [ContributionsByGroupStories.Default.args.contributionGroups] )
+              return from( [{groups: ContributionsByGroupStories.Default.args.contributionGroups}] )
             },
             getRaisedInOutChart: (id) => {
               return from( [ExpandedRaisedInVsOutStories.Default.args] )
