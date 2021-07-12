@@ -46,7 +46,7 @@ export class RaisedVsSpentBarComponent implements OnChanges {
         show: true,
         position: 'top',
         formatter: (params) => 
-          `{a|${params['name']}} \n {b|${getCompactFormattedCurrency(+params['value'])}}`,
+          `{a|${params['name']}} \n {b|${getCompactFormattedCurrency(+params['value'], 1)}}`,
         align: 'center',
         rich: {
           a: {
