@@ -2,25 +2,23 @@
 <div class="quick-view-container">
 
   <div class="quick-view-layout">
-    <div class="items-1-2">
-      <div class="item-1">
+    <div class="item-1">
 
-          <candidate-card *ngIf="candidateCard"
-            [candidateCard]="candidateCard"
-            [inExpandedCard]="true"
-            (emitCandidateId)="showFullDetailsClicked($event)"            
-          ></candidate-card>
-        
-      </div>
-      <div class="item-2">
+      <candidate-card *ngIf="candidateCard"
+        [candidateCard]="candidateCard"
+        [inExpandedCard]="true"
+        (emitCandidateId)="showFullDetailsClicked($event)"
+      ></candidate-card>
+      
+    </div>
+    <div class="item-2">
 
-        <app-expanded-raised-vs-spent *ngIf="raisedVsSpentData"
-          [raised]="raisedVsSpentData.raised"
-          [spent]="raisedVsSpentData.spent"
-          [averageDonation]="raisedVsSpentData.averageDonation"
-        ></app-expanded-raised-vs-spent>
+      <app-expanded-raised-vs-spent *ngIf="raisedVsSpentData"
+        [raised]="raisedVsSpentData.raised"
+        [spent]="raisedVsSpentData.spent"
+        [averageDonation]="raisedVsSpentData.averageDonation"
+      ></app-expanded-raised-vs-spent>
 
-      </div>
     </div>
     <div class="items-3-4">
       <div class="item-3">
@@ -44,13 +42,13 @@
 
   </div>
 
-    <div class="item-5">
-      <app-expanded-outside-money *ngIf="outsideMoneyData"
-        [support]="outsideMoneyData['support']"
-        [oppose]="outsideMoneyData['oppose']"
-        [totalExpenditures]="outsideMoneyData['oppose']+outsideMoneyData['oppose']"
-      ></app-expanded-outside-money>
-    </div>
+  <div class="item-5">
+    <app-expanded-outside-money *ngIf="outsideMoneyData"
+      [support]="outsideMoneyData['support']"
+      [oppose]="outsideMoneyData['oppose']"
+      [totalExpenditures]="outsideMoneyData['support']+outsideMoneyData['oppose']"
+    ></app-expanded-outside-money>
+  </div>
 
 
   <div class="close">
