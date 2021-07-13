@@ -12,12 +12,13 @@ import { map, toArray, mergeMap, filter, } from 'rxjs/operators';
 
 import { CandidateStoreService } from './candidate-store.service';
 
-import { CandidateNavigation } from '../interfaces/candidateNavigation'
-import { CandidateCard } from '../interfaces/candidateCard';
+import type { CandidateNavigation } from '../interfaces/candidateNavigation'
+import type { CandidateCard } from '../interfaces/candidateCard';
 
-import { RaisedInOut } from '../vv-charts/interfaces/raisedInOut';
-import { OutsideMoney } from '../vv-charts/interfaces/outsideMoney';
-import { DonationsByGroup } from '../vv-charts/interfaces/donationsByGroup';
+import type { RaisedVsSpent } from '../vv-charts/interfaces/raisedVsSpent';
+import type { RaisedInOut } from '../vv-charts/interfaces/raisedInOut';
+import type { OutsideMoney } from '../vv-charts/interfaces/outsideMoney';
+import type { DonationsByGroup } from '../vv-charts/interfaces/donationsByGroup';
 
 
 @Injectable({
@@ -47,15 +48,9 @@ export class CandidateDataService {
 
   }
 
-  getCandidateCards(office?: string, seat?: string): Observable<CandidateCard> {
+  getCandidateCard(candidateId: string): Observable<CandidateCard> {
 
-    return this.getCandidates().pipe(
-      filter(candidate => 
-        office ? candidate.officeType.toLowerCase() === office.toLowerCase() : true
-      ),
-      filter(candidate => 
-        seat ? candidate.seat.name.toLowerCase() === seat.toLowerCase() : true
-      ),
+    return this.CandidateStore.getCandidate(candidateId).pipe(
       mergeMap(candidate => this.CandidateStore.getCandidateExpandedData(candidate.id).pipe(
         map(expandedData => ({candidate, expandedData}))
       )),
@@ -69,6 +64,37 @@ export class CandidateDataService {
         raised: Number(expandedData['raised vs spent'][0]['Raised']),
         donors: Number(expandedData['raised vs spent'][0]['Donors']),
         candidateImgURL: imageUrl,
+        website: expandedData['website'],
+      }))
+    );;
+
+  }
+
+  getCandidateCards(office?: string, seat?: string): Observable<CandidateCard> {
+
+    return this.getCandidates().pipe(
+      filter(candidate => 
+        office ? candidate.officeType.toLowerCase() === office.toLowerCase() : true
+      ),
+      filter(candidate => 
+        seat ? candidate.seat.name.toLowerCase() === seat.toLowerCase() : true
+      ),
+      mergeMap(candidate => this.getCandidateCard(candidate.id))
+    );
+
+  }
+
+  getRaisedVsSpentChart(id: string): Observable<RaisedVsSpent> {
+
+    return this.CandidateStore.getCandidate(id).pipe(
+      mergeMap(candidate => this.CandidateStore.getCandidateExpandedData(candidate.id).pipe(
+        map(expandedData => ({candidate, expandedData}))
+      )),
+      map( ({candidate, expandedData}) => ({
+        id: candidate.id,
+        raised: Number(expandedData["raised vs spent"][0]['Raised']),
+        spent: Number(expandedData["raised vs spent"][0]['Spent']),
+        averageDonation: Number(expandedData["raised vs spent"][0]['Average Donor']),
       }))
     );
 
@@ -100,8 +126,8 @@ export class CandidateDataService {
       )),
       map( ({candidate, expandedData}) => ({
         id: candidate.id,
-        support: Number(expandedData["oppose"]),
-        oppose: Number(expandedData["support"])
+        support: Number(expandedData["support"]),
+        oppose: Number(expandedData["oppose"]),
       }))
     );
 

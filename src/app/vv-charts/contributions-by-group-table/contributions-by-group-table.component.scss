@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+@import "../../styles/elements";
+
+.groups {
+  .groups-table {
+    width: 100%;
+    text-align: left;
+  }
+
+  .mat-cell {
+    font-size: 13px;
+    color: $vvgrey;
+    padding: 8px;
+  }
+
+  .mat-cell:nth-last-child(2),
+  .mat-cell:last-child,
+  .mat-header-cell:nth-last-child(2),
+  .mat-header-cell:last-child {
+    text-align: right;
+  }
+
+  .mat-cell:last-child {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  fa-icon {
+    font-size: 16px;
+  }  
+}
+
+

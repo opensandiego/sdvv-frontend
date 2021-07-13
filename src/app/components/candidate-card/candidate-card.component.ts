@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SidenavService } from '../../services';
+import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+
+import type { CandidateCard } from '../../interfaces/candidateCard';
 
 @Component({
   selector: 'app-candidate-card',
@@ -7,26 +8,41 @@ import { SidenavService } from '../../services';
   styleUrls: ['./candidate-card.component.scss']
 })
 
-export class CandidateCardComponent implements OnInit {
-  @Input() candidate: any;
-  @Input() candidateImg: string;
-  @Output() private emitCandidateData = new EventEmitter<any>();
-  @Output() private emitCandidateImage = new EventEmitter<any>();
+export class CandidateCardComponent implements OnChanges {
+  @Input() candidateCard: CandidateCard;
+  @Input() inExpandedCard?: boolean;
+  @Output() private emitCandidateId = new EventEmitter<any>();
 
-  constructor(private sidenavService: SidenavService) {
-    sidenavService.candidateKeyEmittedFromSidenav$.subscribe(res => {
-      if (res === this.candidate['candidate name']) {
-        this.outputCandidateData();
-      }
-    });
+  candidateImg: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  description: string;
+  raised: number;
+  donors: number;
+  website: string;
+
+  buttonText: string;
+
+  ngOnChanges(changes: SimpleChanges) {
+
+    if (changes['candidateCard']) {
+      let candidateCard = changes['candidateCard'].currentValue;
+
+      this.candidateImg = candidateCard.candidateImgURL;
+      this.firstName = candidateCard.name.split(' ')[0];
+      this.lastName = candidateCard.name.slice(this.firstName.length+1);
+      this.fullName = candidateCard.name;
+      this.description = candidateCard.description;
+      this.raised = candidateCard.raised;
+      this.donors = candidateCard.donors;
+      this.website = candidateCard.website;
+    }
+
+    this.buttonText = (this.inExpandedCard) ? 'See Full Details' : 'See Details';
   }
 
-  ngOnInit() {
-  }
-
-  outputCandidateData() {
-    this.emitCandidateData.emit(this.candidate);
-    this.emitCandidateImage.emit(this.candidateImg);
-    this.sidenavService.emitCandidateNameCard(this.candidate['candidate name']);
+  selectCandidate() {
+    this.emitCandidateId.emit(this.candidateCard.id);
   }
 }

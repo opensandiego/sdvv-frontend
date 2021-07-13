@@ -7,8 +7,6 @@
     align-self: start;
     justify-items: center;
     padding:20px;
-    
-
 }
 .candidate-card-expanded {
     padding: 15px 25px 15px 25px;
@@ -17,127 +15,17 @@
     background: #fff;
     box-shadow: $vvshadow;
  
-
-    h1 {
-        font-size: 20px;
-        color: $vvdarkblue;
-    }
-
-    h2 {
-        font-weight: normal;
-        font-size: 12px;
-        color: $vvgrey;
-        margin: 5px 0px 10px 0px;
-    }
-
-    h3 {
-        font-size: 18px;
-        color: $vvdarkgrey;
-    }
-
     i {
         cursor: pointer;
     }
 
-    .title {
-        padding: 0;
-        font-size: 18px;
-        font-weight: bold;
-        color: $vvdarkblue;
-    }
-
-    .candidate {
+    .candidate-card-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 0px 0px 15px 25px;
-
-        .first{
-            margin-top:10px;
-        }
-      
-        .candidate-numbers {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom:10px;
-            div {
-                padding: 0 6px;
-                h2, h3{
-                    margin: 1px 0;
-                }
-            }
-            .raised h3 {
-                color: $vvgreen;
-            }
-        } 
-
-
-        
-        .candidate-image-container {
-            height: 125px;
-            width: 125px;
-        }
-
-        .candidate-image {
-            display: flex;
-            height: 125px;
-            width: 125px;
-            border-radius: 50%;
-            overflow: hidden;
-
-            img {
-  
-                object-fit: cover;
-                object-position: center top;
-                width: 100%;
-                height: auto;
-                background-color: #ECEFF2;
-            }
-        }
-    }
-  
-    .chart-container{
-        position: relative; 
-        height:20vh; 
-        width:20vw;
-        margin:auto;
     }
 
-    .raised-spent{
-        .chart-container-raised{
-            position: relative; 
-            height:21vh; 
-            width:12vw;
-            max-height: 200px;
-            margin:auto;
-        }
-        .raised-spent-footer-title,.raised-spent-footer-content{
-            margin:5px 0px;
-        }
-    }
-
-    .industries {
-        .industries-table {
-            width: 100%;
-            text-align: left;
-        }
-
-        .mat-cell {
-            font-size: 13px;
-            color: $vvgrey;
-            padding:8px;
-        }
-        
-        .mat-cell:nth-last-child(2), .mat-cell:last-child, 
-        .mat-header-cell:nth-last-child(2), .mat-header-cell:last-child {
-            text-align: right;
-        }
-
-        .mat-cell:last-child {
-            font-size: 20px;
-            font-weight: bold;
-        }
-    }
     .outside-money{
         grid-column: 1 / 5;
         border:1px solid #efefef;
@@ -146,47 +34,6 @@
         justify-self: stretch;
         background-color: $vvdarkgrey;
         color:#fff;
-
-        .title, .helper-tip, .donors, .raised{
-            color:#fff;
-            h2, h3{
-                color:#fff;
-                margin: 0px 0px 5px 0px;
-            }
-        }
-
-
-        .chart-container-outside{
-            
-            height:10vh; 
-            width:58vw;
-            border-left:1px solid #727272;
-            margin-left:40px;
-           
-            
-        }
-        
-        .outside-grid{
-            display: grid;
-            grid-template-columns:60vw 0.8fr;
-            justify-self: stretch;
-           
-
-            .donors{
-                
-                padding:20px 0px 20px 30px;
-                text-align: left;
-                align-self: center;
-            }
-            .raised{
-                padding:20px 0px 20px 30px;
-                text-align: left;
-                border-left: 1px solid #727272;
-                align-self: center;
-            }
-        }
-        
-
     }
     
 
@@ -202,28 +49,6 @@
     }
 }
 
-.website-link {
-    display: flex;
-    justify-content: center;
-    vertical-align: middle;
-    align-items: center;
-    margin-top: 10px;
-    font-size: 14px;
-    color: $vvlightblue;
-
-    .mat-icon {
-        padding-right: 5px;
-    }
-}
-
-.full-details-btn {
-    @include button-styles;
-    padding: 0 16px;
-}
-
-.full-details-btn:hover {
-    background-color: $vvlightblue;
-}
 
 .divider {
     width: 100%;
@@ -234,7 +59,6 @@
 .remove-border {
     border: none;
 }
-
 
 
 // Expanded Card Adjustments for Smaller Screens
@@ -253,12 +77,6 @@
         height:25vh !important; 
         width:60vw !important;  
     }
- 
-
-    
-
-   
- 
 }
 
 ::ng-deep .mat-tooltip {

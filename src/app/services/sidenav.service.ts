@@ -5,6 +5,14 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class SidenavService {
+  selectedCandidateChangedSource = new Subject<string>();
+  selectedOfficeChangedSource = new Subject<string>();
+  selectedSeatChangedSource = new Subject<string>();
+
+  candidateChanged$ = this.selectedCandidateChangedSource.asObservable();
+  officeChanged$ = this.selectedOfficeChangedSource.asObservable();
+  officeSeatChanged$ = this.selectedSeatChangedSource.asObservable();
+
   emitCandidateKeyFromSidenav = new Subject<any>();
   emitCandidateNameFromCard = new Subject<any>();
   emitCandidateTypeFromSplash = new Subject<any>();
@@ -14,6 +22,18 @@ export class SidenavService {
   candidateTypeEmittedFromSplash$ = this.emitCandidateTypeFromSplash.asObservable();
 
   constructor() { }
+
+  changeSelectedOffice(officeName: string) {
+    this.selectedOfficeChangedSource.next(officeName.toLowerCase());
+  }
+
+  changeSelectedSeat(seat: string) {
+    this.selectedSeatChangedSource.next(seat);
+  }
+
+  changeSelectedCandidate(id: string) {
+    this.selectedCandidateChangedSource.next(id);
+  }
 
   emitCandidateKeySidenav(key: string) {
     this.emitCandidateKeyFromSidenav.next(key);

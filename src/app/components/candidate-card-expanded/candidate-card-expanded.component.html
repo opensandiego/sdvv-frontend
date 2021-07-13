@@ -1,147 +1,43 @@
 <div class="candidate-card-expanded vv-grid">
-
-  <div>
-    <div class="candidate">
-
-      <div class="candidate-image-container">
-        <div class="candidate-image">
-          <img [src]="candidateImg" [alt]="candidate['candidate name']" onError="this.src='../../../assets/candidate-card/profile.png'">
-        </div>
-      </div>
-      <h1 class="first">{{candidate['first']}}</h1>
-      <h1>{{candidate['last']}}</h1>
-      <h2>{{ candidate['description'] }}</h2>
-
-      <div class="candidate-numbers">
-        <div class="raised">
-          <h2>Raised</h2>
-          <h3>{{candidate["raised vs spent"][0].Raised | currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
-        </div>
-
-        <div class="donors">
-          <h2>Donors</h2>
-          <h3>{{candidate["raised vs spent"][0].Donors}}</h3>
-        </div>
-      </div>
-  
-      
-      <div>
-        <button class="full-details-btn" routerLink="/under-construction" mat-flat-button>See Full Details</button>
-      </div>
-      <div class="website-link">
-        <mat-icon>link</mat-icon>
-        <a href="{{ candidate['website'] }}">Website</a>
-      </div>
-  
-    </div>
-  </div>
-  <div class="raised-spent">
-
-      <div class="title">
-        <p>
-          Raised v. Spent
-          <sup>
-            <i
-              class="helper-tip"
-              aria-hidden="true"
-              matTooltip="Total campaign funds raised and spent by the candidate."
-            >
-              <fa-icon [icon]="faQuestionCircle"></fa-icon>
-            </i>
-          </sup>
-        </p>
-      </div>
-  
-      <div class="raised-spent-chart chart-container-raised">
-        <canvas baseChart
-          width="350"
-          height="550"
-          [chartType]="barChartType"
-          [datasets]="barChartData"
-          [options]="barChartOptions"
-          [plugins]="chartPlugins"
-        ></canvas>
-      </div>
-  
-      <div class="raised-spent-footer">
-        <div class="avg-donation">
-          <h2 class="raised-spent-footer-title">Average Donation</h2>
-          <h3 class="raised-spent-footer-content">{{ candidate['raised vs spent'][0]['Average Donor'] | currency:'USD':'symbol':'1.0-0' }}</h3>
-        </div>
-      </div>
+ 
+  <div *ngIf="candidateCard" class="candidate-card-container">
+    <app-candidate-card
+      [candidateCard]="candidateCard" 
+      [inExpandedCard]="true"
+      (emitCandidateId)="showFullDetailsClicked($event)"
+      ></app-candidate-card>
   </div>
 
-  <app-donations-by-group [candidate]="_c"></app-donations-by-group>
+  <app-raised-vs-spent *ngIf="raisedVsSpentData"
+    [raised]="raisedVsSpentData.raised"
+    [spent]="raisedVsSpentData.spent"
+    [averageDonation]="raisedVsSpentData.averageDonation"
+  >
+  </app-raised-vs-spent>
 
-  <div class="in-out-district">
+  <app-contributions-by-group *ngIf="donationsByGroupData"
+    [contributionGroups]="donationsByGroupData.groups"
+  ></app-contributions-by-group>
 
-    <div class="title">
-      <p>
-        In v. Out City
-        <sup>
-          <i
-            class="helper-tip"
-            aria-hidden="true"
-            matTooltip="Total campaign funds raised in the city of San Diego versus funds raised outside of city limits."
-          >
-            <fa-icon [icon]="faQuestionCircle"></fa-icon>
-          </i>
-        </sup>
-      </p>
-    </div>
-
-    <div class="chart-container">
-      <canvas baseChart
-        width="260"
-        height="260"
-        [chartType]="doughnutChartType"
-        [datasets]="doughnutChartData"
-        [colors]="doughnutChartColors"
-        [options]="doughnutChartOptions"
-        [plugins]="chartPlugins"
-      >
-      </canvas>
-    </div>
-  </div>
-
+  <raised-in-out-donut *ngIf="raisedInOutData"
+    [inside]="raisedInOutData.inside"
+    [outside]="raisedInOutData.outside"
+    [areaName]="raisedInOutData.areaName"
+    [jurisdiction]="raisedInOutData.jurisdiction"
+  >
+  </raised-in-out-donut>
 
   <div class="close">
     <i style="font-size: 25px;" aria-hidden="true" (click)="close()">
       <fa-icon [icon]="faTimesCircle"></fa-icon>
     </i>
   </div>
-  
-
 
   <div class="outside-money">
-    <div class="title">
-      <p>
-        Outside Money
-        <sup>
-          <i
-            class="helper-tip"
-            aria-hidden="true"
-            matTooltip="Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign."
-          >
-            <fa-icon [icon]="faQuestionCircle"></fa-icon>
-          </i>
-        </sup>
-      </p>
-    </div>
-    <div class="outside-grid">
-      <div  class="chart-container-outside">
-        <canvas baseChart
-          [chartType]="stackedHorizontalBarChartType"
-          [datasets]="stackedHorizontalBarChartData"
-          [options]="stackedHorizontalBarChartOptions"
-          [plugins]="chartPlugins"
-        ></canvas>
-      </div>
-
-      <div class="raised">
-        <h2>Total Expenditures</h2>
-        <h3>{{(ConvertToInt(candidate['oppose'])+ConvertToInt(candidate['support']))| currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
-      </div>
-    </div>
+    <outside-money-bar *ngIf="outsideMoneyData"
+      [support]="outsideMoneyData['support']"
+      [oppose]="outsideMoneyData['oppose']"
+    >
+    </outside-money-bar>
   </div>
-
+</div>

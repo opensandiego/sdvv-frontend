@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
-  CityAttorneyComponent,
-  MayorComponent,
   SplashComponent,
   FaqComponent,
   AboutComponent,
   UnderConstructionComponent,
-  CityCouncilDistrictComponent,
+  OfficeComponent,
 } from './components';
 
 
@@ -17,10 +15,10 @@ const routes: Routes = [
   { path: 'splash', component: SplashComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'mayor', component: MayorComponent },
-  { path: 'city-attorney', component: CityAttorneyComponent },
   { path: 'under-construction', component: UnderConstructionComponent },
-  { path: 'city-council/district/:id', component: CityCouncilDistrictComponent },
+  { path: ':office', component: OfficeComponent },
+  { path: ':office/:candidateId', component: OfficeComponent },
+  { path: '**', redirectTo: 'splash' },
 ];
 
 @NgModule({

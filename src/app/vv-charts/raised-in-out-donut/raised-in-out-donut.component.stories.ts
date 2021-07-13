@@ -1,4 +1,5 @@
-import { Meta, Story } from '@storybook/angular';
+import { Meta, Story } from '@storybook/angular/types-6-0';
+import { moduleMetadata } from '@storybook/angular';
 
 import { RaisedInOutDonutComponent } from './raised-in-out-donut.component'; // component being tested
 import { RoundCurrencyPipe } from '../round-currency.pipe'; // component dependency
@@ -26,37 +27,40 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 /**
  * export default: required for each component 
  * title: shows in Storybook component list as heading/expanded list
+ * imports: for dependencies that would usually be provided in the module containing the component
+ * providers: for component dependencies
  * argTypes: used to customize the type of controls at the bottom of Storybook
  *   names should match the component @Inputs
  * 
  * Controls allow the inputs to be changed from within the Storybook UI
  */
 export default {
-  title: 'Charts/In vs. Out raised funds',
+  title: 'Chart-js/In vs Out Raised Funds Donut',
   component: RaisedInOutDonutComponent,
+  decorators: [
+    moduleMetadata({
+      declarations: [],
+      imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule, FontAwesomeModule],
+      providers: [RoundCurrencyPipe],
+    }),
+  ],  
   argTypes: {
-    inside: { control: 'number' },
-    outside: { control: 'number' },
-    jurisdiction: { control: 'text' },
-    jurisdictionSuffix: { control: 'text' },
-    areaName: { control: 'text' },
+    inside: { type: 'number' },
+    outside: { type: 'number' },
+    jurisdiction: { 
+      options: [ 'City', 'District' ],
+      control: { type: 'radio' }
+    },
+    jurisdictionSuffix: { type: 'text' },
+    areaName: { type: 'text' },
   },
 } as Meta;
 
 
 /**
- * imports: for dependencies that would usually be provided in the module containing the component
- * providers: for component dependencies
- * 
  * The same template is used for the component stories below it.
  */
 const Template: Story<RaisedInOutDonutComponent> = (args: RaisedInOutDonutComponent) => ({
-  component: RaisedInOutDonutComponent,
-  moduleMetadata: {
-    declarations: [],
-    imports: [BrowserAnimationsModule, ChartsModule, MatTooltipModule, FontAwesomeModule],
-    providers: [RoundCurrencyPipe],
-  },
   props: args,
 })
 
@@ -91,7 +95,7 @@ CheckCityNameInTooltip.args = {
   inside: 3000,
   outside: 5000,
   jurisdiction: 'City',
-  areaName: 'Special Tooltip City',
+  areaName: `'Special Tooltip City'`,
 }
 
 export const EqualInAndOut = Template.bind({});

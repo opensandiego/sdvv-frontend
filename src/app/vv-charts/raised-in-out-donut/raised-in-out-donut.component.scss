@@ -13,10 +13,11 @@ i {
 }
 
 .chart-container{
-    position: relative; 
-    height:20vh; 
-    width:20vw;
-    margin:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
 }
 
 .helper-tip {
@@ -30,14 +31,6 @@ i {
    .in-out-district{
        margin-bottom:40px;
    }
-   .chart-container{
-        height:20vh !important; 
-        width:60vw !important;
-    }
-    .chart-container-raised{
-        height:25vh !important; 
-        width:60vw !important;  
-    } 
 }
 
 ::ng-deep .mat-tooltip {

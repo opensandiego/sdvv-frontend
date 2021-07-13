@@ -1,0 +1,59 @@
+
+<div class="quick-view-container">
+
+  <div class="quick-view-layout">
+    <div class="item-1">
+
+      <candidate-card *ngIf="candidateCard"
+        [candidateCard]="candidateCard"
+        [inExpandedCard]="true"
+        (emitCandidateId)="showFullDetailsClicked($event)"
+      ></candidate-card>
+      
+    </div>
+    <div class="item-2">
+
+      <app-expanded-raised-vs-spent *ngIf="raisedVsSpentData"
+        [raised]="raisedVsSpentData.raised"
+        [spent]="raisedVsSpentData.spent"
+        [averageDonation]="raisedVsSpentData.averageDonation"
+      ></app-expanded-raised-vs-spent>
+
+    </div>
+    <div class="items-3-4">
+      <div class="item-3">
+
+      <app-contributions-by-group *ngIf="donationsByGroupData"
+        [contributionGroups]="donationsByGroupData.groups"
+      ></app-contributions-by-group>
+
+      </div>
+      <div class="item-4">
+
+      <app-expanded-raised-in-vs-out *ngIf="raisedInOutData"
+        [inside]="raisedInOutData.inside"
+        [outside]="raisedInOutData.outside"
+        [areaName]="raisedInOutData.areaName"
+        [jurisdiction]="raisedInOutData.jurisdiction"
+      ></app-expanded-raised-in-vs-out>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="item-5">
+    <app-expanded-outside-money *ngIf="outsideMoneyData"
+      [support]="outsideMoneyData['support']"
+      [oppose]="outsideMoneyData['oppose']"
+      [totalExpenditures]="outsideMoneyData['support']+outsideMoneyData['oppose']"
+    ></app-expanded-outside-money>
+  </div>
+
+
+  <div class="close">
+    <i style="font-size: 25px;" aria-hidden="true" (click)="close()">
+      <fa-icon [icon]="faTimesCircle"></fa-icon>
+    </i>
+  </div>
+</div>
