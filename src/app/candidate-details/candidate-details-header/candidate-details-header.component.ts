@@ -1,8 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
-import { RoundCurrencyPipe } from '../../vv-charts/round-currency.pipe';
-
+import { getCompactFormattedCurrency,  } from '../../shared/number-formatter'
 @Component({
   selector: 'app-candidate-details-header',
   templateUrl: './candidate-details-header.component.html',
@@ -23,22 +22,14 @@ export class CandidateDetailsHeaderComponent implements OnChanges {
   public averageDonationAmount: string;
   faLink = faLink;
 
-  constructor(
-    private roundCurrencyPipe: RoundCurrencyPipe
-  ) { }
+  constructor( ) { }
 
   ngOnChanges(): void {
-    const decimalPlacesToRoundTo = 0;
-    const decimalPrefixThreshold = 10000;
-
-    this.raisedAmount = this.roundCurrencyPipe
-      .transform(this.raised, decimalPlacesToRoundTo, decimalPrefixThreshold);
+    this.raisedAmount = getCompactFormattedCurrency(this.raised);
     
-    this.donorsCount = this.roundCurrencyPipe
-      .transform(this.donors, decimalPlacesToRoundTo, decimalPrefixThreshold);
+    this.donorsCount = this.donors.toLocaleString();
 
-    this.averageDonationAmount = this.roundCurrencyPipe
-      .transform(this.averageDonation, decimalPlacesToRoundTo, decimalPrefixThreshold);
+    this.averageDonationAmount = getCompactFormattedCurrency(this.averageDonation);
   }
 
 }
