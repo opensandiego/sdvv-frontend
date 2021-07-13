@@ -24,7 +24,7 @@ import * as ExpandedOutsideMoneyStories from
 
 
 export default {
-  title: 'Candidate/Expanded Quick View',
+  title: 'Expanded/Quick View',
   component: ExpandedQuickViewComponent,
   decorators: [
     moduleMetadata({
