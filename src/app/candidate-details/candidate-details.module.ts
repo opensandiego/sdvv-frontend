@@ -13,11 +13,17 @@ import { VvChartsModule } from '../vv-charts/vv-charts.module';
 
 import { CandidateDetailsHeaderComponent } from './candidate-details-header/candidate-details-header.component';
 import { DetailsRaisedByIndustryComponent } from './details-raised-by-industry/details-raised-by-industry.component';
+import { TopCategoriesTableComponent } from './top-categories-table/top-categories-table.component';
+import { DetailsTotalRaisedComponent } from './details-total-raised/details-total-raised.component';
+import { DetailsTotalSpentComponent } from './details-total-spent/details-total-spent.component';
 
 @NgModule({
   declarations: [
     CandidateDetailsHeaderComponent,
     DetailsRaisedByIndustryComponent,
+    TopCategoriesTableComponent,
+    DetailsTotalRaisedComponent,
+    DetailsTotalSpentComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +35,11 @@ import { DetailsRaisedByIndustryComponent } from './details-raised-by-industry/d
     FontAwesomeModule,
     VvChartsModule,
   ],
-  exports: [ ],
+  exports: [
+    CandidateDetailsHeaderComponent,
+    TopCategoriesTableComponent,
+    DetailsTotalRaisedComponent,
+    DetailsTotalSpentComponent,
+   ],
 })
 export class CandidateDetailsModule { }
