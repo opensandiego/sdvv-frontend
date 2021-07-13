@@ -1,0 +1,24 @@
+
+<div class="total-raised-chart-panel">
+
+  <div class="total-raised-header">
+    <div class="title">Total Raised</div>
+    <div class="total">{{totalRaised.toLocaleString('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0})}}</div>
+  </div>
+
+  <app-total-raised-bar
+    [raisedCategories]="localRaisedCategories"
+  ></app-total-raised-bar>
+
+  <div class="total-raised-footer">
+    <div>
+      <i
+        class="tooltip-text"
+        aria-hidden="true"
+        [matTooltip]="tooltipText" 
+      ><fa-icon [icon]="faQuestionCircle"></fa-icon>
+      </i>
+    </div>
+  </div>
+
+</div>
