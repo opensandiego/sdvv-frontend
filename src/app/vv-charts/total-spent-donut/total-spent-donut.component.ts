@@ -1,9 +1,16 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
-import { EChartsOption } from 'echarts';
+import { EChartsOption, ECharts } from 'echarts';
 
-import { RoundCurrencyPipe } from '../round-currency.pipe';
+import { getCompactFormattedCurrency } from '../../shared/number-formatter'
 
+export interface Category {
+  id: string;
+  name: string;
+  value: number;
+  percent: number;
+  color: string;
+}
 
 @Component({
   selector: 'app-total-spent-donut',
@@ -12,26 +19,15 @@ import { RoundCurrencyPipe } from '../round-currency.pipe';
 })
 export class TotalSpentDonutComponent implements OnChanges {
 
-  @Input() spendingCategories: Object[];
+  @Input() spendingCategories: Category[];
+  @Input() categoryHighlighted: string = '-1';
+  @Output() categoryHighlightedChange = new EventEmitter<string>();
 
-  private chartColor = '#FF0000';
+  echartsInstance: ECharts;
+  chartHeight = 250;
+  chartWidth = 250;
 
-  getFormattedLabel(params) {
-    const decimalPlacesToRoundTo = 1;
-    return params.percent.toFixed(decimalPlacesToRoundTo) + '%';
-  }
-
-  getFormattedTooltip(params) {
-    return `<span style="font-size: 1em;">${params.data.name}<span><br />` 
-         + `<span style="font-size: 1.5em;">${params.data.roundedAmount}<span>`;
-  }
-
-  getTooltipPosition(point, params, dom, rect, size) {
-    return [
-      (size.viewSize[0]/2) - size.contentSize[0]/2,
-      (size.viewSize[1]/2) - size.contentSize[1]/2,
-    ];
-  }
+  mergeOption: EChartsOption = {};
 
   chartOption: EChartsOption = {
     tooltip: {
@@ -43,21 +39,9 @@ export class TotalSpentDonutComponent implements OnChanges {
       shadowColor: 'rgba(0, 0, 0, 0.0)',
       textStyle: {
         fontWeight: 'bolder',
-        fontSize: 16,
+        fontSize: 10,
       },
-      extraCssText: 'text-align: center; width:150px; white-space:pre-wrap;'
-    },
-    dataset: {
-      // source: set in ngOnChanges
-    },
-    visualMap: {
-      show: false,
-      // dimension: set in ngOnChanges
-      // min: set in ngOnChanges
-      // max: set in ngOnChanges
-      inRange: {
-        colorLightness: [.9, .3]
-     },
+      extraCssText: 'text-align: center; width:90px; white-space:pre-wrap; line-height: 16px;',
     },
     series: [
       {
@@ -65,70 +49,79 @@ export class TotalSpentDonutComponent implements OnChanges {
         label: {
           show: true,
           position: 'inside',
-          formatter: this.getFormattedLabel,
+          fontSize: 12,
+          formatter: (params) => (params.data['percent']/100)
+            .toLocaleString("en", { style: "percent", minimumFractionDigits: 1 }),
         },
         emphasis: {
           scaleSize: 10,
           label: {
             show: true,
             fontWeight: 'bold',
-            fontSize: '16',
+            fontSize: 14,
           },
         },
         radius: ['40%', '90%'],
-        itemStyle: {
-          color: this.chartColor,
-        },
-        encode: {
-          // value: set in ngOnChanges
-        },
       },
     ],
   };
 
-  constructor(private currencyDisplayPipe: RoundCurrencyPipe) {  }
+  constructor( ) {  }
 
-  addRoundedAmounts(dataset, dataKeyName: string) {
-    const decimalPlacesToRoundTo = 1;
+  ngOnChanges(): void {    
+    this.setChartMergeOption();
+    this.updateChartHighlight();
+  }
 
-    return dataset.map( dataItem => ({
-        name: dataItem.name,
-        [dataKeyName]: dataItem.value,
-        roundedAmount: '$' + this.currencyDisplayPipe
-            .transform(dataItem.value, decimalPlacesToRoundTo, '10000'),
-      })
-    );
+  onChartInit(ec: ECharts): void {
+    this.echartsInstance = ec;
+  }
+
+  setChartMergeOption(): void {
+
+    this.mergeOption = {
+      series: [{
+        data: this.spendingCategories.map( (item) => ({
+          ...item,
+          itemStyle: { color: item['color'], },
+        }))
+      }],
+    };
 
   }
 
-  setVisualMapRange(categories: object[], categoryName: string): void {
-    const values = categories.map( category => category[categoryName] );
+  updateChartHighlight() {
+    if (this.echartsInstance) {
+      this.echartsInstance.dispatchAction({ type: 'downplay' });
+      this.echartsInstance.dispatchAction({ 
+        type: 'highlight', 
+        dataIndex: parseInt(this.categoryHighlighted),
+      });
 
-    this.chartOption.visualMap['min'] = Math.min(...values);
-    this.chartOption.visualMap['max'] = Math.max(...values);
+      this.echartsInstance.dispatchAction({ type: 'hideTip' });
+      this.echartsInstance.dispatchAction({ 
+        type: 'showTip', 
+        seriesIndex: 0,
+        dataIndex: parseInt(this.categoryHighlighted),
+      });
+    }
   }
 
-  setVisualMapDimension(categories: object[], keyName: string) {
-    const keys = Object.keys(categories[0]);
 
-    this.chartOption.visualMap['dimension'] = keys.indexOf(keyName);
+  hoveredSlice = (event: object) => {
+    this.categoryHighlightedChange.emit(event['dataIndex']+'')
+  }
+  
+  getFormattedTooltip(params) {
+    return `<div style="font-size: 1em; margin-bottom: 8px">${params.data.name}</div>` 
+         + `<div style="font-size: 1.5em;">${getCompactFormattedCurrency(params.data.value)}</div>`;
   }
 
-  setChartData(dataset: object[], keyName: string):void {
-    this.chartOption.series[0].encode.value = keyName;
-    this.chartOption.dataset['source'] = dataset;
-  }
-
-  ngOnChanges(): void {
-    const encodeDimensionName = 'value';
-
-    const spendingCategories = this.addRoundedAmounts(this.spendingCategories, encodeDimensionName).slice(0, 4);
-
-    this.setChartData(spendingCategories, encodeDimensionName);
-
-    this.setVisualMapRange(spendingCategories, encodeDimensionName);
-
-    this.setVisualMapDimension(spendingCategories, encodeDimensionName);
+  getTooltipPosition(point, params, dom, rect, size) {
+    return [
+      (size.viewSize[0]/2) - size.contentSize[0]/2,
+      (size.viewSize[1]/2) - size.contentSize[1]/2,
+    ];
   }
 
 }

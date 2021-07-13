@@ -1,0 +1,26 @@
+
+.categories-table {
+  width: 100%;
+  text-align: left;
+
+  border-spacing:0 20px;
+
+  .percent, .value {
+    text-align: right;
+  }
+
+  .mat-row {
+    height: 30px;
+  }
+
+  .mat-cell {
+    padding-right: 10px;
+    border: 0;
+  }
+
+  .mat-row:hover .mat-cell, .highlighted {
+    border-color: currentColor;
+    background-color: #cccccc;
+  }
+
+}

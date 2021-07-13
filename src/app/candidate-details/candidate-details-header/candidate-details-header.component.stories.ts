@@ -1,11 +1,9 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CandidateDetailsModule } from '../candidate-details.module';
 
 import { CandidateDetailsHeaderComponent } from './candidate-details-header.component';
-import { RoundCurrencyPipe } from '../../vv-charts/round-currency.pipe';
 
 export default {
   title: 'Candidate Details/Details Header',
@@ -14,10 +12,9 @@ export default {
     moduleMetadata({
       declarations: [],
       imports: [
-        BrowserAnimationsModule,
-        FontAwesomeModule,
+        CandidateDetailsModule,
       ],
-      providers: [RoundCurrencyPipe],
+      providers: [],
     }),
   ], 
   argTypes: {
