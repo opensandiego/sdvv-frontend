@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { VvChartsModule } from '../vv-charts/vv-charts.module';
 
@@ -16,8 +21,12 @@ import { DetailsRaisedByIndustryComponent } from './details-raised-by-industry/d
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatButtonModule,
     MatTabsModule,
+    FontAwesomeModule,
     VvChartsModule,
   ],
   exports: [ ],
