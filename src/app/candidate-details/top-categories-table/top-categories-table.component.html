@@ -1,0 +1,25 @@
+
+<div class='table-wrapper'>
+  <table mat-table [dataSource]="dataSource" class="categories-table">
+
+    <ng-container matColumnDef="name">
+      <td mat-cell *matCellDef="let category" class='category-name'
+      [style.box-shadow]="category.boxShadowStyle">{{category.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="value">
+      <td mat-cell *matCellDef="let category" class='value'>{{category.value}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="percent">
+      <td mat-cell *matCellDef="let category" class='percent'>{{category.percent}} </td>
+    </ng-container>
+
+    <tr mat-row 
+      *matRowDef="let row; columns: displayedColumns"
+      (mouseover)="hoveredRow(row)"
+      (mouseout)="hoveredRow({id: null})"
+      [class.highlighted]="row.id === categoryHighlighted"
+    ></tr>
+  </table>
+</div>
