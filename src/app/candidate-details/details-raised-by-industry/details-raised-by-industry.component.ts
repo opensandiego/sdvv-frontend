@@ -21,8 +21,13 @@ export class DetailsRaisedByIndustryComponent implements OnInit {
   sortOrder: SortOrder = SortOrder.High;
   SortOrderType = SortOrder;
 
+  title = {
+    top: 'Amount Raised',
+    bottom: 'By Industry',
+    tooltipText: 'Placeholder tooltip text for Amount Raised by Industry!',
+  };
+
   faQuestionCircle = faQuestionCircle;
-  public tooltipText = 'Placeholder tooltip text. Not sure what should go here!';
 
   sortButtons = [{
       text: 'HIGH',

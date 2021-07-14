@@ -1,14 +1,9 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxEchartsModule } from 'ngx-echarts';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CandidateDetailsModule } from '../candidate-details.module';
 
 import { DetailsRaisedByIndustryComponent } from './details-raised-by-industry.component';
-import { RaisedByIndustryBarComponent } from '../../vv-charts/raised-by-industry-bar/raised-by-industry-bar.component';
 
 import * as RaisedByIndustryBarStories from '../../vv-charts/raised-by-industry-bar/raised-by-industry-bar.component.stories';
 
@@ -18,17 +13,9 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [
-        DetailsRaisedByIndustryComponent,
-        RaisedByIndustryBarComponent,
       ],
       imports: [
-        BrowserAnimationsModule,
-        FontAwesomeModule,
-        MatButtonModule,
-        MatTooltipModule,
-        NgxEchartsModule.forRoot({
-          echarts: () => import('echarts'),
-        }),
+        CandidateDetailsModule,
       ],
       providers: [],
     }),
