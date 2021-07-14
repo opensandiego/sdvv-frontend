@@ -38,6 +38,7 @@ export class TotalRaisedBarComponent implements OnChanges {
       },
       axisLabel: {
         interval: 0,
+        formatter: (value) => `${value.split(' ').join('\n')}`,
       },
     },
     yAxis: {
@@ -56,7 +57,30 @@ export class TotalRaisedBarComponent implements OnChanges {
       itemStyle: { 
         borderRadius: [5, 5, 0, 0],
       },
-    }]
+    }],
+    media: [
+      {
+        query: { maxWidth: 375, },
+        option: {
+          xAxis: {
+            axisLabel: {
+              formatter: (value) => `${value.split(' ').join('\n')}`,
+            },
+          },
+        }
+      },
+
+      {
+        query: { minWidth: 376, },
+        option: {
+          xAxis: {
+            axisLabel: {
+              formatter: (value) => `${value}`,
+            },
+          },
+        }
+      },
+    ],
   };
 
   constructor() { }

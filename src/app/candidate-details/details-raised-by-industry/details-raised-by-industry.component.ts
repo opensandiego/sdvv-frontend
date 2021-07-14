@@ -16,13 +16,18 @@ export enum SortOrder {
 })
 export class DetailsRaisedByIndustryComponent implements OnInit {
 
-  @Input() raisedByIndustriesLocal: RaisedByIndustry[];
+  @Input() raisedByIndustries: RaisedByIndustry[];
   
   sortOrder: SortOrder = SortOrder.High;
   SortOrderType = SortOrder;
 
+  title = {
+    top: 'Amount Raised',
+    bottom: 'By Industry',
+    tooltipText: 'Placeholder tooltip text for Amount Raised by Industry!',
+  };
+
   faQuestionCircle = faQuestionCircle;
-  public tooltipText = 'Placeholder tooltip text. Not sure what should go here!';
 
   sortButtons = [{
       text: 'HIGH',
@@ -42,10 +47,10 @@ export class DetailsRaisedByIndustryComponent implements OnInit {
   }
 
   doSort() {
-    this.raisedByIndustriesLocal = this.raisedByIndustriesLocal
+    this.raisedByIndustries = this.raisedByIndustries
       .sort((a, b) => (a.value - b.value) * this.sortOrder);
 
-    this.raisedByIndustriesLocal = [...this.raisedByIndustriesLocal];    
+    this.raisedByIndustries = [...this.raisedByIndustries];
   }
 
   onSort(order: SortOrder) {

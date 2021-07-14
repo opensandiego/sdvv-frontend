@@ -11,7 +11,6 @@ module.exports = {
         docs: false,
       }
     },
-    // "@storybook/addon-essentials", 
   ],
   features: {
     postcss: false,
