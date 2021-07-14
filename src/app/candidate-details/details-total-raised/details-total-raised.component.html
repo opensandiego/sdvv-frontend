@@ -6,7 +6,7 @@
     <div class="total">{{totalRaised.toLocaleString('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0})}}</div>
   </div>
 
-  <app-total-raised-bar
+  <app-total-raised-bar class="total-raised-chart"
     [raisedCategories]="localRaisedCategories"
   ></app-total-raised-bar>
 

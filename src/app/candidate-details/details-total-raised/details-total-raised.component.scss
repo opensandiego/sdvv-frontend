@@ -2,8 +2,10 @@
 .total-raised-chart-panel {
   display: flex;
   flex-direction: column;
+  height: 100%;
 
-  .total-raised-header{
+  .total-raised-header {
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -16,7 +18,12 @@
 
 }
 
+.total-raised-chart {
+  flex: 1 1 auto;
+}
+
 .total-raised-footer {
+  flex: 0 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
