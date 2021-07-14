@@ -18,6 +18,7 @@ import { TopCategoriesTableComponent } from './top-categories-table/top-categori
 import { DetailsTotalRaisedComponent } from './details-total-raised/details-total-raised.component';
 import { DetailsTotalSpentComponent } from './details-total-spent/details-total-spent.component';
 import { DetailsRaisedSpentSummaryComponent } from './details-raised-spent-summary/details-raised-spent-summary.component';
+import { DetailsTabRaisedVSpentComponent } from './details-tab-raised-v-spent/details-tab-raised-v-spent.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DetailsRaisedSpentSummaryComponent } from './details-raised-spent-summa
     DetailsTotalRaisedComponent,
     DetailsTotalSpentComponent,
     DetailsRaisedSpentSummaryComponent,
+    DetailsTabRaisedVSpentComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,7 @@ import { DetailsRaisedSpentSummaryComponent } from './details-raised-spent-summa
     DetailsTotalRaisedComponent,
     DetailsTotalSpentComponent,
     DetailsRaisedSpentSummaryComponent,
+    DetailsTabRaisedVSpentComponent,
   ],
 })
 export class CandidateDetailsModule { }
