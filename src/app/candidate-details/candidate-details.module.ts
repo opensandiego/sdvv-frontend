@@ -6,6 +6,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -16,6 +17,7 @@ import { DetailsRaisedByIndustryComponent } from './details-raised-by-industry/d
 import { TopCategoriesTableComponent } from './top-categories-table/top-categories-table.component';
 import { DetailsTotalRaisedComponent } from './details-total-raised/details-total-raised.component';
 import { DetailsTotalSpentComponent } from './details-total-spent/details-total-spent.component';
+import { DetailsRaisedSpentSummaryComponent } from './details-raised-spent-summary/details-raised-spent-summary.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { DetailsTotalSpentComponent } from './details-total-spent/details-total-
     TopCategoriesTableComponent,
     DetailsTotalRaisedComponent,
     DetailsTotalSpentComponent,
+    DetailsRaisedSpentSummaryComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +35,7 @@ import { DetailsTotalSpentComponent } from './details-total-spent/details-total-
     MatTableModule,
     MatButtonModule,
     MatTabsModule,
+    MatDividerModule,
     FontAwesomeModule,
     VvChartsModule,
   ],
@@ -40,6 +44,7 @@ import { DetailsTotalSpentComponent } from './details-total-spent/details-total-
     TopCategoriesTableComponent,
     DetailsTotalRaisedComponent,
     DetailsTotalSpentComponent,
-   ],
+    DetailsRaisedSpentSummaryComponent,
+  ],
 })
 export class CandidateDetailsModule { }
