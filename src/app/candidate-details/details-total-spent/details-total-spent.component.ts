@@ -9,9 +9,9 @@ import { faMoneyBillWave, faHandHoldingUsd, faQuestionCircle } from '@fortawesom
 })
 export class DetailsTotalSpentComponent implements OnChanges {
   @Input() categoriesTable;
-  @Input() totalSpent: number = -125000;
-  @Input() cashInHand: number = 15000;
-  @Input() loansAndDebts: number = 10000;
+  @Input() totalSpent: number;
+  @Input() cashInHand: number;
+  @Input() loansAndDebts: number;
 
   title = "Total Spent";
   tooltipText = 'Placeholder tooltip text.';

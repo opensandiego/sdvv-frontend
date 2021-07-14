@@ -6,8 +6,8 @@
   flex-wrap: wrap;
 }
 
-.details-total-spending-wrapper > * {
-  flex: 1 1 auto;
+.total-spent-chart-panel, .total-spent-table-panel {
+    flex: 1 1 50%;
 }
 
 .total-spent-chart-panel {
@@ -75,4 +75,11 @@
   color: #0077ff;
   font-size: 1.1em;
   padding: 0px 5px 5px 0px;
+}
+
+@media (min-width: 1600px) {
+  .details-total-spending-wrapper{ 
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
 }
