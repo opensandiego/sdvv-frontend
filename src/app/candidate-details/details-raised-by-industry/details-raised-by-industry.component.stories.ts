@@ -29,20 +29,20 @@ const Template: Story<DetailsRaisedByIndustryComponent> = (args: DetailsRaisedBy
 
 export const Default = Template.bind({});
 Default.args = {
-  raisedByIndustriesLocal: RaisedByIndustryBarStories.Default.args.raisedByIndustries,
+  raisedByIndustries: RaisedByIndustryBarStories.Default.args.raisedByIndustries,
 };
 
 export const OneIndustry = Template.bind({});
 OneIndustry.args = {
-  raisedByIndustriesLocal: RaisedByIndustryBarStories.OneIndustry.args.raisedByIndustries,
+  raisedByIndustries: RaisedByIndustryBarStories.OneIndustry.args.raisedByIndustries,
 };
 
 export const TwoIndustries = Template.bind({});
 TwoIndustries.args = {
-  raisedByIndustriesLocal: RaisedByIndustryBarStories.TwoIndustries.args.raisedByIndustries,
+  raisedByIndustries: RaisedByIndustryBarStories.TwoIndustries.args.raisedByIndustries,
 };
 
 export const FiveIndustries = Template.bind({});
 FiveIndustries.args = {
-  raisedByIndustriesLocal: RaisedByIndustryBarStories.FiveIndustries.args.raisedByIndustries,
+  raisedByIndustries: RaisedByIndustryBarStories.FiveIndustries.args.raisedByIndustries,
 };
