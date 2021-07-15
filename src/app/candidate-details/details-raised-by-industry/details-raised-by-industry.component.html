@@ -1,12 +1,7 @@
 
 <div class="details-raised-by-industry-wrapper">
-  <div class="raised-by-industry-header-wrapper">
 
-    <app-details-tab-title
-      [smallTitleText]="title.top"
-      [largeTitleText]="title.bottom"
-      [tooltipText]="title.tooltipText"
-    ></app-details-tab-title>
+  <div class="raised-by-industry-header-wrapper">
 
     <div class="sort-options">
       <label class="label">Sort</label>
@@ -24,9 +19,9 @@
       </div>
     </div>
   </div>
-  <div class="raised-by-industry-chart">
-    <app-raised-by-industry-bar
-      [raisedByIndustries]="raisedByIndustries"
-      ></app-raised-by-industry-bar>
-  </div>
+
+  <app-raised-by-industry-bar class="raised-by-industry-chart"
+    [raisedByIndustries]="raisedByIndustries"
+  ></app-raised-by-industry-bar>
+
 </div>
