@@ -20,9 +20,9 @@ export class RaisedByIndustryBarComponent implements OnChanges {
   @Input() raisedByIndustries: RaisedByIndustry[];
 
   private dataRowsCount = 0;
-  
+
   echartsInstance: ECharts;
-  mergeOptions: EChartsOption;
+  mergeOption: EChartsOption;
   initOpts: EChartsOption;
   
   chartOption: EChartsOption = {
@@ -42,7 +42,7 @@ export class RaisedByIndustryBarComponent implements OnChanges {
       }
     },
     dataset: {
-      // source: [],  // set in ngOnChanges
+      source: [],  // set in ngOnChanges
     },
     xAxis: {
       position: 'top',
@@ -82,43 +82,37 @@ export class RaisedByIndustryBarComponent implements OnChanges {
   constructor() {  }
 
   ngOnChanges(): void { 
-    this.setChartData(this.raisedByIndustries);
+    this.setChartMergeOption();
     this.setChartHeight();
   }
 
   onChartInit(ec: ECharts): void {
     this.echartsInstance = ec;
   }
-  
-  setChartData(chartDataset: RaisedByIndustry[]): void {
 
-    if (this.echartsInstance) {
-      this.echartsInstance.setOption({
-        dataset: {
-          source: chartDataset,
-        }
-      });
-    } else {
-      this.chartOption.dataset['source'] = chartDataset;
-    }
-
+  setChartMergeOption(): void {
+    this.mergeOption = {
+      dataset: {
+        source: this.raisedByIndustries,
+      }
+    };
   }
-  
+
   setChartHeight(): void {
     const perItemHeight = 35;
     const topOffset = 80;
     const itemCount = this.raisedByIndustries.length;
 
     if (this.dataRowsCount === itemCount) return;
-    
+
     const height = itemCount * perItemHeight + topOffset;
-    
+
     if (this.echartsInstance) {
       this.echartsInstance.resize({ height });
     } else {
-      this.initOpts = { height }
+      this.initOpts = { height };
     }
-    
+
     this.dataRowsCount = itemCount;
   }
 
