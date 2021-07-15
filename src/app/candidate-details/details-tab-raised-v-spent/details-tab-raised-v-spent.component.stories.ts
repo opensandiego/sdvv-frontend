@@ -11,7 +11,7 @@ import * as RaisedSpentSummaryStories from '../details-raised-spent-summary/deta
 
 
 export default {
-  title: 'Candidate Details/Tab - Raised vs Spent',
+  title: 'Candidate Details/Tab/Raised vs Spent',
   component: DetailsTabRaisedVSpentComponent,
   decorators: [
     moduleMetadata({
