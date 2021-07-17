@@ -19,6 +19,7 @@ import { DetailsTotalRaisedComponent } from './details-total-raised/details-tota
 import { DetailsTotalSpentComponent } from './details-total-spent/details-total-spent.component';
 import { DetailsRaisedSpentSummaryComponent } from './details-raised-spent-summary/details-raised-spent-summary.component';
 import { DetailsTabRaisedVSpentComponent } from './details-tab-raised-v-spent/details-tab-raised-v-spent.component';
+import { DetailsContainerOutsideMoneyComponent } from './details-container-outside-money/details-container-outside-money.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DetailsTabRaisedVSpentComponent } from './details-tab-raised-v-spent/de
     DetailsTotalSpentComponent,
     DetailsRaisedSpentSummaryComponent,
     DetailsTabRaisedVSpentComponent,
+    DetailsContainerOutsideMoneyComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import { DetailsTabRaisedVSpentComponent } from './details-tab-raised-v-spent/de
     DetailsTotalSpentComponent,
     DetailsRaisedSpentSummaryComponent,
     DetailsTabRaisedVSpentComponent,
+    DetailsContainerOutsideMoneyComponent,
   ],
 })
 export class CandidateDetailsModule { }
