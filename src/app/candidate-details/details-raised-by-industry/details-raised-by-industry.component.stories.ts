@@ -8,7 +8,7 @@ import { DetailsRaisedByIndustryComponent } from './details-raised-by-industry.c
 import * as RaisedByIndustryBarStories from '../../vv-charts/raised-by-industry-bar/raised-by-industry-bar.component.stories';
 
 export default {
-  title: 'Candidate Details/Raised By Industry',
+  title: 'Candidate Details/Container/Raised By Industry',
   component: DetailsRaisedByIndustryComponent,
   decorators: [
     moduleMetadata({

@@ -1,0 +1,37 @@
+
+<div class="outside-money-container">
+  
+  <app-outside-money-stacked-bar
+    [opposedCommittees]="oppositionCommittees"
+    [supportCommittees]="supportCommittees"
+    [committeeHighlighted]="hoveredCommittee"
+    (committeeHighlightedChange)="committeeHoveredOver($event)"
+  ></app-outside-money-stacked-bar>
+  
+  <div class="committee-tables">
+    <div class="opposition-panel">
+      <div class="heading">
+        <fa-icon [icon]="faCircle" [icon]="faCircle" [style.color]="oppositionColor" ></fa-icon>
+        {{oppositionExpenditures.title}}
+      </div>
+      <app-top-categories-table class="opposition-table"
+        [categories]='oppositionCommittees'
+        [categoryHighlighted]="hoveredCommittee"
+        (categoryHighlightedChange)="committeeHoveredOver($event)"
+      ></app-top-categories-table>      
+    </div>
+
+    <div class="support-panel">
+      <div class="heading">
+        <fa-icon [icon]="faCircle" [style.color]="supportColor" ></fa-icon>
+        {{supportExpenditures.title}}
+      </div>
+      <app-top-categories-table  class="support-table"
+        [categories]='supportCommittees'
+        [categoryHighlighted]="hoveredCommittee"
+        (categoryHighlightedChange)="committeeHoveredOver($event)"
+      ></app-top-categories-table>
+    </div>
+  </div>
+  
+</div>

@@ -18,7 +18,7 @@
     <tr mat-row 
       *matRowDef="let row; columns: displayedColumns"
       (mouseover)="hoveredRow(row)"
-      (mouseout)="hoveredRow({id: null})"
+      (mouseout)="hoveredRow({id: '-1'})"
       [class.highlighted]="row.id === categoryHighlighted"
     ></tr>
   </table>
