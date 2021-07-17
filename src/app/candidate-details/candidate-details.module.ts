@@ -20,6 +20,10 @@ import { DetailsTotalSpentComponent } from './details-total-spent/details-total-
 import { DetailsRaisedSpentSummaryComponent } from './details-raised-spent-summary/details-raised-spent-summary.component';
 import { DetailsTabRaisedVSpentComponent } from './details-tab-raised-v-spent/details-tab-raised-v-spent.component';
 import { DetailsContainerOutsideMoneyComponent } from './details-container-outside-money/details-container-outside-money.component';
+
+import { DetailsTabTitleComponent } from './details-tab-title/details-tab-title.component';
+import { DetailsTabRaisedByIndustryComponent } from './details-tab-raised-by-industry/details-tab-raised-by-industry.component';
+import { DetailsTabRaisedByLocationComponent } from './details-tab-raised-by-location/details-tab-raised-by-location.component';
 import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money/details-tab-outside-money.component';
 
 @NgModule({
@@ -32,6 +36,9 @@ import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money/det
     DetailsRaisedSpentSummaryComponent,
     DetailsTabRaisedVSpentComponent,
     DetailsContainerOutsideMoneyComponent,
+    DetailsTabTitleComponent,
+    DetailsTabRaisedByIndustryComponent,
+    DetailsTabRaisedByLocationComponent,
     DetailsTabOutsideMoneyComponent,
   ],
   imports: [
@@ -48,11 +55,15 @@ import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money/det
   exports: [
     CandidateDetailsHeaderComponent,
     TopCategoriesTableComponent,
+    DetailsRaisedByIndustryComponent,
     DetailsTotalRaisedComponent,
     DetailsTotalSpentComponent,
     DetailsRaisedSpentSummaryComponent,
     DetailsTabRaisedVSpentComponent,
     DetailsContainerOutsideMoneyComponent,
+    DetailsTabTitleComponent,
+    DetailsTabRaisedByIndustryComponent,
+    DetailsTabRaisedByLocationComponent,
     DetailsTabOutsideMoneyComponent,
   ],
 })
