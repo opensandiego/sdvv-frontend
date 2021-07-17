@@ -3,13 +3,13 @@ import { moduleMetadata } from '@storybook/angular';
 
 import { CandidateDetailsModule } from '../candidate-details.module';
 
-import { DetailsOutsideMoneyComponent } from './details-tab-outside-money.component';
+import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money.component';
 
 import * as DetailsContainerOutsideMoneyStories  from '../details-container-outside-money/details-container-outside-money.component.stories';
 
 export default {
   title: 'Candidate Details/Tab/Outside Money',
-  component: DetailsOutsideMoneyComponent,
+  component: DetailsTabOutsideMoneyComponent,
   decorators: [
     moduleMetadata({
       declarations: [],
@@ -22,7 +22,7 @@ export default {
   argTypes: { },
 } as Meta;
 
-const Template: Story<DetailsOutsideMoneyComponent> = (args: DetailsOutsideMoneyComponent) => ({
+const Template: Story<DetailsTabOutsideMoneyComponent> = (args: DetailsTabOutsideMoneyComponent) => ({
   props: args,
 });
 

@@ -5,7 +5,7 @@ import { Component, Input, OnChanges, } from '@angular/core';
   templateUrl: './details-tab-outside-money.component.html',
   styleUrls: ['./details-tab-outside-money.component.scss']
 })
-export class DetailsOutsideMoneyComponent implements OnChanges {
+export class DetailsTabOutsideMoneyComponent implements OnChanges {
   @Input() oppositionExpendituresCategories;
   @Input() supportExpendituresCategories;
  
