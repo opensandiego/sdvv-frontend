@@ -1,0 +1,56 @@
+<h2>San Diego City</h2>
+
+<mat-accordion>
+  <mat-expansion-panel >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h3>Elections</h3>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-election-data-updater
+      (selectedElectionIdEvent)="setId($event)"
+    ></app-election-data-updater>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h3>Offices/Candidates
+          <span *ngIf="selectedElection.selected"> for {{selectedElection.name}}</span>
+        </h3>
+        
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <!-- content -->
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h3>Committees</h3>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <!-- content -->
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h3>Fillings</h3>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <!-- content -->
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h3>Transactions</h3>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <!-- content -->
+  </mat-expansion-panel>
+
+</mat-accordion>

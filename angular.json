@@ -30,7 +30,8 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/primeflex/primeflex.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/tabulator-tables/dist/css/tabulator.min.css"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [

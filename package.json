@@ -34,6 +34,7 @@
     "chartjs-plugin-datalabels": "^0.7.0",
     "core-js": "^3.10.1",
     "echarts": "^5.1.1",
+    "moment": "^2.29.1",
     "ng2-charts": "^2.4.2",
     "ngx-echarts": "^7.0.1",
     "pouchdb-adapter-idb": "^7.2.2",
@@ -42,6 +43,7 @@
     "primeng": "^11.3.2",
     "rxdb": "9.18.0",
     "rxjs": "~6.6.7",
+    "tabulator-tables": "^4.9.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
