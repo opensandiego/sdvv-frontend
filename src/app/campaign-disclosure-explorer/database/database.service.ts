@@ -8,7 +8,7 @@ import {
 import idb from 'pouchdb-adapter-idb';
 PouchDB.plugin(idb);
 
-const { electionSchema } = require('./schemas');
+const { electionSchema, candidateSchema } = require('./schemas');
 
 
 @Injectable({
@@ -37,7 +37,10 @@ export class DatabaseService {
     return await db.addCollections({
       elections: {
           schema: electionSchema
-      }
+      },
+      candidates: {
+          schema: candidateSchema
+      },
     });
   }
 
