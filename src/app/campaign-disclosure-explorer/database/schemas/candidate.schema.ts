@@ -1,8 +1,3 @@
-import {
-  RxCollection,
-  RxJsonSchema,
-  RxDocument,
-} from 'rxdb';
 
 export const candidateSchema = {
   "title": "candidate schema",
@@ -11,7 +6,8 @@ export const candidateSchema = {
   "type": "object",
   "properties": {
     "coe_id": {
-      "type": "string"
+      "type": "string",
+      "primary": true,
     },
     "filer_id": {
       "type": "string"
@@ -26,16 +22,16 @@ export const candidateSchema = {
       "type": "string"
     },
     "middle_name": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "last_name": {
       "type": "string"
     },
     "title": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "suffix": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "office": {
       "type": "string"
@@ -47,7 +43,7 @@ export const candidateSchema = {
       "type": "string"
     },
     "district": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "agency": {
       "type": "string"
