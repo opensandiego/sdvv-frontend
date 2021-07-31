@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import Tabulator from 'tabulator-tables';
 
 import { CampaignDataService } from '../campaign-data.service';
+import { CampaignDataChangesService } from '../campaign-data-changes.service';
 
 import moment from 'moment';
 window.moment = moment;
@@ -38,6 +39,7 @@ export class ElectionDataUpdaterComponent implements OnInit {
 
   constructor(
     private campaignDataService: CampaignDataService,
+    private campaignDataChangesService: CampaignDataChangesService,
     private snackBar: MatSnackBar,
   ) { }
 
@@ -76,7 +78,7 @@ export class ElectionDataUpdaterComponent implements OnInit {
   updateRows() {
     this.isLoadingData = true;
     
-    this.campaignDataService.getUpdateToElections().subscribe( rows => {
+    this.campaignDataChangesService.getUpdateToElections().subscribe( rows => {
       let tableRows = rows.map( row => ({
         election_date: row.election_date,
         election_id: row.election_id,
