@@ -1,6 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
-
-import { BehaviorSubject, from, fromEvent, Observable, Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 import { DatabaseService } from './database/database.service';
 
@@ -9,9 +7,6 @@ import { DatabaseService } from './database/database.service';
 })
 export class CampaignDataService {
   localDB;
-  collections;
-
-  collectionSubject = new Subject<any>();
 
   constructor( ) {
     this.database();
@@ -21,28 +16,6 @@ export class CampaignDataService {
 
     const databaseService = new DatabaseService();
     this.localDB = await databaseService.getInstance();
-
-    this.localDB.elections.find().$.subscribe(
-      results => {
-        this.collectionSubject.next(results)
-      }
-    )
- 
-  }
-
-  getElectionsOnDBUpdate() { }
-  getUpdateToElections(): Observable<any>{
-    return this.collectionSubject;
-  }
-  showElectionsInDBOnUpdates() { }
-
-  async showElectionsInDB() {
-    const someElections = await this.collections.elections
-      .find()
-      .exec()
-
-    console.dir('someElections');
-    console.dir(someElections);
   }
 
   updateElectionsInDB() {
