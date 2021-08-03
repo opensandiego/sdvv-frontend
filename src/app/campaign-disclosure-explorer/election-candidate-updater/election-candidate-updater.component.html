@@ -1,0 +1,11 @@
+
+<div class="buttons">
+  <button mat-flat-button color="primary" (click)="subscribeToDatabase()" [disabled]="dbSubscriptionActive" >Subscribe to DB</button>
+  <button mat-flat-button color="accent" disabled>Push data to remote</button>
+</div>
+<mat-progress-bar *ngIf="isLoadingData"
+  mode="indeterminate"
+  class="example-tree-progress-bar"
+></mat-progress-bar>
+
+<div id="candidate-table"></div>

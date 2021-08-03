@@ -11,11 +11,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ElectionDataUpdaterComponent } from './election-data-updater/election-data-updater.component';
 import { ExplorerContainerComponent } from './explorer-container/explorer-container.component';
+import { ElectionCandidateUpdaterComponent } from './election-candidate-updater/election-candidate-updater.component';
 
 @NgModule({
   declarations: [
     ElectionDataUpdaterComponent,
     ExplorerContainerComponent,
+    ElectionCandidateUpdaterComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { ExplorerContainerComponent } from './explorer-container/explorer-contai
   exports: [
     ElectionDataUpdaterComponent,
     ExplorerContainerComponent,
+    ElectionCandidateUpdaterComponent,
   ],
   providers: []
 
