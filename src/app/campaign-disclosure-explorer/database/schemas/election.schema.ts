@@ -9,6 +9,7 @@ export const electionSchema = {
   "description": "election schema",
   "version": 0,
   "type": "object",
+  "required": ["election_id"],
   "properties": {
     "election_date": {
       "type": "string",
@@ -23,6 +24,10 @@ export const electionSchema = {
     "internal": {
       "type": "boolean",
     },
+    // Fields below are not from eFile
+    "candidates_count": {
+      "type": "number",
+      "default": 0,
+    },
   },
-  "required": ["election_id"],
 }

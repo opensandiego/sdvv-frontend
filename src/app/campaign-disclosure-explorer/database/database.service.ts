@@ -8,7 +8,15 @@ import {
 import idb from 'pouchdb-adapter-idb';
 PouchDB.plugin(idb);
 
-const { electionSchema, candidateSchema } = require('./schemas');
+import memory from 'pouchdb-adapter-memory';
+PouchDB.plugin(memory);
+
+const { 
+  electionSchema, 
+  candidateSchema,
+  filingSchema,
+  transactionSchema,
+} = require('./schemas');
 
 
 @Injectable({
@@ -41,13 +49,22 @@ export class DatabaseService {
       candidates: {
           schema: candidateSchema
       },
+      filings: {
+          schema: filingSchema
+      },
+      transactions: {
+          schema: transactionSchema
+      },
     });
   }
 
   private async buildDatabase(): Promise<RxDatabase> {
     const db = await createRxDatabase({
       name: 'campaigndb',
-      adapter: 'idb',
+      // adapter: 'idb',
+      // Using memory adapter while developing schemas to avoid
+      // needing to delete the database when a schema changes.
+      adapter: 'memory', 
       ignoreDuplicate: true,
     });
 
