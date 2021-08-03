@@ -23,7 +23,9 @@
         
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <!-- content -->
+    <app-election-candidate-updater
+      [electionID]="selectedElection.id"
+    ></app-election-candidate-updater>
   </mat-expansion-panel>
 
   <mat-expansion-panel>

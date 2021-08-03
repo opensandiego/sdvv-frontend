@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CampaignDataChangesService } from '../campaign-data-changes.service';
 
 @Component({
   selector: 'app-explorer-container',
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExplorerContainerComponent implements OnInit {
   selectedElection = {
-    id: '',
-    name: '',
+    id: null,
+    name: null,
     selected: false,
   };
 
-  constructor( ) { }
+  constructor(
+    // private campaignDataChangesService: CampaignDataChangesService,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -24,12 +27,14 @@ export class ExplorerContainerComponent implements OnInit {
         id: '',
         selected: false,
       };
+      // this.campaignDataChangesService.ElectionChanged.emit(null);
     } else {
       this.selectedElection = {
         name: event['name'],
         id: event['id'],
         selected: true,
       };
+      // this.campaignDataChangesService.ElectionChanged.emit(this.selectedElection.id);
     }
   }
 
