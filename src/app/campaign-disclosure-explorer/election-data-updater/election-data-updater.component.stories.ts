@@ -6,7 +6,7 @@ import { CampaignDisclosureExplorerModule } from '../campaign-disclosure-explore
 import { ElectionDataUpdaterComponent } from './election-data-updater.component'
 
 export default {
-  title: 'CD Explorer/Data Updater',
+  title: 'CD Explorer/Election Updater',
   component: ElectionDataUpdaterComponent,
   decorators: [
     moduleMetadata({

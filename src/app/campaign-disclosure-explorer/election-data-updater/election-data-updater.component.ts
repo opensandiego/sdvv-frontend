@@ -22,20 +22,52 @@ export class ElectionDataUpdaterComponent implements OnInit {
   @Output() selectedElectionIdEvent 
     = new EventEmitter<selectedElectionEvent | null>();
 
-  id = 'my-tabular-table';
+  public tableId = 'election-table';
   tableElement = document.createElement('div');
   table: Tabulator;
   height: string = '400px';
   isLoadingData = false;
+  dbSubscriptionActive = false;
   tableData: any[] = [];
   
   columnNames = [
-    { title: "Election Date", field: "election_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
-    { title: "Election Type", field: "election_type" },
-    { title: "election id", field: "election_id" },
-    { title: "internal", field: "internal" },
+    { 
+      title: "eFile Data", 
+      columns: [
+        { title: "Election Date", field: "election_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
+        { title: "Election Type", field: "election_type" },
+        { title: "Election id", field: "election_id" },      
+        { title: "internal", field: "internal" },
+      ],
+    },
+    { 
+      title: "Candidates Data Status", 
+      columns: [
+        { title: "count", field: "candidates_count" },
+        { title: "offices", field: "office_count" },
+        { title: "last updated", field: "last_update" },
+      ],
+    }
   ];
 
+  rowContextMenu = [
+    {
+      label: "Fetch from eFile",
+      action:(e, row) => {
+        this.isLoadingData = true;
+        this.campaignDataService.updateCandidatesInDB(row._row.data.election_id)
+        .finally( () => this.isLoadingData = false );        
+      }
+    },
+    {
+      label: "Delete in DB",
+      action:(e, row) => {
+        this.isLoadingData = true;
+        this.campaignDataService.deleteCandidates(row._row.data.election_id)
+        .finally( () => this.isLoadingData = false );
+      }
+    },
+  ];
 
   constructor(
     private campaignDataService: CampaignDataService,
@@ -48,6 +80,11 @@ export class ElectionDataUpdaterComponent implements OnInit {
     this.updateRows();
   }
 
+  subscribeToDatabase() {
+    this.campaignDataChangesService.createElectionSubscription();
+    this.dbSubscriptionActive = true;
+  }
+
   onPullFromNetFile() {
     this.isLoadingData = true;
     this.campaignDataService.updateElectionsInDB().then(
@@ -57,7 +94,7 @@ export class ElectionDataUpdaterComponent implements OnInit {
         this.snackBar.open(`Error pulling elections from eFile`, 'OK', { duration: 3000 });
         console.log(error);
       }
-    );
+    ).finally( () => this.isLoadingData = false );
   }
   
   onDeleteInDB() {
@@ -72,22 +109,21 @@ export class ElectionDataUpdaterComponent implements OnInit {
         this.snackBar.open(`Error deleting elections`, 'OK', { duration: 3000 });
         console.log(error);
       }
-    );
+    ).finally( () => this.isLoadingData = false );
   }
 
   updateRows() {
-    this.isLoadingData = true;
-    
+
     this.campaignDataChangesService.getUpdateToElections().subscribe( rows => {
       let tableRows = rows.map( row => ({
         election_date: row.election_date,
         election_id: row.election_id,
         election_type: row.election_type,
         internal: row.internal,
+        candidates_count: row.candidates_count,
       }));
  
       this.table.replaceData(tableRows);
-      this.isLoadingData = false;
     });
 
   }
@@ -118,12 +154,13 @@ export class ElectionDataUpdaterComponent implements OnInit {
       layout: 'fitData',
       height: this.height,
       rowClick: this.rowClicked,
+      rowContextMenu: this.rowContextMenu,
       selectable: 1,
       initialSort: [
         {column:"election_date", dir:"desc"}
       ],
     });
-    document.getElementById(this.id).appendChild(this.tableElement);
+    document.getElementById(this.tableId).appendChild(this.tableElement);
     this.table.redraw(true);
   }
 
