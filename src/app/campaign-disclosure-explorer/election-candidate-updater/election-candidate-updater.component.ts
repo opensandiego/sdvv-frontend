@@ -62,7 +62,20 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
   ngOnInit(): void {
     this.drawTable();
     this.updateRows();
+    // this.updateElections();
   }
+
+  // updateElections(){
+  //   this.campaignDataChangesService.getUpdateToElections().subscribe( elections => {
+  //     let electionChoices = elections.map( election => ({
+  //       electionTitle: `${election.election_date} ${election.election_type} Election`,
+  //       electionID: election.election_id,
+  //     }));
+ 
+  //     this.elections = electionChoices;
+  //     console.log('electionChoices', electionChoices);
+  //   });
+  // }
 
   subscribeToDatabase() {
     this.campaignDataChangesService.createCandidatesSubscription();
