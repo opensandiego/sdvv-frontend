@@ -34,16 +34,16 @@ export class ElectionDataUpdaterComponent implements OnInit {
     { 
       title: "eFile Data", 
       columns: [
-        { title: "Election Date", field: "election_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
+        { title: "Election Date", field: "election_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}, bottomCalc:"count"},
         { title: "Election Type", field: "election_type" },
-        { title: "Election id", field: "election_id" },      
+        { title: "Election id", field: "election_id" },
         { title: "internal", field: "internal" },
       ],
     },
     { 
       title: "Candidates Data Status", 
       columns: [
-        { title: "count", field: "candidates_count" },
+        { title: "count", field: "candidates_count", bottomCalc:"sum" },
         { title: "offices", field: "office_count" },
         { title: "last updated", field: "last_update" },
       ],

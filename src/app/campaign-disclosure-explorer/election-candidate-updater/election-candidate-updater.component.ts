@@ -23,6 +23,8 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
   @Output() selectedIdEvent 
     = new EventEmitter<selectedEvent | null>();
 
+  elections: [] = [];
+
   id = 'candidate-table';
   tableElement = document.createElement('div');
   table: Tabulator;
@@ -34,7 +36,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
   columnNames = [
     { title: "office", field: "office" },
     { title: "district", field: "district" },
-    { title: "Candidate Name", field: "candidate_name" },
+    { title: "Candidate Name", field: "candidate_name", bottomCalc:"count" },
     { title: "coe_id", field: "coe_id" },
     { title: "filer_id", field: "filer_id" },
     { title: "office_code", field: "office_code" },
