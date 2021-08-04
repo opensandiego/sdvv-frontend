@@ -38,6 +38,7 @@
     "ng2-charts": "^2.4.2",
     "ngx-echarts": "^7.0.1",
     "pouchdb-adapter-idb": "^7.2.2",
+    "pouchdb-adapter-memory": "^7.2.2",
     "primeflex": "^1.0.0",
     "primeicons": "^4.1.0",
     "primeng": "^11.3.2",
