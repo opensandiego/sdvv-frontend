@@ -80,10 +80,10 @@ export class ElectionDataUpdaterComponent implements OnInit {
     this.updateRows();
   }
 
-  subscribeToDatabase() {
-    this.campaignDataChangesService.createElectionSubscription();
-    this.dbSubscriptionActive = true;
-  }
+  // subscribeToDatabase() {
+  //   // this.campaignDataChangesService.createElectionSubscription();
+  //   // this.dbSubscriptionActive = true;
+  // }
 
   onPullFromNetFile() {
     this.isLoadingData = true;
@@ -114,7 +114,7 @@ export class ElectionDataUpdaterComponent implements OnInit {
 
   updateRows() {
 
-    this.campaignDataChangesService.getUpdateToElections().subscribe( rows => {
+    this.campaignDataChangesService.allElections$.subscribe( rows => {
       let tableRows = rows.map( row => ({
         election_date: row.election_date,
         election_id: row.election_id,

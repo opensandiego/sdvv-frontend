@@ -23,7 +23,8 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
   @Output() selectedIdEvent 
     = new EventEmitter<selectedEvent | null>();
 
-  elections: [] = [];
+  elections: [] = []; // used in the drop down list
+//   selectedElection = '';
 
   id = 'candidate-table';
   tableElement = document.createElement('div');
@@ -54,6 +55,46 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
     { title: "suffix", field: "suffix" },
   ];
 
+  private rowContextMenu = [
+    {
+      label: "Committees",
+      menu: [
+        {
+          label: 'Fetch from eFile',
+          action: (e, row) => {
+            //use candidate name
+          },
+        },
+        {
+          label: 'Delete from database',
+          action: (e, row) => {},
+        },
+      ]
+    },
+    {
+      label: "Filings",
+      action:(e, row) => {
+        // this.isLoadingData = true;
+        // this.campaignDataService.deleteCandidates(row._row.data.election_id)
+        // .finally( () => this.isLoadingData = false );
+      }
+    },
+    {
+      label: "Transactions",
+      menu: [
+        {
+          label: 'Fetch from eFile',
+          action: (e, row) => {},
+        },
+        {
+          label: 'Delete from database',
+          action: (e, row) => {},
+        },
+      ]
+    },
+  ];
+
+
   constructor(
     private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
@@ -62,29 +103,30 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
   ngOnInit(): void {
     this.drawTable();
     this.updateRows();
-    // this.updateElections();
+    this.subscribeToElectionUpdates();
   }
 
-  // updateElections(){
-  //   this.campaignDataChangesService.getUpdateToElections().subscribe( elections => {
-  //     let electionChoices = elections.map( election => ({
-  //       electionTitle: `${election.election_date} ${election.election_type} Election`,
-  //       electionID: election.election_id,
-  //     }));
- 
-  //     this.elections = electionChoices;
-  //     console.log('electionChoices', electionChoices);
-  //   });
-  // }
-
-  subscribeToDatabase() {
-    this.campaignDataChangesService.createCandidatesSubscription();
-    this.dbSubscriptionActive = true;
+  subscribeToElectionUpdates(){
+    this.campaignDataChangesService.electionsWithCandidate$.subscribe( elections => {
+        this.elections = elections.map( election => ({
+            electionTitle: `${election.election_date} ${election.election_type} Election`,
+            electionID: election.election_id,
+      }));
+    });
   }
+
+  onElectionSelected(event) {
+    this.campaignDataChangesService.electionSelectionChanged.next(event.value)
+  }
+
+//   subscribeToDatabase() {
+//     // this.campaignDataChangesService.createCandidatesSubscription();
+//     // this.dbSubscriptionActive = true;
+//   }
 
   updateRows() {
     
-    this.campaignDataChangesService.getUpdateToCandidates().subscribe( rows => {
+    this.campaignDataChangesService.candidatesInSelectedElection$.subscribe( rows => {
       let tableRows = rows.map( row => ({
         coe_id: row.coe_id,
         filer_id: row.filer_id,
@@ -135,6 +177,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
       layout: 'fitData',
       height: this.height,
       rowClick: this.rowClicked,
+      rowContextMenu: this.rowContextMenu,
       selectable: 1,
       initialSort: [
         {column:"candidate_name", dir:"asc"},
