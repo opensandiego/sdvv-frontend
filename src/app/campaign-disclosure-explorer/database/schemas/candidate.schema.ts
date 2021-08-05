@@ -4,6 +4,7 @@ export const candidateSchema = {
   "description": "candidate schema",
   "version": 0,
   "type": "object",
+  "required": ["election_id", "office_id"],
   "properties": {
     "coe_id": {
       "type": "string",
@@ -59,7 +60,15 @@ export const candidateSchema = {
     },
     "candidate_name": {
       "type": "string"
-    }
+    },
+    // Fields below are not from eFile
+    "filings_count": {
+      "type": "number",
+      "default": 0,
+    },
+    "committees_count": {
+      "type": "number",
+      "default": 0,
+    },
   },
-  "required": ["election_id", "office_id"],
 }

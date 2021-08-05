@@ -24,7 +24,7 @@ export class CampaignDataChangesService {
   private candidatesInSelectedElectionSubject = new Subject<any>();
   public  candidatesInSelectedElection$ = this.candidatesInSelectedElectionSubject.asObservable(); 
 
-  public electionSelectionChanged = new Subject<string>(); // for signals from components
+  public electionSelectionChanged = new Subject<string>(); // used to receive signals from components
 
   constructor( ) {
     this.setupDatabase();
