@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
-import {  mergeMap } from 'rxjs/operators';
+import { from, Observable, of, Subject } from 'rxjs';
+import {  map, mergeMap } from 'rxjs/operators';
 
 import { DatabaseService } from './database/database.service';
 import {
@@ -12,58 +12,77 @@ import {
 })
 export class CampaignDataChangesService {
   localDB: RxDatabase;
-  electionsSubject = new Subject<any>();
-  candidatesSubject = new Subject<any>();
+  private allElectionsSubscription;
+  private allElectionsSubject = new Subject<any>();
+  public  allElections$ = this.allElectionsSubject.asObservable();
 
-  private electionSubscription;
-  private candidatesSubscription;
+  private electionsWithCandidateSubscription;
+  private electionsWithCandidateSubject = new Subject<any>();
+  public  electionsWithCandidate$ = this.electionsWithCandidateSubject.asObservable();
+ 
+  private candidatesInSelectedElectionSubscription;
+  private candidatesInSelectedElectionSubject = new Subject<any>();
+  public  candidatesInSelectedElection$ = this.candidatesInSelectedElectionSubject.asObservable(); 
 
-  // public ElectionChanged: EventEmitter<string> = new EventEmitter<string>();
+  public electionSelectionChanged = new Subject<string>(); // for signals from components
 
   constructor( ) {
-    this.database();
+    this.setupDatabase();
   }
 
-  async database() {
+  async setupDatabase() {
     const databaseService = new DatabaseService();
     this.localDB = await databaseService.getInstance();
+    await this.setupSubscriptions();
+  }
+  
+  async setupSubscriptions() {
+    await this.createAllElectionSubscription();
+    await this.createElectionsWithCandidateSubscription();
+    await this.createCandidatesForSelectedElectionSubscription()
   }
 
-  getUpdateToCandidates(): Observable<any>{
-    return this.candidatesSubject;
+  private createAllElectionSubscription() {
+    if (this.allElectionsSubscription) {
+      return;
+    }
+
+    this.allElectionsSubscription = of('').pipe(
+      mergeMap(() =>  this.localDB?.elections.find().$ ),
+    )
+    .subscribe(results => this.allElectionsSubject.next(results));
   }
 
-  createCandidatesSubscription() {
-    if (this.candidatesSubscription) {
-      this.candidatesSubscription.unsubscribe();
+  private createElectionsWithCandidateSubscription() {
+    if (this.electionsWithCandidateSubscription) {
+        return;
+    }
+    
+    this.electionsWithCandidateSubscription = 
+      // this.localDB?.elections.find().where('candidates_count').gt(0).sort('election_date').$
+      this.localDB?.elections.find().where('candidates_count').gt(0).$
+        .subscribe( results => this.electionsWithCandidateSubject.next(results) );
+  }
+
+  private createCandidatesForSelectedElectionSubscription() {
+    if (this.candidatesInSelectedElectionSubscription) {
+      return;
     }
 
     const candidatesObservable = of('').pipe(
-      mergeMap(() =>  this.localDB?.candidates.find().$ ),
+        mergeMap(() => this.electionSelectionChanged.asObservable() ),
+        mergeMap((electionID) => this.localDB?.candidates.find().where('election_id').eq(electionID).$ ),
     );
 
-    this.candidatesSubscription = candidatesObservable
-      .subscribe( results => this.candidatesSubject.next(results) );
-
+    this.candidatesInSelectedElectionSubscription = candidatesObservable
+      .subscribe( results => this.candidatesInSelectedElectionSubject.next(results) );
   }
 
-  createElectionSubscription() {
-
-    if (this.electionSubscription) {
-      this.electionSubscription.unsubscribe();
-    }
-
-    const electionObservable = of('').pipe(
-      mergeMap(() =>  this.localDB?.elections.find().$ ),
-    );
-
-    this.electionSubscription = electionObservable
-      .subscribe( results => this.electionsSubject.next(results) );
-
-  }
-
-  getUpdateToElections(): Observable<any>{
-    return this.electionsSubject;
+  ngOnDestroy() {
+    this.allElectionsSubscription?.unsubscribe();
+    this.electionsWithCandidateSubscription?.unsubscribe();
+    this.candidatesInSelectedElectionSubscription?.unsubscribe();
+    console.log('Destroy CampaignDataChangesService');
   }
 
 }
