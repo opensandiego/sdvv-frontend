@@ -152,6 +152,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
       }
       this.elections = electionList;
       this.elections.unshift(allElections);
+      this.campaignDataChangesService.electionSelectionChanged.next('ALL');
     });
   }
 

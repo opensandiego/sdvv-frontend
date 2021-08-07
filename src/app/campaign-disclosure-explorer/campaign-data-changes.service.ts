@@ -45,7 +45,8 @@ export class CampaignDataChangesService {
   async setupSubscriptions() {
     await this.createAllElectionSubscription();
     await this.createElectionsWithCandidateSubscription();
-    await this.createCandidatesForSelectedElectionSubscription()
+    await this.createCandidatesForSelectedElectionSubscription();
+    await this.createFilingsFromSelectedCandidateSubscription();
   }
 
   private createAllElectionSubscription() {
@@ -87,10 +88,30 @@ export class CampaignDataChangesService {
       .subscribe( results => this.candidatesInSelectedElectionSubject.next(results) );
   }
 
+  // Filings
+  createFilingsFromSelectedCandidateSubscription() {
+    if (this.filingsFromSelectedCandidateSubscription) {
+      return;
+    }
+
+    const filingsObservable = of('').pipe(
+      // mergeMap(() => this.electionSelectionChanged.asObservable() ),
+      mergeMap(candidateID => iif(() => candidateID === 'ALL', 
+        this.localDB?.filings.find().$,
+        this.localDB?.filings.find().$)
+        // this.localDB?.filings.find().where('election_id').eq(candidateID).$ )
+      )
+    );
+
+    this.filingsFromSelectedCandidateSubscription = filingsObservable
+      .subscribe( results => this.filingsFromSelectedCandidateSubject.next(results) );
+  }
+
   ngOnDestroy() {
     this.allElectionsSubscription?.unsubscribe();
     this.electionsWithCandidateSubscription?.unsubscribe();
     this.candidatesInSelectedElectionSubscription?.unsubscribe();
+    this.filingsFromSelectedCandidateSubscription?.unsubscribe();
     console.log('Destroy CampaignDataChangesService');
   }
 

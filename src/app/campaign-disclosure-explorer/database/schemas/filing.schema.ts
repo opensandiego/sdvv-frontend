@@ -8,6 +8,7 @@ export const filingSchema = {
     "coe_id": {
       "type": "string"
     },
+    // "entity_id" is unique to each committee "name"
     "entity_id": {
       "type": "string"
     },
@@ -50,7 +51,7 @@ export const filingSchema = {
     },
 
     "amends_orig_id": {
-      "type": ["string", "object"]
+      "type": ["string", "object", "null"]
     },
     "amends_prev_id": {
       "type": ["object", "null"]

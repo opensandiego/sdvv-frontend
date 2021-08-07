@@ -14,8 +14,6 @@ import { CampaignDataChangesService } from '../campaign-data-changes.service';
 })
 export class ElectionFilingUpdaterComponent implements OnInit {
 
-  filings: [] = []; // used in the drop down list
-
   id = 'filing-table';
   tableElement = document.createElement('div');
   table: Tabulator;
@@ -25,33 +23,98 @@ export class ElectionFilingUpdaterComponent implements OnInit {
   tableData: any[] = [];
 
   columnNames = [
-    { title: "coe_id", field: "coe_id" },
-    { title: "entity_id", field: "entity_id" },
-    { title: "name", field: "name" },
-    { title: "name_first", field: "name_first" },
-    { title: "name_title", field: "name_title" },
-    { title: "filing_id", field: "filing_id" },
-    { title: "doc_public", field: "doc_public" },
-    { title: "period_start", field: "period_start" },
-    { title: "period_end", field: "period_end" },
-    { title: "filing_type", field: "e_filing_id" },
-    { title: "filing_date", field: "filing_date" },
-    { title: "amendment", field: "amendment" },
-    { title: "amends_orig_id", field: "amends_orig_id" },
-    { title: "amends_prev_id", field: "amends_prev_id" },
-    { title: "amendment_number", field: "amendment_number" },
-    { title: "form_name", field: "form_name" },
-    { title: "filing_subtypes", field: "filing_subtypes" },
-    { title: "entity_name", field: "entity_name" },
+    { 
+      title: "eFile Data", 
+      columns: [
+        { title: "entity_id", field: "entity_id", headerFilter: "select", headerFilterFunc:"in",
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
+        },
+        { title: "name", field: "name", headerFilter: "select", headerFilterFunc:"in", 
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
+        },
+        { title: "filing_date", field: "filing_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
+        { title: "e_filing_id", field: "e_filing_id", headerFilter: "input" },
+        { title: "filing_id", field: "filing_id", headerFilter: "input", bottomCalc:"count" },
+        { title: "amendment", field: "amendment" },
+        { title: "amendment_number", field: "amendment_number" },
+        { title: "amends_orig_id", field: "amends_orig_id", headerFilter: "input" },
+        { title: "amends_prev_id", field: "amends_prev_id", headerFilter: "input" },
+        { title: "form_name", field: "form_name" },
+        { title: "coe_id", field: "coe_id", headerFilter: "select", headerFilterFunc:"in", 
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
+        },
+        { title: "doc_public", field: "doc_public" },
+        { title: "period_start", field: "period_start" },
+        { title: "period_end", field: "period_end" },
+        { title: "filing_type", field: "filing_type" },
+        { title: "filing_subtypes", field: "filing_subtypes" },
+        { title: "entity_name", field: "entity_name" },
+        { title: "name_first", field: "name_first" },
+        { title: "name_title", field: "name_title" },
+      ]
+    },
+    {
+      title: "Data Status", 
+      columns: [
+      ]
+    },
+
   ];
-  
+
   constructor(
     private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
   ) { }
 
   ngOnInit(): void {
+    this.drawTable();
+    this.updateRows();
+  }
 
+  updateRows() {
+    this.campaignDataChangesService.filingsFromSelectedCandidate$.subscribe( rows => {
+      let tableRows = rows.map( filing => ({
+        amendment: filing.amendment,
+        amendment_number: filing.amendment_number,
+        amends_orig_id: (filing.amendment) ? filing.amends_orig_id?.orig_id : filing.amends_orig_id,
+        amends_prev_id: (filing.amendment) ? filing.amends_prev_id?.prev_id : filing.amends_prev_id,
+        coe_id: filing.coe_id,
+        doc_public: filing.doc_public,
+        e_filing_id: filing.e_filing_id,
+        entity_id: filing.entity_id,
+        entity_name: filing.entity_name,
+        filing_date: filing.filing_date,
+        filing_id: filing.filing_id,
+        filing_subtypes: filing.filing_subtypes,
+        filing_type: filing.filing_type,
+        form_name: filing.form_name,
+        name: filing.name,
+        name_first: filing.name_first,
+        name_suffix: filing.name_suffix,
+        name_title: filing.name_title,
+        period_end: filing.period_end,
+      }));
+
+      this.table.replaceData(tableRows);
+    });
+  }
+
+  private drawTable(): void {
+    this.table = new Tabulator(this.tableElement, {
+      data: this.tableData,
+      reactiveData: true,
+      columns: this.columnNames,
+      layout: 'fitData',
+      height: this.height,
+      // rowClick: this.rowClicked,
+      // rowContextMenu: this.rowContextMenu,
+      selectable: 1,
+      initialSort: [
+        {column:"filing_date", dir:"desc"},
+      ],
+    });
+    document.getElementById(this.id).appendChild(this.tableElement);
+    this.table.redraw(true);
   }
 
 }

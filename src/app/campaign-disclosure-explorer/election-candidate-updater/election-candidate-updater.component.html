@@ -5,7 +5,7 @@
 </div>
 
   <mat-label>Election:</mat-label>
-  <mat-select [(value)]="selectedElection" (selectionChange)="onElectionSelected($event)"> 
+  <mat-select (selectionChange)="onElectionSelected($event)"> 
     <mat-option *ngFor="let election of elections" [value]="election.electionID">
       {{election.electionTitle}}
     </mat-option>

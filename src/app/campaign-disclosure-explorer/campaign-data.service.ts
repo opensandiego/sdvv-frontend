@@ -24,47 +24,62 @@ export class CampaignDataService {
     .then(json => json.data)
     .then(
       async data => {
-        console.log(data)
 
-        const candidateFilingDocs = data.map(filling => ({
-          amendment: filling.amendment,
-          amendment_number: filling.amendment_number,
-          amends_orig_id: filling.amends_orig_id,
-          amends_prev_id: filling.amends_prev_id,
-          coe_id: filling.coe_id,
-          doc_public: filling.doc_public,
-          e_filing_id: filling.e_filing_id,
-          entity_id: filling.entity_id,
-          entity_name: filling.entity_name,
-          filing_date: filling.filing_date,
-          filing_id: filling.filing_id,
-          filing_subtypes: filling.filing_subtypes,
-          filing_type: filling.filing_type,
-          form_name: filling.form_name,
-          name: filling.name,
-          name_first: filling.name_first,
-          name_suffix: filling.name_suffix,
-          name_title: filling.name_title,
-          period_end: filling.period_end,
+        const candidateFilingDocs = data.map(filing => ({
+          amendment: filing.amendment,
+          amendment_number: filing.amendment_number,
+          amends_orig_id: filing.amends_orig_id,
+          amends_prev_id: filing.amends_prev_id,
+          coe_id: filing.coe_id,
+          doc_public: filing.doc_public,
+          e_filing_id: filing.e_filing_id,
+          entity_id: filing.entity_id,
+          entity_name: filing.entity_name,
+          filing_date: filing.filing_date,
+          filing_id: filing.filing_id,
+          filing_subtypes: filing.filing_subtypes,
+          filing_type: filing.filing_type,
+          form_name: filing.form_name,
+          name: filing.name,
+          name_first: filing.name_first,
+          name_suffix: filing.name_suffix,
+          name_title: filing.name_title,
+          period_end: filing.period_end,
         }));
 
-        for await (const fillingDoc of candidateFilingDocs) {
-          this.localDB.fillings.upsert(fillingDoc);
-        }
+        const filingIDsToAdd = candidateFilingDocs.map(filing => filing.e_filing_id);
+        const filingIDsInDB = await this.localDB.filings.find()
+          .where('e_filing_id').in(filingIDsToAdd).exec()
+          .then(filings => filings.map(filing => filing.e_filing_id));
 
-        // const fillingCount = (await this.localDB.fillings
-        //   .find().where('coe_id').eq(candidateOfficeElectionID).exec()).length;
+        // remove filings from array that are already in database
+        const newFilings = candidateFilingDocs.filter( filing => 
+          !filingIDsInDB.includes(filing.e_filing_id)
+        );
 
-        // const candidateQuery = await this.localDB.candidates
-        //   .find().where('coe_id').eq(candidateOfficeElectionID);
+        await this.localDB.filings
+          .bulkInsert(newFilings)
+          .catch(error => console.log("error: ", error));
 
-        // candidateQuery.update({
-        //   $set: {
-        //     filings_count: fillingCount
-        //   }
-        // });
+        // Candidate names can have middle initials and dashes that
+        // make matching text inexact and cause the count to be off. 
+        const filingCount = (await this.localDB.filings
+          .find({
+            selector: {
+              entity_name: {$regex: `.*${candidateName}.*`}
+            }
+          }).exec()).length;
 
-        return candidateFilingDocs;
+        const candidateQuery = await this.localDB.candidates
+          .find().where('coe_id').eq(candidateOfficeElectionID);
+
+        candidateQuery.update({
+          $set: {
+            filings_count: filingCount
+          }
+        });
+
+        return newFilings;
       }
     )
   }
@@ -125,9 +140,19 @@ export class CampaignDataService {
           candidateDocs = candidateDocs.concat(candidatesForOffice);
         }
 
-        for await (const candidateDoc of candidateDocs) {
-          await this.localDB.candidates.upsert(candidateDoc);
-        }
+        const candidateIDsToAdd = candidateDocs.map(candidate => candidate.coe_id);
+        const candidateIDsInDB = await this.localDB.candidates.find()
+          .where('coe_id').in(candidateIDsToAdd).exec()
+          .then(candidates => candidates.map(candidate => candidate.coe_id));
+
+        // remove candidates from array that are already in database
+        const newCandidates = candidateDocs.filter( candidate => 
+          !candidateIDsInDB.includes(candidate.e_filing_id)
+        );
+
+        await this.localDB.candidates
+          .bulkInsert(newCandidates)
+          .catch(error => console.log("error: ", error));
 
         const candidateCount = (await this.localDB.candidates
           .find().where('election_id').eq(election_id).exec()).length;
@@ -141,7 +166,7 @@ export class CampaignDataService {
           }
         });
 
-        return candidateDocs;
+        return newCandidates;
       }
     )
   }
