@@ -28,13 +28,13 @@ export const filingSchema = {
       "primary": true
     },
     "doc_public": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "period_start": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "period_end": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "filing_type": {
       "type": "string"
@@ -50,10 +50,10 @@ export const filingSchema = {
     },
 
     "amends_orig_id": {
-      "type": "object"
+      "type": ["string", "object"]
     },
     "amends_prev_id": {
-      "type": "object"
+      "type": ["object", "null"]
     },
 
     "amendment_number": {
