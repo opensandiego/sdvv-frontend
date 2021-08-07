@@ -1,0 +1,21 @@
+<p>election-filing-updater works!</p>
+
+<div class="buttons">
+    <!-- <button mat-flat-button color="primary" (click)="subscribeToDatabase()" [disabled]="dbSubscriptionActive" >Subscribe to DB</button> -->
+    <button mat-flat-button color="accent" disabled>Push data to remote</button>
+  </div>
+  
+    <mat-label>Candidate:</mat-label>
+    <!-- <mat-select [(value)]="selectedElection" (selectionChange)="onElectionSelected($event)"> 
+      <mat-option *ngFor="let election of elections" [value]="election.electionID">
+        {{election.electionTitle}}
+      </mat-option>
+    </mat-select> -->
+  
+  <mat-progress-bar *ngIf="isLoadingData"
+    mode="indeterminate"
+    class="example-tree-progress-bar"
+  ></mat-progress-bar>
+  
+  <div id="filing-table"></div>
+  
