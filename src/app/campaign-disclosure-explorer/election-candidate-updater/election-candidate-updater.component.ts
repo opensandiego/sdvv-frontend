@@ -93,17 +93,13 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
     },
     {
       label: "Filings",
-      // action:(e, row) => {
-      //   // this.isLoadingData = true;
-      //   // this.campaignDataService.deleteCandidates(row._row.data.election_id)
-      //   // .finally( () => this.isLoadingData = false );
-      // }
       menu: [
         {
           label: 'Fetch from eFile',
           action: (e, row) => {
             this.isLoadingData = true;
-            this.campaignDataService.updateFilingsInDB(row._row.data.coe_id)
+            const fullName = `${row._row.data.last_name}`
+            this.campaignDataService.updateFilingsInDB(row._row.data.coe_id, fullName)
             .finally( () => this.isLoadingData = false );
           },
         },
