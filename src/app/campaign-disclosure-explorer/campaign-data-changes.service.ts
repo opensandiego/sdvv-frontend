@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { from, Observable, of, Subject } from 'rxjs';
+import { from, Observable, of, Subject, iif } from 'rxjs';
 import {  map, mergeMap } from 'rxjs/operators';
 
 import { DatabaseService } from './database/database.service';
@@ -25,6 +25,12 @@ export class CampaignDataChangesService {
   public  candidatesInSelectedElection$ = this.candidatesInSelectedElectionSubject.asObservable(); 
 
   public electionSelectionChanged = new Subject<string>(); // used to receive signals from components
+
+  private filingsFromSelectedCandidateSubscription;
+  private filingsFromSelectedCandidateSubject = new Subject<any>();
+  public  filingsFromSelectedCandidate$ = this.filingsFromSelectedCandidateSubject.asObservable(); 
+
+  public candidateSelectionChanged = new Subject<string>(); // used to receive signals from components
 
   constructor( ) {
     this.setupDatabase();
@@ -71,7 +77,10 @@ export class CampaignDataChangesService {
 
     const candidatesObservable = of('').pipe(
         mergeMap(() => this.electionSelectionChanged.asObservable() ),
-        mergeMap((electionID) => this.localDB?.candidates.find().where('election_id').eq(electionID).$ ),
+        mergeMap(electionID => iif(() => electionID === 'ALL', 
+          this.localDB?.candidates.find().$,
+          this.localDB?.candidates.find().where('election_id').eq(electionID).$ )
+        )
     );
 
     this.candidatesInSelectedElectionSubscription = candidatesObservable

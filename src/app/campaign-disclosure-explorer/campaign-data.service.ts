@@ -18,7 +18,7 @@ export class CampaignDataService {
   }
 
   // Filings 
-  updateFilingsInDB(candidateOfficeElectionID) {
+  updateFilingsInDB(candidateOfficeElectionID: string, candidateName?: string) {
     return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/filing/list/${candidateOfficeElectionID}`)
     .then(response => response.json())
     .then(json => json.data)

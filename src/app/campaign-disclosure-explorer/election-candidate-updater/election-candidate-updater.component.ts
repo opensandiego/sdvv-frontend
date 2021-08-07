@@ -13,6 +13,11 @@ interface selectedEvent {
   id: string;
 }
 
+interface ElectionList {
+  electionTitle: string;
+  electionID: string;
+}
+
 @Component({
   selector: 'app-election-candidate-updater',
   templateUrl: './election-candidate-updater.component.html',
@@ -23,7 +28,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
   @Output() selectedIdEvent 
     = new EventEmitter<selectedEvent | null>();
 
-  elections: [] = []; // used in the drop down list
+  elections: ElectionList[]; // used in the drop down list
 //   selectedElection = '';
 
   id = 'candidate-table';
@@ -35,24 +40,39 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
   tableData: any[] = [];
 
   columnNames = [
-    { title: "office", field: "office" },
-    { title: "district", field: "district" },
-    { title: "Candidate Name", field: "candidate_name", bottomCalc:"count" },
-    { title: "coe_id", field: "coe_id" },
-    { title: "filer_id", field: "filer_id" },
-    { title: "office_code", field: "office_code" },
-    { title: "office_id", field: "office_id" },
-    { title: "election_id", field: "election_id" },
-    { title: "first_name", field: "first_name" },
-    { title: "middle_name", field: "middle_name" },
-    { title: "last_name", field: "last_name" },
-    { title: "jurisdiction_code", field: "jurisdiction_code" },
-    { title: "jurisdiction_id", field: "jurisdiction_id" },
-    { title: "jurisdiction_name", field: "jurisdiction_name" },
-    { title: "jurisdiction_type", field: "jurisdiction_type" },
-    { title: "agency", field: "agency" },
-    { title: "title", field: "title" },
-    { title: "suffix", field: "suffix" },
+    { 
+      title: "eFile Data", 
+      columns: [
+        { title: "office", field: "office" },
+        { title: "district", field: "district" },
+        { title: "Candidate Name", field: "candidate_name", bottomCalc:"count" },
+        { title: "coe_id", field: "coe_id" },
+        { title: "filer_id", field: "filer_id" },
+        { title: "office_code", field: "office_code" },
+        { title: "office_id", field: "office_id" },
+        { title: "election_id", field: "election_id" },
+        { title: "first_name", field: "first_name" },
+        { title: "middle_name", field: "middle_name" },
+        { title: "last_name", field: "last_name" },
+        { title: "jurisdiction_code", field: "jurisdiction_code" },
+        { title: "jurisdiction_id", field: "jurisdiction_id" },
+        { title: "jurisdiction_name", field: "jurisdiction_name" },
+        { title: "jurisdiction_type", field: "jurisdiction_type" },
+        { title: "agency", field: "agency" },
+        { title: "title", field: "title" },
+        { title: "suffix", field: "suffix" },
+      ]
+    },
+    { 
+      title: "Data Status", 
+      columns: [
+        { title: "filings", field: "filings_count", },
+        { title: "committees", field: "committees_count", },
+        // { title: "transactions", field: "transactions_count", },
+      ]
+    },
+
+  
   ];
 
   private rowContextMenu = [
@@ -108,6 +128,10 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
     },
   ];
 
+  tooltips(cell) {
+    const district = cell.getData().district ? cell.getData().district : '';
+    return `${cell.getData().candidate_name} - ${cell.getData().office} ${district}`;
+  }
 
   constructor(
     private campaignDataService: CampaignDataService,
@@ -122,10 +146,16 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
 
   subscribeToElectionUpdates(){
     this.campaignDataChangesService.electionsWithCandidate$.subscribe( elections => {
-        this.elections = elections.map( election => ({
+       const electionList = elections.map( election => ({
             electionTitle: `${election.election_date} ${election.election_type} Election`,
             electionID: election.election_id,
       }));
+      let allElections:ElectionList = {
+        electionTitle: 'All Elections',
+        electionID: 'ALL'
+      }
+      this.elections = electionList;
+      this.elections.unshift(allElections);
     });
   }
 
@@ -160,6 +190,8 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
         jurisdiction_name: row.jurisdiction_name,
         jurisdiction_code: row.jurisdiction_code,
         candidate_name: row.candidate_name,
+        filings_count: row.filings_count,
+        committees_count: row.committees_count,
       }));
  
       this.table.replaceData(tableRows);
@@ -192,6 +224,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
       height: this.height,
       rowClick: this.rowClicked,
       rowContextMenu: this.rowContextMenu,
+      tooltips:this.tooltips,
       selectable: 1,
       initialSort: [
         {column:"candidate_name", dir:"asc"},
