@@ -22,24 +22,34 @@ export class ElectionFilingUpdaterComponent implements OnInit {
   dbSubscriptionActive = false;
   tableData: any[] = [];
 
+  headerMenu = [
+    {
+      label:"Disable Groups",
+      action:(e, column)=> {
+        this.table.setGroupBy();
+      }
+    },
+    {
+      label:"Group by entity_name",
+      action:(e, column)=> {
+        this.table.setGroupBy("entity_name");
+      }
+    },
+  ]
+
   columnNames = [
     { 
       title: "eFile Data", 
+      headerMenu: this.headerMenu,
       columns: [
-        { title: "entity_id", field: "entity_id", headerFilter: "select", headerFilterFunc:"in",
-          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
-        },
-        { title: "name", field: "name", headerFilter: "select", headerFilterFunc:"in", 
-          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
-        },
+ 
         { title: "filing_date", field: "filing_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
         { title: "e_filing_id", field: "e_filing_id", headerFilter: "input" },
-        { title: "filing_id", field: "filing_id", headerFilter: "input", bottomCalc:"count" },
+        { title: "filing_id", field: "filing_id", headerFilter: "input"}, //, bottomCalc:"count" 
         { title: "amendment", field: "amendment" },
         { title: "amendment_number", field: "amendment_number" },
         { title: "amends_orig_id", field: "amends_orig_id", headerFilter: "input" },
         { title: "amends_prev_id", field: "amends_prev_id", headerFilter: "input" },
-        { title: "form_name", field: "form_name" },
         { title: "coe_id", field: "coe_id", headerFilter: "select", headerFilterFunc:"in", 
           headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
         },
@@ -49,8 +59,31 @@ export class ElectionFilingUpdaterComponent implements OnInit {
         { title: "filing_type", field: "filing_type" },
         { title: "filing_subtypes", field: "filing_subtypes" },
         { title: "entity_name", field: "entity_name" },
+      ]
+    },
+    {
+      title: "eFile Data - coe_id request",
+      columns: [
+        { title: "entity_id", field: "entity_id", headerFilter: "select", headerFilterFunc:"in",
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
+        },
+        { title: "name", field: "name", headerFilter: "select", headerFilterFunc:"in", 
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true,
+            }
+        },
+        { title: "form_name", field: "form_name" },
         { title: "name_first", field: "name_first" },
+        // { title: "name_suffix", field: "name_suffix" },
         { title: "name_title", field: "name_title" },
+      ]
+    },
+    {
+      title: "eFile Data - campaign-search request", 
+      columns: [
+        { title: "period_start", field: "period_start" },
+        { title: "amendment_type", field: "amendment_type" },
+        { title: "covers_period", field: "covers_period" },
+        { title: "form", field: "form" },
       ]
     },
     {
@@ -60,6 +93,8 @@ export class ElectionFilingUpdaterComponent implements OnInit {
     },
 
   ];
+
+
 
   constructor(
     private campaignDataService: CampaignDataService,
@@ -93,6 +128,11 @@ export class ElectionFilingUpdaterComponent implements OnInit {
         name_suffix: filing.name_suffix,
         name_title: filing.name_title,
         period_end: filing.period_end,
+        // In campaign-search request
+        period_start: filing.period_start,
+        amendment_type: filing.amendment_type,
+        covers_period: filing.covers_period,
+        form: filing.form,
       }));
 
       this.table.replaceData(tableRows);
