@@ -5,7 +5,7 @@ import { DatabaseService } from './database/database.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CampaignFilingService {
+export class CampaignTransactionService {
   localDB;
 
   constructor( ) {
@@ -16,6 +16,98 @@ export class CampaignFilingService {
     const databaseService = new DatabaseService();
     this.localDB = await databaseService.getInstance();
   }
-  
+
+  addMonthsNewTransaction(months: number = 6) {
+    return this.getDateRanges()
+      .then( async range => {
+        const monthsAgo = new Date(range.oldest);
+        monthsAgo.setMonth(monthsAgo.getMonth() - months);
+        console.log(monthsAgo.toISOString(), range.oldest )
+        await this.addTransactionsInDateRange(monthsAgo.toISOString(), range.oldest)
+      });
+  }
+
+  getDateRanges(): Promise<{ oldest: string, newest: string }> {
+    return this.localDB.transactions.find().exec()
+      .then( results => {
+        if (results.length < 1) {
+          console.log("today" )
+          return { oldest: (new Date()).toISOString(), newest: (new Date()).toISOString() };
+        }
+        const dates = results.map(result => new Date(result.transaction_date_time));
+        const minDate = new Date(Math.min(...dates));
+        const maxDate = new Date(Math.max(...dates));
+        console.log(minDate, maxDate )
+
+        return { oldest: minDate.toISOString(), newest: maxDate.toISOString() };
+      });
+  }
+
+
+  addTransactionsInDateRange(oldestDate: string, newestDate: string) {
+    let pageNumber = 1;
+    return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/advanced?start_date=${oldestDate}&end_date=${newestDate}&most_recent_amendment=false&page_size=50&page_number=${pageNumber}`)
+      .then(response => response.json())
+      .then(json => json.data)
+      .then(data => {console.log("data: ", data); return data;})
+      .then(data => this.addTransactionsToDB( this.mapTransactionFields(data) ))
+      .catch(error => console.log("error: ", error));
+  }
+
+  addTransactionsToDB(transactionsToAdd) {
+    const transactionIDsToAdd = transactionsToAdd.map(document => `${document.filing_id}|${document.tran_id}`);
+    error => console.log("transactionIDsToAdd: ")
+
+    return this.localDB.transactions.find()
+      .where('_id').in(transactionIDsToAdd).exec()
+      .then(transactions => transactions.map(transaction => transaction.id))
+      .then(transaction_ids => 
+        // remove transactions from array that are already in database
+        transactionsToAdd.filter( transaction => 
+          !transaction_ids.includes(transaction.id)
+        )
+      )
+      .then(newTransactions => {
+        this.localDB.transactions.bulkInsert(newTransactions)
+      });
+  }
+
+  mapTransactionFields(transactions) {
+
+    return transactions.map(transaction => {
+      const newTransaction = {
+        doc_public: transaction.doc_public,
+        e_filing_id: transaction.e_filing_id,
+        tran_id: transaction.tran_id,
+        transaction_date: transaction.transaction_date,
+        amount: transaction.amount,
+        tx_type: transaction.tx_type,
+        schedule: transaction.schedule,
+        filing_id: transaction.filing_id,
+        filing_type: transaction.filing_type,
+        name: transaction.name,
+        intr_name: transaction.intr_name,
+        city: transaction.city,
+        state: transaction.state,
+        // zip: transaction.zip,
+        spending_code: transaction.spending_code,
+        employer: transaction.employer,
+        occupation: transaction.occupation, 
+        transaction_date_time: (new Date(transaction.transaction_date)).toISOString(),
+      };
+     
+      return newTransaction;
+
+    });
+
+  }
+
+
+
+  deleteAllTransactions() {
+    const query = this.localDB.transactions.find();
+    return query.remove()
+  }
+
 }
 

@@ -7,6 +7,7 @@ window.moment = moment;
 import { CampaignDataService } from '../campaign-data.service';
 import { CampaignDataChangesService } from '../campaign-data-changes.service';
 import { CampaignFilingService } from '../campaign-filing.service';
+import { CampaignTransactionService } from '../campaign-transactions.service';
 
 
 @Component({
@@ -23,9 +24,31 @@ export class ElectionTransactionViewerComponent implements OnInit {
   dbSubscriptionActive = false;
   tableData: any[] = [];
 
+  headerMenu = [
+    {
+      label:"Group by filing_id",
+      action:(e, column)=> {
+        this.table.setGroupBy("filing_id");
+      }
+    },
+    {
+      label:"Disable Groups",
+      action:(e, column)=> {
+        this.table.setGroupBy();
+      }
+    },
+    {
+      label:"Add 2 more month of past Transactions",
+      action:(e, column)=> {
+        this.campaignTransactionService.addMonthsNewTransaction(2);
+      }
+    },
+  ];
+
   columnNames = [
     {
-      title: "eFile Data", 
+      title: "eFile Data",
+      headerMenu: this.headerMenu, 
       columns: [
         { title: "filer_name", field: "filer_name" },
         { title: "doc_public", field: "doc_public" },
@@ -57,6 +80,7 @@ export class ElectionTransactionViewerComponent implements OnInit {
     // private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
     // private campaignFilingService: CampaignFilingService,
+    private campaignTransactionService: CampaignTransactionService,
   ) { }
 
   ngOnInit(): void {
@@ -65,7 +89,15 @@ export class ElectionTransactionViewerComponent implements OnInit {
   }
 
   updateRows() {
-    // this.campaignDataChangesService.transactions$.subscribe(rows => {});
+    this.campaignDataChangesService.transactions$.subscribe(rows => {
+      let tableRows = rows.map( transaction => ({
+        filer_name: transaction.filer_name,
+        e_filing_id: transaction.e_filing_id,
+        filing_id: transaction.filing_id,
+      }));
+
+      this.table.replaceData(tableRows);
+    });
   }
 
   private drawTable(): void {

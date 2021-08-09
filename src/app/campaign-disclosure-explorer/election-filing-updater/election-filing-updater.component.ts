@@ -6,6 +6,7 @@ window.moment = moment;
 
 import { CampaignDataService } from '../campaign-data.service';
 import { CampaignDataChangesService } from '../campaign-data-changes.service';
+import { CampaignFilingService } from '../campaign-filing.service';
 
 @Component({
   selector: 'app-election-filing-updater',
@@ -24,15 +25,35 @@ export class ElectionFilingUpdaterComponent implements OnInit {
 
   headerMenu = [
     {
+      label:"Group by entity_name",
+      action:(e, column)=> {
+        this.table.setGroupBy("entity_name");
+      }
+    },
+    {
       label:"Disable Groups",
       action:(e, column)=> {
         this.table.setGroupBy();
       }
     },
     {
-      label:"Group by entity_name",
+      label:"Add 1 more month of past filings",
       action:(e, column)=> {
-        this.table.setGroupBy("entity_name");
+        this.campaignFilingService.addMonthsNewFilings(1);
+      }
+    },
+    {
+      label:"Remove all filings",
+      action:(e, column)=> {
+        this.campaignFilingService.deleteAllFilings().
+          then(results => console.log("Removed:", results.length) );
+      }
+    },
+    {
+      label:"Log filing date ranges to console",
+      action:(e, column)=> {
+        this.campaignFilingService.getFilingDateRanges()
+          .then( range => console.log(range));
       }
     },
   ]
@@ -99,6 +120,7 @@ export class ElectionFilingUpdaterComponent implements OnInit {
   constructor(
     private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
+    private campaignFilingService: CampaignFilingService,
   ) { }
 
   ngOnInit(): void {

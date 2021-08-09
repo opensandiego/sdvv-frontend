@@ -3,7 +3,16 @@ export const transactionSchema = {
   "title": "transaction schema",
   "description": "transaction schema",
   "version": 0,
+  "primaryKey": {
+    "key": "id",
+    "fields": [
+      "filing_id",
+      "tran_id"
+    ],
+    "separator": "|"
+  },
   "type": "object",
+  // "required": [ "id", "filing_id", "tran_id" ],
   "properties": {
     "filer_name": {
       "type": "string"
@@ -13,7 +22,7 @@ export const transactionSchema = {
     },
     "e_filing_id": {
       "type": "string",
-      "format": "integer"
+      // "format": "integer"
     },
     "tran_id": {
       "type": "string"
@@ -32,7 +41,7 @@ export const transactionSchema = {
     },
     "filing_id": {
       "type": "string",
-      "format": "uuid"
+      // "format": "uuid"
     },
     "filing_type": {
       "type": "string"
@@ -51,36 +60,24 @@ export const transactionSchema = {
     },
     "zip": {
       "type": "string",
-      "format": "integer"
+      // "format": "integer"
     },
     "spending_code": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "employer": {
       "type": ["string", "null"]
     },
     "occupation": {
       "type": ["string", "null"]
-    }
+    },
+    // Fields below are not from eFile
+    "id": {
+      "type": "string"
+    },
+    "transaction_date_time": {
+      "type": "string",
+      "format": "date-time"
+    },
   },
-  "required": [
-    "amount",
-    "city",
-    "doc_public",
-    "e_filing_id",
-    "employer",
-    "filer_name",
-    "filing_id",
-    "filing_type",
-    "intr_name",
-    "name",
-    "occupation",
-    "schedule",
-    "spending_code",
-    "state",
-    "tran_id",
-    "transaction_date",
-    "tx_type",
-    "zip"
-  ]
 }

@@ -15,18 +15,7 @@ export class CampaignFilingService {
   async database() {
     const databaseService = new DatabaseService();
     this.localDB = await databaseService.getInstance();
-    await this.showFilingDateRanges();
-    await this.addMonthsNewFilings(1);
-    await this.showFilingDateRanges();
-    await this.addMonthsNewFilings(1);
-    await this.showFilingDateRanges();
   }
-
-  showFilingDateRanges() {
-   return this.getFilingDateRanges()
-    .then( range => console.log(range)); 
-  }
-
 
   addMonthsNewFilings(months: number = 6) {
     return this.getFilingDateRanges()
@@ -147,25 +136,11 @@ export class CampaignFilingService {
   }
 
 
-  // deleteFilings(candidateOfficeElectionID: string) {
-
-  //   const options = {
-  //     selector: {
-  //       coe_id: candidateOfficeElectionID
-  //     }
-  //   };      
-    
-  //   const filingsQuery = this.localDB.filings.find(options);
-
-  //   return filingsQuery.exec()
-  //   .then(
-  //     async results => {
-  //   //     await electionQuery.update({ $set: { candidates_count: 0 } });
-  //       return filingsQuery.remove().then( () => results );
-  //     }
-  //   )
-
-  // }
+  deleteAllFilings() {
+    // return this.localDB.filings.remove();
+    const query = this.localDB.filings.find();
+    return query.remove()
+  }
 
 
 }

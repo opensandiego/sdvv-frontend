@@ -32,6 +32,11 @@ export class CampaignDataChangesService {
 
   public candidateSelectionChanged = new Subject<string>(); // used to receive signals from components
 
+  private transactionsSubscription;
+  private transactionsSubject = new Subject<any>();
+  public  transactions$ = this.transactionsSubject.asObservable();
+
+
   constructor( ) {
     this.setupDatabase();
   }
@@ -47,6 +52,7 @@ export class CampaignDataChangesService {
     await this.createElectionsWithCandidateSubscription();
     await this.createCandidatesForSelectedElectionSubscription();
     await this.createFilingsFromSelectedCandidateSubscription();
+    await this.createTransactionsSubscription();
   }
 
   private createAllElectionSubscription() {
@@ -107,11 +113,27 @@ export class CampaignDataChangesService {
       .subscribe( results => this.filingsFromSelectedCandidateSubject.next(results) );
   }
 
+  // Transactions
+  createTransactionsSubscription() {
+    if (this.transactionsSubscription) {
+      return;
+    }
+
+    const transactionsObservable = of('').pipe(
+      mergeMap(() =>this.localDB?.filings.find().$ )
+    );
+
+    this.transactionsSubscription = transactionsObservable
+      .subscribe( results => this.transactionsSubject.next(results) );
+  }
+
+
   ngOnDestroy() {
     this.allElectionsSubscription?.unsubscribe();
     this.electionsWithCandidateSubscription?.unsubscribe();
     this.candidatesInSelectedElectionSubscription?.unsubscribe();
     this.filingsFromSelectedCandidateSubscription?.unsubscribe();
+    this.transactionsSubscription?.unsubscribe();
     console.log('Destroy CampaignDataChangesService');
   }
 
