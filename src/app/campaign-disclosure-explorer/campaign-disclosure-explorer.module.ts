@@ -14,6 +14,7 @@ import { ElectionDataUpdaterComponent } from './election-data-updater/election-d
 import { ExplorerContainerComponent } from './explorer-container/explorer-container.component';
 import { ElectionCandidateUpdaterComponent } from './election-candidate-updater/election-candidate-updater.component';
 import { ElectionFilingUpdaterComponent } from './election-filing-updater/election-filing-updater.component';
+import { ElectionTransactionViewerComponent } from './election-transaction-viewer/election-transaction-viewer.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ElectionFilingUpdaterComponent } from './election-filing-updater/electi
     ExplorerContainerComponent,
     ElectionCandidateUpdaterComponent,
     ElectionFilingUpdaterComponent,
+    ElectionTransactionViewerComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { ElectionFilingUpdaterComponent } from './election-filing-updater/electi
     ExplorerContainerComponent,
     ElectionCandidateUpdaterComponent,
     ElectionFilingUpdaterComponent,
+    ElectionTransactionViewerComponent,
   ],
   providers: []
 
