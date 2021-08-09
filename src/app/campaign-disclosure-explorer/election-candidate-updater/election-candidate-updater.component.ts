@@ -7,6 +7,7 @@ window.moment = moment;
 
 import { CampaignDataService } from '../campaign-data.service';
 import { CampaignDataChangesService } from '../campaign-data-changes.service';
+import { CampaignFilingService } from '../campaign-filing.service';
 
 interface selectedEvent {
   name: string;
@@ -29,7 +30,6 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
     = new EventEmitter<selectedEvent | null>();
 
   elections: ElectionList[]; // used in the drop down list
-//   selectedElection = '';
 
   id = 'candidate-table';
   tableElement = document.createElement('div');
@@ -99,14 +99,15 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
           action: (e, row) => {
             this.isLoadingData = true;
             const fullName = `${row._row.data.last_name}`
-            this.campaignDataService.updateFilingsInDB(row._row.data.coe_id, fullName)
-            .finally( () => this.isLoadingData = false );
+            this.campaignFilingService.updateFilingsInDB(row._row.data.coe_id)
+              .then(() => this.campaignFilingService.updateFilingCountsInCandidate(row._row.data.coe_id, fullName))
+              .finally( () => this.isLoadingData = false );
           },
         },
-        {
-          label: 'Delete from database',
-          action: (e, row) => {},
-        },
+        // {
+        //   label: 'Delete from database',
+        //   action: (e, row) => {},
+        // },
       ]
     },
     {
@@ -132,6 +133,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
   constructor(
     private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
+    private campaignFilingService: CampaignFilingService,
   ) { }
 
   ngOnInit(): void {
@@ -140,6 +142,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
     this.subscribeToElectionUpdates();
   }
 
+  // Build the data for the drop down list
   subscribeToElectionUpdates(){
     this.campaignDataChangesService.electionsWithCandidate$.subscribe( elections => {
        const electionList = elections.map( election => ({
@@ -152,6 +155,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
       }
       this.elections = electionList;
       this.elections.unshift(allElections);
+      this.campaignDataChangesService.electionSelectionChanged.next('ALL');
     });
   }
 
