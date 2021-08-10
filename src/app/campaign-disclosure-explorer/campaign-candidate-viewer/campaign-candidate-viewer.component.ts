@@ -20,11 +20,11 @@ interface ElectionList {
 }
 
 @Component({
-  selector: 'app-election-candidate-updater',
-  templateUrl: './election-candidate-updater.component.html',
-  styleUrls: ['./election-candidate-updater.component.scss']
+  selector: 'campaign-candidate-viewer',
+  templateUrl: './campaign-candidate-viewer.component.html',
+  styleUrls: ['./campaign-candidate-viewer.component.scss']
 })
-export class ElectionCandidateUpdaterComponent implements OnInit {
+export class CampaignCandidateViewerComponent implements OnInit {
   @Input() electionID: string | null = null;
   @Output() selectedIdEvent 
     = new EventEmitter<selectedEvent | null>();
@@ -39,9 +39,18 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
   dbSubscriptionActive = false;
   tableData: any[] = [];
 
+  headerMenu = [
+    // {
+    //   label:"Push Candidates to remote",
+    //   action:(e, column)=> {
+    //   }
+    // },
+  ];
+
   columnNames = [
     { 
-      title: "eFile Data", 
+      title: "eFile Data",
+      // headerMenu: this.headerMenu,
       columns: [
         { title: "office", field: "office" },
         { title: "district", field: "district" },
@@ -68,6 +77,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
       columns: [
         { title: "filings", field: "filings_count", },
         { title: "committees", field: "committees_count", },
+        { title: "Candidate Controlled Committee Name", field: "candidate_controlled_committee_name" },
         // { title: "transactions", field: "transactions_count", },
       ]
     },
@@ -79,16 +89,21 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
     {
       label: "Committees",
       menu: [
-        {
-          label: 'Fetch from eFile',
-          action: (e, row) => {
-            //use candidate name
-          },
-        },
-        {
-          label: 'Delete from database',
-          action: (e, row) => {},
-        },
+        // {
+        //   label: 'Fetch from eFile',
+        //   action: (e, row) => {
+        //     //use candidate name
+        //   },
+        // },
+        // {
+        //   label: 'Delete from database',
+        //   action: (e, row) => {},
+        // },
+        // {
+        //   label:"Calculate Candidate Controlled Committee Names",
+        //   action: (e, column)=> {
+        //   }
+        // },
       ]
     },
     {
@@ -113,14 +128,14 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
     {
       label: "Transactions",
       menu: [
-        {
-          label: 'Fetch from eFile',
-          action: (e, row) => {},
-        },
-        {
-          label: 'Delete from database',
-          action: (e, row) => {},
-        },
+        // {
+        //   label: 'Fetch from eFile',
+        //   action: (e, row) => {},
+        // },
+        // {
+        //   label: 'Delete from database',
+        //   action: (e, row) => {},
+        // },
       ]
     },
   ];
@@ -192,6 +207,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
         candidate_name: row.candidate_name,
         filings_count: row.filings_count,
         committees_count: row.committees_count,
+        candidate_controlled_committee_name: row.candidate_controlled_committee_name,
       }));
  
       this.table.replaceData(tableRows);

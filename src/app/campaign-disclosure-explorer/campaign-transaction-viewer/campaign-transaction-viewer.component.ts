@@ -11,11 +11,11 @@ import { CampaignTransactionService } from '../campaign-transactions.service';
 
 
 @Component({
-  selector: 'app-election-transaction-viewer',
-  templateUrl: './election-transaction-viewer.component.html',
-  styleUrls: ['./election-transaction-viewer.component.scss']
+  selector: 'campaign-transaction-viewer',
+  templateUrl: './campaign-transaction-viewer.component.html',
+  styleUrls: ['./campaign-transaction-viewer.component.scss']
 })
-export class ElectionTransactionViewerComponent implements OnInit {
+export class CampaignTransactionViewerComponent implements OnInit {
   id = 'transaction-table';
   tableElement = document.createElement('div');
   table: Tabulator;
@@ -38,9 +38,21 @@ export class ElectionTransactionViewerComponent implements OnInit {
       }
     },
     {
+      label:"Add 1 more weeks of past Transactions",
+      action:(e, column)=> {
+        this.campaignTransactionService.addNWeeksOfPastTransaction(1);
+      }
+    },
+    {
       label:"Add 2 more month of past Transactions",
       action:(e, column)=> {
         this.campaignTransactionService.addMonthsNewTransaction(2);
+      }
+    },
+    {
+      label:"Remove ALL Transactions",
+      action:(e, column)=> {
+        this.campaignTransactionService.deleteAllTransactions();
       }
     },
   ];
@@ -48,9 +60,9 @@ export class ElectionTransactionViewerComponent implements OnInit {
   columnNames = [
     {
       title: "eFile Data",
-      headerMenu: this.headerMenu, 
+      headerMenu: this.headerMenu,
       columns: [
-        { title: "filer_name", field: "filer_name" },
+        { title: "filer_name", field: "filer_name", bottomCalc:"count"  },
         { title: "doc_public", field: "doc_public" },
         { title: "e_filing_id", field: "e_filing_id" },
         { title: "tran_id", field: "tran_id" },
@@ -121,6 +133,7 @@ export class ElectionTransactionViewerComponent implements OnInit {
       data: this.tableData,
       reactiveData: true,
       columns: this.columnNames,
+      columnCalcs: 'table',
       layout: 'fitData',
       height: this.height,
       // rowClick: this.rowClicked,
@@ -128,7 +141,7 @@ export class ElectionTransactionViewerComponent implements OnInit {
       // tooltips:this.tooltips,
       selectable: 1,
       initialSort: [
-        // {column:"candidate_name", dir:"asc"},
+        {column:"transaction_date", dir:"desc"},
       ],
     });
     document.getElementById(this.id).appendChild(this.tableElement);

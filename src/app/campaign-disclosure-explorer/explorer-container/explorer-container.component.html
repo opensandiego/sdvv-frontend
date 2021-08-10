@@ -8,9 +8,9 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <app-election-data-updater
+    <campaign-election-viewer
       (selectedElectionIdEvent)="setId($event)"
-    ></app-election-data-updater>
+    ></campaign-election-viewer>
 
   </mat-expansion-panel>
 
@@ -23,9 +23,9 @@
         
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <app-election-candidate-updater
+    <campaign-candidate-viewer
       [electionID]="selectedElection.id"
-    ></app-election-candidate-updater>
+    ></campaign-candidate-viewer>
   </mat-expansion-panel>
 
   <mat-expansion-panel>
@@ -43,7 +43,7 @@
         <h3>Fillings</h3>
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <app-election-filing-updater></app-election-filing-updater>
+    <campaign-filing-viewer></campaign-filing-viewer>
   </mat-expansion-panel>
 
   <mat-expansion-panel>

@@ -1,13 +1,13 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
-import { ElectionTransactionViewerComponent } from './election-transaction-viewer.component';
+import { CampaignTransactionViewerComponent } from './campaign-transaction-viewer.component';
 
 import { CampaignDisclosureExplorerModule } from '../campaign-disclosure-explorer.module';
 
 export default {
   title: 'CD Explorer/Transaction Viewer',
-  component: ElectionTransactionViewerComponent,
+  component: CampaignTransactionViewerComponent,
   decorators: [
     moduleMetadata({
       declarations: [],
@@ -21,7 +21,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ElectionTransactionViewerComponent> = (args: ElectionTransactionViewerComponent) => ({
+const Template: Story<CampaignTransactionViewerComponent> = (args: CampaignTransactionViewerComponent) => ({
   props: args,
 });
 

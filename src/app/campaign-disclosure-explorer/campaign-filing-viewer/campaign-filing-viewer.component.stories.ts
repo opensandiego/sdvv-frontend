@@ -1,14 +1,14 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
-import { ElectionFilingUpdaterComponent } from './election-filing-updater.component';
+import { CampaignFilingViewerComponent } from './campaign-filing-viewer.component';
 
 import { CampaignDisclosureExplorerModule } from '../campaign-disclosure-explorer.module';
 
 
 export default {
-    title: 'CD Explorer/Filing Updater',
-    component: ElectionFilingUpdaterComponent,
+    title: 'CD Explorer/Filing Viewer',
+    component: CampaignFilingViewerComponent,
     decorators: [
       moduleMetadata({
         declarations: [],
@@ -22,7 +22,7 @@ export default {
     },
   } as Meta;
   
-  const Template: Story<ElectionFilingUpdaterComponent> = (args: ElectionFilingUpdaterComponent) => ({
+  const Template: Story<CampaignFilingViewerComponent> = (args: CampaignFilingViewerComponent) => ({
     props: args,
   });
   

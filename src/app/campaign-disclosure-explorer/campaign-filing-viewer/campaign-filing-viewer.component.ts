@@ -9,11 +9,11 @@ import { CampaignDataChangesService } from '../campaign-data-changes.service';
 import { CampaignFilingService } from '../campaign-filing.service';
 
 @Component({
-  selector: 'app-election-filing-updater',
-  templateUrl: './election-filing-updater.component.html',
-  styleUrls: ['./election-filing-updater.component.scss']
+  selector: 'campaign-filing-viewer',
+  templateUrl: './campaign-filing-viewer.component.html',
+  styleUrls: ['./campaign-filing-viewer.component.scss']
 })
-export class ElectionFilingUpdaterComponent implements OnInit {
+export class CampaignFilingViewerComponent implements OnInit {
 
   id = 'filing-table';
   tableElement = document.createElement('div');
@@ -56,6 +56,11 @@ export class ElectionFilingUpdaterComponent implements OnInit {
           .then( range => console.log(range));
       }
     },
+    // {
+    //   label:"Push Filings to remote",
+    //     action:(e, column)=> {
+    //   }
+    // },
   ]
 
   columnNames = [
@@ -66,7 +71,7 @@ export class ElectionFilingUpdaterComponent implements OnInit {
  
         { title: "filing_date", field: "filing_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
         { title: "e_filing_id", field: "e_filing_id", headerFilter: "input" },
-        { title: "filing_id", field: "filing_id", headerFilter: "input"}, //, bottomCalc:"count" 
+        { title: "filing_id", field: "filing_id", headerFilter: "input", bottomCalc:"count" },
         { title: "amendment", field: "amendment" },
         { title: "amendment_number", field: "amendment_number" },
         { title: "amends_orig_id", field: "amends_orig_id", headerFilter: "input" },
@@ -166,6 +171,7 @@ export class ElectionFilingUpdaterComponent implements OnInit {
       data: this.tableData,
       reactiveData: true,
       columns: this.columnNames,
+      columnCalcs: 'table',
       layout: 'fitData',
       height: this.height,
       // rowClick: this.rowClicked,

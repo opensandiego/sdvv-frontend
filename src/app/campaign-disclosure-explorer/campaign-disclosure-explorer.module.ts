@@ -10,19 +10,19 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { ElectionDataUpdaterComponent } from './election-data-updater/election-data-updater.component';
+import { CampaignElectionViewerComponent } from './campaign-election-viewer/campaign-election-viewer.component';
+import { CampaignCandidateViewerComponent } from './campaign-candidate-viewer/campaign-candidate-viewer.component';
+import { CampaignFilingViewerComponent } from './campaign-filing-viewer/campaign-filing-viewer.component';
+import { CampaignTransactionViewerComponent } from './campaign-transaction-viewer/campaign-transaction-viewer.component';
 import { ExplorerContainerComponent } from './explorer-container/explorer-container.component';
-import { ElectionCandidateUpdaterComponent } from './election-candidate-updater/election-candidate-updater.component';
-import { ElectionFilingUpdaterComponent } from './election-filing-updater/election-filing-updater.component';
-import { ElectionTransactionViewerComponent } from './election-transaction-viewer/election-transaction-viewer.component';
 
 @NgModule({
   declarations: [
-    ElectionDataUpdaterComponent,
+    CampaignElectionViewerComponent,
+    CampaignCandidateViewerComponent,
+    CampaignFilingViewerComponent,
+    CampaignTransactionViewerComponent,
     ExplorerContainerComponent,
-    ElectionCandidateUpdaterComponent,
-    ElectionFilingUpdaterComponent,
-    ElectionTransactionViewerComponent,
   ],
   imports: [
     CommonModule,
@@ -36,11 +36,11 @@ import { ElectionTransactionViewerComponent } from './election-transaction-viewe
     FontAwesomeModule,
   ],
   exports: [
-    ElectionDataUpdaterComponent,
+    CampaignElectionViewerComponent,
+    CampaignCandidateViewerComponent,
+    CampaignFilingViewerComponent,
+    CampaignTransactionViewerComponent,
     ExplorerContainerComponent,
-    ElectionCandidateUpdaterComponent,
-    ElectionFilingUpdaterComponent,
-    ElectionTransactionViewerComponent,
   ],
   providers: []
 
