@@ -120,7 +120,7 @@ export class CampaignDataChangesService {
     }
 
     const transactionsObservable = of('').pipe(
-      mergeMap(() =>this.localDB?.filings.find().$ )
+      mergeMap(() =>this.localDB?.transactions.find().$ )
     );
 
     this.transactionsSubscription = transactionsObservable
