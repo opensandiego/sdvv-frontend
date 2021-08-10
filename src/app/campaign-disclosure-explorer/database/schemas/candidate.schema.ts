@@ -70,5 +70,8 @@ export const candidateSchema = {
       "type": "number",
       "default": 0,
     },
+    "candidate_controlled_committee_name": {
+      "type": ["string", "null"]
+    },
   },
 }

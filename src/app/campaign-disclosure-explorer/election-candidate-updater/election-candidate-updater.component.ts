@@ -46,6 +46,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
         { title: "office", field: "office" },
         { title: "district", field: "district" },
         { title: "Candidate Name", field: "candidate_name", bottomCalc:"count" },
+        { title: "Candidate Controlled Committee Name", field: "candidate_controlled_committee_name" },
         { title: "coe_id", field: "coe_id" },
         { title: "filer_id", field: "filer_id" },
         { title: "office_code", field: "office_code" },
@@ -192,6 +193,7 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
         candidate_name: row.candidate_name,
         filings_count: row.filings_count,
         committees_count: row.committees_count,
+        candidate_controlled_committee_name: row.candidate_controlled_committee_name,
       }));
  
       this.table.replaceData(tableRows);
