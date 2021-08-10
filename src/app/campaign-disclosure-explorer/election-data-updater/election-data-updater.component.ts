@@ -27,12 +27,32 @@ export class ElectionDataUpdaterComponent implements OnInit {
   table: Tabulator;
   height: string = '400px';
   isLoadingData = false;
-  dbSubscriptionActive = false;
   tableData: any[] = [];
   
+  headerMenu = [
+    {
+      label:"Pull Elections from eFile",
+      action:(e, column)=> {
+        this.onPullFromNetFile();
+      }
+    },
+    {
+      label:"Delete Elections from database",
+      action:(e, column)=> {
+        this.onDeleteInDB();
+      }
+    },
+    // {
+    //   label:"Push Elections to remote",
+    //   action:(e, column)=> {
+    //   }
+    // },
+  ];
+
   columnNames = [
     { 
-      title: "eFile Data", 
+      title: "eFile Data",
+      headerMenu: this.headerMenu,
       columns: [
         { title: "Election Date", field: "election_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}, bottomCalc:"count"},
         { title: "Election Type", field: "election_type" },
@@ -79,11 +99,6 @@ export class ElectionDataUpdaterComponent implements OnInit {
     this.drawTable();
     this.updateRows();
   }
-
-  // subscribeToDatabase() {
-  //   // this.campaignDataChangesService.createElectionSubscription();
-  //   // this.dbSubscriptionActive = true;
-  // }
 
   onPullFromNetFile() {
     this.isLoadingData = true;
@@ -151,6 +166,7 @@ export class ElectionDataUpdaterComponent implements OnInit {
       data: this.tableData,
       reactiveData: true,
       columns: this.columnNames,
+      columnCalcs: 'table',
       layout: 'fitData',
       height: this.height,
       rowClick: this.rowClicked,
