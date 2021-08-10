@@ -17,6 +17,16 @@ export class CampaignTransactionService {
     this.localDB = await databaseService.getInstance();
   }
 
+  addNWeeksOfPastTransaction(timeUnits: number = 1) {
+    return this.getDateRanges()
+      .then( async range => {
+        const timeUnitsAgo = new Date(range.oldest);
+        timeUnitsAgo.setDate(timeUnitsAgo.getDate() - (timeUnits * 7));
+        console.log(timeUnitsAgo.toISOString(), range.oldest);
+        await this.addTransactionsInDateRange(timeUnitsAgo.toISOString(), range.oldest)
+      });
+  }
+
   addMonthsNewTransaction(months: number = 6) {
     return this.getDateRanges()
       .then( async range => {
