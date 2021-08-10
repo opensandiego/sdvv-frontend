@@ -56,7 +56,7 @@ export class CampaignTransactionService {
 
   addTransactionsInDateRange(oldestDate: string, newestDate: string, pageNumber: number = 1) {
     const pageSize = 50;
-    const maxPages = 5;
+    const maxPages = 50;
     const parameters = `&start_date=${oldestDate}&end_date=${newestDate}&page_size=${pageSize}&page_number=${pageNumber}`;
     const queryStr = `&transaction_name=&transaction_type=&most_recent_amendment=true&search_boolean_expression=false&filer_name=`;
     return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/advanced?query=${queryStr}${parameters}`)

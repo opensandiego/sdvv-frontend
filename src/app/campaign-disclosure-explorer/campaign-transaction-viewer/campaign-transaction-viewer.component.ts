@@ -141,7 +141,7 @@ export class CampaignTransactionViewerComponent implements OnInit {
       // tooltips:this.tooltips,
       selectable: 1,
       initialSort: [
-        // {column:"candidate_name", dir:"asc"},
+        {column:"transaction_date", dir:"desc"},
       ],
     });
     document.getElementById(this.id).appendChild(this.tableElement);
