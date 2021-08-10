@@ -39,13 +39,13 @@ export class CampaignCandidateViewerComponent implements OnInit {
   dbSubscriptionActive = false;
   tableData: any[] = [];
 
-  // headerMenu = [
-  //   {
-  //     label:"Push Candidates to remote",
-  //     action:(e, column)=> {
-  //     }
-  //   },
-  // ];
+  headerMenu = [
+    // {
+    //   label:"Push Candidates to remote",
+    //   action:(e, column)=> {
+    //   }
+    // },
+  ];
 
   columnNames = [
     { 
@@ -55,7 +55,6 @@ export class CampaignCandidateViewerComponent implements OnInit {
         { title: "office", field: "office" },
         { title: "district", field: "district" },
         { title: "Candidate Name", field: "candidate_name", bottomCalc:"count" },
-        { title: "Candidate Controlled Committee Name", field: "candidate_controlled_committee_name" },
         { title: "coe_id", field: "coe_id" },
         { title: "filer_id", field: "filer_id" },
         { title: "office_code", field: "office_code" },
@@ -78,6 +77,7 @@ export class CampaignCandidateViewerComponent implements OnInit {
       columns: [
         { title: "filings", field: "filings_count", },
         { title: "committees", field: "committees_count", },
+        { title: "Candidate Controlled Committee Name", field: "candidate_controlled_committee_name" },
         // { title: "transactions", field: "transactions_count", },
       ]
     },
@@ -89,16 +89,21 @@ export class CampaignCandidateViewerComponent implements OnInit {
     {
       label: "Committees",
       menu: [
-        {
-          label: 'Fetch from eFile',
-          action: (e, row) => {
-            //use candidate name
-          },
-        },
-        {
-          label: 'Delete from database',
-          action: (e, row) => {},
-        },
+        // {
+        //   label: 'Fetch from eFile',
+        //   action: (e, row) => {
+        //     //use candidate name
+        //   },
+        // },
+        // {
+        //   label: 'Delete from database',
+        //   action: (e, row) => {},
+        // },
+        // {
+        //   label:"Calculate Candidate Controlled Committee Names",
+        //   action: (e, column)=> {
+        //   }
+        // },
       ]
     },
     {
@@ -123,14 +128,14 @@ export class CampaignCandidateViewerComponent implements OnInit {
     {
       label: "Transactions",
       menu: [
-        {
-          label: 'Fetch from eFile',
-          action: (e, row) => {},
-        },
-        {
-          label: 'Delete from database',
-          action: (e, row) => {},
-        },
+        // {
+        //   label: 'Fetch from eFile',
+        //   action: (e, row) => {},
+        // },
+        // {
+        //   label: 'Delete from database',
+        //   action: (e, row) => {},
+        // },
       ]
     },
   ];
