@@ -1,9 +1,4 @@
 
-<div class="buttons">
-  <!-- <button mat-flat-button color="primary" (click)="subscribeToDatabase()" [disabled]="dbSubscriptionActive" >Subscribe to DB</button> -->
-  <button mat-flat-button color="accent" disabled>Push data to remote</button>
-</div>
-
   <mat-label>Election:</mat-label>
   <mat-select (selectionChange)="onElectionSelected($event)"> 
     <mat-option *ngFor="let election of elections" [value]="election.electionID">

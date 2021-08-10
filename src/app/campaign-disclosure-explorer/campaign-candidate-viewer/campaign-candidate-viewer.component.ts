@@ -20,11 +20,11 @@ interface ElectionList {
 }
 
 @Component({
-  selector: 'app-election-candidate-updater',
-  templateUrl: './election-candidate-updater.component.html',
-  styleUrls: ['./election-candidate-updater.component.scss']
+  selector: 'campaign-candidate-viewer',
+  templateUrl: './campaign-candidate-viewer.component.html',
+  styleUrls: ['./campaign-candidate-viewer.component.scss']
 })
-export class ElectionCandidateUpdaterComponent implements OnInit {
+export class CampaignCandidateViewerComponent implements OnInit {
   @Input() electionID: string | null = null;
   @Output() selectedIdEvent 
     = new EventEmitter<selectedEvent | null>();
@@ -39,9 +39,18 @@ export class ElectionCandidateUpdaterComponent implements OnInit {
   dbSubscriptionActive = false;
   tableData: any[] = [];
 
+  // headerMenu = [
+  //   {
+  //     label:"Push Candidates to remote",
+  //     action:(e, column)=> {
+  //     }
+  //   },
+  // ];
+
   columnNames = [
     { 
-      title: "eFile Data", 
+      title: "eFile Data",
+      // headerMenu: this.headerMenu,
       columns: [
         { title: "office", field: "office" },
         { title: "district", field: "district" },

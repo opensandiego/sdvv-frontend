@@ -11,16 +11,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CampaignElectionViewerComponent } from './campaign-election-viewer/campaign-election-viewer.component';
+import { CampaignCandidateViewerComponent } from './campaign-candidate-viewer/campaign-candidate-viewer.component';
 import { ExplorerContainerComponent } from './explorer-container/explorer-container.component';
-import { ElectionCandidateUpdaterComponent } from './election-candidate-updater/election-candidate-updater.component';
 import { ElectionFilingUpdaterComponent } from './election-filing-updater/election-filing-updater.component';
 import { ElectionTransactionViewerComponent } from './election-transaction-viewer/election-transaction-viewer.component';
 
 @NgModule({
   declarations: [
     CampaignElectionViewerComponent,
+    CampaignCandidateViewerComponent,
     ExplorerContainerComponent,
-    ElectionCandidateUpdaterComponent,
     ElectionFilingUpdaterComponent,
     ElectionTransactionViewerComponent,
   ],
@@ -37,8 +37,8 @@ import { ElectionTransactionViewerComponent } from './election-transaction-viewe
   ],
   exports: [
     CampaignElectionViewerComponent,
+    CampaignCandidateViewerComponent,
     ExplorerContainerComponent,
-    ElectionCandidateUpdaterComponent,
     ElectionFilingUpdaterComponent,
     ElectionTransactionViewerComponent,
   ],
