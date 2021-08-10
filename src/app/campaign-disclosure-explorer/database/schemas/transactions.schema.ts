@@ -53,13 +53,13 @@ export const transactionSchema = {
       "type": ["string", "null"]
     },
     "city": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "state": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "zip": {
-      "type": "string",
+      "type": ["string", "null"]
       // "format": "integer"
     },
     "spending_code": {
