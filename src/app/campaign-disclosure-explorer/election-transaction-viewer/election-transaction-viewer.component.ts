@@ -90,10 +90,26 @@ export class ElectionTransactionViewerComponent implements OnInit {
 
   updateRows() {
     this.campaignDataChangesService.transactions$.subscribe(rows => {
+      console.log("rows.length", rows.length)
       let tableRows = rows.map( transaction => ({
         filer_name: transaction.filer_name,
+        doc_public: transaction.doc_public,
         e_filing_id: transaction.e_filing_id,
+        tran_id: transaction.tran_id,
+        transaction_date: transaction.transaction_date,
+        amount: transaction.amount,
+        tx_type: transaction.tx_type,
+        schedule: transaction.schedule,
         filing_id: transaction.filing_id,
+        filing_type: transaction.filing_type,
+        name: transaction.name,
+        intr_name: transaction.intr_name,
+        city: transaction.city,
+        state: transaction.state,
+        zip: transaction.zip,
+        spending_code: transaction.spending_code,
+        employer: transaction.employer,
+        occupation: transaction.occupation,
       }));
 
       this.table.replaceData(tableRows);
