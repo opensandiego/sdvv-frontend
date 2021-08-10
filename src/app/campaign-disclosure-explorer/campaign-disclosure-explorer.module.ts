@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { ElectionDataUpdaterComponent } from './election-data-updater/election-data-updater.component';
+import { CampaignElectionViewerComponent } from './campaign-election-viewer/campaign-election-viewer.component';
 import { ExplorerContainerComponent } from './explorer-container/explorer-container.component';
 import { ElectionCandidateUpdaterComponent } from './election-candidate-updater/election-candidate-updater.component';
 import { ElectionFilingUpdaterComponent } from './election-filing-updater/election-filing-updater.component';
@@ -18,7 +18,7 @@ import { ElectionTransactionViewerComponent } from './election-transaction-viewe
 
 @NgModule({
   declarations: [
-    ElectionDataUpdaterComponent,
+    CampaignElectionViewerComponent,
     ExplorerContainerComponent,
     ElectionCandidateUpdaterComponent,
     ElectionFilingUpdaterComponent,
@@ -36,7 +36,7 @@ import { ElectionTransactionViewerComponent } from './election-transaction-viewe
     FontAwesomeModule,
   ],
   exports: [
-    ElectionDataUpdaterComponent,
+    CampaignElectionViewerComponent,
     ExplorerContainerComponent,
     ElectionCandidateUpdaterComponent,
     ElectionFilingUpdaterComponent,

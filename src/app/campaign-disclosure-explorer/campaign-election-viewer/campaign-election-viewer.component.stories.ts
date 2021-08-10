@@ -3,11 +3,11 @@ import { moduleMetadata } from '@storybook/angular';
 
 import { CampaignDisclosureExplorerModule } from '../campaign-disclosure-explorer.module';
 
-import { ElectionDataUpdaterComponent } from './election-data-updater.component'
+import { CampaignElectionViewerComponent } from './campaign-election-viewer.component'
 
 export default {
   title: 'CD Explorer/Election Viewer',
-  component: ElectionDataUpdaterComponent,
+  component: CampaignElectionViewerComponent,
   decorators: [
     moduleMetadata({
       declarations: [],
@@ -21,7 +21,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ElectionDataUpdaterComponent> = (args: ElectionDataUpdaterComponent) => ({
+const Template: Story<CampaignElectionViewerComponent> = (args: CampaignElectionViewerComponent) => ({
   props: args,
 });
 

@@ -14,11 +14,11 @@ interface selectedElectionEvent {
 }
 
 @Component({
-  selector: 'app-election-data-updater',
-  templateUrl: './election-data-updater.component.html',
-  styleUrls: ['./election-data-updater.component.scss']
+  selector: 'campaign-election-viewer',
+  templateUrl: './campaign-election-viewer.component.html',
+  styleUrls: ['./campaign-election-viewer.component.scss']
 })
-export class ElectionDataUpdaterComponent implements OnInit {
+export class CampaignElectionViewerComponent implements OnInit {
   @Output() selectedElectionIdEvent 
     = new EventEmitter<selectedElectionEvent | null>();
 
