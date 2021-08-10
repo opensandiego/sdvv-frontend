@@ -12,16 +12,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CampaignElectionViewerComponent } from './campaign-election-viewer/campaign-election-viewer.component';
 import { CampaignCandidateViewerComponent } from './campaign-candidate-viewer/campaign-candidate-viewer.component';
+import { CampaignFilingViewerComponent } from './campaign-filing-viewer/campaign-filing-viewer.component';
 import { ExplorerContainerComponent } from './explorer-container/explorer-container.component';
-import { ElectionFilingUpdaterComponent } from './election-filing-updater/election-filing-updater.component';
 import { ElectionTransactionViewerComponent } from './election-transaction-viewer/election-transaction-viewer.component';
 
 @NgModule({
   declarations: [
     CampaignElectionViewerComponent,
     CampaignCandidateViewerComponent,
+    CampaignFilingViewerComponent,
     ExplorerContainerComponent,
-    ElectionFilingUpdaterComponent,
     ElectionTransactionViewerComponent,
   ],
   imports: [
@@ -38,8 +38,8 @@ import { ElectionTransactionViewerComponent } from './election-transaction-viewe
   exports: [
     CampaignElectionViewerComponent,
     CampaignCandidateViewerComponent,
+    CampaignFilingViewerComponent,
     ExplorerContainerComponent,
-    ElectionFilingUpdaterComponent,
     ElectionTransactionViewerComponent,
   ],
   providers: []
