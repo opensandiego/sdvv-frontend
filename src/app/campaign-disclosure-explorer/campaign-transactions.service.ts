@@ -44,13 +44,21 @@ export class CampaignTransactionService {
   }
 
 
-  addTransactionsInDateRange(oldestDate: string, newestDate: string) {
-    let pageNumber = 1;
-    return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/advanced?start_date=${oldestDate}&end_date=${newestDate}&most_recent_amendment=false&page_size=50&page_number=${pageNumber}`)
+  addTransactionsInDateRange(oldestDate: string, newestDate: string, pageNumber: number = 1) {
+    const pageSize = 50;
+    const maxPages = 5;
+    const parameters = `&start_date=${oldestDate}&end_date=${newestDate}&page_size=${pageSize}&page_number=${pageNumber}`;
+    const queryStr = `&transaction_name=&transaction_type=&most_recent_amendment=true&search_boolean_expression=false&filer_name=`;
+    return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/advanced?query=${queryStr}${parameters}`)
       .then(response => response.json())
-      .then(json => json.data)
-      .then(data => {console.log("data: ", data); return data;})
-      .then(data => this.addTransactionsToDB( this.mapTransactionFields(data) ))
+      .then(json => {console.log("data: ", json.data); return json;})
+      .then(async json => {await this.addTransactionsToDB( this.mapTransactionFields(json.data) ); return json;})
+      .then(json => {
+        console.log("pageNumber: ", pageNumber);
+        if ( pageNumber < json.total_pages && pageNumber < maxPages ) {
+          return this.addTransactionsInDateRange(oldestDate, newestDate, pageNumber + 1);
+        }
+      })
       .catch(error => console.log("error: ", error));
   }
 
@@ -76,6 +84,7 @@ export class CampaignTransactionService {
 
     return transactions.map(transaction => {
       const newTransaction = {
+        filer_name: transaction.filer_name,
         doc_public: transaction.doc_public,
         e_filing_id: transaction.e_filing_id,
         tran_id: transaction.tran_id,
@@ -89,7 +98,7 @@ export class CampaignTransactionService {
         intr_name: transaction.intr_name,
         city: transaction.city,
         state: transaction.state,
-        // zip: transaction.zip,
+        zip: transaction.zip,
         spending_code: transaction.spending_code,
         employer: transaction.employer,
         occupation: transaction.occupation, 
