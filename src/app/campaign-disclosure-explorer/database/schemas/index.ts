@@ -3,4 +3,5 @@ module.exports = {
   ...require('./candidate.schema'),
   ...require('./filing.schema'),
   ...require('./transactions.schema'),
+  ...require('./committee.schema'),
 }
