@@ -16,6 +16,7 @@ const {
   candidateSchema,
   filingSchema,
   transactionSchema,
+  committeeSchema,
 } = require('./schemas');
 
 
@@ -54,6 +55,9 @@ export class DatabaseService {
       },
       transactions: {
           schema: transactionSchema
+      },
+      committees: {
+          schema: committeeSchema
       },
     });
   }
