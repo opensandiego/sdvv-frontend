@@ -99,11 +99,13 @@ export class CampaignCandidateViewerComponent implements OnInit {
         //   label: 'Delete from database',
         //   action: (e, row) => {},
         // },
-        // {
-        //   label:"Calculate Candidate Controlled Committee Names",
-        //   action: (e, column)=> {
-        //   }
-        // },
+        {
+          label:"Calculate Candidate Controlled Committee Names",
+          action: (e, row)=> {
+            console.log(row._row.data.coe_id)
+            this.campaignDataService.setPrimaryCandidateCommittee(row._row.data.coe_id);
+          }
+        },
       ]
     },
     {
