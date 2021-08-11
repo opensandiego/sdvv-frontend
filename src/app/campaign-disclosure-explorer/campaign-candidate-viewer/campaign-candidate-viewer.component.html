@@ -1,5 +1,5 @@
 
-  <mat-label>Election:</mat-label>
+  <mat-label>Candidate Viewer:</mat-label>
   <mat-select (selectionChange)="onElectionSelected($event)"> 
     <mat-option *ngFor="let election of elections" [value]="election.electionID">
       {{election.electionTitle}}
