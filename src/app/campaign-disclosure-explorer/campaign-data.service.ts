@@ -15,7 +15,77 @@ export class CampaignDataService {
   async database() {
     const databaseService = new DatabaseService();
     this.localDB = await databaseService.getInstance();
+    await this.updateCommitteesInDB()
+    // check results from adding committees
+      .then(() => this.localDB.committees.find().exec())
+      // .then(results => console.log('results', results.slice(0,5)))
+      .then(results => console.log('results.length', results.length))
   }
+
+  setPrimaryCandidateCommittee(candidateID: string) {
+    this.localDB.committees.find().exec()
+      .then(results => {
+        if (results.length < 1) {
+          console.log('updating committees');
+          return this.updateCommitteesInDB();
+        } else {console.log('NOT updating committees');}
+      })
+      .then(() => this.localDB.candidates.findOne()
+        .where('coe_id').eq(candidateID).exec())
+      // .then(results => console.log('results', results))
+      //last_name
+      .then(candidate => {
+        console.log('candidate', candidate)
+        console.log('candidate.last_name', candidate.last_name)
+        const candidateSelector = { 
+          entity_name_lower: { $regex: `.*${candidate.last_name.toLowerCase()}.*` },
+          // entity_name: { $regex: `.*${candidate.first_name}.*` },
+        };
+        
+        this.localDB.committees.find({selector: candidateSelector}).exec();
+      })
+        // this.localDB.committees.find().where('entity_name').regex(/Bry/).exec()})
+      .then(results => console.log('results 1:', results))
+
+  }
+
+  // Committees
+  updateCommitteesInDB() {
+    // There are multiple committees that have the same entity_id
+    // For example: 05dd7dc4-c082-5462-d278-b9ee534bc12f
+    return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/by-name?candidate_name=`)
+      .then(response => response.json())
+      .then(json => {
+        return json.data.committee_list.map(committee=> ({
+          entity_id: committee.entity_id,
+          entity_name: committee.entity_name,
+          entity_name_lower: committee.entity_name_lower,
+          entity_type: committee.entity_type,
+        }));
+      })
+      .then(committees => this.addItemsToCollection(committees, 'committees', 'entity_id'))
+  }
+
+  
+  addItemsToCollection(itemsToAdd, collection: string, keyField: string) {
+    const itemIDsToAdd = itemsToAdd.map(item => item[keyField]);
+    // console.log('itemIDsToAdd', itemIDsToAdd)
+
+    return this.localDB[collection].find()
+      .where(keyField).in(itemIDsToAdd).exec()
+      .then(items => items.map(item => item[keyField]))
+      // .then(results => {console.log('results', results); return results;})
+      .then(item_ids => 
+        // remove items from array that are already in database
+        itemsToAdd.filter( item => 
+          !item_ids.includes(item[keyField])
+        )
+      )
+      .then(newFilings => {
+        this.localDB[collection].bulkInsert(newFilings)              
+      });
+  }
+  
 
   // Candidates
   updateCandidatesInDB(electionID) {
