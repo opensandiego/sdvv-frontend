@@ -5,9 +5,10 @@ import Tabulator from 'tabulator-tables';
 import moment from 'moment';
 window.moment = moment;
 
-import { CampaignDataService } from '../campaign-data.service';
+// import { CampaignDataService } from '../campaign-data.service';
 import { CampaignDataChangesService } from '../campaign-data-changes.service';
 import { CampaignFilingService } from '../campaign-filing.service';
+import { CampaignCandidateService } from '../campaign-candidate.service';
 
 interface selectedEvent {
   name: string;
@@ -36,7 +37,6 @@ export class CampaignCandidateViewerComponent implements OnInit {
   table: Tabulator;
   height: string = '400px';
   isLoadingData = false;
-  dbSubscriptionActive = false;
   tableData: any[] = [];
 
   headerMenu = [
@@ -102,8 +102,16 @@ export class CampaignCandidateViewerComponent implements OnInit {
         {
           label:"Calculate Candidate Controlled Committee Names",
           action: (e, row)=> {
-            console.log(row._row.data.coe_id)
-            this.campaignDataService.setPrimaryCandidateCommittee(row._row.data.coe_id);
+            const selectedRowCount = this.table.getSelectedData().length;
+
+            if (selectedRowCount > 0) {
+              this.table.getSelectedData()
+                .map(data => data.coe_id)
+                .forEach( id => this.campaignCandidateService.setPrimaryCandidateCommittee(id));            
+            } else {
+              this.campaignCandidateService.setPrimaryCandidateCommittee(row._row.data.coe_id);
+            }
+
           }
         },
       ]
@@ -148,9 +156,10 @@ export class CampaignCandidateViewerComponent implements OnInit {
   }
 
   constructor(
-    private campaignDataService: CampaignDataService,
+    // private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
     private campaignFilingService: CampaignFilingService,
+    private campaignCandidateService: CampaignCandidateService,
   ) { }
 
   ngOnInit(): void {
@@ -179,11 +188,6 @@ export class CampaignCandidateViewerComponent implements OnInit {
   onElectionSelected(event) {
     this.campaignDataChangesService.electionSelectionChanged.next(event.value)
   }
-
-//   subscribeToDatabase() {
-//     // this.campaignDataChangesService.createCandidatesSubscription();
-//     // this.dbSubscriptionActive = true;
-//   }
 
   updateRows() {
     
@@ -243,7 +247,7 @@ export class CampaignCandidateViewerComponent implements OnInit {
       rowClick: this.rowClicked,
       rowContextMenu: this.rowContextMenu,
       tooltips:this.tooltips,
-      selectable: 1,
+      selectable: true,
       initialSort: [
         {column:"candidate_name", dir:"asc"},
         {column:"office", dir:"desc"},
