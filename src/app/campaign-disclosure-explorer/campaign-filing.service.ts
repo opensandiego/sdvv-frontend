@@ -7,14 +7,15 @@ import { DatabaseService } from './database/database.service';
 })
 export class CampaignFilingService {
   localDB;
+  databaseService;
 
   constructor( ) {
     this.database();
   }
 
   async database() {
-    const databaseService = new DatabaseService();
-    this.localDB = await databaseService.getInstance();
+    this.databaseService = new DatabaseService();
+    this.localDB = await this.databaseService.getInstance();
   }
 
   addMonthsNewFilings(months: number = 6) {
@@ -43,26 +44,10 @@ export class CampaignFilingService {
     return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search?start_date=${oldestDate}&end_date=${newestDate}`)
       .then(response => response.json())
       .then(json => json.data)
-      .then(data => this.addFilingsToDB( this.mapFilingFields(data) ))
+      // .then(data => this.addFilingsToDB( this.mapFilingFields(data) ))
+      .then(data => this.mapFilingFields(data) )
+      .then(filings => this.databaseService.addItemsToCollection(filings, this.localDB.filings, 'filing_id') )
       .catch(error => console.log("error: ", error));
-  }
-
-
-  addFilingsToDB(filingsToAdd) {
-    const filingIDsToAdd = filingsToAdd.map(filing => filing.filing_id);
-
-    return this.localDB.filings.find()
-      .where('filing_id').in(filingIDsToAdd).exec()
-      .then(filings => filings.map(filing => filing.filing_id))
-      .then(filing_ids => 
-        // remove filings from array that are already in database
-        filingsToAdd.filter( filing => 
-          !filing_ids.includes(filing.filing_id)
-        )
-      )
-      .then(newFilings => {
-        this.localDB.filings.bulkInsert(newFilings)              
-      });
   }
 
   mapFilingFields(filings) {
@@ -114,7 +99,9 @@ export class CampaignFilingService {
     return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/filing/list/${candidateOfficeElectionID}`)
       .then(response => response.json())
       .then(json => json.data)
-      .then(data => this.addFilingsToDB( this.mapFilingFields(data) ))
+      // .then(data => this.addFilingsToDB( this.mapFilingFields(data) ))
+      .then(data => this.mapFilingFields(data) )
+      .then(filings => this.databaseService.addItemsToCollection(filings, this.localDB.filings, 'filing_id') )
       .catch(error => console.log("error: ", error));
   }
 
@@ -137,10 +124,7 @@ export class CampaignFilingService {
 
 
   deleteAllFilings() {
-    // return this.localDB.filings.remove();
-    const query = this.localDB.filings.find();
-    return query.remove()
+    return this.databaseService.deleteAllItemsInCollection(this.localDB.filings);
   }
-
 
 }
