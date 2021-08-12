@@ -27,6 +27,8 @@ export class DatabaseService {
   private db: RxDatabase;
   private collections;
 
+  constructor() {  }
+  
   public async getInstance() {
     if (!this.db) {
       try {
@@ -75,5 +77,33 @@ export class DatabaseService {
     return db;
   }
 
-  constructor() {  }
+  public addItemsToCollection(itemsToAdd: object[], collection, keyField: string) {
+    const itemIDsToAdd = itemsToAdd.map(item => item[keyField]);
+
+    return collection.find()
+      .where(keyField).in(itemIDsToAdd).exec()
+      .then(items => items.map(item => item[keyField]))
+      .then(item_ids => 
+        // remove items from array that are already in database
+        itemsToAdd.filter( item => 
+          !item_ids.includes(item[keyField])
+        )
+      )
+      .then(newItems => {
+        collection.bulkInsert(newItems);
+        return newItems;
+      })
+      .catch(error => console.log("error: ", error));
+  }
+
+  public deleteAllItemsInCollection(collection) {
+    const query = collection.find();
+    return query.exec()
+    .then(
+      results => {
+        return query.remove().then( () => results );
+      }
+    )
+  }
+
 }

@@ -4,6 +4,7 @@ import Tabulator from 'tabulator-tables';
 
 import { CampaignDataService } from '../campaign-data.service';
 import { CampaignDataChangesService } from '../campaign-data-changes.service';
+import { CampaignCandidateService } from '../campaign-candidate.service';
 
 import moment from 'moment';
 window.moment = moment;
@@ -75,7 +76,7 @@ export class CampaignElectionViewerComponent implements OnInit {
       label: "Fetch from eFile",
       action:(e, row) => {
         this.isLoadingData = true;
-        this.campaignDataService.updateCandidatesInDB(row._row.data.election_id)
+        this.campaignCandidateService.updateCandidatesInDB(row._row.data.election_id)
         .finally( () => this.isLoadingData = false );        
       }
     },
@@ -83,7 +84,7 @@ export class CampaignElectionViewerComponent implements OnInit {
       label: "Delete in DB",
       action:(e, row) => {
         this.isLoadingData = true;
-        this.campaignDataService.deleteCandidates(row._row.data.election_id)
+        this.campaignCandidateService.deleteCandidates(row._row.data.election_id)
         .finally( () => this.isLoadingData = false );
       }
     },
@@ -92,6 +93,7 @@ export class CampaignElectionViewerComponent implements OnInit {
   constructor(
     private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
+    private campaignCandidateService: CampaignCandidateService,
     private snackBar: MatSnackBar,
   ) { }
 
