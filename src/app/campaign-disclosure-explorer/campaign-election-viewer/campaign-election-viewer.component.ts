@@ -62,7 +62,7 @@ export class CampaignElectionViewerComponent implements OnInit {
       ],
     },
     { 
-      title: "Candidates Data Status", 
+      title: "Candidates Data Status",
       columns: [
         { title: "count", field: "candidates_count", bottomCalc:"sum" },
         { title: "offices", field: "office_count" },
@@ -73,11 +73,24 @@ export class CampaignElectionViewerComponent implements OnInit {
 
   rowContextMenu = [
     {
-      label: "Fetch from eFile",
-      action:(e, row) => {
+      label: "Fetch Candidates for Election from eFile",
+      action: async (e, row) => {
         this.isLoadingData = true;
-        this.campaignCandidateService.updateCandidatesInDB(row._row.data.election_id)
-        .finally( () => this.isLoadingData = false );        
+
+        const selectedRowCount = this.table.getSelectedData().length;
+
+        let promises;
+
+        if (selectedRowCount > 0) {
+          promises = this.table.getSelectedData().map(data => data.election_id)
+            .map( id => this.campaignCandidateService.updateCandidatesInDB(id) );
+        } else {
+          const result = this.campaignCandidateService.updateCandidatesInDB(row._row.data.election_id)
+          promises = [result];
+        }
+
+        (Promise.all(promises))
+          .finally( () => this.isLoadingData = false );
       }
     },
     {
@@ -173,7 +186,7 @@ export class CampaignElectionViewerComponent implements OnInit {
       height: this.height,
       rowClick: this.rowClicked,
       rowContextMenu: this.rowContextMenu,
-      selectable: 1,
+      selectable: true,
       initialSort: [
         {column:"election_date", dir:"desc"}
       ],
