@@ -102,7 +102,7 @@ export class CampaignTransactionViewerComponent implements OnInit {
 
   updateRows() {
     this.campaignDataChangesService.transactions$.subscribe(rows => {
-      console.log("rows.length", rows.length)
+      // console.log("rows.length", rows.length)
       let tableRows = rows.map( transaction => ({
         filer_name: transaction.filer_name,
         doc_public: transaction.doc_public,

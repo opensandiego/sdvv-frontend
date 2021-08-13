@@ -43,9 +43,7 @@ export class CampaignFilingService {
   addFilingsInDateRange(oldestDate: string, newestDate: string) {
     return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search?start_date=${oldestDate}&end_date=${newestDate}`)
       .then(response => response.json())
-      .then(json => json.data)
-      // .then(data => this.addFilingsToDB( this.mapFilingFields(data) ))
-      .then(data => this.mapFilingFields(data) )
+      .then(json => this.mapFilingFields(json.data) )
       .then(filings => this.databaseService.addItemsToCollection(filings, this.localDB.filings, 'filing_id') )
       .catch(error => console.log("error: ", error));
   }
@@ -98,9 +96,7 @@ export class CampaignFilingService {
   updateFilingsInDB(candidateOfficeElectionID: string) {
     return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/filing/list/${candidateOfficeElectionID}`)
       .then(response => response.json())
-      .then(json => json.data)
-      // .then(data => this.addFilingsToDB( this.mapFilingFields(data) ))
-      .then(data => this.mapFilingFields(data) )
+      .then(json => this.mapFilingFields(json.data) )
       .then(filings => this.databaseService.addItemsToCollection(filings, this.localDB.filings, 'filing_id') )
       .catch(error => console.log("error: ", error));
   }
