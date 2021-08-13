@@ -86,11 +86,11 @@ export class CampaignElectionViewerComponent implements OnInit {
           election_ids = [ row._row.data.election_id ];
         }
 
-        const  promises = election_ids
+        const promises = election_ids
           .map(electionID => this.campaignCandidateService.updateCandidatesInDB(electionID));
 
-        (Promise.allSettled(promises))
-          .then( () => this.isLoadingData = false );
+        Promise.allSettled(promises)
+          .finally( () => this.isLoadingData = false );
 
       }
     },

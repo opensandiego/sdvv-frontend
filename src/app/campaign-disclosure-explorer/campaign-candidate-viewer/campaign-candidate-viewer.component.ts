@@ -107,15 +107,22 @@ export class CampaignCandidateViewerComponent implements OnInit {
         {
           label:"Calculate Candidate Controlled Committee Names",
           action: (e, row)=> {
+            this.isLoadingData = true;
             const selectedRowCount = this.table.getSelectedData().length;
 
+            let coe_ids;
+
             if (selectedRowCount > 0) {
-              this.table.getSelectedData()
-                .map(data => data.coe_id)
-                .forEach( id => this.campaignCandidateService.setPrimaryCandidateCommittee(id));            
+              coe_ids = this.table.getSelectedData().map(data => data.coe_id);
             } else {
-              this.campaignCandidateService.setPrimaryCandidateCommittee(row._row.data.coe_id);
+              coe_ids = [ row._row.data.coe_id ];
             }
+
+            const promises = coe_ids
+              .map(id => this.campaignCandidateService.setPrimaryCandidateCommittee(id));
+
+            Promise.allSettled(promises)
+              .finally( () => this.isLoadingData = false );
 
           }
         },
