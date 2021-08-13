@@ -17,7 +17,7 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <h3>Offices/Candidates
+        <h3>Candidates
           <span *ngIf="selectedElection.selected"> for {{selectedElection.name}}</span>
         </h3>
         
@@ -28,14 +28,14 @@
     ></campaign-candidate-viewer>
   </mat-expansion-panel>
 
-  <mat-expansion-panel>
+  <!-- <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
         <h3>Committees</h3>
       </mat-panel-title>
-    </mat-expansion-panel-header>
+    </mat-expansion-panel-header> -->
     <!-- content -->
-  </mat-expansion-panel>
+  <!-- </mat-expansion-panel> -->
 
   <mat-expansion-panel>
     <mat-expansion-panel-header>
@@ -52,7 +52,7 @@
         <h3>Transactions</h3>
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <!-- content -->
+    <campaign-transaction-viewer></campaign-transaction-viewer>
   </mat-expansion-panel>
 
 </mat-accordion>
