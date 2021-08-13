@@ -79,5 +79,13 @@ export const transactionSchema = {
       "type": "string",
       "format": "date-time"
     },
+    "has_been_processed": {
+      "type": "boolean",
+      "default": false,
+    },    
+    "include_in_calculations": {
+      "type": "boolean",
+      "default": false,
+    },
   },
 }

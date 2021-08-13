@@ -17,6 +17,7 @@
     ],
     "lib": [
       "es2018",
+      "ES2020",
       "dom"
     ],
     "allowSyntheticDefaultImports": true,

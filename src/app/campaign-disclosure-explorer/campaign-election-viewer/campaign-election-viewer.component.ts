@@ -77,20 +77,21 @@ export class CampaignElectionViewerComponent implements OnInit {
       action: async (e, row) => {
         this.isLoadingData = true;
 
+        let election_ids;
         const selectedRowCount = this.table.getSelectedData().length;
 
-        let promises;
-
         if (selectedRowCount > 0) {
-          promises = this.table.getSelectedData().map(data => data.election_id)
-            .map( id => this.campaignCandidateService.updateCandidatesInDB(id) );
+          election_ids = this.table.getSelectedData().map(data => data.election_id);
         } else {
-          const result = this.campaignCandidateService.updateCandidatesInDB(row._row.data.election_id)
-          promises = [result];
+          election_ids = [ row._row.data.election_id ];
         }
 
-        (Promise.all(promises))
+        const promises = election_ids
+          .map(electionID => this.campaignCandidateService.updateCandidatesInDB(electionID));
+
+        Promise.allSettled(promises)
           .finally( () => this.isLoadingData = false );
+
       }
     },
     {

@@ -22,7 +22,7 @@ export class CampaignCandidateService {
 
 
   setPrimaryCandidateCommittee(candidateID: string) {
-    this.localDB.committees.find().exec()
+    return this.localDB.committees.find().exec()
       .then(results => {
         if (results.length < 1) {
           return this.campaignDataService.updateCommitteesInDB();
@@ -69,14 +69,14 @@ export class CampaignCandidateService {
       })
       .then(committees => committees.map(committee => committee.entity_name))
       .then(committees => committees.sort((c1, c2) => c1.length - c2.length))
-      .then(results => results[0])
+      .then(committees => committees[0])
 
       .then(committee => 
         this.localDB.candidates.findOne().where('coe_id').eq(candidateID)
           .update({
             $set: { candidate_controlled_committee_name: committee }
-          })
-        )
+        })
+      )
       .catch(error => console.log("error: ", error));
   }
 

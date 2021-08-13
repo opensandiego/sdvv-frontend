@@ -31,6 +31,7 @@ export class CampaignCandidateViewerComponent implements OnInit {
     = new EventEmitter<selectedEvent | null>();
 
   elections: ElectionList[]; // used in the drop down list
+  electionsMap = new Map();
 
   id = 'candidate-table';
   tableElement = document.createElement('div');
@@ -85,6 +86,10 @@ export class CampaignCandidateViewerComponent implements OnInit {
   
   ];
 
+  groupHeader = (value, count, data, group) => {
+    return this.electionsMap.get(value) + "<span style='color:#d00; margin-left:10px;'>(" + count + " item)</span>";
+  }
+
   private rowContextMenu = [
     {
       label: "Committees",
@@ -102,15 +107,22 @@ export class CampaignCandidateViewerComponent implements OnInit {
         {
           label:"Calculate Candidate Controlled Committee Names",
           action: (e, row)=> {
+            this.isLoadingData = true;
             const selectedRowCount = this.table.getSelectedData().length;
 
+            let coe_ids;
+
             if (selectedRowCount > 0) {
-              this.table.getSelectedData()
-                .map(data => data.coe_id)
-                .forEach( id => this.campaignCandidateService.setPrimaryCandidateCommittee(id));            
+              coe_ids = this.table.getSelectedData().map(data => data.coe_id);
             } else {
-              this.campaignCandidateService.setPrimaryCandidateCommittee(row._row.data.coe_id);
+              coe_ids = [ row._row.data.coe_id ];
             }
+
+            const promises = coe_ids
+              .map(id => this.campaignCandidateService.setPrimaryCandidateCommittee(id));
+
+            Promise.allSettled(promises)
+              .finally( () => this.isLoadingData = false );
 
           }
         },
@@ -175,6 +187,11 @@ export class CampaignCandidateViewerComponent implements OnInit {
             electionTitle: `${election.election_date} ${election.election_type} Election`,
             electionID: election.election_id,
       }));
+
+      electionList.forEach( election => {
+        this.electionsMap.set( election.electionID, election.electionTitle );
+      })
+
       let allElections:ElectionList = {
         electionTitle: 'All Elections',
         electionID: 'ALL'
@@ -242,10 +259,13 @@ export class CampaignCandidateViewerComponent implements OnInit {
       data: this.tableData,
       reactiveData: true,
       columns: this.columnNames,
+      columnCalcs: 'table',
       layout: 'fitData',
       height: this.height,
       rowClick: this.rowClicked,
       rowContextMenu: this.rowContextMenu,
+      groupBy: 'election_id',
+      groupHeader: this.groupHeader,
       tooltips:this.tooltips,
       selectable: true,
       initialSort: [
