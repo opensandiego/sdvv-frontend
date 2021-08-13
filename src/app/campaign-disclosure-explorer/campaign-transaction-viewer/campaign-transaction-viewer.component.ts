@@ -40,19 +40,25 @@ export class CampaignTransactionViewerComponent implements OnInit {
     {
       label:"Add 1 more weeks of past Transactions",
       action:(e, column)=> {
-        this.campaignTransactionService.addNWeeksOfPastTransaction(1);
+        this.isLoadingData = true;
+        this.campaignTransactionService.addNWeeksOfPastTransaction(1)
+          .finally( () => this.isLoadingData = false );
       }
     },
     {
       label:"Add 2 more month of past Transactions",
       action:(e, column)=> {
-        this.campaignTransactionService.addMonthsNewTransaction(2);
+        this.isLoadingData = true;
+        this.campaignTransactionService.addMonthsNewTransaction(2)
+          .finally( () => this.isLoadingData = false );
       }
     },
     {
       label:"Remove ALL Transactions",
       action:(e, column)=> {
-        this.campaignTransactionService.deleteAllTransactions();
+        this.isLoadingData = true;
+        this.campaignTransactionService.deleteAllTransactions()
+          .finally( () => this.isLoadingData = false );
       }
     },
   ];
@@ -62,29 +68,32 @@ export class CampaignTransactionViewerComponent implements OnInit {
       title: "eFile Data",
       headerMenu: this.headerMenu,
       columns: [
-        { title: "filer_name", field: "filer_name", bottomCalc:"count"  },
-        { title: "doc_public", field: "doc_public" },
-        { title: "e_filing_id", field: "e_filing_id" },
-        { title: "tran_id", field: "tran_id" },
         { title: "transaction_date", field: "transaction_date" },
+        { title: "e_filing_id", field: "e_filing_id" },
+        { title: "filer_name", field: "filer_name", bottomCalc:"count"  },
+        { title: "schedule", field: "schedule" },
         { title: "amount", field: "amount" },
         { title: "tx_type", field: "tx_type" },
-        { title: "schedule", field: "schedule" },
+        { title: "spending_code", field: "spending_code" },
         { title: "filing_id", field: "filing_id" },
-        { title: "filing_type", field: "filing_type" },
-        { title: "name", field: "name" },
+        { title: "doc_public", field: "doc_public" },
         { title: "intr_name", field: "intr_name" },
+        { title: "name", field: "name" },
         { title: "city", field: "city" },
         { title: "state", field: "state" },
         { title: "zip", field: "zip" },
-        { title: "spending_code", field: "spending_code" },
         { title: "employer", field: "employer" },
         { title: "occupation", field: "occupation" },
+        { title: "filing_type", field: "filing_type" },
+        { title: "tran_id", field: "tran_id" },
       ]
     },
     {
       title: "Data Status", 
-      columns: []
+      columns: [
+        { title: "processed", field: "has_been_processed", hozAlign:"center", formatter:"tickCross" },
+        { title: "include", field: "include_in_calculations", hozAlign:"center", formatter:"tickCross" },
+      ]
     },
   ];
 
@@ -122,6 +131,8 @@ export class CampaignTransactionViewerComponent implements OnInit {
         spending_code: transaction.spending_code,
         employer: transaction.employer,
         occupation: transaction.occupation,
+        has_been_processed: transaction.has_been_processed,
+        include_in_calculations: transaction.include_in_calculations,
       }));
 
       this.table.replaceData(tableRows);

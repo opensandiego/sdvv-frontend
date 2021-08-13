@@ -7,14 +7,15 @@ import { DatabaseService } from './database/database.service';
 })
 export class CampaignTransactionService {
   localDB;
+  databaseService;
 
   constructor( ) {
     this.database();
   }
 
   async database() {
-    const databaseService = new DatabaseService();
-    this.localDB = await databaseService.getInstance();
+    this.databaseService = new DatabaseService();
+    this.localDB = await this.databaseService.getInstance();
   }
 
   addNWeeksOfPastTransaction(timeUnits: number = 1) {
@@ -22,8 +23,8 @@ export class CampaignTransactionService {
       .then( async range => {
         const timeUnitsAgo = new Date(range.oldest);
         timeUnitsAgo.setDate(timeUnitsAgo.getDate() - (timeUnits * 7));
-        console.log(timeUnitsAgo.toISOString(), range.oldest);
-        await this.addTransactionsInDateRange(timeUnitsAgo.toISOString(), range.oldest)
+        // console.log(timeUnitsAgo.toISOString(), range.oldest);
+        return this.addTransactionsInDateRange(timeUnitsAgo.toISOString(), range.oldest)
       });
   }
 
@@ -32,7 +33,7 @@ export class CampaignTransactionService {
       .then( async range => {
         const monthsAgo = new Date(range.oldest);
         monthsAgo.setMonth(monthsAgo.getMonth() - months);
-        console.log(monthsAgo.toISOString(), range.oldest )
+        // console.log(monthsAgo.toISOString(), range.oldest )
         await this.addTransactionsInDateRange(monthsAgo.toISOString(), range.oldest)
       });
   }
@@ -41,13 +42,13 @@ export class CampaignTransactionService {
     return this.localDB.transactions.find().exec()
       .then( results => {
         if (results.length < 1) {
-          console.log("today" )
+          // console.log("today" )
           return { oldest: (new Date()).toISOString(), newest: (new Date()).toISOString() };
         }
         const dates = results.map(result => new Date(result.transaction_date_time));
         const minDate = new Date(Math.min(...dates));
         const maxDate = new Date(Math.max(...dates));
-        console.log(minDate, maxDate )
+        // console.log(minDate, maxDate )
 
         return { oldest: minDate.toISOString(), newest: maxDate.toISOString() };
       });
@@ -56,15 +57,16 @@ export class CampaignTransactionService {
 
   addTransactionsInDateRange(oldestDate: string, newestDate: string, pageNumber: number = 1) {
     const pageSize = 50;
-    const maxPages = 50;
+    // const maxPages = 50;
+    const maxPages = 3;
     const parameters = `&start_date=${oldestDate}&end_date=${newestDate}&page_size=${pageSize}&page_number=${pageNumber}`;
     const queryStr = `&transaction_name=&transaction_type=&most_recent_amendment=true&search_boolean_expression=false&filer_name=`;
     return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/advanced?query=${queryStr}${parameters}`)
       .then(response => response.json())
-      .then(json => {console.log("data: ", json.data); return json;})
+      // .then(json => {console.log("data: ", json.data); return json;})
       .then(async json => {await this.addTransactionsToDB( this.mapTransactionFields(json.data) ); return json;})
       .then(json => {
-        console.log("pageNumber: ", pageNumber);
+        // console.log("pageNumber: ", pageNumber);
         if ( pageNumber < json.total_pages && pageNumber < maxPages ) {
           return this.addTransactionsInDateRange(oldestDate, newestDate, pageNumber + 1);
         }
@@ -74,7 +76,7 @@ export class CampaignTransactionService {
 
   addTransactionsToDB(transactionsToAdd) {
     const transactionIDsToAdd = transactionsToAdd.map(document => `${document.filing_id}|${document.tran_id}`);
-    error => console.log("transactionIDsToAdd: ")
+    // error => console.log("transactionIDsToAdd: ")
 
     return this.localDB.transactions.find()
       .where('_id').in(transactionIDsToAdd).exec()
@@ -86,7 +88,7 @@ export class CampaignTransactionService {
         )
       )
       .then(newTransactions => {
-        this.localDB.transactions.bulkInsert(newTransactions)
+        return this.localDB.transactions.bulkInsert(newTransactions);
       });
   }
 
@@ -124,8 +126,7 @@ export class CampaignTransactionService {
 
 
   deleteAllTransactions() {
-    const query = this.localDB.transactions.find();
-    return query.remove()
+    return this.databaseService.deleteAllItemsInCollection(this.localDB.transactions);
   }
 
 }
