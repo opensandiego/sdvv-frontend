@@ -79,7 +79,7 @@ export class CampaignTransactionService {
     // error => console.log("transactionIDsToAdd: ")
 
     return this.localDB.transactions.find()
-      .where('_id').in(transactionIDsToAdd).exec()
+      .where('id').in(transactionIDsToAdd).exec()
       .then(transactions => transactions.map(transaction => transaction.id))
       .then(transaction_ids => 
         // remove transactions from array that are already in database
@@ -96,6 +96,7 @@ export class CampaignTransactionService {
 
     return transactions.map(transaction => {
       const newTransaction = {
+        id: `${transaction.filing_id}|${transaction.tran_id}`,
         filer_name: transaction.filer_name,
         doc_public: transaction.doc_public,
         e_filing_id: transaction.e_filing_id,
