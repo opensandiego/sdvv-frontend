@@ -48,6 +48,24 @@ export class CampaignFilingService {
       .catch(error => console.log("error: ", error));
   }
 
+  addYearsNewFilings(committeeName: string, years: number = 10) {
+    const yearsAgo = new Date();
+    yearsAgo.setFullYear(yearsAgo.getFullYear() - years);
+
+    return this.addFilings(yearsAgo.toISOString(), new Date().toISOString(), committeeName);
+  }
+
+  addFilings(oldestDate: string, newestDate: string, committeeName: string = '') {
+    const committee = committeeName.split(' ').join('+');
+    const excludedFormsTypes = ['FPPC 410'];
+    return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search?query=&entity_name=${committee}&start_date=${oldestDate}&end_date=${newestDate}`)
+      .then(response => response.json())
+      .then(json => this.mapFilingFields(json.data) )
+      .then(filings => filings.filter( filing => !excludedFormsTypes.includes(filing.filing_type)))
+      .then(filings => this.databaseService.addItemsToCollection(filings, this.localDB.filings, 'filing_id') )
+      .catch(error => console.log("error: ", error));
+  }
+
   mapFilingFields(filings) {
 
     return filings.map(filing => {
@@ -118,6 +136,19 @@ export class CampaignFilingService {
       .catch(error => console.log("error: ", error));
   }
 
+  enableFiling(id: string) {
+    return this.localDB.filings.find().where('filing_id').eq(id)
+      .update({
+        $set: { enabled: true }
+      });
+  }
+  
+  disableFiling(id: string) {
+    return this.localDB.filings.find().where('filing_id').eq(id)
+      .update({
+        $set: { enabled: false }
+      });
+  }
 
   deleteAllFilings() {
     return this.databaseService.deleteAllItemsInCollection(this.localDB.filings);

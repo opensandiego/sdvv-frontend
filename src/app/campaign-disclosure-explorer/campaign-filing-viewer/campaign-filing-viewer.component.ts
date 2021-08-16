@@ -72,8 +72,8 @@ export class CampaignFilingViewerComponent implements OnInit {
         { title: "filing_date", field: "filing_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
         { title: "e_filing_id", field: "e_filing_id", headerFilter: "input" },
         { title: "filing_id", field: "filing_id", headerFilter: "input", bottomCalc:"count" },
-        { title: "amendment", field: "amendment" },
-        { title: "amendment_number", field: "amendment_number" },
+        { title: "amen", field: "amendment", width: 50, formatter: this.amendmentFormatter, },
+        { title: "amen #", field: "amendment_number", width: 15 },
         { title: "amends_orig_id", field: "amends_orig_id", headerFilter: "input" },
         { title: "amends_prev_id", field: "amends_prev_id", headerFilter: "input" },
         { title: "coe_id", field: "coe_id", headerFilter: "select", headerFilterFunc:"in", 
@@ -84,7 +84,9 @@ export class CampaignFilingViewerComponent implements OnInit {
         { title: "period_end", field: "period_end" },
         { title: "filing_type", field: "filing_type" },
         { title: "filing_subtypes", field: "filing_subtypes" },
-        { title: "entity_name", field: "entity_name" },
+        { title: "entity_name", field: "entity_name", headerFilter: "select", headerFilterFunc:"in", 
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
+        },
       ]
     },
     {
@@ -94,8 +96,7 @@ export class CampaignFilingViewerComponent implements OnInit {
           headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
         },
         { title: "name", field: "name", headerFilter: "select", headerFilterFunc:"in", 
-          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true,
-            }
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true, }
         },
         { title: "form_name", field: "form_name" },
         { title: "name_first", field: "name_first" },
@@ -115,6 +116,7 @@ export class CampaignFilingViewerComponent implements OnInit {
     {
       title: "Data Status", 
       columns: [
+        { title: "enabled", field: "enabled", width: 70, hozAlign:"center", formatter:"tickCross" },
       ]
     },
 
@@ -160,6 +162,8 @@ export class CampaignFilingViewerComponent implements OnInit {
         amendment_type: filing.amendment_type,
         covers_period: filing.covers_period,
         form: filing.form,
+        enabled: filing.enabled,
+        id: filing.e_filing_id,
       }));
 
       this.table.replaceData(tableRows);
