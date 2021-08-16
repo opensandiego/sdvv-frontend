@@ -65,12 +65,27 @@ export class CampaignTransactionViewerComponent implements OnInit {
 
   columnNames = [
     {
+      title: "Data Status", 
+      columns: [
+        { title: "processed", field: "has_been_processed", hozAlign:"center", formatter:"tickCross", headerFilter: "select", 
+          headerFilterParams: { values: true, sortValuesList: "asc" },
+          bottomCalc:"count",
+        },
+        { title: "include", field: "include_in_calculations", hozAlign:"center", formatter:"tickCross", headerFilter: "select", 
+          headerFilterParams: { values: true, sortValuesList: "asc" },
+          bottomCalc:"count",
+        },
+      ]
+    },    
+    {
       title: "eFile Data",
       headerMenu: this.headerMenu,
       columns: [
         { title: "transaction_date", field: "transaction_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"} },
         { title: "e_filing_id", field: "e_filing_id", headerFilter: "input" },
-        { title: "filer_name", field: "filer_name", bottomCalc:"count"  },
+        { title: "filer_name", field: "filer_name", bottomCalc:"count", headerFilter: "select", headerFilterFunc:"in",
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
+        },
         { title: "schedule", field: "schedule", headerFilter: "select", headerFilterFunc:"in",
           headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
         },
@@ -81,7 +96,7 @@ export class CampaignTransactionViewerComponent implements OnInit {
         { title: "spending_code", field: "spending_code", headerFilter: "select", headerFilterFunc:"in",
           headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
         },
-        { title: "filing_id", field: "filing_id", headerFilter: "input" },
+        { title: "filing_id", field: "filing_id", headerFilter: "input", bottomCalc:"count" },
         { title: "doc_public", field: "doc_public" },
         { title: "intr_name", field: "intr_name" },
         { title: "name", field: "name", headerFilter: "input" },
@@ -104,9 +119,7 @@ export class CampaignTransactionViewerComponent implements OnInit {
   ];
 
   constructor(
-    // private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
-    // private campaignFilingService: CampaignFilingService,
     private campaignTransactionService: CampaignTransactionService,
   ) { }
 
@@ -117,7 +130,6 @@ export class CampaignTransactionViewerComponent implements OnInit {
 
   updateRows() {
     this.campaignDataChangesService.transactions$.subscribe(rows => {
-      // console.log("rows.length", rows.length)
       let tableRows = rows.map( transaction => ({
         filer_name: transaction.filer_name,
         doc_public: transaction.doc_public,
@@ -139,6 +151,7 @@ export class CampaignTransactionViewerComponent implements OnInit {
         occupation: transaction.occupation,
         has_been_processed: transaction.has_been_processed,
         include_in_calculations: transaction.include_in_calculations,
+        id: transaction.id,
       }));
 
       this.table.replaceData(tableRows);
@@ -153,9 +166,8 @@ export class CampaignTransactionViewerComponent implements OnInit {
       columnCalcs: 'table',
       layout: 'fitData',
       height: this.height,
-      // rowClick: this.rowClicked,
-      // rowContextMenu: this.rowContextMenu,
-      // tooltips:this.tooltips,
+      rowContextMenu: this.rowContextMenu,
+      groupBy: 'filing_id',
       selectable: true,
       initialSort: [
         {column:"transaction_date", dir:"desc"},

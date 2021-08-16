@@ -35,6 +35,10 @@ export class CampaignDataService {
       })
       .then(committees => this.databaseService.addItemsToCollection(committees, this.localDB.committees, 'entity_id'))
   }
+
+  deleteCommittees() {
+    return this.databaseService.deleteAllItemsInCollection(this.localDB.committees);
+  }
   
   // Elections
   updateElectionsInDB() {
