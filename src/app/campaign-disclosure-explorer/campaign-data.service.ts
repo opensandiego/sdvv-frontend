@@ -26,6 +26,7 @@ export class CampaignDataService {
       .then(response => response.json())
       .then(json => {
         return json.data.committee_list.map(committee=> ({
+          id: `${committee.entity_id}|${committee.entity_name_lower}`,
           entity_id: committee.entity_id,
           entity_name: committee.entity_name,
           entity_name_lower: committee.entity_name_lower,

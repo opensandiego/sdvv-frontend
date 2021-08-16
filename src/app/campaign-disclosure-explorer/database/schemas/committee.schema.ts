@@ -2,12 +2,19 @@ export const committeeSchema = {
   "title": "committee schema",
   "description": "committee schema",
   "version": 0,
+  "primaryKey": {
+    "key": "id",
+    "fields": [
+      "entity_id",
+      "entity_name_lower"
+    ],
+    "separator": "|"
+  },
   "type": "object",
-  "required": [],
+  "required": [ "id", "entity_id",  "entity_name_lower" ],
   "properties": {
     "entity_id": {
       "type": "string",
-      "primary": true,
     },
     "entity_name": {
       "type": "string",
@@ -17,6 +24,18 @@ export const committeeSchema = {
     },
     "entity_type": {
       "type": "string",
+    },
+    // Fields below are not from eFile
+    "id": {
+      "type": "string"
+    },
+    "filing_count": {
+      "type": "number",
+      "default": 0,
+    },
+    "transaction_count": {
+      "type": "number",
+      "default": 0,
     },
   }
 }
