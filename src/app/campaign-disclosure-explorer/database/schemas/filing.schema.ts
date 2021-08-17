@@ -32,7 +32,12 @@ export const filingSchema = {
     "amendment": {
       "type": "boolean"
     },
-
+    // if "amendment" is false then both 
+    //    "amends_orig_id" will contain a string with its own "filing_id"
+    //    "amends_prev_id" will be null
+    // if "amendment" is true then both
+    //    "amends_orig_id" will contain the object: { orig_id: string, human_id: string }
+    //    "amends_prev_id" will contain the object: { prev_id: string, human_id: string }
     "amends_orig_id": {
       "type": ["string", "object", "null"]
     },
@@ -52,6 +57,7 @@ export const filingSchema = {
     },
 
   // Fields only in https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/filing/list/<coe_id> request
+  // Found from the Search By Election page
     "coe_id": {
       "type": "string"
     },
@@ -76,6 +82,7 @@ export const filingSchema = {
     },
 
   // Fields only in https://efile.sandiego.gov/api/v1/public/campaign-search request
+  // Found from the Campaign Disclosures page and using 'Search for Committee or Candidate by Name' 
     "period_start": {
       "type": ["string", "null"]
     },
@@ -92,6 +99,10 @@ export const filingSchema = {
     "filing_date_time": {
       "type": "string",
       "format": "date-time"
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": true,
     },
   },
   "required": [],

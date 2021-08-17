@@ -8,6 +8,7 @@ import { CampaignDataService } from '../campaign-data.service';
 import { CampaignDataChangesService } from '../campaign-data-changes.service';
 import { CampaignFilingService } from '../campaign-filing.service';
 import { CampaignTransactionService } from '../campaign-transactions.service';
+import { CampaignProcessTransactionsService } from '../campaign-process-transactions.service';
 
 
 @Component({
@@ -61,47 +62,115 @@ export class CampaignTransactionViewerComponent implements OnInit {
           .finally( () => this.isLoadingData = false );
       }
     },
+    {
+      label: "Reset ALL transaction's status",
+      action: (e, column)=> {
+        this.isLoadingData = true;
+        this.campaignTransactionService.resetAllTransactionsStatus()
+        .finally( () => this.isLoadingData = false );
+      }    
+    }
   ];
 
   columnNames = [
     {
+      title: "Data Status", 
+      columns: [
+        { title: "processed", field: "has_been_processed", hozAlign:"center", formatter:"tickCross", headerFilter: "select", 
+          headerFilterParams: { values: true, sortValuesList: "asc" },
+          bottomCalc:"count",
+        },
+        { title: "include", field: "include_in_calculations", hozAlign:"center", formatter:"tickCross", headerFilter: "select", 
+          headerFilterParams: { values: true, sortValuesList: "asc" },
+          bottomCalc:"count",
+        },
+      ]
+    },    
+    {
       title: "eFile Data",
       headerMenu: this.headerMenu,
       columns: [
-        { title: "transaction_date", field: "transaction_date" },
-        { title: "e_filing_id", field: "e_filing_id" },
-        { title: "filer_name", field: "filer_name", bottomCalc:"count"  },
-        { title: "schedule", field: "schedule" },
-        { title: "amount", field: "amount" },
-        { title: "tx_type", field: "tx_type" },
-        { title: "spending_code", field: "spending_code" },
-        { title: "filing_id", field: "filing_id" },
+        { title: "transaction_date", field: "transaction_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"} },
+        { title: "e_filing_id", field: "e_filing_id", headerFilter: "input" },
+        { title: "filer_name", field: "filer_name", bottomCalc:"count", headerFilter: "select", headerFilterFunc:"in",
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
+        },
+        { title: "schedule", field: "schedule", headerFilter: "select", headerFilterFunc:"in",
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
+        },
+        { title: "amount", field: "amount", formatter:"money", hozAlign: "right" },
+        { title: "tx_type", field: "tx_type", headerFilter: "select", headerFilterFunc:"in",
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
+        },
+        { title: "spending_code", field: "spending_code", headerFilter: "select", headerFilterFunc:"in",
+          headerFilterParams: { values: true, sortValuesList: "asc", multiselect: true }
+        },
+        { title: "filing_id", field: "filing_id", headerFilter: "input", bottomCalc:"count" },
         { title: "doc_public", field: "doc_public" },
         { title: "intr_name", field: "intr_name" },
-        { title: "name", field: "name" },
-        { title: "city", field: "city" },
+        { title: "name", field: "name", headerFilter: "input" },
+        { title: "city", field: "city", headerFilter: "input" },
         { title: "state", field: "state" },
-        { title: "zip", field: "zip" },
-        { title: "employer", field: "employer" },
-        { title: "occupation", field: "occupation" },
+        { title: "zip", field: "zip", headerFilter: "input" },
+        { title: "employer", field: "employer", headerFilter: "input" },
+        { title: "occupation", field: "occupation", headerFilter: "input" },
         { title: "filing_type", field: "filing_type" },
-        { title: "tran_id", field: "tran_id" },
-      ]
-    },
-    {
-      title: "Data Status", 
-      columns: [
-        { title: "processed", field: "has_been_processed", hozAlign:"center", formatter:"tickCross" },
-        { title: "include", field: "include_in_calculations", hozAlign:"center", formatter:"tickCross" },
+        { title: "tran_id", field: "tran_id", headerFilter: "input" },
       ]
     },
   ];
 
+  private getSelectedItems(itemName: string, row): string[] {
+    const selectedRowCount = this.table.getSelectedData().length;
+
+    let selectedItems;
+    if (selectedRowCount > 0) {
+      selectedItems = this.table.getSelectedData().map(data => data[itemName]);
+    } else {
+      selectedItems = [ row._row.data[itemName] ];
+    }
+
+    return selectedItems;
+  }
+
+  private rowContextMenu = [
+    {
+      label: "Reset transaction's status",
+      action: (e, row)=> {
+        this.isLoadingData = true;
+
+        const ids = this.getSelectedItems('id', row);
+        // console.log('ids', ids);
+
+        const promises = ids
+          .map(id => this.campaignTransactionService.resetTransactionsStatus(id) );
+
+        Promise.allSettled(promises)
+        .finally( () => this.isLoadingData = false );
+      }
+    },
+    {
+      label: "Process transactions and Amended transactions with same original filing ids",
+      action: (e, row)=> {
+        this.isLoadingData = true;
+        const filingIds = this.getSelectedItems('filing_id', row);
+
+        const uniqueIds = [...new Set(filingIds)];
+        console.log('uniqueIds', uniqueIds)
+
+        const promises = uniqueIds
+          .map(id => this.campaignProcessTransactionsService.processTransactionsByFilingId(id) );
+
+        Promise.allSettled(promises)
+          .finally( () => this.isLoadingData = false );
+      }
+    },
+  ]
+
   constructor(
-    // private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
-    // private campaignFilingService: CampaignFilingService,
     private campaignTransactionService: CampaignTransactionService,
+    private campaignProcessTransactionsService: CampaignProcessTransactionsService,
   ) { }
 
   ngOnInit(): void {
@@ -111,7 +180,6 @@ export class CampaignTransactionViewerComponent implements OnInit {
 
   updateRows() {
     this.campaignDataChangesService.transactions$.subscribe(rows => {
-      // console.log("rows.length", rows.length)
       let tableRows = rows.map( transaction => ({
         filer_name: transaction.filer_name,
         doc_public: transaction.doc_public,
@@ -133,6 +201,7 @@ export class CampaignTransactionViewerComponent implements OnInit {
         occupation: transaction.occupation,
         has_been_processed: transaction.has_been_processed,
         include_in_calculations: transaction.include_in_calculations,
+        id: transaction.id,
       }));
 
       this.table.replaceData(tableRows);
@@ -147,10 +216,9 @@ export class CampaignTransactionViewerComponent implements OnInit {
       columnCalcs: 'table',
       layout: 'fitData',
       height: this.height,
-      // rowClick: this.rowClicked,
-      // rowContextMenu: this.rowContextMenu,
-      // tooltips:this.tooltips,
-      selectable: 1,
+      rowContextMenu: this.rowContextMenu,
+      groupBy: 'filing_id',
+      selectable: true,
       initialSort: [
         {column:"transaction_date", dir:"desc"},
       ],

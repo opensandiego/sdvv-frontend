@@ -12,7 +12,7 @@ export const transactionSchema = {
     "separator": "|"
   },
   "type": "object",
-  // "required": [ "id", "filing_id", "tran_id" ],
+  "required": [ "id", "filing_id", "tran_id" ],
   "properties": {
     "filer_name": {
       "type": "string"

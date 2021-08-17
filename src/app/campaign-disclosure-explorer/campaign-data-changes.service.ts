@@ -36,6 +36,9 @@ export class CampaignDataChangesService {
   private transactionsSubject = new Subject<any>();
   public  transactions$ = this.transactionsSubject.asObservable();
 
+  private committeesSubscription;
+  private committeesSubject = new Subject<any>();
+  public  committees$ = this.committeesSubject.asObservable();
 
   constructor( ) {
     this.setupDatabase();
@@ -53,8 +56,10 @@ export class CampaignDataChangesService {
     await this.createCandidatesForSelectedElectionSubscription();
     await this.createFilingsFromSelectedCandidateSubscription();
     await this.createTransactionsSubscription();
+    await this.createCommitteesSubscription();
   }
 
+  // Elections
   private createAllElectionSubscription() {
     if (this.allElectionsSubscription) {
       return;
@@ -77,6 +82,7 @@ export class CampaignDataChangesService {
         .subscribe( results => this.electionsWithCandidateSubject.next(results) );
   }
 
+  // Candidates
   private createCandidatesForSelectedElectionSubscription() {
     if (this.candidatesInSelectedElectionSubscription) {
       return;
@@ -127,6 +133,19 @@ export class CampaignDataChangesService {
       .subscribe( results => this.transactionsSubject.next(results) );
   }
 
+  // Committees
+  createCommitteesSubscription() {
+    if (this.committeesSubscription) {
+      return;
+    }
+    
+    const collectionObservable = of('').pipe(
+      mergeMap(() =>this.localDB?.committees.find().$ )
+    );
+
+    this.committeesSubscription = collectionObservable
+      .subscribe( results => this.committeesSubject.next(results) );
+  }
 
   ngOnDestroy() {
     this.allElectionsSubscription?.unsubscribe();
@@ -134,6 +153,7 @@ export class CampaignDataChangesService {
     this.candidatesInSelectedElectionSubscription?.unsubscribe();
     this.filingsFromSelectedCandidateSubscription?.unsubscribe();
     this.transactionsSubscription?.unsubscribe();
+    this.committeesSubscription?.unsubscribe();
     console.log('Destroy CampaignDataChangesService');
   }
 

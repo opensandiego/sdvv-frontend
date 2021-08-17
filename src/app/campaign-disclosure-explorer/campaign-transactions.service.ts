@@ -53,23 +53,32 @@ export class CampaignTransactionService {
         return { oldest: minDate.toISOString(), newest: maxDate.toISOString() };
       });
   }
+  
+  addYearsNewTransaction(committeeName: string, years: number = 1) {
+    const yearsAgo = new Date();
+    yearsAgo.setFullYear(yearsAgo.getFullYear() - years);
 
+    return this.addTransactionsInDateRange(yearsAgo.toISOString(), new Date().toISOString(), 1, committeeName);
+  }
 
-  addTransactionsInDateRange(oldestDate: string, newestDate: string, pageNumber: number = 1) {
-    const pageSize = 50;
-    // const maxPages = 50;
-    const maxPages = 3;
-    const parameters = `&start_date=${oldestDate}&end_date=${newestDate}&page_size=${pageSize}&page_number=${pageNumber}`;
-    const queryStr = `&transaction_name=&transaction_type=&most_recent_amendment=true&search_boolean_expression=false&filer_name=`;
+  getTransactionsFromEFile() {}
+
+  addTransactionsInDateRange(oldestDate: string, newestDate: string, pageNumber: number = 1, filerName: string = '') {
+    const pageSize = 2000;
+    const maxPages = 20;
+    const name = filerName.split(' ').join('+');
+    const parameters = `&start_date=${oldestDate}&end_date=${newestDate}&page_size=${pageSize}&page_number=${pageNumber}&filer_name=${name}`;
+    const queryStr = `&transaction_name=&transaction_type=&most_recent_amendment=false&search_boolean_expression=false`;
     return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/advanced?query=${queryStr}${parameters}`)
       .then(response => response.json())
       // .then(json => {console.log("data: ", json.data); return json;})
       .then(async json => {await this.addTransactionsToDB( this.mapTransactionFields(json.data) ); return json;})
-      .then(json => {
+      .then(async json => {
         // console.log("pageNumber: ", pageNumber);
         if ( pageNumber < json.total_pages && pageNumber < maxPages ) {
-          return this.addTransactionsInDateRange(oldestDate, newestDate, pageNumber + 1);
+          return this.addTransactionsInDateRange(oldestDate, newestDate, pageNumber + 1, filerName);
         }
+        // for await ()
       })
       .catch(error => console.log("error: ", error));
   }
@@ -79,7 +88,7 @@ export class CampaignTransactionService {
     // error => console.log("transactionIDsToAdd: ")
 
     return this.localDB.transactions.find()
-      .where('_id').in(transactionIDsToAdd).exec()
+      .where('id').in(transactionIDsToAdd).exec()
       .then(transactions => transactions.map(transaction => transaction.id))
       .then(transaction_ids => 
         // remove transactions from array that are already in database
@@ -96,6 +105,7 @@ export class CampaignTransactionService {
 
     return transactions.map(transaction => {
       const newTransaction = {
+        id: `${transaction.filing_id}|${transaction.tran_id}`,
         filer_name: transaction.filer_name,
         doc_public: transaction.doc_public,
         e_filing_id: transaction.e_filing_id,
@@ -123,6 +133,25 @@ export class CampaignTransactionService {
 
   }
 
+  resetAllTransactionsStatus() {
+    return this.localDB.transactions.find()
+    .update({
+      $set: {
+        has_been_processed: false,
+        include_in_calculations: false,
+      }
+    });
+  }
+
+  resetTransactionsStatus(id: string) {
+    return this.localDB.transactions.find().where('id').eq(id)
+    .update({
+      $set: {
+        has_been_processed: false,
+        include_in_calculations: false,
+      }
+    });
+  }
 
 
   deleteAllTransactions() {
