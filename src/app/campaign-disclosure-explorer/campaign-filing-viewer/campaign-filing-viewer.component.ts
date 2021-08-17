@@ -7,6 +7,7 @@ window.moment = moment;
 import { CampaignDataService } from '../campaign-data.service';
 import { CampaignDataChangesService } from '../campaign-data-changes.service';
 import { CampaignFilingService } from '../campaign-filing.service';
+import { CampaignProcessTransactionsService } from '../campaign-process-transactions.service';
 
 @Component({
   selector: 'campaign-filing-viewer',
@@ -40,6 +41,18 @@ export class CampaignFilingViewerComponent implements OnInit {
       label:"Add 1 more month of past filings",
       action:(e, column)=> {
         this.campaignFilingService.addMonthsNewFilings(1);
+      }
+    },
+    {
+      label:"Add 3 more months of past filings",
+      action:(e, column)=> {
+        this.campaignFilingService.addMonthsNewFilings(3);
+      }
+    },
+    {
+      label:"Add 6 more months of past filings",
+      action:(e, column)=> {
+        this.campaignFilingService.addMonthsNewFilings(6);
       }
     },
     {
@@ -122,12 +135,95 @@ export class CampaignFilingViewerComponent implements OnInit {
 
   ];
 
+  private getSelectedItems(itemName: string, row) {
+    const selectedRowCount = this.table.getSelectedData().length;
+
+    let selectedItems;
+    if (selectedRowCount > 0) {
+      selectedItems = this.table.getSelectedData().map(data => data[itemName]);
+    } else {
+      selectedItems = [ row._row.data[itemName] ];
+    }
+
+    return selectedItems;
+  }
+
+  rowContextMenu = [
+    {
+      label: "Process Filing's transactions",
+      action: async (e, row) => {
+        this.isLoadingData = true;
+
+        const ids = this.getSelectedItems('filing_id', row);
+        const promises = ids
+          .map(id => this.campaignProcessTransactionsService.processFilingCheckOrig(id) );
+
+        Promise.allSettled(promises)
+          .finally( () => this.isLoadingData = false );
+      }
+    },
+    {
+      label: "Process Filing and Amended Filing's transactions",
+      action: async (e, row) => {
+        this.isLoadingData = true;
+
+        const origIds: string[] = this.getSelectedItems('amends_orig_id', row);
+
+        const uniqueOrigIds = [...new Set(origIds)];
+        console.log('uniqueOrigIds', uniqueOrigIds)
+
+        const promises = uniqueOrigIds
+          .map(id => this.campaignProcessTransactionsService.processTransactionsByFilingOrigId(id) );
+
+        Promise.allSettled(promises)
+          .finally( () => this.isLoadingData = false );
+      }
+    },
+    {
+      label: "Disable Filings",
+      action: async (e, row) => {
+        this.isLoadingData = true;
+
+        const ids = this.getSelectedItems('filing_id', row);
+
+        const promises = ids
+          .map(id => this.campaignFilingService.disableFiling(id) );
+
+        Promise.allSettled(promises)
+        .finally( () => this.isLoadingData = false );
+      }
+    },
+    {
+      label: "Enable Filings",
+      action: async (e, row) => {
+        this.isLoadingData = true;
+
+        const ids = this.getSelectedItems('filing_id', row)
+
+        const promises = ids
+          .map(id => this.campaignFilingService.enableFiling(id) );
+
+        Promise.allSettled(promises)
+        .finally( () => this.isLoadingData = false );
+      }
+    },
+  ];
 
 
+  amendmentFormatter(cell, formatterParams) {
+    let value = cell.getValue();
+    if (value) {
+      return "<span style='color:green; font-weight:bold; font-size: 1.2em;'>" + value + "</span>";
+    } else {
+      return "<span style='color:red; font-weight:bold;'>" + value + "</span>";
+    }
+  }
+ 
   constructor(
     private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
     private campaignFilingService: CampaignFilingService,
+    private campaignProcessTransactionsService: CampaignProcessTransactionsService,
   ) { }
 
   ngOnInit(): void {
@@ -166,7 +262,8 @@ export class CampaignFilingViewerComponent implements OnInit {
         id: filing.e_filing_id,
       }));
 
-      this.table.replaceData(tableRows);
+      // this.table.replaceData(tableRows);
+      this.table.updateOrAddData(tableRows);
     });
   }
 
@@ -178,9 +275,8 @@ export class CampaignFilingViewerComponent implements OnInit {
       columnCalcs: 'table',
       layout: 'fitData',
       height: this.height,
-      // rowClick: this.rowClicked,
-      // rowContextMenu: this.rowContextMenu,
-      selectable: 1,
+      rowContextMenu: this.rowContextMenu,
+      selectable: true,
       initialSort: [
         {column:"filing_date", dir:"desc"},
       ],

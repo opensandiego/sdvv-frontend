@@ -8,6 +8,7 @@ import { CampaignDataService } from '../campaign-data.service';
 import { CampaignDataChangesService } from '../campaign-data-changes.service';
 import { CampaignFilingService } from '../campaign-filing.service';
 import { CampaignTransactionService } from '../campaign-transactions.service';
+import { CampaignProcessTransactionsService } from '../campaign-process-transactions.service';
 
 
 @Component({
@@ -61,6 +62,14 @@ export class CampaignTransactionViewerComponent implements OnInit {
           .finally( () => this.isLoadingData = false );
       }
     },
+    {
+      label: "Reset ALL transaction's status",
+      action: (e, column)=> {
+        this.isLoadingData = true;
+        this.campaignTransactionService.resetAllTransactionsStatus()
+        .finally( () => this.isLoadingData = false );
+      }    
+    }
   ];
 
   columnNames = [
@@ -109,18 +118,59 @@ export class CampaignTransactionViewerComponent implements OnInit {
         { title: "tran_id", field: "tran_id", headerFilter: "input" },
       ]
     },
-    {
-      title: "Data Status", 
-      columns: [
-        { title: "processed", field: "has_been_processed", hozAlign:"center", formatter:"tickCross" },
-        { title: "include", field: "include_in_calculations", hozAlign:"center", formatter:"tickCross" },
-      ]
-    },
   ];
+
+  private getSelectedItems(itemName: string, row): string[] {
+    const selectedRowCount = this.table.getSelectedData().length;
+
+    let selectedItems;
+    if (selectedRowCount > 0) {
+      selectedItems = this.table.getSelectedData().map(data => data[itemName]);
+    } else {
+      selectedItems = [ row._row.data[itemName] ];
+    }
+
+    return selectedItems;
+  }
+
+  private rowContextMenu = [
+    {
+      label: "Reset transaction's status",
+      action: (e, row)=> {
+        this.isLoadingData = true;
+
+        const ids = this.getSelectedItems('id', row);
+        // console.log('ids', ids);
+
+        const promises = ids
+          .map(id => this.campaignTransactionService.resetTransactionsStatus(id) );
+
+        Promise.allSettled(promises)
+        .finally( () => this.isLoadingData = false );
+      }
+    },
+    {
+      label: "Process transactions and Amended transactions with same original filing ids",
+      action: (e, row)=> {
+        this.isLoadingData = true;
+        const filingIds = this.getSelectedItems('filing_id', row);
+
+        const uniqueIds = [...new Set(filingIds)];
+        console.log('uniqueIds', uniqueIds)
+
+        const promises = uniqueIds
+          .map(id => this.campaignProcessTransactionsService.processTransactionsByFilingId(id) );
+
+        Promise.allSettled(promises)
+          .finally( () => this.isLoadingData = false );
+      }
+    },
+  ]
 
   constructor(
     private campaignDataChangesService: CampaignDataChangesService,
     private campaignTransactionService: CampaignTransactionService,
+    private campaignProcessTransactionsService: CampaignProcessTransactionsService,
   ) { }
 
   ngOnInit(): void {
