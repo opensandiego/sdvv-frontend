@@ -2,9 +2,9 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitte
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Tabulator from 'tabulator-tables';
 
-import { CampaignDataService } from '../campaign-data.service';
-import { CampaignDataChangesService } from '../campaign-data-changes.service';
-import { CampaignCandidateService } from '../campaign-candidate.service';
+import { CampaignDataService } from '../services/campaign-data.service';
+import { CampaignDataChangesService } from '../services/campaign-data-changes.service';
+import { CampaignCandidateService } from '../services/campaign-candidate.service';
 
 import moment from 'moment';
 window.moment = moment;

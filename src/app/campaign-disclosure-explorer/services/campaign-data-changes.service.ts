@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { from, Observable, of, Subject, iif } from 'rxjs';
 import {  map, mergeMap } from 'rxjs/operators';
 
-import { DatabaseService } from './database/database.service';
+import { DatabaseService } from '../database/database.service';
 import {
   RxDatabase,
 } from 'rxdb'

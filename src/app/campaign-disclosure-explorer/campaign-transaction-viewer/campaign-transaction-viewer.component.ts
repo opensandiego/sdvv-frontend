@@ -4,11 +4,11 @@ import Tabulator from 'tabulator-tables';
 import moment from 'moment';
 window.moment = moment;
 
-import { CampaignDataService } from '../campaign-data.service';
-import { CampaignDataChangesService } from '../campaign-data-changes.service';
-import { CampaignFilingService } from '../campaign-filing.service';
-import { CampaignTransactionService } from '../campaign-transactions.service';
-import { CampaignProcessTransactionsService } from '../campaign-process-transactions.service';
+import { CampaignDataService } from '../services/campaign-data.service';
+import { CampaignDataChangesService } from '../services/campaign-data-changes.service';
+import { CampaignFilingService } from '../services/campaign-filing.service';
+import { CampaignTransactionService } from '../services/campaign-transactions.service';
+import { CampaignProcessTransactionsService } from '../services/campaign-process-transactions.service';
 
 
 @Component({
