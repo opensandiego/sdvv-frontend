@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CampaignDataChangesService } from '../campaign-data-changes.service';
+import { CampaignDataChangesService } from '../services/campaign-data-changes.service';
 
 @Component({
   selector: 'app-explorer-container',

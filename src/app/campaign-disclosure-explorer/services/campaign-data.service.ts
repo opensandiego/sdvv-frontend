@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { DatabaseService } from './database/database.service';
+import { DatabaseService } from '../database/database.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,9 @@ export class CampaignDataService {
   localDB;
   databaseService;
 
-  constructor( ) {
+  constructor(
+    // private databaseService: DatabaseService,
+  ) {
     this.database();
   }
 

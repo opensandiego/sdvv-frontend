@@ -7,6 +7,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -16,6 +17,9 @@ import { CampaignFilingViewerComponent } from './campaign-filing-viewer/campaign
 import { CampaignTransactionViewerComponent } from './campaign-transaction-viewer/campaign-transaction-viewer.component';
 import { CampaignCommitteeViewerComponent } from './campaign-committee-viewer/campaign-committee-viewer.component';
 import { ExplorerContainerComponent } from './explorer-container/explorer-container.component';
+
+import { DatabaseService } from './database/database.service';
+import { CampaignDataService } from './services/campaign-data.service';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import { ExplorerContainerComponent } from './explorer-container/explorer-contai
     MatExpansionModule,
     MatSelectModule,
     FontAwesomeModule,
+    HttpClientModule,
   ],
   exports: [
     CampaignElectionViewerComponent,
@@ -45,7 +50,10 @@ import { ExplorerContainerComponent } from './explorer-container/explorer-contai
     CampaignCommitteeViewerComponent,
     ExplorerContainerComponent,
   ],
-  providers: []
+  providers: [
+    DatabaseService,
+    CampaignDataService,
+  ]
 
 })
 export class CampaignDisclosureExplorerModule { }

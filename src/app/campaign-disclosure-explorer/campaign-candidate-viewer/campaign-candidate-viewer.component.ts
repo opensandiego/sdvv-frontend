@@ -6,9 +6,9 @@ import moment from 'moment';
 window.moment = moment;
 
 // import { CampaignDataService } from '../campaign-data.service';
-import { CampaignDataChangesService } from '../campaign-data-changes.service';
-import { CampaignFilingService } from '../campaign-filing.service';
-import { CampaignCandidateService } from '../campaign-candidate.service';
+import { CampaignDataChangesService } from '../services/campaign-data-changes.service';
+import { CampaignFilingService } from '../services/campaign-filing.service';
+import { CampaignCandidateService } from '../services/campaign-candidate.service';
 
 interface selectedEvent {
   name: string;
