@@ -9,7 +9,9 @@ export class CampaignDataService {
   localDB;
   databaseService;
 
-  constructor( ) {
+  constructor(
+    // private databaseService: DatabaseService,
+  ) {
     this.database();
   }
 

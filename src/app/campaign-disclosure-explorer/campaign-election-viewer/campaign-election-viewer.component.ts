@@ -6,6 +6,8 @@ import { CampaignDataService } from '../services/campaign-data.service';
 import { CampaignDataChangesService } from '../services/campaign-data-changes.service';
 import { CampaignCandidateService } from '../services/campaign-candidate.service';
 
+import { CampaignBackendService } from '../services/campaign-backend.service';
+
 import moment from 'moment';
 window.moment = moment;
 
@@ -43,11 +45,33 @@ export class CampaignElectionViewerComponent implements OnInit {
         this.onDeleteInDB();
       }
     },
-    // {
-    //   label:"Push Elections to remote",
-    //   action:(e, column)=> {
-    //   }
-    // },
+    {
+      label:"Get Elections from remote database",
+      action:(e, column)=> {
+        console.log('Get Elections from remote database')
+        this.campaignBackendService.getElections()
+          .subscribe( results => console.log( results));
+      }
+    },
+    {
+      label:"Get Elections from eFile",
+      action:(e, column)=> {
+        console.log('Get Elections from eFile')
+        this.campaignBackendService.getElectionsFromEFile()
+          .subscribe( results => console.log( results));
+      }
+    },
+    {
+      label:"Get Elections from eFile and Post to remote database",
+      action:(e, column)=> {
+        this.campaignBackendService.getElectionsFromEFile()
+        .subscribe( results => 
+          this.campaignBackendService.postElectionsToRemote(results)
+            .subscribe(results => console.log( results))
+            // .subscribe(elections => {this.campaignBackendService.saveElectionsToLocalDB(elections)})
+          );
+      }
+    },
   ];
 
   columnNames = [
@@ -108,6 +132,7 @@ export class CampaignElectionViewerComponent implements OnInit {
     private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
     private campaignCandidateService: CampaignCandidateService,
+    private campaignBackendService: CampaignBackendService,
     private snackBar: MatSnackBar,
   ) { }
 
