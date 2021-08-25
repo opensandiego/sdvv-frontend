@@ -25,7 +25,7 @@ const {
 })
 export class DatabaseService {
   private db: RxDatabase;
-  private collections;
+  public collections;
 
   constructor() {  }
   

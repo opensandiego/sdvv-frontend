@@ -7,33 +7,24 @@ import { CampaignDataService } from './campaign-data.service';
   providedIn: 'root'
 })
 export class CampaignCandidateService {
-  localDB;
-  campaignDataService = new CampaignDataService();
-  databaseService;
-
-  constructor( ) {
-    this.database();
-  }
-
-  async database() {
-    this.databaseService = new DatabaseService();
-    this.localDB = await this.databaseService.getInstance();
-  }
-
+  constructor(
+    private campaignDataService: CampaignDataService,
+    private databaseService: DatabaseService,
+  ) {}
 
   setPrimaryCandidateCommittee(candidateID: string) {
-    return this.localDB.committees.find().exec()
+    return this.databaseService.collections.committees.find().exec()
       .then(results => {
         if (results.length < 1) {
           return this.campaignDataService.updateCommitteesInDB();
         }
       })
-      .then(() => this.localDB.candidates.findOne()
+      .then(() => this.databaseService.collections.candidates.findOne()
         .where('coe_id').eq(candidateID).exec())
 
       .then( async candidate => {
 
-        const election = await this.localDB.elections
+        const election = await this.databaseService.collections.elections
           .findOne().where('election_id').eq(candidate.election_id).exec();
 
         const electionYear = (new Date(election.election_date)).getFullYear();
@@ -61,7 +52,7 @@ export class CampaignCandidateService {
         
         const regex = new RegExp(`(?=.*${lastName})(?=.*${office})(?=.*${electionYear}).*`, 'i');
         
-        return this.localDB.committees.find({
+        return this.databaseService.collections.committees.find({
           selector: { 
             entity_name: { $regex: regex },
           },
@@ -72,7 +63,7 @@ export class CampaignCandidateService {
       .then(committees => committees[0])
 
       .then(committee => 
-        this.localDB.candidates.findOne().where('coe_id').eq(candidateID)
+        this.databaseService.collections.candidates.findOne().where('coe_id').eq(candidateID)
           .update({
             $set: { candidate_controlled_committee_name: committee }
         })
@@ -116,12 +107,12 @@ export class CampaignCandidateService {
         }
 
         const newCandidates = await this.databaseService
-          .addItemsToCollection(candidateDocs, this.localDB.candidates, 'coe_id');
+          .addItemsToCollection(candidateDocs, this.databaseService.collections.candidates, 'coe_id');
 
-        const candidateCount = (await this.localDB.candidates
+        const candidateCount = (await this.databaseService.collections.candidates
           .find().where('election_id').eq(election_id).exec()).length;
 
-        const electionQuery = await this.localDB.elections
+        const electionQuery = await this.databaseService.collections.elections
           .find().where('election_id').eq(election_id);
 
         electionQuery.update({
@@ -137,8 +128,8 @@ export class CampaignCandidateService {
 
   deleteCandidates(electionID: string) {
 
-    const electionQuery = this.localDB.elections.find().where('election_id').eq(electionID);    
-    const candidatesQuery = this.localDB.candidates.find({ selector: { election_id: electionID } });
+    const electionQuery = this.databaseService.collections.elections.find().where('election_id').eq(electionID);    
+    const candidatesQuery = this.databaseService.collections.candidates.find({ selector: { election_id: electionID } });
 
     return candidatesQuery.exec()
     .then(

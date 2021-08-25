@@ -7,18 +7,11 @@ import { CampaignDataChangesService } from './campaign-data-changes.service';
   providedIn: 'root'
 })
 export class CampaignProcessTransactionsService {
-  localDB;
-  databaseService;
-  campaignDataChangesService = new CampaignDataChangesService();
 
-  constructor( ) {
-    this.database();
-  }
-
-  async database() {
-    this.databaseService = new DatabaseService();
-    this.localDB = await this.databaseService.getInstance();
-  }
+  constructor(
+    private campaignDataChangesService: CampaignDataChangesService,
+    private databaseService: DatabaseService,
+  ) { }
 
   /**
    * Transaction states
@@ -74,7 +67,7 @@ export class CampaignProcessTransactionsService {
 
   // this can be used if initiated from a transaction rather than a filing
   getFilingOrigIDFromFilingId(filingID: string) {
-    return this.localDB.filings
+    return this.databaseService.collections.filings
       .findOne()
       .and([
         { enabled: true },
@@ -87,7 +80,7 @@ export class CampaignProcessTransactionsService {
 
   processTransactionsByFilingOrigId(filingOrigID: string) {
 
-    this.localDB.filings
+    this.databaseService.collections.filings
       .find()
       .and([
         { enabled: true },
@@ -103,7 +96,7 @@ export class CampaignProcessTransactionsService {
         const maxAmendmentNumber: number = Math.max(...amendmentNumbers);
 
         for (const filing of filings) {
-          await this.localDB.transactions
+          await this.databaseService.collections.transactions
             .find()
             .where('filing_id')
             .eq(filing.filing_id)
@@ -120,7 +113,7 @@ export class CampaignProcessTransactionsService {
   }
   
   processFilingCheckOrig(filingID: string) {
-    this.localDB.filings
+    this.databaseService.collections.filings
       .findOne()
       .and([
         { enabled: true },
@@ -134,7 +127,7 @@ export class CampaignProcessTransactionsService {
 
         console.log('processFilingCheckOrig orig_id', orig_id)
 
-        const maxAmendmentNumber = await this.localDB.filings
+        const maxAmendmentNumber = await this.databaseService.collections.filings
           .find()
           .and([
             { enabled: true },
@@ -154,7 +147,7 @@ export class CampaignProcessTransactionsService {
 
         const includeFilingsInCalculations: boolean = (results.amendment_number >= maxAmendmentNumber);
 
-        return this.localDB.transactions
+        return this.databaseService.collections.transactions
           .find()
           .where('filing_id')
           .eq(filingID)
@@ -177,7 +170,7 @@ export class CampaignProcessTransactionsService {
   // If a amending filing is added then previous filings will need to be reprocessed
   // processFiling(filingID: string) { // set transaction based on this filing
   processFilingCheckPrev(filingID: string) {
-    this.localDB.filings
+    this.databaseService.collections.filings
       .find()
       // find other filings that have amended filing with filingID
       .and([
@@ -194,7 +187,7 @@ export class CampaignProcessTransactionsService {
 
         if (filingIsAmended) { 
           // console.log('processFiling', results);
-          return this.localDB.transactions
+          return this.databaseService.collections.transactions
             .find()
             .and([
               { filing_id: filingID },
@@ -207,7 +200,7 @@ export class CampaignProcessTransactionsService {
               }
             });
         } else {
-          return this.localDB.transactions
+          return this.databaseService.collections.transactions
             .find()
             .and([
               { filing_id: filingID },
