@@ -31,8 +31,8 @@ export class CampaignElectionService {
     return this.databaseService.deleteAllItemsInCollection(this.databaseService.collections.elections);
   }
 
-  async saveElectionsToLocalDB(elections: Election[]) {
-    return await this.databaseService
+  saveElectionsToLocalDB(elections: Election[]) {
+    return this.databaseService
       .addItemsToCollection(elections, this.databaseService.collections.elections, 'election_id');
   }
 
