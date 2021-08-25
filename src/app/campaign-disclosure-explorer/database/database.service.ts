@@ -32,14 +32,9 @@ export class DatabaseService {
   public databaseReady = this.buildDb.asObservable();
 
   constructor() { 
-    this.buildDatabase()
-      .then( db => this.db = db)
-      .then( () => this.addCollections(this.db))
-      .then( () => this.collections = this.db.collections)
-      .then( () => this.buildDb.next())
-      .catch( error => console.error('Error setting up rxdb database:', error));
-   }
-  
+    this.buildDatabase();
+  }
+
   private addCollections(db: RxDatabase) {
     return db.addCollections({
       elections: {
@@ -60,7 +55,16 @@ export class DatabaseService {
     });
   }
 
-  private buildDatabase(): Promise<RxDatabase> {
+  private buildDatabase(){
+    this.createDatabase()
+      .then( db => this.db = db)
+      .then( () => this.addCollections(this.db))
+      .then( () => this.collections = this.db.collections)
+      .then( () => this.buildDb.next())
+      .catch( error => console.error('Error setting up rxdb database:', error));
+  }
+
+  private createDatabase(): Promise<RxDatabase> {
     return createRxDatabase({
       name: 'campaigndb',
       // adapter: 'idb',
@@ -98,6 +102,16 @@ export class DatabaseService {
         return query.remove().then( () => results );
       }
     )
+  }
+
+  /**
+   * Removes the database and wipes all data of it from the storage.
+   *  Optionally recreates the database. Pass false to doRebuild 
+   *  when modifying the local database schema.
+   * */ 
+   public deleteDatabase(doRebuild = true) {
+    return this.db.remove()
+      .then( () => doRebuild ? this.buildDatabase() : null);
   }
 
 }
