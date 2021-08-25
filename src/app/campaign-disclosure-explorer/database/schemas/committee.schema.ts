@@ -37,5 +37,11 @@ export const committeeSchema = {
       "type": "number",
       "default": 0,
     },
+    "createdAt": {
+      "type": "string",
+    },
+    "updatedAt": {
+      "type": "string",
+    },
   }
 }

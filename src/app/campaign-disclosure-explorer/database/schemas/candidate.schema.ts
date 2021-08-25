@@ -73,5 +73,11 @@ export const candidateSchema = {
     "candidate_controlled_committee_name": {
       "type": ["string", "null"]
     },
+    "createdAt": {
+      "type": "string",
+    },
+    "updatedAt": {
+      "type": "string",
+    },
   },
 }

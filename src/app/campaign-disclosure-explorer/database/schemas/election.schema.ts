@@ -29,5 +29,11 @@ export const electionSchema = {
       "type": "number",
       "default": 0,
     },
+    "createdAt": {
+      "type": "string",
+    },
+    "updatedAt": {
+      "type": "string",
+    },
   },
 }
