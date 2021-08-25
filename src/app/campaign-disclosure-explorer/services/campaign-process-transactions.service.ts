@@ -9,8 +9,8 @@ import { CampaignDataChangesService } from './campaign-data-changes.service';
 export class CampaignProcessTransactionsService {
 
   constructor(
-    private campaignDataChangesService: CampaignDataChangesService,
     private databaseService: DatabaseService,
+    private campaignDataChangesService: CampaignDataChangesService,
   ) { }
 
   /**

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import {
   createRxDatabase,
@@ -27,25 +28,20 @@ export class DatabaseService {
   private db: RxDatabase;
   public collections;
 
-  constructor() {  }
+  private buildDb = new Subject<void>();
+  public databaseReady = this.buildDb.asObservable();
+
+  constructor() { 
+    this.buildDatabase()
+      .then( db => this.db = db)
+      .then( () => this.addCollections(this.db))
+      .then( () => this.collections = this.db.collections)
+      .then( () => this.buildDb.next())
+      .catch( error => console.error('Error setting up rxdb database:', error));
+   }
   
-  public async getInstance() {
-    if (!this.db) {
-      try {
-        this.db = await this.buildDatabase();
-      } catch (error) {
-        console.error('Unable to create the database:', error);
-      }
-
-      this.collections = await this.addCollections(this.db);
-    }
-
-    return this.db;
-
-  }
-
-  private async addCollections(db: RxDatabase) {
-    return await db.addCollections({
+  private addCollections(db: RxDatabase) {
+    return db.addCollections({
       elections: {
           schema: electionSchema
       },
@@ -64,8 +60,8 @@ export class DatabaseService {
     });
   }
 
-  private async buildDatabase(): Promise<RxDatabase> {
-    const db = await createRxDatabase({
+  private buildDatabase(): Promise<RxDatabase> {
+    return createRxDatabase({
       name: 'campaigndb',
       // adapter: 'idb',
       // Using memory adapter while developing schemas to avoid
@@ -73,8 +69,6 @@ export class DatabaseService {
       adapter: 'memory', 
       ignoreDuplicate: true,
     });
-
-    return db;
   }
 
   public addItemsToCollection(itemsToAdd: object[], collection, keyField: string) {

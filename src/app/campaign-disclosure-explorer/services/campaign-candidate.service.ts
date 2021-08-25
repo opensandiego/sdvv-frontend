@@ -8,8 +8,8 @@ import { CampaignDataService } from './campaign-data.service';
 })
 export class CampaignCandidateService {
   constructor(
-    private campaignDataService: CampaignDataService,
     private databaseService: DatabaseService,
+    private campaignDataService: CampaignDataService,
   ) {}
 
   setPrimaryCandidateCommittee(candidateID: string) {

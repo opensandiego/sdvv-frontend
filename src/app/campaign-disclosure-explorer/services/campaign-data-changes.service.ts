@@ -36,12 +36,8 @@ export class CampaignDataChangesService {
   public  committees$ = this.committeesSubject.asObservable();
 
   constructor(private databaseService: DatabaseService) {
-    this.setupDatabase();    
-  }
-
-  async setupDatabase() {
-    await this.databaseService.getInstance();
-    await this.setupSubscriptions();
+    this.databaseService.databaseReady
+      .subscribe(() => this.setupSubscriptions());
   }
   
   async setupSubscriptions() {
