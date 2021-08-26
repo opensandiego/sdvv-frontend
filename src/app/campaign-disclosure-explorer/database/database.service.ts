@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import {
   createRxDatabase,
@@ -25,27 +26,17 @@ const {
 })
 export class DatabaseService {
   private db: RxDatabase;
-  private collections;
+  public collections;
 
-  constructor() {  }
-  
-  public async getInstance() {
-    if (!this.db) {
-      try {
-        this.db = await this.buildDatabase();
-      } catch (error) {
-        console.error('Unable to create the database:', error);
-      }
+  private buildDb = new Subject<void>();
+  public databaseReady = this.buildDb.asObservable();
 
-      this.collections = await this.addCollections(this.db);
-    }
-
-    return this.db;
-
+  constructor() { 
+    this.buildDatabase();
   }
 
-  private async addCollections(db: RxDatabase) {
-    return await db.addCollections({
+  private addCollections(db: RxDatabase) {
+    return db.addCollections({
       elections: {
           schema: electionSchema
       },
@@ -64,8 +55,17 @@ export class DatabaseService {
     });
   }
 
-  private async buildDatabase(): Promise<RxDatabase> {
-    const db = await createRxDatabase({
+  private buildDatabase(){
+    this.createDatabase()
+      .then( db => this.db = db)
+      .then( () => this.addCollections(this.db))
+      .then( () => this.collections = this.db.collections)
+      .then( () => this.buildDb.next())
+      .catch( error => console.error('Error setting up rxdb database:', error));
+  }
+
+  private createDatabase(): Promise<RxDatabase> {
+    return createRxDatabase({
       name: 'campaigndb',
       // adapter: 'idb',
       // Using memory adapter while developing schemas to avoid
@@ -73,8 +73,6 @@ export class DatabaseService {
       adapter: 'memory', 
       ignoreDuplicate: true,
     });
-
-    return db;
   }
 
   public addItemsToCollection(itemsToAdd: object[], collection, keyField: string) {
@@ -104,6 +102,16 @@ export class DatabaseService {
         return query.remove().then( () => results );
       }
     )
+  }
+
+  /**
+   * Removes the database and wipes all data of it from the storage.
+   *  Optionally recreates the database. Pass false to doRebuild 
+   *  when modifying the local database schema.
+   * */ 
+   public deleteDatabase(doRebuild = true) {
+    return this.db.remove()
+      .then( () => doRebuild ? this.buildDatabase() : null);
   }
 
 }

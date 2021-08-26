@@ -3,15 +3,10 @@ import { from, Observable, of, Subject, iif } from 'rxjs';
 import {  map, mergeMap } from 'rxjs/operators';
 
 import { DatabaseService } from '../database/database.service';
-import {
-  RxDatabase,
-} from 'rxdb'
-
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignDataChangesService {
-  localDB: RxDatabase;
   private allElectionsSubscription;
   private allElectionsSubject = new Subject<any>();
   public  allElections$ = this.allElectionsSubject.asObservable();
@@ -40,14 +35,9 @@ export class CampaignDataChangesService {
   private committeesSubject = new Subject<any>();
   public  committees$ = this.committeesSubject.asObservable();
 
-  constructor( ) {
-    this.setupDatabase();
-  }
-
-  async setupDatabase() {
-    const databaseService = new DatabaseService();
-    this.localDB = await databaseService.getInstance();
-    await this.setupSubscriptions();
+  constructor(private databaseService: DatabaseService) {
+    this.databaseService.databaseReady
+      .subscribe(() => this.setupSubscriptions());
   }
   
   async setupSubscriptions() {
@@ -66,7 +56,7 @@ export class CampaignDataChangesService {
     }
 
     this.allElectionsSubscription = of('').pipe(
-      mergeMap(() =>  this.localDB?.elections.find().$ ),
+      mergeMap(() =>  this.databaseService.collections?.elections.find().$ ),
     )
     .subscribe(results => this.allElectionsSubject.next(results));
   }
@@ -77,8 +67,8 @@ export class CampaignDataChangesService {
     }
     
     this.electionsWithCandidateSubscription = 
-      // this.localDB?.elections.find().where('candidates_count').gt(0).sort('election_date').$
-      this.localDB?.elections.find().where('candidates_count').gt(0).$
+      // this.databaseService.collections?.elections.find().where('candidates_count').gt(0).sort('election_date').$
+      this.databaseService.collections?.elections.find().where('candidates_count').gt(0).$
         .subscribe( results => this.electionsWithCandidateSubject.next(results) );
   }
 
@@ -91,8 +81,8 @@ export class CampaignDataChangesService {
     const candidatesObservable = of('').pipe(
         mergeMap(() => this.electionSelectionChanged.asObservable() ),
         mergeMap(electionID => iif(() => electionID === 'ALL', 
-          this.localDB?.candidates.find().$,
-          this.localDB?.candidates.find().where('election_id').eq(electionID).$ )
+          this.databaseService.collections?.candidates.find().$,
+          this.databaseService.collections?.candidates.find().where('election_id').eq(electionID).$ )
         )
     );
 
@@ -109,8 +99,8 @@ export class CampaignDataChangesService {
     const filingsObservable = of('').pipe(
       // mergeMap(() => this.electionSelectionChanged.asObservable() ),
       mergeMap(candidateID => iif(() => candidateID === 'ALL', 
-        this.localDB?.filings.find().$,
-        this.localDB?.filings.find().$)
+        this.databaseService.collections?.filings.find().$,
+        this.databaseService.collections?.filings.find().$)
         // this.localDB?.filings.find().where('election_id').eq(candidateID).$ )
       )
     );
@@ -126,7 +116,7 @@ export class CampaignDataChangesService {
     }
 
     const transactionsObservable = of('').pipe(
-      mergeMap(() =>this.localDB?.transactions.find().$ )
+      mergeMap(() =>this.databaseService.collections?.transactions.find().$ )
     );
 
     this.transactionsSubscription = transactionsObservable
@@ -140,7 +130,7 @@ export class CampaignDataChangesService {
     }
     
     const collectionObservable = of('').pipe(
-      mergeMap(() =>this.localDB?.committees.find().$ )
+      mergeMap(() =>this.databaseService.collections?.committees.find().$ )
     );
 
     this.committeesSubscription = collectionObservable

@@ -6,17 +6,10 @@ import { DatabaseService } from '../database/database.service';
   providedIn: 'root'
 })
 export class CampaignFilingService {
-  localDB;
-  databaseService;
 
-  constructor( ) {
-    this.database();
-  }
-
-  async database() {
-    this.databaseService = new DatabaseService();
-    this.localDB = await this.databaseService.getInstance();
-  }
+  constructor(
+    private databaseService: DatabaseService,
+  ) { }
 
   addMonthsNewFilings(months: number = 6) {
     return this.getFilingDateRanges()
@@ -28,7 +21,7 @@ export class CampaignFilingService {
   }
 
   getFilingDateRanges(): Promise<{ oldest: string, newest: string }> {
-    return this.localDB.filings.find().exec()
+    return this.databaseService.collections.filings.find().exec()
       .then(  results => {
         if (results.length < 1) {
           return { oldest: (new Date()).toISOString(), newest: (new Date()).toISOString() };
@@ -44,7 +37,7 @@ export class CampaignFilingService {
     return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search?start_date=${oldestDate}&end_date=${newestDate}`)
       .then(response => response.json())
       .then(json => this.mapFilingFields(json.data) )
-      .then(filings => this.databaseService.addItemsToCollection(filings, this.localDB.filings, 'filing_id') )
+      .then(filings => this.databaseService.addItemsToCollection(filings, this.databaseService.collections.filings, 'filing_id') )
       .catch(error => console.log("error: ", error));
   }
 
@@ -62,7 +55,7 @@ export class CampaignFilingService {
       .then(response => response.json())
       .then(json => this.mapFilingFields(json.data) )
       .then(filings => filings.filter( filing => !excludedFormsTypes.includes(filing.filing_type)))
-      .then(filings => this.databaseService.addItemsToCollection(filings, this.localDB.filings, 'filing_id') )
+      .then(filings => this.databaseService.addItemsToCollection(filings, this.databaseService.collections.filings, 'filing_id') )
       .catch(error => console.log("error: ", error));
   }
 
@@ -115,19 +108,19 @@ export class CampaignFilingService {
     return fetch(`https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/filing/list/${candidateOfficeElectionID}`)
       .then(response => response.json())
       .then(json => this.mapFilingFields(json.data) )
-      .then(filings => this.databaseService.addItemsToCollection(filings, this.localDB.filings, 'filing_id') )
+      .then(filings => this.databaseService.addItemsToCollection(filings, this.databaseService.collections.filings, 'filing_id') )
       .catch(error => console.log("error: ", error));
   }
 
   updateFilingCountsInCandidate(candidateOfficeElectionID: string, candidateName: string) {
     const candidateSelector = { entity_name: {$regex: `.*${candidateName}.*`} };
 
-    const candidateQuery = this.localDB.candidates
+    const candidateQuery = this.databaseService.collections.candidates
       .find().where('coe_id').eq(candidateOfficeElectionID);
 
     // Candidate names can have middle initials and dashes that
     // make matching text inexact and cause filings_count to inconsistent. 
-    return this.localDB.filings.find( {selector: candidateSelector} ).exec()
+    return this.databaseService.collections.filings.find( {selector: candidateSelector} ).exec()
       .then(filings => {
           candidateQuery.update({ $set: { filings_count: filings.length } });
           return filings.length;
@@ -137,21 +130,21 @@ export class CampaignFilingService {
   }
 
   enableFiling(id: string) {
-    return this.localDB.filings.find().where('filing_id').eq(id)
+    return this.databaseService.collections.filings.find().where('filing_id').eq(id)
       .update({
         $set: { enabled: true }
       });
   }
   
   disableFiling(id: string) {
-    return this.localDB.filings.find().where('filing_id').eq(id)
+    return this.databaseService.collections.filings.find().where('filing_id').eq(id)
       .update({
         $set: { enabled: false }
       });
   }
 
   deleteAllFilings() {
-    return this.databaseService.deleteAllItemsInCollection(this.localDB.filings);
+    return this.databaseService.deleteAllItemsInCollection(this.databaseService.collections.filings);
   }
 
 }

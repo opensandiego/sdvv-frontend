@@ -104,6 +104,12 @@ export const filingSchema = {
       "type": "boolean",
       "default": true,
     },
+    "createdAt": {
+      "type": "string",
+    },
+    "updatedAt": {
+      "type": "string",
+    },
   },
   "required": [],
 }

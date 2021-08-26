@@ -6,17 +6,8 @@ import { DatabaseService } from '../database/database.service';
   providedIn: 'root'
 })
 export class CampaignTransactionService {
-  localDB;
-  databaseService;
 
-  constructor( ) {
-    this.database();
-  }
-
-  async database() {
-    this.databaseService = new DatabaseService();
-    this.localDB = await this.databaseService.getInstance();
-  }
+  constructor(private databaseService: DatabaseService) { }
 
   addNWeeksOfPastTransaction(timeUnits: number = 1) {
     return this.getDateRanges()
@@ -39,7 +30,7 @@ export class CampaignTransactionService {
   }
 
   getDateRanges(): Promise<{ oldest: string, newest: string }> {
-    return this.localDB.transactions.find().exec()
+    return this.databaseService.collections.transactions.find().exec()
       .then( results => {
         if (results.length < 1) {
           // console.log("today" )
@@ -87,7 +78,7 @@ export class CampaignTransactionService {
     const transactionIDsToAdd = transactionsToAdd.map(document => `${document.filing_id}|${document.tran_id}`);
     // error => console.log("transactionIDsToAdd: ")
 
-    return this.localDB.transactions.find()
+    return this.databaseService.collections.transactions.find()
       .where('id').in(transactionIDsToAdd).exec()
       .then(transactions => transactions.map(transaction => transaction.id))
       .then(transaction_ids => 
@@ -97,7 +88,7 @@ export class CampaignTransactionService {
         )
       )
       .then(newTransactions => {
-        return this.localDB.transactions.bulkInsert(newTransactions);
+        return this.databaseService.collections.transactions.bulkInsert(newTransactions);
       });
   }
 
@@ -134,7 +125,7 @@ export class CampaignTransactionService {
   }
 
   resetAllTransactionsStatus() {
-    return this.localDB.transactions.find()
+    return this.databaseService.collections.transactions.find()
     .update({
       $set: {
         has_been_processed: false,
@@ -144,7 +135,7 @@ export class CampaignTransactionService {
   }
 
   resetTransactionsStatus(id: string) {
-    return this.localDB.transactions.find().where('id').eq(id)
+    return this.databaseService.collections.transactions.find().where('id').eq(id)
     .update({
       $set: {
         has_been_processed: false,
@@ -155,7 +146,7 @@ export class CampaignTransactionService {
 
 
   deleteAllTransactions() {
-    return this.databaseService.deleteAllItemsInCollection(this.localDB.transactions);
+    return this.databaseService.deleteAllItemsInCollection(this.databaseService.collections.transactions);
   }
 
 }

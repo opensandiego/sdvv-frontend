@@ -87,5 +87,11 @@ export const transactionSchema = {
       "type": "boolean",
       "default": false,
     },
+    "createdAt": {
+      "type": "string",
+    },
+    "updatedAt": {
+      "type": "string",
+    },
   },
 }

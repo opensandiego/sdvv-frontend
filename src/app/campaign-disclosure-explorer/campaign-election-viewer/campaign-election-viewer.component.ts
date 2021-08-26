@@ -2,11 +2,14 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitte
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Tabulator from 'tabulator-tables';
 
-import { CampaignDataService } from '../services/campaign-data.service';
+// import { CampaignDataService } from '../services/campaign-data.service';
 import { CampaignDataChangesService } from '../services/campaign-data-changes.service';
 import { CampaignCandidateService } from '../services/campaign-candidate.service';
 
 import { CampaignBackendService } from '../services/campaign-backend.service';
+import { CampaignElectionService } from '../services/campaign.election.service';
+import { EFileDownloadService } from '../services/efile.download.service';
+import { DatabaseService } from '../database/database.service';
 
 import moment from 'moment';
 window.moment = moment;
@@ -34,44 +37,58 @@ export class CampaignElectionViewerComponent implements OnInit {
   
   headerMenu = [
     {
-      label:"Pull Elections from eFile",
+      label:"Get Elections from eFile and Post to remote database (eFile 🡺 remote DB)",
       action:(e, column)=> {
-        this.onPullFromNetFile();
+        this.eFileDownloadService.getElectionsFromEFile()
+        .subscribe( results => {
+          this.campaignBackendService.postBulkElectionsToRemote(results)
+            .subscribe()
+         });        
       }
     },
     {
-      label:"Delete Elections from database",
+      label:"Get Elections from remote database and save to local database (local DB 🡸 remote DB)",
+      action:(e, column)=> {
+        this.campaignBackendService.getElections()
+          .subscribe( elections => this.campaignElectionService.saveElectionsToLocalDB(elections));
+      }
+    },
+    {
+      label:"Delete Elections in local DB (🗑️ local DB)",
       action:(e, column)=> {
         this.onDeleteInDB();
       }
     },
     {
-      label:"Get Elections from remote database",
+      label:"Get Elections from eFile and log to console (eFile 🡾 console)",
       action:(e, column)=> {
-        console.log('Get Elections from remote database')
-        this.campaignBackendService.getElections()
-          .subscribe( results => console.log( results));
+        console.log('Elections from eFile')
+        this.eFileDownloadService.getElectionsFromEFile()
+          .subscribe(results => console.log(results));
       }
+    },    
+    {
+      separator:true,
     },
     {
-      label:"Get Elections from eFile",
-      action:(e, column)=> {
-        console.log('Get Elections from eFile')
-        this.campaignBackendService.getElectionsFromEFile()
-          .subscribe( results => console.log( results));
-      }
-    },
-    {
-      label:"Get Elections from eFile and Post to remote database",
-      action:(e, column)=> {
-        this.campaignBackendService.getElectionsFromEFile()
-        .subscribe( results => 
-          this.campaignBackendService.postElectionsToRemote(results)
-            .subscribe(results => console.log( results))
-            // .subscribe(elections => {this.campaignBackendService.saveElectionsToLocalDB(elections)})
-          );
-      }
-    },
+      label: 'Local Database',
+      menu: [
+        {
+          label:"Reset database",
+          action:(e, column)=> {
+            this.databaseService.deleteDatabase()
+            .then(() => console.log('Database reset.'))
+          },
+        },
+        {
+          label:"Delete database",
+          action:(e, column)=> {
+            this.databaseService.deleteDatabase(false)
+              .then(() => console.log('Database deleted.'))
+          },
+        },
+      ]
+    }
   ];
 
   columnNames = [
@@ -119,7 +136,17 @@ export class CampaignElectionViewerComponent implements OnInit {
       }
     },
     {
-      label: "Delete in DB",
+      label:"Get Candidates for election from eFile and Post to remote database (eFile 🡺 remote DB)",
+      action:(e, row)=> {
+        this.eFileDownloadService.getCandidatesFromEFile(row._row.data.election_id)
+        .subscribe( results => {
+          this.campaignBackendService.postBulkCandidatesToRemote(results)
+            .subscribe(results => console.log(results))
+         });        
+      }
+    },
+    {
+      label: "Delete Candidates in DB",
       action:(e, row) => {
         this.isLoadingData = true;
         this.campaignCandidateService.deleteCandidates(row._row.data.election_id)
@@ -129,11 +156,14 @@ export class CampaignElectionViewerComponent implements OnInit {
   ];
 
   constructor(
-    private campaignDataService: CampaignDataService,
+    // private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
     private campaignCandidateService: CampaignCandidateService,
     private campaignBackendService: CampaignBackendService,
+    private campaignElectionService: CampaignElectionService,
+    private eFileDownloadService: EFileDownloadService,
     private snackBar: MatSnackBar,
+    private databaseService: DatabaseService,
   ) { }
 
   ngOnInit(): void {
@@ -143,7 +173,7 @@ export class CampaignElectionViewerComponent implements OnInit {
 
   onPullFromNetFile() {
     this.isLoadingData = true;
-    this.campaignDataService.updateElectionsInDB().then(
+    this.campaignElectionService.updateElectionsInDB().then(
       results => this.snackBar.open(`${results.length} Elections pulled from eFile`, 'OK', { duration: 3000 })
     ).catch( 
       error => {
@@ -155,7 +185,7 @@ export class CampaignElectionViewerComponent implements OnInit {
   
   onDeleteInDB() {
     this.isLoadingData = true;
-    this.campaignDataService.deleteElections().then(
+    this.campaignElectionService.deleteElections().then(
       results => {
         this.snackBar.open(`${results.length} Elections deleted from local Database`, 'OK', { duration: 3000 });
         if (results.length < 1) { this.isLoadingData = false; }
