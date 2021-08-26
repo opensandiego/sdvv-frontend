@@ -6,3 +6,7 @@ export interface Election {
   createdAt?: number;
   updatedAt?: string;
 }
+
+export interface EFileElectionResponse {
+  data: Election[];
+}

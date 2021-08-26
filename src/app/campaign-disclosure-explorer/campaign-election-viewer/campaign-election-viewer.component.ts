@@ -37,7 +37,7 @@ export class CampaignElectionViewerComponent implements OnInit {
   
   headerMenu = [
     {
-      label:"Get Elections from eFile and Post to remote database (eFile >> remote DB)",
+      label:"Get Elections from eFile and Post to remote database (eFile 🡺 remote DB)",
       action:(e, column)=> {
         this.eFileDownloadService.getElectionsFromEFile()
         .subscribe( results => {
@@ -47,20 +47,20 @@ export class CampaignElectionViewerComponent implements OnInit {
       }
     },
     {
-      label:"Get Elections from remote database and save to local database (local DB << remote DB)",
+      label:"Get Elections from remote database and save to local database (local DB 🡸 remote DB)",
       action:(e, column)=> {
         this.campaignBackendService.getElections()
           .subscribe( elections => this.campaignElectionService.saveElectionsToLocalDB(elections));
       }
     },
     {
-      label:"Delete Elections in local DB (X local DB)",
+      label:"Delete Elections in local DB (🗑️ local DB)",
       action:(e, column)=> {
         this.onDeleteInDB();
       }
     },
     {
-      label:"Get Elections from eFile and log to console (eFile >> console)",
+      label:"Get Elections from eFile and log to console (eFile 🡾 console)",
       action:(e, column)=> {
         console.log('Elections from eFile')
         this.eFileDownloadService.getElectionsFromEFile()
@@ -136,7 +136,17 @@ export class CampaignElectionViewerComponent implements OnInit {
       }
     },
     {
-      label: "Delete in DB",
+      label:"Get Candidates for election from eFile and Post to remote database (eFile 🡺 remote DB)",
+      action:(e, row)=> {
+        this.eFileDownloadService.getCandidatesFromEFile(row._row.data.election_id)
+        .subscribe( results => {
+          this.campaignBackendService.postBulkCandidatesToRemote(results)
+            .subscribe(results => console.log(results))
+         });        
+      }
+    },
+    {
+      label: "Delete Candidates in DB",
       action:(e, row) => {
         this.isLoadingData = true;
         this.campaignCandidateService.deleteCandidates(row._row.data.election_id)
