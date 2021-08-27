@@ -47,16 +47,10 @@ export class CampaignElectionViewerComponent implements OnInit {
       }
     },
     {
-      label:"Get Elections from remote database and save to local database (local DB 🡸 remote DB)",
+      label:"Sync local Elections collection from remote database (local DB 🡸 remote DB)",
       action:(e, column)=> {
         this.campaignBackendService.getElections()
           .subscribe( elections => this.campaignElectionService.saveElectionsToLocalDB(elections));
-      }
-    },
-    {
-      label:"Delete Elections in local DB (🗑️ local DB)",
-      action:(e, column)=> {
-        this.onDeleteInDB();
       }
     },
     {
@@ -65,6 +59,12 @@ export class CampaignElectionViewerComponent implements OnInit {
         console.log('Elections from eFile')
         this.eFileDownloadService.getElectionsFromEFile()
           .subscribe(results => console.log(results));
+      }
+    },
+    {
+      label:"🗑️ Delete local Elections collection",
+      action:(e, column)=> {
+        this.onDeleteInDB();
       }
     },    
     {
@@ -136,17 +136,17 @@ export class CampaignElectionViewerComponent implements OnInit {
       }
     },
     {
-      label:"Get Candidates for election from eFile and Post to remote database (eFile 🡺 remote DB)",
+      label:"Get Candidates for Election from eFile and Post to remote database (eFile 🡺 remote DB)",
       action:(e, row)=> {
         this.eFileDownloadService.getCandidatesFromEFile(row._row.data.election_id)
-        .subscribe( results => {
-          this.campaignBackendService.postBulkCandidatesToRemote(results)
-            .subscribe(results => console.log(results))
+        .subscribe( candidates => {
+          this.campaignBackendService.postBulkCandidatesToRemote(candidates)
+            .subscribe(candidates => console.log(candidates))
          });        
       }
     },
     {
-      label: "Delete Candidates in DB",
+      label: "Delete Candidates for Election in local DB",
       action:(e, row) => {
         this.isLoadingData = true;
         this.campaignCandidateService.deleteCandidates(row._row.data.election_id)
@@ -171,17 +171,17 @@ export class CampaignElectionViewerComponent implements OnInit {
     this.updateRows();
   }
 
-  onPullFromNetFile() {
-    this.isLoadingData = true;
-    this.campaignElectionService.updateElectionsInDB().then(
-      results => this.snackBar.open(`${results.length} Elections pulled from eFile`, 'OK', { duration: 3000 })
-    ).catch( 
-      error => {
-        this.snackBar.open(`Error pulling elections from eFile`, 'OK', { duration: 3000 });
-        console.log(error);
-      }
-    ).finally( () => this.isLoadingData = false );
-  }
+  // onPullFromNetFile() {
+  //   this.isLoadingData = true;
+  //   this.campaignElectionService.updateElectionsInDB().then(
+  //     results => this.snackBar.open(`${results.length} Elections pulled from eFile`, 'OK', { duration: 3000 })
+  //   ).catch( 
+  //     error => {
+  //       this.snackBar.open(`Error pulling elections from eFile`, 'OK', { duration: 3000 });
+  //       console.log(error);
+  //     }
+  //   ).finally( () => this.isLoadingData = false );
+  // }
   
   onDeleteInDB() {
     this.isLoadingData = true;

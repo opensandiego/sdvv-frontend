@@ -144,7 +144,6 @@ export class CampaignDataChangesService {
     this.filingsFromSelectedCandidateSubscription?.unsubscribe();
     this.transactionsSubscription?.unsubscribe();
     this.committeesSubscription?.unsubscribe();
-    console.log('Destroy CampaignDataChangesService');
   }
 
 }

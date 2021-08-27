@@ -1,5 +1,4 @@
 export interface Candidate {
-  id?: number;
   coe_id: string;
   filer_id: string;
   office_id: string;
@@ -18,9 +17,12 @@ export interface Candidate {
   jurisdiction_name: string;
   jurisdiction_code: string;
   candidate_name: string;
-  candidate_controlled_committee_name?: string | null;
-  createdAt?: string;
-  updatedAt?: string;
+}
+
+export interface CandidateDB extends Candidate {
+  candidate_controlled_committee_name: string | null;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Office {
