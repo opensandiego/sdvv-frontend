@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { forkJoin, from, Observable, of, throwError } from 'rxjs';
 import { catchError, map, mergeMap, retry } from 'rxjs/operators';
 import { Election } from '../models/election.interface';
-import { Candidate } from '../models/candidate.interface';
+import { Candidate, CandidateDB } from '../models/candidate.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +34,8 @@ export class CampaignBackendService {
   }
 
   // Candidates
-  getCandidates(): Observable<Candidate[]>  {
-    return this.http.get<Candidate[]>(this.candidatesRoute);
+  getCandidatesFromRemote(): Observable<CandidateDB[]>  {
+    return this.http.get<CandidateDB[]>(this.candidatesRoute);
   }
 
   postBulkCandidatesToRemote(candidates: Candidate[]): Observable<Candidate[]> {

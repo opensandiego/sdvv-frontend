@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { DatabaseService } from '../database/database.service';
 import { CampaignDataService } from './campaign-data.service';
+import { CandidateDB } from '../models/candidate.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -139,6 +140,20 @@ export class CampaignCandidateService {
       }
     )
 
+  }
+
+  deleteAllCandidatesFromLocalDB() {
+    return this.databaseService
+      .deleteAllItemsInCollection(this.databaseService.collections.candidates);
+  }
+
+  saveCandidatesToLocalDB(candidates: CandidateDB[]) {
+    return this.databaseService
+      .addItemsToCollection(
+        candidates,
+        this.databaseService.collections.candidates,
+        'coe_id',
+      );
   }
 
 }

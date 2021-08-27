@@ -6,9 +6,11 @@ import moment from 'moment';
 window.moment = moment;
 
 // import { CampaignDataService } from '../campaign-data.service';
+import { CampaignBackendService } from '../services/campaign-backend.service';
 import { CampaignDataChangesService } from '../services/campaign-data-changes.service';
 import { CampaignFilingService } from '../services/campaign-filing.service';
 import { CampaignCandidateService } from '../services/campaign-candidate.service';
+import { Candidate, CandidateDB } from '../models/candidate.interface';
 
 interface selectedEvent {
   name: string;
@@ -41,17 +43,28 @@ export class CampaignCandidateViewerComponent implements OnInit {
   tableData: any[] = [];
 
   headerMenu = [
-    // {
-    //   label:"Push Candidates to remote",
-    //   action:(e, column)=> {
-    //   }
-    // },
+    {
+      label: "Sync local Candidates collection from remote database (local DB 🡸 remote DB)",
+      action:(e, column)=> {
+        this.campaignBackendService
+          .getCandidatesFromRemote()
+          .subscribe( candidates => 
+            this.campaignCandidateService.saveCandidatesToLocalDB(candidates)
+          )        
+      }
+    },
+    {
+      label: "🗑️ Delete local Candidates collection",
+      action:(e, column)=> {
+        this.campaignCandidateService.deleteAllCandidatesFromLocalDB();                 
+      }
+    },
   ];
 
   columnNames = [
     { 
       title: "eFile Data",
-      // headerMenu: this.headerMenu,
+      headerMenu: this.headerMenu,
       columns: [
         { title: "office", field: "office" },
         { title: "district", field: "district" },
@@ -169,6 +182,7 @@ export class CampaignCandidateViewerComponent implements OnInit {
 
   constructor(
     // private campaignDataService: CampaignDataService,
+    private campaignBackendService: CampaignBackendService,
     private campaignDataChangesService: CampaignDataChangesService,
     private campaignFilingService: CampaignFilingService,
     private campaignCandidateService: CampaignCandidateService,
@@ -182,7 +196,7 @@ export class CampaignCandidateViewerComponent implements OnInit {
 
   // Build the data for the drop down list
   subscribeToElectionUpdates(){
-    this.campaignDataChangesService.electionsWithCandidate$.subscribe( elections => {
+    this.campaignDataChangesService.allElections$.subscribe( elections => {
        const electionList = elections.map( election => ({
             electionTitle: `${election.election_date} ${election.election_type} Election`,
             electionID: election.election_id,
