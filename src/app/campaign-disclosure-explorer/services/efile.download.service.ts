@@ -4,13 +4,14 @@ import { from, Observable, of, throwError } from 'rxjs';
 import { catchError, map, mergeMap, retry } from 'rxjs/operators';
 import { Election, EFileElectionResponse } from '../models/election.interface';
 import { Candidate, Office, EFileCandidateResponse } from '../models/candidate.interface';
-
+import { Committee, EFileCommitteeResponse } from '../models/committee.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EFileDownloadService {
-  private eFilElectionUrl = 'https://efile.sandiego.gov/api/v1/public/campaign-search/election/list';
+  private eFileElectionUrl    = 'https://efile.sandiego.gov/api/v1/public/campaign-search/election/list';
+  private eFileCandidateUrl   = 'https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/list';
 
   private eFileCandidateUrl = 'https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/list';
 
@@ -20,11 +21,11 @@ export class EFileDownloadService {
 
  
   getElectionsFromEFile(): Observable<Election[]> {
-    const url = this.eFilElectionUrl;
+    const url = this.eFileElectionUrl;
     return this.http.get<EFileElectionResponse>(url)
     .pipe(
       map(response => response.data),
-      map(results => {console.log( 'results 1', results); return results;}),
+      map(elections => {console.log( 'elections 1', elections); return elections;}),
     );
   }
  
