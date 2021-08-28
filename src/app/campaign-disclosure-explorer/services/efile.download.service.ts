@@ -12,8 +12,7 @@ import { Committee, EFileCommitteeResponse } from '../models/committee.interface
 export class EFileDownloadService {
   private eFileElectionUrl    = 'https://efile.sandiego.gov/api/v1/public/campaign-search/election/list';
   private eFileCandidateUrl   = 'https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/list';
-
-  private eFileCandidateUrl = 'https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/list';
+  private eFileTransactionUrl = 'https://efile.sandiego.gov/api/v1/public/campaign-search/advanced';
 
   constructor(
     private http: HttpClient, 
