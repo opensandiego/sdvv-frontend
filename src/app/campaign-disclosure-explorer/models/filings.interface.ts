@@ -21,5 +21,5 @@ export interface FilingDB extends Filing {
 }
 
 export interface EFileFilingResponse {
-  data: Filing;
+  data: Filing[];
 }
