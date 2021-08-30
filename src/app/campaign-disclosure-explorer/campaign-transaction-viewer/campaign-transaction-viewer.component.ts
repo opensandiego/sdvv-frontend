@@ -9,6 +9,7 @@ import { CampaignDataChangesService } from '../services/campaign-data-changes.se
 import { CampaignFilingService } from '../services/campaign-filing.service';
 import { CampaignTransactionService } from '../services/campaign-transactions.service';
 import { CampaignProcessTransactionsService } from '../services/campaign-process-transactions.service';
+import { EFileDownloadService } from '../services/efile.download.service';
 
 
 @Component({

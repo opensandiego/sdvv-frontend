@@ -12,5 +12,5 @@ export interface CommitteeDB extends Committee {
 }
 
 export interface EFileCommitteeResponse {
-  data: Committee;
+  data: Committee[];
 }

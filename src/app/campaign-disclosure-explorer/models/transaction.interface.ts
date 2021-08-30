@@ -28,5 +28,10 @@ export interface TransactionDB extends Transaction {
 }
 
 export interface EFileTransactionResponse {
-  data: Transaction;
+  data: Transaction[];
+  page_number: number;
+  page_size: number;
+  success: boolean;
+  total_count: number;
+  total_pages: number;
 }
