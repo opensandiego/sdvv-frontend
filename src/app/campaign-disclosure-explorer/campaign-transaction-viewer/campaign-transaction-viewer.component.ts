@@ -10,6 +10,10 @@ import { CampaignFilingService } from '../services/campaign-filing.service';
 import { CampaignTransactionService } from '../services/campaign-transactions.service';
 import { CampaignProcessTransactionsService } from '../services/campaign-process-transactions.service';
 import { EFileDownloadService } from '../services/efile.download.service';
+import { CampaignBackendService } from '../services/campaign-backend.service';
+import { bufferCount, concatAll, map, mergeMap, toArray } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { transition } from '@angular/animations';
 
 
 @Component({
@@ -26,13 +30,33 @@ export class CampaignTransactionViewerComponent implements OnInit {
   dbSubscriptionActive = false;
   tableData: any[] = [];
 
+  private addTransactions(oldestDate: Date, newestDate: Date): Observable<any> {
+
+    return this.eFileDownloadService.getTransactionsFromEFile(oldestDate, newestDate)
+    .pipe(
+      map(transactions => this.removeDuplicateTransactions(transactions))
+      // mergeMap(transactions => 
+      //   this.campaignBackendService.postBulkTransactionsToRemote(transactions)),
+      // mergeMap(transactions => 
+      //   this.campaignTransactionService.saveElectionsToLocalDB(transactions)),
+    )
+
+  }
+
+  removeDuplicateTransactions(transactions)//: Transaction[]
+   {
+    const uniqueTransactions = new Map(transactions.map(transaction => ([
+      `${transaction.filing_id}|${transaction.tran_id}|${transaction.schedule}`,
+      transaction
+    ])))
+
+    console.log('transactions.length', transactions.length)
+    console.log('uniqueTransactions.size', uniqueTransactions.size)
+    console.log('uniqueTransactions', [...uniqueTransactions].slice(0, 9))
+
+   }
+
   headerMenu = [
-    {
-      label:"Group by filing_id",
-      action:(e, column)=> {
-        this.table.setGroupBy("filing_id");
-      }
-    },
     {
       label:"Disable Groups",
       action:(e, column)=> {
@@ -40,23 +64,48 @@ export class CampaignTransactionViewerComponent implements OnInit {
       }
     },
     {
-      label:"Add 1 more weeks of past Transactions",
+      label: "Get 2020 Transactions from eFile and Post to remote database (eFile 🡺 remote DB)",
       action:(e, column)=> {
+
+        const oldestDate = new Date("01/01/2020");
+        const newestDate = new Date("01/01/2021");
+
+        // oldestDate.setFullYear(oldestDate.getFullYear() - 1);
+        // oldestDate.setMonth(newestDate.getMonth() - 2);
+        
         this.isLoadingData = true;
-        this.campaignTransactionService.addNWeeksOfPastTransaction(1)
-          .finally( () => this.isLoadingData = false );
+        this.addTransactions(oldestDate, newestDate)
+          .subscribe(transactions => {
+            // console.log('Transactions:', transactions);
+            this.isLoadingData = false
+          })
       }
     },
     {
-      label:"Add 2 more month of past Transactions",
+      label:"Sync local Transactions collection from remote database (local DB 🡸 remote DB)",
       action:(e, column)=> {
-        this.isLoadingData = true;
-        this.campaignTransactionService.addMonthsNewTransaction(2)
-          .finally( () => this.isLoadingData = false );
+        this.campaignBackendService.getTransactionsFromRemote()
+        .subscribe( transactions => this.campaignTransactionService.saveElectionsToLocalDB(transactions));
       }
     },
+    // {
+    //   label:"Add 1 more weeks of past Transactions",
+    //   action:(e, column)=> {
+    //     this.isLoadingData = true;
+    //     this.campaignTransactionService.addNWeeksOfPastTransaction(1)
+    //       .finally( () => this.isLoadingData = false );
+    //   }
+    // },
+    // {
+    //   label:"Add 2 more month of past Transactions",
+    //   action:(e, column)=> {
+    //     this.isLoadingData = true;
+    //     this.campaignTransactionService.addMonthsNewTransaction(2)
+    //       .finally( () => this.isLoadingData = false );
+    //   }
+    // },
     {
-      label:"Remove ALL Transactions",
+      label:"🗑️ Delete local Transactions collection",
       action:(e, column)=> {
         this.isLoadingData = true;
         this.campaignTransactionService.deleteAllTransactions()
@@ -70,7 +119,22 @@ export class CampaignTransactionViewerComponent implements OnInit {
         this.campaignTransactionService.resetAllTransactionsStatus()
         .finally( () => this.isLoadingData = false );
       }    
-    }
+    },
+    {
+      separator:true,
+    },
+    {
+      label:"Group by filing_id",
+      action:(e, column)=> {
+        this.table.setGroupBy("filing_id");
+      }
+    },
+    {
+      label:"Disable Groups",
+      action:(e, column)=> {
+        this.table.setGroupBy();
+      }
+    },
   ];
 
   columnNames = [
@@ -172,6 +236,8 @@ export class CampaignTransactionViewerComponent implements OnInit {
     private campaignDataChangesService: CampaignDataChangesService,
     private campaignTransactionService: CampaignTransactionService,
     private campaignProcessTransactionsService: CampaignProcessTransactionsService,
+    private eFileDownloadService: EFileDownloadService,
+    private campaignBackendService: CampaignBackendService,
   ) { }
 
   ngOnInit(): void {
