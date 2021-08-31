@@ -7,12 +7,13 @@ export const transactionSchema = {
     "key": "id",
     "fields": [
       "filing_id",
-      "tran_id"
+      "tran_id",
+      "schedule"
     ],
     "separator": "|"
   },
   "type": "object",
-  "required": [ "id", "filing_id", "tran_id" ],
+  "required": [ "id", "filing_id", "tran_id", "schedule" ],
   "properties": {
     "filer_name": {
       "type": "string"
@@ -77,7 +78,7 @@ export const transactionSchema = {
     },
     "transaction_date_time": {
       "type": "string",
-      "format": "date-time"
+      // "format": "date-time"
     },
     "has_been_processed": {
       "type": "boolean",

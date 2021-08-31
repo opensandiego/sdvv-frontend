@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { DatabaseService } from '../database/database.service';
+import { Transaction, EFileTransactionResponse, TransactionDB } from '../models/transaction.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -147,6 +148,18 @@ export class CampaignTransactionService {
 
   deleteAllTransactions() {
     return this.databaseService.deleteAllItemsInCollection(this.databaseService.collections.transactions);
+  }
+
+  addIDFields(transactions: TransactionDB[]): TransactionDB[] {
+    return transactions.map(transaction => ({
+        ...transaction,
+        id: `${transaction.filing_id}|${transaction.tran_id}|${transaction.schedule}`,
+    }));
+  }
+
+  saveElectionsToLocalDB(transactions: TransactionDB[]) {
+    return this.databaseService
+      .addItemsToCollection(this.addIDFields(transactions), this.databaseService.collections.transactions, 'id');
   }
 
 }
