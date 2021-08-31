@@ -58,9 +58,21 @@ export class CampaignTransactionViewerComponent implements OnInit {
 
   headerMenu = [
     {
-      label:"Disable Groups",
+      label: "Get 2021 Transactions from eFile and Post to remote database (eFile 🡺 remote DB)",
       action:(e, column)=> {
-        this.table.setGroupBy();
+
+        const oldestDate = new Date("01/01/2021");
+        const newestDate = new Date();
+
+        // oldestDate.setFullYear(oldestDate.getFullYear() - 1);
+        // oldestDate.setMonth(newestDate.getMonth() - 2);
+        
+        this.isLoadingData = true;
+        this.addTransactions(oldestDate, newestDate)
+          .subscribe(transactions => {
+            console.log('Transactions:', transactions);
+            this.isLoadingData = false
+          })
       }
     },
     {
