@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, from, Observable, of, throwError } from 'rxjs';
-import { catchError, map, mergeMap, retry } from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
+import { bufferCount, concatAll, concatMap, toArray } from 'rxjs/operators';
 import { Election } from '../models/election.interface';
 import { Candidate, CandidateDB } from '../models/candidate.interface';
 import { Transaction, TransactionDB } from '../models/transaction.interface';
@@ -52,7 +52,15 @@ export class CampaignBackendService {
   }
 
   postBulkTransactionsToRemote(transactions: Transaction[]): Observable<TransactionDB[]> {
-    return this.http.post<TransactionDB[]>(this.transactionsBulkRoute, transactions);
+    const count = 1000;
+
+    return from(transactions).pipe(
+      bufferCount(count),
+      // map( res => {console.log('bulk res :', res); return res;} ),
+      concatMap(transactionBuffer => this.http.post<TransactionDB[]>(this.transactionsBulkRoute, transactionBuffer) ),
+      concatAll(),
+      toArray(),
+    )
   }
 }
 
