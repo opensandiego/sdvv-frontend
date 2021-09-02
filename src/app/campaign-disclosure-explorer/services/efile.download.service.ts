@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { concat, EMPTY, forkJoin, from, Observable, of, throwError } from 'rxjs';
-import { catchError, map, mergeMap, retry, expand, take, delay, toArray, concatAll, filter, bufferCount } from 'rxjs/operators';
+import { catchError, map, mergeMap, retry, expand, take, delay, toArray, concatAll, filter, bufferCount, mergeAll, concatMap } from 'rxjs/operators';
 import { Election, EFileElectionResponse } from '../models/election.interface';
 import { Candidate, Office, EFileCandidateResponse } from '../models/candidate.interface';
 import { Committee, EFileCommitteeResponse } from '../models/committee.interface';
@@ -19,6 +19,7 @@ interface DateRange {
 export class EFileDownloadService {
   private eFileElectionUrl    = 'https://efile.sandiego.gov/api/v1/public/campaign-search/election/list';
   private eFileCandidateUrl   = 'https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/list';
+  private eFileFilingUrl      = 'https://efile.sandiego.gov/api/v1/public/campaign-search';
   private eFileTransactionUrl = 'https://efile.sandiego.gov/api/v1/public/campaign-search/advanced';
 
   constructor(
@@ -53,7 +54,19 @@ export class EFileDownloadService {
     );
   }
 
+  // Committees
   getCommitteesFromEFile() {}
+
+  // Filings
+  getFilingsFromEFile(oldestDate: string, newestDate: string): Observable<Filing[]> {
+    const url = `${this.eFileFilingUrl}?start_date=${oldestDate}&end_date=${newestDate}`
+
+    return this.http.get<EFileFilingResponse>(url)
+    .pipe(
+      map(response => response.data),
+      map(filings => {console.log( 'filings 1', filings); return filings;}),
+    );
+  }
 
   // Transactions
   getTransactions(
