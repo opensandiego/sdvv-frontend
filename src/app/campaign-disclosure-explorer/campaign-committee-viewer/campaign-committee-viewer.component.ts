@@ -98,20 +98,20 @@ export class CampaignCommitteeViewerComponent implements OnInit {
     {
       label: "Transactions",
       menu: [
-        {
-          label: "Fetch Transactions for Committee from eFile",
-          action: (e, row)=> {
-            this.isLoadingData = true;
-            const selectedRowCount = this.table.getSelectedData().length;
+        // {
+        //   label: "Fetch Transactions for Committee from eFile",
+        //   action: (e, row)=> {
+        //     this.isLoadingData = true;
+        //     const selectedRowCount = this.table.getSelectedData().length;
 
-            const fields = this.getSelectedItems('entity_name_lower', row);
-            const promises = fields
-              .map(field => this.campaignTransactionService.addYearsNewTransaction(field, 10));
+        //     const fields = this.getSelectedItems('entity_name_lower', row);
+        //     const promises = fields
+        //       .map(field => this.campaignTransactionService.addYearsNewTransaction(field, 10));
 
-            Promise.allSettled(promises)
-            .finally( () => this.isLoadingData = false );
-          }
-        },
+        //     Promise.allSettled(promises)
+        //     .finally( () => this.isLoadingData = false );
+        //   }
+        // },
         {
           label: "Delete Transactions for Committee from DB",
           action: (e, row)=> {}
