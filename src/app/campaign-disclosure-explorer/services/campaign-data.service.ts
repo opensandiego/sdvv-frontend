@@ -29,8 +29,4 @@ export class CampaignDataService {
       .then(committees => this.databaseService.addItemsToCollection(committees, this.databaseService.collections.committees, 'entity_id'))
   }
 
-  deleteCommittees() {
-    return this.databaseService.deleteAllItemsInCollection(this.databaseService.collections.committees);
-  }
-
 }

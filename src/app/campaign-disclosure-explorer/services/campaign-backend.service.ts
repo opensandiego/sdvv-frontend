@@ -6,6 +6,7 @@ import { Election } from '../models/election.interface';
 import { Candidate, CandidateDB } from '../models/candidate.interface';
 import { Transaction, TransactionDB } from '../models/transaction.interface';
 import { Filing, FilingDB } from '../models/filings.interface';
+import { Committee, CommitteeDB } from '../models/committee.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,9 @@ export class CampaignBackendService {
 
   candidatesRoute = `${this.serverUrl}/candidates`;
   candidatesBulkRoute = `${this.serverUrl}/candidates/bulk`;
+
+  committeesRoute = `${this.serverUrl}/committees`;
+  committeesBulkRoute = `${this.serverUrl}/committees/bulk`;
 
   filingsRoute = `${this.serverUrl}/filings`;
   filingsBulkRoute = `${this.serverUrl}/filings/bulk`;
@@ -49,6 +53,23 @@ export class CampaignBackendService {
   postBulkCandidatesToRemote(candidates: Candidate[]): Observable<Candidate[]> {
     return this.http.post<Candidate[]>(this.candidatesBulkRoute, candidates);
   }
+
+  // Committees
+  // getCommitteesFromRemote(): Observable<CommitteeDB[]>  {
+  //   return this.http.get<CommitteeDB[]>(this.committeesRoute);
+  // }
+
+  // postBulkCommitteesToRemote(filings: Committee[]): Observable<CommitteeDB[]> {
+  //   const count = 1000;
+
+  //   return from(filings).pipe(
+  //     bufferCount(count),
+  //     map( res => {console.log('bulk res :', res); return res;} ),
+  //     concatMap(committeeBuffer => this.http.post<CommitteeDB[]>(this.committeesBulkRoute, committeeBuffer) ),
+  //     concatAll(),
+  //     toArray(),
+  //   )
+  // }
 
   // Filings
   getFilingsFromRemote(): Observable<FilingDB[]>  {

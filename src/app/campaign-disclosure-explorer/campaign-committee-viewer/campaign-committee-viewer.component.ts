@@ -4,10 +4,11 @@ import Tabulator from 'tabulator-tables';
 import moment from 'moment';
 window.moment = moment;
 
-import { CampaignDataService } from '../services/campaign-data.service';
+// import { CampaignDataService } from '../services/campaign-data.service';
 import { CampaignDataChangesService } from '../services/campaign-data-changes.service';
 import { CampaignFilingService } from '../services/campaign-filing.service';
 import { CampaignTransactionService } from '../services/campaign-transactions.service';
+import { CampaignCommitteeService } from '../services/campaign.committee.service';
 
 @Component({
   selector: 'campaign-committee-viewer',
@@ -24,19 +25,28 @@ export class CampaignCommitteeViewerComponent implements OnInit {
   tableData: any[] = [];
 
   headerMenu = [
+    // {
+    //   label:"Fetch Committees from eFile",
+    //   action:(e, column)=> {
+    //     this.isLoadingData = true;
+    //     this.campaignDataService.updateCommitteesInDB()
+    //       .finally( () => this.isLoadingData = false );
+    //   }
+    // },
     {
-      label:"Fetch Committees from eFile",
+      // label:"eFile Committees 🡺 remote DB",
+      label:"eFile Committees 🡺 console",
       action:(e, column)=> {
-        this.isLoadingData = true;
-        this.campaignDataService.updateCommitteesInDB()
-          .finally( () => this.isLoadingData = false );
+        this.campaignCommitteeService.getCommitteesFromEFile()
+        // .subscribe( committees => this.campaignBackendService.postBulkCommitteesToRemote(committees) )
+        .subscribe( results => console.log( 'getCommitteesFromEFile results', results));
       }
     },
     {
-      label:"Remove all Committees",
+      label:"🗑️ Delete local Committees collection",
       action:(e, column)=> {
         this.isLoadingData = true;
-        this.campaignDataService.deleteCommittees()
+        this.campaignCommitteeService.deleteCommittees()
           .finally( () => this.isLoadingData = false );
       }
     },
@@ -121,10 +131,11 @@ export class CampaignCommitteeViewerComponent implements OnInit {
   ];
 
   constructor(
-    private campaignDataService: CampaignDataService,
+    // private campaignDataService: CampaignDataService,
     private campaignDataChangesService: CampaignDataChangesService,
     private campaignFilingService: CampaignFilingService,
     private campaignTransactionService: CampaignTransactionService,
+    private campaignCommitteeService: CampaignCommitteeService,
   ) { }
 
   ngOnInit(): void {

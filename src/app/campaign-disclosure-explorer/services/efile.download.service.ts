@@ -19,6 +19,7 @@ interface DateRange {
 export class EFileDownloadService {
   private eFileElectionUrl    = 'https://efile.sandiego.gov/api/v1/public/campaign-search/election/list';
   private eFileCandidateUrl   = 'https://efile.sandiego.gov/api/v1/public/campaign-search/candidate/list';
+  private eFileCommitteeUrl   = 'https://efile.sandiego.gov/api/v1/public/campaign-search/by-name';
   private eFileFilingUrl      = 'https://efile.sandiego.gov/api/v1/public/campaign-search';
   private eFileTransactionUrl = 'https://efile.sandiego.gov/api/v1/public/campaign-search/advanced';
 
@@ -55,7 +56,14 @@ export class EFileDownloadService {
   }
 
   // Committees
-  getCommitteesFromEFile() {}
+  getCommitteesFromEFile(): Observable<Committee[]> {
+    const url = `${this.eFileCommitteeUrl}?candidate_name=`;
+
+    return this.http.get<EFileCommitteeResponse>(url)
+    .pipe(
+      map(response => response.data['committee_list']),
+    );
+  }
 
   // Filings
   getFilingsFromEFile(oldestDate: string, newestDate: string): Observable<Filing[]> {
