@@ -11,6 +11,11 @@ export interface CommitteeDB extends Committee {
   updatedAt: string;
 }
 
+export interface CommitteeList {
+  committee_list: Committee[];
+}
+
+// committee_list
 export interface EFileCommitteeResponse {
-  data: Committee[];
+  data: CommitteeList[];
 }
