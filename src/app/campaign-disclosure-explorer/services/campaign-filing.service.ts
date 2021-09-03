@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { DatabaseService } from '../database/database.service';
+import { Filing, FilingDB } from '../models/filings.interface';
+import { EFileDownloadService } from './efile.download.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,16 @@ export class CampaignFilingService {
 
   constructor(
     private databaseService: DatabaseService,
+    private eFileDownloadService: EFileDownloadService,
   ) { }
+
+  getFilingsFromEFile(oldestDate: Date, newestDate: Date): Observable<Filing[]> {
+    return this.eFileDownloadService.getFilingsFromEFile(
+      oldestDate.toISOString(),
+      newestDate.toISOString(),
+    )
+  }
+
 
   addMonthsNewFilings(months: number = 6) {
     return this.getFilingDateRanges()
@@ -145,6 +157,11 @@ export class CampaignFilingService {
 
   deleteAllFilings() {
     return this.databaseService.deleteAllItemsInCollection(this.databaseService.collections.filings);
+  }
+
+  saveFilingsToLocalDB(filings: FilingDB[]) {
+    return this.databaseService
+      .addItemsToCollection(filings, this.databaseService.collections.filings, 'filing_id');
   }
 
 }

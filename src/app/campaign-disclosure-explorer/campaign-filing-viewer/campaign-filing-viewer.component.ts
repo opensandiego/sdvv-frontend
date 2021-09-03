@@ -8,6 +8,8 @@ import { CampaignDataService } from '../services/campaign-data.service';
 import { CampaignDataChangesService } from '../services/campaign-data-changes.service';
 import { CampaignFilingService } from '../services/campaign-filing.service';
 import { CampaignProcessTransactionsService } from '../services/campaign-process-transactions.service';
+import { mergeMap } from 'rxjs/operators';
+import { CampaignBackendService } from '../services/campaign-backend.service';
 
 @Component({
   selector: 'campaign-filing-viewer',
@@ -26,6 +28,57 @@ export class CampaignFilingViewerComponent implements OnInit {
 
   headerMenu = [
     {
+      label:"eFile Filings 🡺 remote DB",
+      menu: [
+        {
+          label:"2021",
+          action:(e, column)=> {
+            this.addFilings(2021);
+          }
+        },        
+        {
+          label:"2020",
+          action:(e, column)=> {
+            this.addFilings(2020);
+          }
+        },        
+        {
+          label:"2019",
+          action:(e, column)=> {
+            this.addFilings(2019);
+          }
+        },        
+      ],
+    },
+    {
+      label:"Filings (local DB 🡸 remote DB)",
+      action:(e, column)=> {
+        this.campaignBackendService.getFilingsFromRemote()
+        .subscribe( filings => this.campaignFilingService.saveFilingsToLocalDB(filings));
+      }
+    },
+    {
+      label:"🗑️ Delete local Filings collection",
+      action:(e, column)=> {
+        this.isLoadingData = true;
+        this.campaignFilingService.deleteAllFilings()
+          .finally( () => this.isLoadingData = false );
+      }
+    },
+    // {
+    //   label:"Add 1 more month of past filings",
+    //   action:(e, column)=> {
+    //     this.campaignFilingService.addMonthsNewFilings(1);
+    //   }
+    // },
+    // {
+    //   label:"Log filing date ranges to console",
+    //   action:(e, column)=> {
+    //     this.campaignFilingService.getFilingDateRanges()
+    //       .then( range => console.log(range));
+    //   }
+    // },
+    {
       label:"Group by entity_name",
       action:(e, column)=> {
         this.table.setGroupBy("entity_name");
@@ -37,43 +90,6 @@ export class CampaignFilingViewerComponent implements OnInit {
         this.table.setGroupBy();
       }
     },
-    {
-      label:"Add 1 more month of past filings",
-      action:(e, column)=> {
-        this.campaignFilingService.addMonthsNewFilings(1);
-      }
-    },
-    {
-      label:"Add 3 more months of past filings",
-      action:(e, column)=> {
-        this.campaignFilingService.addMonthsNewFilings(3);
-      }
-    },
-    {
-      label:"Add 6 more months of past filings",
-      action:(e, column)=> {
-        this.campaignFilingService.addMonthsNewFilings(6);
-      }
-    },
-    {
-      label:"Remove all filings",
-      action:(e, column)=> {
-        this.campaignFilingService.deleteAllFilings().
-          then(results => console.log("Removed:", results.length) );
-      }
-    },
-    {
-      label:"Log filing date ranges to console",
-      action:(e, column)=> {
-        this.campaignFilingService.getFilingDateRanges()
-          .then( range => console.log(range));
-      }
-    },
-    // {
-    //   label:"Push Filings to remote",
-    //     action:(e, column)=> {
-    //   }
-    // },
   ]
 
   columnNames = [
@@ -209,6 +225,15 @@ export class CampaignFilingViewerComponent implements OnInit {
     },
   ];
 
+  addFilings(year: number = 2021) {
+    const oldestDate = new Date(`01/01/${year}`);
+    const newestDate = new Date(`01/01/${year+1}`);
+    this.campaignFilingService.getFilingsFromEFile(oldestDate, newestDate)
+    .pipe(
+      mergeMap(filings => this.campaignBackendService.postBulkFilingsToRemote(filings) )
+    )
+    .subscribe( results => console.log( 'addFilings results', results));
+  }
 
   amendmentFormatter(cell, formatterParams) {
     let value = cell.getValue();
@@ -224,6 +249,7 @@ export class CampaignFilingViewerComponent implements OnInit {
     private campaignDataChangesService: CampaignDataChangesService,
     private campaignFilingService: CampaignFilingService,
     private campaignProcessTransactionsService: CampaignProcessTransactionsService,
+    private campaignBackendService: CampaignBackendService,
   ) { }
 
   ngOnInit(): void {
@@ -259,11 +285,9 @@ export class CampaignFilingViewerComponent implements OnInit {
         covers_period: filing.covers_period,
         form: filing.form,
         enabled: filing.enabled,
-        id: filing.e_filing_id,
       }));
 
-      // this.table.replaceData(tableRows);
-      this.table.updateOrAddData(tableRows);
+      this.table.replaceData(tableRows);
     });
   }
 
@@ -276,6 +300,7 @@ export class CampaignFilingViewerComponent implements OnInit {
       layout: 'fitData',
       height: this.height,
       rowContextMenu: this.rowContextMenu,
+      index: 'filing_id',
       selectable: true,
       initialSort: [
         {column:"filing_date", dir:"desc"},

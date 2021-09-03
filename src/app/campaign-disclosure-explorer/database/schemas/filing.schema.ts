@@ -42,7 +42,7 @@ export const filingSchema = {
       "type": ["string", "object", "null"]
     },
     "amends_prev_id": {
-      "type": ["object", "null"]
+      "type": ["string", "object", "null"]
     },
 
     "amendment_number": {

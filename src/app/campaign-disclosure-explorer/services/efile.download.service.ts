@@ -59,12 +59,11 @@ export class EFileDownloadService {
 
   // Filings
   getFilingsFromEFile(oldestDate: string, newestDate: string): Observable<Filing[]> {
-    const url = `${this.eFileFilingUrl}?start_date=${oldestDate}&end_date=${newestDate}`
+    const url = `${this.eFileFilingUrl}?start_date=${oldestDate}&end_date=${newestDate}`;
 
     return this.http.get<EFileFilingResponse>(url)
     .pipe(
       map(response => response.data),
-      map(filings => {console.log( 'filings 1', filings); return filings;}),
     );
   }
 
