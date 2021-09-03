@@ -9,7 +9,7 @@ import { CampaignDataChangesService } from '../services/campaign-data-changes.se
 import { CampaignFilingService } from '../services/campaign-filing.service';
 import { CampaignTransactionService } from '../services/campaign-transactions.service';
 import { CampaignProcessTransactionsService } from '../services/campaign-process-transactions.service';
-import { EFileDownloadService } from '../services/efile.download.service';
+// import { EFileDownloadService } from '../services/efile.download.service';
 import { CampaignBackendService } from '../services/campaign-backend.service';
 import { bufferCount, concatAll, map, mergeMap, toArray } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -114,14 +114,14 @@ export class CampaignTransactionViewerComponent implements OnInit {
           .finally( () => this.isLoadingData = false );
       }
     },
-    {
-      label: "Reset ALL transaction's status",
-      action: (e, column)=> {
-        this.isLoadingData = true;
-        this.campaignTransactionService.resetAllTransactionsStatus()
-        .finally( () => this.isLoadingData = false );
-      }    
-    },
+    // {
+    //   label: "Reset ALL transaction's status",
+    //   action: (e, column)=> {
+    //     this.isLoadingData = true;
+    //     this.campaignTransactionService.resetAllTransactionsStatus()
+    //     .finally( () => this.isLoadingData = false );
+    //   }    
+    // },
     {
       separator:true,
     },
@@ -238,7 +238,7 @@ export class CampaignTransactionViewerComponent implements OnInit {
     private campaignDataChangesService: CampaignDataChangesService,
     private campaignTransactionService: CampaignTransactionService,
     private campaignProcessTransactionsService: CampaignProcessTransactionsService,
-    private eFileDownloadService: EFileDownloadService,
+    // private eFileDownloadService: EFileDownloadService,
     private campaignBackendService: CampaignBackendService,
   ) { }
 
