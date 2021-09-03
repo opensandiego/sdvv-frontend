@@ -15,6 +15,10 @@ export class CampaignCommitteeService {
     private eFileDownloadService: EFileDownloadService,
   ) { }
 
+  getCommitteesFromEFile(): Observable<Committee[]> {
+    return this.eFileDownloadService.getCommitteesFromEFile();
+  }
+
   deleteCommittees() {
     return this.databaseService.deleteAllItemsInCollection(this.databaseService.collections.committees);
   }

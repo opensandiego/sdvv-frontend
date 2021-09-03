@@ -9,7 +9,7 @@ export interface Filing {
   amends_orig_id: string;
   amends_prev_id: string;
   amendment_number: number;
-  filing_subtypes: string;
+  filing_subtypes: string | null;
   entity_name: string;
 }
 
