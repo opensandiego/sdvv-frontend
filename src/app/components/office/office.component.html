@@ -1,12 +1,12 @@
 <div class="candidate-cards p-grid p-justify-left p-nogutter">
 
-  <app-candidate-card-expanded class="p-col-12" 
+  <app-expanded-quick-view class="p-col-12" 
     *ngIf="selectedCandidateJSON && selectedImagePath" 
     [candidate]="selectedCandidateJSON" 
     [candidateId]="selectedCandidateId" 
     [candidateImg]="selectedImagePath" 
     (isExpanded)="onCloseExpanded()"
-  ></app-candidate-card-expanded>
+  ></app-expanded-quick-view>
 
   <div *ngFor="let candidate of candidateCards">
     <app-candidate-card
