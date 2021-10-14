@@ -28,7 +28,7 @@ import { CandidateModule } from './candidate/candidate.module';
 
 import { CandidateNavigationComponent } from './components/candidate-navigation/candidate-navigation.component';
 import { OfficeComponent } from './components/office/office.component';
-import { StoreModule } from '@ngrx/store';
+import { APIStoreModule } from './store/api.store.module';
 
 @NgModule({
   exports: [
@@ -65,7 +65,7 @@ import { StoreModule } from '@ngrx/store';
     VvChartsModule,
     CandidateQuickViewModule,
     CandidateModule,
-    StoreModule.forRoot({}, {}),
+    APIStoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
