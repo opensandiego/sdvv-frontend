@@ -2,13 +2,14 @@ import { HttpClient, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { Observable } from 'rxjs';
+import { environment } from './../../../environments/environment';
 import { CandidateCard } from 'src/app/interfaces/candidateCard';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CandidateCardService extends EntityCollectionServiceBase<CandidateCard> {
-  private host = 'http://localhost:3000'; // only for development
+  private host = environment.apiUrl;
 
   constructor(
     public http: HttpClient,
