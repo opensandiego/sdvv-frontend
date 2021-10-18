@@ -3,23 +3,23 @@ import { Injectable } from '@angular/core';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
-import { CandidateCard } from '../interfaces/candidate.card';
+import { CandidateNavigation } from '../interfaces/candidate.navigation';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CandidateCardService extends EntityCollectionServiceBase<CandidateCard> {
+export class CandidateNavigationService extends EntityCollectionServiceBase<CandidateNavigation> {
   private host = environment.apiUrl;
 
   constructor(
     public http: HttpClient,
     serviceElementsFactory: EntityCollectionServiceElementsFactory
   ) {
-      super('CandidateCard', serviceElementsFactory);
+      super('CandidateNavigation', serviceElementsFactory);
   }
 
-  getCandidate(candidateId: string): Observable<CandidateCard>  {
-    const URL = `${this.host}/api/candidate/card/${candidateId}`;
-    return this.http.get<CandidateCard>(URL)
+  getNavigation(year: string): Observable<CandidateNavigation>  {
+    const URL = `${this.host}/api/candidates/navigation/year/${year}`;
+    return this.http.get<CandidateNavigation>(URL)
   }
 }
