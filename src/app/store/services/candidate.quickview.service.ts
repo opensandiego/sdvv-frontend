@@ -3,23 +3,23 @@ import { Injectable } from '@angular/core';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
-import { CandidateCard } from '../interfaces/candidate.card';
+import { CandidateQuickView } from '../interfaces/candidate.quickview';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CandidateCardService extends EntityCollectionServiceBase<CandidateCard> {
+export class CandidateQuickViewService extends EntityCollectionServiceBase<CandidateQuickView> {
   private host = environment.apiUrl;
 
   constructor(
     public http: HttpClient,
     serviceElementsFactory: EntityCollectionServiceElementsFactory
   ) {
-      super('CandidateCard', serviceElementsFactory);
+      super('CandidateQuickView', serviceElementsFactory);
   }
 
-  getCandidate(candidateId: string): Observable<CandidateCard>  {
-    const URL = `${this.host}/api/candidate/card/${candidateId}`;
-    return this.http.get<CandidateCard>(URL)
+  getCandidate(candidateId: string): Observable<CandidateQuickView>  {
+    const URL = `${this.host}/api/candidate/quick-view/${candidateId}`;
+    return this.http.get<CandidateQuickView>(URL)
   }
 }
