@@ -20,6 +20,8 @@ export class CandidateNavigationComponent implements OnInit {
   selectedCandidateId: string = '';
   seatType: string = 'District';
 
+  electionYear = '2020';
+
   constructor(
     private candidateNavigationService: CandidateNavigationService,
     private sidenavService: SidenavService,
@@ -41,7 +43,7 @@ export class CandidateNavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.candidateNavigationService.getNavigation('2020').pipe( ).subscribe(candidates => {
+    this.candidateNavigationService.getNavigation(this.electionYear).pipe( ).subscribe(candidates => {
       const officeTitles: string[] = candidates.map(candidate => candidate.officeType).sort().reverse();
       const distinctOfficeTitles: string[] = [... new Set(officeTitles)];
 
