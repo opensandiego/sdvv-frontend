@@ -19,7 +19,7 @@ export class CandidateNavigationService extends EntityCollectionServiceBase<Cand
   }
 
   getNavigation(year: string): Observable<CandidateNavigation []>  {
-    const URL = `${this.host}/api/candidates/navigation/year/${year}`;
+    const URL = `${this.host}/api/candidate-navigation/?year=${year}`;
     return this.http.get<CandidateNavigation[]>(URL)
   }
 }
