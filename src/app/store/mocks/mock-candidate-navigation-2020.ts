@@ -83,7 +83,7 @@ export const candidateNavigationItems: CandidateNavigation[] = [
     },
     {
         "id": "f7957bf1-8701-4456-93dc-6c7022c86b6d|2020",
-        "fullName": "Mara Woodworth Elliott",
+        "fullName": "Mara Elliott",
         "officeType": "City Attorney",
         "fullOfficeName": "City Attorney San Diego",
         "seatName": null,
@@ -123,7 +123,7 @@ export const candidateNavigationItems: CandidateNavigation[] = [
     },
     {
         "id": "24738d25-2b55-4ef8-b78e-dcc4442a6327|2020",
-        "fullName": "Todd R Gloria",
+        "fullName": "Todd Gloria",
         "officeType": "Mayor",
         "fullOfficeName": "Mayor San Diego",
         "seatName": null,
@@ -273,7 +273,7 @@ export const candidateNavigationItems: CandidateNavigation[] = [
     },
     {
         "id": "d2645224-9b82-a4e9-d192-69b53dd9c4b5|2020",
-        "fullName": "Louis A. Rodolico",
+        "fullName": "Louis Rodolico",
         "officeType": "City Council",
         "fullOfficeName": "City Council San Diego - Dist 1",
         "seatName": "1",
@@ -283,7 +283,7 @@ export const candidateNavigationItems: CandidateNavigation[] = [
     },
     {
         "id": "14836ea4-a228-5b01-7b8b-ddc63dca6f83|2020",
-        "fullName": "James P. Rudolph",
+        "fullName": "James Rudolph",
         "officeType": "City Council",
         "fullOfficeName": "City Council San Diego - Dist 1",
         "seatName": "1",
@@ -293,7 +293,7 @@ export const candidateNavigationItems: CandidateNavigation[] = [
     },
     {
         "id": "f311f300-4421-5320-a6b7-a2641a33c6ce|2020",
-        "fullName": "Scott C Sherman",
+        "fullName": "Scott Sherman",
         "officeType": "Mayor",
         "fullOfficeName": "Mayor San Diego",
         "seatName": null,

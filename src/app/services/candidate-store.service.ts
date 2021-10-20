@@ -16,7 +16,7 @@ import { first, map, mergeMap } from 'rxjs/operators';
 import { CandidateNavigation } from '../store/interfaces/candidate.navigation';
 import type { CandidateJSON } from '../interfaces/candidateJSON';
 
-import { candidateNavigationItems } from 'src/assets/candidates/mock-candidateNavigationItems-2020';
+import { candidateNavigationItems } from '../store/mocks/mock-candidate-navigation-2020';
 import { candidateAssets } from '../../assets/candidates/mock-candidateAssetPaths';
 
 
