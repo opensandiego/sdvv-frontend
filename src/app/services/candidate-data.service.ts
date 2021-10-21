@@ -12,7 +12,7 @@ import { map, toArray, mergeMap, filter, } from 'rxjs/operators';
 
 import { CandidateStoreService } from './candidate-store.service';
 
-import type { CandidateNavigation } from '../interfaces/candidateNavigation'
+import { CandidateNavigation } from '../store/interfaces/candidate.navigation';
 import type { CandidateCard } from '../interfaces/candidateCard';
 
 import type { RaisedVsSpent } from '../vv-charts/interfaces/raisedVsSpent';
@@ -77,7 +77,7 @@ export class CandidateDataService {
         office ? candidate.officeType.toLowerCase() === office.toLowerCase() : true
       ),
       filter(candidate => 
-        seat ? candidate.seat.name.toLowerCase() === seat.toLowerCase() : true
+        seat ? candidate.seatName.toLowerCase() === seat.toLowerCase() : true
       ),
       mergeMap(candidate => this.getCandidateCard(candidate.id))
     );
@@ -111,8 +111,8 @@ export class CandidateDataService {
         inside: Number(expandedData["in vs out district"][0]['in']),
         outside: Number(expandedData["in vs out district"][0]['out']),
         areaName: this.areaName,
-        jurisdiction: candidate?.seat ? candidate.seat.type : this.defaultJurisdiction,
-        jurisdictionSuffix: candidate?.seat?.name,
+        jurisdiction: candidate?.seatName ? candidate.seatType : this.defaultJurisdiction,
+        jurisdictionSuffix: candidate?.seatName,
       }))
     );
 

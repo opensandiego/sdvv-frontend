@@ -9,6 +9,7 @@ import type { OutsideMoney } from '../../vv-charts/interfaces/outsideMoney';
 import type { CandidateCard } from '../../interfaces/candidateCard';
 
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { CandidateQuickViewService } from 'src/app/store/services/candidate.quickview.service';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class ExpandedQuickViewComponent implements OnChanges {
   constructor(
     private candidateDataService: CandidateDataService,
     private router: Router,
+    private candidateQuickViewService: CandidateQuickViewService,
   ) { }
 
   ngOnChanges(changes: SimpleChanges): void  {
@@ -38,8 +40,20 @@ export class ExpandedQuickViewComponent implements OnChanges {
     if (changes['candidateId']) {
       let candidateId = changes['candidateId'].currentValue;
 
-      this.candidateDataService.getRaisedVsSpentChart(candidateId)
-        .subscribe( results => this.raisedVsSpentData = results);
+      this.candidateQuickViewService.getCandidate(candidateId)
+        .subscribe( quickView => {
+          console.log('quickView', quickView);
+
+          this.raisedVsSpentData = {
+            id: quickView.raisedVsSpent.id,
+            raised: parseInt(quickView.raisedVsSpent.raised),
+            spent: parseInt(quickView.raisedVsSpent.spent),
+            averageDonation: parseInt(quickView.raisedVsSpent.averageDonation),
+          }
+        });
+  
+      // this.candidateDataService.getRaisedVsSpentChart(candidateId)
+      //   .subscribe( results => this.raisedVsSpentData = results);
 
       this.candidateDataService.getDonationsByGroupChart(candidateId)
         .subscribe( results => this.donationsByGroupData = results);  

@@ -18,8 +18,8 @@ export class CandidateNavigationService extends EntityCollectionServiceBase<Cand
       super('CandidateNavigation', serviceElementsFactory);
   }
 
-  getNavigation(year: string): Observable<CandidateNavigation>  {
-    const URL = `${this.host}/api/candidates/navigation/year/${year}`;
-    return this.http.get<CandidateNavigation>(URL)
+  getNavigation(year: string): Observable<CandidateNavigation []>  {
+    const URL = `${this.host}/api/candidate-navigation/?year=${year}`;
+    return this.http.get<CandidateNavigation[]>(URL)
   }
 }
