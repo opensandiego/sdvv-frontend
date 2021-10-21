@@ -23,13 +23,16 @@ export class CandidateCardComponent implements OnChanges {
   website: string;
 
   buttonText: string;
+  private defaultImagePath = 'assets/candidate-card/profile.png';
 
   ngOnChanges(changes: SimpleChanges) {
 
     if (changes['candidateCard']) {
       let candidateCard = changes['candidateCard'].currentValue;
 
-      this.candidateImg = candidateCard.candidateImgURL;
+      this.candidateImg = candidateCard.candidateImgURL 
+        ? candidateCard.candidateImgURL
+        : this.defaultImagePath;
       this.firstName = candidateCard.name.split(' ')[0];
       this.lastName = candidateCard.name.slice(this.firstName.length+1);
       this.fullName = candidateCard.name;

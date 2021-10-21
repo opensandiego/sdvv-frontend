@@ -4,10 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { CandidateDataService } from '../../services/candidate-data.service';
 import { CandidateStoreService } from '../../services/candidate-store.service';
-import type { CandidateCard } from '../../interfaces/candidateCard';
+import { CandidateCard } from 'src/app/store/interfaces/candidate.card';
 import type { CandidateJSON } from '../../interfaces/candidateJSON';
 
 import { SidenavService } from '../../services/sidenav.service';
+import { CandidateCardService } from 'src/app/store/services/candidate.card.service';
 
 interface pathParam {
   office: string; 
@@ -37,6 +38,7 @@ export class OfficeComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private sidenavService: SidenavService,
+    private candidateCardService: CandidateCardService,
   ) { }
 
   parsePathParam(path: string): pathParam {
@@ -59,8 +61,10 @@ export class OfficeComponent implements OnInit {
     
     if (this.office === 'city council' && !this.seatName) return;
     
-    this.candidateDataService.getCandidateCards(this.office, this.seatName)
-      .subscribe(candidate => this.candidateCards.push(candidate));
+    // this.candidateDataService.getCandidateCards(this.office, this.seatName)
+    //   .subscribe(candidate => this.candidateCards.push(candidate));
+    this.candidateCardService.getCandidates(this.office, this.seatName)
+      .subscribe(candidate => this.candidateCards = candidate);
   }
 
   setComponentData() {
