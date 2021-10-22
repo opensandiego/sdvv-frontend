@@ -14,6 +14,7 @@ export class InMemoryDataService implements InMemoryDbService {
       'candidate-cards': candidateCardItems,
       // 'candidates': candidateItems, 
       'candidates-temp': candidateItems,
+      'candidate-temp': candidateItems,
       // 'candidate-card': candidateCardItems,
       // 'candidate-quick-views': candidateQuickViewItems,
       'candidate-quick-view': candidateQuickViewItems,

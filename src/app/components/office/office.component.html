@@ -9,10 +9,10 @@
   ></app-expanded-quick-view>
 
   <div *ngFor="let candidate of candidateCards">
-    <app-candidate-card
-      [candidateCard]="candidate" 
+    <candidate-card
+      [candidateId]="candidate.id"
       (emitCandidateId)="onOpenExpanded($event)"
-    ></app-candidate-card>
+    ></candidate-card>
   </div>
 
 </div>

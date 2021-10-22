@@ -17,6 +17,10 @@ export class CandidateService extends EntityCollectionServiceBase<Candidate> {
   ) {
       super('Candidate', serviceElementsFactory);
   }
+  getCandidate(id: string): Observable<Candidate>  {
+      const URL = `${this.host}/api/candidate-temp/${id}`;
+      return this.http.get<Candidate>(URL);
+  }
 
     getCandidates(office = '', district = '', year = 0): Observable<Candidate[]>  {
       // const URL = `${this.host}/api/candidates/?district=${district}&year=${year}&office=${office}`;
