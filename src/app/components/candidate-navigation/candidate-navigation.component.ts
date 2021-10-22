@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { CandidateNavigation } from 'src/app/store/interfaces/candidate.navigation';
-import { CandidateNavigationService } from 'src/app/store/services/candidate.navigation.service';
+import { CandidateService } from 'src/app/store/services/candidate.service';
+import { Candidate } from 'src/app/store/interfaces/candidate';
 import { SidenavService } from '../../services/sidenav.service';
 
-interface CandidateNavigationWithRoute extends CandidateNavigation {
+interface CandidateWithRoute extends Candidate {
   routeLink: string;
 }
 
@@ -23,17 +23,17 @@ export class CandidateNavigationComponent implements OnInit {
   electionYear = '2020';
 
   constructor(
-    private candidateNavigationService: CandidateNavigationService,
     private sidenavService: SidenavService,
     private route: ActivatedRoute,
     private router: Router,
+    private candidateService: CandidateService,
     ) { }
 
-  addRoute(candidate: CandidateNavigation): CandidateNavigationWithRoute {
-    let path = `${candidate.officeType}`;
+  addRoute(candidate: Candidate): CandidateWithRoute {
+    let path = `${candidate.office}`;
 
-    if (candidate.seatName !== null) {
-      path += `_${candidate.seatType}-${candidate.seatName}`;
+    if (candidate.district !== null) {
+      path += `_district-${candidate.district}`;
     }
    
     return {
@@ -43,8 +43,8 @@ export class CandidateNavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.candidateNavigationService.getNavigation(this.electionYear).pipe( ).subscribe(candidates => {
-      const officeTitles: string[] = candidates.map(candidate => candidate.officeType).sort().reverse();
+    this.candidateService.getCandidates({ year: this.electionYear }).pipe( ).subscribe(candidates => {
+      const officeTitles: string[] = candidates.map(candidate => candidate.office).sort().reverse();
       const distinctOfficeTitles: string[] = [... new Set(officeTitles)];
 
       const candidatesWithRoute = candidates.map(candidate => this.addRoute(candidate));
@@ -66,17 +66,17 @@ export class CandidateNavigationComponent implements OnInit {
 
   }
 
-  getOffices(candidates: CandidateNavigation[], officeTitles: string[]) {
+  getOffices(candidates: Candidate[], officeTitles: string[]) {
     const offices = officeTitles.map(officeTitle => {
       let seatsWithCandidates = null;
 
-      let candidatesForOffice: CandidateNavigation[] = candidates
-        .filter(candidate => candidate.officeType === officeTitle);
+      let candidatesForOffice: Candidate[] = candidates
+        .filter(candidate => candidate.office === officeTitle);
 
-      const hasSeats: boolean = candidatesForOffice.some(candidate => candidate.seatName !== null);
+      const hasSeats: boolean = candidatesForOffice.some(candidate => candidate.district !== null);
 
       if (hasSeats) {
-        const seatNames: string[] = candidatesForOffice.map(candidate => candidate.seatName);
+        const seatNames: string[] = candidatesForOffice.map(candidate => candidate.district);
 
         const distinctSeatNames: string[] = [... new Set(seatNames)].sort(); // remove duplicates
         seatsWithCandidates = distinctSeatNames
@@ -84,7 +84,7 @@ export class CandidateNavigationComponent implements OnInit {
             seatName,
             title: `${this.seatType} ${seatName}`,
             route: `${officeTitle}_${this.seatType}-${seatName}`.toLowerCase().split(' ').join('-'),
-            candidates: candidatesForOffice.filter(candidate => candidate.seatName === seatName),
+            candidates: candidatesForOffice.filter(candidate => candidate.district === seatName),
             hasSeats: false,
             seats: null,
         }));

@@ -9,14 +9,12 @@ export class InMemoryDataService implements InMemoryDbService {
   
   createDb() {
     return { 
-      'candidate-navigation': candidateNavigationItems,
       'office-summary': officeSummaryItems,
       'candidate-cards': candidateCardItems,
       // 'candidates': candidateItems, 
       'candidates-temp': candidateItems,
       'candidate-temp': candidateItems,
       // 'candidate-card': candidateCardItems,
-      // 'candidate-quick-views': candidateQuickViewItems,
       'candidate-quick-view': candidateQuickViewItems,
     };
   }
