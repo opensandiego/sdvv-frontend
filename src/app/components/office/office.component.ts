@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { CandidateDataService } from '../../services/candidate-data.service';
-import { CandidateStoreService } from '../../services/candidate-store.service';
-import { CandidateCard } from 'src/app/store/interfaces/candidate.card';
-import type { CandidateJSON } from '../../interfaces/candidateJSON';
-
 import { SidenavService } from '../../services/sidenav.service';
-import { CandidateCardService } from 'src/app/store/services/candidate.card.service';
+import { CandidateService } from 'src/app/store/services/candidate.service';
 
 interface pathParam {
   office: string; 
@@ -26,19 +20,15 @@ export class OfficeComponent implements OnInit {
   office: string;
   seatName: string;
   selectedCandidateId: string;
-  candidateCards: CandidateCard[] = [];
-  selectedCandidateJSON: CandidateJSON;
-  selectedImagePath: string;
+  candidateIds: string[] = [];
   isExpanded: boolean = false;
   officeUrl: string;
 
   constructor(
-    private candidateStoreService: CandidateStoreService,
-    private candidateDataService: CandidateDataService,
     private route: ActivatedRoute,
     private router: Router,
     private sidenavService: SidenavService,
-    private candidateCardService: CandidateCardService,
+    private candidateService: CandidateService,
   ) { }
 
   parsePathParam(path: string): pathParam {
@@ -53,18 +43,16 @@ export class OfficeComponent implements OnInit {
     } else {
       return { office: path };
     }
-
   }
 
-  setCandidateCards(): void {   
-    this.candidateCards = [];
-    
+  setCandidateCards(): void {
     if (this.office === 'city council' && !this.seatName) return;
     
-    // this.candidateDataService.getCandidateCards(this.office, this.seatName)
-    //   .subscribe(candidate => this.candidateCards.push(candidate));
-    this.candidateCardService.getCandidates(this.office, this.seatName)
-      .subscribe(candidate => this.candidateCards = candidate);
+    this.candidateService.getCandidates(
+      { office: this.office, district: this.seatName, year: '2020' }
+    ).subscribe(candidates => {
+      this.candidateIds = candidates.map(candidate => candidate.id);
+    })
   }
 
   setComponentData() {
@@ -80,7 +68,6 @@ export class OfficeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.route.paramMap.subscribe(params => {
       const newOfficeUrlParam = params.get('office');
 
@@ -94,23 +81,13 @@ export class OfficeComponent implements OnInit {
       const candidateId = params.get('candidateId');
       if (candidateId) this.setCandidate(candidateId);
     });
-
   }
 
   setCandidate(candidateId: string) {
-
-    this.candidateDataService.getCandidateCards(this.office)
-      .pipe(filter(candidate => candidate.id === candidateId))
-      .subscribe(candidate => this.selectedImagePath = candidate.candidateImgURL);
-
-    this.candidateStoreService.getCandidateExpandedData(candidateId)
-      .subscribe(candidateJSON => this.selectedCandidateJSON = candidateJSON);
-
     this.sidenavService.changeSelectedCandidate(candidateId);
 
     this.isExpanded = true;
     this.selectedCandidateId = candidateId;
-    
   }
 
   onOpenExpanded(candidateId: string) {

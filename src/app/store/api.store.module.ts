@@ -26,7 +26,7 @@ import { InMemoryDataService } from './services/in-memory-data.service';
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig),
   ],
-  providers: [CandidateCardService, CandidateNavigationService],
+  providers: [CandidateCardService],
   exports: [],
 })
 export class APIStoreModule { }

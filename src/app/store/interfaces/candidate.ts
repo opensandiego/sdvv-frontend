@@ -11,4 +11,6 @@ export interface Candidate {
   in_general_election: boolean;
   full_office_name: string; // Examples: 'Mayor San Diego', 'City Council San Diego - Dist 9
   jurisdiction: string; // Examples: 'City',  'District'
+  total_contributions: string; // raised
+  contributor_count: string; // donors
 }
