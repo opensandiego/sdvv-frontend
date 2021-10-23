@@ -15,7 +15,6 @@ import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { SplashComponent } from './components/splash/splash.component';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 import { VvChartsModule } from './vv-charts/vv-charts.module';
 import { CandidateQuickViewModule } from './candidate-quick-view/candidate-quick-view.module';
@@ -33,7 +32,6 @@ import { OfficeModule } from './office/office.module';
   declarations: [
     AppComponent,
     HomeComponent,
-    SplashComponent,
     RoundCurrencyDisplayPipe,
   ],
   imports: [
