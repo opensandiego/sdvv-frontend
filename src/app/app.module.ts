@@ -23,9 +23,10 @@ import { VvChartsModule } from './vv-charts/vv-charts.module';
 import { CandidateQuickViewModule } from './candidate-quick-view/candidate-quick-view.module';
 import { CandidateModule } from './candidate/candidate.module';
 
-import { CandidateNavigationComponent } from './components/candidate-navigation/candidate-navigation.component';
-import { OfficeComponent } from './components/office/office.component';
 import { APIStoreModule } from './store/api.store.module';
+import { PublicModule } from './public/public.module';
+import { NavigationMenuModule } from './navigation-menu/navigation-menu.module';
+import { OfficeModule } from './office/office.module';
 
 @NgModule({
   exports: [
@@ -38,8 +39,6 @@ import { APIStoreModule } from './store/api.store.module';
     CandidateCardComponent,
     CandidateCardExpandedComponent,
     RoundCurrencyDisplayPipe,
-    CandidateNavigationComponent,
-    OfficeComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +60,8 @@ import { APIStoreModule } from './store/api.store.module';
     CandidateModule,
     APIStoreModule,
     PublicModule,
+    NavigationMenuModule,
+    OfficeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
