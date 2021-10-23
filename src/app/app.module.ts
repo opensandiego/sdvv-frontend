@@ -11,8 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CandidateCardComponent } from './components/candidate-card/candidate-card.component';
-import { CandidateCardExpandedComponent } from './components/candidate-card-expanded/candidate-card-expanded.component';
 import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,8 +34,6 @@ import { OfficeModule } from './office/office.module';
     AppComponent,
     HomeComponent,
     SplashComponent,
-    CandidateCardComponent,
-    CandidateCardExpandedComponent,
     RoundCurrencyDisplayPipe,
   ],
   imports: [
