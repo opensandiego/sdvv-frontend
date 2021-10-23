@@ -18,8 +18,8 @@ export class OfficeSummaryService extends EntityCollectionServiceBase<OfficeSumm
       super('OfficeSummary', serviceElementsFactory);
   }
 
-  getSummary(year: string): Observable<OfficeSummary>  {
+  getSummary(year: string): Observable<OfficeSummary[]>  {
     const URL = `${this.host}/api/office-summary/?year=${year}`;
-    return this.http.get<OfficeSummary>(URL)
+    return this.http.get<OfficeSummary[]>(URL)
   }
 }

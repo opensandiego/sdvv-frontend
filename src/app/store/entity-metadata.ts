@@ -3,6 +3,7 @@ import { EntityMetadataMap } from '@ngrx/data';
 const entityMetadata: EntityMetadataMap = {
   Election: {},
   Office: {},
+  OfficeSummary: {},
   Candidate: {},
   CandidateCard: {},
   CandidateQuickView: {},
@@ -13,6 +14,7 @@ const entityMetadata: EntityMetadataMap = {
 const pluralNames = { 
   Election: 'Elections',
   Office: 'Offices',
+  OfficeSummary: 'OfficeSummaries',
   Candidate: 'Candidates',
   CandidateCard: 'CandidateCards',
   CandidateQuickView: 'CandidateQuickViews',

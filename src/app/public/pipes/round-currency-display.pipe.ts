@@ -13,7 +13,7 @@ export class RoundCurrencyDisplayPipe implements PipeTransform {
       return null;
     }
  
-    if (input < oneMillion) {
+    if (parseInt(input) < oneMillion) {
       return Number(input).toLocaleString('en-US');
     }
 

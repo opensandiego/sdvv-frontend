@@ -10,6 +10,7 @@ import { entityConfig } from './entity-metadata';
 import { environment } from 'src/environments/environment';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { OfficeSummaryService } from './services/office-summary.service';
 
 @NgModule({
   declarations: [],
@@ -26,7 +27,7 @@ import { InMemoryDataService } from './services/in-memory-data.service';
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig),
   ],
-  providers: [CandidateCardService],
+  providers: [CandidateCardService, OfficeSummaryService],
   exports: [],
 })
 export class APIStoreModule { }

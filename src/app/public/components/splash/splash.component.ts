@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-// import { SidenavService } from '../../services';
-// import { CandidateService } from '../../services/candidate.service';
 
 import { 
   faUniversity, faBalanceScale, faMapMarkedAlt 
 } from '@fortawesome/free-solid-svg-icons';
-import { CandidateService, SidenavService } from 'src/app/services';
+import { SidenavService } from 'src/app/services';
+import { OfficeSummary } from 'src/app/store/interfaces/office.summary';
+import { OfficeSummaryService } from 'src/app/store/services/office-summary.service';
+import { OfficeSummaryWithRoute } from '../../interfaces/office-summary-with-route';
 
 @Component({
   selector: 'app-splash',
@@ -19,29 +20,23 @@ export class SplashComponent implements OnInit {
 
   constructor(
     private sidenavService: SidenavService,
-    private candidateService: CandidateService
+    private officeSummaryService: OfficeSummaryService,
   ) { }
 
-  campaignTotals = {
-    mayor: '0',
-    cityAttorney: '0',
-    cityCouncil: '0'
-  }
-
-  candidateCounts = {
-    mayor: '0',
-    cityAttorney: '0',
-    cityCouncil: '0'
-  }
+  year = '2020';
+  summaries: OfficeSummary[];
+  summariesWithRoute: OfficeSummaryWithRoute[];
 
   ngOnInit() {
-
-    this.candidateService.getCampaignTotals()
-      .subscribe(totals => this.campaignTotals = totals);
-
-    this.candidateService.getNumberOfCandidates()
-      .subscribe(counts => this.candidateCounts = counts);
-
+    this.officeSummaryService.getSummary(this.year)
+      .subscribe(summary => this.summariesWithRoute = summary.map(summary => ({
+        ...summary,
+        routeLink: this.getRoute(summary.office),
+      })));
+  }
+ 
+  getRoute(office: string) {
+    return 'office/' + office.toLowerCase().split(' ').join('-');
   }
 
   selectOffice(officeType: string) {
