@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsModule } from 'ng2-charts';
-import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
@@ -31,7 +30,6 @@ import { OfficeModule } from './office/office.module';
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
     RoundCurrencyDisplayPipe,
   ],
   imports: [

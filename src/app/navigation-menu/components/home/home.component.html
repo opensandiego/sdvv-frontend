@@ -1,0 +1,12 @@
+<header></header>
+
+<mat-drawer-container class="sidenav-container">
+  <mat-drawer #drawer align="start" [opened]="isOpened">
+    <app-candidate-navigation></app-candidate-navigation>
+  </mat-drawer>
+
+  <mat-drawer-content class="main_section">
+    <router-outlet></router-outlet>
+    <footer></footer>
+  </mat-drawer-content>
+</mat-drawer-container>

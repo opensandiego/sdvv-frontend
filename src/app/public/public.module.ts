@@ -34,7 +34,7 @@ import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
     FaqComponent,
     SplashComponent,
     UnderConstructionComponent,
-    FooterComponent,  
+    FooterComponent,
   ]
 })
 export class PublicModule { 

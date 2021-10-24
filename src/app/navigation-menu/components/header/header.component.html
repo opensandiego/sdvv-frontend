@@ -1,6 +1,6 @@
 <div class="header-nav">
-  <i class="bar-toggle" (click)="drawer.toggle()">
-    <fa-icon [icon]="faBars"></fa-icon>
+  <i class="bar-toggle" (click)="sideNavToggle()">
+    <fa-icon [icon]="['fas', 'bars']"></fa-icon>
   </i>
   
   <div>
@@ -10,16 +10,3 @@
   <a class="nav_links" routerLink="/about" routerLinkActive="router-link-active" (click)="resetSidenav()">About</a>
   <a class="nav_links" routerLink="/faq" routerLinkActive="router-link-active" (click)="resetSidenav()">FAQ</a>
 </div>
-
-<mat-drawer-container class="sidenav-container">
-  <mat-drawer #drawer align="start" disableClose="false">
-
-    <app-candidate-navigation></app-candidate-navigation>
-
-  </mat-drawer>
-
-  <mat-drawer-content class="main_section">
-    <router-outlet></router-outlet>
-    <footer></footer>
-  </mat-drawer-content>
-</mat-drawer-container>
