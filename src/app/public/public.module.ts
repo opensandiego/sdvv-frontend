@@ -8,6 +8,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { SplashComponent } from './components/splash/splash.component';
 import { SplashHeroComponent } from './components/splash-hero/splash-hero.component';
 import { OfficeSummaryCardComponent } from './components/office-summary-card/office-summary-card.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { PublicRoutingModule } from './public-routing.module';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
@@ -19,6 +20,7 @@ import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
     SplashComponent,
     SplashHeroComponent,
     OfficeSummaryCardComponent,
+    FooterComponent,
     UnderConstructionComponent,
     RoundCurrencyDisplayPipe,
   ],
@@ -31,7 +33,8 @@ import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
     AboutComponent,
     FaqComponent,
     SplashComponent,
-    UnderConstructionComponent,    
+    UnderConstructionComponent,
+    FooterComponent,  
   ]
 })
 export class PublicModule { 

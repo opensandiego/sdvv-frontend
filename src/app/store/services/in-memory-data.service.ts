@@ -4,6 +4,7 @@ import { officeSummaryItems } from '../mocks/mock-office-summary-2020';
 import { candidateCardItems } from '../mocks/mock-candidate-cards-2020';
 import { candidateQuickViewItems } from '../mocks/mock-candidate-quick-view-2020';
 import { candidateItems } from '../mocks/mock-candidate-2020';
+import { lastUpdateItems } from '../mocks/mock-last-updated';
 
 export class InMemoryDataService implements InMemoryDbService {
   
@@ -16,6 +17,7 @@ export class InMemoryDataService implements InMemoryDbService {
       'candidate-temp': candidateItems,
       // 'candidate-card': candidateCardItems,
       'candidate-quick-view': candidateQuickViewItems,
+      'last-update': lastUpdateItems,
     };
   }
 }
