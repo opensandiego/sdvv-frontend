@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { OfficeSummaryService } from './services/office-summary.service';
+import { OfficeService } from './services/office.service';
 import { LastUpdatedService } from './services/last-updated.service';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { LastUpdatedService } from './services/last-updated.service';
   providers: [
     CandidateCardService,
     OfficeSummaryService,
+    OfficeService,
     LastUpdatedService,
   ],
   exports: [],

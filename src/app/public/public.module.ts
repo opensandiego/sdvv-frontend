@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { PublicRoutingModule } from './public-routing.module';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
+import { RoutingService } from './services/routing.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
     SplashComponent,
     UnderConstructionComponent,
     FooterComponent,
-  ]
+  ],
+  providers: [RoutingService],
 })
 export class PublicModule { 
   constructor(library: FaIconLibrary) {

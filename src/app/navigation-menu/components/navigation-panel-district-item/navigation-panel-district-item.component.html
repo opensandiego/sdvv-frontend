@@ -1,0 +1,24 @@
+
+<mat-expansion-panel 
+  class="mat-elevation-z0"
+  (opened)="setSelectedDistrict(true)"
+  (closed)="setSelectedDistrict(false)"
+  (opened)="changeRoute()"
+>
+  <mat-expansion-panel-header 
+    collapsedHeight="30px" 
+    expandedHeight="30px"
+    [ngClass]="{ 'district-selected': isSelected }"
+  >
+    <a routerLink="{{route}}" routerLinkActive="active">{{title}}</a>
+  </mat-expansion-panel-header>
+
+  <div class="candidates">
+    <ul *ngFor="let candidate of district.candidates;" class="candidate-name">
+      <navigation-item-candidate
+        [candidate]="candidate"
+      ></navigation-item-candidate>
+    </ul>
+  </div>
+
+</mat-expansion-panel>
