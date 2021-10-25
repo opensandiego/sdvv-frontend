@@ -1,72 +1,9 @@
-@import "../../styles/variables";
-@import "../../styles/elements";
-@import "../../styles/global";
+@import "../../../styles/variables";
+@import "../../../styles/elements";
+@import "../../../styles/global";
 
 .splashpage{
   padding:20px 40px 0px 30px;
-}
-.whorwe{
- 
-  background-image: url("../../../assets/splash/bg-whorwe@2x.jpg");
-  background-size: 100% 100%;
-    background-position: 50% 50%;
-  color:#fff;
-  margin: auto;
-  text-align:center;
-  padding:40px;
-  font-weight: 100;
-  box-shadow: $vvshadow;
-
-  .goals{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    align-content: center;
-    column-gap: 20px;
-    margin: 0px auto 40px auto;
-    
-
-    .bullet{
-      font-weight:bold;
-      font-size:14px;
-      max-width:170px;
-      margin: auto;
-    }
-
-    .bullet-icon > fa-icon{
-      display: block;
-      margin: 20px auto;
-    }
-  }
-
-
-  h1{
-    font-size:18px;
-    font-weight:bold;
-    padding:0;
-    margin-top:0px;
-    margin-bottom:20px;
-    color:#fff;
-
-  }
-  .vv-description{
-    margin-top:0px;
-    margin-bottom:20px;
-    font-size:14px;
-    line-height: 1.4;
-    max-width: 600px;
-    margin-left:auto;
-    margin-right:auto;
- 
-  }
-  a {
-    color: $vvyellow;
-    text-decoration: none;
-    
-   
-    &:hover {
-        text-decoration: underline;
-      }
-  }
 }
 
 .ftm{
@@ -156,12 +93,6 @@
 
 @media only screen and (max-width: 1000px) {
 
-  .goals{
-    grid-template-columns: 1fr 1fr!important;
-    row-gap: 20px;
-    max-width:500px;
-   
-  }
   .choose{
     grid-template-columns: 1fr !important;
     row-gap: 20px;
@@ -176,17 +107,4 @@
     }
   }
   
-}
-
-@media only screen and (max-width: 400px) {
-
-
-  .goals{
-    grid-template-columns: 1fr!important;
-    row-gap: 20px;
-    max-width:500px;
-   
-  }
-
-
 }

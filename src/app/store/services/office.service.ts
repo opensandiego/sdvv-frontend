@@ -3,23 +3,23 @@ import { Injectable } from '@angular/core';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { OfficeSummary } from '../interfaces/office.summary';
+import { Office } from '../interfaces/office';
 
 @Injectable({
   providedIn: 'root',
 })
-export class OfficeSummaryService extends EntityCollectionServiceBase<OfficeSummary> {
+export class OfficeService extends EntityCollectionServiceBase<Office> {
   private host = environment.apiUrl;
 
   constructor(
     public http: HttpClient,
     serviceElementsFactory: EntityCollectionServiceElementsFactory
   ) {
-      super('OfficeSummary', serviceElementsFactory);
+      super('Office', serviceElementsFactory);
   }
 
-  getSummary(year: string): Observable<OfficeSummary[]>  {
-    const URL = `${this.host}/api/office-summary/?year=${year}`;
-    return this.http.get<OfficeSummary[]>(URL)
+  getOffices(year: string): Observable<Office[]>  {
+    const URL = `${this.host}/api/offices/?year=${year}`;
+    return this.http.get<Office[]>(URL)
   }
 }

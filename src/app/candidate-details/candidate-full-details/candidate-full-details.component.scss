@@ -1,0 +1,14 @@
+
+// .details-tab {
+//   padding-top: 20px;
+// }
+
+.candidate-details {
+  overflow: scroll;
+  // width: 508px;
+  height: 400px;
+  // height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}

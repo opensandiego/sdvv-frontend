@@ -1,9 +1,6 @@
-@import "../../styles/variables";
-@import "../../styles/elements";
-@import "../../styles/global";
-.router-link-active {
-  color: $vvyellow !important;
-}
+@import "../../../styles/variables";
+@import "../../../styles/elements";
+@import "../../../styles/global";
 
 .main_section{
   background-color: $vvbackground;
@@ -153,15 +150,6 @@
 
 @media (max-width: 1200px) {
 
-  .header-nav{
-    .bar-toggle{
-      display:block !important;
-      color:#fff;
-      padding-right:20px;
-      font-size:22px;
-    }
-    grid-template-columns: auto 3fr auto auto !important;
-  }
   .sidenav-container {
     mat-drawer {
       @media only screen and (min-width: 1201px) {
@@ -219,132 +207,16 @@
   }
 }
 
-.header-nav{
-  .bar-toggle{
-    display:none;
-    color:#fff;
-  }
-  font-size: 18px;
-  display: grid;
-  grid-template-columns: 3fr auto auto;
-  padding: 10px 20px;
-  text-align: left;
-  background-color: $vvdarkblue;
-  align-items: center;
-  .nav_links {
-      margin-left: 20px;
-      margin-right: 20px;
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 100;
-      &:hover {
-          text-decoration: underline;
-          color: $vvyellow;
-        }
-        &:active {
-          color: $vvyellow;
-        }
-    }
-}
-
-
-
-/*Footer*/
-.footer {
-  display: grid;
-  grid-template-columns: 3fr auto;
-  padding: 40px 40px 40px 40px;
-  color: $vvdarkblue;
-  border:none;
-  background-color: $vvbackground;
-
-  h3 {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 5px;
-    margin-right: 40px;
-  }
-
-  p {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.3;
-    max-width: 600px;
-    margin-right: 40px;
-    margin-bottom: 20px;
-  }
-}
-
-.footer_links {
-  margin: 20px 20px 20px 0px;
-  display: inline-block;
-  
-
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.5;
-  text-decoration: none;
-  color: $vvblue;
-
-
-
-.footer_logo {
-  align-self: center;
-  justify-self: center;
-  margin-right: 20px;
-}
-.updated{
- color: $vvgreen;
- font-style: italic;
- font-size: 12px;
-}
-
-/*Hover States*/
-
-.subheadline p a:hover,
-.nav_links:hover,
-.footer_links:hover {
-  text-decoration: underline;
-}
-
-
-
-
-
-}
 
 /*CTA Stack*/
 @media only screen and (max-width: 636px) {
   .headline {
     font-size: 26px;
   }
-  .races {
-    grid-template-columns: 1fr;
-    grid-row-gap: 20px;
-    grid-column-gap: 0px;
-    max-width: 300px !important;
-  }
 
   .subheadline {
     margin: auto;
   }
-
-  .footer {
-    grid-template-columns: 1fr;
-    text-align: center;
-   
-    h3 {
-      font-size: 14px;
-      margin-right: 0px;
-    }
-
-    p {
-      margin-right: 0px;
-    }
-  }
-
-
 
   .last {
     margin-right: 0px !important;
