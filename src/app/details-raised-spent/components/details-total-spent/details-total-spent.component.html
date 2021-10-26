@@ -18,10 +18,10 @@
 
   <div class="total-spent-table-panel">
     <app-top-categories-table 
-      *ngIf="categoriesCombined"
-      [categories]='categoriesCombined'
-      [categoryHighlighted]="hoveredCategory"
-      (categoryHighlightedChange)="categoryHoveredOver($event)"
+    *ngIf="categoriesCombined"
+    [categories]='categoriesCombined'
+    [categoryHighlighted]="hoveredCategory"
+    (categoryHighlightedChange)="categoryHoveredOver($event)"
     ></app-top-categories-table>
 
     <div class="total-spent-footer">
@@ -50,4 +50,3 @@
   </div>
 
 </div>
-

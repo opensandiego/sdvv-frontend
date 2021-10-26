@@ -1,6 +1,6 @@
-import { Component, Input, OnChanges, Output, EventEmitter} from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, OnInit} from '@angular/core';
 
-import { getCompactFormattedCurrency } from '../../shared/number-formatter'
+import { getCompactFormattedCurrency } from '../../number-formatter'
 
 export interface Category {
   id: string;
@@ -15,7 +15,7 @@ export interface Category {
   templateUrl: './top-categories-table.component.html',
   styleUrls: ['./top-categories-table.component.scss']
 })
-export class TopCategoriesTableComponent implements OnChanges {
+export class TopCategoriesTableComponent implements OnChanges, OnInit {
 
   @Input() categories: Category[];
   @Input() categoryHighlighted: string;
@@ -25,10 +25,13 @@ export class TopCategoriesTableComponent implements OnChanges {
   displayedColumns: string[] = ['name', 'value', 'percent'];
 
   constructor() { }
+  ngOnInit(): void {
+    let categories = this.categories;
+    this.setTabletData(categories);
+  }
 
   ngOnChanges(): void {
     let categories = this.categories;
-
     this.setTabletData(categories);
   }
 

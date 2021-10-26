@@ -12,13 +12,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { VvChartsModule } from '../vv-charts/vv-charts.module';
 
+import { DetailsComponent } from './details/details.component';
 import { CandidateDetailsHeaderComponent } from './candidate-details-header/candidate-details-header.component';
 import { DetailsRaisedByIndustryComponent } from './details-raised-by-industry/details-raised-by-industry.component';
-import { TopCategoriesTableComponent } from './top-categories-table/top-categories-table.component';
-import { DetailsTotalRaisedComponent } from './details-total-raised/details-total-raised.component';
-import { DetailsTotalSpentComponent } from './details-total-spent/details-total-spent.component';
-import { DetailsRaisedSpentSummaryComponent } from './details-raised-spent-summary/details-raised-spent-summary.component';
-import { DetailsTabRaisedVSpentComponent } from './details-tab-raised-v-spent/details-tab-raised-v-spent.component';
 import { DetailsContainerOutsideMoneyComponent } from './details-container-outside-money/details-container-outside-money.component';
 
 import { DetailsTabTitleComponent } from './details-tab-title/details-tab-title.component';
@@ -26,23 +22,19 @@ import { DetailsTabRaisedByIndustryComponent } from './details-tab-raised-by-ind
 import { DetailsTabRaisedByLocationComponent } from './details-tab-raised-by-location/details-tab-raised-by-location.component';
 import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money/details-tab-outside-money.component';
 import { CandidateDetailsRoutingModule } from './candidate-details-routing.module';
-import { CandidateFullDetailsComponent } from './candidate-full-details/candidate-full-details.component';
+import { DetailsRaisedSpentModule } from '../details-raised-spent/details-raised-spent.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
+    DetailsComponent,
     CandidateDetailsHeaderComponent,
     DetailsRaisedByIndustryComponent,
-    TopCategoriesTableComponent,
-    DetailsTotalRaisedComponent,
-    DetailsTotalSpentComponent,
-    DetailsRaisedSpentSummaryComponent,
-    DetailsTabRaisedVSpentComponent,
     DetailsContainerOutsideMoneyComponent,
     DetailsTabTitleComponent,
     DetailsTabRaisedByIndustryComponent,
     DetailsTabRaisedByLocationComponent,
     DetailsTabOutsideMoneyComponent,
-    CandidateFullDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -54,22 +46,19 @@ import { CandidateFullDetailsComponent } from './candidate-full-details/candidat
     MatDividerModule,
     FontAwesomeModule,
     VvChartsModule,
+    DetailsRaisedSpentModule,
     CandidateDetailsRoutingModule,
+    SharedModule,
   ],
   exports: [
+    DetailsComponent,
     CandidateDetailsHeaderComponent,
-    TopCategoriesTableComponent,
     DetailsRaisedByIndustryComponent,
-    DetailsTotalRaisedComponent,
-    DetailsTotalSpentComponent,
-    DetailsRaisedSpentSummaryComponent,
-    DetailsTabRaisedVSpentComponent,
     DetailsContainerOutsideMoneyComponent,
     DetailsTabTitleComponent,
     DetailsTabRaisedByIndustryComponent,
     DetailsTabRaisedByLocationComponent,
     DetailsTabOutsideMoneyComponent,
-    CandidateFullDetailsComponent,
   ],
 })
 export class CandidateDetailsModule { }

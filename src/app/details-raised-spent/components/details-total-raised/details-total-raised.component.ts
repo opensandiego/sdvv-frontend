@@ -11,6 +11,8 @@ import { CandidateDetailsService } from 'src/app/store/services/candidate.detail
 })
 export class DetailsTotalRaisedComponent implements OnInit {
   tooltipText = 'Placeholder tooltip text.';
+  colors = ['#00e25f', '#00b24b', '#007e35'];
+
   totalRaised: number;
   totalRaisedFormatted: string;
   raisedCategories: any[];
@@ -35,7 +37,7 @@ export class DetailsTotalRaisedComponent implements OnInit {
         this.raisedCategories = response.raisedGroups.map((group, i) => ({
             name: group.name,
             value: parseInt(group.amount),
-            color: i < 3 ? ['#00e25f', '#00b24b', '#007e35'][i] : 'red',
+            color: i < this.colors.length ? this.colors[i] : 'red',
           }))
         })
     });

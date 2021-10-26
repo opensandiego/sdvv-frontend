@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 // @import 'tabulator.scss';
 
+@import "app/styles/variables";
+@import "app/styles/elements";
+@import "app/styles/global";
+
 html, body { height: 100%; }
 body {
     margin: 0;

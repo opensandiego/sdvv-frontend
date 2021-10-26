@@ -7,7 +7,7 @@ import { CandidateDetailsService } from 'src/app/store/services/candidate.detail
   templateUrl: './details-raised-spent-summary.component.html',
   styleUrls: ['./details-raised-spent-summary.component.scss']
 })
-export class DetailsRaisedSpentSummaryComponent implements OnChanges, OnInit {
+export class DetailsRaisedSpentSummaryComponent implements OnInit {
   raised: number;
   spent: number;
 
@@ -28,11 +28,9 @@ export class DetailsRaisedSpentSummaryComponent implements OnChanges, OnInit {
     });
   }
 
-  ngOnChanges(): void {
-  }
-
   formatNumber(amount: number): string {
-    return amount.toLocaleString('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0});
+    const newAmount =  amount ? amount : 0;
+    return newAmount.toLocaleString('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0});
   }
 
 }

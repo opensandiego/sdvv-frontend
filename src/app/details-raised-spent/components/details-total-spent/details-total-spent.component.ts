@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { faMoneyBillWave, faHandHoldingUsd, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import { CandidateDetailsService } from 'src/app/store/services/candidate.detail
   templateUrl: './details-total-spent.component.html',
   styleUrls: ['./details-total-spent.component.scss']
 })
-export class DetailsTotalSpentComponent implements OnChanges, OnInit {
+export class DetailsTotalSpentComponent implements OnInit {
   title = "Total Spent";
   tooltipText = 'Placeholder tooltip text.';
   colors = ['#800000', '#b30000', '#cc0000', '#ff0000', '#ff9999'];
@@ -43,18 +43,16 @@ export class DetailsTotalSpentComponent implements OnChanges, OnInit {
           this.totalSpentFormatted = this.totalSpent
             .toLocaleString('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0});
 
-        this.categoriesCombined = response.spentGroup.map((group, i) => ({
-            id: i,
+          this.categoriesCombined = response.spentGroup.map((group, i) => ({
+            id: i.toString(),
+            name: group.spending_code ? group.spending_code : 'null',
             value: parseInt(group.sum),
             percent: parseFloat(group.average),
-            color: i < 5 ? this.colors[i] : 'red',
-            name: group.spending_code ? group.spending_code : 'null',
+            color: i < this.colors.length ? this.colors[i] : 'red',
           }))
+
         })
     });
-  }
-
-  ngOnChanges(): void {
   }
 
   categoryHoveredOver(category){

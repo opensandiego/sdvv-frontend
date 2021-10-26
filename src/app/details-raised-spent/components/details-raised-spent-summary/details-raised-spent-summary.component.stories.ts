@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
-import { CandidateDetailsModule } from '../candidate-details.module';
+import { CandidateDetailsModule } from '../../../candidate-details/candidate-details.module';
 
 import { DetailsRaisedSpentSummaryComponent } from './details-raised-spent-summary.component';
 
