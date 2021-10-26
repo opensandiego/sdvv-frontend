@@ -25,6 +25,8 @@ import { DetailsTabTitleComponent } from './details-tab-title/details-tab-title.
 import { DetailsTabRaisedByIndustryComponent } from './details-tab-raised-by-industry/details-tab-raised-by-industry.component';
 import { DetailsTabRaisedByLocationComponent } from './details-tab-raised-by-location/details-tab-raised-by-location.component';
 import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money/details-tab-outside-money.component';
+import { CandidateDetailsRoutingModule } from './candidate-details-routing.module';
+import { CandidateFullDetailsComponent } from './candidate-full-details/candidate-full-details.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money/det
     DetailsTabRaisedByIndustryComponent,
     DetailsTabRaisedByLocationComponent,
     DetailsTabOutsideMoneyComponent,
+    CandidateFullDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +54,7 @@ import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money/det
     MatDividerModule,
     FontAwesomeModule,
     VvChartsModule,
+    CandidateDetailsRoutingModule,
   ],
   exports: [
     CandidateDetailsHeaderComponent,
@@ -65,6 +69,7 @@ import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money/det
     DetailsTabRaisedByIndustryComponent,
     DetailsTabRaisedByLocationComponent,
     DetailsTabOutsideMoneyComponent,
+    CandidateFullDetailsComponent,
   ],
 })
 export class CandidateDetailsModule { }

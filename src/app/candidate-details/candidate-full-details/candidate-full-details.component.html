@@ -1,42 +1,35 @@
 <div class="candidate-details">
 
   <app-candidate-details-header
-    [imageUrl]='header.imageUrl'
-    [candidateName]='header.candidateName'
-    [description]='header.description'
-    [website]='header.website'
-    [raised]='header.raised'
-    [donors]='header.donors'
-    [averageDonation]='header.averageDonation'
   ></app-candidate-details-header>
 
   <mat-tab-group mat-align-tabs="space-around" mat-align-tabs="start">
-    <!-- <mat-tab label="Raised v. Spent">
-      <app-details-tab-raised-v-spent  *ngIf="raisedVSpentData" class="details-tab"
+    <mat-tab label="Raised v. Spent">
+      <!-- <app-details-tab-raised-v-spent  *ngIf="raisedVSpentData" class="details-tab"
         [raisedData]="raisedVSpentData.raisedData"
         [spentData]="raisedVSpentData.spentData"
         [summaryData]="raisedVSpentData.summaryData"
-      ></app-details-tab-raised-v-spent>
-    </mat-tab> -->
-
-    <!-- <mat-tab label="By Industry" >
-      <app-details-tab-raised-by-industry *ngIf="raisedByIndustries" class="details-tab"
-        [raisedByIndustries]="raisedByIndustries"
-      ></app-details-tab-raised-by-industry>
-    </mat-tab> -->
-
-    <mat-tab label="By Location">
-      <app-details-tab-raised-by-location *ngIf="raisedByLocationData" class="details-tab"
-        [raisedByLocations]="raisedByLocationData"
-      ></app-details-tab-raised-by-location>
+      ></app-details-tab-raised-v-spent> -->
     </mat-tab>
 
-    <!-- <mat-tab label="Outside Money">
-      <app-details-tab-outside-money *ngIf="outsideMoneyData" class="details-tab"
+    <mat-tab label="By Industry" >
+      <!-- <app-details-tab-raised-by-industry *ngIf="raisedByIndustries" class="details-tab"
+        [raisedByIndustries]="raisedByIndustries"
+      ></app-details-tab-raised-by-industry> -->
+    </mat-tab>
+
+    <mat-tab label="By Location">
+      <!-- <app-details-tab-raised-by-location *ngIf="raisedByLocationData" class="details-tab"
+        [raisedByLocations]="raisedByLocationData"
+      ></app-details-tab-raised-by-location> -->
+    </mat-tab>
+
+    <mat-tab label="Outside Money">
+      <!-- <app-details-tab-outside-money *ngIf="outsideMoneyData" class="details-tab"
         [oppositionExpendituresCategories]="outsideMoneyData.oppositionExpendituresCategories"
         [supportExpendituresCategories]="outsideMoneyData.supportExpendituresCategories"
-      ></app-details-tab-outside-money>
-    </mat-tab> -->
+      ></app-details-tab-outside-money> -->
+    </mat-tab>
   </mat-tab-group>
 
 </div>

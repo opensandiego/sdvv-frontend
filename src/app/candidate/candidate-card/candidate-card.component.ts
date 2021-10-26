@@ -1,4 +1,5 @@
 import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { CandidateService } from 'src/app/store/services/candidate.service';
 import { Candidate } from 'src/app/store/interfaces/candidate';
 
@@ -28,6 +29,7 @@ export class CandidateCardComponent implements OnChanges {
 
   constructor(
     private candidateService: CandidateService,
+    private router: Router,
   ) { }
 
   private setCandidate(candidate: Candidate): void {
@@ -54,6 +56,10 @@ export class CandidateCardComponent implements OnChanges {
   }
 
   selectCandidate() {
-    this.emitCandidateId.emit(this.candidateId);
+    if (this.inExpandedCard) {
+      this.router.navigate(['details/',this.candidateId]);
+    } else {
+      this.emitCandidateId.emit(this.candidateId);
+    }
   }
 }
