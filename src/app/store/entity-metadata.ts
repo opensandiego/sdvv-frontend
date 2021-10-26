@@ -10,6 +10,7 @@ const entityMetadata: EntityMetadataMap = {
   CandidateDetail: {},
   CandidateNavigation: {},
   LastUpdate: {},
+  CandidateDetailsHeader: {},
 };
  
 const pluralNames = { 
@@ -22,6 +23,7 @@ const pluralNames = {
   CandidateDetail: 'CandidateDetails',
   CandidateNavigation: 'CandidateNavigations',
   LastUpdate: 'LastUpdates',
+  CandidateDetailsHeader: 'CandidateDetailsHeaders',
 };
  
 export const entityConfig = {

@@ -10,7 +10,8 @@ interface RaisedGroup {
 }
 
 interface SpentGroup {
-  name: string;
+  // name: string;
+  spending_code: string;
   sum: string;
   average: string;
 }

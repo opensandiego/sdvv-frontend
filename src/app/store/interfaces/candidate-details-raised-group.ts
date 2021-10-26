@@ -1,6 +1,6 @@
 interface Group {
   name: string;
-  sum: string;
+  amount: string;
 }
 
 export interface CandidateDetailsRaisedByGroup {
