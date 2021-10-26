@@ -14,6 +14,7 @@ import { APIStoreModule } from './store/api.store.module';
 import { PublicModule } from './public/public.module';
 import { NavigationMenuModule } from './navigation-menu/navigation-menu.module';
 import { OfficeModule } from './office/office.module';
+import { CandidateDetailsModule } from './candidate-details/candidate-details.module';
 
 @NgModule({
   exports: [
@@ -35,6 +36,7 @@ import { OfficeModule } from './office/office.module';
     PublicModule,
     NavigationMenuModule,
     OfficeModule,
+    CandidateDetailsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
