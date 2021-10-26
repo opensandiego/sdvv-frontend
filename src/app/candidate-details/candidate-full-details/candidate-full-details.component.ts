@@ -8,12 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CandidateFullDetailsComponent implements OnInit {
 
   constructor() { }
-  @Input() header;
+  // @Input() header;
 
-  raisedVSpentData;
-  raisedByIndustries;
-  raisedByLocationData;
-  outsideMoneyData;
+  // raisedByIndustries;
+  // raisedByLocationData;
+  // outsideMoneyData;
   
   ngOnInit(): void {
   }

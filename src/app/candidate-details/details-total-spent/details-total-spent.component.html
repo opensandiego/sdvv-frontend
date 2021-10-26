@@ -5,18 +5,20 @@
 
     <div class="total-spent-header">
       <div class="title">Total Spent</div>
-      <div class="total-spent">{{totalSpent.toLocaleString('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0})}}</div>
+      <div class="total-spent">{{totalSpentFormatted}}</div>
     </div>
 
-    <app-total-spent-donut
+    <app-total-spent-donut 
+      *ngIf="categoriesCombined"
       [spendingCategories]="categoriesCombined"
       [categoryHighlighted]="hoveredCategory"
       (categoryHighlightedChange)="categoryHoveredOver($event)"
     ></app-total-spent-donut>
-  </div>
+    </div>
 
   <div class="total-spent-table-panel">
-    <app-top-categories-table
+    <app-top-categories-table 
+      *ngIf="categoriesCombined"
       [categories]='categoriesCombined'
       [categoryHighlighted]="hoveredCategory"
       (categoryHighlightedChange)="categoryHoveredOver($event)"
