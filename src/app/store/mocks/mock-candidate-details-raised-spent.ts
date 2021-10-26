@@ -1,4 +1,6 @@
-export const candidateDetailsRaisedSpentItems = [
+import { CandidateDetailsRaisedSpent } from "../interfaces/candidate-details-raised-spent";
+
+export const candidateDetailsRaisedSpentItems: CandidateDetailsRaisedSpent[] = [
   {
       "id": "587c7960-91ba-86cf-71d7-fe289770af80|2020",
       "summary": {

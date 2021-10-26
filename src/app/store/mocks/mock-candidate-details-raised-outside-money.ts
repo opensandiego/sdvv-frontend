@@ -1,4 +1,6 @@
-export const candidateDetailsOutsideMoneyItems = [
+import { CandidateDetailsOutsideMoney } from "../interfaces/candidate-details-outside-money";
+
+export const candidateDetailsOutsideMoneyItems: CandidateDetailsOutsideMoney[] = [
   {
       "id": "587c7960-91ba-86cf-71d7-fe289770af80|2020",
       "supportGroups": [],

@@ -6,6 +6,11 @@ import { candidateCardItems } from '../mocks/mock-candidate-cards-2020';
 import { candidateQuickViewItems } from '../mocks/mock-candidate-quick-view-2020';
 import { candidateItems } from '../mocks/mock-candidate-2020';
 import { lastUpdateItems } from '../mocks/mock-last-updated';
+import { candidateDetailsHeaderItems } from '../mocks/mock-candidate-details-headers';
+import { candidateDetailsRaisedByIndustryItems } from '../mocks/mock-candidate-details-raised-by-industry';
+import { candidateDetailsRaisedByLocationItems } from '../mocks/mock-candidate-details-raised-by-location';
+import { candidateDetailsOutsideMoneyItems } from '../mocks/mock-candidate-details-raised-outside-money';
+import { candidateDetailsRaisedSpentItems } from '../mocks/mock-candidate-details-raised-spent';
 
 export class InMemoryDataService implements InMemoryDbService {
   
@@ -20,6 +25,11 @@ export class InMemoryDataService implements InMemoryDbService {
       // 'candidate-card': candidateCardItems,
       'candidate-quick-view': candidateQuickViewItems,
       'last-update': lastUpdateItems,
+      'candidate-details-header': candidateDetailsHeaderItems,
+      'candidate-details-raised-by-industry': candidateDetailsRaisedByIndustryItems,
+      'candidate-details-raised-by-location': candidateDetailsRaisedByLocationItems,
+      'candidate-details-raised-outside-money': candidateDetailsOutsideMoneyItems,
+      'candidate-details-raised-spent': candidateDetailsRaisedSpentItems,
     };
   }
 }
