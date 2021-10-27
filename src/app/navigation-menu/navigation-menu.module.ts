@@ -6,7 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faUniversity, faBalanceScale, faMapMarkedAlt, faQuestion, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faUniversity, faBalanceScale, faMapMarkedAlt, faQuestion, faBars, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { PublicModule } from '../public/public.module';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -47,6 +47,6 @@ import { NavigationItemCandidateComponent } from './components/navigation-item-c
 export class NavigationMenuModule {
   constructor(library: FaIconLibrary) {
     // Add an icon to the library for convenient access in other components
-    library.addIcons(faUniversity, faBalanceScale, faMapMarkedAlt, faQuestion, faBars);
+    library.addIcons(faUniversity, faBalanceScale, faMapMarkedAlt, faQuestion, faBars, faChevronRight);
   }
 }
