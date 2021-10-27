@@ -1,4 +1,4 @@
-import type { CandidateNavigation } from '../../app/interfaces/candidateNavigation'
+import type { CandidateNavigation } from '../../app/shared/interfaces/candidateNavigation'
 
 export const candidateNavigationItems: CandidateNavigation[] = [
   {

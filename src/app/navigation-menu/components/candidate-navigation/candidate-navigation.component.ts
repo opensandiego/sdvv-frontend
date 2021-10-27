@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { CandidateService } from 'src/app/store/services/candidate.service';
 import { Candidate } from 'src/app/store/interfaces/candidate';
-import { SidenavService } from 'src/app/services';
+import { SidenavService } from 'src/app/shared/services/sidenav.service';
 
 interface CandidateWithRoute extends Candidate {
   routeLink: string;

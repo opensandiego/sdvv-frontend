@@ -23,7 +23,6 @@ import { DetailsTabRaisedByLocationComponent } from './details-tab-raised-by-loc
 import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money/details-tab-outside-money.component';
 import { CandidateDetailsRoutingModule } from './candidate-details-routing.module';
 import { DetailsRaisedSpentModule } from '../details-raised-spent/details-raised-spent.module';
-import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +47,6 @@ import { SharedModule } from '../shared/shared.module';
     VvChartsModule,
     DetailsRaisedSpentModule,
     CandidateDetailsRoutingModule,
-    SharedModule,
   ],
   exports: [
     DetailsComponent,

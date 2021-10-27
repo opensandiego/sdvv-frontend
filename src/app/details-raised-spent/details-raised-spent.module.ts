@@ -8,7 +8,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { VvChartsModule } from '../vv-charts/vv-charts.module';
 
-import { SharedModule } from '../shared/shared.module';
 import { DetailsTotalRaisedComponent } from './components/details-total-raised/details-total-raised.component';
 import { DetailsTotalSpentComponent } from './components/details-total-spent/details-total-spent.component';
 import { DetailsRaisedSpentSummaryComponent } from './components/details-raised-spent-summary/details-raised-spent-summary.component';
@@ -27,7 +26,6 @@ import { DetailsTabRaisedVSpentComponent } from './components/details-tab-raised
     MatDividerModule,
     FontAwesomeModule,
     VvChartsModule,
-    SharedModule,
   ],
   exports: [
     DetailsTotalRaisedComponent,

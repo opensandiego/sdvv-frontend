@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RoutingService } from 'src/app/public/services/routing.service';
-import { SidenavService } from 'src/app/services';
+import { SidenavService } from 'src/app/shared/services/sidenav.service';
 import { Candidate } from 'src/app/store/interfaces/candidate';
 
 @Component({

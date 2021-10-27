@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SidenavService } from 'src/app/services';
+import { SidenavService } from 'src/app/shared/services/sidenav.service';
 
 import { CandidateService } from 'src/app/store/services/candidate.service';
 

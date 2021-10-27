@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SidenavService } from 'src/app/services';
+import { SidenavService } from 'src/app/shared/services/sidenav.service';
 import { OfficeSummaryWithRoute } from '../../interfaces/office-summary-with-route';
 
 @Component({

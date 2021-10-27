@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { 
   faUniversity, faBalanceScale, faMapMarkedAlt 
 } from '@fortawesome/free-solid-svg-icons';
-import { SidenavService } from 'src/app/services';
+import { SidenavService } from 'src/app/shared/services/sidenav.service';
 import { OfficeSummary } from 'src/app/store/interfaces/office.summary';
 import { OfficeSummaryService } from 'src/app/store/services/office-summary.service';
 import { OfficeSummaryWithRoute } from '../../interfaces/office-summary-with-route';
