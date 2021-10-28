@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { RoutingService } from 'src/app/public/services/routing.service';
 import { SidenavService } from 'src/app/shared/services/sidenav.service';
 import { Candidate } from 'src/app/store/interfaces/candidate';
@@ -19,9 +20,15 @@ export class NavigationPanelOfficeComponent implements OnInit {
     private candidateService: CandidateService,
     private sidenavService: SidenavService,
     private routingService: RoutingService,
+    private router: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    // this.router.firstChild.params.subscribe(params => {
+    //   // console.log('params', params);
+    //   this.isSelected = params.office.toLowerCase() === this.office.office.toLowerCase().replace(' ', '-');
+    // });
+
     this.sidenavService.officeChanged$.subscribe(
       office => this.isSelected = 
         office.toLowerCase() === this.office.office.toLowerCase()
