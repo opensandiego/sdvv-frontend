@@ -1,7 +1,7 @@
 
 <div class="raised-by-industry-chart" echarts 
   [options]="chartOption"
+  [initOpts]="initOpts" 
   (chartInit)="onChartInit($event)"
-  [merge]="mergeOptions" 
-  [initOpts]="initOpts"
+  [merge]="mergeOption" 
 ></div>

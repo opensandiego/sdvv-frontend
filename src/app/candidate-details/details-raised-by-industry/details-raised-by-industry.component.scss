@@ -4,37 +4,18 @@
 .details-raised-by-industry-wrapper {
   margin-top: 20px;
   margin-bottom: 20px;
-  display: grid;
-  grid-template-rows: auto auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.raised-by-industry-chart {
+  width: 100%;
 }
 
 .raised-by-industry-header-wrapper {
   display: grid;
   grid-template-rows: auto auto auto;
-
-  .title {
-    grid-row: 1;
-    color: #16375D;
-    text-align: center;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 1em;
-
-    .top-title{
-      font-size: 1.25em;
-    }
-    .bottom-title{
-      font-size: 2.0em;
-      font-weight: bold;
-    }
-
-    .helper-tip {
-      color: $vvgrey;
-      font-size: .5em;
-    }
-  }
 }
 
 .sort-options {

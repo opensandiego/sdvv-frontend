@@ -10,7 +10,7 @@ import * as TopCategoriesTableStories from '../top-categories-table/top-categori
 import * as TotalSpentDonutStories from '../../vv-charts/total-spent-donut/total-spent-donut.component.stories';
 
 export default {
-  title: 'Candidate Details/Total Spent',
+  title: 'Candidate Details/Container/Total Spent',
   component: DetailsTotalSpentComponent,
   decorators: [
     moduleMetadata({

@@ -6,7 +6,7 @@ import { CandidateDetailsModule } from '../candidate-details.module';
 import { DetailsTabTitleComponent } from './details-tab-title.component';
 
 export default {
-  title: 'Candidate Details/Tab Title',
+  title: 'Candidate Details/Tab/Title',
   component: DetailsTabTitleComponent,
   decorators: [
     moduleMetadata({

@@ -20,9 +20,7 @@ export class TopCategoriesTableComponent implements OnChanges {
   @Input() categories: Category[];
   @Input() categoryHighlighted: string;
   @Output() categoryHighlightedChange = new EventEmitter<string>();
-  
-  @Input() useHSLColors?: boolean = false;
-  
+    
   dataSource;
   displayedColumns: string[] = ['name', 'value', 'percent'];
 
