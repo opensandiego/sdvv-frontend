@@ -77,7 +77,6 @@
     .candidate-button {
         @include button-styles;
         padding: 0 16px;
-        
     }
     .candidate-button:hover {
         background-color: $vvlightblue;

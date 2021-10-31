@@ -1,6 +1,5 @@
-<div class="candidate-cards p-grid p-justify-left p-nogutter">
-
-  <app-expanded-quick-view class="p-col-12" 
+<div class="candidate-cards grid justify-left nogutter">
+  <app-expanded-quick-view class="col-12" 
     *ngIf="isExpanded" 
     [candidateId]="selectedCandidateId" 
     (isExpanded)="onCloseExpanded()"
