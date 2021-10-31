@@ -6,6 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { SharedModule } from '../shared/shared.module';
 import { VvChartsModule } from '../vv-charts/vv-charts.module';
 
 import { DetailsTotalRaisedComponent } from './components/details-total-raised/details-total-raised.component';
@@ -25,6 +26,7 @@ import { DetailsTabRaisedVSpentComponent } from './components/details-tab-raised
     MatTooltipModule,
     MatDividerModule,
     FontAwesomeModule,
+    SharedModule,
     VvChartsModule,
   ],
   exports: [
