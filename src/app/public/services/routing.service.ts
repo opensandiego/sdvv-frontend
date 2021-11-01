@@ -18,7 +18,7 @@ export class RoutingService {
   }
 
   getDistrictRoute(district: District) {
-    return `${this.officeRootPath}${district.office}_district-${district.district_number}`.toLowerCase().split(' ').join('-');
+    return `${this.officeRootPath}${district.office}/${district.district_number}`.toLowerCase().split(' ').join('-');
   }
 
   getCandidateRoute(candidate: Candidate) {

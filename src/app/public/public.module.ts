@@ -13,6 +13,8 @@ import { UnderConstructionComponent } from './components/under-construction/unde
 import { PublicRoutingModule } from './public-routing.module';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 import { RoutingService } from './services/routing.service';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { RoutingService } from './services/routing.service';
     FooterComponent,
     UnderConstructionComponent,
     RoundCurrencyDisplayPipe,
+    BreadcrumbComponent,
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
     FontAwesomeModule,
+    BreadcrumbModule,
   ],
   exports: [
     AboutComponent,
@@ -36,6 +40,7 @@ import { RoutingService } from './services/routing.service';
     SplashComponent,
     UnderConstructionComponent,
     FooterComponent,
+    BreadcrumbComponent,
   ],
   providers: [RoutingService],
 })

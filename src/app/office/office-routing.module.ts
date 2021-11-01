@@ -4,8 +4,21 @@ import { OfficeComponent } from './components/office/office.component';
  
  
 const routes: Routes = [
-  { path: 'office/:office', component: OfficeComponent },
-  { path: 'office/:office/:candidateId', component: OfficeComponent },
+  {
+    path: '',
+    data: { breadcrumb: null },
+  children: [
+    {
+      path: '',
+      component: OfficeComponent,
+      data: { isOffice: true, breadcrumb: null },
+    },
+    {
+      path: ':candidateId',
+      component: OfficeComponent,
+    },    
+  ]
+  },
 ];
 
 @NgModule({
