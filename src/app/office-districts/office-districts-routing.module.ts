@@ -6,7 +6,7 @@ import { OfficeDistrictComponent } from './components/office-districts/office-di
 const routes: Routes = [
   {
     path: '',
-    data: { breadcrumb: null },
+    data: { breadcrumb: null, officeName: 'City Council' },
     children: [
       {
         path: '',

@@ -1,0 +1,7 @@
+
+<div *ngFor="let id of candidateIds">
+  <candidate-card
+    [candidateId]="id"
+    (emitCandidateId)="onOpenExpanded($event)"
+  ></candidate-card>
+</div>
