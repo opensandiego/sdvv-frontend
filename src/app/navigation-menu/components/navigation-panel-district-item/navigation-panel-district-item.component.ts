@@ -9,7 +9,7 @@ import { District } from '../../interfaces/district';
 export class NavigationPanelDistrictItemComponent implements OnInit {
   @Input() district: District;
   route: string;
-  title: string;
+  districtName: string;
   isSelected: boolean;
 
   constructor(
@@ -18,7 +18,7 @@ export class NavigationPanelDistrictItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.route = this.routingService.getDistrictRoute(this.district);
-    this.title = `District ${this.district.district_number}`;
+    this.districtName = `District ${this.district.district_number}`;
   }
 
   setSelectedDistrict(status: boolean) {
