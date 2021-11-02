@@ -47,9 +47,8 @@ export class OfficeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe(data => {
-      this.office = data.office.split('-').join(' ');
-      this.officeUrl = data.office;
-      console.log('data.office', data.office)
+      this.office = data.officePath.split('-').join(' ');
+      this.officeUrl = data.officePath;
 
       this.setComponentData(); 
       this.setCandidateCards();

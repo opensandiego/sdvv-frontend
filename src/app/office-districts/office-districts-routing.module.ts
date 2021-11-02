@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OfficeDistrictComponent } from './components/office-districts/office-districts.component';
 import { QuickViewContainerComponent } from './components/quick-view-container/quick-view-container.component';
- 
- 
+
+
 const routes: Routes = [
   {
     path: '',
-    data: { breadcrumb: null, officeName: 'City Council' },
+    data: { breadcrumb: null },
     children: [
       {
         path: '',
-        component: OfficeDistrictComponent,
-        data: { office: true, isOffice: true, hasDistricts: true, breadcrumb: null },
+        // component: OfficeDistrictComponent,
+        data: { isOffice: true, hasDistricts: true, breadcrumb: null },
       },
       {
         path: ':district',
@@ -22,10 +22,10 @@ const routes: Routes = [
           {
             path: ':candidateId',
             component: QuickViewContainerComponent,
-            data: { candidate: true, isCandidate: true, isDistrict: false,},
-          },          
-        ]
-      },  
+            data: { isCandidate: true, isDistrict: false, },
+          },
+        ],
+      },
     ],
   },
 ];

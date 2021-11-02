@@ -10,18 +10,24 @@ const routes: Routes = [
       {
         path: 'mayor',
         loadChildren: () => import('./office/office.module').then(m => m.OfficeModule),
-        data: { office: 'mayor', breadcrumb: 'Mayor' },
+        data: { 
+          officePath: 'mayor', officeName: 'Mayor', breadcrumb: 'Mayor'
+        },
       },
       {
         path: 'city-attorney',
         loadChildren: () => import('./office/office.module').then(m => m.OfficeModule),
-        data: { office: 'city-attorney', breadcrumb: 'City Attorney' },
+        data: { 
+          officePath: 'city-attorney', officeName: 'City Attorney', breadcrumb: 'City Attorney' 
+        },
       },
       {
         path: 'city-council',
         loadChildren: () => import('./office-districts/office-districts.module').then(m => m.OfficeDistrictsModule),
-        data: { office: 'city-council', breadcrumb: 'City Council' },
-      },      
+        data: {
+          officePath: 'city-council', officeName: 'City Council', breadcrumb: 'City Council'
+        },
+      },
     ],
   },
 

@@ -20,8 +20,8 @@ export class OfficeDistrictComponent implements OnInit {
     // console.log('OfficeDistrictComponent');
 
     // this.route.data.subscribe(data => {
-    //   console.log('OD data.office', data.office);
-    //   this.office = data.office;
+    //   console.log('OD data.officePath', data.officePath);
+    //   this.office = data.officePath;
     // })
 
     // this.route.paramMap.subscribe(params => {
