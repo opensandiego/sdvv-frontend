@@ -34,7 +34,7 @@ export class CandidateNavigationComponent implements OnInit {
     let path = `${candidate.office}`;
 
     if (candidate.district !== null) {
-      path += `_district-${candidate.district}`;
+      path += `/district/${candidate.district}`;
     }
    
     return {
@@ -84,7 +84,7 @@ export class CandidateNavigationComponent implements OnInit {
           .map(seatName => ({
             seatName,
             title: `${this.seatType} ${seatName}`,
-            route: `${this.officeRootPath}${officeTitle}_${this.seatType}-${seatName}`.toLowerCase().split(' ').join('-'),
+            route: `${this.officeRootPath}${officeTitle}/${this.seatType}/${seatName}`.toLowerCase().split(' ').join('-'),
             candidates: candidatesForOffice.filter(candidate => candidate.district === seatName),
             hasSeats: false,
             seats: null,

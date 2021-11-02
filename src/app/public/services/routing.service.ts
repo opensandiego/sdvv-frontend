@@ -25,7 +25,7 @@ export class RoutingService {
     let path = `${candidate.office}`;
 
     if (candidate.district !== null) {
-      path += `_district-${candidate.district}`;
+      path += `/${candidate.district}`;
     }
 
     return `${this.officeRootPath}${path}/${candidate.id}`.toLowerCase().split(' ').join('-');

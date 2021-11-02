@@ -12,7 +12,7 @@ const routes: Routes = [
       {
         path: '',
         component: OfficeDistrictComponent,
-        data: { office: true, breadcrumb: null },
+        data: { office: true, isOffice: true, hasDistricts: true, breadcrumb: null },
       },
       {
         path: ':district',
