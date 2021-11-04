@@ -4,17 +4,25 @@ import { OfficeComponent } from './components/office/office.component';
 import { OfficeRoutingModule } from './office-routing.module';
 import { CandidateModule } from '../candidate/candidate.module';
 import { CandidateQuickViewModule } from '../candidate-quick-view/candidate-quick-view.module';
+import { CandidateDetailsModule } from '../candidate-details/candidate-details.module';
+import { CardListComponent } from './components/card-list/card-list.component';
+import { QuickViewContainerComponent } from './components/quick-view-container/quick-view-container.component';
+import { OfficeDistrictComponent } from './components/office-districts/office-districts.component';
 
 
 @NgModule({
   declarations: [
     OfficeComponent,
+    OfficeDistrictComponent,
+    QuickViewContainerComponent,
+    CardListComponent,
   ],
   imports: [
     CommonModule,
     CandidateModule,
     CandidateQuickViewModule,
     OfficeRoutingModule,
+    CandidateDetailsModule,
   ],
   exports: [
     OfficeComponent,

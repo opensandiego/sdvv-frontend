@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CandidateService } from 'src/app/store/services/candidate.service';
 
-
 @Component({
   selector: 'card-list',
   templateUrl: './card-list.component.html',
@@ -27,14 +26,10 @@ export class CardListComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-
-    this.activatedRoute.paramMap.subscribe(params => {
+  ngOnInit(): void {    
+    this.activatedRoute.paramMap.subscribe(params => {      
       this.office = this.activatedRoute.snapshot.data.officeName;
-      
-      this.district = params.get('district');
-      console.log('CL this.district', this.district);
-
+      this.district = params.get('district')
       this.setCandidateCards();
     })
   }

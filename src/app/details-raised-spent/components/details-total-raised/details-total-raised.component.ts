@@ -26,7 +26,7 @@ export class DetailsTotalRaisedComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const candidateId = params.get('id');
+      const candidateId = params.get('candidateId');
 
       this.candidateDetailsService.getRaisedSpent(candidateId)
         .subscribe( response => {

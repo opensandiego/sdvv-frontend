@@ -37,7 +37,7 @@ export class DetailsContainerOutsideMoneyComponent implements OnInit {
   
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const candidateId = params.get('id');
+      const candidateId = params.get('candidateId');
 
       this.candidateDetailsService.getOutsideMoney(candidateId)
         .subscribe( response => {

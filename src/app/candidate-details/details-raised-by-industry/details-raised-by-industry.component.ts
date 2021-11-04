@@ -41,7 +41,7 @@ export class DetailsRaisedByIndustryComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const candidateId = params.get('id');
+      const candidateId = params.get('candidateId');
 
       this.candidateDetailsService.getRaisedByIndustry(candidateId)
         .subscribe( response => {

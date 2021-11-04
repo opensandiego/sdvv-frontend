@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CandidateService } from 'src/app/store/services/candidate.service';
 
 
 @Component({
@@ -13,22 +12,21 @@ export class QuickViewContainerComponent implements OnInit {
   candidateId: string;
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
-    // private candidateService: CandidateService,
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.activatedRoute.paramMap.subscribe(params => {
       this.candidateId = params.get('candidateId')
-      console.log('QV params', params);
-      console.log('QV this.candidateId', this.candidateId);
     })
   }
 
   onCloseExpanded() {
-    console.log('QV close expanded');
-    this.router.navigate([`../`], { relativeTo: this.route });
+    const segments = this.router.url.split('/');
+    segments.pop();
+    const urlWithoutCandidateId = segments.join('/');
+    this.router.navigate([urlWithoutCandidateId]);
   }
 
 }

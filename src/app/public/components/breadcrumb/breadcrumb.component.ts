@@ -33,17 +33,17 @@ export class BreadcrumbComponent implements OnInit {
       }
 
       let label: string;
-      // const isOffice: boolean = child.snapshot.data['office'];
-      const isDistrict: boolean = child.snapshot.data['district'];
-      const isCandidate: boolean = child.snapshot.data['isCandidate'];
+      const type: string = child.snapshot.data['type'];
 
-      if (isDistrict) {
+      if (type === 'district') {
         label = 'District ' + child.snapshot.params['district'];
-      } else if (isCandidate) {
+      } else if (type === 'candidate') {
         const candidateId = child.snapshot.params['candidateId'];
         const candidate$ = this.candidateService.getCandidate(candidateId)
         const candidate = await (candidate$).toPromise();
         label = candidate.full_name;
+      } else if (type === 'details') {
+        label = 'Details';
       } else {
         label = child.snapshot.data['breadcrumb'];
       }

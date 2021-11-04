@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -38,7 +37,6 @@ import { DetailsRaisedSpentModule } from '../details-raised-spent/details-raised
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     MatTooltipModule,
     MatTableModule,
     MatButtonModule,
