@@ -19,8 +19,8 @@ import { LastUpdatedService } from './services/last-updated.service';
   imports: [
     CommonModule,
     HttpClientModule,
-    environment.production ?
-      [] : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, 
+    environment.production ? [] : 
+      HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, 
         { 
           delay: 100, 
           passThruUnknownUrl: true,
