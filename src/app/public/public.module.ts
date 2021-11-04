@@ -13,6 +13,7 @@ import { UnderConstructionComponent } from './components/under-construction/unde
 import { PublicRoutingModule } from './public-routing.module';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 import { RoutingService } from './services/routing.service';
+import { ElectionService } from './services/election.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 
@@ -42,7 +43,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
     FooterComponent,
     BreadcrumbComponent,
   ],
-  providers: [RoutingService],
+  providers: [RoutingService, ElectionService],
 })
 export class PublicModule { 
   constructor(library: FaIconLibrary) {
