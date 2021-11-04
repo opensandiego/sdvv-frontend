@@ -9,8 +9,8 @@ export class DetailsTabRaisedByIndustryComponent implements OnInit {
 
   title = {
     top: 'Amount Raised',
-    bottom: 'By Industry',
-    tooltipText: 'Placeholder tooltip text for Amount Raised by Industry!',
+    bottom: 'By Occupation',
+    tooltipText: 'Placeholder tooltip text for Amount Raised by Occupation!',
   };
   
   constructor() { }
