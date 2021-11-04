@@ -56,6 +56,7 @@ export class SideMenuComponent implements OnInit {
   
       return distinctSeats.map(seat => ({
         label: `District ${seat}`,
+        icon: 'fa fa-fw fa-map-marker',
         items: candidatesForOffice
           .filter(candidate => candidate.district === seat).map(candidate => ({
             label: candidate.full_name,
@@ -73,15 +74,28 @@ export class SideMenuComponent implements OnInit {
   }
 
   buildMenu() {
-      this.candidateService.getCandidates({ year: this.electionYear })
-    .subscribe(candidates => {
-      const distinctOfficeTitles = this.getDistinctOffices(candidates);
+    this.candidateService
+      .getCandidates({ year: this.electionYear })
+      .subscribe(candidates => {
+        const distinctOfficeTitles = this.getDistinctOffices(candidates);
 
-      this.items = 
-      distinctOfficeTitles.map( title => ({
-        label: title,
-        items: this.getItems(title, candidates)
-      }));
+        this.items = [
+          {
+            label: 'Mayor',
+            icon: 'fa fa-fw fa-university',
+            items: this.getItems('Mayor', candidates)
+          },
+          {
+            label: 'City Council',
+            icon: 'fa fa-fw fa-map',
+            items: this.getItems('City Council', candidates)
+          },
+          {
+            label: 'City Attorney',
+            icon: 'fa fa-fw fa-balance-scale',
+            items: this.getItems('City Attorney', candidates)
+          },
+        ];
     })
   }
 
