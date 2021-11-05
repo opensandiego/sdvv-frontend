@@ -1,7 +1,6 @@
 import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CandidateService } from 'src/app/store/services/candidate.service';
-import { Candidate } from 'src/app/store/interfaces/candidate';
+
+import type { CandidateCard } from '../../interfaces/candidateCard';
 
 @Component({
   selector: 'candidate-card',
@@ -10,11 +9,9 @@ import { Candidate } from 'src/app/store/interfaces/candidate';
 })
 
 export class CandidateCardComponent implements OnChanges {
-  @Input() candidateId: string;
+  @Input() candidateCard: CandidateCard;
   @Input() inExpandedCard?: boolean;
   @Output() private emitCandidateId = new EventEmitter<any>();
-
-  private defaultImagePath = 'assets/candidate-card/profile.png';
 
   candidateImg: string;
   firstName: string;
@@ -27,40 +24,25 @@ export class CandidateCardComponent implements OnChanges {
 
   buttonText: string;
 
-  constructor(
-    private candidateService: CandidateService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-  ) { }
-
-  private setCandidate(candidate: Candidate): void {
-    this.candidateImg = candidate.image_url 
-      ? candidate.image_url
-      : this.defaultImagePath;
-    this.firstName = candidate.full_name.split(' ')[0];
-    this.lastName = candidate.full_name.slice(this.firstName.length+1);
-    this.fullName = candidate.full_name;
-    this.description = candidate.description;
-    this.raised = parseInt(candidate.total_contributions);
-    this.donors = parseInt(candidate.contributor_count);
-    this.website = candidate.website;
-  }
-
   ngOnChanges(changes: SimpleChanges) {
 
-    if (changes['candidateId']) {
-      this.candidateService.getCandidate(changes['candidateId'].currentValue)
-        .subscribe(candidate => this.setCandidate(candidate));
+    if (changes['candidateCard']) {
+      let candidateCard = changes['candidateCard'].currentValue;
+
+      this.candidateImg = candidateCard.candidateImgURL;
+      this.firstName = candidateCard.name.split(' ')[0];
+      this.lastName = candidateCard.name.slice(this.firstName.length+1);
+      this.fullName = candidateCard.name;
+      this.description = candidateCard.description;
+      this.raised = candidateCard.raised;
+      this.donors = candidateCard.donors;
+      this.website = candidateCard.website;
     }
 
     this.buttonText = (this.inExpandedCard) ? 'See Full Details' : 'See Details';
   }
 
   selectCandidate() {
-    if (this.inExpandedCard) {
-      this.router.navigate(['details'], { relativeTo: this.activatedRoute });
-    } else {
-      this.router.navigate([this.candidateId], { relativeTo: this.activatedRoute });
-    }
+    this.emitCandidateId.emit(this.candidateCard.id);
   }
 }

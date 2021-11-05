@@ -1,11 +1,14 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, Input, OnChanges, } from '@angular/core';
 
 @Component({
   selector: 'app-details-tab-outside-money',
   templateUrl: './details-tab-outside-money.component.html',
   styleUrls: ['./details-tab-outside-money.component.scss']
 })
-export class DetailsTabOutsideMoneyComponent implements OnInit {
+export class DetailsTabOutsideMoneyComponent implements OnChanges {
+  @Input() oppositionExpendituresCategories;
+  @Input() supportExpendituresCategories;
+ 
   title = {
     top: 'Independent Expenditures',
     bottom: 'By Outside Money',
@@ -14,7 +17,7 @@ export class DetailsTabOutsideMoneyComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
   }
 
 }

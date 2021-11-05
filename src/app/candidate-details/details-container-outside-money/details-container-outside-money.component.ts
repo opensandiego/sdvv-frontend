@@ -1,15 +1,16 @@
-import { Component, OnInit, } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnChanges, } from '@angular/core';
 
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
-import { CandidateDetailsService } from 'src/app/store/services/candidate.details.service';
 
 @Component({
   selector: 'app-details-container-outside-money',
   templateUrl: './details-container-outside-money.component.html',
   styleUrls: ['./details-container-outside-money.component.scss']
 })
-export class DetailsContainerOutsideMoneyComponent implements OnInit {
+export class DetailsContainerOutsideMoneyComponent implements OnChanges {
+  @Input() oppositionExpendituresCategories;
+  @Input() supportExpendituresCategories;
+
   hoveredCommittee: string = null;
   oppositionCommittees;
   supportCommittees;
@@ -29,37 +30,21 @@ export class DetailsContainerOutsideMoneyComponent implements OnInit {
   
   faCircle = faCircle;
 
-  constructor(
-    private candidateDetailsService: CandidateDetailsService,
-    private route: ActivatedRoute,
-  ) { }
+  constructor() { }
 
-  
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const candidateId = params.get('candidateId');
+  ngOnChanges(): void {
+    this.oppositionCommittees = 
+      this.oppositionExpendituresCategories.map( committee => ({
+        ...committee,
+        color: this.oppositionColor,
+      }));
 
-      this.candidateDetailsService.getOutsideMoney(candidateId)
-        .subscribe( response => {
+    this.supportCommittees = 
+      this.supportExpendituresCategories.map( committee => ({
+        ...committee,
+        color: this.supportColor,
+      }));
 
-          this.supportCommittees = response.supportGroups.map((group, i) => ({
-            id: 'S' + i.toString(),
-            name: group.committee ? group.committee : 'null',
-            value: parseInt(group.sum),
-            percent: parseFloat(group.average),
-            color: this.supportColor,
-          }))
-
-          this.oppositionCommittees = response.oppositionGroups.map((group, i) => ({
-            id: 'O' + i.toString(),
-            name: group.committee ? group.committee : 'null',
-            value: parseInt(group.sum),
-            percent: parseFloat(group.average),
-            color: this.oppositionColor,
-          }))
-
-        })
-    });
   }
 
   committeeHoveredOver(committee){

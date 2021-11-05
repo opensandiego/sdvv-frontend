@@ -58,7 +58,7 @@ export class RaisedByLocationBarComponent implements OnChanges {
     yAxis: {
       type: 'value',
       axisLabel: {
-        formatter: (value: number) => getCompactFormattedCurrency(value, 1),
+        formatter: (value: number) => getCompactFormattedCurrency(value),
       },
     },
     series: [{
@@ -67,7 +67,7 @@ export class RaisedByLocationBarComponent implements OnChanges {
       label: {
         show: true,
         position: 'top',
-        formatter: (params) => getCompactFormattedCurrency(params.data['value'], 1),
+        formatter: (params) => getCompactFormattedCurrency(params.data['value']),
         fontWeight: 'bold',
       },
       barCategoryGap: '0%',

@@ -9,7 +9,7 @@ import { ExpandedQuickViewComponent } from './expanded-quick-view.component';
 import { CandidateModule } from '../../candidate/candidate.module';
 import { CandidateQuickViewModule } from '../../candidate-quick-view/candidate-quick-view.module';
 
-import { CandidateDataService } from '../../shared/services/candidate-data.service';
+import { CandidateDataService } from '../../services/candidate-data.service';
 
 import * as CandidateCardStories from 
   '../../candidate/candidate-card/candidate-card.component.stories';
