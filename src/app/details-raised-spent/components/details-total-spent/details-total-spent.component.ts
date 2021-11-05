@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { faMoneyBillWave, faHandHoldingUsd, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { CandidateDetailsService } from 'src/app/store/services/candidate.details.service';
+import { spendingCodes } from './spending-codes';
 
 @Component({
   selector: 'app-details-total-spent',
@@ -26,12 +27,20 @@ export class DetailsTotalSpentComponent implements OnInit {
   faHandHoldingUsd = faHandHoldingUsd;
   faQuestionCircle = faQuestionCircle;
 
+  spendingMap;
+
   constructor(
     private candidateDetailsService: CandidateDetailsService,
     private route: ActivatedRoute,
   ) { }
 
+  getSpendingCodeDescription(spendingCode: string): string {
+    return `${spendingCode}: ` + this.spendingMap.get(spendingCode);
+  }
+
   ngOnInit(): void {
+    this.spendingMap = new Map(spendingCodes);
+
     this.route.paramMap.subscribe(params => {
       const candidateId = params.get('candidateId');
 
@@ -43,9 +52,12 @@ export class DetailsTotalSpentComponent implements OnInit {
           this.totalSpentFormatted = this.totalSpent
             .toLocaleString('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0});
 
-          this.categoriesCombined = response.spentGroup.map((group, i) => ({
+          const filteredGroups = response.spentGroup.filter( group => group.spending_code );
+
+          this.categoriesCombined = filteredGroups.map((group, i) => ({
             id: i.toString(),
-            name: group.spending_code ? group.spending_code : 'null',
+            // name: group.spending_code ? group.spending_code : 'null',
+            name: group.spending_code ? this.getSpendingCodeDescription(group.spending_code) : 'null',
             value: parseInt(group.sum),
             percent: parseFloat(group.average),
             color: i < this.colors.length ? this.colors[i] : 'red',
