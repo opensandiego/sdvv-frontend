@@ -54,23 +54,43 @@ export class SideMenuComponent implements OnInit {
     if (hasSeats) {
       const distinctSeats = this.getDistinctSeats(candidatesForOffice);
   
-      return distinctSeats.map(seat => ({
-        label: `District ${seat}`,
-        icon: 'fa fa-fw fa-map-marker',
-        items: candidatesForOffice
-          .filter(candidate => candidate.district === seat).map(candidate => ({
+      return distinctSeats.map(seat => {
+        const seeAllCandidatesItem = {
+          label: 'See All ',
+          icon: 'pi pi-users',
+          routerLink: `${linkPrefix}/${seat}`.toLowerCase().split(' ').join('-'),
+        };
+
+        const candidatesMenuItems = candidatesForOffice
+          .filter(candidate => candidate.district === seat)
+          .map(candidate => ({
             label: candidate.full_name,
             icon: 'pi pi-user',
             routerLink: `${linkPrefix}/${seat}/${candidate.id}${linkSuffix}`.toLowerCase().split(' ').join('-'),
           }))
-      }))
-    }
 
-    return candidatesForOffice.map(candidate => ({
-      label: candidate.full_name,
-      icon: 'pi pi-user',
-      routerLink: `${linkPrefix}/${candidate.id}${linkSuffix}`.toLowerCase().split(' ').join('-'),
-    }))
+        return {
+          label: `District ${seat}`,
+          icon: 'fa fa-fw fa-map-marker',
+          items: [ seeAllCandidatesItem, ...candidatesMenuItems ]
+        }
+      });
+
+    } else {
+      const seeAllCandidatesItem = {
+        label: 'See All ',
+        icon: 'pi pi-users',
+        routerLink: `${linkPrefix}`.toLowerCase().split(' ').join('-'),
+      };
+    
+      const candidatesMenuItems = candidatesForOffice.map(candidate => ({
+        label: candidate.full_name,
+        icon: 'pi pi-user',
+        routerLink: `${linkPrefix}/${candidate.id}${linkSuffix}`.toLowerCase().split(' ').join('-'),
+      }))
+
+      return [ seeAllCandidatesItem, ...candidatesMenuItems,  ];      
+    }
   }
 
   buildMenu() {
@@ -81,17 +101,17 @@ export class SideMenuComponent implements OnInit {
 
         this.items = [
           {
-            label: 'Mayor',
+            label: 'MAYOR',
             icon: 'fa fa-fw fa-university',
             items: this.getItems('Mayor', candidates)
           },
           {
-            label: 'City Council',
+            label: 'CITY COUNCIL',
             icon: 'fa fa-fw fa-map',
             items: this.getItems('City Council', candidates)
           },
           {
-            label: 'City Attorney',
+            label: 'CITY ATTORNEY',
             icon: 'fa fa-fw fa-balance-scale',
             items: this.getItems('City Attorney', candidates)
           },
