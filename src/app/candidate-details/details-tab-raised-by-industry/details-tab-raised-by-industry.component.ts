@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-
-import { RaisedByIndustry } from '../../vv-charts/raised-by-industry-bar/raised-by-industry-bar.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-details-tab-raised-by-industry',
@@ -9,12 +7,10 @@ import { RaisedByIndustry } from '../../vv-charts/raised-by-industry-bar/raised-
 })
 export class DetailsTabRaisedByIndustryComponent implements OnInit {
 
-  @Input() raisedByIndustries: RaisedByIndustry[];
-
   title = {
     top: 'Amount Raised',
-    bottom: 'By Industry',
-    tooltipText: 'Placeholder tooltip text for Amount Raised by Industry!',
+    bottom: 'By Occupation',
+    tooltipText: 'Placeholder tooltip text for Amount Raised by Occupation!',
   };
   
   constructor() { }
