@@ -30,7 +30,8 @@ export class RaisedByIndustryBarComponent implements OnChanges {
       containLabel: true,
       left: '5%',
       right: '5%',
-      top: '5%',
+      top: '2%',
+      bottom: '2%',
     },
     tooltip: {
       show: true,

@@ -1,0 +1,13 @@
+<div class="splashpage">
+  <splash-hero></splash-hero>
+  <div class="ftm">
+    <h1>Follow the Money</h1>
+    <p class="ftm_caption">See how local campaigns are financed so you can be informed before you vote.</p>
+    <div class="choose">
+      <div *ngFor="let summary of summariesWithRoute;">
+        <office-summary-card [summary]="summary"></office-summary-card>
+      </div>    
+    </div>
+    <div class="sources"><p>All of our data is sourced directly from the <a href="https://efile.sandiego.gov/" target="_blank">City of San Diego</a> Electronic Filing System.</p></div>
+  </div>
+</div>

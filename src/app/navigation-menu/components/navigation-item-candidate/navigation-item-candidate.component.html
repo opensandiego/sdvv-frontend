@@ -1,0 +1,10 @@
+<li (click)="changeRoute()">
+  <a 
+    routerLinkActive="active"
+    routerLink="{{routeLink}}" 
+    [ngClass]="{ 'candidate-selected': isSelected }"
+    (click)="setSelectedCandidate()"
+  >
+    {{candidate.full_name}}
+  </a>
+</li>

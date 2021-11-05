@@ -1,0 +1,41 @@
+<mat-expansion-panel
+  hideToggle="true"  
+  (opened)="setSelectedOffice(true)" 
+  (closed)="setSelectedOffice(false)" 
+  (opened)="changeRoute()" 
+>
+
+  <mat-expansion-panel-header 
+    collapsedHeight="50px" 
+    expandedHeight="50px"
+    [ngClass]="{'active-link':isSelected}"
+  >
+    <mat-panel-title>
+      <a routerLink="{{route}}" routerLinkActive="active">{{office.office}}</a>
+    </mat-panel-title>
+      <a routerLink="{{route}}" routerLinkActive="active">
+        <fa-icon class="show-office" [icon]="['fas', 'chevron-right']" (click)="changeRoute()" ></fa-icon>
+      </a>
+
+  </mat-expansion-panel-header>
+
+  <ng-container *ngIf="office.has_districts; then thenWithDistrict else elseWithoutDistrict">
+  </ng-container>
+
+  <ng-template #thenWithDistrict>
+    <navigation-panel-office-district
+      [officeWithDistricts]="office"
+    ></navigation-panel-office-district>
+  </ng-template>
+
+  <ng-template #elseWithoutDistrict>
+    <div class="candidates">
+      <ul *ngFor="let candidate of candidates;" class="candidate-name">
+        <navigation-item-candidate
+          [candidate]="candidate"
+        ></navigation-item-candidate>
+      </ul>
+    </div>
+  </ng-template>
+
+</mat-expansion-panel>
