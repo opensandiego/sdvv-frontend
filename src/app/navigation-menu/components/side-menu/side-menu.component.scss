@@ -1,5 +1,49 @@
 
+// ::ng-deep .p-panelmenu .p-panelmenu-header .p-panelmenu-header-link {
+// 	// color: red !important;
+// 	// background-color: sandybrown;
+//   // :hover {
+// 	//   // background-color: blue;
+//   // }  
+// }
+
+
+// ::ng-deep .p-panelmenu .p-panelmenu-root-submenu > li.p-menuitem {
+// // ::ng-deep .p-panelmenu .p-menuitem-link {
+//   // background-color: red !important;
+//   // :hover:not(:first-child.p-menuitem-link) {
+//   // :not(.p-submenu-list, p-panelmenusub):hover {
+//   :not(p-panelmenusub, p-panelmenusub > .p-submenu-list):hover {
+// 	  background-color: #3392ff !important;
+//     .p-menuitem-text {
+//       color: white !important;
+//     }
+//   }
+
+//   // :hover {
+// 	//   background-color: #3392ff !important;
+//   //   .p-menuitem-text {
+//   //     color: white !important;
+//   //   }
+//   // }
+//   // :focus {
+// 	//   background-color: #125DB3 !important;
+//   //   * {
+//   //     color: white !important;
+//   //   }
+//   // }
+// }
+
+::ng-deep .p-panelmenu-header {
+  background-color: red;
+}
+
+::ng-deep .p-panelmenu .p-menuitem-link-active {
+  background-color: #125db380;
+}
+
 ::ng-deep .p-panelmenu .p-panelmenu-header {
+  // background-color: red !important;
   :hover {
 	  background-color: #3392ff !important;
     color: white !important;
