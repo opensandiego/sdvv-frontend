@@ -1,4 +1,8 @@
 
+::ng-deep .p-panelmenu .p-menuitem-link-active {
+  background-color: #125db380;
+}
+
 ::ng-deep .p-panelmenu .p-panelmenu-header {
   :hover {
 	  background-color: #3392ff !important;
