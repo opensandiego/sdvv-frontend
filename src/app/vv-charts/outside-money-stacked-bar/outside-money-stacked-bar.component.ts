@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 import { EChartsOption, ECharts, BarSeriesOption } from 'echarts';
 
@@ -47,9 +47,16 @@ export class OutsideMoneyStackedBarComponent implements OnChanges {
 
   constructor() { }
 
-  ngOnChanges(): void {
-    this.setChartMergeOption();
-    this.updateChartHighlight();
+  ngOnChanges(changes: SimpleChanges): void {
+
+    if (changes['opposedCommittees'] || changes['supportCommittees']) {
+      this.setChartMergeOption();
+    }
+
+    if (changes['committeeHighlighted']) {
+      this.updateChartHighlight();
+    }
+
   }
 
   onChartInit(ec: ECharts): void {
@@ -141,7 +148,11 @@ export class OutsideMoneyStackedBarComponent implements OnChanges {
     }
 
     const balancerSeries = this.getChartBalancer(opposedSum, supportSum);
-   
+
+    if (this.echartsInstance) {
+      this.echartsInstance.setOption(this.chartOption, true);
+    }
+
     this.mergeOption = {
       series: [...opposedSeries, ...supportSeries, balancerSeries],
     };
