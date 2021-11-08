@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DetailsComponent } from '../candidate-details/details/details.component';
 import { OfficeDistrictComponent } from './components/office-districts/office-districts.component';
 import { QuickViewContainerComponent } from './components/quick-view-container/quick-view-container.component';
+import { OfficeDistrictResolverService } from './office-district-resolver.service';
 
 const officeRoutes: Routes = [
   {
@@ -24,58 +25,37 @@ const officeRoutes: Routes = [
       {
         path: 'details',
         component: DetailsComponent,
-        data: { type: 'details', hasCandidates: false },
+        data: { type: 'details' },
       },
     ],
   }, 
 ];
 
-const routesWithDistricts: Routes = [
+const districts: Routes = [
   {
-    path: '',
-    data: { breadcrumb: null },
-    // component: , // future district map component 
-    children: [
-      {
-        path: ':district',
-        data: { type: 'district', hasCandidates: true },
-        children: officeRoutes,
-      },
-    ],
-  },
-];
-
-const routesWithoutDistricts: Routes = [
-  {
-    path: '',
-    data: { type: 'office', hasCandidates: true, breadcrumb: null },
+    path: ':district_number',
+    data: { type: 'district' },
     children: officeRoutes,
+    resolve: {
+      office: OfficeDistrictResolverService,
+    },
   },
 ];
 
 const routes: Routes = [
   {
-    path: 'mayor',
-    data: { 
-      officePath: 'mayor', officeName: 'Mayor', breadcrumb: 'Mayor'
-    },
-    children: routesWithoutDistricts,
+    path: 'city-council/0',
+    redirectTo: 'city-council/1',
+    pathMatch: 'full',
   },
   {
-    path: 'city-attorney',
+    path: ':office_name',
+    children: districts,
     data: { 
-      officePath: 'city-attorney', officeName: 'City Attorney', breadcrumb: 'City Attorney' 
+      type: 'office_prefix',
     },
-    children: routesWithoutDistricts,
   },
-  {
-    path: 'city-council',
-    data: {
-      officePath: 'city-council', officeName: 'City Council', breadcrumb: 'City Council'
-    },
-    children: routesWithDistricts,
-  },
-];
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

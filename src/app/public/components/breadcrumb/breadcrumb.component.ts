@@ -12,7 +12,8 @@ import { CandidateService } from 'src/app/store/services/candidate.service';
 })
 export class BreadcrumbComponent implements OnInit {
   items: MenuItem[];
-  readonly home = {icon: 'pi pi-home', routerLink: '/'};
+  // readonly home = {icon: 'pi pi-home', routerLink: '/', label: ' San Diego City 2020 Elections'};
+  readonly home = {icon: 'pi pi-home', routerLink: '/', label: ' San Diego 2020'};
   
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -36,7 +37,11 @@ export class BreadcrumbComponent implements OnInit {
       const type: string = child.snapshot.data['type'];
 
       if (type === 'district') {
-        label = 'District ' + child.snapshot.params['district'];
+        label = child.snapshot.data.office.office;
+
+        if (child.snapshot.params['district_number'] !== '0') {
+          label += ` District ` + child.snapshot.params['district_number'];
+        }
       } else if (type === 'candidate') {
         const candidateId = child.snapshot.params['candidateId'];
         const candidate$ = this.candidateService.getCandidate(candidateId)
@@ -44,8 +49,6 @@ export class BreadcrumbComponent implements OnInit {
         label = candidate.full_name;
       } else if (type === 'details') {
         label = 'Details';
-      } else {
-        label = child.snapshot.data['breadcrumb'];
       }
 
       if (label) {
