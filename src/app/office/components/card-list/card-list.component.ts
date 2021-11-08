@@ -11,6 +11,7 @@ export class CardListComponent implements OnInit {
   office: string;
   district: string;
   candidateIds: string[];
+  year = '2020';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,16 +21,17 @@ export class CardListComponent implements OnInit {
 
   setCandidateCards(): void {
     this.candidateService.getCandidates(
-      { office: this.office, district: this.district, year: '2020' }
+      { office: this.office, district: this.district, year: this.year }
     ).subscribe(candidates => {
       this.candidateIds = candidates.map(candidate => candidate.id);
     })
   }
 
-  ngOnInit(): void {    
-    this.activatedRoute.paramMap.subscribe(params => {      
-      this.office = this.activatedRoute.snapshot.data.officeName;
-      this.district = params.get('district')
+  ngOnInit(): void {  
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.office = this.activatedRoute.snapshot.data.office.office;
+      this.district = params.get('district_number')
+      this.district = this.district != '0' ? this.district : null;
       this.setCandidateCards();
     })
   }

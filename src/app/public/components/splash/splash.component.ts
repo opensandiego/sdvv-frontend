@@ -31,12 +31,12 @@ export class SplashComponent implements OnInit {
     this.officeSummaryService.getSummary(this.year)
       .subscribe(summary => this.summariesWithRoute = summary.map(summary => ({
         ...summary,
-        routeLink: this.getRoute(summary.office),
+        routeLink: this.getRoute(summary),
       })));
   }
  
-  getRoute(office: string) {
-    return 'office/' + office.toLowerCase().split(' ').join('-');
+  getRoute(office) {
+    return 'office/' + office.office.toLowerCase().split(' ').join('-') + '/0';
   }
 
   selectOffice(officeType: string) {

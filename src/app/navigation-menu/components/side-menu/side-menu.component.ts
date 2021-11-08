@@ -47,7 +47,7 @@ export class SideMenuComponent implements OnInit {
     const linkPrefix = `/office/` + candidate.office.toLowerCase().split(' ').join('-');
     const linkDistrict =  candidate.district 
       ? `/${candidate.district}`
-      : ``;
+      : `/0`;
     const linkSuffix = this.detailsActive ? `/details` : ``;
     return `${linkPrefix}${linkDistrict}/${candidate.id}${linkSuffix}`;
   }
@@ -67,7 +67,7 @@ export class SideMenuComponent implements OnInit {
 
     const linkDistrict =  district 
       ? `/${district}`
-      : ``;
+      : `/0`;
 
     return {
       label: 'See All ',

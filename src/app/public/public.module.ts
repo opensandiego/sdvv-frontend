@@ -16,6 +16,7 @@ import { RoutingService } from './services/routing.service';
 import { ElectionService } from './services/election.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
     UnderConstructionComponent,
     RoundCurrencyDisplayPipe,
     BreadcrumbComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
