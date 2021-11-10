@@ -3,23 +3,21 @@ import { moduleMetadata, componentWrapperDecorator } from '@storybook/angular';
 
 import { CandidateDetailsModule } from '../candidate-details.module';
 
-import { CandidateFullDetailsComponent } from './details.component';
-// import * as CandidateDetailsHeaderStories from '../candidate-details-header/candidate-details-header.component.stories'
-
-// import * as RaisedVSpentTabStories from '../../details-raised-spent/components/details-tab-raised-v-spent/details-tab-raised-v-spent.component.stories';
-// import * as RaisedByIndustryTabStories from './../details-tab-raised-by-industry/details-tab-raised-by-industry.component.stories';
-// import * as RaisedByLocationTabStories from './../details-tab-raised-by-location/details-tab-raised-by-location.component.stories';
-// import * as OutsideMoneyTabStories from './../details-tab-outside-money/details-tab-outside-money.component.stories';
-
+import { DetailsComponent } from './details.component';
+import { CandidateService } from 'src/app/store/services/candidate.service';
+import { of } from 'rxjs';
+import * as CandidateDetailsHeaderStories from '../candidate-details-header/candidate-details-header.component.stories'
+import { HttpClientModule } from '@angular/common/http';
 
 export default {
-  title: 'Candidate Details/Full Details',
-  component: CandidateFullDetailsComponent,
+  title: 'Candidate Details/Details',
+  component: DetailsComponent,
   decorators: [
     moduleMetadata({
       declarations: [],
       imports: [
         CandidateDetailsModule,
+        HttpClientModule,
       ],
       providers: [],
     }),
@@ -30,16 +28,10 @@ export default {
 } as Meta;
 
 
-const Template: Story<CandidateFullDetailsComponent> = (args: CandidateFullDetailsComponent) => ({
+const Template: Story<DetailsComponent> = (args: DetailsComponent) => ({
   props: args,
 })
 
 export const Default = Template.bind({});
 Default.args = {
-  // header: CandidateDetailsHeaderStories.Default.args,
-
-  // raisedVSpentData: RaisedVSpentTabStories.Default.args,
-  // raisedByIndustries: RaisedByIndustryTabStories.Default.args.raisedByIndustries,
-  // raisedByLocationData: RaisedByLocationTabStories.Default.args.raisedByLocations,
-  // outsideMoneyData: OutsideMoneyTabStories.Default.args,
 };
