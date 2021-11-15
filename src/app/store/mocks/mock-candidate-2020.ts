@@ -13,8 +13,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "Mayor San Diego",
-        "total_contributions": "2898036",
-        "contributor_count": "2371",
+        "total_contributions": "2898035.42",
+        "contributor_count": "2369",
         "jurisdiction": "City"
     },
     {
@@ -29,8 +29,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "Mayor San Diego",
-        "total_contributions": "2290087",
-        "contributor_count": "3464",
+        "total_contributions": "2290092.01",
+        "contributor_count": "3456",
         "jurisdiction": "City"
     },
     {
@@ -61,8 +61,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "Mayor San Diego",
-        "total_contributions": "364497",
-        "contributor_count": "1430",
+        "total_contributions": "364504.50",
+        "contributor_count": "1428",
         "jurisdiction": "City"
     },
     {
@@ -77,8 +77,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "Mayor San Diego",
-        "total_contributions": "8457",
-        "contributor_count": "35",
+        "total_contributions": "8456.63",
+        "contributor_count": "34",
         "jurisdiction": "City"
     },
     {
@@ -93,7 +93,7 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "City Council San Diego - Dist 1",
-        "total_contributions": "83144",
+        "total_contributions": "83144.24",
         "contributor_count": "221",
         "jurisdiction": "District"
     },
@@ -109,8 +109,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Council San Diego - Dist 1",
-        "total_contributions": "255920",
-        "contributor_count": "587",
+        "total_contributions": "261386.44",
+        "contributor_count": "590",
         "jurisdiction": "District"
     },
     {
@@ -125,8 +125,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Council San Diego - Dist 1",
-        "total_contributions": "438811",
-        "contributor_count": "489",
+        "total_contributions": "438809.25",
+        "contributor_count": "488",
         "jurisdiction": "District"
     },
     {
@@ -141,8 +141,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "City Council San Diego - Dist 1",
-        "total_contributions": "336803",
-        "contributor_count": "35",
+        "total_contributions": "336802.58",
+        "contributor_count": "34",
         "jurisdiction": "District"
     },
     {
@@ -157,7 +157,7 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "City Council San Diego - Dist 1",
-        "total_contributions": "28106",
+        "total_contributions": "28107.92",
         "contributor_count": "95",
         "jurisdiction": "District"
     },
@@ -189,8 +189,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Council San Diego - Dist 3",
-        "total_contributions": "78905",
-        "contributor_count": "224",
+        "total_contributions": "78905.84",
+        "contributor_count": "223",
         "jurisdiction": "District"
     },
     {
@@ -205,7 +205,7 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "City Council San Diego - Dist 3",
-        "total_contributions": "67829",
+        "total_contributions": "67828.7",
         "contributor_count": "162",
         "jurisdiction": "District"
     },
@@ -237,8 +237,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Council San Diego - Dist 3",
-        "total_contributions": "228095",
-        "contributor_count": "327",
+        "total_contributions": "228093.82",
+        "contributor_count": "326",
         "jurisdiction": "District"
     },
     {
@@ -253,8 +253,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Council San Diego - Dist 5",
-        "total_contributions": "519780",
-        "contributor_count": "1089",
+        "total_contributions": "519780.58",
+        "contributor_count": "1085",
         "jurisdiction": "District"
     },
     {
@@ -269,8 +269,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Council San Diego - Dist 5",
-        "total_contributions": "382733",
-        "contributor_count": "785",
+        "total_contributions": "382732.30",
+        "contributor_count": "782",
         "jurisdiction": "District"
     },
     {
@@ -285,8 +285,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "City Council San Diego - Dist 5",
-        "total_contributions": "38880",
-        "contributor_count": "43",
+        "total_contributions": "38880.3",
+        "contributor_count": "42",
         "jurisdiction": "District"
     },
     {
@@ -301,8 +301,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Council San Diego - Dist 7",
-        "total_contributions": "235151",
-        "contributor_count": "452",
+        "total_contributions": "243580.76",
+        "contributor_count": "467",
         "jurisdiction": "District"
     },
     {
@@ -317,7 +317,7 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "City Council San Diego - Dist 7",
-        "total_contributions": "108437",
+        "total_contributions": "108437.21",
         "contributor_count": "230",
         "jurisdiction": "District"
     },
@@ -333,7 +333,7 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "City Council San Diego - Dist 7",
-        "total_contributions": "49653",
+        "total_contributions": "49652.57",
         "contributor_count": "166",
         "jurisdiction": "District"
     },
@@ -349,8 +349,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Council San Diego - Dist 7",
-        "total_contributions": "466440",
-        "contributor_count": "894",
+        "total_contributions": "466440.20",
+        "contributor_count": "893",
         "jurisdiction": "District"
     },
     {
@@ -365,7 +365,7 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Council San Diego - Dist 9",
-        "total_contributions": "124786",
+        "total_contributions": "124785.88",
         "contributor_count": "157",
         "jurisdiction": "District"
     },
@@ -397,7 +397,7 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Council San Diego - Dist 9",
-        "total_contributions": "140280",
+        "total_contributions": "140289.45",
         "contributor_count": "400",
         "jurisdiction": "District"
     },
@@ -413,7 +413,7 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "City Council San Diego - Dist 9",
-        "total_contributions": "2601",
+        "total_contributions": "2601.45",
         "contributor_count": "1",
         "jurisdiction": "District"
     },
@@ -429,8 +429,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": false,
         "full_office_name": "City Council San Diego - Dist 9",
-        "total_contributions": "14736",
-        "contributor_count": "38",
+        "total_contributions": "14736.36",
+        "contributor_count": "37",
         "jurisdiction": "District"
     },
     {
@@ -461,7 +461,7 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Attorney San Diego",
-        "total_contributions": "261672",
+        "total_contributions": "261672.83",
         "contributor_count": "161",
         "jurisdiction": "City"
     },
@@ -477,8 +477,8 @@ export const candidateItems: Candidate[] = [
         "year": "2020",
         "in_general_election": true,
         "full_office_name": "City Attorney San Diego",
-        "total_contributions": "591416",
-        "contributor_count": "749",
+        "total_contributions": "591414.90",
+        "contributor_count": "748",
         "jurisdiction": "City"
     }
 ];

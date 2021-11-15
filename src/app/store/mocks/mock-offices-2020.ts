@@ -7,7 +7,7 @@ export const officeItems: Office[] = [
         "has_districts": false,
         "districts": [],
         "year": "2020",
-        "total_raised": "5397372"
+        "total_raised": "5562638.56"
     },
     {
         "office": "City Council",
@@ -21,7 +21,7 @@ export const officeItems: Office[] = [
             "9"
         ],
         "year": "2020",
-        "total_raised": "3411601"
+        "total_raised": "3717484.85"
     },
     {
         "office": "City Attorney",
@@ -29,6 +29,6 @@ export const officeItems: Office[] = [
         "has_districts": false,
         "districts": [],
         "year": "2020",
-        "total_raised": "779681"
+        "total_raised": "853087.73"
     }
 ];

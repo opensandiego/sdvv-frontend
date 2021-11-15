@@ -21,11 +21,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "City Council Candidate",
-                "amount": "18685"
+                "amount": "18684.6"
             },
             {
                 "name": "Retired",
-                "amount": "10143"
+                "amount": "10143.00"
             },
             {
                 "name": "Physician",
@@ -33,7 +33,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Owner",
-                "amount": "3053"
+                "amount": "3053.45"
             },
             {
                 "name": "Consultant",
@@ -49,7 +49,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Manager",
-                "amount": "1852"
+                "amount": "1851.83"
             },
             {
                 "name": "Homemaker",
@@ -65,7 +65,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Scientist",
-                "amount": "1400"
+                "amount": "1400.00"
             },
             {
                 "name": "Executive",
@@ -103,7 +103,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "City of San Diego",
-                "amount": "19886"
+                "amount": "19885.6"
             },
             {
                 "name": "Scripps Health",
@@ -167,7 +167,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Raytheon",
-                "amount": "600"
+                "amount": "600.00"
             },
             {
                 "name": "California American Water",
@@ -188,7 +188,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Chief Executive Officer",
-                "amount": "320903"
+                "amount": "320902.58"
             },
             {
                 "name": "Not Employed",
@@ -250,7 +250,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "SJN Consulting",
-                "amount": "320303"
+                "amount": "320302.58"
             },
             {
                 "name": "Bridgewest",
@@ -327,7 +327,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Unemployed",
-                "amount": "4560"
+                "amount": "4561.92"
             },
             {
                 "name": "CEO",
@@ -409,7 +409,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "Unemployed",
-                "amount": "4560"
+                "amount": "4561.92"
             },
             {
                 "name": "Not Employed",
@@ -602,7 +602,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "City Council Candidate",
-                "amount": "9477"
+                "amount": "9476.7"
             },
             {
                 "name": "Retired",
@@ -684,7 +684,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "City of San Diego",
-                "amount": "9477"
+                "amount": "9476.7"
             },
             {
                 "name": "Northrop Grumman",
@@ -774,7 +774,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Analyst",
-                "amount": "12605"
+                "amount": "12855"
             },
             {
                 "name": "Retired",
@@ -856,7 +856,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "City of San Diego",
-                "amount": "14205"
+                "amount": "14455"
             },
             {
                 "name": "Retired",
@@ -941,7 +941,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Management Consultant",
-                "amount": "27122"
+                "amount": "27122.3"
             },
             {
                 "name": "Not Employed",
@@ -1023,7 +1023,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "Booz Allen Hamilton",
-                "amount": "27122"
+                "amount": "27122.3"
             },
             {
                 "name": "Tansco, Inc.",
@@ -1225,17 +1225,17 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Business Owner",
-                "amount": "2977"
+                "amount": "2977.05"
             },
             {
                 "name": "Small Business Owner",
-                "amount": "-376"
+                "amount": "-375.6"
             }
         ],
         "employers": [
             {
                 "name": "Self",
-                "amount": "2601"
+                "amount": "2601.45"
             }
         ]
     },
@@ -1244,7 +1244,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Scientist",
-                "amount": "6830"
+                "amount": "6830.26"
             },
             {
                 "name": "Retired",
@@ -1280,7 +1280,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "None",
-                "amount": "323"
+                "amount": "323.45"
             },
             {
                 "name": "Student",
@@ -1326,7 +1326,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "Self",
-                "amount": "7205"
+                "amount": "7205.26"
             },
             {
                 "name": "Chinese Community Church",
@@ -1391,7 +1391,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Attorney",
-                "amount": "71062"
+                "amount": "71062.21"
             },
             {
                 "name": "Retired",
@@ -1473,7 +1473,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "Monty McIntyre",
-                "amount": "32777"
+                "amount": "32777.21"
             },
             {
                 "name": "Neil, Dymott & Frank et al",
@@ -1562,7 +1562,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Not Employed",
-                "amount": "8136"
+                "amount": "8135.23"
             },
             {
                 "name": "Attorney",
@@ -1828,7 +1828,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Retired",
-                "amount": "102237"
+                "amount": "102243.9"
             },
             {
                 "name": "Real Estate",
@@ -2011,7 +2011,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Insurance Agent",
-                "amount": "589"
+                "amount": "589.12"
             },
             {
                 "name": "Technology Prognosticator",
@@ -2093,7 +2093,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Ideal Choice Ins",
-                "amount": "589"
+                "amount": "589.12"
             },
             {
                 "name": "Ruby White Enterprises Inc.",
@@ -2162,11 +2162,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Attorney",
-                "amount": "201885"
+                "amount": "202041.73"
             },
             {
                 "name": "Retired",
-                "amount": "26387"
+                "amount": "26387.22"
             },
             {
                 "name": "CEO",
@@ -2182,7 +2182,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Executive Director",
-                "amount": "1207"
+                "amount": "1207.22"
             },
             {
                 "name": "VP, General Counsel",
@@ -2244,7 +2244,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "Self; Briggs Law Corporation",
-                "amount": "193510"
+                "amount": "193666.73"
             },
             {
                 "name": "Blackbird Ventures",
@@ -2320,7 +2320,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Partnership for the Advancement of New Americans",
-                "amount": "914"
+                "amount": "914.44"
             }
         ]
     },
@@ -2329,43 +2329,43 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Attorney",
-                "amount": "137500"
+                "amount": "144950"
             },
             {
                 "name": "Retired",
-                "amount": "57320"
+                "amount": "67069.56"
             },
             {
                 "name": "President",
-                "amount": "23045"
+                "amount": "25044.4"
             },
             {
                 "name": "CEO",
-                "amount": "20600"
+                "amount": "22250.00"
             },
             {
                 "name": "Lawyer",
-                "amount": "17325"
+                "amount": "19825"
             },
             {
                 "name": "Homemaker",
-                "amount": "17022"
+                "amount": "18172.35"
             },
             {
                 "name": "Owner",
-                "amount": "16158"
+                "amount": "16157.5"
             },
             {
                 "name": "Real Estate",
-                "amount": "12550"
+                "amount": "13650"
+            },
+            {
+                "name": "Consultant",
+                "amount": "8500"
             },
             {
                 "name": "Not Employed",
                 "amount": "8198"
-            },
-            {
-                "name": "Consultant",
-                "amount": "7150"
             },
             {
                 "name": "Principal",
@@ -2374,6 +2374,10 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             {
                 "name": "Chairman",
                 "amount": "5600"
+            },
+            {
+                "name": "Vice President",
+                "amount": "4850"
             },
             {
                 "name": "Executive",
@@ -2392,10 +2396,6 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "3600"
             },
             {
-                "name": "Vice President",
-                "amount": "3200"
-            },
-            {
                 "name": "Engineer",
                 "amount": "3050"
             },
@@ -2411,7 +2411,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "City of San Diego",
-                "amount": "10601"
+                "amount": "11451"
             },
             {
                 "name": "Evans Hotels",
@@ -2419,7 +2419,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Procopio Cory Hargreaves & Savitch LLP",
-                "amount": "7450"
+                "amount": "7950"
             },
             {
                 "name": "ColRich",
@@ -2431,15 +2431,15 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Southwest Strategies",
-                "amount": "4600"
+                "amount": "4700"
             },
             {
                 "name": "County of San Diego",
-                "amount": "4350"
+                "amount": "4400"
             },
             {
                 "name": "SDG&E",
-                "amount": "3801"
+                "amount": "3801.09"
             },
             {
                 "name": "RJS Law",
@@ -2450,6 +2450,10 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "3550"
             },
             {
+                "name": "Blanchard, Krasner & French",
+                "amount": "3500"
+            },
+            {
                 "name": "Rhodes Properties",
                 "amount": "3450"
             },
@@ -2458,8 +2462,12 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "3450"
             },
             {
-                "name": "Blanchard, Krasner & French",
-                "amount": "3300"
+                "name": "Baron & Budd",
+                "amount": "3450"
+            },
+            {
+                "name": "Kimball, Tirey & St John LLP",
+                "amount": "3000"
             },
             {
                 "name": "Procopio",
@@ -2467,27 +2475,19 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Gomez Trial Attorneys",
-                "amount": "2900"
+                "amount": "2900.00"
             },
             {
-                "name": "Casey Gerry Schenk at al, LLP",
-                "amount": "2800"
+                "name": "Atlantis Group",
+                "amount": "2850"
             },
             {
                 "name": "Interpreters Unlimited",
                 "amount": "2800"
             },
             {
-                "name": "Blood Hurst & O'Reardon, LLP",
-                "amount": "2700"
-            },
-            {
-                "name": "Terra Vista Management, Inc.",
-                "amount": "2600"
-            },
-            {
-                "name": "Hecht Solberg Robinson",
-                "amount": "2550"
+                "name": "Casey Gerry Schenk at al, LLP",
+                "amount": "2800"
             }
         ]
     },
@@ -2496,7 +2496,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Attorney",
-                "amount": "275811"
+                "amount": "275809.98"
             },
             {
                 "name": "Retired",
@@ -2528,7 +2528,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Principal",
-                "amount": "3287"
+                "amount": "3286.5"
             },
             {
                 "name": "Real Estate",
@@ -2663,132 +2663,136 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Retired",
-                "amount": "96088"
+                "amount": "102129"
             },
             {
                 "name": "Attorney",
-                "amount": "11588"
+                "amount": "12675"
             },
             {
                 "name": "Architect",
-                "amount": "8250"
+                "amount": "8450"
             },
             {
                 "name": "Real Estate",
-                "amount": "7149"
-            },
-            {
-                "name": "Owner",
-                "amount": "5924"
-            },
-            {
-                "name": "Chief Executive Officer",
-                "amount": "5500"
+                "amount": "7500"
             },
             {
                 "name": "President",
-                "amount": "4850"
+                "amount": "6900"
+            },
+            {
+                "name": "Chief Executive Officer",
+                "amount": "6400"
+            },
+            {
+                "name": "Owner",
+                "amount": "5275"
             },
             {
                 "name": "Consultant",
-                "amount": "4617"
-            },
-            {
-                "name": "Professor",
-                "amount": "2800"
-            },
-            {
-                "name": "Teacher",
-                "amount": "2790"
-            },
-            {
-                "name": "Physician",
-                "amount": "2600"
+                "amount": "4771.66"
             },
             {
                 "name": "Student",
-                "amount": "2400"
+                "amount": "3000"
             },
             {
-                "name": "Commercial Real Estate",
-                "amount": "1825"
+                "name": "Teacher",
+                "amount": "2650"
+            },
+            {
+                "name": "Physician",
+                "amount": "2650"
+            },
+            {
+                "name": "Professor",
+                "amount": "2350"
             },
             {
                 "name": "Investor",
-                "amount": "1600"
+                "amount": "2200"
             },
             {
                 "name": "Homemaker",
-                "amount": "1525"
-            },
-            {
-                "name": "Director",
-                "amount": "1453"
-            },
-            {
-                "name": "Executive Director",
-                "amount": "1450"
-            },
-            {
-                "name": "Real Estate Agent",
-                "amount": "1400"
-            },
-            {
-                "name": "Engineer",
-                "amount": "1400"
+                "amount": "1950"
             },
             {
                 "name": "Principal",
-                "amount": "1399"
+                "amount": "1850"
+            },
+            {
+                "name": "Commercial Real Estate",
+                "amount": "1800"
+            },
+            {
+                "name": "Real Estate Development",
+                "amount": "1700"
+            },
+            {
+                "name": "Executive",
+                "amount": "1650"
+            },
+            {
+                "name": "Executive Director",
+                "amount": "1600"
+            },
+            {
+                "name": "Vice President",
+                "amount": "1566"
             }
         ],
         "employers": [
             {
                 "name": "Retired",
-                "amount": "5675"
+                "amount": "8045"
             },
             {
                 "name": "Southwest Strategies",
                 "amount": "3200"
             },
             {
+                "name": "Sudberry Properties",
+                "amount": "3000"
+            },
+            {
                 "name": "Monarch Group",
                 "amount": "2900"
-            },
-            {
-                "name": "University California San Diego",
-                "amount": "2400"
-            },
-            {
-                "name": "Sudberry Properties",
-                "amount": "2400"
             },
             {
                 "name": "Torrey Holistics",
                 "amount": "2300"
             },
             {
+                "name": "University California San Diego",
+                "amount": "2200"
+            },
+            {
                 "name": "Tom Shepard & Associates",
-                "amount": "2163"
+                "amount": "2163.31"
             },
             {
                 "name": "KDTD INC",
                 "amount": "1800"
             },
             {
+                "name": "City of San Diego",
+                "amount": "1475"
+            },
+            {
                 "name": "Patton Thickstun, APC",
                 "amount": "1400"
             },
             {
-                "name": "Pacific Coast Commercial",
-                "amount": "1225"
+                "name": "Island Architects",
+                "amount": "1400"
             },
             {
                 "name": "Gafcon, Inc.",
                 "amount": "1200"
             },
             {
-                "name": "Blumenthal, Nordrehaug, Bhowmik",
+                "name": "Mark Teles",
                 "amount": "1200"
             },
             {
@@ -2796,31 +2800,27 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1200"
             },
             {
-                "name": "KDTD, Inc.",
+                "name": "LJMJM",
                 "amount": "1200"
             },
             {
-                "name": "Hilley Ventures, Inc.",
+                "name": "Evans Hotels",
                 "amount": "1200"
             },
             {
-                "name": "Pierce Education Properties",
+                "name": "Pacific Coast Commercial",
                 "amount": "1200"
             },
             {
-                "name": "Brownstein, Hyatt Farber, Schreck",
+                "name": "Parker Legal Group",
                 "amount": "1200"
             },
             {
-                "name": "Protea Capital partners",
+                "name": "Browar Development Corp.",
                 "amount": "1200"
             },
             {
-                "name": "CVUSD",
-                "amount": "1200"
-            },
-            {
-                "name": "El Dorado Properties",
+                "name": "Blumenthal, Nordrehaug, Bhowmik",
                 "amount": "1200"
             }
         ]
@@ -2854,7 +2854,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "CEO",
-                "amount": "2215"
+                "amount": "2215.46"
             },
             {
                 "name": "Vice President",
@@ -2894,7 +2894,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Scientist",
-                "amount": "820"
+                "amount": "820.2"
             },
             {
                 "name": "Researcher",
@@ -2916,11 +2916,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "State of California",
-                "amount": "2199"
+                "amount": "2198.68"
             },
             {
                 "name": "University of California San Diego",
-                "amount": "2132"
+                "amount": "2132.2"
             },
             {
                 "name": "United States House of Representatives",
@@ -2997,7 +2997,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Retired",
-                "amount": "34079"
+                "amount": "34079.00"
             },
             {
                 "name": "Director",
@@ -3005,7 +3005,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Attorney",
-                "amount": "16525"
+                "amount": "16625"
             },
             {
                 "name": "Not Employed",
@@ -3016,12 +3016,12 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "6751"
             },
             {
-                "name": "Chief Executive Officer",
+                "name": "President",
                 "amount": "4050"
             },
             {
-                "name": "President",
-                "amount": "3800"
+                "name": "Chief Executive Officer",
+                "amount": "4050"
             },
             {
                 "name": "Physician",
@@ -3044,12 +3044,12 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1800"
             },
             {
-                "name": "Manager",
+                "name": "Executive Director",
                 "amount": "1750"
             },
             {
-                "name": "Executive Director",
-                "amount": "1650"
+                "name": "Manager",
+                "amount": "1750"
             },
             {
                 "name": "Scientist",
@@ -3068,11 +3068,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1250"
             },
             {
-                "name": "Founder/Consultant",
+                "name": "Lawyer",
                 "amount": "1200"
             },
             {
-                "name": "Business Owner",
+                "name": "Programmer",
                 "amount": "1200"
             }
         ],
@@ -3090,23 +3090,23 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "2400"
             },
             {
+                "name": "Southwest Strategies",
+                "amount": "1900"
+            },
+            {
                 "name": "UC San Diego",
                 "amount": "1850"
             },
             {
                 "name": "City of San Diego",
-                "amount": "1510"
-            },
-            {
-                "name": "Southwest Strategies",
-                "amount": "1300"
+                "amount": "1610"
             },
             {
                 "name": "Lewis Hoxie & Spear, APLC",
                 "amount": "1200"
             },
             {
-                "name": "LabVoice, Inc.",
+                "name": "Law Office of Eric Alan Isaacson",
                 "amount": "1200"
             },
             {
@@ -3118,6 +3118,18 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1200"
             },
             {
+                "name": "Bluewater Property Services",
+                "amount": "1200"
+            },
+            {
+                "name": "LabVoice, Inc.",
+                "amount": "1200"
+            },
+            {
+                "name": "Clarke Johnston Thorp & Rice",
+                "amount": "1200"
+            },
+            {
                 "name": "HG Fenton",
                 "amount": "1200"
             },
@@ -3126,23 +3138,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1200"
             },
             {
-                "name": "Clarke Johnston Thorp & Rice",
-                "amount": "1200"
-            },
-            {
-                "name": "Law Office of Eric Alan Isaacson",
-                "amount": "1200"
-            },
-            {
                 "name": "Rath Public Affairs",
                 "amount": "1200"
             },
             {
                 "name": "Duane Morris",
-                "amount": "1200"
-            },
-            {
-                "name": "Bluewater Property Services",
                 "amount": "1200"
             },
             {
@@ -3163,68 +3163,68 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "id": "57a4d86c-f92a-f055-c919-7595c4300458|2020",
         "occupations": [
             {
-                "name": "Retired",
-                "amount": "62803"
+                "name": "Attorney",
+                "amount": "71760"
             },
             {
-                "name": "Attorney",
-                "amount": "46610"
+                "name": "Retired",
+                "amount": "66279.10"
             },
             {
                 "name": "President",
-                "amount": "22668"
+                "amount": "23668"
             },
             {
                 "name": "Real Estate",
-                "amount": "20636"
-            },
-            {
-                "name": "CEO",
-                "amount": "16725"
+                "amount": "23210.95"
             },
             {
                 "name": "Homemaker",
-                "amount": "16150"
+                "amount": "17075"
+            },
+            {
+                "name": "CEO",
+                "amount": "17025"
             },
             {
                 "name": "Owner",
-                "amount": "14605"
+                "amount": "16630"
             },
             {
                 "name": "Lawyer",
-                "amount": "8800"
+                "amount": "9100"
             },
             {
                 "name": "Business Owner",
-                "amount": "8700"
+                "amount": "8900"
             },
             {
                 "name": "Consultant",
-                "amount": "8484"
-            },
-            {
-                "name": "Manager",
-                "amount": "6975"
+                "amount": "8784"
             },
             {
                 "name": "Real Estate Investor",
-                "amount": "6450"
+                "amount": "8250"
+            },
+            {
+                "name": "Manager",
+                "amount": "7600"
             },
             {
                 "name": "Sales",
-                "amount": "5728"
+                "amount": "5828"
             },
             {
                 "name": "Principal",
-                "amount": "4900"
+                "amount": "5500"
+            },
+            {
+                "name": "Real Estate Developer",
+                "amount": "3850"
             },
             {
                 "name": "Physician",
                 "amount": "3800"
-            },
-            {
-                "name": "Real Estate Developer",
-                "amount": "3750"
             },
             {
                 "name": "CPA",
@@ -3232,18 +3232,22 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "President & CEO",
-                "amount": "3250"
+                "amount": "3350"
             },
             {
                 "name": "Home Builder",
                 "amount": "3150"
             },
             {
-                "name": "Chairman",
+                "name": "Businessman",
                 "amount": "3000"
             }
         ],
         "employers": [
+            {
+                "name": "Dinsmore and Shohl",
+                "amount": "23750"
+            },
             {
                 "name": "Dinsmore & Shohl",
                 "amount": "4250"
@@ -3277,6 +3281,10 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "2400"
             },
             {
+                "name": "Procopio",
+                "amount": "2250"
+            },
+            {
                 "name": "Qualcomm",
                 "amount": "2175"
             },
@@ -3289,40 +3297,32 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "2040"
             },
             {
+                "name": "Antonyan Miranda",
+                "amount": "2000"
+            },
+            {
                 "name": "Cooley LLP",
                 "amount": "2000"
             },
             {
-                "name": "Antonyan Miranda",
-                "amount": "1900"
+                "name": "US Dept of Justice",
+                "amount": "1850"
+            },
+            {
+                "name": "City of San Diego",
+                "amount": "1803"
+            },
+            {
+                "name": "33North Development Group",
+                "amount": "1800"
             },
             {
                 "name": "Ware Disposal",
                 "amount": "1800"
             },
             {
-                "name": "City of San Diego",
-                "amount": "1793"
-            },
-            {
-                "name": "US Dept of Justice",
-                "amount": "1750"
-            },
-            {
-                "name": "Procopio",
-                "amount": "1750"
-            },
-            {
                 "name": "Cavignac and Associates",
                 "amount": "1700"
-            },
-            {
-                "name": "Presidio PAG Inc",
-                "amount": "1650"
-            },
-            {
-                "name": "Klinedinst PC",
-                "amount": "1550"
             }
         ]
     },
@@ -3331,89 +3331,89 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Retired",
-                "amount": "46530"
+                "amount": "50005"
             },
             {
                 "name": "Attorney",
-                "amount": "45611"
+                "amount": "48277"
             },
             {
                 "name": "Lawyer",
-                "amount": "8525"
+                "amount": "8625.0"
             },
             {
                 "name": "Not Employed",
-                "amount": "7747"
+                "amount": "8122.5"
+            },
+            {
+                "name": "President",
+                "amount": "6500"
+            },
+            {
+                "name": "Chief Executive Officer",
+                "amount": "5905"
+            },
+            {
+                "name": "Real Estate",
+                "amount": "5750"
             },
             {
                 "name": "Engineer",
                 "amount": "5654"
             },
             {
-                "name": "President",
-                "amount": "4250"
-            },
-            {
-                "name": "Real Estate",
-                "amount": "3750"
-            },
-            {
-                "name": "Chief Executive Officer",
-                "amount": "3680"
+                "name": "Homemaker",
+                "amount": "5165"
             },
             {
                 "name": "Physician",
-                "amount": "3425"
-            },
-            {
-                "name": "Homemaker",
-                "amount": "3390"
+                "amount": "4050"
             },
             {
                 "name": "Executive Director",
-                "amount": "3125"
+                "amount": "3175"
             },
             {
                 "name": "Law Professor",
                 "amount": "3000"
             },
             {
+                "name": "Owner",
+                "amount": "2975"
+            },
+            {
                 "name": "Scientist",
-                "amount": "2597"
+                "amount": "2617"
             },
             {
                 "name": "Co-Founder/Sr Partner",
                 "amount": "2400"
             },
             {
+                "name": "Consultant",
+                "amount": "2300"
+            },
+            {
                 "name": "Public Affairs",
                 "amount": "2200"
             },
             {
-                "name": "Vice President",
+                "name": "Program Manager",
+                "amount": "2130"
+            },
+            {
+                "name": "Public Relations",
                 "amount": "2100"
             },
             {
-                "name": "Owner",
-                "amount": "2075"
-            },
-            {
-                "name": "Director",
-                "amount": "2050"
-            },
-            {
-                "name": "Councilmember",
-                "amount": "1900"
-            },
-            {
-                "name": "Software Engineer",
-                "amount": "1800"
+                "name": "Vice President",
+                "amount": "2100"
             }
         ],
         "employers": [
             {
                 "name": "City of San Diego",
-                "amount": "10387"
+                "amount": "10712"
             },
             {
                 "name": "Monarch Group",
@@ -3429,7 +3429,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "UC San Diego",
-                "amount": "2270"
+                "amount": "2320"
             },
             {
                 "name": "ThreeSixty Public Strategies",
@@ -3441,6 +3441,10 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Southwest Strategies",
+                "amount": "1800"
+            },
+            {
+                "name": "Sudberry Properties",
                 "amount": "1800"
             },
             {
@@ -3456,19 +3460,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1350"
             },
             {
+                "name": "Masimo",
+                "amount": "1200"
+            },
+            {
                 "name": "Gafcon Inc",
-                "amount": "1200"
-            },
-            {
-                "name": "General Atomics ASI",
-                "amount": "1200"
-            },
-            {
-                "name": "New Venture Fund",
-                "amount": "1200"
-            },
-            {
-                "name": "The Scripps Research Institute",
                 "amount": "1200"
             },
             {
@@ -3476,19 +3472,23 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1200"
             },
             {
+                "name": "New Venture Fund",
+                "amount": "1200"
+            },
+            {
                 "name": "Apple",
                 "amount": "1200"
             },
             {
-                "name": "Integrated Labor Solutions",
+                "name": "General Atomics ASI",
                 "amount": "1200"
             },
             {
-                "name": "Law Office of Eric Alan Isaacson",
+                "name": "Law Offices of Nicholas Rowley",
                 "amount": "1200"
             },
             {
-                "name": "Masimo",
+                "name": "Atry Pharma",
                 "amount": "1200"
             }
         ]
@@ -3498,23 +3498,27 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Retired",
-                "amount": "74818"
+                "amount": "79643"
             },
             {
                 "name": "President",
-                "amount": "39125"
+                "amount": "41375"
+            },
+            {
+                "name": "Partner",
+                "amount": "26451.34"
             },
             {
                 "name": "CEO",
-                "amount": "21430"
+                "amount": "21880"
             },
             {
                 "name": "Attorney",
-                "amount": "17715"
+                "amount": "19315"
             },
             {
                 "name": "Owner",
-                "amount": "16059"
+                "amount": "19009"
             },
             {
                 "name": "Homemaker",
@@ -3522,11 +3526,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Principal",
-                "amount": "9675"
+                "amount": "9750"
             },
             {
                 "name": "Real Estate",
-                "amount": "9074"
+                "amount": "9324"
             },
             {
                 "name": "Chairman",
@@ -3538,7 +3542,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Physician",
-                "amount": "5750"
+                "amount": "6000"
             },
             {
                 "name": "Vice President",
@@ -3549,12 +3553,12 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "3725"
             },
             {
-                "name": "Partner",
-                "amount": "3449"
+                "name": "Realtor",
+                "amount": "3526"
             },
             {
-                "name": "Realtor",
-                "amount": "3326"
+                "name": "Business Owner",
+                "amount": "3200"
             },
             {
                 "name": "CEO & President",
@@ -3562,7 +3566,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Manager",
-                "amount": "2532"
+                "amount": "2632"
             },
             {
                 "name": "Office Manager",
@@ -3571,13 +3575,13 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             {
                 "name": "Sales",
                 "amount": "2375"
-            },
-            {
-                "name": "Civil Engineer",
-                "amount": "2200"
             }
         ],
         "employers": [
+            {
+                "name": "Dirty Birds",
+                "amount": "23551.34"
+            },
             {
                 "name": "Cohn Restaurant Group",
                 "amount": "4350"
@@ -3592,18 +3596,22 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "County of San Diego",
-                "amount": "3475"
+                "amount": "3725"
+            },
+            {
+                "name": "RJS Law",
+                "amount": "2900"
             },
             {
                 "name": "Superior Ready Mix",
                 "amount": "2500"
             },
             {
-                "name": "Rio Hondo Medical Group",
+                "name": "Lansing Companies",
                 "amount": "2400"
             },
             {
-                "name": "H.G. Fenton Company",
+                "name": "Rio Hondo Medical Group",
                 "amount": "2400"
             },
             {
@@ -3611,24 +3619,24 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "2400"
             },
             {
+                "name": "H.G. Fenton Company",
+                "amount": "2400"
+            },
+            {
                 "name": "Kaiser Permanente",
                 "amount": "2400"
             },
             {
-                "name": "RJS Law",
-                "amount": "2400"
-            },
-            {
-                "name": "Lansing Companies",
-                "amount": "2400"
-            },
-            {
-                "name": "City of San Diego",
-                "amount": "2150"
-            },
-            {
                 "name": "HG Fenton Company",
                 "amount": "2150"
+            },
+            {
+                "name": "University of San Diego",
+                "amount": "2050"
+            },
+            {
+                "name": "Southwest Strategies",
+                "amount": "1950"
             },
             {
                 "name": "Pacific Property Services",
@@ -3636,10 +3644,6 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Phil's BBQ",
-                "amount": "1800"
-            },
-            {
-                "name": "University of San Diego",
                 "amount": "1800"
             },
             {
@@ -3653,10 +3657,6 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             {
                 "name": "Newland Real Estate Group",
                 "amount": "1550"
-            },
-            {
-                "name": "Cavignac & Associates",
-                "amount": "1450"
             }
         ]
     },
@@ -3665,54 +3665,62 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Attorney",
-                "amount": "32812"
+                "amount": "35477"
             },
             {
                 "name": "Lawyer",
-                "amount": "11010"
+                "amount": "11360"
             },
             {
                 "name": "Retired",
-                "amount": "8873"
-            },
-            {
-                "name": "Not Employed",
-                "amount": "3945"
-            },
-            {
-                "name": "Deputy City Attorney",
-                "amount": "3940"
-            },
-            {
-                "name": "CEO",
-                "amount": "3900"
+                "amount": "9473"
             },
             {
                 "name": "Consultant",
-                "amount": "3040"
+                "amount": "6240"
+            },
+            {
+                "name": "Not Employed",
+                "amount": "5535"
+            },
+            {
+                "name": "CEO",
+                "amount": "5350"
+            },
+            {
+                "name": "Deputy City Attorney",
+                "amount": "3940.05"
+            },
+            {
+                "name": "Real Estate",
+                "amount": "3900"
             },
             {
                 "name": "Realtor",
                 "amount": "2600"
             },
             {
-                "name": "Real Estate",
-                "amount": "2450"
+                "name": "Principal",
+                "amount": "1900"
+            },
+            {
+                "name": "COO",
+                "amount": "1500"
             },
             {
                 "name": "Associate",
                 "amount": "1500"
             },
             {
-                "name": "Principal",
-                "amount": "1300"
+                "name": "President",
+                "amount": "1400"
             },
             {
                 "name": "Client Services Associate",
                 "amount": "1300"
             },
             {
-                "name": "Media Director",
+                "name": "Manager",
                 "amount": "1200"
             },
             {
@@ -3724,42 +3732,34 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1200"
             },
             {
+                "name": "CEO/Owner",
+                "amount": "1200"
+            },
+            {
+                "name": "Media Director",
+                "amount": "1200"
+            },
+            {
                 "name": "Broker",
-                "amount": "1050"
-            },
-            {
-                "name": "Teacher",
-                "amount": "1000"
-            },
-            {
-                "name": "Marketing",
-                "amount": "850"
-            },
-            {
-                "name": "Banker",
-                "amount": "700"
-            },
-            {
-                "name": "Insurance",
-                "amount": "700"
+                "amount": "1150"
             }
         ],
         "employers": [
             {
-                "name": "O'Melveny & Myers LLP",
-                "amount": "14775"
+                "name": "Not Employed",
+                "amount": "15783"
             },
             {
-                "name": "Not Employed",
-                "amount": "13593"
+                "name": "O'Melveny & Myers LLP",
+                "amount": "15175"
             },
             {
                 "name": "Self-employed",
-                "amount": "7200"
+                "amount": "7600"
             },
             {
                 "name": "City of San Diego",
-                "amount": "4890"
+                "amount": "4890.05"
             },
             {
                 "name": "Scott Canel & Associates",
@@ -3774,15 +3774,27 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1800"
             },
             {
+                "name": "March and Ash",
+                "amount": "1800"
+            },
+            {
                 "name": "Alejandro O. Campillo, APLC",
                 "amount": "1775"
+            },
+            {
+                "name": "Southwest Strategies",
+                "amount": "1300"
+            },
+            {
+                "name": "Lyle & Grace Real Estate Professionals",
+                "amount": "1200"
             },
             {
                 "name": "MexLog",
                 "amount": "1200"
             },
             {
-                "name": "Unicare Systems",
+                "name": "Kendall Brill & Kelly LLP",
                 "amount": "1200"
             },
             {
@@ -3790,19 +3802,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1200"
             },
             {
-                "name": "Bluewater Property Services",
-                "amount": "1200"
-            },
-            {
-                "name": "Lyle & Grace Real Estate Professionals",
-                "amount": "1200"
-            },
-            {
-                "name": "Brain Power",
-                "amount": "1200"
-            },
-            {
                 "name": "KMS Strategic Consulting LLC",
+                "amount": "1200"
+            },
+            {
+                "name": "Realty Source Inc",
                 "amount": "1200"
             },
             {
@@ -3814,15 +3818,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1200"
             },
             {
+                "name": "Bluewater Property Services",
+                "amount": "1200"
+            },
+            {
                 "name": "IBI Group",
-                "amount": "1200"
-            },
-            {
-                "name": "Kendall Brill & Kelly LLP",
-                "amount": "1200"
-            },
-            {
-                "name": "Realty Source Inc",
                 "amount": "1200"
             }
         ]
@@ -3832,7 +3832,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Director of Policy & Community Engagement",
-                "amount": "22200"
+                "amount": "25653.1"
             },
             {
                 "name": "CEO",
@@ -3914,7 +3914,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "Laborers Local 89",
-                "amount": "24805"
+                "amount": "28258.1"
             },
             {
                 "name": "Southwest Strategies",
@@ -3998,109 +3998,121 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "id": "8f7705a5-edf9-4c9d-879c-64de6455cf6c|2020",
         "occupations": [
             {
-                "name": "Retired",
-                "amount": "9300"
+                "name": "Attorney",
+                "amount": "10675.2"
             },
             {
-                "name": "Attorney",
-                "amount": "6435"
+                "name": "Retired",
+                "amount": "10150"
             },
             {
                 "name": "President",
-                "amount": "4275"
-            },
-            {
-                "name": "Executive Director",
-                "amount": "2978"
-            },
-            {
-                "name": "Not Employed",
-                "amount": "2920"
+                "amount": "7925"
             },
             {
                 "name": "Chief Executive Officer",
-                "amount": "2770"
+                "amount": "6070"
             },
             {
                 "name": "Real Estate",
-                "amount": "2500"
+                "amount": "5950"
+            },
+            {
+                "name": "President/CEO",
+                "amount": "4000"
+            },
+            {
+                "name": "Not Employed",
+                "amount": "3865.4"
+            },
+            {
+                "name": "Homemaker",
+                "amount": "3700"
+            },
+            {
+                "name": "Director",
+                "amount": "3075"
+            },
+            {
+                "name": "Executive Director",
+                "amount": "3027.85"
+            },
+            {
+                "name": "Chief Operating Officer",
+                "amount": "2950"
+            },
+            {
+                "name": "Consultant",
+                "amount": "2235"
             },
             {
                 "name": "Professor",
                 "amount": "2225"
             },
             {
+                "name": "Lawyer",
+                "amount": "2100"
+            },
+            {
                 "name": "Public Affairs",
                 "amount": "2050"
             },
             {
-                "name": "President/CEO",
+                "name": "Owner",
                 "amount": "2050"
             },
             {
                 "name": "Principal",
-                "amount": "1750"
+                "amount": "1850"
             },
             {
-                "name": "Owner",
-                "amount": "1750"
+                "name": "Manager",
+                "amount": "1550"
             },
             {
-                "name": "Consultant",
-                "amount": "1635"
+                "name": "Policy Advisor",
+                "amount": "1540"
             },
             {
-                "name": "Lawyer",
-                "amount": "1600"
-            },
-            {
-                "name": "Chief Operating Officer",
-                "amount": "1600"
-            },
-            {
-                "name": "Director",
-                "amount": "1475"
-            },
-            {
-                "name": "Engineer",
-                "amount": "1200"
-            },
-            {
-                "name": "Congressmember",
-                "amount": "1200"
-            },
-            {
-                "name": "Business Owner",
-                "amount": "1200"
-            },
-            {
-                "name": "Property Management",
-                "amount": "1200"
+                "name": "Partner",
+                "amount": "1492"
             }
         ],
         "employers": [
             {
                 "name": "YouthWill",
-                "amount": "1928"
+                "amount": "1927.85"
             },
             {
                 "name": "Southwest Strategies",
+                "amount": "1550"
+            },
+            {
+                "name": "Affirmed Housing",
                 "amount": "1450"
+            },
+            {
+                "name": "Community HousingWorks",
+                "amount": "1350"
             },
             {
                 "name": "Grossmont College",
                 "amount": "1325"
             },
             {
-                "name": "Monarch Group",
+                "name": "Atlantis Group",
+                "amount": "1300"
+            },
+            {
+                "name": "UC San Diego",
+                "amount": "1256.2"
+            },
+            {
+                "name": "Gafcon Inc",
                 "amount": "1200"
             },
             {
-                "name": "SeaBreeze Vacation Rentals",
-                "amount": "1200"
-            },
-            {
-                "name": "Suncoast Financial",
+                "name": "KD Development",
                 "amount": "1200"
             },
             {
@@ -4108,15 +4120,15 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1200"
             },
             {
-                "name": "US House of Representatives",
+                "name": "Suncoast Financial",
                 "amount": "1200"
             },
             {
-                "name": "710 Beach Rentals",
+                "name": "ECG Management Consultants",
                 "amount": "1200"
             },
             {
-                "name": "Bluewater Property Services",
+                "name": "SeaBreeze Vacation Rentals",
                 "amount": "1200"
             },
             {
@@ -4124,40 +4136,28 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "1200"
             },
             {
-                "name": "UC San Diego",
-                "amount": "1135"
+                "name": "710 Beach Rentals",
+                "amount": "1200"
             },
             {
-                "name": "Community HousingWorks",
-                "amount": "1100"
+                "name": "La Jolla MJ Management",
+                "amount": "1200"
+            },
+            {
+                "name": "Monarch Group",
+                "amount": "1200"
+            },
+            {
+                "name": "Bluewater Property Services",
+                "amount": "1200"
+            },
+            {
+                "name": "US House of Representatives",
+                "amount": "1200"
             },
             {
                 "name": "HG Fenton Company",
                 "amount": "1100"
-            },
-            {
-                "name": "ECG Management Consultants",
-                "amount": "900"
-            },
-            {
-                "name": "Affirmed Housing",
-                "amount": "850"
-            },
-            {
-                "name": "County of San Diego",
-                "amount": "825"
-            },
-            {
-                "name": "Circulate San Diego",
-                "amount": "820"
-            },
-            {
-                "name": "City of San Diego",
-                "amount": "790"
-            },
-            {
-                "name": "Sui Generis Strategies",
-                "amount": "650"
             }
         ]
     },
@@ -4166,19 +4166,19 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Councilmember",
-                "amount": "965329"
+                "amount": "965329.03"
             },
             {
                 "name": "Retired",
-                "amount": "501059"
+                "amount": "501058.54"
             },
             {
                 "name": "Attorney",
-                "amount": "125410"
+                "amount": "125409.57"
             },
             {
                 "name": "Chief Executive Officer",
-                "amount": "108473"
+                "amount": "108473.13"
             },
             {
                 "name": "Not Employed",
@@ -4190,11 +4190,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "President",
-                "amount": "73289"
+                "amount": "73289.16"
             },
             {
                 "name": "Real Estate",
-                "amount": "47808"
+                "amount": "47808.00"
             },
             {
                 "name": "Owner",
@@ -4248,7 +4248,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "City of San Diego",
-                "amount": "969879"
+                "amount": "969879.03"
             },
             {
                 "name": "UC San Diego",
@@ -4283,11 +4283,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "5150"
             },
             {
-                "name": "KD Development",
+                "name": "Avalon Ventures",
                 "amount": "4600"
             },
             {
-                "name": "Avalon Ventures",
+                "name": "KD Development",
                 "amount": "4600"
             },
             {
@@ -4319,11 +4319,11 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
                 "amount": "3500"
             },
             {
-                "name": "Patton Thickstun APC",
+                "name": "Churchill Engineering Inc",
                 "amount": "3450"
             },
             {
-                "name": "Churchill Engineering Inc",
+                "name": "The Broe Group",
                 "amount": "3450"
             }
         ]
@@ -4333,63 +4333,63 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "occupations": [
             {
                 "name": "Retired",
-                "amount": "299837"
+                "amount": "321810.93"
             },
             {
                 "name": "Attorney",
-                "amount": "167550"
+                "amount": "173920.84"
             },
             {
                 "name": "President",
-                "amount": "95790"
+                "amount": "103189.57"
             },
             {
                 "name": "CEO",
-                "amount": "90162"
+                "amount": "100160.27"
             },
             {
                 "name": "Homemaker",
-                "amount": "60468"
-            },
-            {
-                "name": "Principal",
-                "amount": "47533"
+                "amount": "61827.59"
             },
             {
                 "name": "Real Estate",
-                "amount": "46925"
+                "amount": "52574.88"
+            },
+            {
+                "name": "Principal",
+                "amount": "50232.76"
             },
             {
                 "name": "Owner",
-                "amount": "37258"
+                "amount": "39732.81"
             },
             {
                 "name": "President & CEO",
-                "amount": "27363"
-            },
-            {
-                "name": "Physician",
-                "amount": "22020"
+                "amount": "28363"
             },
             {
                 "name": "Vice President",
-                "amount": "21788"
+                "amount": "23737.14"
+            },
+            {
+                "name": "Physician",
+                "amount": "23170"
             },
             {
                 "name": "Partner",
-                "amount": "20760"
-            },
-            {
-                "name": "Architect",
-                "amount": "19106"
+                "amount": "23010"
             },
             {
                 "name": "Not Employed",
-                "amount": "19077"
+                "amount": "20084.2"
+            },
+            {
+                "name": "Architect",
+                "amount": "19606.03"
             },
             {
                 "name": "Executive Director",
-                "amount": "19056"
+                "amount": "19106.38"
             },
             {
                 "name": "Assemblymember",
@@ -4397,15 +4397,15 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Managing Partner",
-                "amount": "13299"
+                "amount": "15599"
             },
             {
                 "name": "Chief Operating Officer",
-                "amount": "12673"
+                "amount": "15072.51"
             },
             {
                 "name": "Professor",
-                "amount": "12339"
+                "amount": "12540.0"
             },
             {
                 "name": "Broker",
@@ -4415,30 +4415,30 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
         "employers": [
             {
                 "name": "State of California",
-                "amount": "26555"
+                "amount": "27055"
             },
             {
                 "name": "City of San Diego",
-                "amount": "21980"
+                "amount": "22496.59"
             },
             {
                 "name": "Kilroy Realty Corporation",
-                "amount": "10700"
+                "amount": "11200"
             },
             {
                 "name": "San Diego Gas & Electric",
-                "amount": "10371"
-            },
-            {
-                "name": "University of California San Diego",
-                "amount": "8825"
-            },
-            {
-                "name": "SD Commercial, LLC",
-                "amount": "8050"
+                "amount": "10370.02"
             },
             {
                 "name": "Evans Hotels",
+                "amount": "10350"
+            },
+            {
+                "name": "University of California San Diego",
+                "amount": "8875"
+            },
+            {
+                "name": "SD Commercial, LLC",
                 "amount": "8050"
             },
             {
@@ -4447,7 +4447,7 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "CBRE",
-                "amount": "7375"
+                "amount": "7725"
             },
             {
                 "name": "Southwest Strategies",
@@ -4455,11 +4455,15 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "University of San Diego",
-                "amount": "7000"
+                "amount": "7200"
             },
             {
                 "name": "The Robert Green Company",
-                "amount": "6662"
+                "amount": "6661.86"
+            },
+            {
+                "name": "ColRich",
+                "amount": "6450"
             },
             {
                 "name": "Sunroad Enterprises",
@@ -4467,31 +4471,27 @@ export const candidateDetailsRaisedByIndustryItems: CandidateDetailsRaisedByGrou
             },
             {
                 "name": "Baldwin & Sons",
-                "amount": "5850"
+                "amount": "6350"
             },
             {
                 "name": "Zephyr Partners",
                 "amount": "5750"
             },
             {
+                "name": "Cushman & Wakefield",
+                "amount": "5600"
+            },
+            {
                 "name": "Community Health Group",
-                "amount": "5525"
+                "amount": "5525.00"
             },
             {
                 "name": "Cox Communications",
                 "amount": "5076"
             },
             {
-                "name": "Cushman & Wakefield",
-                "amount": "5000"
-            },
-            {
                 "name": "RAHD Group",
                 "amount": "4850"
-            },
-            {
-                "name": "San Diego Tourism Authority",
-                "amount": "4815"
             }
         ]
     }
