@@ -11,6 +11,7 @@ import { candidateDetailsRaisedByIndustryItems } from '../mocks/mock-candidate-d
 import { candidateDetailsRaisedByLocationItems } from '../mocks/mock-candidate-details-raised-by-location';
 import { candidateDetailsOutsideMoneyItems } from '../mocks/mock-candidate-details-raised-outside-money';
 import { candidateDetailsRaisedSpentItems } from '../mocks/mock-candidate-details-raised-spent';
+import { electionItems } from '../mocks/mock-elections';
 
 export class InMemoryDataService implements InMemoryDbService {
   
@@ -30,6 +31,7 @@ export class InMemoryDataService implements InMemoryDbService {
       'candidate-details-raised-by-location': candidateDetailsRaisedByLocationItems,
       'candidate-details-raised-outside-money': candidateDetailsOutsideMoneyItems,
       'candidate-details-raised-spent': candidateDetailsRaisedSpentItems,
+      'elections': electionItems,
     };
   }
 }
