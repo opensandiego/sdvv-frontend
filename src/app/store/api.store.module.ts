@@ -13,6 +13,7 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { OfficeSummaryService } from './services/office-summary.service';
 import { OfficeService } from './services/office.service';
 import { LastUpdatedService } from './services/last-updated.service';
+import { ElectionService } from './services/election.service';
 
 @NgModule({
   declarations: [],
@@ -34,6 +35,7 @@ import { LastUpdatedService } from './services/last-updated.service';
     OfficeSummaryService,
     OfficeService,
     LastUpdatedService,
+    ElectionService,
   ],
   exports: [],
 })
