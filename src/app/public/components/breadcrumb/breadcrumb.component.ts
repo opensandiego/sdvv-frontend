@@ -12,8 +12,7 @@ import { CandidateService } from 'src/app/store/services/candidate.service';
 })
 export class BreadcrumbComponent implements OnInit {
   items: MenuItem[];
-  // readonly home = {icon: 'pi pi-home', routerLink: '/', label: ' San Diego City 2020 Elections'};
-  readonly home = {icon: 'pi pi-home', routerLink: '/', label: ' San Diego 2020'};
+  readonly home = {icon: 'pi pi-home', routerLink: '/', label: ' San Diego'};
   
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -49,6 +48,8 @@ export class BreadcrumbComponent implements OnInit {
         label = candidate.full_name;
       } else if (type === 'details') {
         label = 'Details';
+      } else if (type === 'year') {
+        label = child.snapshot.params['year'];
       }
 
       if (label) {

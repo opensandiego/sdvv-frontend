@@ -2,12 +2,14 @@
 
 <mat-drawer-container class="sidenav-container">
   <mat-drawer #drawer align="start" [opened]="isOpened">
-    <!-- <navigation-list-election></navigation-list-election> -->
     <side-menu></side-menu>
   </mat-drawer>
 
   <mat-drawer-content class="main_section">
-    <breadcrumb></breadcrumb>
+    <div class="year-breadcrumb">
+      <year></year>
+      <breadcrumb></breadcrumb>
+    </div>
     <router-outlet></router-outlet>
     <footer></footer>
   </mat-drawer-content>
