@@ -20,6 +20,8 @@ import { ElectionService } from './services/election.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { YearComponent } from './components/year/year.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
+import { APIStoreModule } from '../store/api.store.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FaqComponent,
     SplashComponent,
     SplashHeroComponent,
+    OfficeSummaryComponent,
     OfficeSummaryCardComponent,
     FooterComponent,
     UnderConstructionComponent,
@@ -42,6 +45,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     BreadcrumbModule,
     DropdownModule,
     FormsModule,
+    APIStoreModule,
   ],
   exports: [
     AboutComponent,
