@@ -19,12 +19,8 @@ export class LastUpdatedService extends EntityCollectionServiceBase<LastUpdate> 
     super('LastUpdate', serviceElementsFactory);
   }
 
-  getLastUpdated(year: string): Observable<LastUpdate> {
-    const URL = `${this.host}/api/last-update/?year=${year}`;
-    return this.http.get<LastUpdate[]>(URL)
-      .pipe(
-        concatAll(),
-        first(),
-      );
+  getLastUpdated(): Observable<LastUpdate> {
+    const URL = `${this.host}/api/last-update`;
+    return this.http.get<LastUpdate>(URL);
   }
 }

@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {     
-    this.lastUpdatedService.getLastUpdated('2020')
+    this.lastUpdatedService.getLastUpdated()
       .subscribe(update => this.lastUpdatedDate = update.updated);
   }
 }
