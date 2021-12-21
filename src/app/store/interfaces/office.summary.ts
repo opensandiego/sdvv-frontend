@@ -1,6 +1,6 @@
 export interface OfficeSummary {
   office: string;
-  candidateCount: string;
-  totalRaised: string;
+  candidate_count: string;
+  total_raised: string;
   year: string;
 }
