@@ -23,7 +23,7 @@ export class YearComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.officeSummaryService.getSummary('')
+    this.officeSummaryService.getSummaries()
       .subscribe(offices => {
         const years = offices.map(office => office.year);
         const uniqueYears = [...new Set(years)].sort().reverse();
