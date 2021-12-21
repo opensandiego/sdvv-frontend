@@ -44,11 +44,6 @@ const districts: Routes = [
 
 const routes: Routes = [
   {
-    path: 'city-council/0',
-    redirectTo: 'city-council/1',
-    pathMatch: 'full',
-  },
-  {
     path: ':office_name',
     children: districts,
     data: { 

@@ -17,7 +17,7 @@ export class OfficeDistrictResolverService {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> | Observable<never> {
-    const year = '2020';
+    const year = route.paramMap.get('year');
     const districtNumber = route.paramMap.get('district_number');
     const officeName = route.paramMap.get('office_name');
 
