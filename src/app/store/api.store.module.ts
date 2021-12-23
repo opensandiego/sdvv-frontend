@@ -13,6 +13,11 @@ import { OfficeSummaryService } from './services/office-summary.service';
 import { OfficeService } from './services/office.service';
 import { LastUpdatedService } from './services/last-updated.service';
 import { ElectionService } from './services/election.service';
+import { CandidateDetailsService } from './services/candidate.details.service';
+import { CandidateNavigationService } from './services/candidate.navigation.service';
+import { CandidateQuickViewService } from './services/candidate.quickview.service';
+import { CandidateService } from './services/candidate.service';
+import { YearService } from './services/year.service';
 
 @NgModule({
   declarations: [],
@@ -31,10 +36,15 @@ import { ElectionService } from './services/election.service';
   ],
   providers: [
     CandidateCardService,
+    CandidateDetailsService,
+    CandidateNavigationService,
+    CandidateQuickViewService,
+    CandidateService,
+    ElectionService,
+    LastUpdatedService,
     OfficeSummaryService,
     OfficeService,
-    LastUpdatedService,
-    ElectionService,
+    YearService,
   ],
   exports: [],
 })
