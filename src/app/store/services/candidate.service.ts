@@ -1,7 +1,7 @@
 import { HttpClient, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { Candidate } from '../interfaces/candidate';
 
@@ -22,17 +22,17 @@ export class CandidateService extends EntityCollectionServiceBase<Candidate> {
   ) {
       super('Candidate', serviceElementsFactory);
   }
-  getCandidate(id: string): Observable<Candidate>  {
-      const URL = `${this.host}/api/candidate-temp/${id}`;
-      return this.http.get<Candidate>(URL);
-  }
 
-    getCandidates({ year, office, district }: options ): Observable<Candidate[]>  {
-      let URL = `${this.host}/api/candidates-temp?`;
-      URL += district ? `&district=${district}` : ``;
-      URL += year ? `&year=${year}` : ``;
-      URL += office ? `&office=${office}` : ``;
-  
-      return this.http.get<Candidate[]>(URL);
+  getCandidates({ year, office, district }: options ): Observable<Candidate[]>  {
+    if (isNaN(parseInt(year))) {
+      return of([]);
     }
+
+    let URL = `${this.host}/api/candidates?`;
+    URL += year ? `&year=${year}` : ``;
+    URL += office ? `&office=${office}` : ``;
+    URL += district ? `&district=${district}` : ``;
+
+    return this.http.get<Candidate[]>(URL);
+  }
 }

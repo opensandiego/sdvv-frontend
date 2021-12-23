@@ -18,14 +18,8 @@ export class CandidateCardService extends EntityCollectionServiceBase<CandidateC
       super('CandidateCard', serviceElementsFactory);
   }
 
-  getCandidate(candidateId: string): Observable<CandidateCard>  {
+  getCandidateCard(candidateId: string): Observable<CandidateCard> {
     const URL = `${this.host}/api/candidate-card/${candidateId}`;
     return this.http.get<CandidateCard>(URL);
-  }
-
-  getCandidates(office = '', district = '', year = 2020): Observable<CandidateCard[]>  {
-    const URL = `${this.host}/api/candidate-cards/?office=${office}&district=${district}&year=${year}`;
-
-    return this.http.get<CandidateCard[]>(URL);
   }
 }

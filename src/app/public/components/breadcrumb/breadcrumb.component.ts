@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import {MenuItem} from 'primeng/api';
 import { filter } from 'rxjs/operators';
-import { CandidateService } from 'src/app/store/services/candidate.service';
+import { CandidateCardService } from 'src/app/store/services/candidate.card.service';
 
 @Component({
   selector: 'breadcrumb',
@@ -17,7 +17,7 @@ export class BreadcrumbComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private candidateService: CandidateService,
+    private candidateCardService: CandidateCardService,
   ) { }
 
    async createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: MenuItem[] = []): Promise<MenuItem[]> {
@@ -43,9 +43,9 @@ export class BreadcrumbComponent implements OnInit {
         }
       } else if (type === 'candidate') {
         const candidateId = child.snapshot.params['candidateId'];
-        const candidate$ = this.candidateService.getCandidate(candidateId)
+        const candidate$ = this.candidateCardService.getCandidateCard(candidateId)
         const candidate = await (candidate$).toPromise();
-        label = candidate.full_name;
+        label = candidate.name;
       } else if (type === 'details') {
         label = 'Details';
       } else if (type === 'year') {

@@ -68,7 +68,7 @@ export class ExpandedQuickViewComponent implements OnChanges {
     if (changes['candidateId'] && changes['candidateId'].currentValue) {
       let candidateId = changes['candidateId'].currentValue;
 
-      this.candidateQuickViewService.getCandidate(candidateId)
+      this.candidateQuickViewService.getCandidateQuickView(candidateId)
         .subscribe( quickView => {
           this.setQuickView(quickView);
         });

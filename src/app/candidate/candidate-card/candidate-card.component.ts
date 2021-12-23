@@ -1,7 +1,7 @@
 import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CandidateService } from 'src/app/store/services/candidate.service';
-import { Candidate } from 'src/app/store/interfaces/candidate';
+import { CandidateCardService } from 'src/app/store/services/candidate.card.service';
+import { CandidateCard } from 'src/app/store/interfaces/candidate.card';
 
 @Component({
   selector: 'candidate-card',
@@ -28,28 +28,28 @@ export class CandidateCardComponent implements OnChanges {
   buttonText: string;
 
   constructor(
-    private candidateService: CandidateService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private candidateCardService: CandidateCardService,
   ) { }
 
-  private setCandidate(candidate: Candidate): void {
-    this.candidateImg = candidate.image_url 
-      ? candidate.image_url
+  private setCandidate(candidate: CandidateCard): void {
+    this.candidateImg = candidate.candidateImgURL 
+      ? candidate.candidateImgURL
       : this.defaultImagePath;
-    this.firstName = candidate.full_name.split(' ')[0];
-    this.lastName = candidate.full_name.slice(this.firstName.length+1);
-    this.fullName = candidate.full_name;
+    this.firstName = candidate.name.split(' ')[0];
+    this.lastName = candidate.name.slice(this.firstName.length+1);
+    this.fullName = candidate.name;
     this.description = candidate.description;
-    this.raised = parseInt(candidate.total_contributions);
-    this.donors = parseInt(candidate.contributor_count);
+    this.raised = parseInt(candidate.raised);
+    this.donors = parseInt(candidate.donors);
     this.website = candidate.website;
   }
 
   ngOnChanges(changes: SimpleChanges) {
 
     if (changes['candidateId']) {
-      this.candidateService.getCandidate(changes['candidateId'].currentValue)
+      this.candidateCardService.getCandidateCard(changes['candidateId'].currentValue)
         .subscribe(candidate => this.setCandidate(candidate));
     }
 
