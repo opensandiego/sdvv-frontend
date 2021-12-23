@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { DropdownModule } from 'primeng/dropdown';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,8 +18,10 @@ import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 import { RoutingService } from './services/routing.service';
 import { ElectionService } from './services/election.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { YearComponent } from './components/year/year.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
+import { APIStoreModule } from '../store/api.store.module';
 
 @NgModule({
   declarations: [
@@ -24,11 +29,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FaqComponent,
     SplashComponent,
     SplashHeroComponent,
+    OfficeSummaryComponent,
     OfficeSummaryCardComponent,
     FooterComponent,
     UnderConstructionComponent,
     RoundCurrencyDisplayPipe,
     BreadcrumbComponent,
+    YearComponent,
     NotFoundComponent,
   ],
   imports: [
@@ -36,6 +43,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     PublicRoutingModule,
     FontAwesomeModule,
     BreadcrumbModule,
+    DropdownModule,
+    FormsModule,
+    APIStoreModule,
   ],
   exports: [
     AboutComponent,
@@ -44,6 +54,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     UnderConstructionComponent,
     FooterComponent,
     BreadcrumbComponent,
+    YearComponent,
   ],
   providers: [RoutingService, ElectionService],
 })

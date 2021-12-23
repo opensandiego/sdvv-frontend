@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { CandidateService } from 'src/app/store/services/candidate.service';
-import { ElectionService } from 'src/app/public/services/election.service';
 import { Candidate } from 'src/app/store/interfaces/candidate';
 
 import { MenuItem } from 'primeng/api';
 import { filter } from 'rxjs/operators';
+import { YearService } from 'src/app/store/services/year.service';
 
 @Component({
   selector: 'side-menu',
@@ -22,16 +22,29 @@ export class SideMenuComponent implements OnInit {
   activeDistrict: string;
   activeCandidate: string;
 
+  linkPrefix: string;
+  menuDisabled: boolean;
+
   constructor(
     private router: Router,
     private candidateService: CandidateService,
-    private electionService: ElectionService,
+    private yearService: YearService,
   ) { }
-    
+
   ngOnInit(): void {
-    this.electionYear = this.electionService.getElectionYear();
-    this.buildMenu();
-    this.trackDetailsActive();
+    this.yearService.electionYearChanged$.subscribe(year => {
+      if (year === '') {
+        this.electionYear = '-';
+        this.menuDisabled = true;
+      } else {
+        this.electionYear = year;
+        this.linkPrefix = `/year/${this.electionYear}/office/`;
+        this.menuDisabled = false;
+      }
+
+      this.buildMenu();
+      this.trackDetailsActive();
+    });
   }
 
   getDistinctSeats(candidates: Candidate[]): string[] {
@@ -44,7 +57,7 @@ export class SideMenuComponent implements OnInit {
   }
 
   getRouterLink(candidate: Candidate): string {
-    const linkPrefix = `/office/` + candidate.office.toLowerCase().split(' ').join('-');
+    const linkPrefix = this.linkPrefix + candidate.office.toLowerCase().split(' ').join('-');
     const linkDistrict =  candidate.district 
       ? `/${candidate.district}`
       : `/0`;
@@ -63,7 +76,7 @@ export class SideMenuComponent implements OnInit {
   }
 
   getSeeAllCandidatesItem(officeTitle: string, district: string = null) {
-    const linkPrefix = `/office/${officeTitle.toLowerCase().split(' ').join('-')}`;
+    const linkPrefix = this.linkPrefix +  `${officeTitle.toLowerCase().split(' ').join('-')}`;
 
     const linkDistrict =  district 
       ? `/${district}`
@@ -81,11 +94,15 @@ export class SideMenuComponent implements OnInit {
     let candidatesForOffice = candidates
       .filter(candidate => candidate.office === officeTitle);
 
+    if (candidatesForOffice.length < 1) {
+      return [];
+    }
+
     const hasSeats = this.hasSeats(candidatesForOffice);
 
     if (hasSeats) {
       const distinctSeats = this.getDistinctSeats(candidatesForOffice);
-  
+
       return distinctSeats.map(seat => {
         const seeAllCandidatesItem = this.getSeeAllCandidatesItem(officeTitle, seat);
         const candidatesMenuItems = candidatesForOffice
@@ -101,7 +118,7 @@ export class SideMenuComponent implements OnInit {
       });
 
     } else {
-      const seeAllCandidatesItem = this.getSeeAllCandidatesItem(officeTitle);    
+      const seeAllCandidatesItem = this.getSeeAllCandidatesItem(officeTitle);
       const candidatesMenuItems = candidatesForOffice.map(candidate => this.getCandidateItem(candidate))
 
       return [ seeAllCandidatesItem, ...candidatesMenuItems, ];
@@ -109,31 +126,41 @@ export class SideMenuComponent implements OnInit {
   }
 
   buildMenu() {
+    const items_template = [
+      {
+        office_title: 'Mayor',
+        icon: 'fa fa-fw fa-university',
+      },
+      {
+        office_title: 'City Council',
+        icon: 'fa fa-fw fa-map',
+      },
+      {
+        office_title: 'City Attorney',
+        icon: 'fa fa-fw fa-balance-scale',
+      },
+    ];
+
     this.candidateService
       .getCandidates({ year: this.electionYear })
       .subscribe(candidates => {
         this.candidates = candidates;
 
-        this.items = [
-          {
-            id: 'mayor',
-            label: 'MAYOR',
-            icon: 'fa fa-fw fa-university',
-            items: this.getItems('Mayor', candidates),
-          },
-          {
-            id: 'city-council',
-            label: 'CITY COUNCIL',
-            icon: 'fa fa-fw fa-map',
-            items: this.getItems('City Council', candidates),
-          },
-          {
-            id: 'city-attorney',
-            label: 'CITY ATTORNEY',
-            icon: 'fa fa-fw fa-balance-scale',
-            items: this.getItems('City Attorney', candidates),
-          },
-        ];
+        this.items = items_template.map( item => {
+          const newItem = {};
+          newItem['id'] = item['office_title'].toLowerCase().split(' ').join('-');
+          newItem['label'] = item['office_title'].toUpperCase();
+
+          const officeItems = this.getItems(item.office_title, this.candidates);
+          newItem['items'] = officeItems;
+
+          if (this.menuDisabled || officeItems.length < 1) {
+            newItem['expanded'] = false;
+            newItem['disabled'] = true;
+          }
+
+          return newItem;
+        })
 
         this.updateExpandedStatus();
     })
@@ -184,7 +211,7 @@ export class SideMenuComponent implements OnInit {
     });
   }
 
-  trackDetailsActive() {    
+  trackDetailsActive() {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(event => {
@@ -196,7 +223,7 @@ export class SideMenuComponent implements OnInit {
           this.detailsActive = detailsActive;
           this.updateMenuRouterLinks();
         }
-        
+
         this.updateExpandedStatus();
       });
   }

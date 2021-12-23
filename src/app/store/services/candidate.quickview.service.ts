@@ -18,7 +18,7 @@ export class CandidateQuickViewService extends EntityCollectionServiceBase<Candi
       super('CandidateQuickView', serviceElementsFactory);
   }
 
-  getCandidate(candidateId: string): Observable<CandidateQuickView>  {
+  getCandidateQuickView(candidateId: string): Observable<CandidateQuickView>  {
     const URL = `${this.host}/api/candidate-quick-view/${candidateId}`;
     return this.http.get<CandidateQuickView>(URL)
   }

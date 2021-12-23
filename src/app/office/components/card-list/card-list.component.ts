@@ -11,7 +11,7 @@ export class CardListComponent implements OnInit {
   office: string;
   district: string;
   candidateIds: string[];
-  year = '2020';
+  year: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -32,6 +32,7 @@ export class CardListComponent implements OnInit {
       this.office = this.activatedRoute.snapshot.data.office.office;
       this.district = params.get('district_number')
       this.district = this.district != '0' ? this.district : null;
+      this.year = params.get('year')
       this.setCandidateCards();
     })
   }
