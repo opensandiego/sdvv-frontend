@@ -12,7 +12,7 @@ import { CandidateCardService } from 'src/app/store/services/candidate.card.serv
 })
 export class BreadcrumbComponent implements OnInit {
   items: MenuItem[];
-  readonly home = {icon: 'pi pi-home', routerLink: '/', label: ' San Diego'};
+  readonly home = {icon: 'pi pi-home', routerLink: '/home', label: ' San Diego'};
   
   constructor(
     private activatedRoute: ActivatedRoute,

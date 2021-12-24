@@ -12,7 +12,6 @@ import { CandidateModule } from './candidate/candidate.module';
 import { APIStoreModule } from './store/api.store.module';
 import { PublicModule } from './public/public.module';
 import { NavigationMenuModule } from './navigation-menu/navigation-menu.module';
-import { OfficeModule } from './office/office.module';
 import { CandidateDetailsModule } from './candidate-details/candidate-details.module';
 
 @NgModule({
@@ -33,7 +32,6 @@ import { CandidateDetailsModule } from './candidate-details/candidate-details.mo
     APIStoreModule,
     PublicModule,
     NavigationMenuModule,
-    OfficeModule,
     CandidateDetailsModule,
   ],
   providers: [],

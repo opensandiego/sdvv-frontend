@@ -8,6 +8,8 @@ import { SideMenuService } from 'src/app/navigation-menu/services/side-menu.serv
 })
 export class HeaderComponent implements OnInit {
 
+  homeLink = '/home';
+
   constructor(
     public sideMenuService: SideMenuService,
   ) { }
