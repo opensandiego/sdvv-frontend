@@ -16,7 +16,6 @@ import { UnderConstructionComponent } from './components/under-construction/unde
 import { PublicRoutingModule } from './public-routing.module';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 import { RoutingService } from './services/routing.service';
-import { ElectionService } from './services/election.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { YearComponent } from './components/year/year.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -56,7 +55,7 @@ import { APIStoreModule } from '../store/api.store.module';
     BreadcrumbComponent,
     YearComponent,
   ],
-  providers: [RoutingService, ElectionService],
+  providers: [RoutingService],
 })
 export class PublicModule { 
   constructor(library: FaIconLibrary) {
