@@ -3,9 +3,9 @@ describe('Run - Smoke Test', () => {
   const links = [
     { text: 'FAQ', url: '/faq' },
     { text: 'About', url: '/about' },
-    { text: 'Mayor', url: '/office/mayor' },
-    { text: 'City Attorney', url: '/office/city-attorney' },
-    { text: 'City Council', url: '/office/city-council' },
+    // { text: 'Mayor', url: '/office/mayor' },
+    // { text: 'City Attorney', url: '/office/city-attorney' },
+    // { text: 'City Council', url: '/office/city-council' },
   ]
 
   links.forEach( link => {
@@ -25,12 +25,12 @@ describe('Run - Smoke Test', () => {
 
   const cityCouncilDistricts = [ '1', '3', '5', '7', '9']
 
-  cityCouncilDistricts.forEach( cityCouncilDistrict => {
-    const url = `/office/city-council/${cityCouncilDistrict}`
-    it(`Visit District ${cityCouncilDistrict} Candidates URL`, () => {
-      cy.visit(url)
-      cy.url().should('include', url)
-    })
-  })
+  // cityCouncilDistricts.forEach( cityCouncilDistrict => {
+  //   const url = `/office/city-council/${cityCouncilDistrict}`
+  //   it(`Visit District ${cityCouncilDistrict} Candidates URL`, () => {
+  //     cy.visit(url)
+  //     cy.url().should('include', url)
+  //   })
+  // })
 
 })
