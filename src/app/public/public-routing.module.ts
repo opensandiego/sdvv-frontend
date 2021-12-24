@@ -17,7 +17,8 @@ const routes: Routes = [
       year: YearResolverService,
     },
     children: [
-      { path: '', component: SplashComponent, },
+      { path: 'home', component: SplashComponent, },
+      { path: '', redirectTo: '/year/2022', pathMatch: 'full', },
       // { path: 'years', component: SplashComponent, children: [{ path: '', component: YearsComponent, }], },
     ]
   },
