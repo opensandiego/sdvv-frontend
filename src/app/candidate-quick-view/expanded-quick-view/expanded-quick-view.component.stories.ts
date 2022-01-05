@@ -8,8 +8,6 @@ import { ExpandedQuickViewComponent } from './expanded-quick-view.component';
 import { CandidateQuickViewModule } from '../candidate-quick-view.module';
 import { CandidateQuickViewService } from 'src/app/store/services/candidate.quickview.service';
 import { MockCandidateQuickViewService } from './expanded-quick-view.component.stories.mock-candidate.service';
-import { MockCandidateService } from 'src/app/candidate/candidate-card/candidate-card.component.stories.mock-candidate.service';
-import { CandidateService } from 'src/app/store/services/candidate.service';
 
 export default {
   title: 'Expanded/Quick View',
@@ -36,7 +34,6 @@ const Template: Story<ExpandedQuickViewComponent> = (args: ExpandedQuickViewComp
   moduleMetadata: {
     providers: [
       { provide: CandidateQuickViewService, useClass: MockCandidateQuickViewService },
-      { provide: CandidateService, useClass: MockCandidateService },
     ],
     imports: [
     ],

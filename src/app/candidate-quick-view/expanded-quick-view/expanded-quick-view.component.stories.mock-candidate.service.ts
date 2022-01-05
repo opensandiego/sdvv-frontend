@@ -56,6 +56,6 @@ const mockCandidateQuickView: CandidateQuickView = {
 }
 
 export class MockCandidateQuickViewService implements Partial<CandidateQuickViewService> {
-  getCandidate = () => of(mockCandidateQuickView);
+  getCandidateQuickView = () => of(mockCandidateQuickView);
 }
 
