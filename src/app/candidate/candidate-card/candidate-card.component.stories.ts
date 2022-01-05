@@ -5,8 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CandidateCardComponent } from './candidate-card.component';
 import { CandidateModule } from '../../candidate/candidate.module';
-import { CandidateService } from 'src/app/store/services/candidate.service';
-import { MockCandidateService } from './candidate-card.component.stories.mock-candidate.service';
+import { CandidateCardService } from 'src/app/store/services/candidate.card.service';
+import { MockCandidateCardService } from './candidate-card.component.stories.mock-candidate-card.service';
 
 export default {
   title: 'Candidate/Candidate Card',
@@ -31,7 +31,7 @@ const fakeActivatedRoute = {
 const Template: Story<CandidateCardComponent> = (args: CandidateCardComponent) => ({
   moduleMetadata: {
     providers: [
-      { provide: CandidateService, useClass: MockCandidateService },
+      { provide: CandidateCardService, useClass: MockCandidateCardService },
       { provide: ActivatedRoute, useValue: fakeActivatedRoute },
     ],
     imports: [
