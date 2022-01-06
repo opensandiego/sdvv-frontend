@@ -8,9 +8,6 @@ import { ChartsModule } from 'ng2-charts';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ContributionsByGroupTableComponent } from './contributions-by-group-table/contributions-by-group-table.component';
-import { OutsideMoneyBarComponent } from './outside-money-bar/outside-money-bar.component';
-import { RaisedInOutDonutComponent } from './raised-in-out-donut/raised-in-out-donut.component';
-import { RaisedVsSpentComponent } from './raised-vs-spent/raised-vs-spent.component';
 import { RoundCurrencyPipe } from './round-currency.pipe';
 import { TotalSpentDonutComponent } from './total-spent-donut/total-spent-donut.component';
 import { RaisedByIndustryBarComponent } from './raised-by-industry-bar/raised-by-industry-bar.component';
@@ -25,9 +22,6 @@ import { OutsideMoneyStackedBarComponent } from './outside-money-stacked-bar/out
 @NgModule({
   declarations: [
     ContributionsByGroupTableComponent,
-    OutsideMoneyBarComponent,
-    RaisedInOutDonutComponent,
-    RaisedVsSpentComponent,
     RoundCurrencyPipe,
     TotalSpentDonutComponent,
     RaisedByIndustryBarComponent,
@@ -52,9 +46,6 @@ import { OutsideMoneyStackedBarComponent } from './outside-money-stacked-bar/out
   ],
   exports: [
     ContributionsByGroupTableComponent,
-    OutsideMoneyBarComponent,
-    RaisedInOutDonutComponent,
-    RaisedVsSpentComponent,
     TotalSpentDonutComponent,
     RaisedByIndustryBarComponent,
     RaisedByLocationBarComponent,
