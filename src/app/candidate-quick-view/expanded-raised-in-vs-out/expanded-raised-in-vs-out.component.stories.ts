@@ -12,7 +12,7 @@ import { VvChartsModule } from '../../vv-charts/vv-charts.module';
 
 
 export default {
-  title: 'Expanded/Raised In vs Out',
+  title: 'Quick View/Raised In vs Out',
   component: ExpandedRaisedInVsOutComponent,
   decorators: [
     moduleMetadata({

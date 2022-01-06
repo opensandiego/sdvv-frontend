@@ -10,7 +10,7 @@ import { CandidateQuickViewService } from 'src/app/store/services/candidate.quic
 import { MockCandidateQuickViewService } from './expanded-quick-view.component.stories.mock-candidate.service';
 
 export default {
-  title: 'Expanded/Quick View',
+  title: 'Quick View/Container',
   component: ExpandedQuickViewComponent,
   decorators: [
     moduleMetadata({
