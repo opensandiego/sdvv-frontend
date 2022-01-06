@@ -4,7 +4,7 @@ import { moduleMetadata } from '@storybook/angular';
 import { ExpandedAverageDonationComponent } from './expanded-average-donation.component';
 
 export default {
-  title: 'Expanded/Average Donation',
+  title: 'Quick View/Average Donation',
   component: ExpandedAverageDonationComponent,
   decorators: [
     moduleMetadata({

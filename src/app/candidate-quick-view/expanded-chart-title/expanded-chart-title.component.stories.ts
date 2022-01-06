@@ -8,7 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExpandedChartTitleComponent } from './expanded-chart-title.component';
 
 export default {
-  title: 'Expanded/Chart Title',
+  title: 'Quick View/Chart Title',
   component: ExpandedChartTitleComponent,
   decorators: [
     moduleMetadata({

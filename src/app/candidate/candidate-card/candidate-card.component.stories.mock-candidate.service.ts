@@ -20,5 +20,5 @@ const mockCandidate: Candidate = {
 }
 
 export class MockCandidateService implements Partial<CandidateService> {
-  getCandidate = () => of(mockCandidate);
+  getCandidates = () => of([mockCandidate]);
 }
