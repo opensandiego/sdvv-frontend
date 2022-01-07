@@ -20,7 +20,7 @@ export default {
     }),
   ], 
   argTypes: {
-    spendingCategories: { type: 'array'}
+    // spendingCategories: { type: 'array'}
   },
 } as Meta;
 

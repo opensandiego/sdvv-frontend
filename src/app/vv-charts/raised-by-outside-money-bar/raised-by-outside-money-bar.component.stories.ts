@@ -22,7 +22,7 @@ export default {
     }),
   ], 
   argTypes: {
-    raisedByOutsideMoney: { type: 'object' },
+    // raisedByOutsideMoney: { type: 'object' },
   },
 } as Meta;
 
