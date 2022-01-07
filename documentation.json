@@ -2,7 +2,7 @@
     "pipes": [
         {
             "name": "RoundCurrencyDisplayPipe",
-            "id": "pipe-RoundCurrencyDisplayPipe-44107944f54a924015faf6906c45a326",
+            "id": "pipe-RoundCurrencyDisplayPipe-6ba45f246cb88705cfcfad12df8c2ba6",
             "file": "src/app/public/pipes/round-currency-display.pipe.ts",
             "type": "pipe",
             "deprecated": false,
@@ -58,7 +58,7 @@
                 }
             ],
             "ngname": "roundCurrencyDisplay",
-            "sourceCode": "import { Pipe, PipeTransform } from \"@angular/core\";\r\n\r\n@Pipe({\r\n  name: \"roundCurrencyDisplay\",\r\n})\r\nexport class RoundCurrencyDisplayPipe implements PipeTransform {\r\n  transform(input: any, args?: any): any {\r\n    var exp,\r\n      oneMillion = 10000,\r\n      suffixes = [\"k\", \"M\", \"G\", \"T\", \"P\", \"E\"];\r\n\r\n    if (Number.isNaN(input)) {\r\n      return null;\r\n    }\r\n \r\n    if (parseInt(input) < oneMillion) {\r\n      return Number(input).toLocaleString('en-US');\r\n    }\r\n\r\n    exp = Math.floor(Math.log(input) / Math.log(1000));\r\n\r\n    return (input / Math.pow(1000, exp)).toFixed(args) + suffixes[exp - 1];\r\n  }\r\n}\r\n"
+            "sourceCode": "import { Pipe, PipeTransform } from \"@angular/core\";\r\n\r\n@Pipe({\r\n  name: \"roundCurrencyDisplay\",\r\n})\r\nexport class RoundCurrencyDisplayPipe implements PipeTransform {\r\n  transform(input: any, args?: any): any {\r\n    var exp,\r\n      oneMillion = 1000000,\r\n      suffixes = [\"k\", \"M\", \"G\", \"T\", \"P\", \"E\"];\r\n\r\n    if (Number.isNaN(input)) {\r\n      return null;\r\n    }\r\n \r\n    if (parseInt(input) < oneMillion) {\r\n      return Number(input).toLocaleString('en-US');\r\n    }\r\n\r\n    exp = Math.floor(Math.log(input) / Math.log(1000));\r\n\r\n    return (input / Math.pow(1000, exp)).toFixed(args) + suffixes[exp - 1];\r\n  }\r\n}\r\n"
         },
         {
             "name": "RoundCurrencyPipe",
@@ -4587,7 +4587,7 @@
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-b0462bd7631af5e94b2797111b641d61",
+            "id": "component-AppComponent-ed70cef04d923be5933c6b1146af4bf0",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4614,7 +4614,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 9
                 }
             ],
             "methodsClass": [],
@@ -4625,7 +4625,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport{Router, NavigationEnd} from '@angular/router';\r\n\r\n// declare let gtag: Function;\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss']\r\n})\r\nexport class AppComponent {\r\n  title = 'sdvv-frontend';\r\n\r\n  // constructor(public router: Router){   \r\n  //   this.router.events.subscribe(event => {\r\n  //      if(event instanceof NavigationEnd){\r\n  //         gtag('config', 'xx-xxxxx-xx', \r\n  //           {\r\n  //             'page_path': event.urlAfterRedirects\r\n  //           }\r\n  //         );\r\n  //       }\r\n  //    }\r\n  // )}\r\n\r\n}\r\n// https://www.dottedsquirrel.com/google-analytics-angular/\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss']\r\n})\r\nexport class AppComponent {\r\n  title = 'sdvv-frontend';\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -6404,7 +6404,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "\r\n<div class=\"tab-outside-money\">\r\n\r\n  <app-details-tab-title\r\n    [smallTitleText]=\"title.top\"\r\n    [largeTitleText]=\"title.bottom\"\r\n    [tooltipText]=\"title.tooltipText\"\r\n  ></app-details-tab-title>\r\n\r\n  <!-- <app-details-container-outside-money\r\n  ></app-details-container-outside-money> -->\r\n\r\n</div>\r\n"
+            "templateData": "\r\n<div class=\"tab-outside-money\">\r\n\r\n  <app-details-tab-title\r\n    [smallTitleText]=\"title.top\"\r\n    [largeTitleText]=\"title.bottom\"\r\n    [tooltipText]=\"title.tooltipText\"\r\n  ></app-details-tab-title>\r\n\r\n  <app-details-container-outside-money\r\n  ></app-details-container-outside-money>\r\n\r\n</div>\r\n"
         },
         {
             "name": "DetailsTabRaisedByIndustryComponent",
@@ -9150,7 +9150,7 @@
         },
         {
             "name": "OfficeSummaryComponent",
-            "id": "component-OfficeSummaryComponent-bb61e0ddbe36f0255ddc5e3f4343920f",
+            "id": "component-OfficeSummaryComponent-6d0248837baf64d4d52a335f6483b768",
             "file": "src/app/public/components/office-summary/office-summary.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9223,7 +9223,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9256,7 +9256,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { ActivatedRoute } from '@angular/router';\r\nimport { \r\n  faUniversity, faBalanceScale, faMapMarkedAlt \r\n} from '@fortawesome/free-solid-svg-icons';\r\nimport { OfficeSummaryWithRoute } from '../../interfaces/office-summary-with-route';\r\n\r\n@Component({\r\n  selector: 'office-summary',\r\n  templateUrl: './office-summary.component.html',\r\n  styleUrls: ['./office-summary.component.scss']\r\n})\r\nexport class OfficeSummaryComponent implements OnInit {\r\n  faUniversity = faUniversity;\r\n  faBalanceScale = faBalanceScale;\r\n  faMapMarkedAlt = faMapMarkedAlt;\r\n\r\n  summariesWithRoute: OfficeSummaryWithRoute[];\r\n\r\n  constructor(\r\n    private activatedRoute: ActivatedRoute,\r\n  ) { }\r\n\r\n  ngOnInit(): void {  \r\n    this.activatedRoute.paramMap.subscribe(params => {\r\n      const officeSummaries = this.activatedRoute.snapshot.data.office;\r\n\r\n      this.summariesWithRoute = officeSummaries.map(summary => ({\r\n        ...summary,\r\n        routeLink: this.getRoute(summary),\r\n      }))\r\n      console.log('this.summariesWithRoute', this.summariesWithRoute)\r\n    })\r\n  }\r\n\r\n  getRoute(office) {\r\n    let pathSuffix = '/0';\r\n\r\n    // Check to see if the first City Council district should be 1 or 2.\r\n    // For the years 2016 and 2020 the first district will be 1\r\n    // For the years 2018 and 2022 the first district will be 2\r\n    // This check should not be needed after the City Council map component is completed.\r\n    if (office.office.toLowerCase() == 'City Council'.toLowerCase()) {\r\n      if (!Number.isNaN(office.year)) {\r\n        pathSuffix = office.year % 4 === 0 ? '/1' : '/2'\r\n      }\r\n    }\r\n\r\n    return 'office/' + office.office.toLowerCase().split(' ').join('-') + pathSuffix;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { ActivatedRoute } from '@angular/router';\r\nimport { \r\n  faUniversity, faBalanceScale, faMapMarkedAlt \r\n} from '@fortawesome/free-solid-svg-icons';\r\nimport { OfficeSummaryWithRoute } from '../../interfaces/office-summary-with-route';\r\n\r\n@Component({\r\n  selector: 'office-summary',\r\n  templateUrl: './office-summary.component.html',\r\n  styleUrls: ['./office-summary.component.scss']\r\n})\r\nexport class OfficeSummaryComponent implements OnInit {\r\n  faUniversity = faUniversity;\r\n  faBalanceScale = faBalanceScale;\r\n  faMapMarkedAlt = faMapMarkedAlt;\r\n\r\n  summariesWithRoute: OfficeSummaryWithRoute[];\r\n\r\n  constructor(\r\n    private activatedRoute: ActivatedRoute,\r\n  ) { }\r\n\r\n  ngOnInit(): void {  \r\n    this.activatedRoute.paramMap.subscribe(params => {\r\n      const officeSummaries = this.activatedRoute.snapshot.data.office;\r\n\r\n      this.summariesWithRoute = officeSummaries.map(summary => ({\r\n        ...summary,\r\n        routeLink: this.getRoute(summary),\r\n      }))\r\n    })\r\n  }\r\n\r\n  getRoute(office) {\r\n    let pathSuffix = '/0';\r\n\r\n    // Check to see if the first City Council district should be 1 or 2.\r\n    // For the years 2016 and 2020 the first district will be 1\r\n    // For the years 2018 and 2022 the first district will be 2\r\n    // This check should not be needed after the City Council map component is completed.\r\n    if (office.office.toLowerCase() == 'City Council'.toLowerCase()) {\r\n      if (!Number.isNaN(office.year)) {\r\n        pathSuffix = office.year % 4 === 0 ? '/1' : '/2'\r\n      }\r\n    }\r\n\r\n    return 'office/' + office.office.toLowerCase().split(' ').join('-') + pathSuffix;\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -12080,13 +12080,13 @@
     "modules": [
         {
             "name": "APIStoreModule",
-            "id": "module-APIStoreModule-d6106a43a6a59a57470c11fc963fbfc6",
+            "id": "module-APIStoreModule-4b419a8a50fe5739032830a831e668c7",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/store/api.store.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { CandidateCardService } from './services/candidate.card.service';\r\nimport { StoreModule } from '@ngrx/store';\r\nimport { EffectsModule } from '@ngrx/effects';\r\nimport { EntityDataModule } from '@ngrx/data';\r\nimport { entityConfig } from './entity-metadata';\r\nimport { environment } from 'src/environments/environment';\r\nimport { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';\r\nimport { InMemoryDataService } from './services/in-memory-data.service';\r\nimport { OfficeSummaryService } from './services/office-summary.service';\r\nimport { OfficeService } from './services/office.service';\r\nimport { LastUpdatedService } from './services/last-updated.service';\r\nimport { ElectionService } from './services/election.service';\r\nimport { CandidateDetailsService } from './services/candidate.details.service';\r\nimport { CandidateNavigationService } from './services/candidate.navigation.service';\r\nimport { CandidateQuickViewService } from './services/candidate.quickview.service';\r\nimport { CandidateService } from './services/candidate.service';\r\nimport { YearService } from './services/year.service';\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [\r\n    CommonModule,\r\n    HttpClientModule,\r\n    environment.production ? [] : \r\n      // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, \r\n      //   { \r\n      //     delay: 100, \r\n      //     passThruUnknownUrl: true,\r\n      //   }),\r\n    StoreModule.forRoot({}, {}),\r\n    EffectsModule.forRoot([]),\r\n    EntityDataModule.forRoot(entityConfig),\r\n  ],\r\n  providers: [\r\n    CandidateCardService,\r\n    CandidateDetailsService,\r\n    CandidateNavigationService,\r\n    CandidateQuickViewService,\r\n    CandidateService,\r\n    ElectionService,\r\n    LastUpdatedService,\r\n    OfficeSummaryService,\r\n    OfficeService,\r\n    YearService,\r\n  ],\r\n  exports: [],\r\n})\r\nexport class APIStoreModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { CandidateCardService } from './services/candidate.card.service';\r\nimport { StoreModule } from '@ngrx/store';\r\nimport { EffectsModule } from '@ngrx/effects';\r\nimport { EntityDataModule } from '@ngrx/data';\r\nimport { entityConfig } from './entity-metadata';\r\nimport { environment } from 'src/environments/environment';\r\nimport { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';\r\nimport { InMemoryDataService } from './services/in-memory-data.service';\r\nimport { OfficeSummaryService } from './services/office-summary.service';\r\nimport { OfficeService } from './services/office.service';\r\nimport { LastUpdatedService } from './services/last-updated.service';\r\nimport { ElectionService } from './services/election.service';\r\nimport { CandidateDetailsService } from './services/candidate.details.service';\r\nimport { CandidateNavigationService } from './services/candidate.navigation.service';\r\nimport { CandidateQuickViewService } from './services/candidate.quickview.service';\r\nimport { CandidateService } from './services/candidate.service';\r\nimport { YearService } from './services/year.service';\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [\r\n    CommonModule,\r\n    HttpClientModule,\r\n    environment.production ? [] : \r\n      HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, \r\n        { \r\n          delay: 100, \r\n          passThruUnknownUrl: true,\r\n        }),\r\n    StoreModule.forRoot({}, {}),\r\n    EffectsModule.forRoot([]),\r\n    EntityDataModule.forRoot(entityConfig),\r\n  ],\r\n  providers: [\r\n    CandidateCardService,\r\n    CandidateDetailsService,\r\n    CandidateNavigationService,\r\n    CandidateQuickViewService,\r\n    CandidateService,\r\n    ElectionService,\r\n    LastUpdatedService,\r\n    OfficeSummaryService,\r\n    OfficeService,\r\n    YearService,\r\n  ],\r\n  exports: [],\r\n})\r\nexport class APIStoreModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -13284,16 +13284,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/candidate-details/details-tab-title/details-tab-title.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/candidate-details/details-tab-raised-by-location/details-tab-raised-by-location.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -13304,7 +13294,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/candidate-quick-view/contributions-by-group/contributions-by-group.component.stories.ts",
+                "file": "src/app/candidate-details/details-tab-title/details-tab-title.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -13314,7 +13304,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/candidate-quick-view/expanded-outside-money/expanded-outside-money.component.stories.ts",
+                "file": "src/app/candidate-quick-view/contributions-by-group/contributions-by-group.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -13335,6 +13325,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/candidate-quick-view/expanded-chart-title/expanded-chart-title.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/candidate-quick-view/expanded-outside-money/expanded-outside-money.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -13454,7 +13454,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/vv-charts/total-raised-bar/total-raised-bar.component.stories.ts",
+                "file": "src/app/vv-charts/total-spent-donut/total-spent-donut.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -13464,7 +13464,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/vv-charts/total-spent-donut/total-spent-donut.component.stories.ts",
+                "file": "src/app/vv-charts/total-raised-bar/total-raised-bar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -13588,7 +13588,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\r\n  production: false,\r\n  // apiUrl: 'http://localhost:3000'\r\n  apiUrl: 'https://opensandiego-voters-voice.herokuapp.com'\r\n}"
+                "defaultValue": "{\r\n  production: false,\r\n  apiUrl: 'http://localhost:3000'\r\n}"
             },
             {
                 "name": "EqualInAndOut",
@@ -13993,16 +13993,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/candidate-details/details-tab-title/details-tab-title.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<DetailsTabTitleComponent>",
-                "defaultValue": "(args: DetailsTabTitleComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/candidate-details/details-tab-raised-by-location/details-tab-raised-by-location.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -14013,21 +14003,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/candidate-quick-view/contributions-by-group/contributions-by-group.component.stories.ts",
+                "file": "src/app/candidate-details/details-tab-title/details-tab-title.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<ContributionsByGroupComponent>",
-                "defaultValue": "(args: ContributionsByGroupComponent) => ({\r\n  props: args,\r\n})"
+                "type": "Story<DetailsTabTitleComponent>",
+                "defaultValue": "(args: DetailsTabTitleComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/candidate-quick-view/expanded-outside-money/expanded-outside-money.component.stories.ts",
+                "file": "src/app/candidate-quick-view/contributions-by-group/contributions-by-group.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<ExpandedOutsideMoneyComponent>",
-                "defaultValue": "(args: ExpandedOutsideMoneyComponent) => ({\r\n  props: args,\r\n})"
+                "type": "Story<ContributionsByGroupComponent>",
+                "defaultValue": "(args: ContributionsByGroupComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -14048,6 +14038,16 @@
                 "deprecationMessage": "",
                 "type": "Story<ExpandedChartTitleComponent>",
                 "defaultValue": "(args: ExpandedChartTitleComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/candidate-quick-view/expanded-outside-money/expanded-outside-money.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ExpandedOutsideMoneyComponent>",
+                "defaultValue": "(args: ExpandedOutsideMoneyComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -14163,21 +14163,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/vv-charts/total-raised-bar/total-raised-bar.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<TotalRaisedBarComponent>",
-                "defaultValue": "(args: TotalRaisedBarComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/vv-charts/total-spent-donut/total-spent-donut.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<TotalSpentDonutComponent>",
                 "defaultValue": "(args: TotalSpentDonutComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/vv-charts/total-raised-bar/total-raised-bar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TotalRaisedBarComponent>",
+                "defaultValue": "(args: TotalRaisedBarComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -14308,9 +14308,10 @@
                         "deprecationMessage": ""
                     },
                     {
-                        "name": "maxDecimalDigits",
+                        "name": "decimalDigits",
                         "deprecated": false,
-                        "deprecationMessage": ""
+                        "deprecationMessage": "",
+                        "optional": true
                     }
                 ],
                 "returnType": "string",
@@ -14324,9 +14325,10 @@
                         }
                     },
                     {
-                        "name": "maxDecimalDigits",
+                        "name": "decimalDigits",
                         "deprecated": false,
                         "deprecationMessage": "",
+                        "optional": true,
                         "tagName": {
                             "text": "param"
                         }
@@ -14981,28 +14983,6 @@
                     "defaultValue": "(args: ContributionsByGroupComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
-            "src/app/candidate-quick-view/expanded-outside-money/expanded-outside-money.component.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/candidate-quick-view/expanded-outside-money/expanded-outside-money.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/candidate-quick-view/expanded-outside-money/expanded-outside-money.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<ExpandedOutsideMoneyComponent>",
-                    "defaultValue": "(args: ExpandedOutsideMoneyComponent) => ({\r\n  props: args,\r\n})"
-                }
-            ],
             "src/app/candidate-quick-view/expanded-average-donation/expanded-average-donation.component.stories.ts": [
                 {
                     "name": "Default",
@@ -15055,6 +15035,28 @@
                     "deprecationMessage": "",
                     "type": "Story<ExpandedChartTitleComponent>",
                     "defaultValue": "(args: ExpandedChartTitleComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/app/candidate-quick-view/expanded-outside-money/expanded-outside-money.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/candidate-quick-view/expanded-outside-money/expanded-outside-money.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/candidate-quick-view/expanded-outside-money/expanded-outside-money.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ExpandedOutsideMoneyComponent>",
+                    "defaultValue": "(args: ExpandedOutsideMoneyComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/app/candidate-quick-view/expanded-quick-view/expanded-quick-view.component.stories.ts": [
@@ -15347,28 +15349,6 @@
                     "defaultValue": "(args: RaisedVsSpentBarComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
-            "src/app/vv-charts/total-raised-bar/total-raised-bar.component.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/vv-charts/total-raised-bar/total-raised-bar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/vv-charts/total-raised-bar/total-raised-bar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<TotalRaisedBarComponent>",
-                    "defaultValue": "(args: TotalRaisedBarComponent) => ({\r\n  props: args,\r\n})"
-                }
-            ],
             "src/app/vv-charts/total-spent-donut/total-spent-donut.component.stories.ts": [
                 {
                     "name": "Default",
@@ -15409,6 +15389,28 @@
                     "deprecationMessage": "",
                     "type": "Story<TotalSpentDonutComponent>",
                     "defaultValue": "(args: TotalSpentDonutComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/app/vv-charts/total-raised-bar/total-raised-bar.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/total-raised-bar/total-raised-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/vv-charts/total-raised-bar/total-raised-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TotalRaisedBarComponent>",
+                    "defaultValue": "(args: TotalRaisedBarComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/app/details-raised-spent/components/details-raised-spent-summary/details-raised-spent-summary.component.stories.ts": [
@@ -15586,7 +15588,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\r\n  production: false,\r\n  // apiUrl: 'http://localhost:3000'\r\n  apiUrl: 'https://opensandiego-voters-voice.herokuapp.com'\r\n}"
+                    "defaultValue": "{\r\n  production: false,\r\n  apiUrl: 'http://localhost:3000'\r\n}"
                 }
             ],
             "src/app/store/mocks/mock-last-updated.ts": [
@@ -15733,9 +15735,10 @@
                             "deprecationMessage": ""
                         },
                         {
-                            "name": "maxDecimalDigits",
+                            "name": "decimalDigits",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "optional": true
                         }
                     ],
                     "returnType": "string",
@@ -15749,9 +15752,10 @@
                             }
                         },
                         {
-                            "name": "maxDecimalDigits",
+                            "name": "decimalDigits",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
