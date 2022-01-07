@@ -22,7 +22,7 @@ export default {
     }),
   ], 
   argTypes: {
-    raisedByLocations: { type: 'array' },
+    // raisedByLocations: { type: 'array' },
   },
 } as Meta;
 

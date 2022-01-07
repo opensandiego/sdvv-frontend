@@ -22,7 +22,7 @@ export default {
     }),
   ], 
   argTypes: {
-    raisedByIndustries: { type: 'array' },
+    // raisedByIndustries: { type: 'array' },
   },
 } as Meta;
 
