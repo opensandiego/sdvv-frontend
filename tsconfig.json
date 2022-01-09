@@ -8,6 +8,12 @@
     "declaration": false,
     "module": "es2020",
     "moduleResolution": "node",
+    "paths": {
+      "lib-ui-charts": [
+        "dist/lib-ui-charts/lib-ui-charts",
+        "dist/lib-ui-charts"
+      ]
+    },
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
