@@ -8,11 +8,11 @@ interface Year {
 }
 
 @Component({
-  selector: 'year',
-  templateUrl: './year.component.html',
-  styleUrls: ['./year.component.scss']
+  selector: 'election-year-selector',
+  templateUrl: './election-year-selector.component.html',
+  styleUrls: ['./election-year-selector.component.scss']
 })
-export class YearComponent implements OnInit {
+export class ElectionYearSelectorComponent implements OnInit {
   years: Year[];
   selectedYear: Year;
 

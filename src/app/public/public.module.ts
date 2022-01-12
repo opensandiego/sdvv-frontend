@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
-import { DropdownModule } from 'primeng/dropdown';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,7 +15,6 @@ import { PublicRoutingModule } from './public-routing.module';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 import { RoutingService } from './services/routing.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { YearComponent } from './components/year/year.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
 import { APIStoreModule } from '../store/api.store.module';
@@ -34,7 +31,6 @@ import { APIStoreModule } from '../store/api.store.module';
     UnderConstructionComponent,
     RoundCurrencyDisplayPipe,
     BreadcrumbComponent,
-    YearComponent,
     NotFoundComponent,
   ],
   imports: [
@@ -42,8 +38,6 @@ import { APIStoreModule } from '../store/api.store.module';
     PublicRoutingModule,
     FontAwesomeModule,
     BreadcrumbModule,
-    DropdownModule,
-    FormsModule,
     APIStoreModule,
   ],
   exports: [
@@ -53,7 +47,6 @@ import { APIStoreModule } from '../store/api.store.module';
     UnderConstructionComponent,
     FooterComponent,
     BreadcrumbComponent,
-    YearComponent,
   ],
   providers: [RoutingService],
 })
