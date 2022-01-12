@@ -11,6 +11,7 @@ import { SideMenuService } from './services/side-menu.service';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { ElectionYearSelectorModule } from '../election-year-selector/election-year-selector.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     PublicModule,
     MenuModule,
     PanelMenuModule,
+    ElectionYearSelectorModule,
   ],
   exports: [
     HomeComponent,
