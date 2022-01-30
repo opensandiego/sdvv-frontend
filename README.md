@@ -25,24 +25,42 @@ Currently, campaign finance information for candidates running for local offices
 For more information with Voter's Voice Initiative visit [https://sdvotersvoice.org/](https://sdvotersvoice.org/)
 
 ### Prerequisites
-* Angular 11.0.2
-* npm 6.9.0+
+* Angular CLI 13.1.2+
+* npm 6.14.15+
 
 ### Setup
 1. Clone directory from github
+
 2. change to the sdvv-frontend directory
 ```
 cd sdvv-frontend
 ```
+
 3. Run npm install to install all the dependencies 
 ```
 npm install
 ```
-4. Install angular
+
+4. Install the Angular CLI
 ```
 npm install -g @angular/cli
 ```
-5. Star the angular server
+
+5. Build the libraries. This will build then into the /dist folder.
+```
+npm run build:lib
+```
+Or run the libraries in watch mode with.
+```
+npm run start:lib
+```
+
+6. Start the Angular server then browse to http://localhost:4200/
+```
+npm run start
+```
+
+Or to start the server and open the application in the browser.
 ```
 ng serve --open
 ```

@@ -1,0 +1,13 @@
+
+<div class="total-spent-chart-wrapper">
+  <div class="total-spent-chart" echarts 
+    [options]="chartOption"
+    (chartInit)="onChartInit($event)"
+    [merge]="mergeOption"
+    (chartMouseOver)="hoveredSlice($event)"
+    (chartMouseOut)="hoveredSlice({ dataIndex: -1 })"
+
+    [style.height]="chartHeight+'px'"
+    [style.width]="chartWidth+'px'"
+  ></div>
+</div>
