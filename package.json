@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "start:lib": "ng build lib-ui-charts --watch",
     "start": "ng serve",
-    "build": "ng build --configuration production",
+    "build:lib": "ng build lib-ui-charts",
+    "build:app": "ng build --configuration production",
+    "build": "npm run build:lib && npm run build:app",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
