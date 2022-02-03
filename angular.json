@@ -73,7 +73,15 @@
                 }
               ]
             },
-            "development": {}
+            "development": {},
+            "db-remote": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.db-remote.ts"
+                }
+              ]
+            }
           },
           "defaultConfiguration": "production"
         },
@@ -87,6 +95,9 @@
             },
             "development": {
               "browserTarget": "sdvv-frontend:build:development"
+            },
+            "db-remote": {
+              "browserTarget": "sdvv-frontend:build:db-remote"
             }
           },
           "defaultConfiguration": "development"
