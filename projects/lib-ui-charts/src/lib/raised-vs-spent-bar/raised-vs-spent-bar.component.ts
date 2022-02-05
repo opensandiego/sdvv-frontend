@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { EChartsOption } from 'echarts';
 
@@ -10,8 +10,8 @@ import { getCompactFormattedCurrency } from '../shared/number-formatter'
   styleUrls: ['./raised-vs-spent-bar.component.scss']
 })
 export class RaisedVsSpentBarComponent implements OnChanges {
-  @Input() raised: number;
-  @Input() spent: number;
+  @Input() raised: number = 0;
+  @Input() spent: number = 0;
 
   mergeOption: EChartsOption;
 
@@ -66,8 +66,10 @@ export class RaisedVsSpentBarComponent implements OnChanges {
 
   constructor() { }
 
-  ngOnChanges(): void {
-    this.setChartMergeOption();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['raised'] || changes['spent']) {
+      this.setChartMergeOption();
+    }
   }
 
   setChartMergeOption(): void {
@@ -75,12 +77,12 @@ export class RaisedVsSpentBarComponent implements OnChanges {
     const items = [
       {
         name: 'Raised',
-        value: this.raised,
+        value: this.raised ? this.raised : 0,
         color: '#289a58',
       },
       {
         name: 'Spent',
-        value: this.spent,
+        value: this.spent ? this.spent : 0,
         color: '#ff2c19',
       },
     ]; 
