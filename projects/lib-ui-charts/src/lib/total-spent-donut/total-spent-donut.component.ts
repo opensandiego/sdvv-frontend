@@ -1,15 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { EChartsOption, ECharts } from 'echarts';
-
+import { ExpenseCategory } from '../lib-ui-charts.models';
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
-
-export interface Category {
-  id: string;
-  name: string;
-  value: number;
-  percent: number;
-  color: string;
-}
 
 @Component({
   selector: 'total-spent-donut',
@@ -18,7 +10,7 @@ export interface Category {
 })
 export class TotalSpentDonutComponent implements OnChanges {
 
-  @Input() spendingCategories: Category[];
+  @Input() spendingCategories: ExpenseCategory[];
   @Input() categoryHighlighted: string = '-1';
   @Output() categoryHighlightedChange = new EventEmitter<string>();
 
@@ -112,7 +104,8 @@ export class TotalSpentDonutComponent implements OnChanges {
   }
   
   getFormattedTooltip(params) {
-    return `<div style="font-size: 1em; margin-bottom: 8px">${params.data.name}</div>` 
+    const label = params.data.code ? params.data.code : params.data.name;
+    return `<div style="font-size: 1em; margin-bottom: 8px">${label}</div>` 
          + `<div style="font-size: 1.5em;">${getCompactFormattedCurrency(params.data.value)}</div>`;
   }
 

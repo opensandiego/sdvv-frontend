@@ -11,3 +11,5 @@ export * from './lib/total-spent-donut/total-spent-donut.module';
 
 export * from './lib/raised-vs-spent-bar/raised-vs-spent-bar.component'
 export * from './lib/raised-vs-spent-bar/raised-vs-spent-bar.module'
+
+export * from './lib/lib-ui-charts.models'
