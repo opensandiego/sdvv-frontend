@@ -6,14 +6,14 @@ import { Pipe, PipeTransform } from "@angular/core";
 export class RoundCurrencyDisplayPipe implements PipeTransform {
   transform(input: any, args?: any): any {
     var exp,
-      oneMillion = 1000000,
+      limit = 10000,
       suffixes = ["k", "M", "G", "T", "P", "E"];
 
     if (Number.isNaN(input)) {
       return null;
     }
  
-    if (parseInt(input) < oneMillion) {
+    if (parseInt(input) < limit) {
       return Number(input).toLocaleString('en-US');
     }
 
