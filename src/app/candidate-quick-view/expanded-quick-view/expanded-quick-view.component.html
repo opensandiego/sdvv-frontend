@@ -4,8 +4,8 @@
   <div class="quick-view-layout">
     <div class="item-1">
 
-      <candidate-card *ngIf="candidateCard"
-        [candidateCard]="candidateCard"
+      <candidate-card *ngIf="candidateId"
+        [candidateId]="candidateId"
         [inExpandedCard]="true"
         (emitCandidateId)="showFullDetailsClicked($event)"
       ></candidate-card>

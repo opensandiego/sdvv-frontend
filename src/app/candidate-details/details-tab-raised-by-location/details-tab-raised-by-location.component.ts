@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CandidateDetailsService } from 'src/app/store/services/candidate.details.service';
 
 @Component({
   selector: 'app-details-tab-raised-by-location',
@@ -7,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DetailsTabRaisedByLocationComponent implements OnInit {
 
-  @Input() raisedByLocations;
+  raisedByLocations;
 
   title = {
     top: 'Amount Raised',
@@ -15,9 +17,34 @@ export class DetailsTabRaisedByLocationComponent implements OnInit {
     tooltipText: 'Placeholder tooltip text for Amount Raised by Location!',
   };
 
-  constructor() { }
+  constructor(
+    private candidateDetailsService: CandidateDetailsService,
+    private route: ActivatedRoute,
+  ) { }
+
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const candidateId = params.get('candidateId');
+
+      this.candidateDetailsService.getRaisedByLocation(candidateId)
+        .subscribe( response => {
+          this.raisedByLocations = {
+            inDistrict: this.getAmount('In District', response.locations),
+            inCity: this.getAmount('In City', response.locations),
+            inCounty: this.getAmount('In County', response.locations),
+            inState: this.getAmount('In State', response.locations),
+            outState: this.getAmount('Out of State', response.locations),
+          }
+        })
+    });
+  }
+
+  getAmount(location: string, locations: any[]) {
+    const foundLocation = locations.find(locationItem => locationItem.name === location);
+    return foundLocation 
+      ? parseInt(foundLocation.amount)
+      : 0;
   }
 
 }

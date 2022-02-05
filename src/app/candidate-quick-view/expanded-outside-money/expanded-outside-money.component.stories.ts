@@ -13,7 +13,7 @@ import { OutsideSpendingBarComponent } from '../../vv-charts/outside-spending-ba
 
 
 export default {
-  title: 'Expanded/Outside Money',
+  title: 'Quick View/Outside Money',
   component: ExpandedOutsideMoneyComponent,
   decorators: [
     moduleMetadata({

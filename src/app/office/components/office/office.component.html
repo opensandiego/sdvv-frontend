@@ -1,0 +1,15 @@
+<div class="candidate-cards grid justify-left nogutter">
+  <app-expanded-quick-view class="col-12" 
+    *ngIf="isExpanded" 
+    [candidateId]="selectedCandidateId" 
+    (isExpanded)="onCloseExpanded()"
+  ></app-expanded-quick-view>
+
+  <div *ngFor="let id of candidateIds">
+    <candidate-card
+      [candidateId]="id"
+      (emitCandidateId)="onOpenExpanded($event)"
+    ></candidate-card>
+  </div>
+
+</div>

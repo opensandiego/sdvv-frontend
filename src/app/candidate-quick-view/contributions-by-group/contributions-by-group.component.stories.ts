@@ -13,7 +13,7 @@ import { ContributionsByGroupTableComponent } from '../../vv-charts/contribution
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 export default {
-  title: 'Expanded/Contributions by Group',
+  title: 'Quick View/Contributions by Group',
   component: ContributionsByGroupComponent,
   decorators: [
     moduleMetadata({

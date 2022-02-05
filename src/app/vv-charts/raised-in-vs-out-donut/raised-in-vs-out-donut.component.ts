@@ -66,14 +66,14 @@ export class RaisedInVsOutDonutComponent implements OnChanges {
         data: [
           {
             name: 'Inside',
-            value: this.inside,
+            value: this.inside ? this.inside : 0,
             color: '#3392ff',
             itemStyle: { color: '#3392ff' },
             label: { position: 'center', }
           },
           {
             name: 'Outside',
-            value: this.outside,
+            value: this.outside ? this.outside : 0,
             color: '#bfd63b',
             itemStyle: { color: '#bfd63b' },
             label: { 

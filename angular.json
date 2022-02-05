@@ -17,7 +17,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
             "outputPath": "dist/sdvv-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -30,13 +29,22 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/primeflex/primeflex.css",
+              "./node_modules/primeng/resources/primeng.min.css",
+              "./node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "./node_modules/primeicons/primeicons.css",
               "src/styles.scss"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
               "chart.js",
               "chartjs-plugin-datalabels"
-            ]
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -50,7 +58,6 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -65,19 +72,35 @@
                   "maximumWarning": "64kb"
                 }
               ]
+            },
+            "development": {},
+            "db-remote": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.db-remote.ts"
+                }
+              ]
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sdvv-frontend:build"
           },
           "configurations": {
             "production": {
               "browserTarget": "sdvv-frontend:build:production"
+            },
+            "development": {
+              "browserTarget": "sdvv-frontend:build:development"
+            },
+            "db-remote": {
+              "browserTarget": "sdvv-frontend:build:db-remote"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -102,18 +125,6 @@
               "src/assets"
             ]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -125,22 +136,47 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sdvv-frontend:serve"
+            "protractorConfig": "e2e/protractor.conf.js"
           },
           "configurations": {
             "production": {
               "devServerTarget": "sdvv-frontend:serve:production"
+            },
+            "development": {
+              "devServerTarget": "sdvv-frontend:serve:development"
             }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    },
+    "lib-ui-charts": {
+      "projectType": "library",
+      "root": "projects/lib-ui-charts",
+      "sourceRoot": "projects/lib-ui-charts/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "project": "projects/lib-ui-charts/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-ui-charts/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/lib-ui-charts/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-ui-charts/src/test.ts",
+            "tsConfig": "projects/lib-ui-charts/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-ui-charts/karma.conf.js"
           }
         }
       }

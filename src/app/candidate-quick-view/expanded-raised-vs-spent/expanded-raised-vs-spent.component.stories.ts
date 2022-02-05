@@ -14,7 +14,7 @@ import { ExpandedAverageDonationComponent } from '../expanded-average-donation/e
 
 
 export default {
-  title: 'Expanded/Raised vs. Spent',
+  title: 'Quick View/Raised vs. Spent',
   component: ExpandedRaisedVsSpentComponent,
   decorators: [
     moduleMetadata({

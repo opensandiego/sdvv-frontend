@@ -8,7 +8,12 @@
     "declaration": false,
     "module": "es2020",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
+    "paths": {
+      "lib-ui-charts": [
+        "dist/lib-ui-charts/lib-ui-charts",
+        "dist/lib-ui-charts"
+      ]
+    },
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
@@ -17,7 +22,8 @@
     ],
     "lib": [
       "es2018",
-      "dom"
+      "dom",
+      "esnext.asynciterable"
     ],
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true

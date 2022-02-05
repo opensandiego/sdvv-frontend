@@ -22,7 +22,7 @@ export default {
     }),
   ], 
   argTypes: {
-    raisedCategories: { type: 'array'}
+    // raisedCategories: { type: 'array'}
   },
 } as Meta;
 
