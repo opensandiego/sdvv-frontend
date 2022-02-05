@@ -113,7 +113,9 @@ export class TotalSpentDonutComponent implements OnChanges {
   }
   
   getFormattedTooltip(params) {
-    return `<div style="font-size: 1em; margin-bottom: 8px">${params.data.name}</div>` 
+    const label = params.data.code ? params.data.code : params.data.name;
+
+    return `<div style="font-size: 1em; margin-bottom: 8px">${label}</div>` 
          + `<div style="font-size: 1.5em;">${getCompactFormattedCurrency(params.data.value)}</div>`;
   }
 

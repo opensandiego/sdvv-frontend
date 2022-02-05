@@ -52,12 +52,10 @@ export class DetailsTotalSpentComponent implements OnInit {
           this.totalSpentFormatted = this.totalSpent
             .toLocaleString('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0});
 
-          const filteredGroups = response.spentGroup.filter( group => group.spending_code );
-
-          this.categoriesCombined = filteredGroups.map((group, i) => ({
+          this.categoriesCombined = response.spentGroup.map((group, i) => ({
             id: i.toString(),
-            // name: group.spending_code ? group.spending_code : 'null',
-            name: group.spending_code ? this.getSpendingCodeDescription(group.spending_code) : 'null',
+            code: group.spending_code,
+            name: group.spending_code ? this.getSpendingCodeDescription(group.spending_code) : 'not categorized',
             value: parseInt(group.sum),
             percent: parseFloat(group.average),
             color: i < this.colors.length ? this.colors[i] : 'red',
