@@ -1,6 +1,5 @@
 import { HttpClient, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { CandidateDetailsHeader } from '../interfaces/candidate-details-header';
@@ -12,15 +11,12 @@ import { CandidateDetailsOutsideMoney } from '../interfaces/candidate-details-ou
 @Injectable({
   providedIn: 'root',
 })
-export class CandidateDetailsService extends EntityCollectionServiceBase<CandidateDetailsHeader> {
+export class CandidateDetailsService {
   private host = environment.apiUrl;
 
   constructor(
     public http: HttpClient,
-    serviceElementsFactory: EntityCollectionServiceElementsFactory
-  ) {
-      super('CandidateDetailsHeader', serviceElementsFactory);
-  }
+  ) { }
 
   getHeader(candidateId: string): Observable<CandidateDetailsHeader>  {
     const URL = `${this.host}/api/candidate-details-header/${candidateId}`;
