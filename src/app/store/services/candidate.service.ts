@@ -1,6 +1,5 @@
 import { HttpClient, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { Observable, of } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { Candidate } from '../interfaces/candidate';
@@ -13,15 +12,12 @@ interface options {
 @Injectable({
   providedIn: 'root',
 })
-export class CandidateService extends EntityCollectionServiceBase<Candidate> {
+export class CandidateService {
   private host = environment.apiUrl;
   
   constructor(
     public http: HttpClient,
-    serviceElementsFactory: EntityCollectionServiceElementsFactory
-  ) {
-      super('Candidate', serviceElementsFactory);
-  }
+  ) { }
 
   getCandidates({ year, office, district }: options ): Observable<Candidate[]>  {
     if (isNaN(parseInt(year))) {

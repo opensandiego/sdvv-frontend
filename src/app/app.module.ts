@@ -13,8 +13,6 @@ import { APIStoreModule } from './store/api.store.module';
 import { PublicModule } from './public/public.module';
 import { NavigationMenuModule } from './navigation-menu/navigation-menu.module';
 import { CandidateDetailsModule } from './candidate-details/candidate-details.module';
-import { EntityDataModule } from '@ngrx/data';
-import { entityConfig } from './entity-metadata';
 
 @NgModule({
   exports: [
@@ -35,7 +33,6 @@ import { entityConfig } from './entity-metadata';
     PublicModule,
     NavigationMenuModule,
     CandidateDetailsModule,
-    EntityDataModule.forRoot(entityConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
