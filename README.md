@@ -65,6 +65,11 @@ Or to start the server and open the application in the browser.
 ng serve --open
 ```
 
+To run the application and connect to backend database on Heroku use:
+```
+npm run start:db:remote
+```
+
 ### Contributing
 
 [Contributing](https://github.com/opensandiego/sdvv-frontend/blob/master/CONTRIBUTING.md)
