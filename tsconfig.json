@@ -12,6 +12,10 @@
       "lib-ui-charts": [
         "dist/lib-ui-charts/lib-ui-charts",
         "dist/lib-ui-charts"
+      ],
+      "lib-ui-components": [
+        "dist/lib-ui-components/lib-ui-components",
+        "dist/lib-ui-components"
       ]
     },
     "experimentalDecorators": true,
