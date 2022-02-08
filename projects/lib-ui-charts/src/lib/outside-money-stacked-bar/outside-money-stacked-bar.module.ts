@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgxEchartsModule } from 'ngx-echarts';
 import { OutsideMoneyStackedBarComponent } from './outside-money-stacked-bar.component';
 
 @NgModule({
@@ -6,6 +7,9 @@ import { OutsideMoneyStackedBarComponent } from './outside-money-stacked-bar.com
     OutsideMoneyStackedBarComponent,
   ],
   imports: [
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
   ],
   exports: [
     OutsideMoneyStackedBarComponent,
