@@ -24,3 +24,10 @@ export interface RaisedCategory {
   value: number;
   color: string;
 }
+
+export interface Committee {
+  id: string;
+  name: string;
+  value: number;
+  percent: number;
+}
