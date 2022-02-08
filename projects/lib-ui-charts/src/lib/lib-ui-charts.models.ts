@@ -31,3 +31,11 @@ export interface Committee {
   value: number;
   percent: number;
 }
+
+export interface RaisedByLocations {
+  inDistrict: number,
+  inCity: number,
+  inCounty: number,
+  inState: number,
+  outState: number,
+}

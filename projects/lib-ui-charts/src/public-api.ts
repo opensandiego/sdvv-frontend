@@ -15,6 +15,9 @@ export * from './lib/outside-spending-bar/outside-spending-bar.module'
 export * from './lib/raised-by-industry-bar/raised-by-industry-bar.component';
 export * from './lib/raised-by-industry-bar/raised-by-industry-bar.module';
 
+export * from './lib/raised-by-location-bar/raised-by-location-bar.component'
+export * from './lib/raised-by-location-bar/raised-by-location-bar.module'
+
 export * from './lib/raised-by-outside-money-bar/raised-by-outside-money-bar.component'
 export * from './lib/raised-by-outside-money-bar/raised-by-outside-money-bar.module'
 
