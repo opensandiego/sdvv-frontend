@@ -180,6 +180,37 @@
           }
         }
       }
+    },
+    "lib-ui-components": {
+      "projectType": "library",
+      "root": "projects/lib-ui-components",
+      "sourceRoot": "projects/lib-ui-components/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/lib-ui-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-ui-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/lib-ui-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-ui-components/src/test.ts",
+            "tsConfig": "projects/lib-ui-components/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-ui-components/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "sdvv-frontend"

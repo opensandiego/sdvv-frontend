@@ -52,7 +52,8 @@ npm run build:lib
 ```
 Or run the libraries in watch mode with.
 ```
-npm run start:lib
+npm run start:lib:ui:charts
+npm run start:lib:ui:components
 ```
 
 6. Start the Angular server then browse to http://localhost:4200/
