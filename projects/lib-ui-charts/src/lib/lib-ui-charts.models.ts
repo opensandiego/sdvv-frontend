@@ -12,3 +12,9 @@ export interface RaisedByOutsideMoney {
   inOpposition: number,
   inSupport: number,
 }
+
+export interface RaisedByIndustry {
+  name: string,
+  value: number,
+  label?: string,
+}
