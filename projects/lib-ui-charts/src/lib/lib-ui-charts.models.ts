@@ -7,3 +7,8 @@ export interface ExpenseCategory {
   percent: number;
   color: string;
 }
+
+export interface RaisedByOutsideMoney {
+  inOpposition: number,
+  inSupport: number,
+}

@@ -6,6 +6,9 @@ export * from './lib/lib-ui-charts.service';
 export * from './lib/lib-ui-charts.component';
 export * from './lib/lib-ui-charts.module';
 
+export * from './lib/raised-by-outside-money-bar/raised-by-outside-money-bar.component'
+export * from './lib/raised-by-outside-money-bar/raised-by-outside-money-bar.module'
+
 export * from './lib/raised-in-vs-out-donut/raised-in-vs-out-donut.component'
 export * from './lib/raised-in-vs-out-donut/raised-in-vs-out-donut.module'
 
