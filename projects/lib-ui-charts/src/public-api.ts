@@ -18,6 +18,9 @@ export * from './lib/raised-in-vs-out-donut/raised-in-vs-out-donut.module'
 export * from './lib/raised-vs-spent-bar/raised-vs-spent-bar.component'
 export * from './lib/raised-vs-spent-bar/raised-vs-spent-bar.module'
 
+export * from './lib/total-raised-bar/total-raised-bar.component';
+export * from './lib/total-raised-bar/total-raised-bar.module';
+
 export * from './lib/total-spent-donut/total-spent-donut.component';
 export * from './lib/total-spent-donut/total-spent-donut.module';
 

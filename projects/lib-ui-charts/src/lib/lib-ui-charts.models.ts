@@ -18,3 +18,9 @@ export interface RaisedByIndustry {
   value: number,
   label?: string,
 }
+
+export interface RaisedCategory {
+  name: string;
+  value: number;
+  color: string;
+}
