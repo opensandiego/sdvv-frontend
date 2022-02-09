@@ -1,28 +1,16 @@
-import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
-
-export interface CandidateInfo {
-  id: string;
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  description?: string;
-  website?: string;
-  imageUrl?: string;
-}
-
-export interface CommitteeData {
-  raised?: number;
-  donors?: number;
-}
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CandidateInfo, CommitteeData } from '../lib-ui-components.models';
 
 @Component({
   selector: 'candidate-card',
   templateUrl: './candidate-card.component.html',
   styleUrls: ['./candidate-card.component.scss']
 })
-export class CandidateCardComponent implements OnChanges {
+export class CandidateCardComponent {
   @Input()
   set candidateInfo(candidateInfo: CandidateInfo) {
+    if (!candidateInfo) { return; }
+
     this.candidateId = candidateInfo.id;
     this.candidateImg = candidateInfo.imageUrl 
         ? candidateInfo.imageUrl
@@ -36,6 +24,8 @@ export class CandidateCardComponent implements OnChanges {
 
   @Input()
   set committeeData(committeeData: CommitteeData) {
+    if (!committeeData) { return; }
+
     this.raised = committeeData?.raised;
     this.donors = committeeData?.donors;
   }
@@ -63,10 +53,6 @@ export class CandidateCardComponent implements OnChanges {
   donors: number = 0;
 
   buttonText: string;
-
-  constructor( ) { }
-
-  ngOnChanges(changes: SimpleChanges) { }
 
   selectCandidate(id: string) {
     this.emitCandidateId.emit(id ? id : this.candidateId);

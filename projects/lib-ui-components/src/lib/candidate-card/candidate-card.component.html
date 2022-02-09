@@ -28,7 +28,8 @@
 
     <button *ngIf="buttonText"
       class="candidate-button" 
-      mat-flat-button (click)="selectCandidate()"
+      mat-flat-button 
+      (click)="selectCandidate()"
     >{{buttonText}}</button>
 
     <div *ngIf="inExpandedCard && website" class="website-link">

@@ -22,7 +22,8 @@
         width: 125px;
         border-radius: 50%;
         overflow: hidden;
-//        // border: 1px solid $vvbackground;
+        border: 1px solid;
+        // border-color: $vvbackground;
         
         img {
             object-fit: cover;

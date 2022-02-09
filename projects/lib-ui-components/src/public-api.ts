@@ -8,3 +8,5 @@ export * from './lib/lib-ui-components.module';
 
 export * from './lib/candidate-card/candidate-card.component';
 export * from './lib/candidate-card/candidate-card.module';
+
+export * from './lib/lib-ui-components.models';
