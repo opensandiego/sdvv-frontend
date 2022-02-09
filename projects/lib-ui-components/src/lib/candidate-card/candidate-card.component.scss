@@ -1,0 +1,111 @@
+// @import "variables";
+// @import "styles/elements";
+// @import "styles/global";
+
+.candidate-card-outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.candidate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .candidate-image-container {
+        height: 125px;
+        width: 125px;
+    }
+    .candidate-image {
+        display: flex;
+        height: 125px;
+        width: 125px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid;
+        // border-color: $vvbackground;
+        
+        img {
+            object-fit: cover;
+            object-position: center top;
+            width: 100%;
+            height: auto;
+//            background-color: $vvbackground;
+        }
+    }
+}
+
+.candidate-card {
+    text-align: center;
+    // height: 320px;
+    margin: 10px;
+    padding: 15px 25px 15px 25px;
+    background: #fff;
+//    box-shadow: $vvshadow;
+    // width: 180px !important;
+    h1 {
+        font-size: 20px;
+//        color: $vvdarkblue;
+    }
+    h2 {
+        font-weight: normal;
+        font-size: 12px;
+//        color: $vvgrey;
+        margin: 5px 0px 10px 0px;
+    }
+    h3 {
+        font-size: 18px;
+//        color: $vvdarkgrey;
+    }
+    .first{
+        margin-top:10px;
+    }
+
+    .candidate-numbers {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom:10px;
+        div {
+            padding: 0 6px;
+            h2, h3{
+                margin: 1px 0;
+            }
+        }
+        .raised h3 {
+//            color: $vvgreen;
+        }
+    } 
+    .candidate-button {
+//        @include button-styles;
+        padding: 0 16px;
+    }
+    .candidate-button:hover {
+//        background-color: $vvlightblue;
+        text-decoration: none;
+    }
+}
+
+.candidate-card.in-expanded {
+    margin: 0px;
+    padding: 0;
+    box-shadow: none;
+    height: auto;
+    
+    .candidate-image {
+        border: 0px;
+    }
+}
+
+.website-link {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+//    color: $vvlightblue;
+
+    .mat-icon {
+        padding-right: 5px;
+    }
+}
