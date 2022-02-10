@@ -32,8 +32,11 @@ export class CandidateCardComponent {
 
   @Input()
   set inExpandedCard(inExpandedCard: boolean) {
+    this._inExpandedCard = inExpandedCard;
     this.buttonText = (inExpandedCard) ? 'See Full Details' : 'See Details';
   }
+  get inExpandedCard(): boolean { return this._inExpandedCard; }
+  private _inExpandedCard = false;
 
   @Output() private emitCandidateId = new EventEmitter<string>();
 

@@ -1,6 +1,6 @@
-// @import "variables";
-// @import "styles/elements";
-// @import "styles/global";
+@import "../styles/variables";
+@import "../styles/elements";
+@import "../styles/global";
 
 .candidate-card-outer-container {
     display: flex;
@@ -23,14 +23,14 @@
         border-radius: 50%;
         overflow: hidden;
         border: 1px solid;
-        // border-color: $vvbackground;
+        border-color: $vvbackground;
         
         img {
             object-fit: cover;
             object-position: center top;
             width: 100%;
             height: auto;
-//            background-color: $vvbackground;
+           background-color: $vvbackground;
         }
     }
 }
@@ -41,21 +41,21 @@
     margin: 10px;
     padding: 15px 25px 15px 25px;
     background: #fff;
-//    box-shadow: $vvshadow;
+    box-shadow: $vvshadow;
     // width: 180px !important;
     h1 {
         font-size: 20px;
-//        color: $vvdarkblue;
+       color: $vvdarkblue;
     }
     h2 {
         font-weight: normal;
         font-size: 12px;
-//        color: $vvgrey;
+        color: $vvgrey;
         margin: 5px 0px 10px 0px;
     }
     h3 {
         font-size: 18px;
-//        color: $vvdarkgrey;
+        color: $vvdarkgrey;
     }
     .first{
         margin-top:10px;
@@ -72,15 +72,15 @@
             }
         }
         .raised h3 {
-//            color: $vvgreen;
+           color: $vvgreen;
         }
     } 
     .candidate-button {
-//        @include button-styles;
+        @include button-styles;
         padding: 0 16px;
     }
     .candidate-button:hover {
-//        background-color: $vvlightblue;
+        background-color: $vvlightblue;
         text-decoration: none;
     }
 }
@@ -103,7 +103,7 @@
     align-items: center;
     margin-top: 10px;
     font-size: 14px;
-//    color: $vvlightblue;
+    color: $vvlightblue;
 
     .mat-icon {
         padding-right: 5px;
