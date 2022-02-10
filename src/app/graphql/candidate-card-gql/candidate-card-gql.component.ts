@@ -29,6 +29,7 @@ export class CandidateCardGQLComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    if (!this.candidateId) { return; }
 
     this.candidateInfoGQL.watch({
       candidateId: this.candidateId,
