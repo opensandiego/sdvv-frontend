@@ -7,7 +7,12 @@ import { CandidateCardInfoGQL, CandidateCardInfoResponse } from './candidate-car
 @Component({
   selector: 'gql-candidate-card',
   template: `
-    <candidate-card [candidateInfo]="candidateInfo" [committeeData]="committeeData" [inExpandedCard]>="inExpandedCard"</candidate-card>
+    <candidate-card 
+      [candidateInfo]="candidateInfo"
+      [committeeData]="committeeData"
+      [inExpandedCard]="inExpandedCard"
+      (emitCandidateId)="onCandidateSelected($event)"
+    ></candidate-card>
   `,
 })
 export class CandidateCardGQLComponent implements OnInit {
@@ -46,5 +51,9 @@ export class CandidateCardGQLComponent implements OnInit {
       }
     });
 
+  }
+
+  onCandidateSelected(eventData) {
+    console.log({ eventData });
   }
 }
