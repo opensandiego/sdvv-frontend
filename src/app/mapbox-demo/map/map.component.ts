@@ -12,6 +12,8 @@ export class MapComponent implements OnInit {
   mapStyle = 'mapbox://styles/mapbox/streets-v9';
   map: Map;
 
+  url = 'assets/council_districts_datasd.geojson'
+
   constructor(
   ) { }
 

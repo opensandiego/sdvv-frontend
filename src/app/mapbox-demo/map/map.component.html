@@ -3,7 +3,46 @@
   [style]="mapStyle"
   [zoom]="zoom"
   [center]="center"
-  (load)="map = $event"
-></mgl-map>
+  (mapLoad)="map = $event"
+>
+  <mgl-geojson-source
+    id="districts"
+    [data]="url"
+  ></mgl-geojson-source>
 
-<p>Map Component Works</p>
+  <mgl-layer
+    id="districts-fill"
+    type="fill"
+    source="districts"
+    [paint]="{
+      'fill-color': 'rgba(98, 123, 193,.5)'
+    }"
+  ></mgl-layer>
+
+  <mgl-layer
+    id="districts-outline"
+    type="line"
+    source="districts"
+    [paint]="{
+      'line-color': '#000',
+      'line-width': 3
+    }"
+  ></mgl-layer>
+
+  <mgl-control>
+    Hello SD!
+  </mgl-control>
+
+  <mgl-control
+    mglNavigation
+  ></mgl-control>
+
+  <mgl-control
+    mglScale
+    unit="imperial"
+    position="top-right"
+  ></mgl-control>
+
+</mgl-map>
+
+<p>Map Component Demo Works</p>
