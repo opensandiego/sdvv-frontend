@@ -1,0 +1,11 @@
+
+<p-dropdown
+  inputId="dropdown"
+  optionLabel="name"
+  placeholder="Election Year"
+  optionLabel="year"
+  [autoDisplayFirst]="false"
+  [options]="years"
+  [(ngModel)]="selectedYear"
+  (onChange)="selectYear($event)"
+></p-dropdown>

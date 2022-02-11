@@ -13,3 +13,7 @@ export interface CommitteeData {
   raised?: number;
   donors?: number;
 }
+
+export interface ElectionYear {
+  year: string,
+}
