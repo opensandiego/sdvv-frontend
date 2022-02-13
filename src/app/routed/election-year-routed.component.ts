@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { YearService } from 'src/app/store/services/year.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class ElectionYearRouteComponent implements OnInit {
   activeYear: string = '';
 
   constructor(
-    // private router: Router,
+    private router: Router,
     private yearService: YearService,
   ) { }
 
@@ -26,6 +26,7 @@ export class ElectionYearRouteComponent implements OnInit {
   }
 
   changeRoute(year) {
-    // this.router.navigate([`year/${year}`]);
+    this.router.navigate([`year/${year}`]);
+    this.yearService.changeElectionYear(year);
   }
 }
