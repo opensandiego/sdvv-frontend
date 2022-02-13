@@ -20,71 +20,55 @@ export default {
 } as Meta;
 
 const Template: Story<YearSelectorComponent> = (args: YearSelectorComponent) => ({
-  props: args,
+  props: {
+    years: args.years,
+    selectedYear: args.selectedYear,
+
+    // Needed for Actions in the Storybook UI to detect emitted events
+    selectedYearChange: args.selectedYearChange,
+  }
 })
+
+const ElectionYears = [
+  {
+    year: '2026',
+  },
+  {
+    year: '2024',
+  },
+  {
+    year: '2022',
+  },
+  {
+    year: '2020',
+  },
+  {
+    year: '2018',
+  },
+  {
+    year: '2016',
+  },
+  {
+    year: '2014',
+  },
+  {
+    year: '2012',
+  },
+];
 
 export const Default = Template.bind({});
 Default.args = {}
 
 export const ManyYears2024Selected = Template.bind({});
 ManyYears2024Selected.args = {
-  years: [
-    {
-      year: '2026',
-    },
-    {
-      year: '2024',
-    },
-    {
-      year: '2022',
-    },
-    {
-      year: '2020',
-    },
-    {
-      year: '2018',
-    },
-    {
-      year: '2016',
-    },
-    {
-      year: '2014',
-    },
-    {
-      year: '2024',
-    },
-  ],
-  year: '2024',
+  years: ElectionYears,
+  selectedYear: '2024',
 };
-export const ManyYears2014Selected = Template.bind({});
-ManyYears2014Selected.args = {
-  years: [
-    {
-      year: '2026',
-    },
-    {
-      year: '2024',
-    },
-    {
-      year: '2022',
-    },
-    {
-      year: '2020',
-    },
-    {
-      year: '2018',
-    },
-    {
-      year: '2016',
-    },
-    {
-      year: '2014',
-    },
-    {
-      year: '2024',
-    },
-  ],
-  year: '2014',
+
+export const ManyYears2012Selected = Template.bind({});
+ManyYears2012Selected.args = {
+  years: ElectionYears,
+  selectedYear: '2012',
 };
 
 export const UnsortedYears = Template.bind({});
@@ -103,24 +87,21 @@ UnsortedYears.args = {
       year: '2028',
     },
   ],
-  year: '2028',
+  selectedYear: '2028',
 };
 
-export const NoYearSelected = Template.bind({});
-NoYearSelected.args = {
-  years: [
-    {
-      year: '2022',
-    },
-    {
-      year: '2020',
-    },
-    {
-      year: '2018',
-    },
-    {
-      year: '2016',
-    },
-  ],
+export const NoSelectedYear = Template.bind({});
+NoSelectedYear.args = {
+  years: ElectionYears,
+};
+
+export const NoElectionYears = Template.bind({});
+NoElectionYears.args = {
+  selectedYear: '2020',
+};
+
+export const SelectedYearNull = Template.bind({});
+SelectedYearNull.args = {
+  years: ElectionYears,
   selectedYear: null,
 };

@@ -8,14 +8,18 @@ import { YearSelectorGQL, YearsResponse } from './year-selector-gql.query';
   template: `
     <year-selector
       [years]="electionYears"
-      [(year)]="year"
+      [selectedYear]="year"
+      (selectedYearChange)="doChange($event)"
     ></year-selector>
   `,
 })
 export class YearSelectorGQLComponent implements OnInit {
+  @Input() year: string = '';
+  @Output() private yearChanged = new EventEmitter<string>();
 
-  @Input() year: string;
-  @Output() private yearChange = new EventEmitter<string>();
+  doChange(year) {
+    this.yearChanged.emit(year);
+  }
 
   electionYears: ElectionYear[];
 

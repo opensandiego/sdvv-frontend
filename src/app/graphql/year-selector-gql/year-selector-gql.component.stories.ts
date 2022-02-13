@@ -27,12 +27,22 @@ const Template: Story = (args) => ({
 export const Default = Template.bind({});
 Default.args = {}
 
-export const Year2022 = Template.bind({});
-Year2022.args = {
+export const EmptyStringSelectedYear = Template.bind({});
+EmptyStringSelectedYear.args = {
+  year: ''
+}
+
+export const SelectedYear2022 = Template.bind({});
+SelectedYear2022.args = {
   year: '2022'
 }
 
-export const Year2020 = Template.bind({});
-Year2020.args = {
+export const SelectedYear2020 = Template.bind({});
+SelectedYear2020.args = {
   year: '2020'
+}
+
+export const SelectedYearNotValid = Template.bind({});
+SelectedYearNotValid.args = {
+  year: 'ABCD'
 }
