@@ -76,11 +76,19 @@
               ]
             },
             "development": {},
-            "db-remote": {
+            "staging": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.db-remote.ts"
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
+            },
+            "db-staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.db-staging.ts"
                 }
               ]
             }
@@ -98,8 +106,11 @@
             "development": {
               "browserTarget": "sdvv-frontend:build:development"
             },
-            "db-remote": {
-              "browserTarget": "sdvv-frontend:build:db-remote"
+            "staging": {
+              "browserTarget": "sdvv-frontend:build:staging"
+            },
+            "db-staging": {
+              "browserTarget": "sdvv-frontend:build:db-staging"
             }
           },
           "defaultConfiguration": "development"
