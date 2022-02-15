@@ -4,10 +4,9 @@ import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
-const local_dev_url = 'http://localhost:3000';
-const remote_prod_url = 'https://opensandiego-voters-voice.herokuapp.com'
-const uri = `${local_dev_url}/graphql`;
+const uri = `${environment.apiUrl}/graphql`;
 
 @NgModule({
   imports: [
