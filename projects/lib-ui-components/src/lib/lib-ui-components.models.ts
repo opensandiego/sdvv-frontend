@@ -1,4 +1,19 @@
 
+export interface ActiveMenuPath {
+  officeTitle: string;
+  districtNumber: string;
+  candidateId: string;
+}
+export interface CandidateMenuItem {
+  id: string;
+  fullName: string;
+  office: string;
+  district: string | null;
+  electionYear: string;
+  inGeneralElection: boolean;
+  routerLink?: string;
+}
+
 export interface CandidateInfo {
   id: string;
   firstName: string;
