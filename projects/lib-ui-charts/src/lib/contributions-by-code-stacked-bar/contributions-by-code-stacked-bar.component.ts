@@ -67,14 +67,14 @@ export class ContributionsByCodeStackedBarComponent implements OnChanges {
           
         label: {
           show: true,
-          position: 'inside',
+          position: 'top',
           fontSize: 18,
           fontWeight: 'bold',
           formatter: (params) => params.data['value'] > 0
             ? getCompactFormattedCurrency(params.data['value'])
             : '',
         },
-        stack: 'contributions',
+        // stack: 'contributions',
         emphasis: { focus: 'series', },
         seriesLayoutBy: 'row',
         datasetIndex: DatasetIndex.Monetary,
@@ -94,7 +94,7 @@ export class ContributionsByCodeStackedBarComponent implements OnChanges {
             ? getCompactFormattedCurrency(params.data['value'])
             : '',
         },
-        stack: 'contributions',
+        // stack: 'contributions',
         emphasis: { focus: 'series', },
         seriesLayoutBy: 'row',
         datasetIndex: DatasetIndex.NonMonetary,

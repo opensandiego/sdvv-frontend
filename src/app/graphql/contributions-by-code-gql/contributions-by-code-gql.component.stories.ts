@@ -38,6 +38,12 @@ export const ToddGloria2020: Story = () => ({
   },
 })
 
+export const StephenWhitburn2020: Story = () => ({
+  props: {
+    candidateId: 'be577485-059c-44c0-94ed-a1678106f3f0|2020'
+  },
+})
+
 export const JenniferCampbell2022: Story = () => ({
   props: {
     candidateId: 'd3d1c6e7-0add-49f1-9b3d-e9289e7efcf6|2022'
