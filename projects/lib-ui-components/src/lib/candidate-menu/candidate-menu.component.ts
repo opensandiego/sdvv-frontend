@@ -12,7 +12,7 @@ import { Office } from './office';
       [multiple]="false"
     ></p-panelMenu>
   `,
-  // styleUrls: ['./candidate-menu.component.scss'],
+  styleUrls: ['./candidate-menu.component.scss'],
 })
 export class CandidateMenuComponent implements OnChanges {
   @Input() activeItem: ActiveMenuPath;

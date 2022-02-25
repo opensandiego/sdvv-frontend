@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActiveMenuPath } from 'lib-ui-components';
 import { CandidateMenuGQL, CandidateMenuResponse } from './candidate-menu-gql.query';
 
+export { ActiveMenuPath as ActiveMenuPathGQL };
 @Component({
   selector: 'gql-candidate-menu',
   template: `
@@ -15,7 +16,7 @@ import { CandidateMenuGQL, CandidateMenuResponse } from './candidate-menu-gql.qu
   `,
   // styleUrls: ['./candidate-menu-gql.component.scss']
 })
-export class CandidateMenuGQLComponent implements OnInit {
+export class CandidateMenuGQLComponent implements OnChanges {
   @Input() electionYear: string;
 
   @Input() activeItem: ActiveMenuPath;
@@ -27,8 +28,23 @@ export class CandidateMenuGQLComponent implements OnInit {
 
   constructor(private candidateMenuGQL: CandidateMenuGQL) {}
 
-  ngOnInit() {
-    if (!this.electionYear) { return; }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['electionYear']) {
+      const electionYear = changes['electionYear'].currentValue;
+      this.electionYearChanged(electionYear);
+    }
+
+  }
+
+  electionYearChanged(electionYear) {
+    this.electionYear = electionYear;
+
+    if (!this.electionYear) {
+      this.mayor = null;
+      this.cityCouncil = null;
+      this.cityAttorney = null;
+      return; 
+    }
 
     this.candidateMenuGQL.watch({
       year: this.electionYear,

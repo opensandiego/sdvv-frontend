@@ -33,6 +33,11 @@ Default.args = {}
 export const Year2022 = Template.bind({});
 Year2022.args = {
   electionYear: '2022',
+}
+
+export const Year2022WithSelection = Template.bind({});
+Year2022WithSelection.args = {
+  electionYear: '2022',
   activeItem: {
     officeTitle: 'City Council',
     districtNumber: '4',
@@ -42,6 +47,17 @@ Year2022.args = {
 
 export const Year2020 = Template.bind({});
 Year2020.args = {
+  electionYear: '2020',
+}
+
+export const Year2020DetailsActive = Template.bind({});
+Year2020DetailsActive.args = {
+  detailsActive: true,
+  electionYear: '2020',
+}
+
+export const Year2020WithSelection = Template.bind({});
+Year2020WithSelection.args = {
   activeItem: {
     officeTitle: 'Mayor',
     districtNumber: '',
