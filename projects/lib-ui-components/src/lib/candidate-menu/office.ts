@@ -14,7 +14,7 @@ export class Office {
 
   constructor(title: string, icon: string, candidates: CandidateMenuItem[] = null) {
     this.id = title.toLowerCase().split(' ').join('-');
-    this.title = title;
+    this.title = title.toLowerCase().split(' ').join('-');
     this.label = title.toUpperCase();
     this.icon = icon;
     this.candidates = candidates;

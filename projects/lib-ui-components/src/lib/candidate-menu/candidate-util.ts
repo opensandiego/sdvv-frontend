@@ -30,9 +30,9 @@ export class CandidateUtil {
     return {
       id: candidate.id,
       label: candidate.fullName,
-      icon: 'pi pi-user',
-      routerLinkActiveOptions: { exact:true },
+      icon: candidate.inGeneralElection ? 'pi pi-check-circle' : 'pi pi-user',
       routerLink: candidate.routerLink,
+      routerLinkActiveOptions: { exact:true },
     }
   }
 
