@@ -26,11 +26,18 @@
       </div>
     </div>
 
-    <button *ngIf="buttonText"
+    <!-- <button *ngIf="buttonText"
       class="candidate-button" 
       mat-flat-button 
       (click)="selectCandidate()"
-    >{{buttonText}}</button>
+    >{{buttonText}}</button> -->
+
+    <a
+      *ngIf="buttonText && buttonLink"
+      class="candidate-button" 
+      mat-flat-button 
+      [routerLink]="[(inExpandedCard ? 'details' : candidateId)]"
+    > {{buttonText}} </a>
 
     <div *ngIf="inExpandedCard && website" class="website-link">
       <mat-icon>link</mat-icon>

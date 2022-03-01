@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { CandidateCardModule } from 'lib-ui-components';
 
 import { GraphQLModule } from '../graphql.module';
@@ -10,7 +10,7 @@ import { CandidateCardGQLComponent } from './candidate-card-gql.component';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    CommonModule,
     HttpClientModule,
     GraphQLModule,
     CandidateCardModule,

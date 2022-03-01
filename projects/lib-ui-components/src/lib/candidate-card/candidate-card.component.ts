@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { CandidateInfo, CommitteeData } from '../lib-ui-components.models';
 
 @Component({
@@ -6,7 +6,7 @@ import { CandidateInfo, CommitteeData } from '../lib-ui-components.models';
   templateUrl: './candidate-card.component.html',
   styleUrls: ['./candidate-card.component.scss']
 })
-export class CandidateCardComponent {
+export class CandidateCardComponent implements OnChanges {
   @Input()
   set candidateInfo(candidateInfo: CandidateInfo) {
     if (!candidateInfo) { return; }
@@ -30,13 +30,15 @@ export class CandidateCardComponent {
     this.donors = committeeData?.donors;
   }
 
-  @Input()
-  set inExpandedCard(inExpandedCard: boolean) {
-    this._inExpandedCard = inExpandedCard;
-    this.buttonText = (inExpandedCard) ? 'See Full Details' : 'See Details';
-  }
-  get inExpandedCard(): boolean { return this._inExpandedCard; }
-  private _inExpandedCard = false;
+  @Input() inExpandedCard: boolean = false;
+  // @Input()
+  // set inExpandedCard(inExpandedCard: boolean) {
+  //   this._inExpandedCard = inExpandedCard;
+  //   this.buttonText = (inExpandedCard) ? 'See Full Details' : 'See Details';
+  //   this.buttonLink = (inExpandedCard) ? 'details' : this.candidateId;
+  // }
+  // get inExpandedCard(): boolean { return this._inExpandedCard; }
+  // private _inExpandedCard = false;
 
   @Output() private emitCandidateId = new EventEmitter<string>();
 
@@ -55,9 +57,18 @@ export class CandidateCardComponent {
   raised: number = 0;
   donors: number = 0;
 
-  buttonText: string;
+  buttonText: string = 'See Details';
+  buttonLink: string = 'details';
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['inExpandedCard']) {
+      this.inExpandedCard = changes['inExpandedCard'].currentValue;
+      this.buttonText = (this.inExpandedCard) ? 'See Full Details' : 'See Details';
+      // this.buttonLink = (this.inExpandedCard) ? 'details' : this.candidateId;
+    }
+  }
 
   selectCandidate(id: string) {
-    this.emitCandidateId.emit(id ? id : this.candidateId);
+    // this.emitCandidateId.emit(id ? id : this.candidateId);
   }
 }
