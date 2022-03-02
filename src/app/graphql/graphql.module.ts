@@ -8,6 +8,14 @@ import { environment } from 'src/environments/environment';
 
 const uri = `${environment.apiUrl}/graphql`;
 
+const cacheOptions = {
+  typePolicies: {
+    Committee: {
+      keyFields: ["name"],
+    },
+  }
+};
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +28,7 @@ const uri = `${environment.apiUrl}/graphql`;
       provide: APOLLO_OPTIONS,
       useFactory: (httpLink: HttpLink) => {
         return {
-          cache: new InMemoryCache(),
+          cache: new InMemoryCache(cacheOptions),
           link: httpLink.create({
             uri: uri,
           }),

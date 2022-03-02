@@ -21,7 +21,9 @@ export class RaisedVsSpentGQL extends Query<Response> {
   document = gql`
     query raisedVsSpent ($candidateId: String!) {
       candidate(id: $candidateId) {
+        id
         committee {
+          name
           contributions {
             sum
           }
