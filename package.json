@@ -20,8 +20,10 @@
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "npm run docs:json && start-storybook -p 6006",
-    "build-storybook": "npm run docs:json && build-storybook"
+    "storybook": "npm run storybook:db:local",
+    "storybook:db:local": "ng run sdvv-frontend:storybook-db-local",
+    "storybook:db:staging": "ng run sdvv-frontend:storybook-db-staging",
+    "build-storybook": "ng run sdvv-frontend:build-storybook"
   },
   "private": true,
   "dependencies": {
