@@ -26,7 +26,7 @@ For more information with Voter's Voice Initiative visit [https://sdvotersvoice.
 
 ### Prerequisites
 * Angular CLI 13.1.2+
-* npm 6.14.15+
+* npm 8+
 
 ### Setup
 1. Clone directory from github
