@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { YearService } from 'src/app/store/services/year.service';
 
 @Component({
-  selector: 'election-year-route',
+  selector: 'election-year-routed',
   template: `
     <gql-year-selector
       [year]="activeYear"
