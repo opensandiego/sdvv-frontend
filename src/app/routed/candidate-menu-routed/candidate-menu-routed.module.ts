@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { APIStoreModule } from '../../store/api.store.module';
 import { CandidateMenuGQLModule } from 'src/app/graphql/candidate-menu/candidate-menu-gql.module';
-import { CandidateMenuRouteComponent } from './candidate-menu-routed.component';
+import { CandidateMenuRoutedComponent } from './candidate-menu-routed.component';
 
 @NgModule({
   declarations: [
-    CandidateMenuRouteComponent,
+    CandidateMenuRoutedComponent,
   ],
   imports: [
     CommonModule,
@@ -15,7 +15,7 @@ import { CandidateMenuRouteComponent } from './candidate-menu-routed.component';
     CandidateMenuGQLModule
   ],
   exports: [
-    CandidateMenuRouteComponent,
+    CandidateMenuRoutedComponent,
   ],
   providers: [],
 })

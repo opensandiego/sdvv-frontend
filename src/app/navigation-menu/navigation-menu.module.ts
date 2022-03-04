@@ -12,6 +12,7 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { ElectionYearRoutedModule } from '../routed/election-year-routed/election-year-routed.module';
+import { CandidateMenuRoutedModule } from '../routed/candidate-menu-routed/candidate-menu-routed.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ElectionYearRoutedModule } from '../routed/election-year-routed/electio
     MenuModule,
     PanelMenuModule,
     ElectionYearRoutedModule,
+    CandidateMenuRoutedModule,
   ],
   exports: [
     HomeComponent,

@@ -14,7 +14,7 @@ import { YearService } from 'src/app/store/services/year.service';
     ></gql-candidate-menu>
   `,
 })
-export class CandidateMenuRouteComponent implements OnInit {
+export class CandidateMenuRoutedComponent implements OnInit {
   activeYear: string;
   activeItem: ActiveMenuPathGQL = {
     officeTitle: '',
