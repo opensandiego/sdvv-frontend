@@ -22,11 +22,13 @@
     margin:10px auto 20px auto;
   }
   .choose{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     
     div{
+      width: 33.33%;
       border-right:2px solid $vvbackground;
     }
     div:last-child{
@@ -84,9 +86,12 @@
 
 @media only screen and (max-width: 1000px) {
   .choose{
+    display: grid !important;
     grid-template-columns: 1fr !important;
+    align-content: center;
     row-gap: 20px;
     div{
+      width: 100% !important;
       border-bottom:2px solid $vvbackground !important;
       border-right:none!important;
       padding-bottom: 40px;
