@@ -46,11 +46,11 @@ npm install
 npm install -g @angular/cli
 ```
 
-5. Build the libraries. This will build then into the /dist folder.
+5. Build the libraries at least once. This will build them into the /dist folder.
 ```
 npm run build:lib
 ```
-Or run the libraries in watch mode with.
+If you are modifying a component in a library then you can run either library in watch mode using:
 ```
 npm run start:lib:ui:charts
 npm run start:lib:ui:components

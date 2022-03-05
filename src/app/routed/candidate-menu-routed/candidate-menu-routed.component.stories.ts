@@ -3,7 +3,7 @@ import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 
 import { CandidateMenuRoutedModule } from './candidate-menu-routed.module';
-import { CandidateMenuRouteComponent } from './candidate-menu-routed.component';
+import { CandidateMenuRoutedComponent } from './candidate-menu-routed.component';
 
 import { YearService } from 'src/app/store/services/year.service';
 import { of } from 'rxjs';
@@ -26,7 +26,7 @@ class MockYear2022Service implements Partial<YearService> {
 
 export default {
   title: 'Lib-routed/Candidate Menu',
-  component: CandidateMenuRouteComponent,
+  component: CandidateMenuRoutedComponent,
   decorators: [
     moduleMetadata({
       declarations: [],

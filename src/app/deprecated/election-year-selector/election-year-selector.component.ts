@@ -8,6 +8,7 @@ interface Year {
 }
 
 @Component({
+  // This component is deprecated. Use selector 'election-year-routed' in ElectionYearRoutedModule instead. 
   selector: 'election-year-selector',
   templateUrl: './election-year-selector.component.html',
   styleUrls: ['./election-year-selector.component.scss']
