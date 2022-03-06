@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { ActiveMenuPathGQL } from 'src/app/graphql/candidate-menu/candidate-menu-gql.component';
+import { ActiveMenuPathGQL } from 'src/app/graphql/candidate-menu-gql/candidate-menu-gql.component';
 import { YearService } from 'src/app/store/services/year.service';
 
 @Component({

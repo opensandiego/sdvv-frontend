@@ -12,7 +12,6 @@ export interface CandidateFragment {
 
 export interface OfficeFragment {
   title: string;
-  type: string;
   electionYear: string;
   candidates: CandidateFragment;
 }
@@ -39,7 +38,6 @@ export const CANDIDATE_FRAGMENT = gql`
 export const OFFICE_FRAGMENT = gql`
   fragment OfficeFields on Office {
     title
-    type
     electionYear
     candidates {
       ...CandidateFields
