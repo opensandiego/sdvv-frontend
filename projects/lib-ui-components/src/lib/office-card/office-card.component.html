@@ -1,8 +1,10 @@
 <div class="office-summary-card">
   <h2 class="racename">{{officeName}}</h2>
-  <a class="cta" routerLinkActive="active-link" [routerLink]="[link]">
+  <a class="cta"
+    routerLinkActive="active-link"
+    [routerLink]="[link]">
     <fa-icon [icon]="['fas', getIcon(officeName)]"></fa-icon>
-      See Candidates
+      {{buttonText}}
   </a>
   <p class="raised">Total Raised</p>
   <h3 class="amount_raised">{{ totalRaised > 0 ? (totalRaised | roundCurrencyDisplay: 1) : '-'  }}</h3>

@@ -11,6 +11,10 @@ export class OfficeCardComponent implements OnChanges {
   @Input() officeData: OfficeData;
 
   officeName: string = '-';
+  defaultButtonText: string = 'See Candidates';
+  disabledButtonText: string = 'No Candidates';
+  isDisabled: boolean = true;
+  buttonText: string = '';
   totalRaised: number = 0;
   candidatesCount: number = 0;
   link: string = '';
@@ -25,7 +29,8 @@ export class OfficeCardComponent implements OnChanges {
     'mayor': 'university',
     'city attorney': 'balance-scale',
     'city council': 'map-marked-alt',
-    'default': 'question',
+    // 'default': 'question',
+    'default': '',
   }
 
   constructor( ) { }
@@ -38,10 +43,13 @@ export class OfficeCardComponent implements OnChanges {
       this.officeName = officeName ? officeName : '-';
       
       // Sample URL: http://localhost:4200/year/2020/office/mayor/0
-      this.link = officeName ? `office/${officeName.toLowerCase().split(' ').join('-')}/0` : '';
-
+      const link = officeName ? `office/${officeName.toLowerCase().split(' ').join('-')}/0` : ''; 
+      
       const candidatesCount = changes['officeInfo'].currentValue?.candidateCount
       this.candidatesCount = candidatesCount ? candidatesCount : 0;
+      
+      this.link = candidatesCount > 0 ? link : null;
+      this.buttonText = candidatesCount > 0 ? this.defaultButtonText : this.disabledButtonText;
     }
     
     if (changes['officeData']) {
