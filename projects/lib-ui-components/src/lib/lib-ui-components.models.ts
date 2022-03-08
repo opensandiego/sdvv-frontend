@@ -29,6 +29,16 @@ export interface CommitteeData {
   donors?: number;
 }
 
+export interface OfficeInfo {
+  officeTitle: string;
+  candidateCount: number;
+}
+
+export interface OfficeData {
+  totalContributions: number;
+}
+
 export interface ElectionYear {
   year: string,
 }
+
