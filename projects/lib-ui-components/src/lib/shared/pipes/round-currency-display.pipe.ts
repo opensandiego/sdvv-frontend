@@ -6,7 +6,7 @@ import { getFormattedCurrency } from "../number-formatter";
   name: "roundCurrencyDisplay",
 })
 export class RoundCurrencyDisplayPipe implements PipeTransform {
-  transform(input: number): any {
-    return getFormattedCurrency(input);
+  transform(input: number, digits: number): any {
+    return getFormattedCurrency(input, digits);
   }
 }
