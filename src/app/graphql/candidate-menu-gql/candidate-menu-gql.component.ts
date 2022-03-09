@@ -14,7 +14,6 @@ export { ActiveMenuPath as ActiveMenuPathGQL };
       [cityAttorney]="cityAttorney"
     ></candidate-menu>
   `,
-  // styleUrls: ['./candidate-menu-gql.component.scss']
 })
 export class CandidateMenuGQLComponent implements OnChanges {
   @Input() electionYear: string;
@@ -51,6 +50,9 @@ export class CandidateMenuGQLComponent implements OnChanges {
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {
+
+      if (!result?.data?.electionYear) { return; }
+
       const response: CandidateMenuResponse = JSON.parse(JSON.stringify(result.data.electionYear));
 
       this.mayor = response.officesByType.mayor;
