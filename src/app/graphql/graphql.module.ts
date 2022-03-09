@@ -13,6 +13,9 @@ const cacheOptions = {
     Committee: {
       keyFields: ["name"],
     },
+    Office: {
+      keyFields: ["title", "electionYear"],
+    },
   }
 };
 

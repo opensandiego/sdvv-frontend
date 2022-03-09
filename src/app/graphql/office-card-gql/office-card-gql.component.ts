@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { OfficeInfo, OfficeData } from 'lib-ui-components';
 import { OfficeCardGQLData } from './office-card-gql-data.query';
 import { OfficeCardGQLInfo } from './office-card-gql-info.query';
@@ -12,7 +12,7 @@ import { OfficeCardGQLInfo } from './office-card-gql-info.query';
     ></office-card>
   `,
 })
-export class OfficeCardGQLComponent implements OnInit {
+export class OfficeCardGQLComponent implements OnChanges {
   @Input() year: string;
   @Input() officeTitle: string;
 
@@ -24,7 +24,7 @@ export class OfficeCardGQLComponent implements OnInit {
     private officeCardGQLData: OfficeCardGQLData,
   ) {}
 
-  ngOnInit() {
+  ngOnChanges() {
     if (!this.year || !this.officeTitle) { return; }
 
     this.officeCardGQLInfo.watch({

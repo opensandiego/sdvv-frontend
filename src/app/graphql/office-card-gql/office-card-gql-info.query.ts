@@ -8,6 +8,8 @@ export class OfficeCardGQLInfo extends Query<Response> {
   document = gql`
     query office ($electionYear: String!, $title: String!) {
       office(electionYear: $electionYear, title: $title) {
+        title
+        electionYear
         committeeCount
       }
     }
