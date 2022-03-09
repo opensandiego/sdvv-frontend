@@ -46,6 +46,7 @@ export class OfficeCardComponent implements OnChanges {
       this.candidatesCount = candidatesCount ? candidatesCount : 0;
       
       this.link = candidatesCount > 0 ? link : null;
+      this.isDisabled = candidatesCount < 1;
       this.buttonText = candidatesCount > 0 ? this.defaultButtonText : this.disabledButtonText;
     }
     

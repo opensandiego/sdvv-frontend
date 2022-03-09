@@ -50,3 +50,11 @@
   }
 
 }
+
+.disabled {
+  opacity: 0.5;
+  .cta {
+    pointer-events: none;
+    cursor: default;
+  }
+}
