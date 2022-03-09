@@ -29,15 +29,12 @@ export class OfficeCardComponent implements OnChanges {
     'mayor': 'university',
     'city attorney': 'balance-scale',
     'city council': 'map-marked-alt',
-    // 'default': 'question',
-    'default': '',
+    'default': 'times',
   }
 
   constructor( ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log({ changes })
-
     if (changes['officeInfo']) {
       const officeName = changes['officeInfo'].currentValue?.officeTitle; 
       this.officeName = officeName ? officeName : '-';
