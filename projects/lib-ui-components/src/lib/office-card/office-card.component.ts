@@ -16,6 +16,7 @@ export class OfficeCardComponent implements OnChanges {
   isDisabled: boolean = true;
   buttonText: string = '';
   totalRaised: number = 0;
+  totalRaisedInProgress: boolean = true;
   candidatesCount: number = 0;
   link: string = '';
 
@@ -53,6 +54,7 @@ export class OfficeCardComponent implements OnChanges {
     if (changes['officeData']) {
       const totalRaised = changes['officeData'].currentValue?.totalContributions;
       this.totalRaised = totalRaised ? totalRaised : 0;
+      this.totalRaisedInProgress = !(totalRaised >= 0);
     }
   }
 

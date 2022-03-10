@@ -26,6 +26,8 @@ export class OfficeCardGQLComponent implements OnChanges {
 
   ngOnChanges() {
     if (!this.year || !this.officeTitle) { return; }
+    this.officeInfo = null;
+    this.officeData = null;
 
     this.officeCardGQLInfo.watch({
       electionYear: this.year,
@@ -33,10 +35,11 @@ export class OfficeCardGQLComponent implements OnChanges {
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {
-      const candidateInfoResponse = result?.data?.office;
+      const committeeCount = result?.data?.office?.committeeCount;
+
       this.officeInfo = {
         officeTitle: this.officeTitle,
-        candidateCount: candidateInfoResponse?.committeeCount,
+        candidateCount: committeeCount ? committeeCount : 0,
       }
     });
 
@@ -46,9 +49,10 @@ export class OfficeCardGQLComponent implements OnChanges {
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {
-      const candidateDataResponse = result?.data?.office;
+      const totalContributions = result?.data?.office?.totalContributions;
+
       this.officeData = {
-        totalContributions: candidateDataResponse?.totalContributions,
+        totalContributions: totalContributions ? totalContributions : 0,
       }
     });
 
