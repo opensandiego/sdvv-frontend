@@ -9,6 +9,7 @@ import { UnderConstructionComponent } from './components/under-construction/unde
 import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
 import { OfficeSummaryResolverService } from './resolvers/office-summary-resolver.service';
 import { YearResolverService } from './resolvers/year-resolver.service';
+import { YearRouteResolverService } from './resolvers/year-route-resolver.service';
  
 const routes: Routes = [
   { 
