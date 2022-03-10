@@ -27,6 +27,5 @@ export class ElectionYearRouteComponent implements OnInit {
 
   changeRoute(year) {
     this.router.navigate([`year/${year}`]);
-    this.yearService.changeElectionYear(year);
   }
 }

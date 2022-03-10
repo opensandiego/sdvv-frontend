@@ -7,15 +7,15 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SplashComponent } from './components/splash/splash.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
-import { OfficeSummaryResolverService } from './resolvers/office-summary-resolver.service';
-import { YearResolverService } from './resolvers/year-resolver.service';
+// import { OfficeSummaryResolverService } from './resolvers/office-summary-resolver.service';
+// import { YearResolverService } from './resolvers/year-resolver.service';
 import { YearRouteResolverService } from './resolvers/year-route-resolver.service';
  
 const routes: Routes = [
   { 
     path: '',
     resolve: {
-      year: YearResolverService,
+      year: YearRouteResolverService,
     },
     children: [
       { path: 'home', component: SplashComponent, },
@@ -27,7 +27,7 @@ const routes: Routes = [
     path: 'year/:year',
     data: { type: 'year' },
     resolve: {
-      office: OfficeSummaryResolverService,
+      year: YearRouteResolverService,
     },
     children: [
       {
