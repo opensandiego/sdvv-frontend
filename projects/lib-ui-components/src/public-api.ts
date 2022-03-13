@@ -15,6 +15,9 @@ export * from './lib/candidate-menu/candidate-menu.component';
 export * from './lib/office-card/office-card.module';
 export * from './lib/office-card/office-card.component';
 
+export * from './lib/year-card/year-card.module';
+export * from './lib/year-card/year-card.component';
+
 export * from './lib/year-selector/year-selector.module';
 export * from './lib/year-selector/year-selector.component';
 

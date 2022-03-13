@@ -1,0 +1,28 @@
+
+<div class="year-card">
+  <h2 class="year-name">{{year}}</h2>
+
+  <a class="year-button"
+    routerLinkActive="active-link"
+    [routerLink]="[link]"
+  >
+    {{buttonText}}
+  </a>
+
+  <div class="offices-container">
+    <div class="office">
+      <span class="office-name">Mayor</span>
+      <span class="office-count">{{mayorCandidateCount}}</span>
+    </div>
+
+    <div class="office">
+      <span class="office-name">City Council</span>
+      <span class="office-count">{{cityCouncilCandidateCount}}</span>
+    </div>
+
+    <div class="office">
+      <span class="office-name">City Attorney</span>
+      <span class="office-count">{{cityAttorneyCandidateCount}}</span>
+    </div>
+  </div>
+</div>
