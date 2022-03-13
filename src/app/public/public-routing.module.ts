@@ -20,7 +20,9 @@ const routes: Routes = [
     children: [
       { path: 'home', component: SplashComponent, },
       { path: '', redirectTo: '/year/2022', pathMatch: 'full', },
-      // { path: 'years', component: SplashComponent, children: [{ path: '', component: YearsComponent, }], },
+      { path: 'years',
+        loadChildren: () => import('./years-routing.module').then(m => m.YearsRoutingModule),
+      },
     ]
   },
   { 
