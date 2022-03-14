@@ -14,6 +14,9 @@ import { PublicModule } from './public/public.module';
 import { NavigationMenuModule } from './navigation-menu/navigation-menu.module';
 import { CandidateDetailsModule } from './candidate-details/candidate-details.module';
 
+import { environment } from 'src/environments/environment';
+const gtmID = environment.gtm;
+
 @NgModule({
   exports: [
   ],
@@ -34,7 +37,9 @@ import { CandidateDetailsModule } from './candidate-details/candidate-details.mo
     NavigationMenuModule,
     CandidateDetailsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: 'googleTagManagerId', useValue: gtmID },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
