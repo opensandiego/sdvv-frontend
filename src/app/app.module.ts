@@ -1,7 +1,7 @@
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -39,6 +39,7 @@ const gtmID = environment.gtm;
   ],
   providers: [
     { provide: 'googleTagManagerId', useValue: gtmID },
+    Title,
   ],
   bootstrap: [AppComponent]
 })
