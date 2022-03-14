@@ -4,11 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { SplashComponent } from './components/splash/splash.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
-import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
-// import { OfficeSummaryResolverService } from './resolvers/office-summary-resolver.service';
-// import { YearResolverService } from './resolvers/year-resolver.service';
 import { YearRouteResolverService } from './resolvers/year-route-resolver.service';
  
 const routes: Routes = [
@@ -35,13 +31,7 @@ const routes: Routes = [
       {
         path: '',
         data: { type: '' },
-        component: SplashComponent,
-        children: [
-          {
-            path: '',
-            component: OfficeSummaryComponent,
-          }
-        ],
+        loadChildren: () => import('./offices-routing.module').then(m => m.OfficesRoutingModule),
       },
       {
         path: 'office',
