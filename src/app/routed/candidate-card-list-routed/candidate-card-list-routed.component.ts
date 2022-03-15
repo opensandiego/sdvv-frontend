@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'candidate-card-list-routed',
@@ -18,6 +20,7 @@ export class CandidateCardListRoutedComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private titleService: Title,
   ) { }
 
   ngOnInit(): void { 
@@ -27,6 +30,9 @@ export class CandidateCardListRoutedComponent implements OnInit {
       this.office = params.get('office_name').replace('-', ' ');
       const district =params.get('district_number')
       this.district = district != '0' ? district : null;
+
+      const pageTitle = `Candidates for ${this.office} ${this.year} | ${globals.pageTitleSuffix}`;
+      this.titleService.setTitle(pageTitle);
     })
 
   }
