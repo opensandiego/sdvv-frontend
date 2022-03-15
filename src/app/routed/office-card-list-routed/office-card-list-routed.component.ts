@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'office-card-list-routed',
@@ -19,12 +21,15 @@ export class OfficeCardListRoutedComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private titleService: Title,
   ) { }
 
   ngOnInit(): void { 
     this.activatedRoute.paramMap.subscribe(params => {
-      // console.log({ params });
-      this.year = params.get('year')
+      this.year = params.get('year');
+
+      const pageTitle = `Candidate Offices for ${this.year} | ${globals.pageTitleSuffix}`;
+      this.titleService.setTitle(pageTitle);
     })
   }
 }
