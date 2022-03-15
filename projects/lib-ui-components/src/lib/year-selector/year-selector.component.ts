@@ -42,7 +42,7 @@ export class YearSelectorComponent implements OnChanges {
 
   selectYear(event) {
     const year = event?.value?.year;
-    this.setYear(year);
+    this.selectedYearChange.emit(year);
   }
 
   private setYear(selectedYear: string) {
@@ -52,7 +52,5 @@ export class YearSelectorComponent implements OnChanges {
     if (!isElectionYear) {
       return; 
     };
-
-    this.selectedYearChange.emit(selectedYear);
   }
 }
