@@ -10,6 +10,8 @@ export interface CandidateCardInfoResponse {
     description?: string;
     imageUrl?: string;
     website?: string;
+    office: string;
+    electionYear: string;
   };
 }
 
@@ -27,6 +29,8 @@ export class CandidateCardInfoGQL extends Query<Response> {
         description
         imageUrl
         website
+        office
+        electionYear
       }
     }
   `;
