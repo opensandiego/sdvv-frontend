@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { globals } from 'src/app/globals';
 
 import { YearSelectorGQL, YearsResponse } from './year-card-list-gql.query';
 
@@ -16,7 +18,10 @@ import { YearSelectorGQL, YearsResponse } from './year-card-list-gql.query';
 export class YearCardListGQLComponent implements OnInit {
   electionYears: string[];
 
-  constructor(private yearSelectorGQL: YearSelectorGQL) {}
+  constructor(
+    private yearSelectorGQL: YearSelectorGQL,
+    private titleService: Title,
+  ) {}
 
   ngOnInit() {
     this.yearSelectorGQL.watch({ }, {
@@ -27,6 +32,9 @@ export class YearCardListGQLComponent implements OnInit {
       if (years.electionYears) {
         this.electionYears = years.electionYears.map( electionYear => electionYear.year );
       }
+
+      const pageTitle = `City Election Data by Year | ${globals.pageTitleSuffix}`;
+      this.titleService.setTitle(pageTitle);
     });
   }
 
