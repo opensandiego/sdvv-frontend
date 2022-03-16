@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CandidateService } from 'src/app/store/services/candidate.service';
 
 @Component({
+  // This component is deprecated.
   selector: 'card-list',
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.scss'],

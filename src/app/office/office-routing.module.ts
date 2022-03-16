@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DetailsComponent } from '../candidate-details/details/details.component';
 import { OfficeDistrictComponent } from './components/office-districts/office-districts.component';
 import { QuickViewContainerComponent } from './components/quick-view-container/quick-view-container.component';
-import { OfficeDistrictResolverService } from './office-district-resolver.service';
+// import { OfficeDistrictResolverService } from './office-district-resolver.service';
+import { DistrictRedirectResolverService } from './district-redirect-resolver.service';
 
 const officeRoutes: Routes = [
   {
@@ -37,7 +38,7 @@ const districts: Routes = [
     data: { type: 'district' },
     children: officeRoutes,
     resolve: {
-      office: OfficeDistrictResolverService,
+      office: DistrictRedirectResolverService,
     },
   },
 ];

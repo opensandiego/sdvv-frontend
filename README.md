@@ -26,7 +26,7 @@ For more information with Voter's Voice Initiative visit [https://sdvotersvoice.
 
 ### Prerequisites
 * Angular CLI 13.1.2+
-* npm 6.14.15+
+* npm 8+
 
 ### Setup
 1. Clone directory from github
@@ -46,13 +46,14 @@ npm install
 npm install -g @angular/cli
 ```
 
-5. Build the libraries. This will build then into the /dist folder.
+5. Build the libraries at least once. This will build them into the /dist folder.
 ```
 npm run build:lib
 ```
-Or run the libraries in watch mode with.
+If you are modifying a component in a library then you can run either library in watch mode using:
 ```
-npm run start:lib
+npm run start:lib:ui:charts
+npm run start:lib:ui:components
 ```
 
 6. Start the Angular server then browse to http://localhost:4200/
@@ -63,6 +64,11 @@ npm run start
 Or to start the server and open the application in the browser.
 ```
 ng serve --open
+```
+
+To run the application and connect to backend database on Heroku use:
+```
+npm run start:db:remote
 ```
 
 ### Contributing

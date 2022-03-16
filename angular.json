@@ -32,6 +32,8 @@
               "./node_modules/primeng/resources/primeng.min.css",
               "./node_modules/primeng/resources/themes/saga-blue/theme.css",
               "./node_modules/primeicons/primeicons.css",
+              "./node_modules/mapbox-gl/dist/mapbox-gl.css",
+              "./node_modules/@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css",
               "src/styles.scss"
             ],
             "scripts": [],
@@ -74,11 +76,19 @@
               ]
             },
             "development": {},
-            "db-remote": {
+            "staging": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.db-remote.ts"
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
+            },
+            "db-staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.db-staging.ts"
                 }
               ]
             }
@@ -96,8 +106,11 @@
             "development": {
               "browserTarget": "sdvv-frontend:build:development"
             },
-            "db-remote": {
-              "browserTarget": "sdvv-frontend:build:db-remote"
+            "staging": {
+              "browserTarget": "sdvv-frontend:build:staging"
+            },
+            "db-staging": {
+              "browserTarget": "sdvv-frontend:build:db-staging"
             }
           },
           "defaultConfiguration": "development"
@@ -124,6 +137,33 @@
               "src/favicon.ico",
               "src/assets"
             ]
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "browserTarget": "sdvv-frontend:build",
+            "port": 6006
+          }
+        },
+        "storybook-db-local": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "browserTarget": "sdvv-frontend:build:development",
+            "port": 6006
+          }
+        },
+        "storybook-db-staging": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "browserTarget": "sdvv-frontend:build:db-staging",
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "browserTarget": "sdvv-frontend:build"
           }
         }
       }
@@ -177,6 +217,37 @@
             "main": "projects/lib-ui-charts/src/test.ts",
             "tsConfig": "projects/lib-ui-charts/tsconfig.spec.json",
             "karmaConfig": "projects/lib-ui-charts/karma.conf.js"
+          }
+        }
+      }
+    },
+    "lib-ui-components": {
+      "projectType": "library",
+      "root": "projects/lib-ui-components",
+      "sourceRoot": "projects/lib-ui-components/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/lib-ui-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-ui-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/lib-ui-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-ui-components/src/test.ts",
+            "tsConfig": "projects/lib-ui-components/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-ui-components/karma.conf.js"
           }
         }
       }

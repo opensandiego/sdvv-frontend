@@ -1,0 +1,40 @@
+@import "../../styles/elements";
+@import "../../styles/global";
+@import "../../styles/variables";
+
+:host{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+  .list{
+    width: 33.33%;
+    border-right:2px solid $vvbackground;
+  }
+
+  .list:last-child{
+    border-right:none;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  :host{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-content: center;
+    row-gap: 20px;
+
+    .list{
+      width: 100% !important;
+      border-bottom:2px solid $vvbackground !important;
+      border-right:none!important;
+      padding-bottom: 40px;
+    }
+
+    .list:last-child{
+      border-bottom:none!important;
+      padding-bottom: 0px;
+    }
+  }
+}

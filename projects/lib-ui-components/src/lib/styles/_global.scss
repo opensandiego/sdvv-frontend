@@ -1,0 +1,59 @@
+*:focus{
+    outline: none;
+}
+
+
+h1{
+    color:$vvdarkblue;
+    padding:0px;
+    margin:0px;
+    text-align:center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-nav{
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: 3fr auto auto;
+    padding: 10px 20px;
+    text-align: left;
+    background-color: $vvdarkblue;
+    align-items: center;
+    .nav_links {
+        margin-left: 20px;
+        margin-right: 20px;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 100;
+        &:hover {
+            text-decoration: underline;
+            color: $vvyellow;
+          }
+          &:active {
+            
+            color: $vvyellow;
+          }
+      }
+  }
+
+.h-sub{
+    color:$vvdarkblue;
+    font-weight: normal;
+    padding:0px;
+    margin:0px;
+    text-align:center;
+}
+
+a{
+    color: $vvlightblue;
+    text-decoration: none;
+
+    &:hover{
+        color: $vvblue;
+        text-decoration: underline;
+    }
+    &:visited{
+        color: $vvlightblue;
+    }
+}

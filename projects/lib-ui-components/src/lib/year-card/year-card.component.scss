@@ -1,0 +1,47 @@
+@import "../styles/variables";
+@import "../styles/elements";
+@import "../styles/global";
+
+.year-card {
+  min-width: 150px;
+  max-width: 225px;
+  margin: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  text-align: center;
+  font-weight: 100;
+
+  .year-button {
+    @include button-styles;
+    text-decoration: none !important;
+  }
+  .year-button:hover{
+    background-color: $vvlightblue;
+  }
+  
+  .offices-container {
+    width: 100%;
+    max-width: 175px;
+    margin: 30px 5px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .office {
+    padding: 5px 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size:20px;
+    line-height: 1.4;
+  }
+}

@@ -8,6 +8,7 @@ import { CandidateDetailsModule } from '../candidate-details/candidate-details.m
 import { CardListComponent } from './components/card-list/card-list.component';
 import { QuickViewContainerComponent } from './components/quick-view-container/quick-view-container.component';
 import { OfficeDistrictComponent } from './components/office-districts/office-districts.component';
+import { CandidateCardListRoutedModule } from '../routed/candidate-card-list-routed/candidate-card-list-routed.module';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { OfficeDistrictComponent } from './components/office-districts/office-di
     CandidateQuickViewModule,
     OfficeRoutingModule,
     CandidateDetailsModule,
+    CandidateCardListRoutedModule,
   ],
   exports: [
     OfficeComponent,

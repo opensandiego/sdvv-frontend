@@ -21,54 +21,6 @@
     display: block;
     margin:10px auto 20px auto;
   }
-  .choose{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-content: center;
-    
-    div{
-      border-right:2px solid $vvbackground;
-    }
-    div:last-child{
-      border-right:none;
-    }
-
-    .cta{
-
-      @include button-styles;
-      padding: 10px 20px;
-      max-width: 200px;
-      text-decoration: none;
-      a{
-        text-decoration: none;
-      }
-      fa-icon{
-        padding: 0px;
-        margin: 0px 4px 0px 0px;
-      }
-    }
-    .cta:hover{
-      background-color: $vvlightblue;
-    }
-  }
-
-  .racename{
-    font-size: 20px;
-    margin-bottom: 30px;
-  }
-  .raised{
-    margin:40px 0px  5px 0px;
-  }
-  .candidate_num{
-    margin:10px 0px  5px 0px;
-  }
-  h3{
-    font-size:20px;
-    margin: 0px;
-  }
-  .amount_raised{
-    color:#289A58;
-  }
 }
 
 .sources{
@@ -79,21 +31,5 @@
   }
   p{
     margin:0px !important;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .choose{
-    grid-template-columns: 1fr !important;
-    row-gap: 20px;
-    div{
-      border-bottom:2px solid $vvbackground !important;
-      border-right:none!important;
-      padding-bottom: 40px;
-    }
-    div:last-child{
-      border-bottom:none!important;
-      padding-bottom: 0px;
-    }
   }
 }

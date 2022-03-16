@@ -1,0 +1,63 @@
+@import "../styles/variables";
+@import "../styles/elements";
+@import "../styles/global";
+
+.office-summary-card{
+
+  text-align: center;
+  font-weight: 100;
+  
+  .cta{
+    @include button-styles;
+    padding: 10px 20px;
+    max-width: 200px;
+    text-decoration: none !important;
+
+    fa-icon{
+      padding: 0px;
+      margin: 0px 4px 0px 0px;
+    }
+  }
+  .cta:hover{
+      background-color: $vvlightblue;
+  }
+
+  p{
+    margin:10px 0px 20px 0px;
+    line-height: 1.4;
+  }
+
+  .racename{
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .raised{
+    margin:40px 0px  5px 0px;
+  }
+
+  .candidate_num{
+    margin:10px 0px  5px 0px;
+  }
+
+  h3{
+    font-size:20px;
+    margin: 0px;
+  }
+
+  .amount_raised{
+    color:#289A58;
+  }
+
+  .spinner {
+    margin:0 auto;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  .cta {
+    pointer-events: none;
+    cursor: default;
+  }
+}

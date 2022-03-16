@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private titleService: Title,
+  ) { }
 
   ngOnInit() {
+    const pageTitle = `About | ${globals.pageTitleSuffix}`;
+    this.titleService.setTitle(pageTitle);
   }
 
 }

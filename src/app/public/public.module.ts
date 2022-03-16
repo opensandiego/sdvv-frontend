@@ -6,9 +6,6 @@ import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity } from '@forta
 
 import { AboutComponent } from './components/about/about.component';
 import { FaqComponent } from './components/faq/faq.component';
-import { SplashComponent } from './components/splash/splash.component';
-import { SplashHeroComponent } from './components/splash-hero/splash-hero.component';
-import { OfficeSummaryCardComponent } from './components/office-summary-card/office-summary-card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { PublicRoutingModule } from './public-routing.module';
@@ -18,15 +15,13 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
 import { APIStoreModule } from '../store/api.store.module';
+import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/office-card-list-routed.module';
 
 @NgModule({
   declarations: [
     AboutComponent,
     FaqComponent,
-    SplashComponent,
-    SplashHeroComponent,
     OfficeSummaryComponent,
-    OfficeSummaryCardComponent,
     FooterComponent,
     UnderConstructionComponent,
     RoundCurrencyDisplayPipe,
@@ -39,11 +34,11 @@ import { APIStoreModule } from '../store/api.store.module';
     FontAwesomeModule,
     BreadcrumbModule,
     APIStoreModule,
+    OfficeCardListRoutedModule,
   ],
   exports: [
     AboutComponent,
     FaqComponent,
-    SplashComponent,
     UnderConstructionComponent,
     FooterComponent,
     BreadcrumbComponent,

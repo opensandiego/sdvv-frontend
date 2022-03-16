@@ -3,15 +3,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
-const local_dev_url = 'http://localhost:3000';
-const remote_prod_url = 'https://opensandiego-voters-voice.herokuapp.com'
-const uri = `${local_dev_url}/graphql`;
+const uri = `${environment.apiUrl}/graphql`;
+
+const cacheOptions = {
+  typePolicies: {
+    Committee: {
+      keyFields: ["name"],
+    },
+    Office: {
+      keyFields: ["title", "electionYear"],
+    },
+  }
+};
 
 @NgModule({
   imports: [
-    BrowserModule,
+    CommonModule,
     HttpClientModule,
     ApolloModule,
   ],  
@@ -21,7 +31,7 @@ const uri = `${local_dev_url}/graphql`;
       provide: APOLLO_OPTIONS,
       useFactory: (httpLink: HttpLink) => {
         return {
-          cache: new InMemoryCache(),
+          cache: new InMemoryCache(cacheOptions),
           link: httpLink.create({
             uri: uri,
           }),
