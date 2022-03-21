@@ -15,6 +15,9 @@ export * from './lib/candidate-card/candidate-card.module';
 export * from './lib/candidate-menu/candidate-menu.module';
 export * from './lib/candidate-menu/candidate-menu.component';
 
+export * from './lib/chart-title/chart-title.module';
+export * from './lib/chart-title/chart-title.component';
+
 export * from './lib/office-card/office-card.module';
 export * from './lib/office-card/office-card.component';
 

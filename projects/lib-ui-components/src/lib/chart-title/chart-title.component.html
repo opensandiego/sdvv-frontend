@@ -1,0 +1,17 @@
+
+<div class="title" >
+
+  <p>
+    <span class="text" [style.color]="textColor">{{titleText}}</span>
+    <span 
+      matTooltipClass="tooltip-text"
+      aria-hidden="true"
+      [matTooltip]="tooltipText" 
+    >    
+      <sup [style.color]="tooltipColor" class="tooltip-icon">
+        <i><fa-icon [icon]="['fas', 'question-circle']" ></fa-icon></i>
+      </sup>
+   </span> 
+  </p>
+  
+</div>
