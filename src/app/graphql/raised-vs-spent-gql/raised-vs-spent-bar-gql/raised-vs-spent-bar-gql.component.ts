@@ -4,10 +4,13 @@ import { RaisedVsSpentGQL, RaisedVsSpent } from './raised-vs-spent-gql.query';
 @Component({
   selector: 'gql-raised-vs-spent',
   template: `
-    <raised-vs-spent-bar [raised]="raised" [spent]="spent"></raised-vs-spent-bar>
+    <raised-vs-spent-bar
+      [raised]="raised"
+      [spent]="spent"
+    ></raised-vs-spent-bar>
   `,
 })
-export class RaisedVsSpentGQLComponent implements OnInit {
+export class RaisedVsSpentBarGQLComponent implements OnInit {
   @Input() candidateId: string;
 
   raised = 0;

@@ -2,12 +2,12 @@ import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 
-import { RaisedVsSpentGQLModule } from './raised-vs-spent-gql.module';
-import { RaisedVsSpentGQLComponent } from './raised-vs-spent-gql.component';
+import { RaisedVsSpentGQLModule } from '../raised-vs-spent-gql.module';
+import { RaisedVsSpentBarGQLComponent } from './raised-vs-spent-bar-gql.component';
 
 export default {
   title: 'Lib-gql/Raised Vs Spent',
-  component: RaisedVsSpentGQLComponent,
+  component: RaisedVsSpentBarGQLComponent,
   decorators: [
     moduleMetadata({
       declarations: [],
