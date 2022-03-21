@@ -1,0 +1,15 @@
+
+<div class="raised-vs-spent-container">
+  <chart-title class="chart-title"
+    [titleText]="title"
+    [tooltipText]="tooltipText"
+  ></chart-title>
+
+  <gql-raised-vs-spent  class="raised-vs-spent-chart"
+    [candidateId]="candidateId"
+  ></gql-raised-vs-spent>
+
+  <gql-average-donation class="average-footer"
+    [candidateId]="candidateId"
+  ></gql-average-donation>
+</div>

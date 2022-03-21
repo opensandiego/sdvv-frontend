@@ -1,0 +1,18 @@
+
+.raised-vs-spent-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chart-title {
+  flex: 0 0 auto;
+}
+
+.raised-vs-spent-chart {
+  flex: 1 0 auto;
+}
+
+.average-footer {
+  flex: 0 0 auto;
+}
