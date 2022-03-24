@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { globals } from 'src/app/globals';
+
 import { CandidateInfo, CommitteeData } from 'lib-ui-components';
 import { CandidateCardFinanceDataGQL, CandidateCardFinanceDataResponse } from './candidate-card-finance-data-gql.query';
 import { CandidateCardInfoGQL, CandidateCardInfoResponse } from './candidate-card-info-gql.query';
@@ -11,24 +14,32 @@ import { CandidateCardInfoGQL, CandidateCardInfoResponse } from './candidate-car
       [candidateInfo]="candidateInfo"
       [committeeData]="committeeData"
       [inExpandedCard]="inExpandedCard"
-      (emitCandidateId)="onCandidateSelected($event)"
     ></candidate-card>
   `,
 })
-export class CandidateCardGQLComponent implements OnInit {
+export class CandidateCardGQLComponent implements OnChanges {
   @Input() candidateId: string;
+  @Input() inExpandedCard: boolean;
 
   candidateInfo: CandidateInfo;
   committeeData: CommitteeData;
 
-  inExpandedCard: boolean;
-
   constructor(
     private candidateInfoGQL: CandidateCardInfoGQL,
     private candidateCardFinanceDataGQL: CandidateCardFinanceDataGQL,
+    private titleService: Title,
   ) {}
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void  {
+    if (changes['candidateId']) {
+      const candidateId = changes['candidateId'].currentValue;
+      this.update(candidateId);
+    }
+  }
+
+  update(candidateId: string) {
+    this.candidateId = candidateId;
+    
     if (!this.candidateId) { return; }
 
     this.candidateInfoGQL.watch({
@@ -36,8 +47,12 @@ export class CandidateCardGQLComponent implements OnInit {
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {
-      const candidateInfo: CandidateCardInfoResponse = result.data;
-      this.candidateInfo = candidateInfo.candidate;
+      const response: CandidateCardInfoResponse = result.data;
+
+      const candidateInfo = response?.candidate;
+      this.candidateInfo = candidateInfo ? candidateInfo : null;
+
+      this.setTitle(candidateInfo);
     });
 
     this.candidateCardFinanceDataGQL.watch({
@@ -45,16 +60,28 @@ export class CandidateCardGQLComponent implements OnInit {
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {
-      const candidateFinanceData: CandidateCardFinanceDataResponse = result.data;
+      const response: CandidateCardFinanceDataResponse = result.data;
+      const raised = response?.candidate?.committee?.contributions?.sum;
+      const donors = response?.candidate?.committee?.contributions?.count;
+
       this.committeeData = {
-        raised: candidateFinanceData.candidate.committee.contributions.sum,
-        donors: candidateFinanceData.candidate.committee.contributions.count,
+        raised: raised ? raised : 0,
+        donors: donors ? donors : 0,
       }
     });
 
   }
 
-  onCandidateSelected(eventData) {
-    console.log({ eventData });
+  setTitle(candidateInfo) {
+    if (!this.inExpandedCard || !candidateInfo) { return; }
+
+    const year = candidateInfo.electionYear;
+    const office = candidateInfo.office;
+    const district = candidateInfo.district ? `District ${candidateInfo.district}` : ``;
+
+    const candidateName = candidateInfo.fullName
+    const pageTitle = `${candidateName}, Summary, ${office} ${district}, Candidate ${year} | ${globals.pageTitleSuffix}`;
+
+    this.titleService.setTitle(pageTitle);
   }
 }
