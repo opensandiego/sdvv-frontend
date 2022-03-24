@@ -47,11 +47,12 @@ export class CandidateCardListGQLComponent implements OnChanges {
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {
-      const candidates = result.data?.candidates;
-      
-      if (candidates) {
-        this.candidateIds = candidates.map((candidate) => candidate.id);
-      }
-    });
+      const response = result.data;
+
+      const candidates = response?.candidates;
+      this.candidateIds = candidates 
+        ? candidates.map((candidate) => candidate.id) 
+        : [];
+      });
   }
 }
