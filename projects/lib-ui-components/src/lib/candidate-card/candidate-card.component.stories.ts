@@ -25,7 +25,6 @@ const Template: Story<CandidateCardComponent> = (args: CandidateCardComponent) =
 
 export const Default = Template.bind({});
 Default.args = {
-  // candidateId: '',
   candidateInfo: {
     firstName: 'First Name',
     lastName: 'Last Name',
@@ -38,15 +37,16 @@ Default.args = {
   inExpandedCard: true,
 };
 
-
-// export const ExpandedCardView = Template.bind({});
-// ExpandedCardView.args = {
-//   candidateId: '',
-//   inExpandedCard: true,
-// };
-
-// export const OfficesListView = Template.bind({});
-// OfficesListView.args = {
-//   candidateId: '',
-//   inExpandedCard: false,
-// };
+export const Name1 = Template.bind({});
+Name1.args = {
+  candidateInfo: {
+    firstName: 'One Name',
+    lastName: 'One Last Name',
+    fullName: 'A Full Name',
+  },
+  committeeData: {
+    raised: 98765,
+    donors: 5432,
+  },
+  inExpandedCard: true,
+};

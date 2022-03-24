@@ -22,15 +22,9 @@
 
       <div class="donors">
         <h2>Donors</h2>
-        <h3>{{donors ? (donors | number: '1.0-0') : '--'}}</h3>
+        <h3>{{donors ? donors : '--'}}</h3>
       </div>
     </div>
-
-    <!-- <button *ngIf="buttonText"
-      class="candidate-button" 
-      mat-flat-button 
-      (click)="selectCandidate()"
-    >{{buttonText}}</button> -->
 
     <a
       *ngIf="buttonText && buttonLink"
