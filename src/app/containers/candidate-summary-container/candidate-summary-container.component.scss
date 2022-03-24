@@ -50,3 +50,11 @@
 .item-5 {
   margin-top: 15px;
 }
+
+.close fa-icon {
+  color: black;
+
+  &:hover {
+    color: $vvlightblue;
+  }
+}
