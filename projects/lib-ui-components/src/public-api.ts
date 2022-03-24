@@ -24,6 +24,9 @@ export * from './lib/contributions-by-occupation-table/contributions-by-occupati
 export * from './lib/office-card/office-card.module';
 export * from './lib/office-card/office-card.component';
 
+export * from './lib/total-expenditures/total-expenditures.module';
+export * from './lib/total-expenditures/total-expenditures.component';
+
 export * from './lib/year-card/year-card.module';
 export * from './lib/year-card/year-card.component';
 
