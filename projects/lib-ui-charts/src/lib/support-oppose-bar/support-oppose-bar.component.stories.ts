@@ -1,13 +1,12 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-
-import { OutsideSpendingBarComponent } from './outside-spending-bar.component';
-
 import { NgxEchartsModule } from 'ngx-echarts';
 
+import { SupportOpposeBarComponent } from './support-oppose-bar.component';
+
 export default {
-  title: 'Lib-ui-charts/Outside Spending Bar',
-  component: OutsideSpendingBarComponent,
+  title: 'Lib-ui-charts/Support Oppose Bar',
+  component: SupportOpposeBarComponent,
   decorators: [
     moduleMetadata({
       declarations: [],

@@ -1,15 +1,13 @@
 import { Component, Input, OnChanges } from '@angular/core';
-
 import { EChartsOption } from 'echarts';
-
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
-  selector: 'outside-spending-bar',
-  templateUrl: './outside-spending-bar.component.html',
-  styleUrls: ['./outside-spending-bar.component.scss']
+  selector: 'support-oppose-bar',
+  templateUrl: './support-oppose-bar.component.html',
+  styleUrls: ['./support-oppose-bar.component.scss']
 })
-export class OutsideSpendingBarComponent implements OnChanges {
+export class SupportOpposeBarComponent implements OnChanges {
   @Input() support: number;
   @Input() oppose: number;
   @Input() backgroundColor: string = 'white';
@@ -52,7 +50,7 @@ export class OutsideSpendingBarComponent implements OnChanges {
         show: true,
         position: 'right',
         formatter: (params) => 
-        `{a|${params['name']}} \n {b|${getCompactFormattedCurrency(+params['value'])}}`,     
+        `{a|${params['name']}} \n {b|${getCompactFormattedCurrency(+params['value'], 1)}}`,     
         align: 'left',
         rich: {
           a: {

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { OutsideSpendingBarComponent } from './outside-spending-bar.component';
+import { SupportOpposeBarComponent } from './support-oppose-bar.component';
 
 @NgModule({
   declarations: [
-    OutsideSpendingBarComponent,
+    SupportOpposeBarComponent,
   ],
   imports: [
     NgxEchartsModule.forRoot({
@@ -12,7 +12,7 @@ import { OutsideSpendingBarComponent } from './outside-spending-bar.component';
     }),
   ],
   exports: [
-    OutsideSpendingBarComponent,
+    SupportOpposeBarComponent,
   ]
 })
-export class OutsideSpendingBarModule { }
+export class SupportOpposeBarModule { }

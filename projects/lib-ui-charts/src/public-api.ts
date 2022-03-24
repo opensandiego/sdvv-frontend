@@ -9,9 +9,6 @@ export * from './lib/lib-ui-charts.module';
 export * from './lib/outside-money-stacked-bar/outside-money-stacked-bar.component';
 export * from './lib/outside-money-stacked-bar/outside-money-stacked-bar.module';
 
-export * from './lib/outside-spending-bar/outside-spending-bar.component'
-export * from './lib/outside-spending-bar/outside-spending-bar.module'
-
 export * from './lib/raised-by-industry-bar/raised-by-industry-bar.component';
 export * from './lib/raised-by-industry-bar/raised-by-industry-bar.module';
 
@@ -26,6 +23,9 @@ export * from './lib/raised-in-vs-out-donut/raised-in-vs-out-donut.module'
 
 export * from './lib/raised-vs-spent-bar/raised-vs-spent-bar.component'
 export * from './lib/raised-vs-spent-bar/raised-vs-spent-bar.module'
+
+export * from './lib/support-oppose-bar/support-oppose-bar.component'
+export * from './lib/support-oppose-bar/support-oppose-bar.module'
 
 export * from './lib/total-raised-bar/total-raised-bar.component';
 export * from './lib/total-raised-bar/total-raised-bar.module';
