@@ -10,7 +10,7 @@ export class IndependentExpendituresContainerComponent {
   @Input() candidateId: string;
 
   title = 'Outside Money';
-  tooltipText = 'Amount of money raised and spent by independent expenditure committees spent in support or opposition of a candidate but not contributed directly to their campaign.';
+  tooltipText = 'Amount of money spent by other committees to support or oppose a candidate.';
   textColor = 'white';
   backgroundColor = '#2c2c2c';
 }

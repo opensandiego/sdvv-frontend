@@ -8,7 +8,7 @@ export class ContributionsByOccupationContainerComponent implements OnChanges {
   @Input() candidateId;
 
   title = 'Donations by Occupation';
-  tooltipText = "Total contributions from the five largest groups of campaign donors.  Groups are determined by the industry segment of each donor\'s employer.";
+  tooltipText = "Occupations of individuals whose occupation group contributed the most to the campaign.";
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['candidateId']) {
