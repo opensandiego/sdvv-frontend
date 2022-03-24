@@ -13,6 +13,7 @@ export interface ContributionsGroupedByOccupation {
     committee: {
       contributions: {
         sum: number;
+        amount: number;
         groupBy: {
           occupation: OccupationGroup[];
         }
@@ -36,6 +37,7 @@ export class ContributionsGroupedByOccupationGQL extends Query<Response> {
               occupation {
                 name
                 sum
+                amount: sum
                 percent
                 count
               }

@@ -11,6 +11,7 @@ import { ContributionsGroupedByOccupationGQL, ContributionsGroupedByOccupation }
 })
 export class ContributionsByOccupationGQLComponent implements OnChanges {
   @Input() candidateId;
+
   contributionsGroupedByOccupation;
 
   constructor(private contributionsGroupedByOccupationGQL: ContributionsGroupedByOccupationGQL) { }
@@ -18,21 +19,25 @@ export class ContributionsByOccupationGQLComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['candidateId']) {
       const candidateId = changes['candidateId'].currentValue;
-
-      if (!candidateId) { return; }
-
-      this.contributionsGroupedByOccupationGQL.watch({
-        candidateId: candidateId,
-      }, {
-        // errorPolicy: 'all',
-      }).valueChanges.subscribe( (result: any) => {
-        const response: ContributionsGroupedByOccupation = result.data;
-
-        const contributions = response?.candidate?.committee?.contributions?.groupBy.occupation;
-
-        this.contributionsGroupedByOccupation = contributions ? contributions.slice(0, 5) : [];
-      });      
+      this.update(candidateId); 
     }
   }
 
+  update(candidateId: string) {
+    this.candidateId = candidateId;
+
+    if (!this.candidateId) { return; }
+
+    this.contributionsGroupedByOccupationGQL.watch({
+      candidateId: this.candidateId,
+    }, {
+      // errorPolicy: 'all',
+    }).valueChanges.subscribe( (result: any) => {
+      const response: ContributionsGroupedByOccupation = result.data;
+
+      const contributions = response?.candidate?.committee?.contributions?.groupBy?.occupation;
+
+      this.contributionsGroupedByOccupation = contributions ? contributions.slice(0, 5) : [];
+    });
+  }
 }
