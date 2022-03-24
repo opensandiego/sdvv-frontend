@@ -33,7 +33,7 @@ export class YearCardListGQLComponent implements OnInit {
         this.electionYears = years.electionYears.map( electionYear => electionYear.year );
       }
 
-      const pageTitle = `City Election Data by Year | ${globals.pageTitleSuffix}`;
+      const pageTitle = `Choose a Year | ${globals.pageTitleSuffix}`;
       this.titleService.setTitle(pageTitle);
     });
   }
