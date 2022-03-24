@@ -1,15 +1,14 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
-
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ContributionsByOccupationGQLModule } from '../contributions-by-occupation-gql.module';
-import { ContributionsByOccupationContainerComponent } from './contributions-by-occupation-container.component';
-import { ChartTitleModule } from 'lib-ui-components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ContributionsByOccupationContainerModule } from './contributions-by-occupation-container.module';
+import { ContributionsByOccupationContainerComponent } from './contributions-by-occupation-container.component';
+
 export default {
-  title: 'Lib-gql/Contributions by Occupation Container',
+  title: 'Lib-Containers/Contributions by Occupation',
   component: ContributionsByOccupationContainerComponent,
   decorators: [
     moduleMetadata({
@@ -18,8 +17,7 @@ export default {
         CommonModule,
         BrowserAnimationsModule,
         MatTooltipModule,
-        ContributionsByOccupationGQLModule,
-        ChartTitleModule,
+        ContributionsByOccupationContainerModule,
       ],
       providers: [],
     }),
