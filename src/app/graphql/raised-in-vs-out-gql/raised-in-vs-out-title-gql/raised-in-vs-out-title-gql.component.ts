@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CandidateInfoGQL, CandidateInfo } from './candidate-info-gql.query';
 
 @Component({
@@ -10,7 +10,7 @@ import { CandidateInfoGQL, CandidateInfo } from './candidate-info-gql.query';
     ></chart-title>
   `,
 })
-export class RaisedInVsOutTitleGQLComponent implements OnInit {
+export class RaisedInVsOutTitleGQLComponent implements OnChanges {
   @Input() candidateId: string;
 
   title = '';
@@ -18,7 +18,17 @@ export class RaisedInVsOutTitleGQLComponent implements OnInit {
 
   constructor(private candidateInfoGQL: CandidateInfoGQL) {}
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void  {
+    if (changes['candidateId']) {
+      const candidateId = changes['candidateId'].currentValue;
+      this.update(candidateId);
+    }
+  }
+
+  update(candidateId: string) {
+    this.candidateId = candidateId;
+
+    if (!this.candidateId) { return; }
 
     this.candidateInfoGQL.watch({
       candidateId: this.candidateId,

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RaisedInVsOutGQL, RaisedInVsOut } from './raised-in-vs-out-gql.query';
 
 @Component({
@@ -10,7 +10,7 @@ import { RaisedInVsOutGQL, RaisedInVsOut } from './raised-in-vs-out-gql.query';
     ></raised-in-vs-out-donut>
   `,
 })
-export class RaisedInVsOutDonutGQLComponent implements OnInit {
+export class RaisedInVsOutDonutGQLComponent implements OnChanges {
   @Input() candidateId: string;
 
   insideAmount = 0;
@@ -18,7 +18,17 @@ export class RaisedInVsOutDonutGQLComponent implements OnInit {
 
   constructor(private raisedInVsOutGQL: RaisedInVsOutGQL) {}
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void  {
+    if (changes['candidateId']) {
+      const candidateId = changes['candidateId'].currentValue;
+      this.update(candidateId);
+    }
+  }
+
+  update(candidateId: string) {
+    this.candidateId = candidateId;
+
+    if (!this.candidateId) { return; }
 
     this.raisedInVsOutGQL.watch({
       candidateId: this.candidateId,

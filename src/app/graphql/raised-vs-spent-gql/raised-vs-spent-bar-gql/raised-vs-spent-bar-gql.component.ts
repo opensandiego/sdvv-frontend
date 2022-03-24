@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RaisedVsSpentGQL, RaisedVsSpent } from './raised-vs-spent-gql.query';
 
 @Component({
@@ -10,7 +10,7 @@ import { RaisedVsSpentGQL, RaisedVsSpent } from './raised-vs-spent-gql.query';
     ></raised-vs-spent-bar>
   `,
 })
-export class RaisedVsSpentBarGQLComponent implements OnInit {
+export class RaisedVsSpentBarGQLComponent implements OnChanges {
   @Input() candidateId: string;
 
   raised = 0;
@@ -18,19 +18,30 @@ export class RaisedVsSpentBarGQLComponent implements OnInit {
 
   constructor(private raisedVsSpentGQL: RaisedVsSpentGQL) {}
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void  {
+    if (changes['candidateId']) {
+      const candidateId = changes['candidateId'].currentValue;
+      this.update(candidateId);
+    }
+  }
+
+  update(candidateId: string) {
+    this.candidateId = candidateId;
+
+    if (!this.candidateId) { return; }
 
     this.raisedVsSpentGQL.watch({
       candidateId: this.candidateId,
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {
-      const raisedVsSpent: RaisedVsSpent = result.data;
+      const response: RaisedVsSpent = result.data;
 
-      if (raisedVsSpent.candidate) {
-        this.raised = raisedVsSpent.candidate.committee.contributions.sum;
-        this.spent = raisedVsSpent.candidate.committee.expenses.sum;
-      }
+      const raised = response?.candidate?.committee?.contributions?.sum;
+      this.raised = raised ? raised : 0;
+
+      const spent = response?.candidate?.committee?.expenses?.sum;
+      this.spent = spent ? spent : 0;
     });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AverageDonationGQL, AverageDonationResponse } from './average-donation-gql.query';
 
 @Component({
@@ -9,14 +9,24 @@ import { AverageDonationGQL, AverageDonationResponse } from './average-donation-
     ></average-donation>
   `,
 })
-export class AverageDonationGQLComponent implements OnInit {
+export class AverageDonationGQLComponent implements OnChanges {
   @Input() candidateId: string;
 
   averageDonation = 0;
 
   constructor(private averageDonationGQL: AverageDonationGQL) {}
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void  {
+    if (changes['candidateId']) {
+      const candidateId = changes['candidateId'].currentValue;
+      this.update(candidateId);
+    }
+  }
+
+  update(candidateId: string) {
+    this.candidateId = candidateId;
+
+    if (!this.candidateId) { return; }
 
     this.averageDonationGQL.watch({
       candidateId: this.candidateId,
