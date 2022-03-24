@@ -1,0 +1,45 @@
+
+<div class="quick-view-container">
+
+  <div class="quick-view-layout">
+    <div class="item-1">
+      <gql-candidate-card
+        [candidateId]="candidateId"
+        [inExpandedCard]="true"
+      ></gql-candidate-card>
+    </div>
+    <div class="item-2">
+      <raised-vs-spent-container
+        [candidateId]="candidateId"
+      ></raised-vs-spent-container>
+    </div>
+    <div class="items-3-4">
+      <div class="item-3">
+        <contributions-by-occupation-container
+          [candidateId]="candidateId"
+        ></contributions-by-occupation-container>
+      </div>
+      <div class="item-4">
+        <raised-in-vs-out-container
+          [candidateId]="candidateId"
+        ></raised-in-vs-out-container>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="item-5">
+    <independent-expenditures-container
+      [candidateId]="candidateId"
+    ></independent-expenditures-container>
+  </div>
+
+
+  <div class="close">
+    <a [routerLink]="['../']" >
+      <i style="font-size: 25px;" aria-hidden="true">
+        <fa-icon [icon]="faTimesCircle"></fa-icon>
+      </i>
+    </a>
+  </div>
+</div>
