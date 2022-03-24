@@ -12,17 +12,20 @@
   ></chart-title>
 
   <div class="content">
-   <div class="outside-money-chart">
+    <div class="outside-money-chart">
       <gql-support-oppose-bar
         [candidateId]="candidateId"
         [backgroundColor]="backgroundColor"
-        [textColor]="textColor"       
+        [textColor]="textColor"
       ></gql-support-oppose-bar>
     </div>
 
-    <gql-total-independent-expenditures
-      [candidateId]="candidateId"
-    ></gql-total-independent-expenditures>
+    <div class="expenditures-panel">
+      <gql-total-independent-expenditures
+        [candidateId]="candidateId"
+      ></gql-total-independent-expenditures>
+    </div>
+
   </div>
 
 </div>

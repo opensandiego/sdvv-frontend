@@ -27,22 +27,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  .expenditures {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    padding: .5em 1em 1em 1em;
-
-    .label {
-      font-size: 12px;
-      padding-bottom: .6em;
-    }
-    .amount {
-      font-size: 18px;
-      font-weight: bold;
-    }
-  }
-
 }
