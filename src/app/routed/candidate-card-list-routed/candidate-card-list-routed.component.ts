@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { globals } from 'src/app/globals';
 
@@ -19,6 +19,7 @@ export class CandidateCardListRoutedComponent implements OnInit {
   district: string;
 
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
   ) { }
@@ -28,12 +29,22 @@ export class CandidateCardListRoutedComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.year = params.get('year')
       this.office = params.get('office_name').replace('-', ' ');
-      const district =params.get('district_number')
+      const district = params.get('district_number')
       this.district = district != '0' ? district : null;
-
-      const pageTitle = `Candidates for ${this.office} ${this.year} | ${globals.pageTitleSuffix}`;
-      this.titleService.setTitle(pageTitle);
+      this.setTitle();
     })
 
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        this.setTitle();
+      }
+    });
+  }
+
+  setTitle() {
+    const office = this.office.toUpperCase();
+    const district = this.district ? `District ${this.district}` : ``;
+    const pageTitle = `${office} ${district}, Candidates ${this.year} | ${globals.pageTitleSuffix}`;
+    this.titleService.setTitle(pageTitle);
   }
 }
