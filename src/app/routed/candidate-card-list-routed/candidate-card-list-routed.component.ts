@@ -44,7 +44,7 @@ export class CandidateCardListRoutedComponent implements OnInit {
   setTitle() {
     const office = this.office.toUpperCase();
     const district = this.district ? `District ${this.district}` : ``;
-    const pageTitle = `${office} ${district}, Candidates ${this.year} | ${globals.pageTitleSuffix}`;
+    const pageTitle = `${office} ${district} Candidates ${this.year} | ${globals.pageTitleSuffix}`;
     this.titleService.setTitle(pageTitle);
   }
 }
