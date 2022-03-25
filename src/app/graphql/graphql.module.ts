@@ -16,6 +16,9 @@ const cacheOptions = {
     Office: {
       keyFields: ["title", "electionYear"],
     },
+    ContributionDetails: {
+      merge: true,
+    },
   }
 };
 
