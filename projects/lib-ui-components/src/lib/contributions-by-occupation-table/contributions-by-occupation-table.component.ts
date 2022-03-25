@@ -33,6 +33,8 @@ export class ContributionsByOccupationTableComponent implements OnChanges {
       
       if (contributionGroups?.length > 0) {
         this.setTableData(contributionGroups);
+      } else {
+        this.setTableData([]);
       }
     }
 
