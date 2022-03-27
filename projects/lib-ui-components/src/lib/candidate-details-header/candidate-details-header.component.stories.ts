@@ -32,8 +32,19 @@ export const Sample1: Story = () => ({
     description: 'Former Fire Fighter and Active Reservist',
     website: 'https://www.google.com/',
 
-    raised: 150000,
-    donors: 3250,
-    averageDonation: 200,
+    raised: 123456,
+    donors: 6789,
+    averageDonation: 345,
+  },
+})
+
+export const Sample2: Story = () => ({
+  props: {
+    id: 'mock|id',
+    candidateName: 'John Jones II',
+
+    raised: 9876543,
+    donors: 20876,
+    averageDonation: 100,
   },
 })

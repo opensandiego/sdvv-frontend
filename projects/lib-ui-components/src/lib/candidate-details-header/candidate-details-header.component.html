@@ -14,7 +14,7 @@
   </div>
   <div class="donors">
     <div class="label">Donors</div>
-    <div class="amount">{{donors ? donors : '--'}}</div>
+    <div class="amount">{{donors ? (donors > 9999 ? (donors | number): (donors)): '--'}}</div>
   </div>
   <div class="average-donation">
     <div class="label">Average Donation</div>
