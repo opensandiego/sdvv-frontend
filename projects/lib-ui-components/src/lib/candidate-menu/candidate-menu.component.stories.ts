@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CandidateMenuModule } from './candidate-menu.module';
 import { CandidateMenuComponent } from './candidate-menu.component';
@@ -12,6 +13,7 @@ export default {
       declarations: [ 
       ],
       imports: [
+        BrowserAnimationsModule,
         CandidateMenuModule,
       ],
       providers: [],

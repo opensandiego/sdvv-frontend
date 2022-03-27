@@ -5,7 +5,6 @@ import { faUniversity, faBalanceScale, faMapMarkedAlt, faQuestion, faBars, faChe
 import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { CandidateMenuComponent } from './candidate-menu.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     FontAwesomeModule,
     MenuModule,
     PanelMenuModule,
