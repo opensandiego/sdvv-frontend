@@ -12,6 +12,9 @@ export * from './lib/average-donation/average-donation.component';
 export * from './lib/candidate-card/candidate-card.component';
 export * from './lib/candidate-card/candidate-card.module';
 
+export * from './lib/candidate-details-header/candidate-details-header.component';
+export * from './lib/candidate-details-header/candidate-details-header.module';
+
 export * from './lib/candidate-menu/candidate-menu.module';
 export * from './lib/candidate-menu/candidate-menu.component';
 

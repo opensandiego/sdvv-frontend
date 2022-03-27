@@ -1,0 +1,23 @@
+
+<div class="details-header-wrapper">
+  <div class="image"><img [src]="imageUrl ? imageUrl : defaultImagePath"/></div>
+  <div class="info">
+    <div class="candidate-name">{{candidateName ? candidateName : '--'}}</div>
+    <div class="description">{{description ? description : ''}}</div>
+    <div class="website">
+      <a *ngIf="website" [href]="website"><fa-icon [icon]="faLink"></fa-icon>Website</a>
+    </div>
+  </div>
+  <div class="raised">
+    <div class="label">Raised</div>
+    <div class="amount">{{raised ? (raised | roundCurrencyDisplay) : '--'}}</div>
+  </div>
+  <div class="donors">
+    <div class="label">Donors</div>
+    <div class="amount">{{donors ? donors : '--'}}</div>
+  </div>
+  <div class="average-donation">
+    <div class="label">Average Donation</div>
+    <div class="amount">{{averageDonation ? (averageDonation | currency : 'USD' : 'symbol' : '1.0-0') : '--'}}</div>
+  </div>
+</div>
