@@ -8,12 +8,11 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { OfficeCardComponent } from './office-card.component';
-import { RoundCurrencyDisplayPipe } from '../shared/pipes/round-currency-display.pipe';
+import { SharedPipesModule } from '../shared/shared-pipes.module';
 
 @NgModule({
   declarations: [
     OfficeCardComponent,
-    RoundCurrencyDisplayPipe,
   ],
   imports: [
     CommonModule,
@@ -22,6 +21,7 @@ import { RoundCurrencyDisplayPipe } from '../shared/pipes/round-currency-display
     MatIconModule,
     MatProgressSpinnerModule,
     FontAwesomeModule,
+    SharedPipesModule,
   ],
   exports: [
     OfficeCardComponent,
