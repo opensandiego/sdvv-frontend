@@ -1,0 +1,37 @@
+<div class="candidate-details">
+  
+  <gql-candidate-details-header
+    [candidateId]="candidateId"
+  ></gql-candidate-details-header>
+
+  <mat-tab-group dynamicHeight mat-align-tabs="space-around" mat-align-tabs="start">
+    <mat-tab label="Raised v. Spent">
+      <ng-template matTabContent>
+        <app-details-tab-raised-v-spent  class="details-tab"
+        ></app-details-tab-raised-v-spent>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab label="By Occupation">
+      <ng-template matTabContent>
+        <app-details-tab-raised-by-industry class="details-tab"
+        ></app-details-tab-raised-by-industry>
+      </ng-template>
+    </mat-tab>      
+
+    <mat-tab label="By Location">
+      <ng-template matTabContent>
+        <app-details-tab-raised-by-location class="details-tab"
+        ></app-details-tab-raised-by-location>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab label="Outside Money">
+      <ng-template matTabContent>
+        <app-details-tab-outside-money class="details-tab"
+        ></app-details-tab-outside-money>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
