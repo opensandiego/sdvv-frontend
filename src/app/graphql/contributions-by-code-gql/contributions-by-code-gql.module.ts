@@ -1,6 +1,6 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { GraphQLModule } from '../graphql.module';
 import { ContributionsByCodeStackedBarModule } from 'projects/lib-ui-charts/src/lib/contributions-by-code-stacked-bar/contributions-by-code-stacked-bar.module';
@@ -9,7 +9,7 @@ import { ContributionsByCodeGQLComponent } from './contributions-by-code-gql.com
 
 @NgModule({
   imports: [
-    BrowserModule,
+    CommonModule,
     HttpClientModule,
     GraphQLModule,
     ContributionsByCodeStackedBarModule,

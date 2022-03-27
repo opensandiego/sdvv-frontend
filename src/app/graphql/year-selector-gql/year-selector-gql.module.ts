@@ -1,6 +1,6 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { YearSelectorModule } from 'lib-ui-components';
 import { GraphQLModule } from '../graphql.module';
@@ -9,7 +9,7 @@ import { YearSelectorGQL } from './year-selector-gql.query';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    CommonModule,
     HttpClientModule,
     GraphQLModule,
     YearSelectorModule,
