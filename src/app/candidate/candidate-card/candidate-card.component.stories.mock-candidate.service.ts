@@ -5,7 +5,7 @@ import { CandidateService } from "src/app/store/services/candidate.service";
 const mockCandidate: Candidate = {
   id: 'mock|id',
   full_name: 'Johnson Jones',
-  description: 'Place Holder for a Description',  
+  description: 'Place Holder for a Description with many words',
   image_url: null,
   website: 'https://www.google.com/',
   agency: 'City of San Diego',

@@ -43,6 +43,7 @@ Name1.args = {
     firstName: 'One Name',
     lastName: 'One Last Name',
     fullName: 'A Full Name',
+    description: 'Somewhat long description with multiple titles',
   },
   committeeData: {
     raised: 98765,

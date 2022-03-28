@@ -5,7 +5,7 @@ import { CandidateCard } from "src/app/store/interfaces/candidate.card";
 const mockCandidateCard: CandidateCard = {
   id: 'mock|id',
   name: 'Johnson Jones',
-  description: 'Place Holder for a Description',  
+  description: 'Place Holder for another Description with several words',  
   candidateImgURL: null,
   website: 'https://www.google.com/',
   office: 'Mayor',
