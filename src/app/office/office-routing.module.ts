@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DetailsComponent } from '../candidate-details/details/details.component';
 import { OfficeDistrictComponent } from './components/office-districts/office-districts.component';
-import { QuickViewContainerComponent } from './components/quick-view-container/quick-view-container.component';
 // import { OfficeDistrictResolverService } from './office-district-resolver.service';
 import { DistrictRedirectResolverService } from './district-redirect-resolver.service';
 
@@ -11,24 +9,12 @@ const officeRoutes: Routes = [
     path: '',
     component: OfficeDistrictComponent,
     data: { type: '' },
-    children: [
-      {
-        path: ':candidateId',
-        data: { type: 'candidate' },
-        component: QuickViewContainerComponent,
-      }
-    ],
+    loadChildren: () => import('../routed/candidate-summary-routed/candidate-summary-routed.module').then(m => m.CandidateSummaryRoutedModule),
   },
   {
     path: ':candidateId',
     data: { type: 'candidate' },
-    children: [
-      {
-        path: 'details',
-        component: DetailsComponent,
-        data: { type: 'details' },
-      },
-    ],
+    loadChildren: () => import('../routed/candidate-details-routed/candidate-details-routed.module').then(m => m.CandidateDetailsRoutedModule),
   }, 
 ];
 
