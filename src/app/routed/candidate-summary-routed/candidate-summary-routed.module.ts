@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { CandidateSummaryContainerModule } from 'src/app/containers/candidate-summary-container/candidate-summary-container.module';
 import { CandidateSummaryRoutedComponent } from './candidate-summary-routed.component';
+import { CandidateSummaryRoutingModule } from './candidate-summary-routing.module';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { CandidateSummaryRoutedComponent } from './candidate-summary-routed.comp
     HttpClientModule,
     RouterModule,
     CandidateSummaryContainerModule,
+    CandidateSummaryRoutingModule,
   ],
   declarations: [
     CandidateSummaryRoutedComponent,
