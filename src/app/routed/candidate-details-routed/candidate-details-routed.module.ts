@@ -4,12 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { CandidateDetailsContainerModule } from 'src/app/containers/candidate-details-container/candidate-details-container.module';
 import { CandidateDetailsRoutedComponent } from './candidate-details-routed.component';
+import { CandidateDetailsRoutingModule } from './candidate-details-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     CandidateDetailsContainerModule,
+    CandidateDetailsRoutingModule,
   ],
   declarations: [
     CandidateDetailsRoutedComponent,
