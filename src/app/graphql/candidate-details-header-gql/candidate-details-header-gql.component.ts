@@ -1,9 +1,12 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { globals } from 'src/app/globals';
+import { environment } from 'src/environments/environment';
 
 import { CandidateFinanceDataGQL, CandidateFinanceDataResponse } from './candidate-finance-data-gql.query';
 import { CandidateInfoGQL, CandidateInfoResponse } from './candidate-info-gql.query';
+
+const uri = `${environment.apiUrl}`;
 
 @Component({
   selector: 'gql-candidate-details-header',
@@ -11,6 +14,7 @@ import { CandidateInfoGQL, CandidateInfoResponse } from './candidate-info-gql.qu
     <candidate-details-header
       [candidateName]="candidateName"
       [description]="description"
+      [imageUrl]="imageUrl"
       [website]="website"
       [raised]="raisedAmount"
       [donors]="donorsCount"
@@ -56,7 +60,9 @@ export class CandidateDetailsHeaderGQLComponent implements OnChanges {
       const response: CandidateInfoResponse = result.data;
       const candidateInfo = response?.candidate;
 
-      this.imageUrl = candidateInfo?.imageUrl ? candidateInfo.imageUrl : null;
+      this.imageUrl = candidateInfo?.imageUrl
+        ? `${uri}/${response.candidate.imageUrl}`
+        : null;
       this.candidateName = candidateInfo?.fullName ? candidateInfo.fullName : null
       this.description = candidateInfo?.description ? candidateInfo.description : null;
       this.website = candidateInfo?.website ? candidateInfo.website : null;

@@ -56,7 +56,7 @@ export class CandidateCardGQLComponent implements OnChanges {
           ...response.candidate,
           imageUrl: response.candidate?.imageUrl 
             ? `${uri}/${response.candidate.imageUrl}` 
-            : ''
+            : null
         } 
         : null;
       this.candidateInfo = candidateInfo ? candidateInfo : null;
