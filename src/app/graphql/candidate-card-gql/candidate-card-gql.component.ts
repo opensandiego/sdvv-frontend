@@ -1,11 +1,13 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { globals } from 'src/app/globals';
+import { environment } from 'src/environments/environment';
 
 import { CandidateInfo, CommitteeData } from 'lib-ui-components';
 import { CandidateCardFinanceDataGQL, CandidateCardFinanceDataResponse } from './candidate-card-finance-data-gql.query';
 import { CandidateCardInfoGQL, CandidateCardInfoResponse } from './candidate-card-info-gql.query';
 
+const uri = `${environment.apiUrl}`;
 
 @Component({
   selector: 'gql-candidate-card',
@@ -49,7 +51,14 @@ export class CandidateCardGQLComponent implements OnChanges {
     }).valueChanges.subscribe( (result: any) => {
       const response: CandidateCardInfoResponse = result.data;
 
-      const candidateInfo = response?.candidate;
+      const candidateInfo = response?.candidate 
+        ? {
+          ...response.candidate,
+          imageUrl: response.candidate?.imageUrl 
+            ? `${uri}/${response.candidate.imageUrl}` 
+            : ''
+        } 
+        : null;
       this.candidateInfo = candidateInfo ? candidateInfo : null;
 
       this.setTitle(candidateInfo);
