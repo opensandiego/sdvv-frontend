@@ -37,10 +37,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "allowedCommonJsDependencies": [
-              "chart.js",
-              "chartjs-plugin-datalabels"
-            ],
+            "allowedCommonJsDependencies": [],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
