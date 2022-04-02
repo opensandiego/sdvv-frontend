@@ -4,7 +4,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ChartsModule } from 'ng2-charts';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ContributionsByGroupTableComponent } from './contributions-by-group-table/contributions-by-group-table.component';
@@ -39,7 +38,6 @@ import { OutsideMoneyStackedBarComponent } from './outside-money-stacked-bar/out
     MatTableModule,
     MatTooltipModule,
     FontAwesomeModule,
-    ChartsModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),

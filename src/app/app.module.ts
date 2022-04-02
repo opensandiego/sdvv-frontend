@@ -2,7 +2,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { VvChartsModule } from './vv-charts/vv-charts.module';
@@ -27,7 +26,6 @@ const gtmID = environment.gtm;
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ChartsModule,
     HttpClientModule,
     VvChartsModule,
     CandidateQuickViewModule,
