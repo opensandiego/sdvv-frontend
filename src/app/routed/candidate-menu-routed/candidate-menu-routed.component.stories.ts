@@ -7,6 +7,7 @@ import { CandidateMenuRoutedComponent } from './candidate-menu-routed.component'
 
 import { YearService } from 'src/app/store/services/year.service';
 import { of } from 'rxjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 class MockYearService implements Partial<YearService> {
   electionYearChanged$ = of('');
@@ -32,6 +33,7 @@ export default {
       declarations: [],
       imports: [
         CommonModule,
+        BrowserAnimationsModule,
         CandidateMenuRoutedModule,
       ],
       providers: [
