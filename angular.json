@@ -37,7 +37,10 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "allowedCommonJsDependencies": [],
+            "allowedCommonJsDependencies": [
+              "prop-types",
+              "hoist-non-react-statics"
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
