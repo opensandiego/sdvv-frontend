@@ -53,6 +53,8 @@
     "primeflex": "^3.1.0",
     "primeicons": "^5.0.0",
     "primeng": "^13.0.4",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "rxjs": "~6.6.7",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
@@ -76,6 +78,8 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/mapbox-gl": "^2.6.1",
     "@types/node": "^12.11.1",
+    "@types/react": "^16.14.24",
+    "@types/react-dom": "^16.9.14",
     "@webcomponents/custom-elements": "^1.5.0",
     "babel-loader": "^8.2.3",
     "codelyzer": "^6.0.0",
