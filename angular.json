@@ -183,7 +183,7 @@
               "devServerTarget": "sdvv-frontend:serve:production"
             },
             "development": {
-              "devServerTarget": "sdvv-frontend:serve:development"
+              "devServerTarget": "sdvv-frontend:serve:staging"
             }
           },
           "defaultConfiguration": "development"
