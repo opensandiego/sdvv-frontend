@@ -1,5 +1,5 @@
 
-<div class="details-header-wrapper">
+<ng-template #ImageInfo>
   <div class="image"><img [src]="imageUrl ? imageUrl : defaultImagePath"/></div>
   <div class="info">
     <div class="candidate-name">{{candidateName ? candidateName : '--'}}</div>
@@ -8,6 +8,14 @@
       <a *ngIf="website" [href]="website"><fa-icon [icon]="faLink"></fa-icon>Website</a>
     </div>
   </div>
+</ng-template>
+
+<div class="details-header-wrapper">
+  <ng-template [ngTemplateOutlet]="ImageInfo"></ng-template>
+  <div class="image-info">
+    <ng-template [ngTemplateOutlet]="ImageInfo"></ng-template>
+  </div>
+
   <div class="raised">
     <div class="label">Raised</div>
     <div class="amount">{{raised ? (raised | roundCurrencyDisplay) : '--'}}</div>
