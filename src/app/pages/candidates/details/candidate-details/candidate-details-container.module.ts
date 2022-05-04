@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CandidateDetailsHeaderGQLModule } from 'src/app/graphql/candidate-details-header-gql/candidate-details-header-gql.module';
 import { CandidateDetailsModule } from 'src/app/candidate-details/candidate-details.module';
@@ -18,7 +17,6 @@ import { CandidateDetailsContainerComponent } from './candidate-details-containe
     CommonModule,
     MatTooltipModule,
     MatTabsModule,
-    FontAwesomeModule,
     RouterModule,
 
     CandidateDetailsHeaderGQLModule,

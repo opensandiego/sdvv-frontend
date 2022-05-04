@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CandidateDetailsContainerModule } from './candidate-details-container.module';
 import { CandidateDetailsContainerComponent } from './candidate-details-container.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export default {
   title: 'Lib Containers/Candidate Details',
