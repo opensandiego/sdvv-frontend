@@ -27,6 +27,9 @@ export * from './lib/contributions-by-occupation-table/contributions-by-occupati
 export * from './lib/details-contributions-by-occupation-header/details-contributions-by-occupation-header.module';
 export * from './lib/details-contributions-by-occupation-header/details-contributions-by-occupation-header.component';
 
+export * from './lib/details-tab-title/details-tab-title.module';
+export * from './lib/details-tab-title/details-tab-title.component';
+
 export * from './lib/office-card/office-card.module';
 export * from './lib/office-card/office-card.component';
 
