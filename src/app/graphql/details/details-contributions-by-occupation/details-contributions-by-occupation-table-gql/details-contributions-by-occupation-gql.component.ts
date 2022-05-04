@@ -35,7 +35,7 @@ export class DetailsContributionsByOccupationGQLComponent implements OnChanges {
 
       const contributions = response?.candidate?.committee?.contributions?.groupBy?.occupation;
 
-      this.contributionsGroupedByOccupation = contributions ? contributions.slice(0, 5) : [];
+      this.contributionsGroupedByOccupation = contributions ? contributions.slice(0, 20) : [];
       this.doSort();
     });
   }
