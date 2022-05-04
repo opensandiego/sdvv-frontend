@@ -9,6 +9,7 @@ import { CandidateDetailsModule } from 'src/app/candidate-details/candidate-deta
 import { DetailsRaisedSpentModule } from 'src/app/details-raised-spent/details-raised-spent.module';
 import { CandidateDetailsContainerComponent } from './candidate-details-container.component';
 import { CandidateDetailsTabContributionsByOccupationContainerModule } from '../tabs/contributions-by-occupation/contributions-by-occupation-tab.module';
+import { CandidateDetailsTabContributionsByLocationModule } from '../tabs/contributions-by-location/contributions-by-location-tab.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CandidateDetailsTabContributionsByOccupationContainerModule } from '../
     CandidateDetailsModule,
     DetailsRaisedSpentModule,
     CandidateDetailsTabContributionsByOccupationContainerModule,
+    CandidateDetailsTabContributionsByLocationModule,
   ],
   exports: [
     CandidateDetailsContainerComponent,
