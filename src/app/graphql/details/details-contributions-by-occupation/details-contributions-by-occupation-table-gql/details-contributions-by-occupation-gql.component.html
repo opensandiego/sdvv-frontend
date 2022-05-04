@@ -1,0 +1,11 @@
+
+<div class="details-raised-by-industry-wrapper">
+  <details-contributions-by-occupation-header
+    (sortOrderChanged)="doSort($event)"
+  ></details-contributions-by-occupation-header>
+
+  <raised-by-industry-bar class="raised-by-industry-chart"
+    *ngIf="contributionsGroupedByOccupation"
+    [raisedByIndustries]="contributionsGroupedByOccupation"
+  ></raised-by-industry-bar>
+</div>
