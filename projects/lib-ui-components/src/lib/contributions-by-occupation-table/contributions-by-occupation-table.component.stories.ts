@@ -17,7 +17,7 @@ export default {
     moduleMetadata({
       declarations: [],
       imports: [
-        BrowserAnimationsModule, 
+        BrowserAnimationsModule,
         MatTableModule,
         FontAwesomeModule,
       ],

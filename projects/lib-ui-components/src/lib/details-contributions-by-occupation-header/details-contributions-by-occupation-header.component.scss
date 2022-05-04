@@ -1,0 +1,29 @@
+@import "../styles/variables";
+@import "../styles/elements";
+
+.raised-by-industry-header-wrapper {
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+
+.sort-options {
+  grid-row: 2;
+  place-self: start;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .label {
+    padding-right: 10px;
+    font-weight: bold;
+  }
+
+  .buttons button {
+    font-size: 0.75em;
+  }
+}

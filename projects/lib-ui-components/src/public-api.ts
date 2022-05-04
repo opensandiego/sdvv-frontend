@@ -24,6 +24,9 @@ export * from './lib/chart-title/chart-title.component';
 export * from './lib/contributions-by-occupation-table/contributions-by-occupation-table.module';
 export * from './lib/contributions-by-occupation-table/contributions-by-occupation-table.component';
 
+export * from './lib/details-contributions-by-occupation-header/details-contributions-by-occupation-header.module';
+export * from './lib/details-contributions-by-occupation-header/details-contributions-by-occupation-header.component';
+
 export * from './lib/office-card/office-card.module';
 export * from './lib/office-card/office-card.component';
 
