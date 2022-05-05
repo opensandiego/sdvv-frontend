@@ -30,8 +30,9 @@
 
     <mat-tab label="Outside Money">
       <ng-template matTabContent>
-        <!-- <app-details-tab-outside-money class="details-tab"
-        ></app-details-tab-outside-money> -->
+        <details-tab-outside-money class="details-tab"
+          [candidateId]="candidateId"
+        ></details-tab-outside-money>
       </ng-template>
     </mat-tab>
   </mat-tab-group>

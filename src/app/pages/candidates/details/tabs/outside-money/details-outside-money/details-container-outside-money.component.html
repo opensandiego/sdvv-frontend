@@ -1,0 +1,40 @@
+
+<div class="outside-money-container">
+  
+  <outside-money-stacked-bar
+    *ngIf="oppositionCommittees && supportCommittees"
+    [opposedCommittees]="oppositionCommittees"
+    [supportCommittees]="supportCommittees"
+    [committeeHighlighted]="hoveredCommittee"
+    (committeeHighlightedChange)="committeeHoveredOver($event)"
+  ></outside-money-stacked-bar>
+  
+  <div class="committee-tables">
+    <div class="opposition-panel">
+      <div class="heading">
+        <fa-icon [icon]="faCircle" [icon]="faCircle" [style.color]="oppositionColor" ></fa-icon>
+        {{oppositionExpenditures.title}}
+      </div>
+      <app-top-categories-table class="opposition-table"
+        *ngIf="oppositionCommittees"
+        [categories]='oppositionCommittees'
+        [categoryHighlighted]="hoveredCommittee"
+        (categoryHighlightedChange)="committeeHoveredOver($event)"
+      ></app-top-categories-table>
+    </div>
+
+    <div class="support-panel">
+      <div class="heading">
+        <fa-icon [icon]="faCircle" [style.color]="supportColor" ></fa-icon>
+        {{supportExpenditures.title}}
+      </div>
+      <app-top-categories-table  class="support-table"
+        *ngIf="supportCommittees"
+        [categories]='supportCommittees'
+        [categoryHighlighted]="hoveredCommittee"
+        (categoryHighlightedChange)="committeeHoveredOver($event)"
+      ></app-top-categories-table>
+    </div>
+  </div>
+  
+</div>
