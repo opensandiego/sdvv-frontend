@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,7 +15,7 @@ export interface IndependentCommittees {
   templateUrl: './details-container-outside-money.component.html',
   styleUrls: ['./details-container-outside-money.component.scss']
 })
-export class DetailsContainerOutsideMoneyComponent implements OnChanges {
+export class DetailsContainerOutsideMoneyComponent {
   @Input() oppositionCommittees: IndependentCommittees[];
   @Input() supportCommittees: IndependentCommittees[];
   
@@ -34,20 +34,6 @@ export class DetailsContainerOutsideMoneyComponent implements OnChanges {
   };
   
   faCircle = faCircle;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges');
-
-    if (changes['oppositionCommittees']) {
-      console.log(`{ changes: changes['oppositionCommittees'] }`);
-      console.log({ changes: changes['oppositionCommittees'] });
-    }
-
-    if (changes['supportCommittees']) {
-      console.log(`{ changes: changes['supportCommittees'] }`);
-      console.log({ changes: changes['supportCommittees'] });
-    }
-  }
 
   committeeHoveredOver(committee){
     this.hoveredCommittee = committee;

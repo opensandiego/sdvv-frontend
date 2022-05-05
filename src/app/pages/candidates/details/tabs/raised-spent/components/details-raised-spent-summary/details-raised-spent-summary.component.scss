@@ -1,0 +1,39 @@
+.raised-spent-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.raised-spent {
+  min-width: 150px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;
+}
+
+.raised-row, .spent-row, .balance-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.raised-row, .spent-row {
+  margin-bottom: 15px;
+  margin-top: 15px;  
+}
+
+.raised-row > .amount {
+  color: green;
+}
+
+.spent-row > .amount {
+  color: red;
+  font-weight: bold;
+}
+
+.balance-row > .amount {
+  font-weight: bold;
+}

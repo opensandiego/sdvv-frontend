@@ -1,0 +1,36 @@
+
+.total-raised-chart-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .total-raised-header {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5em;
+    .total {
+      color: green;
+    }
+  }
+
+}
+
+.total-raised-chart {
+  flex: 1 1 auto;
+}
+
+.total-raised-footer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.tooltip-text {
+  color: #0077ff;
+  font-size: 1.1em;
+  padding: 0px 5px 5px 0px;
+}

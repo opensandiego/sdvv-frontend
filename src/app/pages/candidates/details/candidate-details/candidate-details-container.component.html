@@ -7,8 +7,9 @@
   <mat-tab-group dynamicHeight mat-align-tabs="space-around" mat-align-tabs="start">
     <mat-tab label="Raised v. Spent">
       <ng-template matTabContent>
-        <!-- <app-details-tab-raised-v-spent  class="details-tab"
-        ></app-details-tab-raised-v-spent> -->
+        <details-tab-raised-v-spent  class="details-tab"
+          [candidateId]="candidateId"
+        ></details-tab-raised-v-spent>
       </ng-template>
     </mat-tab>
 
@@ -22,7 +23,7 @@
 
     <mat-tab label="By Location">
       <ng-template matTabContent>
-        <contributions-by-location-tab
+        <contributions-by-location-tab class="details-tab"
           [candidateId]="candidateId"
         ></contributions-by-location-tab>
       </ng-template>

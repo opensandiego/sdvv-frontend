@@ -4,13 +4,14 @@ import { RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
 
+// import { CandidateDetailsModule } from 'src/app/candidate-details/candidate-details.module';
+// import { DetailsRaisedSpentModule } from 'src/app/details-raised-spent/details-raised-spent.module';
 import { CandidateDetailsHeaderGQLModule } from 'src/app/graphql/candidate-details-header-gql/candidate-details-header-gql.module';
-import { CandidateDetailsModule } from 'src/app/candidate-details/candidate-details.module';
-import { DetailsRaisedSpentModule } from 'src/app/details-raised-spent/details-raised-spent.module';
-import { CandidateDetailsContainerComponent } from './candidate-details-container.component';
+import { DetailsTabRaisedSpentModule } from '../tabs/raised-spent/details-raised-spent.module';
 import { CandidateDetailsTabContributionsByOccupationContainerModule } from '../tabs/contributions-by-occupation/contributions-by-occupation-tab.module';
 import { CandidateDetailsTabContributionsByLocationModule } from '../tabs/contributions-by-location/contributions-by-location-tab.module';
 import { CandidateDetailsTabOutsideMoneyModule } from '../tabs/outside-money/outside-money-tab.module';
+import { CandidateDetailsContainerComponent } from './candidate-details-container.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +22,10 @@ import { CandidateDetailsTabOutsideMoneyModule } from '../tabs/outside-money/out
     MatTooltipModule,
     MatTabsModule,
     RouterModule,
-
+    // CandidateDetailsModule,
+    // DetailsRaisedSpentModule,
     CandidateDetailsHeaderGQLModule,
-    CandidateDetailsModule,
-    DetailsRaisedSpentModule,
+    DetailsTabRaisedSpentModule,
     CandidateDetailsTabContributionsByOccupationContainerModule,
     CandidateDetailsTabContributionsByLocationModule,
     CandidateDetailsTabOutsideMoneyModule,

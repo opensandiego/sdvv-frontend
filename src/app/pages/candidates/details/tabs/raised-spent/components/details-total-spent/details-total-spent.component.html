@@ -1,0 +1,52 @@
+
+<div class="details-total-spending-wrapper">
+
+  <div class="total-spent-chart-panel">
+
+    <div class="total-spent-header">
+      <div class="title">Total Spent</div>
+      <div class="total-spent">{{totalSpentFormatted}}</div>
+    </div>
+
+    <total-spent-donut 
+      *ngIf="categoriesCombined"
+      [spendingCategories]="categoriesCombined"
+      [categoryHighlighted]="hoveredCategory"
+      (categoryHighlightedChange)="categoryHoveredOver($event)"
+    ></total-spent-donut>
+  </div>
+
+  <div class="total-spent-table-panel">
+    <app-top-categories-table 
+    *ngIf="categoriesCombined"
+    [categories]='categoriesCombined'
+    [categoryHighlighted]="hoveredCategory"
+    (categoryHighlightedChange)="categoryHoveredOver($event)"
+    ></app-top-categories-table>
+
+    <div class="total-spent-footer">
+
+      <div class="total-spent-cash-n-debts">
+        <!-- <div class="cash-in-hand">
+          <div class="amount"><fa-icon [icon]="faMoneyBillWave"></fa-icon>{{cashInHand}}</div>
+          <div class="label">(Cash on Hand)</div>
+        </div>
+        <div class="loans-and-debts">
+          <div class="amount"><fa-icon [icon]="faHandHoldingUsd"></fa-icon>{{loansAndDebts}}</div>
+          <div class="label">(Loans & Debts)</div>
+        </div> -->
+      </div>
+
+       <div>
+        <i
+          class="tooltip-text"
+          aria-hidden="true"
+          [matTooltip]="tooltipText" 
+        ><fa-icon [icon]="faQuestionCircle"></fa-icon>
+        </i>
+      </div>
+
+    </div>
+  </div>
+
+</div>

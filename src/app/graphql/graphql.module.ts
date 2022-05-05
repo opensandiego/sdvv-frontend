@@ -19,6 +19,9 @@ const cacheOptions = {
     ContributionDetails: {
       merge: true,
     },
+    Expenses: {
+      merge: true,
+    }
   }
 };
 
