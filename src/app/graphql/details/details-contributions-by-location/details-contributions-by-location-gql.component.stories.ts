@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { DetailsContributionsByLocationComponent } from './details-contributions-by-location-gql.component'
-import { ContributionsByLocationGQLModule } from './details-contributions-by-location-gql.module';
+import { DetailsContributionsByLocationGQLModule } from './details-contributions-by-location-gql.module';
 
 export default {
   title: 'Lib-gql/Details Contributions by Location',
@@ -11,7 +11,7 @@ export default {
     moduleMetadata({
       declarations: [],
       imports: [
-        ContributionsByLocationGQLModule,
+        DetailsContributionsByLocationGQLModule,
       ],
       providers: [],
     }),
