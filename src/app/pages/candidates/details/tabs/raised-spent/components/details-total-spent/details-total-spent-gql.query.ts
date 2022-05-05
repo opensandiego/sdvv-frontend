@@ -5,7 +5,6 @@ export interface ExpenseCode {
   code: string;
   sum: number;
   percent: number;
-  count: number;
 }
 
 export interface DetailsTotalSpent {
@@ -26,7 +25,7 @@ export interface DetailsTotalSpent {
 })
 export class DetailsTotalSpentGQLQuery extends Query<Response> { 
   document = gql`
-    query detailsTotalSpent ($candidateId: String!) {
+    query detailsTotalSpent ($candidateId: String!, $limit: Int) {
       candidate(id: $candidateId) {
         id
         committee {
@@ -34,11 +33,11 @@ export class DetailsTotalSpentGQLQuery extends Query<Response> {
           expenses {
             sum
             groupBy {
-              expenseByCode {
+              expenseByCode(limit: $limit) {
                 code
                 sum
                 percent
-                count
+                # count
               }
             }
           }

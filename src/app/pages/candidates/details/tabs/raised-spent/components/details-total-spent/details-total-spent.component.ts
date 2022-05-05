@@ -47,6 +47,7 @@ export class DetailsTotalSpentComponent implements OnInit {
 
     this.detailsTotalSpentGQLQuery.watch({
       candidateId: this.candidateId,
+      limit: 5,
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {
@@ -55,12 +56,12 @@ export class DetailsTotalSpentComponent implements OnInit {
       const expenses = response?.candidate?.committee?.expenses;
       const expenseCodes = expenses.groupBy.expenseByCode;
 
-      this.categoriesCombined = expenseCodes.slice(0,5).map((group, i) => ({
+      this.categoriesCombined = expenseCodes.map((expense, i) => ({
         id: i.toString(),
-        code: group.code,
-        name: group.code ? this.getSpendingCodeDescription(group.code) : 'not categorized',
-        value: group.sum,
-        percent: group.percent,
+        code: expense.code,
+        name: expense.code ? this.getSpendingCodeDescription(expense.code) : 'not categorized',
+        value: expense.sum,
+        percent: expense.percent,
         color: i < this.colors.length ? this.colors[i] : 'red',
       }));
 
