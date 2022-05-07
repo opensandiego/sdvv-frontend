@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { CandidateService } from 'src/app/store/services/candidate.service';
 import { CandidateCardListInfoGQL } from './candidate-card-list-gql.query';
 
 @Component({
@@ -23,17 +22,8 @@ export class CandidateCardListGQLComponent implements OnChanges {
   candidateIds: string[];
 
   constructor(
-    private candidateService: CandidateService,
     private candidateCardListInfoGQL: CandidateCardListInfoGQL,
   ) { }
-
-  setCandidateCards(): void {
-    this.candidateService.getCandidates(
-      { office: this.office, district: this.district, year: this.year }
-    ).subscribe(candidates => {
-      this.candidateIds = candidates.map(candidate => candidate.id);
-    })
-  }
 
   ngOnChanges() {
     const filters = {
