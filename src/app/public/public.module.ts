@@ -9,7 +9,6 @@ import { FaqComponent } from './components/faq/faq.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { PublicRoutingModule } from './public-routing.module';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
-import { RoutingService } from './services/routing.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
@@ -40,7 +39,7 @@ import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/of
     UnderConstructionComponent,
     BreadcrumbComponent,
   ],
-  providers: [RoutingService],
+  providers: [],
 })
 export class PublicModule { 
   constructor(library: FaIconLibrary) {
