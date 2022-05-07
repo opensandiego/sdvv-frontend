@@ -13,6 +13,7 @@ import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { ElectionYearRoutedModule } from '../routed/election-year-routed/election-year-routed.module';
 import { CandidateMenuRoutedModule } from '../routed/candidate-menu-routed/candidate-menu-routed.module';
+import { FooterGQLModule } from '../graphql/footer-gql/footer.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CandidateMenuRoutedModule } from '../routed/candidate-menu-routed/candi
     PanelMenuModule,
     ElectionYearRoutedModule,
     CandidateMenuRoutedModule,
+    FooterGQLModule,
   ],
   exports: [
     HomeComponent,

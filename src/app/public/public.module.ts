@@ -6,7 +6,6 @@ import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity } from '@forta
 
 import { AboutComponent } from './components/about/about.component';
 import { FaqComponent } from './components/faq/faq.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { PublicRoutingModule } from './public-routing.module';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
@@ -22,7 +21,6 @@ import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/of
     AboutComponent,
     FaqComponent,
     OfficeSummaryComponent,
-    FooterComponent,
     UnderConstructionComponent,
     RoundCurrencyDisplayPipe,
     BreadcrumbComponent,
@@ -40,7 +38,6 @@ import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/of
     AboutComponent,
     FaqComponent,
     UnderConstructionComponent,
-    FooterComponent,
     BreadcrumbComponent,
   ],
   providers: [RoutingService],
