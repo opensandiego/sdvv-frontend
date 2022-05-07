@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OfficeDistrictComponent } from './components/office-districts/office-districts.component';
-// import { OfficeDistrictResolverService } from './office-district-resolver.service';
 import { DistrictRedirectResolverService } from './district-redirect-resolver.service';
 
 const officeRoutes: Routes = [
