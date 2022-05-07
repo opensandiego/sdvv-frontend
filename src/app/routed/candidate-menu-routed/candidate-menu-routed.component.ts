@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
+import { ElectionYearGQL } from './election-year-gql.query';
 import { ActiveMenuPathGQL } from 'src/app/graphql/candidate-menu-gql/candidate-menu-gql.component';
-import { YearService } from 'src/app/store/services/year.service';
 
 @Component({
   selector: 'candidate-menu-routed',
@@ -25,15 +25,21 @@ export class CandidateMenuRoutedComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private yearService: YearService,
+    private electionYearGQL: ElectionYearGQL,
   ) { }
 
-  ngOnInit() {
-    this.yearService.electionYearChanged$.subscribe(year => {
-      this.activeYear = year;
-    })
-
+   ngOnInit() {
+    this.watchElectionYear();
     this.trackDetailsActive();
+  }
+
+  private watchElectionYear() {
+    const electionYear$ = this.electionYearGQL
+      .watch().valueChanges
+      .pipe(map((result) => result.data))
+      .subscribe((result) => {
+        this.activeYear = result.electionYear;
+      });
   }
 
   getActiveItem(fragments: string[]) {

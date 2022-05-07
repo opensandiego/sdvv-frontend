@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { YearService } from 'src/app/store/services/year.service';
+import { map } from 'rxjs/operators';
+import { ElectionYearGQL } from './election-year-gql.query';
 
 @Component({
   selector: 'election-year-routed',
@@ -16,13 +17,20 @@ export class ElectionYearRouteComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private yearService: YearService,
+    private electionYearGQL: ElectionYearGQL,
   ) { }
 
   ngOnInit() {
-    this.yearService.electionYearChanged$.subscribe(year => {
-      this.activeYear = year;
-    })
+    this.watchElectionYear();
+  }
+
+  private watchElectionYear() {
+    const electionYear$ = this.electionYearGQL
+      .watch().valueChanges
+      .pipe(map((result) => result.data))
+      .subscribe((result) => {
+        this.activeYear = result.electionYear;
+      });
   }
 
   changeRoute(year) {

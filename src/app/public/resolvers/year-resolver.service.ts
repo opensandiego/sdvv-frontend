@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
-import { YearService } from 'src/app/store/services/year.service';
+import { electionYearVar } from 'src/app/graphql/cache';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YearResolverService {
-
-  constructor(
-    private yearService: YearService,
-  ) {}
-
   resolve( ): boolean {
-    this.yearService.changeElectionYear('');
+    electionYearVar('');
     return true;
   }
 }
