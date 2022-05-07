@@ -12,7 +12,6 @@ import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
-import { APIStoreModule } from '../store/api.store.module';
 import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/office-card-list-routed.module';
 
 @NgModule({
@@ -30,7 +29,6 @@ import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/of
     PublicRoutingModule,
     FontAwesomeModule,
     BreadcrumbModule,
-    APIStoreModule,
     OfficeCardListRoutedModule,
   ],
   exports: [
