@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-
-import {MenuItem} from 'primeng/api';
-import { filter } from 'rxjs/operators';
-import { CandidateCardService } from 'src/app/store/services/candidate.card.service';
+import { filter, map } from 'rxjs/operators';
+import { MenuItem } from 'primeng/api';
+import { CandidateCardInfoGQL } from './candidate-card-info-gql.query';
 
 @Component({
   selector: 'breadcrumb',
@@ -17,7 +16,7 @@ export class BreadcrumbComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private candidateCardService: CandidateCardService,
+    private candidateInfoGQL: CandidateCardInfoGQL,
   ) { }
 
    async createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: MenuItem[] = []): Promise<MenuItem[]> {
@@ -43,9 +42,11 @@ export class BreadcrumbComponent implements OnInit {
         }
       } else if (type === 'candidate') {
         const candidateId = child.snapshot.params['candidateId'];
-        const candidate$ = this.candidateCardService.getCandidateCard(candidateId)
-        const candidate = await (candidate$).toPromise();
-        label = candidate.name;
+        const fullName$ = this.candidateInfoGQL
+          .fetch({ candidateId: candidateId })
+          .pipe(map((result) => result.data.candidate.fullName));
+
+        label = await (fullName$).toPromise();
       } else if (type === 'details') {
         label = 'Details';
       } else if (type === 'year') {
