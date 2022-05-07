@@ -5,7 +5,6 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { VvChartsModule } from './vv-charts/vv-charts.module';
-import { CandidateQuickViewModule } from './candidate-quick-view/candidate-quick-view.module';
 import { CandidateModule } from './candidate/candidate.module';
 
 import { APIStoreModule } from './store/api.store.module';
@@ -28,7 +27,6 @@ const gtmID = environment.gtm;
     BrowserAnimationsModule,
     HttpClientModule,
     VvChartsModule,
-    CandidateQuickViewModule,
     CandidateModule,
     APIStoreModule,
     PublicModule,
