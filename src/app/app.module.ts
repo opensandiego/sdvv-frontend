@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { VvChartsModule } from './vv-charts/vv-charts.module';
 import { APIStoreModule } from './store/api.store.module';
 import { PublicModule } from './public/public.module';
 import { NavigationMenuModule } from './navigation-menu/navigation-menu.module';
@@ -23,7 +22,6 @@ const gtmID = environment.gtm;
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    VvChartsModule,
     APIStoreModule,
     PublicModule,
     NavigationMenuModule,

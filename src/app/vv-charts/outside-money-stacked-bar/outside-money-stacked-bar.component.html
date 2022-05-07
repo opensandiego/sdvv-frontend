@@ -1,9 +1,0 @@
-
-<div class="outside-money-stacked-bar-chart" echarts 
-  [options]="chartOption"
-  [merge]="mergeOption"
-
-  (chartInit)="onChartInit($event)"
-  (chartMouseOver)="hoveredBar($event)"
-  (chartMouseOut)="hoveredBar({ seriesId: '-1' })"
-></div>  
