@@ -8,7 +8,6 @@ import { PublicModule } from '../public/public.module';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideMenuService } from './services/side-menu.service';
-import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { ElectionYearRoutedModule } from '../routed/election-year-routed/election-year-routed.module';
@@ -19,7 +18,6 @@ import { FooterGQLModule } from '../graphql/footer-gql/footer.module';
   declarations: [
     HomeComponent,
     HeaderComponent,
-    SideMenuComponent,
   ],
   imports: [
     CommonModule,
