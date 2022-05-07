@@ -10,7 +10,6 @@ import { CandidateModule } from './candidate/candidate.module';
 import { APIStoreModule } from './store/api.store.module';
 import { PublicModule } from './public/public.module';
 import { NavigationMenuModule } from './navigation-menu/navigation-menu.module';
-import { CandidateDetailsModule } from './candidate-details/candidate-details.module';
 
 import { environment } from 'src/environments/environment';
 const gtmID = environment.gtm;
@@ -31,7 +30,6 @@ const gtmID = environment.gtm;
     APIStoreModule,
     PublicModule,
     NavigationMenuModule,
-    CandidateDetailsModule,
   ],
   providers: [
     { provide: 'googleTagManagerId', useValue: gtmID },
