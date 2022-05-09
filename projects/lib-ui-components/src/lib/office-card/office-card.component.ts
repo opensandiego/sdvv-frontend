@@ -21,6 +21,13 @@ export class OfficeCardComponent implements OnChanges {
   link: string = '';
 
 /**
+ * For totalRaised and candidatesCount
+ * 0 means there are no candidates so disable the amount.
+ * null/undefined means that the amount has not yet been 
+ * determined and the value is pending.
+ */
+
+/**
  * The icons used below must be imported in the module and
  * injected in the module's constructor. The imported icon 
  * names are similar but not exactly the same as those

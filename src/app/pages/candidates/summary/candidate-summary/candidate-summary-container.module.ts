@@ -8,7 +8,7 @@ import { CandidateCardGQLModule } from 'src/app/graphql/candidate-card-gql/candi
 import { RaisedVsSpentContainerModule } from '../raised-vs-spent-container/raised-vs-spent-container.module';
 import { ContributionsByOccupationContainerModule } from '../contributions-by-occupation-container/contributions-by-occupation-container.module';
 import { RaisedInVsOutContainerModule } from '../raised-in-vs-out-container/raised-in-vs-out-container.module';
-import { IndependentExpendituresContainerModule } from 'src/app/containers/independent-expenditures-container/independent-expenditures-container.module';
+import { IndependentExpendituresContainerModule } from 'src/app/pages/candidates/summary/independent-expenditures-container/independent-expenditures-container.module';
 import { CandidateSummaryContainerComponent } from './candidate-summary-container.component';
 
 

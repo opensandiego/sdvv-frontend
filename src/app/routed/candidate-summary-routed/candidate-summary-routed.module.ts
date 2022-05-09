@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { CandidateSummaryContainerModule } from 'src/app/containers/candidate-summary-container/candidate-summary-container.module';
+import { CandidateSummaryContainerModule } from 'src/app/pages/candidates/summary/candidate-summary/candidate-summary-container.module';
 import { CandidateSummaryRoutedComponent } from './candidate-summary-routed.component';
 import { CandidateSummaryRoutingModule } from './candidate-summary-routing.module';
 
