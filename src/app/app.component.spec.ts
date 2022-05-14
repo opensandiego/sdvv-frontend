@@ -11,6 +11,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: 'googleTagManagerId', useValue: 'GTM-TEST' },
+      ],
     }).compileComponents();
   }));
 
