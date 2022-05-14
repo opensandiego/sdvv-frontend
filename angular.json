@@ -97,8 +97,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-          },
+          "options": {},
           "configurations": {
             "production": {
               "browserTarget": "sdvv-frontend:build:production"
@@ -165,28 +164,37 @@
           "options": {
             "browserTarget": "sdvv-frontend:build"
           }
-        }
-      }
-    },
-    "sdvv-frontend-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js"
+            "devServerTarget": "sdvv-frontend:serve"
           },
           "configurations": {
             "production": {
               "devServerTarget": "sdvv-frontend:serve:production"
-            },
-            "development": {
-              "devServerTarget": "sdvv-frontend:serve:staging"
             }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "sdvv-frontend:serve",
+            "watch": true,
+            "headless": false
           },
-          "defaultConfiguration": "development"
+          "configurations": {
+            "production": {
+              "devServerTarget": "sdvv-frontend:serve:production"
+            }
+          }
         }
       }
     },
@@ -218,6 +226,39 @@
             "tsConfig": "projects/lib-ui-charts/tsconfig.spec.json",
             "karmaConfig": "projects/lib-ui-charts/karma.conf.js"
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "lib-ui-charts:serve",
+            "configFile": "projects/lib-ui-charts/cypress.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "lib-ui-charts:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false,
+            "configFile": "projects/lib-ui-charts/cypress.json"
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "lib-ui-charts:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "lib-ui-charts:serve:production"
+            }
+          }
         }
       }
     },
@@ -248,6 +289,39 @@
             "main": "projects/lib-ui-components/src/test.ts",
             "tsConfig": "projects/lib-ui-components/tsconfig.spec.json",
             "karmaConfig": "projects/lib-ui-components/karma.conf.js"
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "lib-ui-components:serve",
+            "configFile": "projects/lib-ui-components/cypress.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "lib-ui-components:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false,
+            "configFile": "projects/lib-ui-components/cypress.json"
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "lib-ui-components:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "lib-ui-components:serve:production"
+            }
           }
         }
       }

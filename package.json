@@ -23,7 +23,8 @@
     "storybook": "npm run storybook:db:local",
     "storybook:db:local": "ng run sdvv-frontend:storybook-db-local",
     "storybook:db:staging": "ng run sdvv-frontend:storybook-db-staging",
-    "build-storybook": "ng run sdvv-frontend:build-storybook"
+    "build-storybook": "ng run sdvv-frontend:build-storybook",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -69,6 +70,7 @@
     "@angular/language-service": "~13.1.1",
     "@babel/core": "^7.17.0",
     "@compodoc/compodoc": "^1.1.18",
+    "@cypress/schematic": "^1.7.0",
     "@juggle/resize-observer": "^3.3.1",
     "@storybook/addon-actions": "^6.4.20",
     "@storybook/addon-essentials": "^6.4.20",

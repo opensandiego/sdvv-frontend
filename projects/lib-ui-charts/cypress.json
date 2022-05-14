@@ -1,0 +1,9 @@
+{
+  "integrationFolder": "projects/lib-ui-charts/cypress/integration",
+  "supportFile": "projects/lib-ui-charts/cypress/support/index.ts",
+  "videosFolder": "projects/lib-ui-charts/cypress/videos",
+  "screenshotsFolder": "projects/lib-ui-charts/cypress/screenshots",
+  "pluginsFile": "projects/lib-ui-charts/cypress/plugins/index.ts",
+  "fixturesFolder": "projects/lib-ui-charts/cypress/fixtures",
+  "baseUrl": "http://localhost:4200"
+}
