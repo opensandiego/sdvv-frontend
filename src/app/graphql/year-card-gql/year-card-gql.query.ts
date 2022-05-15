@@ -21,7 +21,7 @@ export const OFFICE_FRAGMENT = gql`
   fragment YearCardOfficeFields on Office {
     title
     electionYear
-    committeeCount
+    committeeCount(filters: $filters)
   }
 `;
 
@@ -30,7 +30,7 @@ export const OFFICE_FRAGMENT = gql`
 })
 export class YearCardGQL extends Query<Response> { 
   document = gql`
-    query electionYear($year: String!) {
+    query electionYear($year: String!, $filters: CommitteeFilters) {
       electionYear(year: $year) {
         officesByType {
           mayor {

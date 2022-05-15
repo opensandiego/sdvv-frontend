@@ -14,6 +14,8 @@ import { YearCardGQL, YearCardResponse } from './year-card-gql.query';
 })
 export class YearCardGQLComponent {
   @Input() year: string;
+  @Input() inPrimaryElection?: boolean;
+  @Input() inGeneralElection?: boolean;
 
   mayorCount: number = 0;
   cityCouncilCount: number = 0;
@@ -34,10 +36,16 @@ export class YearCardGQLComponent {
       return;
     }
 
+    const filters = {
+      inPrimaryElection: this.inPrimaryElection,
+      inGeneralElection: this.inGeneralElection,
+    };
+
     this.setCountsToNull()
     
     this.yearCardGQL.watch({
       year: year,
+      filters,
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {

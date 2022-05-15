@@ -45,8 +45,14 @@ export class CandidateMenuGQLComponent implements OnChanges {
       return; 
     }
 
+    const filters = {
+      inPrimaryElection: this.electionYear === '2022',
+      // inGeneralElection: this.year !== '2022',
+    };
+
     this.candidateMenuGQL.watch({
       year: this.electionYear,
+      filters,
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {

@@ -28,10 +28,15 @@ export class OfficeCardGQLComponent implements OnChanges {
     if (!this.year || !this.officeTitle) { return; }
     this.officeInfo = null;
     this.officeData = null;
+    const filters = {
+      inPrimaryElection: this.year === '2022',
+      // inGeneralElection: this.year !== '2022',
+    };
 
     this.officeCardGQLInfo.watch({
       electionYear: this.year,
       title: this.officeTitle,
+      filters,
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {
@@ -46,6 +51,7 @@ export class OfficeCardGQLComponent implements OnChanges {
     this.officeCardGQLData.watch({
       electionYear: this.year,
       title: this.officeTitle,
+      filters,
     }, {
       // errorPolicy: 'all',
     }).valueChanges.subscribe( (result: any) => {

@@ -7,11 +7,11 @@ import { Query, gql } from 'apollo-angular';
 })
 export class OfficeCardGQLData extends Query<Response> { 
   document = gql`
-    query office ($electionYear: String!, $title: String!) {
+    query office ($electionYear: String!, $title: String!, $filters: CommitteeFilters) {
       office(electionYear: $electionYear, title: $title) {
         title
         electionYear
-        totalContributions
+        totalContributions(filters: $filters)
       }
     }
   `;

@@ -39,7 +39,7 @@ export const OFFICE_FRAGMENT = gql`
   fragment OfficeFields on Office {
     title
     electionYear
-    candidates {
+    candidates(filters: $filters) {
       ...CandidateFields
     }
   }
@@ -52,7 +52,7 @@ export const OFFICE_FRAGMENT = gql`
 export class CandidateMenuGQL extends Query<Response> { 
 
   document = gql`
-    query candidateMenu($year: String!) {
+    query candidateMenu($year: String!, $filters: CommitteeFilters) {
       electionYear(year: $year) {
         officesByType {
           mayor {
