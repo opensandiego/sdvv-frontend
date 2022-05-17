@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { globals } from 'src/app/globals';
 import { environment } from 'src/environments/environment';
 
@@ -38,6 +38,7 @@ export class CandidateDetailsHeaderGQLComponent implements OnChanges {
     private candidateInfoGQL: CandidateInfoGQL,
     private candidateFinanceDataGQL: CandidateFinanceDataGQL,
     private titleService: Title,
+    private metaService: Meta,
    ) { }
 
    ngOnChanges(changes: SimpleChanges): void  {
@@ -97,5 +98,12 @@ export class CandidateDetailsHeaderGQLComponent implements OnChanges {
     const pageTitle = `${candidateName}, Details, ${office} ${district}, Candidate ${year} | ${globals.pageTitleSuffix}`;
 
     this.titleService.setTitle(pageTitle);
+
+    this.metaService.addTags([
+      {property: 'og:url', content: location.href},
+      {property: 'og:title', content: pageTitle},
+      {property: 'og:image', content: `${location.origin}/assets/preview-images/candidate_details_preview.png`},
+      // {property: 'og:description', content: this.caption},
+    ]);  
   }
 }
