@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { globals } from 'src/app/globals';
 
 @Component({
@@ -22,6 +22,7 @@ export class OfficeCardListRoutedComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
+    private metaService: Meta,
   ) { }
 
   ngOnInit(): void { 
@@ -30,6 +31,13 @@ export class OfficeCardListRoutedComponent implements OnInit {
 
       const pageTitle = `Candidate Offices for ${this.year} | ${globals.pageTitleSuffix}`;
       this.titleService.setTitle(pageTitle);
+
+      this.metaService.addTags([
+        {property: 'og:url', content: location.href},
+        {property: 'og:title', content: pageTitle},
+        {property: 'og:image', content: `${location.origin}/assets/preview-images/offices_preview.png`},
+        // {property: 'og:description', content: ''},
+      ]);
     })
   }
 }
