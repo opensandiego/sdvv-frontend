@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, mergeMap } from 'rxjs/operators';
 import { MenuItem } from 'primeng/api';
 import { CandidateCardInfoGQL } from './candidate-card-info-gql.query';
 
@@ -44,7 +44,7 @@ export class BreadcrumbComponent implements OnInit {
         const candidateId = child.snapshot.params['candidateId'];
         const fullName$ = this.candidateInfoGQL
           .fetch({ candidateId: candidateId })
-          .pipe(map((result) => result.data.candidate.fullName));
+          .pipe(map((result) => result?.data?.candidate?.fullName));
 
         label = await (fullName$).toPromise();
       } else if (type === 'details') {
