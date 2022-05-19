@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
-import { globals } from 'src/app/globals';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'candidate-card-list-routed',
@@ -19,10 +17,7 @@ export class CandidateCardListRoutedComponent implements OnInit {
   district: string;
 
   constructor(
-    private router: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title,
-    private metaService: Meta,
   ) { }
 
   ngOnInit(): void { 
@@ -32,27 +27,6 @@ export class CandidateCardListRoutedComponent implements OnInit {
       this.office = params.get('office_name').replace('-', ' ');
       const district = params.get('district_number')
       this.district = district != '0' ? district : null;
-      this.setTitle();
     })
-
-    this.router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd) {
-        this.setTitle();
-      }
-    });
-  }
-
-  setTitle() {
-    const office = this.office.toUpperCase();
-    const district = this.district ? `District ${this.district}` : ``;
-    const pageTitle = `${office} ${district} Candidates ${this.year} | ${globals.pageTitleSuffix}`;
-    this.titleService.setTitle(pageTitle);
-
-    this.metaService.addTags([
-      {property: 'og:url', content: location.href},
-      {property: 'og:title', content: pageTitle},
-      {property: 'og:image', content: `${location.origin}/assets/preview-images/candidates_preview.png`},
-      // {property: 'og:description', content: ''},
-    ]);    
   }
 }

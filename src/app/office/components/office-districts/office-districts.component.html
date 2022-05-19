@@ -1,4 +1,6 @@
 
-<router-outlet></router-outlet>
+<router-outlet
+  (deactivate)='onDeactivate($event)'
+></router-outlet>
 
 <candidate-card-list-routed></candidate-card-list-routed>
