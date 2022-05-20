@@ -1,7 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
-import { globals } from 'src/app/globals';
-
+import { Component, OnInit } from '@angular/core';
 import { YearSelectorGQL, YearsResponse } from './year-card-list-gql.query';
 
 interface ElectionYearItem {
@@ -30,8 +27,6 @@ export class YearCardListGQLComponent implements OnInit {
 
   constructor(
     private yearSelectorGQL: YearSelectorGQL,
-    private titleService: Title,
-    private metaService: Meta,
   ) {}
 
   ngOnInit() {
@@ -47,17 +42,6 @@ export class YearCardListGQLComponent implements OnInit {
           // inGeneralElection: electionYear.year !== '2022',
         }) );
       }
-
-      const pageTitle = `Choose a Year | ${globals.pageTitleSuffix}`;
-      this.titleService.setTitle(pageTitle);
-
-      const titleYears = years.electionYears.map( electionYear => electionYear.year).join(', ');
-      this.metaService.addTags([
-        {property: 'og:url', content: location.href},
-        {property: 'og:title', content: `San Diego City Elections for ${titleYears} | ${globals.pageTitleSuffix}`},
-        {property: 'og:image', content: `${location.origin}/assets/preview-images/years_preview.png`},
-        {property: 'og:description', content: this.caption},
-      ]);
     });
   }
 

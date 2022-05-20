@@ -1,6 +1,4 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
-import { globals } from 'src/app/globals';
 import { environment } from 'src/environments/environment';
 
 import { CandidateFinanceDataGQL, CandidateFinanceDataResponse } from './candidate-finance-data-gql.query';
@@ -37,8 +35,6 @@ export class CandidateDetailsHeaderGQLComponent implements OnChanges {
   constructor(
     private candidateInfoGQL: CandidateInfoGQL,
     private candidateFinanceDataGQL: CandidateFinanceDataGQL,
-    private titleService: Title,
-    private metaService: Meta,
    ) { }
 
    ngOnChanges(changes: SimpleChanges): void  {
@@ -67,8 +63,6 @@ export class CandidateDetailsHeaderGQLComponent implements OnChanges {
       this.candidateName = candidateInfo?.fullName ? candidateInfo.fullName : null
       this.description = candidateInfo?.description ? candidateInfo.description : null;
       this.website = candidateInfo?.website ? candidateInfo.website : null;
-
-      this.setTitle(candidateInfo);
     });
 
     this.candidateFinanceDataGQL.watch({
@@ -85,25 +79,5 @@ export class CandidateDetailsHeaderGQLComponent implements OnChanges {
       this.donorsCount = donors ? donors : 0;
       this.averageDonationAmount = average ? average : 0;
     });
-  }
-
-  setTitle(candidateInfo) {
-    if (!candidateInfo) { return; }
-
-    const year = candidateInfo.electionYear;
-    const office = candidateInfo.office;
-    const district = candidateInfo.district ? `District ${candidateInfo.district}` : ``;
-
-    const candidateName = candidateInfo.fullName;
-    const pageTitle = `${candidateName}, Details, ${office} ${district}, Candidate ${year} | ${globals.pageTitleSuffix}`;
-
-    this.titleService.setTitle(pageTitle);
-
-    this.metaService.addTags([
-      {property: 'og:url', content: location.href},
-      {property: 'og:title', content: pageTitle},
-      {property: 'og:image', content: `${location.origin}/assets/preview-images/candidate_details_preview.png`},
-      // {property: 'og:description', content: this.caption},
-    ]);  
   }
 }

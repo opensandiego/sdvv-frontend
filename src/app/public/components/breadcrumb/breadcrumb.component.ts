@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { filter, map, mergeMap } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { MenuItem } from 'primeng/api';
 import { CandidateCardInfoGQL } from './candidate-card-info-gql.query';
+import { TitleMetaTagService } from './title-meta-tag.service';
 
 @Component({
   selector: 'breadcrumb',
-  templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss'],
+  template: `
+    <p-breadcrumb [home]="home" [model]="items"></p-breadcrumb>
+  `,
 })
 export class BreadcrumbComponent implements OnInit {
   items: MenuItem[];
@@ -17,6 +19,7 @@ export class BreadcrumbComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private candidateInfoGQL: CandidateCardInfoGQL,
+    private titleMetaTagService: TitleMetaTagService,
   ) { }
 
    async createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: MenuItem[] = []): Promise<MenuItem[]> {
@@ -64,6 +67,9 @@ export class BreadcrumbComponent implements OnInit {
   ngOnInit(): void {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe( async () => this.items = await this.createBreadcrumbs(this.activatedRoute.root))
+      .subscribe( async () => {
+        this.items = await this.createBreadcrumbs(this.activatedRoute.root);
+        this.titleMetaTagService.setTitle(this.items);
+      })
   }
 }

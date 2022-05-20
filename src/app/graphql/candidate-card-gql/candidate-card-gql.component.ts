@@ -1,6 +1,4 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
-import { globals } from 'src/app/globals';
 import { environment } from 'src/environments/environment';
 
 import { CandidateInfo, CommitteeData } from 'lib-ui-components';
@@ -29,8 +27,6 @@ export class CandidateCardGQLComponent implements OnChanges {
   constructor(
     private candidateInfoGQL: CandidateCardInfoGQL,
     private candidateCardFinanceDataGQL: CandidateCardFinanceDataGQL,
-    private titleService: Title,
-    private metaService: Meta,
     ) {}
 
   ngOnChanges(changes: SimpleChanges): void  {
@@ -62,7 +58,6 @@ export class CandidateCardGQLComponent implements OnChanges {
         : null;
       this.candidateInfo = candidateInfo ? candidateInfo : null;
 
-      this.setTitle(candidateInfo);
     });
 
     this.candidateCardFinanceDataGQL.watch({
@@ -80,25 +75,5 @@ export class CandidateCardGQLComponent implements OnChanges {
       }
     });
 
-  }
-
-  setTitle(candidateInfo) {
-    if (!this.inExpandedCard || !candidateInfo) { return; }
-
-    const year = candidateInfo.electionYear;
-    const office = candidateInfo.office;
-    const district = candidateInfo.district ? `District ${candidateInfo.district}` : ``;
-
-    const candidateName = candidateInfo.fullName
-    const pageTitle = `${candidateName}, Summary, ${office} ${district}, Candidate ${year} | ${globals.pageTitleSuffix}`;
-
-    this.titleService.setTitle(pageTitle);
-
-    this.metaService.addTags([
-      {property: 'og:url', content: location.href},
-      {property: 'og:title', content: pageTitle},
-      {property: 'og:image', content: `${location.origin}/assets/preview-images/candidate_summary_preview.png`},
-      // {property: 'og:description', content: ''},
-    ]);  
   }
 }
