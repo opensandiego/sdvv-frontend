@@ -195,6 +195,15 @@
               "devServerTarget": "sdvv-frontend:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -327,5 +336,8 @@
       }
     }
   },
-  "defaultProject": "sdvv-frontend"
+  "defaultProject": "sdvv-frontend",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
