@@ -6,15 +6,11 @@ import { faBinoculars, faMoneyBill, faHandshake, faGavel } from '@fortawesome/fr
   templateUrl: './splash-hero.component.html',
   styleUrls: ['./splash-hero.component.scss']
 })
-export class SplashHeroComponent implements OnInit {
+export class SplashHeroComponent {
   faBinoculars = faBinoculars; 
   faMoneyBill = faMoneyBill; 
   faHandshake = faHandshake; 
   faGavel = faGavel;
     
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -5,12 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './office-districts.component.html',
   styleUrls: ['./office-districts.component.scss'],
 })
-export class OfficeDistrictComponent implements OnInit {
+export class OfficeDistrictComponent {
   office: string;
   district: string;
   year: string;
 
   constructor() { }
-
-  ngOnInit(): void { }
 }

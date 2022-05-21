@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { faMoneyBillWave, faHandHoldingUsd, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { DetailsTotalSpent, DetailsTotalSpentGQLQuery } from './details-total-spent-gql.query';
 import { spendingCodes } from './spending-codes';
@@ -8,7 +8,7 @@ import { spendingCodes } from './spending-codes';
   templateUrl: './details-total-spent.component.html',
   styleUrls: ['./details-total-spent.component.scss']
 })
-export class DetailsTotalSpentComponent implements OnInit {
+export class DetailsTotalSpentComponent implements OnInit, OnChanges {
   @Input() candidateId: string;
 
   title = "Total Spent";

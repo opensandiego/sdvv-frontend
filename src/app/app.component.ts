@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
 
 @Component({
@@ -6,7 +6,7 @@ import { GoogleTagManagerService } from 'angular-google-tag-manager';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'sdvv-frontend';
 
   constructor(

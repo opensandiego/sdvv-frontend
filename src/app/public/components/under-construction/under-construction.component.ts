@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-under-construction',
@@ -6,11 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./under-construction.component.scss']
   
 })
-export class UnderConstructionComponent implements OnInit {
+export class UnderConstructionComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

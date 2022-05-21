@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { YearCardGQL, YearCardResponse } from './year-card-gql.query';
 
 @Component({
@@ -12,7 +12,7 @@ import { YearCardGQL, YearCardResponse } from './year-card-gql.query';
     ></year-card>
   `,
 })
-export class YearCardGQLComponent {
+export class YearCardGQLComponent implements OnChanges {
   @Input() year: string;
   @Input() inPrimaryElection?: boolean;
   @Input() inGeneralElection?: boolean;
