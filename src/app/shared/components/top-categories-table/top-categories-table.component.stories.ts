@@ -1,9 +1,8 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
-import { CandidateDetailsModule } from '../../../candidate-details/candidate-details.module';
-
 import { TopCategoriesTableComponent } from './top-categories-table.component';
+import { SharedModule } from '../../shared.module';
 
 export default {
   title: 'Tables/Top Categories',
@@ -12,7 +11,7 @@ export default {
     moduleMetadata({
       declarations: [],
       imports: [
-        CandidateDetailsModule,
+        SharedModule,
       ],
       providers: [],
     }),

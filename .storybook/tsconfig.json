@@ -2,7 +2,7 @@
   "extends": "../src/tsconfig.app.json",
   "compilerOptions": {
     "types": [
-      "node"
+      "node", "cypress"
     ],
     "allowSyntheticDefaultImports": true
   },
