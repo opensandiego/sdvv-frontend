@@ -91,6 +91,15 @@
                   "with": "src/environments/environment.db-staging.ts"
                 }
               ]
+            },
+            "db-staging-no-source-map": {
+              "sourceMap": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.db-staging.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -155,7 +164,7 @@
         "storybook-db-staging": {
           "builder": "@storybook/angular:start-storybook",
           "options": {
-            "browserTarget": "sdvv-frontend:build:db-staging",
+            "browserTarget": "sdvv-frontend:build:db-staging-no-source-map",
             "port": 6006
           }
         },
