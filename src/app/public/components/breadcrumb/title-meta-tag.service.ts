@@ -13,7 +13,6 @@ export class TitleMetaTagService {
   ) { }
 
   public setTitle(items) {
-    console.log({breadcrumbs: items});
     let pageTitle = '';
     let year = '';
     let office = '';
