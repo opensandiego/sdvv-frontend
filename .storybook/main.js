@@ -11,7 +11,8 @@ module.exports = {
   ],
   "framework": "@storybook/angular",
   "core": {
-    "builder": "webpack5"
+    "builder": "webpack5",
+    "disableTelemetry": true,
   },
   "staticDirs": ['../src/assets'],
 }
