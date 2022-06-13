@@ -41,3 +41,9 @@ export const MonicaMontgomerySteppe2022: Story = () => ({
     candidateId: '82cae978-49df-4a77-8793-0efffb7772b5|2022'
   },
 })
+
+export const LorieZapf2018: Story = () => ({
+  props: {
+    candidateId: 'de716602-9097-7b64-0b50-09eeb5b8bb29|2018'
+  },
+})

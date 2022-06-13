@@ -46,16 +46,16 @@ export class DetailsTabOutsideMoneyComponent implements OnChanges {
       const supportSum = response?.candidate?.independentExpenditures?.sums.support;
       const opposeSum = response?.candidate?.independentExpenditures?.sums.oppose;
 
-      this.supportCommittees = committees.support?.map((committee) => ({
-        id: committee.committee.id,
+      this.supportCommittees = committees.support?.map((committee, index) => ({
+        id: `${committee.committee.id}${index}`,
         name: committee.committee.name,
         value: committee.sum,
         percent: committee.sum / supportSum * 100.0,
         color: this.supportColor,
       }));
 
-      this.oppositionCommittees = committees.oppose?.map((committee) => ({
-        id: committee.committee.id,
+      this.oppositionCommittees = committees.oppose?.map((committee, index) => ({
+        id: `${committee.committee.id}${index}`,
         name: committee.committee.name,
         value: committee.sum,
         percent: committee.sum / opposeSum * 100.0,
