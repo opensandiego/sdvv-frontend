@@ -23,7 +23,8 @@ jobs:
           wait-on: 'http://localhost:4200'
           browser: ${{matrix.browser}}
           headless: true
-          spec: cypress/integration/sdvv-frontend_spec.js
+          # spec: cypress/e2e/sdvv-frontend.cy.js
+          config-file: cypress.config.ts
       # - name: Upload Screenshots (if generated)
       #   uses: actions/upload-artifact@v1
       #   if: failure()
