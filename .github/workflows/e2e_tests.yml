@@ -15,8 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Run Cypress Tests
-        uses: cypress-io/github-action@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
         with:
           build: npm run build:lib
           start: npm run start:db:staging
@@ -24,16 +24,16 @@ jobs:
           browser: ${{matrix.browser}}
           headless: true
           spec: cypress/integration/sdvv-frontend_spec.js
-      - name: Upload Screenshots (if generated)
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      - name: Upload Video
-        uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+      # - name: Upload Screenshots (if generated)
+      #   uses: actions/upload-artifact@v1
+      #   if: failure()
+      #   with:
+      #     name: cypress-screenshots
+      #     path: cypress/screenshots
+      # - name: Upload Video
+      #   uses: actions/upload-artifact@v1
+      #   if: always()
+      #   with:
+      #     name: cypress-videos
+      #     path: cypress/videos
           
