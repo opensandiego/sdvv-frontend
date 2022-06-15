@@ -1,17 +1,20 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ContributionsGroupedByOccupationGQL, ContributionsGroupedByOccupation } from './contributions-by-occupation-gql.query';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'gql-contributions-by-occupation-table',
   template: `
     <contributions-by-occupation-table
       [contributionGroups]="contributionsGroupedByOccupation"
+      [contributionColorShades]="contributionsColorShades"
     ></contributions-by-occupation-table>
   `,
 })
 export class ContributionsByOccupationGQLComponent implements OnChanges {
   @Input() candidateId;
 
+  contributionsColorShades = globals.contributionsColorShades;
   contributionsGroupedByOccupation;
 
   constructor(private contributionsGroupedByOccupationGQL: ContributionsGroupedByOccupationGQL) { }

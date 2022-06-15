@@ -15,6 +15,7 @@ export interface ContributionGroup {
 export class ContributionsByOccupationTableComponent implements OnChanges {
 
   @Input() contributionGroups: ContributionGroup[] = [];
+  @Input() contributionColorShades?: string[];
 
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = [
@@ -41,11 +42,11 @@ export class ContributionsByOccupationTableComponent implements OnChanges {
   }
 
   setTableData(groups: ContributionGroup[]) {
-    const colorCodes = [ '#007431', '#00903d', '#00af4a', '#00d359', '#00fc6a' ];
+    const colorCodes = this.contributionColorShades;
 
     const topFiveIndustries = groups.map((group, index) =>
       ({
-        colorCode: colorCodes[index],
+        colorCode: colorCodes?.[index] ? colorCodes[index] : 'black',
         industry: group['name'],
         amount: group['amount'],
         percentage: group['percent'],
