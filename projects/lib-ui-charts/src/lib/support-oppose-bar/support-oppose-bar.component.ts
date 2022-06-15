@@ -12,6 +12,8 @@ export class SupportOpposeBarComponent implements OnChanges {
   @Input() oppose: number;
   @Input() backgroundColor: string = 'white';
   @Input() textColor: string = '#4e4e4e';
+  @Input() supportBarColor?: string = 'white';
+  @Input() opposeBarColor?: string = 'white';
 
   mergeOption: EChartsOption = {};
 
@@ -78,11 +80,11 @@ export class SupportOpposeBarComponent implements OnChanges {
     const rows = {
       Support: {
         name: 'Support',
-        color: '#0969d7',
+        color: this.supportBarColor,
       },
       Oppose: {
         name: 'Oppose',
-        color: '#d5631d',
+        color: this.opposeBarColor,
       },
     }
 

@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IndependentExpendituresGQL, IndependentExpenditures } from '../independent-expenditures-gql.query';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'gql-support-oppose-bar',
@@ -9,6 +10,8 @@ import { IndependentExpendituresGQL, IndependentExpenditures } from '../independ
       [oppose]="opposeAmount"
       [backgroundColor]="backgroundColor"
       [textColor]="textColor"
+      [supportBarColor]="expendituresInSupportColor"
+      [opposeBarColor]="expendituresInOppositionColor"
     ></support-oppose-bar>
   `,
 })
@@ -17,6 +20,8 @@ export class SupportOpposeBarGQLComponent implements OnChanges {
   @Input() backgroundColor: string;
   @Input() textColor: string;
 
+  expendituresInSupportColor = globals.expendituresInSupportColor;
+  expendituresInOppositionColor = globals.expendituresInOppositionColor;
   supportAmount = 0;
   opposeAmount = 0;
 
