@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RaisedVsSpentGQL, RaisedVsSpent } from './raised-vs-spent-gql.query';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'gql-raised-vs-spent',
@@ -7,6 +8,8 @@ import { RaisedVsSpentGQL, RaisedVsSpent } from './raised-vs-spent-gql.query';
     <raised-vs-spent-bar
       [raised]="raised"
       [spent]="spent"
+      [raisedBarColor]="contributionsColor"
+      [spentBarColor]="expendituresInSupportColor"
     ></raised-vs-spent-bar>
   `,
 })
@@ -15,6 +18,8 @@ export class RaisedVsSpentBarGQLComponent implements OnChanges {
 
   raised = 0;
   spent = 0;
+  contributionsColor = globals.contributionsColor;
+  expendituresInSupportColor = globals.expendituresInSupportColor;
 
   constructor(private raisedVsSpentGQL: RaisedVsSpentGQL) {}
 

@@ -1,7 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-
 import { EChartsOption } from 'echarts';
-
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
@@ -12,6 +10,8 @@ import { getCompactFormattedCurrency } from '../shared/number-formatter'
 export class RaisedVsSpentBarComponent implements OnChanges {
   @Input() raised: number = 0;
   @Input() spent: number = 0;
+  @Input() raisedBarColor?: string = 'black';
+  @Input() spentBarColor?: string = 'black';
 
   mergeOption: EChartsOption;
 
@@ -76,14 +76,14 @@ export class RaisedVsSpentBarComponent implements OnChanges {
 
     const items = [
       {
-        name: 'Raised',
-        value: this.raised ? this.raised : 0,
-        color: '#289a58',
-      },
-      {
         name: 'Spent',
         value: this.spent ? this.spent : 0,
-        color: '#ff2c19',
+        color: this.spentBarColor,
+      },
+      {
+        name: 'Raised',
+        value: this.raised ? this.raised : 0,
+        color: this.raisedBarColor,
       },
     ]; 
 
