@@ -62,13 +62,20 @@ export class DetailsTotalSpentComponent implements OnInit, OnChanges {
       const expenses = response?.candidate?.committee?.expenses;
       const expenseCodes = expenses.groupBy.expenseByCode;
 
+      /**
+       * Determine the minimum number of colors to use in the donut chart so 
+       * that two adjoining slices do not use the same color. If the length of
+       * expenseCodes is even then use two colors otherwise use three. 
+       */
+      const minimumColorCount = expenseCodes.length % 2 === 0? 2: 3;
+
       this.categoriesCombined = expenseCodes.map((expense, i) => ({
         id: i.toString(),
         code: expense.code,
         name: expense.code ? this.getSpendingCodeDescription(expense.code) : 'not categorized',
         value: expense.sum,
         percent: expense.percent,
-        color: this.colors[i % 3],
+        color: this.colors[i % minimumColorCount],
       }));
 
       this.totalSpent = expenses.sum;
