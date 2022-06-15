@@ -70,18 +70,23 @@
 
     .candidate-numbers {
         display: flex;
-        justify-content: space-between;
-        margin-bottom:10px;
-        div {
-            padding: 0 6px;
-            h2, h3{
-                margin: 1px 0;
+        flex-direction: column;
+
+        .spending {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom:10px;
+            div {
+                padding: 0 6px;
+                h2, h3{
+                    margin: 1px 0;
+                    white-space: nowrap;
+                    font-weight: bold;
+                }
             }
-        }
-        .raised h3 {
-           color: $vvgreen;
-        }
-    } 
+        } 
+    }
     .candidate-button {
         @include button-styles;
         padding: 0 16px;

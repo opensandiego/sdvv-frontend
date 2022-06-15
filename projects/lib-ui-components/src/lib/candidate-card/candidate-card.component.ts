@@ -28,6 +28,9 @@ export class CandidateCardComponent implements OnChanges {
 
     this.raised = committeeData?.raised;
     this.donors = committeeData?.donors;
+
+    this.inSupport = committeeData?.totalInSupport;
+    this.inOpposition = committeeData?.totalInOpposition;
   }
 
   @Input() inExpandedCard: boolean = false;
@@ -39,6 +42,8 @@ export class CandidateCardComponent implements OnChanges {
   // }
   // get inExpandedCard(): boolean { return this._inExpandedCard; }
   // private _inExpandedCard = false;
+  @Input() inSupportTextColor: string = 'black';
+  @Input() inOppositionTextColor: string = 'black';
 
   @Output() private emitCandidateId = new EventEmitter<string>();
 
@@ -56,6 +61,8 @@ export class CandidateCardComponent implements OnChanges {
   // Finance data
   raised: number = 0;
   donors: number = 0;
+  inSupport: number = 0;
+  inOpposition: number = 0;
 
   buttonText: string = 'See Details';
   buttonLink: string = 'details';

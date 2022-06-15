@@ -27,6 +27,8 @@ export interface CandidateInfo {
 export interface CommitteeData {
   raised?: number;
   donors?: number;
+  totalInSupport?: number;
+  totalInOpposition?: number;
 }
 
 export interface OfficeInfo {

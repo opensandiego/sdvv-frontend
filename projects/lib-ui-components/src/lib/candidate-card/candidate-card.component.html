@@ -17,16 +17,18 @@
     </div>
 
     <div class="candidate-numbers">
-      <div class="raised">
-        <h2>Raised</h2>
-        <h3>{{raised ? (raised | currency : 'USD' : 'symbol' : '1.0-0') : '--'}}</h3>
+    <div class="spending">
+      <div class="support">
+        <h2>In Support</h2>
+        <h3 [style.color]="inSupportTextColor">{{inSupport ? (inSupport | currency : 'USD' : 'symbol' : '1.0-0') : '0'}}</h3>
       </div>
 
-      <div class="donors">
-        <h2>Donors</h2>
-        <h3>{{donors ? donors : '--'}}</h3>
+      <div class="opposition">
+        <h2>In Opposition</h2>
+        <h3 [style.color]="inOppositionTextColor">{{inOpposition ? (inOpposition | currency : 'USD' : 'symbol' : '1.0-0') : '0'}}</h3>
       </div>
     </div>
+  </div>
 
     <a
       *ngIf="buttonText && buttonLink"

@@ -10,7 +10,16 @@ export interface CandidateCardFinanceDataResponse {
         sum: number;
         count: number;
       };
+      expenses: {
+        sum: number;
+      };
     };
+    independentExpenditures: {
+      sums: {
+        support: number;
+        oppose: number;
+      }
+    }
   };
 }
 
@@ -27,6 +36,15 @@ export class CandidateCardFinanceDataGQL extends Query<Response> {
           contributions {
             sum
             count
+          }
+          expenses {
+            sum
+          }
+        }
+        independentExpenditures {
+          sums {
+            support
+            oppose
           }
         }
       }
