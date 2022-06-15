@@ -3,11 +3,11 @@
   <div class="raised-spent">
     <div class="raised-row">
       <div class="label">Raised:</div>
-      <div class="amount">{{formatNumber(raised)}}</div>
+      <div class="amount" [style.color]="totalRaisedTextColor">{{formatNumber(raised)}}</div>
     </div>
     <div class="spent-row">
       <div class="label">Spent:</div>
-      <div class="amount">{{formatNumber(spent)}}</div>
+      <div class="amount" [style.color]="totalSpentTextColor">{{formatNumber(spent)}}</div>
     </div>
     <mat-divider ></mat-divider>
     <div class="balance-row">

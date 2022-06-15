@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { DetailsTotalRaised, DetailsTotalRaisedGQLQuery } from './details-total-raised-gql.query';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'details-total-raised',
@@ -11,7 +12,8 @@ export class DetailsTotalRaisedComponent implements OnChanges {
   @Input() candidateId: string;
 
   tooltipText = 'Placeholder tooltip text.';
-  colors = ['#00e25f', '#00b24b', '#007e35'];
+  contributionsColor = globals.contributionsColor;
+  totalContributionsTextColor = globals.contributionsColor;
 
   totalRaised: number;
   totalRaisedFormatted: string;
@@ -46,9 +48,18 @@ export class DetailsTotalRaisedComponent implements OnChanges {
       const contributionMethods = contributions.categorizedBy.method;
 
       this.raisedCategories = [
-        { value: contributionMethods.inKind, color: '#00e25f', name: 'In Kind',},
-        { value: contributionMethods.individual, color: '#00b24b', name: 'Individual',},
-        { value: contributionMethods.other, color: '#007e35', name: 'Other',},
+        { 
+          value: contributionMethods.inKind,
+          color: this.contributionsColor, name: 'In Kind',
+        },
+        {
+          value: contributionMethods.individual,
+          color: this.contributionsColor, name: 'Individual',
+        },
+        {
+          value: contributionMethods.other,
+          color: this.contributionsColor, name: 'Other',
+        },
       ];
 
       this.totalRaised = contributions.sum ? contributions.sum : 0;

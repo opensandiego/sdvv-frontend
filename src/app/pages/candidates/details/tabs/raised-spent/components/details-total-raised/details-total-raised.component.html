@@ -3,7 +3,9 @@
 
   <div class="total-raised-header">
     <div class="title">Total Raised</div>
-    <div class="total">{{totalRaisedFormatted}}</div>
+    <div class="total"
+      [style.color]="totalContributionsTextColor"
+    >{{totalRaisedFormatted}}</div>
   </div>
 
   <total-raised-bar class="total-raised-chart"

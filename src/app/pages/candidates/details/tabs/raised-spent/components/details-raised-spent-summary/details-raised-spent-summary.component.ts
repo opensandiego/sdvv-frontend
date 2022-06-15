@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DetailsRaisedSpentGQLQuery, RaisedSpent } from './raised-vs-spent-gql.query';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'details-raised-spent-summary',
@@ -11,6 +12,8 @@ export class DetailsRaisedSpentSummaryComponent implements OnChanges {
 
   raised: number;
   spent: number;
+  totalRaisedTextColor = globals.contributionsColor;
+  totalSpentTextColor = globals.expendituresInSupportColor;
 
   constructor(
     private detailsRaisedSpentGQLQuery: DetailsRaisedSpentGQLQuery,
