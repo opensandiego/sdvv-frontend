@@ -17,6 +17,7 @@ export class CandidateDetailsHeaderComponent {
   @Input() raised: number;
   @Input() donors: number;
   @Input() averageDonation: number;
+  @Input() donationsTextColor?: string = 'black';
 
   public defaultImagePath = 'assets/candidate-card/profile.png';
 

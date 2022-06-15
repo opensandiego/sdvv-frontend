@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 
 import { CandidateFinanceDataGQL, CandidateFinanceDataResponse } from './candidate-finance-data-gql.query';
 import { CandidateInfoGQL, CandidateInfoResponse } from './candidate-info-gql.query';
+import { globals } from 'src/app/globals';
 
 const uri = `${environment.apiUrl}`;
 
@@ -17,6 +18,7 @@ const uri = `${environment.apiUrl}`;
       [raised]="raisedAmount"
       [donors]="donorsCount"
       [averageDonation]="averageDonationAmount"
+      [donationsTextColor]="contributionsTextColor"
     ></candidate-details-header>
   `,
 })
@@ -27,6 +29,8 @@ export class CandidateDetailsHeaderGQLComponent implements OnChanges {
   candidateName: string;
   description: string;
   website: string;
+
+  contributionsTextColor = globals.contributionsColor; 
 
   public raisedAmount;
   public donorsCount;

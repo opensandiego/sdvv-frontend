@@ -18,14 +18,20 @@
 
   <div class="raised">
     <div class="label">Raised</div>
-    <div class="amount">{{raised ? (raised | roundCurrencyDisplay) : '--'}}</div>
+    <div class="amount" [style.color]="donationsTextColor">
+      {{raised ? (raised | roundCurrencyDisplay) : '--'}}
+    </div>
   </div>
   <div class="donors">
     <div class="label">Donors</div>
-    <div class="amount">{{donors ? (donors > 9999 ? (donors | number): (donors)): '--'}}</div>
+    <div class="amount" [style.color]="donationsTextColor">
+      {{donors ? (donors > 9999 ? (donors | number): (donors)): '--'}}
+    </div>
   </div>
   <div class="average-donation">
     <div class="label">Average Donation</div>
-    <div class="amount">{{averageDonation ? (averageDonation | currency : 'USD' : 'symbol' : '1.0-0') : '--'}}</div>
+    <div class="amount" [style.color]="donationsTextColor">
+      {{averageDonation ? (averageDonation | currency : 'USD' : 'symbol' : '1.0-0') : '--'}}
+    </div>
   </div>
 </div>
