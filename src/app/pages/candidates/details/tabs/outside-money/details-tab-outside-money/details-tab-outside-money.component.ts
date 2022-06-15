@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges, } from '@angular/core';
 import { IndependentCommittees } from '../details-outside-money/details-container-outside-money.component';
 import { OutsideMoney, OutsideMoneyGQLQuery } from './details-outside-money-gql.query';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'details-tab-outside-money',
@@ -13,8 +14,15 @@ export class DetailsTabOutsideMoneyComponent implements OnChanges {
   oppositionCommittees: IndependentCommittees[];
   supportCommittees: IndependentCommittees[];
 
-  oppositionColor = '#6964AD';
-  supportColor = '#3392FF';
+  opposeShades = [
+    globals.expendituresInOppositionColor,
+    globals.expendituresInOppositionAltColor,
+  ];
+
+  supportShades = [
+    globals.expendituresInSupportColor,
+    globals.expendituresInSupportAltColor,
+  ];
 
   title = {
     top: 'Independent Expenditures',
@@ -51,7 +59,7 @@ export class DetailsTabOutsideMoneyComponent implements OnChanges {
         name: committee.committee.name,
         value: committee.sum,
         percent: committee.sum / supportSum * 100.0,
-        color: this.supportColor,
+        color: `${this.supportShades[index % 2]}`,
       }));
 
       this.oppositionCommittees = committees.oppose?.map((committee, index) => ({
@@ -59,7 +67,7 @@ export class DetailsTabOutsideMoneyComponent implements OnChanges {
         name: committee.committee.name,
         value: committee.sum,
         percent: committee.sum / opposeSum * 100.0,
-        color: this.oppositionColor,
+        color: `${this.opposeShades[index % 2]}`,
       }));
     });
   }

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { globals } from 'src/app/globals';
 
 export interface IndependentCommittees {
   id: string;
@@ -20,8 +20,8 @@ export class DetailsContainerOutsideMoneyComponent {
   @Input() supportCommittees: IndependentCommittees[];
   
   hoveredCommittee: string = null;
-  oppositionColor = '#6964AD';
-  supportColor = '#3392FF';
+  oppositionColor = globals.expendituresInOppositionColor;
+  supportColor = globals.expendituresInSupportColor;
 
   oppositionExpenditures = {
     title: 'Expenditures in Opposition',
