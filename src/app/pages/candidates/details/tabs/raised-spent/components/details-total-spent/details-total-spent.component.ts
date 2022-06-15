@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { faMoneyBillWave, faHandHoldingUsd, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { DetailsTotalSpent, DetailsTotalSpentGQLQuery } from './details-total-spent-gql.query';
 import { spendingCodes } from './spending-codes';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'details-total-spent',
@@ -13,7 +14,12 @@ export class DetailsTotalSpentComponent implements OnInit, OnChanges {
 
   title = "Total Spent";
   tooltipText = 'Placeholder tooltip text.';
-  colors = ['#800000', '#b30000', '#cc0000', '#ff0000', '#ff9999'];
+  totalSpentTextColor = globals.expendituresInSupportColor;
+  colors = [
+    globals.expendituresInSupportColor,
+    globals.expendituresInSupportAltColor,
+    globals.expendituresInSupportAlt2Color,
+  ];
 
   cashInHand: number = 0;
   loansAndDebts: number = 0;
@@ -62,7 +68,7 @@ export class DetailsTotalSpentComponent implements OnInit, OnChanges {
         name: expense.code ? this.getSpendingCodeDescription(expense.code) : 'not categorized',
         value: expense.sum,
         percent: expense.percent,
-        color: i < this.colors.length ? this.colors[i] : 'red',
+        color: this.colors[i % 3],
       }));
 
       this.totalSpent = expenses.sum;

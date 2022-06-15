@@ -5,7 +5,9 @@
 
     <div class="total-spent-header">
       <div class="title">Total Spent</div>
-      <div class="total-spent">{{totalSpentFormatted}}</div>
+      <div class="total-spent" 
+        [style.color]="totalSpentTextColor"
+      >{{totalSpentFormatted}}</div>
     </div>
 
     <total-spent-donut 
