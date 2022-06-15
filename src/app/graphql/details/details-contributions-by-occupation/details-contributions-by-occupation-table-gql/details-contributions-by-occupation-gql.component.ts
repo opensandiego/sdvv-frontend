@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RaisedByIndustry } from 'lib-ui-charts';
 import { ContributionsGroupedByOccupation, ContributionsGroupedByOccupationGQLQuery } from './details-contributions-by-occupation-gql.query';
+import { globals } from 'src/app/globals';
 
 @Component({
   selector: 'details-contributions-by-occupation-gql',
@@ -10,6 +11,7 @@ import { ContributionsGroupedByOccupation, ContributionsGroupedByOccupationGQLQu
 export class DetailsContributionsByOccupationGQLComponent implements OnChanges {
   @Input() candidateId;
 
+  contributionsColor = globals.contributionsColor;
   contributionsGroupedByOccupation: RaisedByIndustry[];
 
   constructor(private contributionsGroupedByOccupationGQL: ContributionsGroupedByOccupationGQLQuery) { }

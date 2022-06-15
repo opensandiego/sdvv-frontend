@@ -13,6 +13,7 @@ import { getCompactFormattedCurrency } from '../shared/number-formatter'
 export class RaisedByIndustryBarComponent implements OnChanges {
 
   @Input() raisedByIndustries: RaisedByIndustry[];
+  @Input() raisedBarColor?: string = 'black';
 
   private dataRowsCount = 0;
 
@@ -68,7 +69,7 @@ export class RaisedByIndustryBarComponent implements OnChanges {
           getCompactFormattedCurrency(params.data['value'], 1),
       },
       itemStyle: {
-        color: '#53AE79',
+        color: this.raisedBarColor,
       },
       barCategoryGap: '120%',
       barMinWidth: 16,
@@ -90,7 +91,12 @@ export class RaisedByIndustryBarComponent implements OnChanges {
     this.mergeOption = {
       dataset: {
         source: this.raisedByIndustries,
-      }
+      },
+      series: [{
+        itemStyle: {
+          color: this.raisedBarColor,
+        },
+      }]
     };
   }
 
