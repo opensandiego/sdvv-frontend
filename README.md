@@ -15,7 +15,7 @@ Welcome to the San Diego Voter's Voice Initiative! We are a coalition of non-par
 
 **Links**
 * Production website: https://followthemoneysandiego.org/
-* Development branch (dev) website: https://dev-sdvotersvoice.web.app/
+* Development branch (dev) website: https://develop-san-diego-voters-voice.web.app/
 * [UI Design Prototype](https://xd.adobe.com/view/2515850f-37db-4f50-5de2-93d5cec8d021-5324/)
 
 #### Background Information
