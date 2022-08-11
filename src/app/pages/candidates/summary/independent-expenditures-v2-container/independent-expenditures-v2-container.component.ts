@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { MatDividerModule } from '@angular/material/divider';
 import { ChartTitleModule } from "lib-ui-components";
 import { GraphQLModule } from "src/app/graphql/graphql.module";
 import { OutsideMoney, OutsideMoneyGQLQuery } from "./details-outside-money-gql.query";
@@ -9,29 +10,29 @@ import { globals } from "src/app/globals";
   standalone: true,
   selector: 'independent-expenditures-v2-container',
   imports: [
+    MatDividerModule,
     ChartTitleModule,
     GraphQLModule,
     IndependentExpendituresV2Component,
   ],
   template: `
-    <div class="outside-money-container"
-      [style.backgroundColor]="backgroundColor"
-      [style.borderColor]="backgroundColor"
-    >
-    <chart-title
-      [titleText]="title"
+    <mat-divider></mat-divider>
 
-      [tooltipText]="tooltipText"
+    <div class="outside-money-container">
+      <chart-title
+        [titleText]="title"
 
-    ></chart-title>
+        [tooltipText]="tooltipText"
 
-    <independent-expenditures-v2
-      [oppositionCommittees]="oppositionCommittees"
-      [supportCommittees]="supportCommittees"
-    ></independent-expenditures-v2>
-  </div>
+      ></chart-title>
 
+      <independent-expenditures-v2
+        [oppositionCommittees]="oppositionCommittees"
+        [supportCommittees]="supportCommittees"
+      ></independent-expenditures-v2>
+    </div>
   `,
+  styleUrls: ['./independent-expenditures-v2-container.component.scss'],
 })
 export class IndependentExpendituresV2ContainerComponent implements OnChanges {
   @Input() candidateId: string;
