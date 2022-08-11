@@ -8,6 +8,7 @@ import { PublicModule } from './public/public.module';
 import { NavigationMenuModule } from './navigation-menu/navigation-menu.module';
 
 import { environment } from 'src/environments/environment';
+import { NgxEchartsModule } from 'ngx-echarts';
 const gtmID = environment.gtm;
 
 @NgModule({
@@ -21,6 +22,9 @@ const gtmID = environment.gtm;
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
     PublicModule,
     NavigationMenuModule,
   ],

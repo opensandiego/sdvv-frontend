@@ -9,6 +9,8 @@ export * from './lib/lib-ui-charts.module';
 export * from './lib/outside-money-stacked-bar/outside-money-stacked-bar.component';
 export * from './lib/outside-money-stacked-bar/outside-money-stacked-bar.module';
 
+export * from './lib/outside-money-stacked-bar-v2/outside-money-stacked-bar.component';
+
 export * from './lib/raised-by-industry-bar/raised-by-industry-bar.component';
 export * from './lib/raised-by-industry-bar/raised-by-industry-bar.module';
 
