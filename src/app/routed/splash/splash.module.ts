@@ -6,17 +6,17 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity } from '@fortawesome/free-solid-svg-icons';
 
 import { SplashComponent } from './splash.component';
-import { SplashHeroComponent } from './splash-hero/splash-hero.component';
+import { AboutVotersVoiceComponent } from 'src/app/components/about-voters-voice/about-voters-voice.component';
 
 @NgModule({
   declarations: [
-    SplashHeroComponent,
     SplashComponent,
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     RouterModule,
+    AboutVotersVoiceComponent,
   ],
   exports: [
     SplashComponent,
