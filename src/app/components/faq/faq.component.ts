@@ -3,6 +3,8 @@ import { Meta, Title } from '@angular/platform-browser';
 import { globals } from 'src/app/globals';
 
 @Component({
+  standalone: true,
+  imports: [],
   selector: 'app-faq',
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.scss']

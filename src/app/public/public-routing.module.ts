@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
  
-import { FaqComponent } from './components/faq/faq.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { YearRouteResolverService } from './resolvers/year-route-resolver.service';
@@ -44,7 +43,10 @@ const routes: Routes = [
     path: 'about',
     loadComponent: () => import('../components/about/about.component').then(mod => mod.AboutComponent)
   },
-  { path: 'faq', component: FaqComponent },
+  {
+    path: 'faq',
+    loadComponent: () => import('../components/faq/faq.component').then(mod => mod.FaqComponent)
+  },
   { path: 'under-construction', component: UnderConstructionComponent },
   { path: '404', component: NotFoundComponent },
   { path: '**', pathMatch: 'full', redirectTo: '404' },
