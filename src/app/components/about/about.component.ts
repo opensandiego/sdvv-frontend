@@ -3,7 +3,9 @@ import { Meta, Title } from '@angular/platform-browser';
 import { globals } from 'src/app/globals';
 
 @Component({
-  selector: 'app-about',
+  standalone: true,
+  imports: [],
+  selector: 'about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })

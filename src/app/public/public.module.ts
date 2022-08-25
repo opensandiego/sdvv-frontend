@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity } from '@fortawesome/free-solid-svg-icons';
 
-import { AboutComponent } from './components/about/about.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { PublicRoutingModule } from './public-routing.module';
@@ -14,7 +13,6 @@ import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/of
 
 @NgModule({
   declarations: [
-    AboutComponent,
     FaqComponent,
     OfficeSummaryComponent,
     UnderConstructionComponent,
@@ -28,7 +26,6 @@ import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/of
     OfficeCardListRoutedModule,
   ],
   exports: [
-    AboutComponent,
     FaqComponent,
     UnderConstructionComponent,
   ],
