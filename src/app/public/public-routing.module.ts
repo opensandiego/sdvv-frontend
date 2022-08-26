@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
  
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { YearRouteResolverService } from './resolvers/year-route-resolver.service';
  
 export const PUBLIC_ROUTES: Routes = [
@@ -47,8 +45,14 @@ export const PUBLIC_ROUTES: Routes = [
     path: 'faq',
     loadComponent: () => import('../components/faq/faq.component').then(mod => mod.FaqComponent)
   },
-  { path: 'under-construction', component: UnderConstructionComponent },
-  { path: '404', component: NotFoundComponent },
+  {
+    path: 'under-construction',
+    loadComponent: () => import('../components/under-construction/under-construction.component').then(mod => mod.UnderConstructionComponent)
+  },
+  {
+    path: '404',
+    loadComponent: () => import('../components/not-found/not-found.component').then(mod => mod.NotFoundComponent)
+  },
   { path: '**', pathMatch: 'full', redirectTo: '404' },
 ];
 

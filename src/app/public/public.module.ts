@@ -3,19 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity } from '@fortawesome/free-solid-svg-icons';
 
-import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { PublicRoutingModule } from './public-routing.module';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
 import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/office-card-list-routed.module';
 
 @NgModule({
   declarations: [
     OfficeSummaryComponent,
-    UnderConstructionComponent,
     RoundCurrencyDisplayPipe,
-    NotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -23,9 +19,7 @@ import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/of
     FontAwesomeModule,
     OfficeCardListRoutedModule,
   ],
-  exports: [
-    UnderConstructionComponent,
-  ],
+  exports: [],
   providers: [],
 })
 export class PublicModule { 
