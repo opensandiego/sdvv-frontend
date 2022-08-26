@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUniversity, faBalanceScale, faMapMarkedAlt, faQuestion, faBars, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { PublicModule } from '../public/public.module';
-import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideMenuService } from './services/side-menu.service';
 import { MenuModule } from 'primeng/menu';
@@ -17,7 +16,6 @@ import { FooterGQLModule } from '../graphql/footer-gql/footer.module';
 
 @NgModule({
   declarations: [
-    HomeComponent,
     HeaderComponent,
   ],
   imports: [
@@ -34,7 +32,6 @@ import { FooterGQLModule } from '../graphql/footer-gql/footer.module';
     FooterGQLModule,
   ],
   exports: [
-    HomeComponent,
     HeaderComponent,
   ],
   providers: [SideMenuService]

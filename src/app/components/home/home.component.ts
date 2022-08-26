@@ -1,8 +1,24 @@
 import { Component, HostListener, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
 import { SideMenuService } from 'src/app/navigation-menu/services/side-menu.service';
+import { CandidateMenuRoutedModule } from 'src/app/routed/candidate-menu-routed/candidate-menu-routed.module';
+import { ElectionYearRoutedModule } from 'src/app/routed/election-year-routed/election-year-routed.module';
+import { FooterGQLModule } from '../../graphql/footer-gql/footer.module';
+import { BreadcrumbTitleModule } from 'src/app/public/components/breadcrumb/breadcrumb-title.module';
+import { NavigationMenuModule } from 'src/app/navigation-menu/navigation-menu.module';
 
 @Component({
+  standalone: true,
+  imports: [
+    MatSidenavModule,
+    RouterModule,
+    BreadcrumbTitleModule,
+    ElectionYearRoutedModule,
+    CandidateMenuRoutedModule,
+    FooterGQLModule,
+    NavigationMenuModule,
+  ],
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
