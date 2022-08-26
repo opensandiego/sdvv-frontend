@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, Output, EventEmitter, OnInit} from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { getCompactFormattedCurrency } from 'src/app/shared/number-formatter';
+import { getCompactFormattedCurrency } from 'src/app/public/number-formatter';
 
 // import { getCompactFormattedCurrency } from '../../number-formatter'
 
