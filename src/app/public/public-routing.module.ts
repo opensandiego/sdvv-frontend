@@ -32,7 +32,7 @@ export const PUBLIC_ROUTES: Routes = [
       {
         path: 'office',
         data: { breadcrumb: null, startRoute: true, type: '' },
-        loadChildren: () => import('../office/office.module').then(m => m.OfficeModule),
+        loadChildren: () => import('./office-routes').then(mod => mod.DISTRICT_OFFICE_ROUTES),
       }
     ],
   },

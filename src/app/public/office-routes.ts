@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { DistrictRedirectResolverService } from './district-redirect-resolver.service';
+import { Routes } from '@angular/router';
+import { DistrictRedirectResolverService } from './resolvers/district-redirect-resolver.service';
 
 const officeRoutes: Routes = [
   {
@@ -27,7 +26,7 @@ const districts: Routes = [
   },
 ];
 
-const routes: Routes = [
+export const DISTRICT_OFFICE_ROUTES: Routes = [
   {
     path: ':office_name',
     children: districts,
@@ -36,9 +35,3 @@ const routes: Routes = [
     },
   },
 ]
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class OfficeRoutingModule { }
