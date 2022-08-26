@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
-import { NavigationMenuModule } from 'src/app/navigation-menu/navigation-menu.module';
 import { HomeComponent } from '../home/home.component';
 
 @Component({
   standalone: true,
   imports: [
-    NavigationMenuModule,
     HomeComponent,
   ],
   selector: 'app-root',

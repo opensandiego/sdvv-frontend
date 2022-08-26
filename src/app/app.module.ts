@@ -4,7 +4,6 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { PublicModule } from './public/public.module';
-import { NavigationMenuModule } from './navigation-menu/navigation-menu.module';
 
 import { environment } from 'src/environments/environment';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -23,7 +22,6 @@ const gtmID = environment.gtm;
       echarts: () => import('echarts')
     }),
     PublicModule,
-    NavigationMenuModule,
   ],
   providers: [
     { provide: 'googleTagManagerId', useValue: gtmID },
