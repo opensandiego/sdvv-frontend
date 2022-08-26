@@ -8,7 +8,7 @@ import { SummaryComponent } from '../routed/summary/summary.component';
 import { YearCardListGQLModule } from '../graphql/year-card-list-gql/year-card-list-gql.module';
 import { YearCardListGQLComponent } from '../graphql/year-card-list-gql/year-card-list-gql.component';
 
-const routes: Routes = [
+export const YEAR_ROUTES: Routes = [
   { 
     path: '', 
     component: SplashComponent,
@@ -27,7 +27,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes),
+    RouterModule.forChild(YEAR_ROUTES),
     SplashModule,
     SummaryModule,
     YearCardListGQLModule,

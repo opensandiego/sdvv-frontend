@@ -8,7 +8,7 @@ import { SummaryComponent } from '../routed/summary/summary.component';
 import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/office-card-list-routed.module';
 import { OfficeCardListRoutedComponent } from '../routed/office-card-list-routed/office-card-list-routed.component';
 
-const routes: Routes = [
+export const OFFICE_ROUTES: Routes = [
   { 
     path: '', 
     component: SplashComponent, 
@@ -27,7 +27,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes),
+    RouterModule.forChild(OFFICE_ROUTES),
     SplashModule,
     SummaryModule,
     OfficeCardListRoutedModule,
