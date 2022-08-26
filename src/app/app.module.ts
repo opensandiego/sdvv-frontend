@@ -1,4 +1,3 @@
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, Title } from '@angular/platform-browser';
@@ -14,9 +13,7 @@ const gtmID = environment.gtm;
 @NgModule({
   exports: [
   ],
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [ ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +29,6 @@ const gtmID = environment.gtm;
     { provide: 'googleTagManagerId', useValue: gtmID },
     Title,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
-export class AppModule { }
+export class AppModule { } // This module is not in current use
