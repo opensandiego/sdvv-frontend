@@ -6,7 +6,7 @@ import { CandidateMenuRoutedModule } from 'src/app/routed/candidate-menu-routed/
 import { ElectionYearRoutedModule } from 'src/app/routed/election-year-routed/election-year-routed.module';
 import { FooterGQLModule } from '../../graphql/footer-gql/footer.module';
 import { BreadcrumbTitleModule } from 'src/app/public/components/breadcrumb/breadcrumb-title.module';
-import { NavigationMenuModule } from 'src/app/navigation-menu/navigation-menu.module';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   standalone: true,
@@ -17,7 +17,7 @@ import { NavigationMenuModule } from 'src/app/navigation-menu/navigation-menu.mo
     ElectionYearRoutedModule,
     CandidateMenuRoutedModule,
     FooterGQLModule,
-    NavigationMenuModule,
+    HeaderComponent,
   ],
   selector: 'home',
   templateUrl: './home.component.html',

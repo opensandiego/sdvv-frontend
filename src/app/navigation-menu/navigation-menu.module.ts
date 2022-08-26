@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUniversity, faBalanceScale, faMapMarkedAlt, faQuestion, faBars, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { PublicModule } from '../public/public.module';
-import { HeaderComponent } from './components/header/header.component';
 import { SideMenuService } from './services/side-menu.service';
 import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
@@ -15,9 +14,7 @@ import { CandidateMenuRoutedModule } from '../routed/candidate-menu-routed/candi
 import { FooterGQLModule } from '../graphql/footer-gql/footer.module';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-  ],
+  declarations: [ ],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -31,9 +28,7 @@ import { FooterGQLModule } from '../graphql/footer-gql/footer.module';
     CandidateMenuRoutedModule,
     FooterGQLModule,
   ],
-  exports: [
-    HeaderComponent,
-  ],
+  exports: [ ],
   providers: [SideMenuService]
 })
 export class NavigationMenuModule {
