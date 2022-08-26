@@ -1,6 +1,8 @@
 import { Component, Input, OnChanges, Output, EventEmitter, OnInit} from '@angular/core';
+import { MatTableModule } from '@angular/material/table';
+import { getCompactFormattedCurrency } from 'src/app/shared/number-formatter';
 
-import { getCompactFormattedCurrency } from '../../number-formatter'
+// import { getCompactFormattedCurrency } from '../../number-formatter'
 
 export interface Category {
   id: string;
@@ -11,6 +13,10 @@ export interface Category {
 }
 
 @Component({
+  standalone: true,
+  imports: [
+    MatTableModule,
+  ],
   selector: 'app-top-categories-table',
   templateUrl: './top-categories-table.component.html',
   styleUrls: ['./top-categories-table.component.scss']

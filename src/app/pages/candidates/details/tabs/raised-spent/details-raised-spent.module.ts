@@ -11,6 +11,7 @@ import { DetailsTotalRaisedComponent } from './components/details-total-raised/d
 import { DetailsTotalSpentComponent } from './components/details-total-spent/details-total-spent.component';
 import { DetailsRaisedSpentSummaryComponent } from './components/details-raised-spent-summary/details-raised-spent-summary.component';
 import { DetailsTabRaisedVSpentComponent } from './details-tab-raised-v-spent/details-tab-raised-v-spent.component';
+import { TopCategoriesTableComponent } from 'src/app/components/top-categories-table/top-categories-table.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DetailsTabRaisedVSpentComponent } from './details-tab-raised-v-spent/de
     SharedModule,
     TotalRaisedBarModule,
     TotalSpentDonutModule,
+    TopCategoriesTableComponent,
   ],
   exports: [
     DetailsTotalRaisedComponent,

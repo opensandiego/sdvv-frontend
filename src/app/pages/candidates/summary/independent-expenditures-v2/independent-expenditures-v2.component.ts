@@ -6,6 +6,7 @@ import { AccordionModule } from 'primeng/accordion';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { OutsideMoneyStackedBarComponentV2 } from 'projects/lib-ui-charts/src/public-api';
+import { TopCategoriesTableComponent } from 'src/app/components/top-categories-table/top-categories-table.component';
 import { globals } from 'src/app/globals';
 
 export interface IndependentCommittees {
@@ -23,6 +24,7 @@ export interface IndependentCommittees {
     AccordionModule,
     SharedModule,
     OutsideMoneyStackedBarComponentV2,
+    TopCategoriesTableComponent,
   ],
   selector: 'independent-expenditures-v2',
   templateUrl: './independent-expenditures-v2.component.html',

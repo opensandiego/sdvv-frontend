@@ -1,19 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TopCategoriesTableComponent } from './components/top-categories-table/top-categories-table.component';
-import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
-  declarations: [
-    TopCategoriesTableComponent,
-  ],
+  declarations: [ ],
   imports: [
     CommonModule,
-    MatTableModule,
   ],
-  exports: [
-    TopCategoriesTableComponent,
-  ],
+  exports: [ ],
   providers: []
 })
 export class SharedModule { }
