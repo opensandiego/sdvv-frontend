@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { OfficeDistrictComponent } from './components/office-districts/office-districts.component';
 import { DistrictRedirectResolverService } from './district-redirect-resolver.service';
 
 const officeRoutes: Routes = [
   {
     path: '',
-    component: OfficeDistrictComponent,
+    loadComponent: () => import('../components/office-districts/office-districts.component').then(mod => mod.OfficeDistrictComponent),
     data: { type: '' },
     loadChildren: () => import('../routed/candidate-summary-routed/candidate-summary-routed.module').then(m => m.CandidateSummaryRoutedModule),
   },
