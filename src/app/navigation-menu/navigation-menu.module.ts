@@ -8,7 +8,6 @@ import { PublicModule } from '../public/public.module';
 import { SideMenuService } from './services/side-menu.service';
 import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
-import { BreadcrumbTitleModule } from '../public/components/breadcrumb/breadcrumb-title.module';
 import { ElectionYearRoutedModule } from '../routed/election-year-routed/election-year-routed.module';
 import { CandidateMenuRoutedModule } from '../routed/candidate-menu-routed/candidate-menu-routed.module';
 import { FooterGQLModule } from '../graphql/footer-gql/footer.module';
@@ -23,7 +22,6 @@ import { FooterGQLModule } from '../graphql/footer-gql/footer.module';
     PublicModule,
     MenuModule,
     PanelMenuModule,
-    BreadcrumbTitleModule,
     ElectionYearRoutedModule,
     CandidateMenuRoutedModule,
     FooterGQLModule,

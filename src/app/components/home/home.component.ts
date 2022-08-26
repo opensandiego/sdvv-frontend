@@ -5,7 +5,7 @@ import { SideMenuService } from 'src/app/navigation-menu/services/side-menu.serv
 import { CandidateMenuRoutedModule } from 'src/app/routed/candidate-menu-routed/candidate-menu-routed.module';
 import { ElectionYearRoutedModule } from 'src/app/routed/election-year-routed/election-year-routed.module';
 import { FooterGQLModule } from '../../graphql/footer-gql/footer.module';
-import { BreadcrumbTitleModule } from 'src/app/public/components/breadcrumb/breadcrumb-title.module';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { HeaderComponent } from '../header/header.component';
   imports: [
     MatSidenavModule,
     RouterModule,
-    BreadcrumbTitleModule,
+    BreadcrumbComponent,
     ElectionYearRoutedModule,
     CandidateMenuRoutedModule,
     FooterGQLModule,

@@ -4,8 +4,13 @@ import { filter, map } from 'rxjs/operators';
 import { MenuItem } from 'primeng/api';
 import { CandidateCardInfoGQL } from './candidate-card-info-gql.query';
 import { TitleMetaTagService } from './title-meta-tag.service';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 @Component({
+  standalone: true,
+  imports: [
+    BreadcrumbModule,
+  ],
   selector: 'breadcrumb',
   template: `
     <p-breadcrumb [home]="home" [model]="items"></p-breadcrumb>
