@@ -5,12 +5,10 @@ import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity } from '@forta
 
 import { PublicRoutingModule } from './public-routing.module';
 import { RoundCurrencyDisplayPipe } from './pipes/round-currency-display.pipe';
-import { OfficeSummaryComponent } from './components/office-summary/office-summary.component';
 import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/office-card-list-routed.module';
 
 @NgModule({
   declarations: [
-    OfficeSummaryComponent,
     RoundCurrencyDisplayPipe,
   ],
   imports: [
