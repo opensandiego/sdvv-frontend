@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
-import { SideMenuService } from 'src/app/navigation-menu/services/side-menu.service';
+import { SideMenuService } from 'src/app/public/services/side-menu.service';
 import { CandidateMenuRoutedModule } from 'src/app/routed/candidate-menu-routed/candidate-menu-routed.module';
 import { ElectionYearRoutedModule } from 'src/app/routed/election-year-routed/election-year-routed.module';
 import { FooterGQLModule } from '../../graphql/footer-gql/footer.module';
