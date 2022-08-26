@@ -2,7 +2,6 @@ import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { TopCategoriesTableComponent } from './top-categories-table.component';
-// import { SharedModule } from '../../shared.module';
 
 export default {
   title: 'Tables/Top Categories',
@@ -10,9 +9,7 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [],
-      imports: [
-        // SharedModule,
-      ],
+      imports: [ ],
       providers: [],
     }),
   ], 

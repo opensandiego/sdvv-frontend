@@ -5,7 +5,6 @@ import { DetailsTabOutsideMoneyComponent } from './details-tab-outside-money/det
 import { DetailsContainerOutsideMoneyComponent } from './details-outside-money/details-container-outside-money.component';
 import { OutsideMoneyStackedBarModule } from 'lib-ui-charts';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { TopCategoriesTableComponent } from 'src/app/components/top-categories-table/top-categories-table.component';
 
 import { DetailsTabTitleModule } from 'projects/lib-ui-components/src/public-api';
@@ -18,7 +17,6 @@ import { DetailsTabTitleModule } from 'projects/lib-ui-components/src/public-api
   imports: [
     CommonModule,
     FontAwesomeModule,
-    SharedModule,
     GraphQLModule,
     DetailsTabTitleModule,
     OutsideMoneyStackedBarModule,

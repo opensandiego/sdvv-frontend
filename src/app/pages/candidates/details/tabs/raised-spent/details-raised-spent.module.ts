@@ -5,7 +5,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { GraphQLModule } from 'src/app/graphql/graphql.module';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { TotalRaisedBarModule, TotalSpentDonutModule } from 'lib-ui-charts';
 import { DetailsTotalRaisedComponent } from './components/details-total-raised/details-total-raised.component';
 import { DetailsTotalSpentComponent } from './components/details-total-spent/details-total-spent.component';
@@ -26,7 +25,6 @@ import { TopCategoriesTableComponent } from 'src/app/components/top-categories-t
     MatDividerModule,
     FontAwesomeModule,
     GraphQLModule,
-    SharedModule,
     TotalRaisedBarModule,
     TotalSpentDonutModule,
     TopCategoriesTableComponent,
