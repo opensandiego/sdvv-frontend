@@ -5,7 +5,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { YearRouteResolverService } from './resolvers/year-route-resolver.service';
  
-const routes: Routes = [
+export const PUBLIC_ROUTES: Routes = [
   { 
     path: '',
     resolve: {
@@ -53,7 +53,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(PUBLIC_ROUTES)],
   exports: [RouterModule]
 })
 export class PublicRoutingModule { }
