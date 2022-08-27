@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SplashModule } from '../routed/splash/splash.module';
-import { SplashComponent } from '../routed/splash/splash.component';
 import { SummaryModule } from '../routed/summary/summary.module';
 import { SummaryComponent } from '../routed/summary/summary.component';
 import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/office-card-list-routed.module';
@@ -11,7 +9,7 @@ import { OfficeCardListRoutedComponent } from '../routed/office-card-list-routed
 export const OFFICE_ROUTES: Routes = [
   { 
     path: '', 
-    component: SplashComponent, 
+    loadComponent: () => import('../components/summary-content/summary-content.component').then(mod => mod.SummaryContentComponent),
     children: [
       { 
         path: '', component: SummaryComponent,
@@ -28,7 +26,6 @@ export const OFFICE_ROUTES: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(OFFICE_ROUTES),
-    SplashModule,
     SummaryModule,
     OfficeCardListRoutedModule,
   ],
