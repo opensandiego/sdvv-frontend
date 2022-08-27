@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { DistrictRedirectResolverService } from './resolvers/district-redirect-resolver.service';
+import { DistrictRedirectResolverService } from '../public/resolvers/district-redirect-resolver.service';
 
 const officeRoutes: Routes = [
   {

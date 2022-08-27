@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
  
-import { YearRouteResolverService } from './resolvers/year-route-resolver.service';
+import { YearRouteResolverService } from '../public/resolvers/year-route-resolver.service';
  
 export const MAIN_ROUTES: Routes = [
   { 
