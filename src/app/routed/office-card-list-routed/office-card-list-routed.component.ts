@@ -1,7 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { OfficeCardGQLModule } from 'src/app/graphql/office-card-gql/office-card-gql.module';
 
 @Component({
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    OfficeCardGQLModule,
+  ],
   selector: 'office-card-list-routed',
   template: `
     <div class="list" *ngFor="let title of officeTitles">

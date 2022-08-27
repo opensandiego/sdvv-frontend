@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { OfficeCardListRoutedModule } from 'src/app/routed/office-card-list-routed/office-card-list-routed.module';
+import { OfficeCardListRoutedComponent } from 'src/app/routed/office-card-list-routed/office-card-list-routed.component';
 
-// This component might be in use currently
+// This component might NOT be in use currently
 @Component({
   standalone: true,
   imports: [
-    OfficeCardListRoutedModule,
+    OfficeCardListRoutedComponent,
   ],
   selector: 'office-summary',
   templateUrl: './office-summary.component.html',

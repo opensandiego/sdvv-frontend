@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { OfficeCardListRoutedModule } from '../routed/office-card-list-routed/office-card-list-routed.module';
-import { OfficeCardListRoutedComponent } from '../routed/office-card-list-routed/office-card-list-routed.component';
-
 export const OFFICE_ROUTES: Routes = [
   { 
     path: '', 
@@ -14,7 +11,8 @@ export const OFFICE_ROUTES: Routes = [
         loadComponent: () => import('../routed/summary/summary.component').then(mod => mod.SummaryComponent),
         children: [
           {
-            path: '', component: OfficeCardListRoutedComponent, 
+            path: '', 
+            loadComponent: () => import('../routed/office-card-list-routed/office-card-list-routed.component').then(mod => mod.OfficeCardListRoutedComponent),
           }
         ]
       }
@@ -25,7 +23,6 @@ export const OFFICE_ROUTES: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(OFFICE_ROUTES),
-    OfficeCardListRoutedModule,
   ],
   exports: [RouterModule]
 })
