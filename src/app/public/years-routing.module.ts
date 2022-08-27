@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { YearCardListGQLModule } from '../graphql/year-card-list-gql/year-card-list-gql.module';
-import { YearCardListGQLComponent } from '../graphql/year-card-list-gql/year-card-list-gql.component';
-
 export const YEAR_ROUTES: Routes = [
   { 
     path: '', 
@@ -14,7 +11,8 @@ export const YEAR_ROUTES: Routes = [
         loadComponent: () => import('../routed/summary/summary.component').then(mod => mod.SummaryComponent),
         children: [
           {
-            path: '', component: YearCardListGQLComponent,
+            path: '', 
+            loadComponent: () => import('../graphql/year-card-list-gql/year-card-list-gql.component').then(mod => mod.YearCardListGQLComponent),
           }
         ]
       }
@@ -25,7 +23,6 @@ export const YEAR_ROUTES: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(YEAR_ROUTES),
-    YearCardListGQLModule,
   ],
   exports: [RouterModule]
 })

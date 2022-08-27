@@ -1,4 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { GraphQLModule } from '../graphql.module';
+import { YearCardGQLModule } from '../year-card-gql/year-card-gql.module';
 import { YearSelectorGQL, YearsResponse } from './year-card-list-gql.query';
 
 interface ElectionYearItem {
@@ -8,6 +11,12 @@ interface ElectionYearItem {
 }
 
 @Component({
+  standalone: true,
+  imports: [
+    CommonModule,
+    GraphQLModule,
+    YearCardGQLModule,
+  ],
   selector: 'gql-year-card-list',
   styleUrls: ['./year-card-list-gql.component.scss'],
   template: `
