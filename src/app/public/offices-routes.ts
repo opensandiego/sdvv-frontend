@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
 export const OFFICE_ROUTES: Routes = [
   { 
@@ -19,11 +18,3 @@ export const OFFICE_ROUTES: Routes = [
     ], 
   },
 ];
-
-@NgModule({
-  imports: [
-    RouterModule.forChild(OFFICE_ROUTES),
-  ],
-  exports: [RouterModule]
-})
-export class OfficesRoutingModule { }

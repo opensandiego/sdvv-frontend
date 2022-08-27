@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
  
 import { YearRouteResolverService } from './resolvers/year-route-resolver.service';
  
-export const PUBLIC_ROUTES: Routes = [
+export const MAIN_ROUTES: Routes = [
   { 
     path: '',
     resolve: {
@@ -13,7 +12,7 @@ export const PUBLIC_ROUTES: Routes = [
       { path: 'home', redirectTo: '/years', pathMatch: 'full', },
       { path: '', redirectTo: '/year/2022', pathMatch: 'full', },
       { path: 'years',
-        loadChildren: () => import('./years-routing.module').then(m => m.YearsRoutingModule),
+        loadChildren: () => import('./year-summary-routes').then(mod => mod.YEAR_SUMMARY_ROUTES),
       },
     ]
   },
@@ -27,12 +26,12 @@ export const PUBLIC_ROUTES: Routes = [
       {
         path: '',
         data: { type: '' },
-        loadChildren: () => import('./offices-routing.module').then(m => m.OfficesRoutingModule),
+        loadChildren: () => import('./offices-routes').then(mod => mod.OFFICE_ROUTES),
       },
       {
         path: 'office',
         data: { breadcrumb: null, startRoute: true, type: '' },
-        loadChildren: () => import('./office-routes').then(mod => mod.DISTRICT_OFFICE_ROUTES),
+        loadChildren: () => import('./office-district-routes').then(mod => mod.OFFICE_DISTRICT_ROUTES),
       }
     ],
   },
@@ -55,9 +54,3 @@ export const PUBLIC_ROUTES: Routes = [
   },
   { path: '**', pathMatch: 'full', redirectTo: '404' },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(PUBLIC_ROUTES)],
-  exports: [RouterModule]
-})
-export class PublicRoutingModule { }

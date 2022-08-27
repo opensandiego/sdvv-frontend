@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
-export const YEAR_ROUTES: Routes = [
+export const YEAR_SUMMARY_ROUTES: Routes = [
   { 
     path: '', 
     loadComponent: () => import('../components/summary-content/summary-content.component').then(mod => mod.SummaryContentComponent),
@@ -19,11 +18,3 @@ export const YEAR_ROUTES: Routes = [
     ], 
   },
 ];
-
-@NgModule({
-  imports: [
-    RouterModule.forChild(YEAR_ROUTES),
-  ],
-  exports: [RouterModule]
-})
-export class YearsRoutingModule { }

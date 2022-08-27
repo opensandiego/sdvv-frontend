@@ -26,7 +26,7 @@ const districts: Routes = [
   },
 ];
 
-export const DISTRICT_OFFICE_ROUTES: Routes = [
+export const OFFICE_DISTRICT_ROUTES: Routes = [
   {
     path: ':office_name',
     children: districts,

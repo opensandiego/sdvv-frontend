@@ -3,7 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { PublicModule } from './public/public.module';
 
 import { environment } from 'src/environments/environment';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -21,7 +20,6 @@ const gtmID = environment.gtm;
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
-    PublicModule,
   ],
   providers: [
     { provide: 'googleTagManagerId', useValue: gtmID },
