@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { globals } from 'src/app/globals';
 
 @Component({
   standalone: true,
@@ -10,4 +11,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss']
 })
-export class SummaryComponent { }
+export class SummaryComponent { 
+  public title = globals.siteName;
+  public subTitle = globals.siteSubTitle;
+  public caption = globals.siteCaption;
+}

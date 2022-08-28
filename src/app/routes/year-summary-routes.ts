@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const YEAR_SUMMARY_ROUTES: Routes = [
   { 
     path: '', 
-    loadComponent: () => import('../components/summary-content/summary-content.component').then(mod => mod.SummaryContentComponent),
+    loadComponent: () => import('../components/summary-container/summary-container.component').then(mod => mod.SummaryContainerComponent),
     children: [
       { 
         path: '',
