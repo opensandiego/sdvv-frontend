@@ -2,6 +2,14 @@
 @import "../../styles/elements";
 @import "../../styles/global";
 
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary, .header-toolbar {
+  background-color: $vvdarkblue;
+}
+
 .router-link-active {
   color: $vvyellow !important;
 }
@@ -12,44 +20,33 @@
   }
 }
 
-.header-nav{
-  .bar-toggle{
-    display:none;
-    color:#fff;
+.header-toolbar {
+  .mat-toolbar{
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  font-size: 18px;
-  display: grid;
-  grid-template-columns: 3fr auto auto;
-  padding: 10px 20px;
-  text-align: left;
-  background-color: $vvdarkblue;
-  align-items: center;
-  .nav_links {
-      margin-left: 20px;
-      margin-right: 20px;
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 100;
-      &:hover {
-          text-decoration: underline;
-          color: $vvyellow;
-        }
-        &:active {
-          color: $vvyellow;
-        }
-    }
+  .bar-toggle{
+    color:#fff;
+    padding-right:20px;
+    font-size: 22px;
+  }
+  padding-top: 3.5px;
+  padding-bottom: 3.5px;
 }
 
-@media (max-width: 1200px) {
-  
-  .header-nav{
-    .bar-toggle{
-      display:block !important;
-      color:#fff;
-      padding-right:20px;
-      font-size:22px;
+.nav_links {
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 100;
+  font-size: 18px;
+
+  &:hover {
+      text-decoration: underline;
+      color: $vvyellow;
     }
-    grid-template-columns: auto 3fr auto auto !important;
-  }
-  
+    &:active {
+      color: $vvyellow;
+    }
 }
