@@ -2,7 +2,6 @@ import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 
-import { YearCardListGQLModule } from './year-card-list-gql.module';
 import { YearCardListGQLComponent } from './year-card-list-gql.component';
 
 export default {
@@ -13,7 +12,6 @@ export default {
       declarations: [],
       imports: [
         CommonModule,
-        YearCardListGQLModule,
       ],
       providers: [],
     }),
