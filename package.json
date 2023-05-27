@@ -90,7 +90,7 @@
     "@typescript-eslint/parser": "^5.29.0",
     "@webcomponents/custom-elements": "^1.5.0",
     "babel-loader": "^8.2.3",
-    "cypress": "^10.1.0",
+    "cypress": "^12.13.0",
     "eslint": "^8.18.0",
     "eslint-plugin-storybook": "^0.6.12",
     "jasmine-core": "~4.1.1",
