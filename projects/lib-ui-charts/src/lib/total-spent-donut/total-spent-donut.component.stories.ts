@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 
@@ -19,13 +19,13 @@ export default {
       providers: [],
     }),
   ], 
-} as Meta;
+};
 
 // const Template: Story<TotalSpentDonutComponent> = (args: TotalSpentDonutComponent) => ({
 //   props: args,
 // })
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: {
     spendingCategories: [
       { id: '0', value: 2000, percent: 20, color: '#800000', name: 'Expenditure A',},
@@ -37,7 +37,7 @@ export const Default: Story = () => ({
   },
 })
 
-export const Sample1NoCodes: Story = () => ({
+export const Sample1NoCodes = () => ({
   props: {
     spendingCategories: [
       { id: '0', value: 1000, percent: 1, color: '#800000', name: 'Expenditure text',},
@@ -49,7 +49,7 @@ export const Sample1NoCodes: Story = () => ({
   }
 });
 
-export const Sample2NoCodes: Story = () => ({
+export const Sample2NoCodes = () => ({
   props: {
     spendingCategories: [
       { id: '0', value: 200,    percent: 1, color: '#800000', name: 'Books',},
@@ -63,7 +63,7 @@ export const Sample2NoCodes: Story = () => ({
   }
 });
 
-export const OneCategory: Story = () => ({
+export const OneCategory = () => ({
   props: {
     spendingCategories: [
       { id: '0', value: 200,    percent: 1, color: '#800000', name: 'Books', code: 'ABC',},
@@ -71,7 +71,7 @@ export const OneCategory: Story = () => ({
   }
 });
 
-export const TwoCategories: Story = () => ({
+export const TwoCategories = () => ({
   props: {
     spendingCategories: [
       { id: '0', value: 300,    percent: 30, color: '#800000', name: 'Books', code: 'ABC',},
@@ -80,7 +80,7 @@ export const TwoCategories: Story = () => ({
   }
 });
 
-export const OneEmptyCode: Story = () => ({
+export const OneEmptyCode = () => ({
   props: {
     spendingCategories: [
       { id: '0', value: 200,    percent: 30, color: '#800000', name: 'Books', code: 'ABC',},
@@ -90,7 +90,7 @@ export const OneEmptyCode: Story = () => ({
   }
 });
 
-export const OneNoNameNoCode: Story = () => ({
+export const OneNoNameNoCode = () => ({
   props: {
     spendingCategories: [
       { id: '0', value: 200,    percent: 30, color: '#800000', name: 'Books', code: 'ABC',},

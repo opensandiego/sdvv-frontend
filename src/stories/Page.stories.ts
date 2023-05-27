@@ -16,9 +16,9 @@ export default {
       imports: [CommonModule],
     }),
   ],
-} as Meta;
+};
 
-const Template: Story<Page> = (args: Page) => ({
+const Template = (args: Page) => ({
   props: args,
 });
 

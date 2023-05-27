@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -19,9 +19,9 @@ export default {
       providers: [],
     }),
   ],  
-} as Meta;
+};
 
-const Template: Story<CandidateMenuComponent> = (args: CandidateMenuComponent) => ({
+const Template = (args: CandidateMenuComponent) => ({
   props: {
     mayor: args.mayor,
     activeItem: args.activeItem,

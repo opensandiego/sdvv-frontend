@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,19 +37,19 @@ export default {
   ],  
   argTypes: {
   },
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: { },
 });
 
-export const Empty: Story = () => ({
+export const Empty = () => ({
   props: { 
     contributionGroups: [ ]
   },
 });
 
-export const OneGroup: Story = () => ({
+export const OneGroup = () => ({
   props: { 
     contributionGroups: [
       { name: 'Politics', amount: 123456, percent: 78, },
@@ -57,7 +57,7 @@ export const OneGroup: Story = () => ({
   },
 });
 
-export const FiveGroups: Story = () => ({
+export const FiveGroups = () => ({
   props: {
     contributionGroups: [
       { name: 'Technology', amount: 500000, percent: 50, },

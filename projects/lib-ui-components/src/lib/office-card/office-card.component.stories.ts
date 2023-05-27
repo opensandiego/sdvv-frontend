@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { APP_INITIALIZER } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -35,13 +35,13 @@ export default {
       ],
     }),
   ],  
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: { },
 });
 
-export const Mayor: Story = () => ({
+export const Mayor = () => ({
   props: {
     officeInfo: {
       officeTitle: 'Mayor',
@@ -53,7 +53,7 @@ export const Mayor: Story = () => ({
   },
 });
 
-export const CityCouncil: Story = () => ({
+export const CityCouncil = () => ({
   props: {
   officeInfo: {
     officeTitle: 'City Council',

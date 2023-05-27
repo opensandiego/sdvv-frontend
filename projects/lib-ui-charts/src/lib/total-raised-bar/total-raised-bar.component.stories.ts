@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { TotalRaisedBarComponent } from './total-raised-bar.component';
@@ -21,9 +21,9 @@ export default {
       providers: [],
     }),
   ], 
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: {
     raisedCategories: [
       { value: 10000, color: '#00e25f', name: 'In Kind',},
@@ -33,7 +33,7 @@ export const Default: Story = () => ({
   },
 });
 
-export const ByMonetaryType: Story = () => ({
+export const ByMonetaryType = () => ({
   props: {
     raisedCategories: [
       { value: 10000, color: '#00e25f', name: 'Monetary',},
@@ -43,7 +43,7 @@ export const ByMonetaryType: Story = () => ({
   },
 });
 
-export const ByContributorCode: Story = () => ({
+export const ByContributorCode = () => ({
   props: {
     raisedCategories: [
       { value: 10000, color: '#00e25f', code: 'IND', name: 'Individual' },

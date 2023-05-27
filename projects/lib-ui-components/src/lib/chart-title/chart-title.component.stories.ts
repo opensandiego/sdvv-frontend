@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,9 +35,9 @@ export default {
     }),
   ], 
   argTypes: { },
-} as Meta;
+};
 
-const Template: Story<ChartTitleComponent> = (args: ChartTitleComponent) => ({
+const Template= (args: ChartTitleComponent) => ({
   props: args,
 });
 

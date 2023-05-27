@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -18,9 +18,9 @@ export default {
       providers: [],
     }),
   ],
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: {
     support: 200123,
     oppose: 5432,
@@ -29,14 +29,14 @@ export const Default: Story = () => ({
   },
 });
 
-export const DefaultColors: Story = () => ({
+export const DefaultColors = () => ({
   props: {
     support: 200123,
     oppose: 5432,
   },
 });
 
-export const GreyBackgroundWhiteText: Story = () => ({
+export const GreyBackgroundWhiteText = () => ({
   props: {
     support: 200123,
     oppose: 5432,
@@ -45,7 +45,7 @@ export const GreyBackgroundWhiteText: Story = () => ({
   },
 });
 
-export const GreenText: Story = () => ({
+export const GreenText = () => ({
   props: {
     support: 200123,
     oppose: 5432,

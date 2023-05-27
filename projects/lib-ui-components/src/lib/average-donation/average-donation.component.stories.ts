@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { AverageDonationComponent } from './average-donation.component';
@@ -17,9 +17,9 @@ export default {
   ],  
   argTypes: {
   },
-} as Meta;
+};
 
-const Template: Story<AverageDonationComponent> = (args: AverageDonationComponent) => ({
+const Template = (args: AverageDonationComponent) => ({
   props: args,
 })
 

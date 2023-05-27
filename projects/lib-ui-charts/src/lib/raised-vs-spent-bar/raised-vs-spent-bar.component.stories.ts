@@ -21,79 +21,79 @@ export default {
       providers: [],
     }),
   ],
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: {
     raised: 200,
     spent: 300,
   },
 })
 
-export const Thousands: Story = () => ({
+export const Thousands = () => ({
   props: {
     raised: 6001,
     spent: 4002,
   },
 })
 
-export const TenThousands: Story = () => ({
+export const TenThousands = () => ({
   props: {
     raised: 30001,
     spent: 70002,
   },
 })
 
-export const HundredThousands: Story = () => ({
+export const HundredThousands = () => ({
   props: {
     raised: 654321,
     spent: 543210,
   },
 })
 
-export const Millions: Story = () => ({
+export const Millions = () => ({
   props: {
     raised: 5432109,
     spent: 6543210,
   },
 })
 
-export const TenMillions: Story = () => ({
+export const TenMillions = () => ({
   props: {
     raised: 65432109,
     spent: 54321098,
   },
 })
 
-export const LargerRaised: Story = () => ({
+export const LargerRaised = () => ({
   props: {
     raised: 654321,
     spent: 54321,
   },
 })
 
-export const LargerSpent: Story = () => ({
+export const LargerSpent = () => ({
   props: {
     raised: 650,
     spent: 50321,
   },
 })
 
-export const BothZero: Story = () => ({
+export const BothZero = () => ({
   props: {
     raised: 0,
     spent: 0,
   },
 })
 
-export const RaisedNull: Story = () => ({
+export const RaisedNull = () => ({
   props: {
     raised: null,
     spent: 4321,
   },
 })
 
-export const SpentNoDefined: Story = () => ({
+export const SpentNoDefined = () => ({
   props: {
     raised: 1234,
   },
