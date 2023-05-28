@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 
@@ -18,41 +18,41 @@ export default {
       providers: [],
     }),
   ], 
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: { },
 })
 
-export const Mayor2022: Story = () => ({
+export const Mayor2022 = () => ({
   props: {
     year: '2022',
     officeTitle: 'Mayor',
   },
 })
 
-export const CityCouncil2022: Story = () => ({
+export const CityCouncil2022 = () => ({
   props: {
     year: '2022',
     officeTitle: 'City Council',
   },
 })
 
-export const Mayor2020: Story = () => ({
+export const Mayor2020 = () => ({
   props: {
     year: '2020',
     officeTitle: 'Mayor',
   },
 })
 
-export const CityAttorney2020: Story = () => ({
+export const CityAttorney2020 = () => ({
   props: {
     year: '2020',
     officeTitle: 'City Attorney',
   },
 })
 
-export const CityCouncil2020: Story = () => ({
+export const CityCouncil2020 = () => ({
   props: {
     year: '2020',
     officeTitle: 'City Council',

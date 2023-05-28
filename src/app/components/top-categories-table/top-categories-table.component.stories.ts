@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { TopCategoriesTableComponent } from './top-categories-table.component';
@@ -14,9 +14,9 @@ export default {
     }),
   ], 
   argTypes: {  },
-} as Meta;
+};
 
-const Template: Story<TopCategoriesTableComponent> = (args: TopCategoriesTableComponent) => ({
+const Template = (args: TopCategoriesTableComponent) => ({
   props: args,
 })
 

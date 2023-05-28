@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { CandidateDetailsHeaderModule } from './candidate-details-header.module';
@@ -16,15 +16,15 @@ export default {
       providers: [],
     }),
   ], 
-} as Meta;
+};
 
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: {
   },
 })
 
-export const Sample1: Story = () => ({
+export const Sample1 = () => ({
   props: {
     id: 'mock|id',
     imageUrl: null,
@@ -38,7 +38,7 @@ export const Sample1: Story = () => ({
   },
 })
 
-export const Sample2: Story = () => ({
+export const Sample2 = () => ({
   props: {
     id: 'mock|id',
     candidateName: 'John Jones II',

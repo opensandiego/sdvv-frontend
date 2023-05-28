@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -19,13 +19,13 @@ export default {
     }),
   ], 
   argTypes: {  },
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: { },
 });
 
-export const Amount12456: Story = () => ({
+export const Amount12456 = () => ({
   props: {
     totalExpenditures: 123456,
     textColor: null,

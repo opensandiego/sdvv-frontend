@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,13 +21,13 @@ export default {
     }),
   ], 
   argTypes: { },
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: { },
 });
 
-export const SampleText: Story = () => ({
+export const SampleText = () => ({
   props: { 
     smallTitleText: "Tab Small Title",
     largeTitleText: "Tab Large Title",
@@ -35,7 +35,7 @@ export const SampleText: Story = () => ({
   },
 });
 
-export const ByIndustry: Story = () => ({
+export const ByIndustry = () => ({
   props: { 
     smallTitleText: "Amount Raised",
     largeTitleText: "By Industry",
@@ -43,7 +43,7 @@ export const ByIndustry: Story = () => ({
   },
 });
 
-export const ByLocation: Story = () => ({
+export const ByLocation = () => ({
   props: { 
     smallTitleText: "Amount Raised",
     largeTitleText: "By Location",
@@ -51,7 +51,7 @@ export const ByLocation: Story = () => ({
   },
 });
 
-export const OutsideMoney: Story = () => ({
+export const OutsideMoney = () => ({
   props: { 
     smallTitleText: "Amount Raised",
     largeTitleText: "Outside Money",
@@ -59,7 +59,7 @@ export const OutsideMoney: Story = () => ({
   },
 });
 
-export const Nulls: Story = () => ({
+export const Nulls = () => ({
   props: { 
     smallTitleText: null,
     largeTitleText: null,

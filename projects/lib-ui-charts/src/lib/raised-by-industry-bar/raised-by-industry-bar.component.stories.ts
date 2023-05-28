@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,9 +21,9 @@ export default {
       providers: [],
     }),
   ], 
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: {
     raisedByIndustries: [
       { name: 'Education', value: 43456, },
@@ -42,7 +42,7 @@ export const Default: Story = () => ({
   },
 });
 
-export const OneIndustry: Story = () => ({
+export const OneIndustry = () => ({
   props: {
     raisedByIndustries: [
       { name: 'Technology', value: 42789, },
@@ -50,7 +50,7 @@ export const OneIndustry: Story = () => ({
   },
 });
 
-export const TwoIndustries: Story = () => ({
+export const TwoIndustries = () => ({
   props: {
     raisedByIndustries: [
       { name: 'Construction', value: 37111, },
@@ -59,7 +59,7 @@ export const TwoIndustries: Story = () => ({
   },
 });
 
-export const FiveIndustries: Story = () => ({
+export const FiveIndustries = () => ({
   props: {
     raisedByIndustries: [
       { name: 'Manufacturing', value: 6789, },
@@ -71,7 +71,7 @@ export const FiveIndustries: Story = () => ({
   },
 });
 
-export const DuplicatedIndustries: Story = () => ({
+export const DuplicatedIndustries = () => ({
   props: {
     raisedByIndustries: [
       { name: 'Education', value: 43456, },

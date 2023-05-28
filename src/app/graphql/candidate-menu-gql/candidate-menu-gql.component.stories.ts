@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 
@@ -19,9 +19,9 @@ export default {
       providers: [],
     }),
   ],  
-} as Meta;
+};
 
-const Template: Story = (args) => ({
+const Template = (args) => ({
   props: {
     ...args,
   }

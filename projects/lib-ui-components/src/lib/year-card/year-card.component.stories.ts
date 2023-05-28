@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { YearCardModule } from './year-card.module';
@@ -17,13 +17,13 @@ export default {
       providers: [      ],
     }),
   ],  
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: { },
 });
 
-export const Year2022: Story = () => ({
+export const Year2022 = () => ({
   props: {
     year: '2022',
     mayorCandidateCount: 0,
@@ -32,7 +32,7 @@ export const Year2022: Story = () => ({
   },
 });
 
-export const Year2020: Story = () => ({
+export const Year2020 = () => ({
   props: {
     year: '2020',
     mayorCandidateCount: 14,
@@ -41,7 +41,7 @@ export const Year2020: Story = () => ({
   },
 });
 
-export const Year2018: Story = () => ({
+export const Year2018 = () => ({
   props: {
     year: '2018',
     mayorCandidateCount: 0,
@@ -50,7 +50,7 @@ export const Year2018: Story = () => ({
   },
 });
 
-export const Year2018Partial: Story = () => ({
+export const Year2018Partial = () => ({
   props: {
     year: '2018',
     mayorCandidateCount: undefined,
@@ -59,7 +59,7 @@ export const Year2018Partial: Story = () => ({
   },
 });
 
-export const Year2018Empty: Story = () => ({
+export const Year2018Empty = () => ({
   props: {
     mayorCandidateCount: undefined,
     cityAttorneyCandidateCount: null,

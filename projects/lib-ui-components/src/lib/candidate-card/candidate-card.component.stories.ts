@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
+// import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 
 import { CandidateCardComponent } from './candidate-card.component';
@@ -17,9 +17,9 @@ export default {
       providers: [],
     }),
   ],  
-} as Meta;
+};
 
-const Template: Story<CandidateCardComponent> = (args: CandidateCardComponent) => ({
+const Template = (args: CandidateCardComponent) => ({
   props: args,
 })
 

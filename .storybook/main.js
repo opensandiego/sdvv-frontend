@@ -1,18 +1,15 @@
 module.exports = {
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)",
-    "../projects/**/*.stories.@(js|jsx|ts|tsx)"
-  ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "storybook-addon-angular-router",
-  ],
-  "framework": "@storybook/angular",
+  "stories": ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)", "../projects/**/*.stories.@(js|jsx|ts|tsx)"],
+  "addons": ["@storybook/addon-links", "@storybook/addon-essentials", "storybook-addon-angular-router"],
+  "framework": {
+    name: "@storybook/angular",
+    options: {}
+  },
   "core": {
-    "builder": "webpack5",
-    "disableTelemetry": true,
+    "disableTelemetry": true
   },
   "staticDirs": ['../src/assets'],
-}
+  docs: {
+    autodocs: true
+  }
+};
