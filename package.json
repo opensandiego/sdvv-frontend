@@ -6,6 +6,7 @@
     "start": "ng serve",
     "start:db:remote": "npm run start:db:staging",
     "start:db:staging": "ng serve --configuration=db-staging",
+    "start:db:staging:e2e": "ng serve --configuration=db-staging --host 0.0.0.0",
     "start:lib:ui:charts": "ng build lib-ui-charts --watch",
     "start:lib:ui:components": "ng build lib-ui-components --watch",
     "build:lib": "npm run build:lib:ui:charts && npm run build:lib:ui:components",
