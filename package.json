@@ -102,7 +102,7 @@
     "karma-jasmine": "^5.0.1",
     "karma-jasmine-html-reporter": "^1.7.0",
     "ng-packagr": "^14.1.0",
-    "postcss": "^8.2.15",
+    "postcss": "^8.4.31",
     "storybook": "^7.0.18",
     "storybook-addon-angular-router": "^1.9.0",
     "ts-node": "^10.9.1",
