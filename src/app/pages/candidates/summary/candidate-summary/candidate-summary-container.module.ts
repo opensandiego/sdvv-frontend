@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CandidateCardGQLModule } from 'src/app/graphql/candidate-card-gql/candidate-card-gql.module';

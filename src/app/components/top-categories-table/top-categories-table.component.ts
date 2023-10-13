@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, Output, EventEmitter, OnInit} from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
 import { getCompactFormattedCurrency } from 'src/app/public/util/number-formatter';
 
 export interface Category {
