@@ -10,16 +10,16 @@
     text-align: right;
   }
 
-  .mat-row {
+  .mat-mdc-row {
     height: 30px;
   }
 
-  .mat-cell {
+  .mat-mdc-cell {
     padding-right: 10px;
     border: 0;
   }
 
-  .mat-row:hover .mat-cell, .highlighted {
+  .mat-mdc-row:hover .mat-mdc-cell, .highlighted {
     border-color: currentColor;
     background-color: #cccccc;
   }

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
-import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
 
 // import { DetailsRaisedSpentModule } from 'src/app/details-raised-spent/details-raised-spent.module';
 import { CandidateDetailsHeaderGQLModule } from 'src/app/graphql/candidate-details-header-gql/candidate-details-header-gql.module';
