@@ -4,7 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { AccordionModule } from 'primeng/accordion';
 
-import { OutsideMoneyStackedBarComponentV2 } from 'projects/lib-ui-charts/src/public-api';
+import { OutsideMoneyStackedBarComponentV2 } from 'projects/lib-ui-charts/src/lib/outside-money-stacked-bar-v2/outside-money-stacked-bar.component';
 import { TopCategoriesTableComponent } from 'src/app/components/top-categories-table/top-categories-table.component';
 import { globals } from 'src/app/globals';
 
