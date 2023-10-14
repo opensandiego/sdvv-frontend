@@ -1,5 +1,5 @@
 
-name: Deploy to Firebase Hosting on release/prod merge
+name: Deploy to Firebase on release/prod merge
 'on':
   push:
     branches:
