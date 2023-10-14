@@ -1,17 +1,16 @@
-<!--
-Template for contributing guide for all projects
--->
 
-### Introduction
+# Transparency Dashboard for San Diego City elections
 
-Welcome to the San Diego Voter's Voice Initiative! We are a coalition of non-partisan organizations working together to create a website that will provide transparency for campaign contributions and expenditures with local San Diego candidates.
+<!-- ### Introduction -->
+
+<!-- Welcome to the San Diego Voter's Voice Initiative! We are a coalition of non-partisan organizations working together to create a website that will provide transparency for campaign contributions and expenditures with local San Diego candidates. -->
 
 **Organizations Involved in the Project**
 
+* [Open San Diego](https://opensandiego.org/)
 * [Represent.us](https://represent.us/)
 * [Common Cause](https://www.commoncause.org/)
 * [League of Women's Voters](https://www.lwv.org/)
-* [Open San Diego](https://opensandiego.org/)
 
 **Links**
 * Production website: https://followthemoneysandiego.org/
@@ -24,9 +23,14 @@ Currently, campaign finance information for candidates running for local offices
 
 For more information with Voter's Voice Initiative visit [https://sdvotersvoice.org/](https://sdvotersvoice.org/)
 
+#### Data Source
+
+The campaign finance data used in this site is sourced from publicly available campaign disclosure data provided by the [City of San Diego's Electronic Filing System](https://efile.sandiego.gov/).
+
 ### Prerequisites
-* Angular CLI 13.1.2+
-* npm 8+
+* Angular CLI 16+
+* npm 9.8+
+* node 18+
 
 ### Setup
 1. Clone directory from github
@@ -66,7 +70,7 @@ Or to start the server and open the application in the browser.
 ng serve --open
 ```
 
-To run the application and connect to backend database on Heroku use:
+The easiest way to run the site locally is to have it access the data using the remote development backend hosted on Heroku. This does not require the backend or database to be run locally. To do this use:
 ```
 npm run start:db:remote
 ```
