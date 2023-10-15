@@ -1,20 +1,40 @@
 
-::ng-deep .p-panelmenu .p-menuitem-link-active {
-  background-color: #125db380;
+::ng-deep .p-panelmenu {  
+  .p-menuitem-link {
+    text-decoration: none !important;
+  }
+
+  .p-menuitem-link-active {
+    background-color: #125db380;
+  }
+
+  .p-menuitem-text {
+    color: #222222;
+  }
+
+  .p-disabled .p-menuitem-text {
+    color: #999999;
+  }
+
+  .p-menuitem-text {
+    font-family: Roboto,Helvetica Neue,sans-serif;
+    font-size: 15px;
+  }
 }
 
 ::ng-deep .p-panelmenu .p-panelmenu-header {
+  .p-panelmenu-header-action {
+    text-decoration: none !important;
+  }
+
   :hover {
 	  background-color: #3392ff !important;
-    color: white !important;
+    .p-menuitem-text {
+      color: white !important;
+    }
   }
   :focus {
 	  background-color: #125DB3 !important;
     color: white !important;
   }
-}
-
-::ng-deep .p-panelmenu .p-menuitem-text {
-  font-family: Roboto,Helvetica Neue,sans-serif;
-  font-size: 15px;
 }
