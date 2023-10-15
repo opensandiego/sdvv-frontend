@@ -18,7 +18,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 })
 export class BreadcrumbComponent implements OnInit {
   items: MenuItem[];
-  readonly home = {icon: 'pi pi-home', routerLink: '/home', label: ' San Diego'};
+  readonly home = { icon: 'pi pi-home', iconStyle: { 'padding-right': '0.5em' }, routerLink: '/home', label: 'San Diego' };
   
   constructor(
     private activatedRoute: ActivatedRoute,
