@@ -1,14 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# compiled output
+# Compiled output
 /dist
 /tmp
 /out-tsc
-# Only exists if Bazel was run
 /bazel-out
 
-# dependencies
+# Node
 /node_modules
+npm-debug.log
+yarn-error.log
 
 # profiling files
 chrome-profiler-events.json
@@ -18,7 +19,7 @@ speed-measure-plugin.json
 cypress/videos/*
 
 # IDEs and editors
-/.idea
+.idea/
 .project
 .classpath
 .c9/
@@ -26,7 +27,7 @@ cypress/videos/*
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
+# Visual Studio Code
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -34,17 +35,14 @@ cypress/videos/*
 !.vscode/extensions.json
 .history/*
 
-# misc
+# Miscellaneous
 /.angular/cache
-/.sass-cache
+.sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
-npm-debug.log
-yarn-error.log
 testem.log
 /typings
-/.env
 
 # System Files
 .DS_Store
@@ -52,3 +50,6 @@ Thumbs.db
 
 # Byte-compiled files
 __pycache__/
+
+# Environment
+/.env
