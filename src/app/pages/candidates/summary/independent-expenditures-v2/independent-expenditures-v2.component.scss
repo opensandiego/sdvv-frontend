@@ -34,3 +34,7 @@ fa-icon {
   font-size: 10px;
   margin-right: 10px;
 }
+
+::ng-deep .p-accordion-header-text {
+  color: #495057;
+}
