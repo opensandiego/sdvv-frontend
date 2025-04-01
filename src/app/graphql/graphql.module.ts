@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
+import { provideApollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { environment } from 'src/environments/environment';
 import { cache } from './cache';
@@ -9,26 +9,20 @@ import { cache } from './cache';
 const uri = `${environment.apiUrl}/graphql`;
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    ApolloModule,
-  ],  
-  declarations: [  ],  
+  imports: [CommonModule, HttpClientModule],
+  declarations: [  ],
   providers: [
-    {
-      provide: APOLLO_OPTIONS,
-      useFactory: (httpLink: HttpLink) => {
-        return {
-          cache: cache,
-          link: httpLink.create({
-            uri: uri,
-          }),
-        };
-      },
-      deps: [HttpLink],
-    },
-  ], 
+    provideApollo(() => {
+      const httpLink = inject(HttpLink);
+
+      return {
+        cache: cache,
+        link: httpLink.create({
+          uri: uri,
+        }),
+      };
+    }),
+  ],
   exports: [],
   bootstrap: []
 })
