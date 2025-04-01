@@ -7,6 +7,10 @@ import { MAIN_ROUTES } from './app/routes/main-routes';
 import { AppComponent } from './app/components/app/app.component';
 import { environment } from './environments/environment';
 
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+import Material from '@primeng/themes/material';
+
 if (environment.production) {
   enableProdMode();
 }
@@ -15,13 +19,19 @@ const gtmID = environment.gtm;
 
 bootstrapApplication(AppComponent, {
   providers: [
+    // provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: Material,
+      },
+    }),
     importProvidersFrom(
       RouterModule.forRoot(
-        MAIN_ROUTES,
+        MAIN_ROUTES
         // { relativeLinkResolution: 'legacy' },
       ),
       BrowserAnimationsModule,
-      GraphQLModule,
+      GraphQLModule
       // NgxEchartsModule.forRoot({
       //   echarts: () => import('echarts')
       // }),
@@ -33,5 +43,5 @@ bootstrapApplication(AppComponent, {
     ),
     { provide: 'googleTagManagerId', useValue: gtmID },
     Title,
-  ]
-}).catch(err => console.error(err));
+  ],
+}).catch((err) => console.error(err));
