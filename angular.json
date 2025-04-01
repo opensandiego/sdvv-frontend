@@ -109,16 +109,16 @@
           "options": {},
           "configurations": {
             "production": {
-              "browserTarget": "sdvv-frontend:build:production"
+              "buildTarget": "sdvv-frontend:build:production"
             },
             "development": {
-              "browserTarget": "sdvv-frontend:build:development"
+              "buildTarget": "sdvv-frontend:build:development"
             },
             "staging": {
-              "browserTarget": "sdvv-frontend:build:staging"
+              "buildTarget": "sdvv-frontend:build:staging"
             },
             "db-staging": {
-              "browserTarget": "sdvv-frontend:build:db-staging"
+              "buildTarget": "sdvv-frontend:build:db-staging"
             }
           },
           "defaultConfiguration": "development"
@@ -126,7 +126,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sdvv-frontend:build"
+            "buildTarget": "sdvv-frontend:build"
           }
         },
         "test": {
