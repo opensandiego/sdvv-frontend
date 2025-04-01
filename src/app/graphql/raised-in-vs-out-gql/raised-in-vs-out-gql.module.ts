@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { ChartTitleModule } from 'lib-ui-components';
 import { RaisedInVsOutDonutModule } from 'lib-ui-charts';
@@ -10,20 +10,13 @@ import { CandidateInfoGQL } from './raised-in-vs-out-title-gql/candidate-info-gq
 import { RaisedInVsOutTitleGQLComponent } from './raised-in-vs-out-title-gql/raised-in-vs-out-title-gql.component';
 import { RaisedInVsOutDonutGQLComponent } from './raised-in-vs-out-donut-gql/raised-in-vs-out-donut-gql.component';
 
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    GraphQLModule,
-    ChartTitleModule,
-    RaisedInVsOutDonutModule,
-  ],
-  declarations: [
-    RaisedInVsOutTitleGQLComponent,
-    RaisedInVsOutDonutGQLComponent,
-  ],
-  providers: [ RaisedInVsOutGQL, CandidateInfoGQL ], 
-  exports: [ RaisedInVsOutTitleGQLComponent, RaisedInVsOutDonutGQLComponent ],
-  bootstrap: []
-})
+@NgModule({ declarations: [
+        RaisedInVsOutTitleGQLComponent,
+        RaisedInVsOutDonutGQLComponent,
+    ],
+    exports: [RaisedInVsOutTitleGQLComponent, RaisedInVsOutDonutGQLComponent],
+    bootstrap: [], imports: [CommonModule,
+        GraphQLModule,
+        ChartTitleModule,
+        RaisedInVsOutDonutModule], providers: [RaisedInVsOutGQL, CandidateInfoGQL, provideHttpClient(withInterceptorsFromDi())] })
 export class RaisedInVsOutGQLModule { }

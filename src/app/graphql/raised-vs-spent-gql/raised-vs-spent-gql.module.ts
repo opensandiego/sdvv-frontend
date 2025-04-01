@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AverageDonationModule } from 'lib-ui-components';
 import { RaisedVsSpentBarModule } from 'lib-ui-charts';
@@ -10,20 +10,13 @@ import { AverageDonationGQL } from './average-donation-gql/average-donation-gql.
 import { RaisedVsSpentBarGQLComponent } from './raised-vs-spent-bar-gql/raised-vs-spent-bar-gql.component';
 import { AverageDonationGQLComponent } from './average-donation-gql/average-donation-gql.component';
 
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    GraphQLModule,
-    RaisedVsSpentBarModule,
-    AverageDonationModule,
-  ],
-  declarations: [
-    RaisedVsSpentBarGQLComponent,
-    AverageDonationGQLComponent,
-  ],  
-  providers: [ RaisedVsSpentGQL, AverageDonationGQL ], 
-  exports: [ RaisedVsSpentBarGQLComponent, AverageDonationGQLComponent ],
-  bootstrap: []
-})
+@NgModule({ declarations: [
+        RaisedVsSpentBarGQLComponent,
+        AverageDonationGQLComponent,
+    ],
+    exports: [RaisedVsSpentBarGQLComponent, AverageDonationGQLComponent],
+    bootstrap: [], imports: [CommonModule,
+        GraphQLModule,
+        RaisedVsSpentBarModule,
+        AverageDonationModule], providers: [RaisedVsSpentGQL, AverageDonationGQL, provideHttpClient(withInterceptorsFromDi())] })
 export class RaisedVsSpentGQLModule { }

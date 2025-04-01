@@ -3,8 +3,8 @@
   "compilerOptions": {
     "jsx": "react",
     "baseUrl": "./",
-    "downlevelIteration": true,
     "outDir": "./dist/out-tsc",
+    "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
     "module": "es2020",
@@ -30,7 +30,6 @@
       "dom",
       "esnext.asynciterable"
     ],
-    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "useDefineForClassFields": false
   }

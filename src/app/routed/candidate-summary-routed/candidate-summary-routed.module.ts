@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -7,19 +7,12 @@ import { CandidateSummaryContainerModule } from 'src/app/pages/candidates/summar
 import { CandidateSummaryRoutedComponent } from './candidate-summary-routed.component';
 import { CandidateSummaryRoutingModule } from './candidate-summary-routing.module';
 
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    RouterModule,
-    CandidateSummaryContainerModule,
-    CandidateSummaryRoutingModule,
-  ],
-  declarations: [
-    CandidateSummaryRoutedComponent,
-  ],  
-  providers: [ ], 
-  exports: [ CandidateSummaryRoutedComponent ],
-  bootstrap: []
-})
+@NgModule({ declarations: [
+        CandidateSummaryRoutedComponent,
+    ],
+    exports: [CandidateSummaryRoutedComponent],
+    bootstrap: [], imports: [CommonModule,
+        RouterModule,
+        CandidateSummaryContainerModule,
+        CandidateSummaryRoutingModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class CandidateSummaryRoutedModule { }
