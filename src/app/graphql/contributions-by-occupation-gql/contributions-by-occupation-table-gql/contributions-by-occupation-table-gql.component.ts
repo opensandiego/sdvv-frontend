@@ -3,13 +3,14 @@ import { ContributionsGroupedByOccupationGQL, ContributionsGroupedByOccupation }
 import { globals } from 'src/app/globals';
 
 @Component({
-  selector: 'gql-contributions-by-occupation-table',
-  template: `
+    selector: 'gql-contributions-by-occupation-table',
+    template: `
     <contributions-by-occupation-table
       [contributionGroups]="contributionsGroupedByOccupation"
       [contributionColorShades]="contributionsColorShades"
     ></contributions-by-occupation-table>
   `,
+    standalone: false
 })
 export class ContributionsByOccupationGQLComponent implements OnChanges {
   @Input() candidateId;

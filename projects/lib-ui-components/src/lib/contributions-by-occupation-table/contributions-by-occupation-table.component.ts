@@ -8,9 +8,10 @@ export interface ContributionGroup {
 }
 
 @Component({
-  selector: 'contributions-by-occupation-table',
-  templateUrl: './contributions-by-occupation-table.component.html',
-  styleUrls: ['./contributions-by-occupation-table.component.scss']
+    selector: 'contributions-by-occupation-table',
+    templateUrl: './contributions-by-occupation-table.component.html',
+    styleUrls: ['./contributions-by-occupation-table.component.scss'],
+    standalone: false
 })
 export class ContributionsByOccupationTableComponent implements OnChanges {
 

@@ -9,8 +9,8 @@ import { globals } from 'src/app/globals';
 const uri = `${environment.apiUrl}`;
 
 @Component({
-  selector: 'gql-candidate-card',
-  template: `
+    selector: 'gql-candidate-card',
+    template: `
     <candidate-card 
       [candidateInfo]="candidateInfo"
       [committeeData]="committeeData"
@@ -19,6 +19,7 @@ const uri = `${environment.apiUrl}`;
       [inOppositionTextColor]="inOppositionTextColor"
     ></candidate-card>
   `,
+    standalone: false
 })
 export class CandidateCardGQLComponent implements OnChanges {
   @Input() candidateId: string;

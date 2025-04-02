@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'raised-in-vs-out-container',
-  styleUrls: ['./raised-in-vs-out-container.component.scss'],
-  template: `
+    selector: 'raised-in-vs-out-container',
+    styleUrls: ['./raised-in-vs-out-container.component.scss'],
+    template: `
     <div class="raised-in-vs-out-container">
       <gql-raised-in-vs-out-title class="title"
         [candidateId]="candidateId"
@@ -14,6 +14,7 @@ import { Component, Input } from '@angular/core';
       ></gql-in-vs-out-donut>
     </div>
   `,
+    standalone: false
 })
 export class RaisedInVsOutComponent {
   @Input() candidateId: string;

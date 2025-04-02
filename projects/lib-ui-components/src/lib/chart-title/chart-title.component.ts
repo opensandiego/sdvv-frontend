@@ -1,9 +1,10 @@
 import { Component, Input, } from '@angular/core';
 
 @Component({
-  selector: 'chart-title',
-  templateUrl: './chart-title.component.html',
-  styleUrls: ['./chart-title.component.scss']
+    selector: 'chart-title',
+    templateUrl: './chart-title.component.html',
+    styleUrls: ['./chart-title.component.scss'],
+    standalone: false
 })
 export class ChartTitleComponent {
   @Input() titleText: string = 'Title Text Here';

@@ -2,12 +2,13 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AverageDonationGQL, AverageDonationResponse } from './average-donation-gql.query';
 
 @Component({
-  selector: 'gql-average-donation',
-  template: `
+    selector: 'gql-average-donation',
+    template: `
     <average-donation 
       [average]="averageDonation"
     ></average-donation>
   `,
+    standalone: false
 })
 export class AverageDonationGQLComponent implements OnChanges {
   @Input() candidateId: string;

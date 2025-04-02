@@ -6,7 +6,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ChartTitleComponent } from './chart-title.component';
-import { APP_INITIALIZER } from '@angular/core';
+import { inject, provideAppInitializer } from '@angular/core';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default {
@@ -21,16 +21,14 @@ export default {
         MatTooltipModule,
       ],
       providers: [
-        {
-          provide: APP_INITIALIZER,
-          useFactory: (library: FaIconLibrary) => {
+        provideAppInitializer(() => {
+        const initializerFn = ((library: FaIconLibrary) => {
             return async () => {
               library.addIcons(faQuestionCircle);
             };
-          },
-          deps: [ FaIconLibrary ],
-          multi: true,
-        }
+          })(inject(FaIconLibrary));
+        return initializerFn();
+      })
       ],
     }),
   ], 

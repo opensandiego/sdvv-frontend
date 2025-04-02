@@ -1,9 +1,10 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'year-card',
-  templateUrl: './year-card.component.html',
-  styleUrls: ['./year-card.component.scss']
+    selector: 'year-card',
+    templateUrl: './year-card.component.html',
+    styleUrls: ['./year-card.component.scss'],
+    standalone: false
 })
 export class YearCardComponent implements OnChanges {
   @Input() year: string;

@@ -4,14 +4,15 @@ import { ElectionYear } from 'lib-ui-components';
 import { YearSelectorGQL, YearsResponse } from './year-selector-gql.query';
 
 @Component({
-  selector: 'gql-year-selector',
-  template: `
+    selector: 'gql-year-selector',
+    template: `
     <year-selector
       [years]="electionYears"
       [selectedYear]="year"
       (selectedYearChange)="doChange($event)"
     ></year-selector>
   `,
+    standalone: false
 })
 export class YearSelectorGQLComponent implements OnInit {
   @Input() year: string = '';

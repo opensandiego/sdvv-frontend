@@ -7,13 +7,12 @@ import { Committee } from '../lib-ui-charts.models';
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
-  standalone: true,
-  selector: 'outside-money-stacked-bar-v2',
-  imports: [
-    NgxEchartsModule,
-  ],
-  styleUrls: ['./outside-money-stacked-bar.component.scss'],
-  template: `
+    selector: 'outside-money-stacked-bar-v2',
+    imports: [
+        NgxEchartsModule,
+    ],
+    styleUrls: ['./outside-money-stacked-bar.component.scss'],
+    template: `
     <div class="outside-money-stacked-bar-chart" echarts 
       [options]="chartOption"
       [merge]="mergeOption"

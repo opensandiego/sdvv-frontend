@@ -5,14 +5,15 @@ import { ElectionYearGQL } from './election-year-gql.query';
 import { ActiveMenuPathGQL } from 'src/app/graphql/candidate-menu-gql/candidate-menu-gql.component';
 
 @Component({
-  selector: 'candidate-menu-routed',
-  template: `
+    selector: 'candidate-menu-routed',
+    template: `
     <gql-candidate-menu
       [electionYear]="activeYear"
       [activeItem]="activeItem"
       [detailsActive]="detailsActive"
     ></gql-candidate-menu>
   `,
+    standalone: false
 })
 export class CandidateMenuRoutedComponent implements OnInit {
   activeYear: string;

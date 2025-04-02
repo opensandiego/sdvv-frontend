@@ -11,9 +11,10 @@ export interface IndependentCommittees {
 }
 
 @Component({
-  selector: 'details-outside-money',
-  templateUrl: './details-container-outside-money.component.html',
-  styleUrls: ['./details-container-outside-money.component.scss']
+    selector: 'details-outside-money',
+    templateUrl: './details-container-outside-money.component.html',
+    styleUrls: ['./details-container-outside-money.component.scss'],
+    standalone: false
 })
 export class DetailsContainerOutsideMoneyComponent {
   @Input() oppositionCommittees: IndependentCommittees[];

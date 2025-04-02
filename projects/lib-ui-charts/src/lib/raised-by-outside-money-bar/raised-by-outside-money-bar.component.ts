@@ -6,9 +6,10 @@ import { RaisedByOutsideMoney } from '../lib-ui-charts.models';
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
-  selector: 'raised-by-outside-money-bar',
-  templateUrl: './raised-by-outside-money-bar.component.html',
-  styleUrls: ['./raised-by-outside-money-bar.component.scss']
+    selector: 'raised-by-outside-money-bar',
+    templateUrl: './raised-by-outside-money-bar.component.html',
+    styleUrls: ['./raised-by-outside-money-bar.component.scss'],
+    standalone: false
 })
 export class RaisedByOutsideMoneyBarComponent implements OnChanges {
   @Input() raisedByOutsideMoney: RaisedByOutsideMoney;

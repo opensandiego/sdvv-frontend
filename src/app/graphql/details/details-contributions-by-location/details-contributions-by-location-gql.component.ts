@@ -2,9 +2,10 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { ContributionsGroupedByLocation, ContributionsGroupedByLocationGQL } from './details-contributions-by-location-gql.query';
 
 @Component({
-  selector: 'details-contributions-by-location',
-  templateUrl: './details-contributions-by-location-gql.component.html',
-  styleUrls: ['./details-contributions-by-location-gql.component.scss']
+    selector: 'details-contributions-by-location',
+    templateUrl: './details-contributions-by-location-gql.component.html',
+    styleUrls: ['./details-contributions-by-location-gql.component.scss'],
+    standalone: false
 })
 export class DetailsContributionsByLocationComponent implements OnChanges {
   @Input() candidateId;

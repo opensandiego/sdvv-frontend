@@ -17,8 +17,8 @@ enum DatasetIndex {
 }
 
 @Component({
-  selector: 'contributions-by-code-stacked-bar',
-  template: `
+    selector: 'contributions-by-code-stacked-bar',
+    template: `
   <div class="total-raised-chart" echarts 
     [initOpts]="initOpts"
     (chartInit)="onChartInit($event)"
@@ -26,7 +26,7 @@ enum DatasetIndex {
     [merge]="mergeOption"
   ></div>
 `,
-  // styleUrls: ['./raised-by-code-stacked-bar.component.scss']
+    standalone: false
 })
 export class ContributionsByCodeStackedBarComponent implements OnChanges {
 

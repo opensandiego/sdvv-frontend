@@ -4,9 +4,10 @@ import { ExpenseCategory } from '../lib-ui-charts.models';
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
-  selector: 'total-spent-donut',
-  templateUrl: './total-spent-donut.component.html',
-  styleUrls: ['./total-spent-donut.component.scss']
+    selector: 'total-spent-donut',
+    templateUrl: './total-spent-donut.component.html',
+    styleUrls: ['./total-spent-donut.component.scss'],
+    standalone: false
 })
 export class TotalSpentDonutComponent implements OnChanges {
 

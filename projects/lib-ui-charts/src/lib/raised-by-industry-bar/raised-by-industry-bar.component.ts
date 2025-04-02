@@ -6,9 +6,10 @@ import { RaisedByIndustry } from '../lib-ui-charts.models';
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
-  selector: 'raised-by-industry-bar',
-  templateUrl: './raised-by-industry-bar.component.html',
-  styleUrls: ['./raised-by-industry-bar.component.scss']
+    selector: 'raised-by-industry-bar',
+    templateUrl: './raised-by-industry-bar.component.html',
+    styleUrls: ['./raised-by-industry-bar.component.scss'],
+    standalone: false
 })
 export class RaisedByIndustryBarComponent implements OnChanges {
 

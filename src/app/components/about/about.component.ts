@@ -4,13 +4,12 @@ import { globals } from 'src/app/globals';
 import { AboutVotersVoiceComponent } from '../about-voters-voice/about-voters-voice.component';
 
 @Component({
-  standalone: true,
-  imports: [
-    AboutVotersVoiceComponent,
-  ],
-  selector: 'about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+    imports: [
+        AboutVotersVoiceComponent,
+    ],
+    selector: 'about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
 

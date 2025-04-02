@@ -3,9 +3,10 @@ import { DetailsRaisedSpentGQLQuery, RaisedSpent } from './raised-vs-spent-gql.q
 import { globals } from 'src/app/globals';
 
 @Component({
-  selector: 'details-raised-spent-summary',
-  templateUrl: './details-raised-spent-summary.component.html',
-  styleUrls: ['./details-raised-spent-summary.component.scss']
+    selector: 'details-raised-spent-summary',
+    templateUrl: './details-raised-spent-summary.component.html',
+    styleUrls: ['./details-raised-spent-summary.component.scss'],
+    standalone: false
 })
 export class DetailsRaisedSpentSummaryComponent implements OnChanges {
   @Input() candidateId: string;

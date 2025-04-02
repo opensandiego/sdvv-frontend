@@ -12,8 +12,8 @@ import { ElectionYear } from '../lib-ui-components.models';
 import { SelectModule } from 'primeng/select';
 
 @Component({
-  selector: 'year-selector',
-  template: `
+    selector: 'year-selector',
+    template: `
     <p-select
       inputId="dropdown"
       [placeholder]="placeholderText"
@@ -25,10 +25,9 @@ import { SelectModule } from 'primeng/select';
       class="w-full py-1"
     />
   `,
-  // TODO: fix styling color to change back to blue border and blue text highlight.
-  // Fix text vertical spacing
-  imports: [CommonModule, ReactiveFormsModule, SelectModule],
-  standalone: true,
+    // TODO: fix styling color to change back to blue border and blue text highlight.
+    // Fix text vertical spacing
+    imports: [CommonModule, ReactiveFormsModule, SelectModule]
 })
 export class YearSelectorComponent implements OnChanges {
   @Input() years: ElectionYear[];

@@ -3,9 +3,10 @@ import { EChartsOption } from 'echarts';
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
-  selector: 'support-oppose-bar',
-  templateUrl: './support-oppose-bar.component.html',
-  styleUrls: ['./support-oppose-bar.component.scss']
+    selector: 'support-oppose-bar',
+    templateUrl: './support-oppose-bar.component.html',
+    styleUrls: ['./support-oppose-bar.component.scss'],
+    standalone: false
 })
 export class SupportOpposeBarComponent implements OnChanges {
   @Input() support: number;

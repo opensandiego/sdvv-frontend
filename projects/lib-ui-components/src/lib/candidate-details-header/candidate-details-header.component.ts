@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'candidate-details-header',
-  templateUrl: './candidate-details-header.component.html',
-  styleUrls: ['./candidate-details-header.component.scss']
+    selector: 'candidate-details-header',
+    templateUrl: './candidate-details-header.component.html',
+    styleUrls: ['./candidate-details-header.component.scss'],
+    standalone: false
 })
 export class CandidateDetailsHeaderComponent {
   @Input() candidateId?: string;

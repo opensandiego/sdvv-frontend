@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'contributions-by-occupation-tab',
-  templateUrl: './contributions-by-occupation-tab.component.html',
-  styleUrls: ['./contributions-by-occupation-tab.component.scss']
+    selector: 'contributions-by-occupation-tab',
+    templateUrl: './contributions-by-occupation-tab.component.html',
+    styleUrls: ['./contributions-by-occupation-tab.component.scss'],
+    standalone: false
 })
 export class ContributionsByOccupationTabComponent {
   @Input() candidateId: string;

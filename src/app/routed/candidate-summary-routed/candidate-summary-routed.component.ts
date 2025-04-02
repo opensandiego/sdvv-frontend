@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'candidate-summary-routed',
-  template: `
+    selector: 'candidate-summary-routed',
+    template: `
     <candidate-summary-container
       [candidateId]="candidateId"
     ></candidate-summary-container>
   `,
+    standalone: false
 })
 export class CandidateSummaryRoutedComponent implements OnInit {
   candidateId: string;

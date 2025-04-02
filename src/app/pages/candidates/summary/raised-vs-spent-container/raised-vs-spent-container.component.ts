@@ -1,9 +1,10 @@
 import { Component, Input, } from '@angular/core';
 
 @Component({
-  selector: 'raised-vs-spent-container',
-  templateUrl: './raised-vs-spent-container.component.html',
-  styleUrls: ['./raised-vs-spent-container.component.scss']
+    selector: 'raised-vs-spent-container',
+    templateUrl: './raised-vs-spent-container.component.html',
+    styleUrls: ['./raised-vs-spent-container.component.scss'],
+    standalone: false
 })
 export class RaisedVsSpentContainerComponent {
   @Input() candidateId: number;

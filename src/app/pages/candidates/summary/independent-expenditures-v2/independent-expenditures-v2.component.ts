@@ -16,17 +16,16 @@ export interface IndependentCommittees {
   color: string;
 }
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    FontAwesomeModule,
-    AccordionModule,
-    OutsideMoneyStackedBarComponentV2,
-    TopCategoriesTableComponent,
-  ],
-  selector: 'independent-expenditures-v2',
-  templateUrl: './independent-expenditures-v2.component.html',
-  styleUrls: ['./independent-expenditures-v2.component.scss']
+    imports: [
+        CommonModule,
+        FontAwesomeModule,
+        AccordionModule,
+        OutsideMoneyStackedBarComponentV2,
+        TopCategoriesTableComponent,
+    ],
+    selector: 'independent-expenditures-v2',
+    templateUrl: './independent-expenditures-v2.component.html',
+    styleUrls: ['./independent-expenditures-v2.component.scss']
 })
 export class IndependentExpendituresV2Component implements OnChanges {
   @Input() oppositionCommittees: IndependentCommittees[];

@@ -2,13 +2,14 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CandidateInfoGQL, CandidateInfo } from './candidate-info-gql.query';
 
 @Component({
-  selector: 'gql-raised-in-vs-out-title',
-  template: `
+    selector: 'gql-raised-in-vs-out-title',
+    template: `
     <chart-title class="chart-title"
       [titleText]="title"
       [tooltipText]="tooltip"
     ></chart-title>
   `,
+    standalone: false
 })
 export class RaisedInVsOutTitleGQLComponent implements OnChanges {
   @Input() candidateId: string;

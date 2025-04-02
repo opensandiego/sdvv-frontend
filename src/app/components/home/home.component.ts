@@ -9,20 +9,19 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
-  standalone: true,
-  imports: [
-    MatSidenavModule,
-    RouterModule,
-    BreadcrumbComponent,
-    ElectionYearRoutedModule,
-    CandidateMenuRoutedModule,
-    FooterGQLModule,
-    HeaderComponent,
-  ],
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    imports: [
+        MatSidenavModule,
+        RouterModule,
+        BreadcrumbComponent,
+        ElectionYearRoutedModule,
+        CandidateMenuRoutedModule,
+        FooterGQLModule,
+        HeaderComponent,
+    ],
+    selector: 'home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
   @ViewChild('drawer', { static: true }) sidenav: MatDrawer;

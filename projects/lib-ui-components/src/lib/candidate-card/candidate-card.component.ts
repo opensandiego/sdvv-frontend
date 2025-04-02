@@ -2,9 +2,10 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 import { CandidateInfo, CommitteeData } from '../lib-ui-components.models';
 
 @Component({
-  selector: 'candidate-card',
-  templateUrl: './candidate-card.component.html',
-  styleUrls: ['./candidate-card.component.scss']
+    selector: 'candidate-card',
+    templateUrl: './candidate-card.component.html',
+    styleUrls: ['./candidate-card.component.scss'],
+    standalone: false
 })
 export class CandidateCardComponent implements OnChanges {
   @Input()
