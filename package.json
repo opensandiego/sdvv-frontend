@@ -48,7 +48,7 @@
     "@mapbox/mapbox-gl-geocoder": "^4.7.4",
     "@material-ui/core": "^4.12.4",
     "@primeng/themes": "^18.0.2",
-    "angular-google-tag-manager": "^1.9.0",
+    "angular-google-tag-manager": "^1.11.0",
     "apollo-angular": "^10.0.3",
     "core-js": "^3.33.0",
     "echarts": "^5.4.3",
