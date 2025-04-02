@@ -8,6 +8,7 @@ import { IndependentExpendituresGQL, IndependentExpenditures } from '../independ
       [totalExpenditures]="totalExpendituresAmount"
     ></total-expenditures>
   `,
+  standalone: false,
 })
 export class TotalIndependentExpendituresGQLComponent implements OnChanges {
   @Input() candidateId: string;

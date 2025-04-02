@@ -3,7 +3,8 @@ import { Component, Input, } from '@angular/core';
 @Component({
   selector: 'independent-expenditures-container',
   templateUrl: './independent-expenditures-container.component.html',
-  styleUrls: ['./independent-expenditures-container.component.scss']
+  styleUrls: ['./independent-expenditures-container.component.scss'],
+  standalone: false
 })
 
 export class IndependentExpendituresContainerComponent {

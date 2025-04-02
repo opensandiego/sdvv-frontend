@@ -14,6 +14,7 @@ import { globals } from 'src/app/globals';
       [opposeBarColor]="expendituresInOppositionColor"
     ></support-oppose-bar>
   `,
+  standalone: false,
 })
 export class SupportOpposeBarGQLComponent implements OnChanges {
   @Input() candidateId: string;
