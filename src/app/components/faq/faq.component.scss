@@ -1,13 +1,13 @@
-@import "../../styles/variables";
-@import "../../styles/elements";
-@import "../../styles/global";
+@use "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
 
 
 .faq{
         padding:20px 40px 40px 40px;
         margin:20px 40px;
         background-color:#ffffff;
-        box-shadow: $vvshadow;
+        box-shadow: variables.$vvshadow;
 
         h1{
             margin:20px 0px 30px 0px;
@@ -15,7 +15,7 @@
         }
 
         .fact{
-            color: $vvblue;
+            color: variables.$vvblue;
             font-weight:normal;
             margin-bottom:5px;
             font-size: 18px;
@@ -25,13 +25,13 @@
 
         .answer{
             margin-top:0px !important;
-            color: $vvdarkgrey;
+            color: variables.$vvdarkgrey;
             margin-bottom: 20px;
             font-size: 14px;
             line-height: 1.4;
             font-weight: 100;
             max-width: 1200px;
         }
-       
-  
+
+
 }

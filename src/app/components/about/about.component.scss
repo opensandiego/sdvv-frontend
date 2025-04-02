@@ -1,6 +1,6 @@
-@import "../../styles/variables";
-@import "../../styles/elements";
-@import "../../styles/global";
+@use "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
 
 .about_container{
     padding:20px 40px 0px 30px;
@@ -10,7 +10,7 @@
     text-align:center;
     padding:40px 40px 40px 40px;
     font-weight: 100;
-    box-shadow: $vvshadow;
+    box-shadow: variables.$vvshadow;
     color:#4E4E4E;
     background-color: #fff;
     h1{
@@ -36,7 +36,7 @@
         a{
             font-weight: bold;
         }
-        p{ 
+        p{
             font-size: 14px;
         }
         img{
@@ -55,7 +55,7 @@
 
             text-align: left;
             align-self: center;
-            
+
         }
 
         h1{
@@ -76,8 +76,8 @@
         }
     }
 
-   
-    
+
+
 
 
     @media only screen and (max-width: 1000px) {
@@ -86,15 +86,15 @@
             max-width: 600px;
         }
         .transparent{
-     
+
             grid-template-columns: 1fr;
 
             .transparent_copy{
 
                 text-align: center;
-                
+
             }
-            
+
             .transparent_photo{
                 display: none;
                 visibility: hidden;

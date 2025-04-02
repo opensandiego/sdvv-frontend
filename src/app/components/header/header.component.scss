@@ -1,17 +1,17 @@
-@import "../../styles/variables";
-@import "../../styles/elements";
-@import "../../styles/global";
+@use "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
 
 .spacer {
   flex: 1 1 auto;
 }
 
 .mat-toolbar.mat-primary, .header-toolbar {
-  background-color: $vvdarkblue;
+  background-color: variables.$vvdarkblue;
 }
 
 .router-link-active {
-  color: $vvyellow !important;
+  color: variables.$vvyellow !important;
 }
 
 .logo{
@@ -44,9 +44,9 @@
 
   &:hover {
       text-decoration: underline;
-      color: $vvyellow;
+      color: variables.$vvyellow;
     }
     &:active {
-      color: $vvyellow;
+      color: variables.$vvyellow;
     }
 }

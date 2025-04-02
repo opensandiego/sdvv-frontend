@@ -1,10 +1,12 @@
+@use "./variables";
+
 *:focus{
     outline: none;
 }
 
 
 h1{
-    color:$vvdarkblue;
+    color:variables.$vvdarkblue;
     padding:0px;
     margin:0px;
     text-align:center;
@@ -18,7 +20,7 @@ h1{
     grid-template-columns: 3fr auto auto;
     padding: 10px 20px;
     text-align: left;
-    background-color: $vvdarkblue;
+    background-color: variables.$vvdarkblue;
     align-items: center;
     .nav_links {
         margin-left: 20px;
@@ -28,17 +30,17 @@ h1{
         font-weight: 100;
         &:hover {
             text-decoration: underline;
-            color: $vvyellow;
+            color: variables.$vvyellow;
           }
           &:active {
-            
-            color: $vvyellow;
+
+            color: variables.$vvyellow;
           }
       }
   }
 
 .h-sub{
-    color:$vvdarkblue;
+    color:variables.$vvdarkblue;
     font-weight: normal;
     padding:0px;
     margin:0px;
@@ -46,14 +48,14 @@ h1{
 }
 
 a{
-    color: $vvlightblue;
+    color: variables.$vvlightblue;
     text-decoration: none;
 
     &:hover{
-        color: $vvblue;
+        color: variables.$vvblue;
         text-decoration: underline;
     }
     &:visited{
-        color: $vvlightblue;
+        color: variables.$vvlightblue;
     }
 }

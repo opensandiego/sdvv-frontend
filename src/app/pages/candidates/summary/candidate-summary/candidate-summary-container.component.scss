@@ -1,5 +1,5 @@
-@import "../../../../styles/variables";
-@import "../../../../styles/elements";
+@use "../../../../styles/variables";
+@use "../../../../styles/elements";
 
 :host {
   padding: 0rem;
@@ -9,7 +9,7 @@
   padding: 15px 25px 15px 25px;
   margin: 10px;
   background: #fff;
-  box-shadow: $vvshadow;
+  box-shadow: variables.$vvshadow;
 
   position: relative;
   .close {
@@ -55,6 +55,6 @@
   color: black;
 
   &:hover {
-    color: $vvlightblue;
+    color: variables.$vvlightblue;
   }
 }

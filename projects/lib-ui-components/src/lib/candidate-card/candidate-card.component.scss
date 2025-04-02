@@ -1,6 +1,6 @@
-@import "../styles/variables";
-@import "../styles/elements";
-@import "../styles/global";
+@use "../styles/variables";
+@use "../styles/elements";
+@use "../styles/global";
 
 .candidate-card-outer-container {
     display: flex;
@@ -24,14 +24,14 @@
         border-radius: 50%;
         overflow: hidden;
         border: 1px solid;
-        border-color: $vvbackground;
-        
+        border-color: variables.$vvbackground;
+
         img {
             object-fit: cover;
             object-position: center top;
             width: 100%;
             height: auto;
-           background-color: $vvbackground;
+           background-color: variables.$vvbackground;
         }
     }
     .description {
@@ -48,21 +48,21 @@
     margin: 10px;
     padding: 15px 25px 15px 25px;
     background: #fff;
-    box-shadow: $vvshadow;
+    box-shadow: variables.$vvshadow;
     // width: 180px !important;
     h1 {
         font-size: 20px;
-       color: $vvdarkblue;
+       color: variables.$vvdarkblue;
     }
     h2 {
         font-weight: normal;
         font-size: 12px;
-        color: $vvgrey;
+        color: variables.$vvgrey;
         margin: 5px 0px 10px 0px;
     }
     h3 {
         font-size: 18px;
-        color: $vvdarkgrey;
+        color: variables.$vvdarkgrey;
     }
     .first{
         margin-top:10px;
@@ -85,14 +85,14 @@
                     font-weight: bold;
                 }
             }
-        } 
+        }
     }
     .candidate-button {
-        @include button-styles;
+        @include elements.button-styles;
         padding: 0 16px;
     }
     .candidate-button:hover {
-        background-color: $vvlightblue;
+        background-color: variables.$vvlightblue;
         text-decoration: none;
     }
 }
@@ -102,7 +102,7 @@
     padding: 0;
     box-shadow: none;
     height: auto;
-    
+
     .candidate-image {
         border: 0px;
     }
@@ -115,7 +115,7 @@
     align-items: center;
     margin-top: 10px;
     font-size: 14px;
-    color: $vvlightblue;
+    color: variables.$vvlightblue;
 
     .mat-icon {
         padding-right: 5px;

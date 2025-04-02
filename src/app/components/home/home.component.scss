@@ -1,9 +1,10 @@
-@import "../../styles/variables";
-@import "../../styles/elements";
-@import "../../styles/global";
+@use "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
+@use "sass:color";
 
 .main_section{
-  background-color: $vvbackground;
+  background-color: variables.$vvbackground;
 }
 .full-width{
   padding: 0px;
@@ -25,13 +26,13 @@
       border-bottom: 1px solid #F5F5F5;
 
       .mat-expansion-panel-content {
-        background: lighten($vvbackground, 3%);
+        background: color.adjust(variables.$vvbackground, $lightness: 3%);
         .mat-expansion-panel-body {
           padding: 0 20px 0;
           margin: 0 10px;
-        
+
         }
-      
+
         i {
           opacity: 0.7;
         }
@@ -47,12 +48,12 @@
             padding: 0 5px;
           }
           transition: none;
-          background: lighten($vvbackground, 3%);
+          background: color.adjust(variables.$vvbackground, $lightness: 3%);
           padding: 5px 0px;
 
           &:hover {
-            background: lighten($vvbackground, 3%) !important;
-            border-bottom: 2px $vvlightblue solid;
+            background: color.adjust(variables.$vvbackground, $lightness: 3%) !important;
+            border-bottom: 2px variables.$vvlightblue solid;
             font-style: italic;
           }
 
@@ -61,11 +62,11 @@
     }
 
     .active-link {
-      background-color: $vvlightblue !important;
-      
+      background-color: variables.$vvlightblue !important;
+
 
       .mat-content .mat-expansion-panel-header-title {
-        color: $vvlightgrey;         
+        color: variables.$vvlightgrey;
       }
     }
 
@@ -77,13 +78,13 @@
       }
 
       &:hover {
-        background-color: lighten($vvlightblue, 10%) !important;
+        background-color: color.adjust(variables.$vvlightblue, $lightness: 10%) !important;
 
         .mat-content .mat-expansion-panel-header-title {
-          color: $vvlightgrey;         
+          color: variables.$vvlightgrey;
         }
       }
-      
+
     }
 
     .mat-expansion-panel-body {
@@ -96,7 +97,7 @@
 
           &:hover {
             font-weight: bold;
-            color: $vvlightblue;
+            color: variables.$vvlightblue;
             cursor: pointer;
           }
         }
@@ -105,12 +106,12 @@
 
     .candidate-selected {
       font-weight: bold;
-      color: $vvlightblue;
+      color: variables.$vvlightblue;
     }
 
     .district-selected {
-      background: lighten($vvbackground, 3%) !important;
-      border-bottom: 2px $vvlightblue solid;
+      background: color.adjust(variables.$vvbackground, $lightness: 3%) !important;
+      border-bottom: 2px variables.$vvlightblue solid;
       font-style: italic;
     }
 }
@@ -121,7 +122,7 @@
     transform: scaleY(0);
     transform-origin: top;
     padding-left: 30px;
-    background: $vvlightgrey;
+    background: variables.$vvlightgrey;
   }
 
   .submenu.expanded {
@@ -185,7 +186,7 @@
           }
         }
 
-        .mat-accordion .mat-expansion-panel {           
+        .mat-accordion .mat-expansion-panel {
           margin-top: 0px;
           margin-bottom: 0px;
         }
@@ -197,7 +198,7 @@
 
         .mat-expansion-panel-body {
           padding: 0px;
-      
+
           ul li {
             font-size: 12px;
             padding: 0 16px;

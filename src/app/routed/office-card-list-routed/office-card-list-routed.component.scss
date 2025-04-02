@@ -1,16 +1,16 @@
-@import "../../styles/elements";
-@import "../../styles/global";
-@import "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
+@use "../../styles/variables";
 
 :host{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  
+
   .list{
     width: 33.33%;
-    border-right:2px solid $vvbackground;
+    border-right:2px solid variables.$vvbackground;
   }
 
   .list:last-child{
@@ -27,7 +27,7 @@
 
     .list{
       width: 100% !important;
-      border-bottom:2px solid $vvbackground !important;
+      border-bottom:2px solid variables.$vvbackground !important;
       border-right:none!important;
       padding-bottom: 40px;
     }
