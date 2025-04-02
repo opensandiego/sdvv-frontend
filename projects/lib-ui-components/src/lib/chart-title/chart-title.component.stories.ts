@@ -1,13 +1,10 @@
-// import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { applicationConfig, moduleMetadata } from '@storybook/angular';
+import {
+  provideAnimations,
+} from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartTitleComponent } from './chart-title.component';
-import { inject, provideAppInitializer } from '@angular/core';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default {
   title: 'Lib UI Components/Chart Title',
@@ -15,40 +12,29 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [],
-      imports: [
-        BrowserAnimationsModule,
-        FontAwesomeModule,
-        MatTooltipModule,
-      ],
-      providers: [
-        provideAppInitializer(() => {
-        const initializerFn = ((library: FaIconLibrary) => {
-            return async () => {
-              library.addIcons(faQuestionCircle);
-            };
-          })(inject(FaIconLibrary));
-        return initializerFn();
-      })
-      ],
+      imports: [FontAwesomeModule, MatTooltipModule],
     }),
-  ], 
-  argTypes: { },
+    applicationConfig({
+      providers: [provideAnimations()],
+    }),
+  ],
+  argTypes: {},
 };
 
-const Template= (args: ChartTitleComponent) => ({
+const Template = (args: ChartTitleComponent) => ({
   props: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  titleText: "Chart Title",
-  tooltipText: "Placeholder tooltip text.",
+  titleText: 'Chart Title',
+  tooltipText: 'Placeholder tooltip text.',
 };
 
 export const GreenText = Template.bind({});
 GreenText.args = {
-  titleText: "Chart Title",
+  titleText: 'Chart Title',
   textColor: 'green',
-  tooltipText: "Placeholder tooltip text.",
-  tooltipColor: 'green',  
+  tooltipText: 'Placeholder tooltip text.',
+  tooltipColor: 'green',
 };
