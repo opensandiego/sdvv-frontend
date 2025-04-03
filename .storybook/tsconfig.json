@@ -2,14 +2,15 @@
   "extends": "../src/tsconfig.app.json",
   "compilerOptions": {
     "types": [
-      "node", //"cypress"
+      "node"
     ],
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "../src/test.ts",
     "../src/**/*.spec.ts",
-    "../projects/**/*.spec.ts"
+    "../projects/**/*.spec.ts",
+    "../**/cypress/*"
   ],
   "include": [
     "../src/**/*",
