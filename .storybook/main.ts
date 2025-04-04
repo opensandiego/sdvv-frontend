@@ -13,7 +13,6 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     'storybook-addon-angular-router',
-    '@storybook/addon-mdx-gfm',
     'storybook-addon-apollo-client',
   ],
   core: {
