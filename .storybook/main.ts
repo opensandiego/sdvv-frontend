@@ -14,6 +14,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     'storybook-addon-angular-router',
     '@storybook/addon-mdx-gfm',
+    'storybook-addon-apollo-client',
   ],
   core: {
     disableTelemetry: true,
