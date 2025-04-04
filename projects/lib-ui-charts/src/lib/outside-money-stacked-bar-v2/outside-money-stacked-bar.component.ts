@@ -1,17 +1,38 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-
-import { EChartsOption, ECharts, BarSeriesOption } from 'echarts';
-import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
-import * as echarts from 'echarts/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 
 import { Committee } from '../lib-ui-charts.models';
+import { getCompactFormattedCurrency } from '../shared/number-formatter';
 
-import { getCompactFormattedCurrency } from '../shared/number-formatter'
+import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+import { ECharts, BarSeriesOption } from 'echarts';
+import { EChartsCoreOption } from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import { TooltipComponent, GridComponent } from 'echarts/components';
+import { SVGRenderer } from 'echarts/renderers';
+echarts.use([BarChart, TooltipComponent, GridComponent, SVGRenderer]);
 
 @Component({
   selector: 'outside-money-stacked-bar-v2',
   imports: [NgxEchartsDirective],
-  styleUrls: ['./outside-money-stacked-bar.component.scss'],
+  styles: `
+    .outside-money-stacked-bar-chart {
+      height: 125px;
+      min-height: 125px;
+      width: 100%;
+      min-width: 150px;
+
+      display: flex;
+      justify-content: center;
+    }
+  `,
   template: `
     <div
       class="outside-money-stacked-bar-chart"
@@ -35,9 +56,9 @@ export class OutsideMoneyStackedBarComponentV2 implements OnChanges {
   defaultSupportBarColor = 'darkGreen';
 
   echartsInstance: ECharts;
-  mergeOption: EChartsOption;
+  mergeOption: EChartsCoreOption;
 
-  chartOption: EChartsOption = {
+  chartOption: EChartsCoreOption = {
     tooltip: {
       show: true,
       trigger: 'item',
