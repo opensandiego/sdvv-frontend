@@ -1,5 +1,9 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
+import { Component, effect, input } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 export interface ContributionGroup {
   name: string;
@@ -8,15 +12,16 @@ export interface ContributionGroup {
 }
 
 @Component({
-    selector: 'contributions-by-occupation-table',
-    templateUrl: './contributions-by-occupation-table.component.html',
-    styleUrls: ['./contributions-by-occupation-table.component.scss'],
-    standalone: false
+  selector: 'contributions-by-occupation-table',
+  imports: [CommonModule, MatIconModule, MatTableModule, FontAwesomeModule],
+  templateUrl: './contributions-by-occupation-table.component.html',
+  styleUrls: ['./contributions-by-occupation-table.component.scss'],
 })
-export class ContributionsByOccupationTableComponent implements OnChanges {
+export class ContributionsByOccupationTableComponent {
+  contributionGroups = input<ContributionGroup[]>([]);
+  contributionColorShades = input<string[]>([]);
 
-  @Input() contributionGroups: ContributionGroup[] = [];
-  @Input() contributionColorShades?: string[];
+  faCircle = faCircle;
 
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = [
@@ -24,37 +29,29 @@ export class ContributionsByOccupationTableComponent implements OnChanges {
     'industry',
     'amount',
     'percentage',
-  ];;
+  ];
 
-  constructor() { }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    
-    if (changes['contributionGroups']) {
-      const contributionGroups = changes['contributionGroups'].currentValue;
-      
-      if (contributionGroups?.length > 0) {
-        this.setTableData(contributionGroups);
-      } else {
-        this.setTableData([]);
-      }
-    }
-
+  constructor() {
+    effect(() => {
+      const contributionGroups =
+        this.contributionGroups()?.length > 0 ? this.contributionGroups() : [];
+      this.setTableData(contributionGroups);
+    });
   }
 
   setTableData(groups: ContributionGroup[]) {
-    const colorCodes = this.contributionColorShades;
-
-    const topFiveIndustries = groups.map((group, index) =>
-      ({
-        colorCode: colorCodes?.[index] ? colorCodes[index] : 'black',
-        industry: group['name'],
-        amount: group['amount'],
-        percentage: group['percent'],
-      })
-    );
-
-    this.dataSource.data = topFiveIndustries;
+    const tableData = this.getTableData(groups);
+    this.dataSource.data = tableData;
   }
 
+  getTableData(groups: ContributionGroup[]) {
+    const colorCodes = this.contributionColorShades();
+
+    return groups.map((group, index) => ({
+      colorCode: colorCodes?.[index] ? colorCodes[index] : 'black',
+      industry: group['name'],
+      amount: group['amount'],
+      percentage: group['percent'],
+    }));
+  }
 }
