@@ -12,6 +12,7 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
     'storybook-addon-angular-router',
     'storybook-addon-apollo-client',
   ],
