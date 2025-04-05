@@ -1,15 +1,18 @@
-// import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
+import { applicationConfig, moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
+import { GraphQLModule } from '../graphql.module';
+import { importProvidersFrom } from '@angular/core';
 
 import { CandidateCardListGQLComponent } from './candidate-card-list-gql.component';
 import { CandidateCardListGQLModule } from './candidate-card-list-gql.module';
-
 
 export default {
   title: 'Lib-gql/Candidate Card List',
   component: CandidateCardListGQLComponent,
   decorators: [
+    applicationConfig({
+      providers: [importProvidersFrom(GraphQLModule)],
+    }),
     moduleMetadata({
       declarations: [],
       imports: [
@@ -18,7 +21,7 @@ export default {
       ],
       providers: [],
     }),
-  ], 
+  ],
 };
 
 export const Default = () => ({
