@@ -105,7 +105,6 @@
     "postcss": "^8.2.15",
     "storybook": "^8.6.12",
     "storybook-addon-angular-router": "^1.10.1",
-    "storybook-addon-apollo-client": "^8.1.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.8.2"
   }

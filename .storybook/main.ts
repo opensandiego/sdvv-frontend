@@ -14,7 +14,6 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     'storybook-addon-angular-router',
-    'storybook-addon-apollo-client',
   ],
   core: {
     disableTelemetry: true,
