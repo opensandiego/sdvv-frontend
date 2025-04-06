@@ -1,25 +1,16 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, applicationConfig } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { ContributionsByCodeStackedBarComponent } from './contributions-by-code-stacked-bar.component';
-
-import { NgxEchartsModule } from 'ngx-echarts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const meta: Meta<ContributionsByCodeStackedBarComponent> = {
   title: 'Lib-ui-charts/Contributions By Code',
   component: ContributionsByCodeStackedBarComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        BrowserAnimationsModule, 
-        NgxEchartsModule.forRoot({
-          echarts: () => import('echarts'),
-        }),
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
-  ], 
+  ],
 };
 
 export default meta;
@@ -27,8 +18,8 @@ type Story = StoryObj<ContributionsByCodeStackedBarComponent>;
 
 export const Primary: Story = {
   render: () => ({
-    props: { },
-  })
+    props: {},
+  }),
 };
 
 export const Sample1: Story = {
@@ -47,9 +38,9 @@ export const Sample1: Story = {
         oth: 7000,
         pty: 0,
         scc: 550,
-      }
+      },
     },
-  })
+  }),
 };
 
 export const Sample2: Story = {
@@ -68,7 +59,7 @@ export const Sample2: Story = {
         oth: 50,
         pty: 500,
         scc: 750,
-      }
+      },
     },
-  })
+  }),
 };
