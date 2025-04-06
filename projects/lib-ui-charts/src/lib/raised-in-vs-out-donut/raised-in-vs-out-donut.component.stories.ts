@@ -1,23 +1,16 @@
-// import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { applicationConfig } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { RaisedInVsOutDonutComponent } from './raised-in-vs-out-donut.component';
-import { RaisedInVsOutDonutModule } from './raised-in-vs-out-donut.module';
 
 export default {
   title: 'Lib-ui-charts/Raised In vs. Out of Area Donut',
   component: RaisedInVsOutDonutComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        CommonModule,
-        RaisedInVsOutDonutModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
-  ], 
+  ],
 };
 
 export const Default = () => ({
