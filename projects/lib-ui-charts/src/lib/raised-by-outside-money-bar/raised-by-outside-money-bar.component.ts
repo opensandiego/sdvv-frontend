@@ -1,36 +1,56 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
-import { EChartsOption, ECharts } from 'echarts';
 import { RaisedByOutsideMoney } from '../lib-ui-charts.models';
 
-import { getCompactFormattedCurrency } from '../shared/number-formatter'
+import { getCompactFormattedCurrency } from '../shared/number-formatter';
+
+import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+import { EChartsOption } from 'echarts';
+import { BarChart } from 'echarts/charts';
+import { TooltipComponent } from 'echarts/components';
+import { SVGRenderer } from 'echarts/renderers';
+echarts.use([BarChart, TooltipComponent, SVGRenderer]);
 
 @Component({
-    selector: 'raised-by-outside-money-bar',
-    templateUrl: './raised-by-outside-money-bar.component.html',
-    styleUrls: ['./raised-by-outside-money-bar.component.scss'],
-    standalone: false
+  selector: 'raised-by-outside-money-bar',
+  imports: [NgxEchartsDirective],
+  providers: [provideEchartsCore({ echarts })],
+  template: `<div
+    class="raised-by-outside-money-chart"
+    echarts
+    [options]="chartOption"
+    (chartInit)="onChartInit($event)"
+    [merge]="mergeOptions"
+  ></div>`,
+  styles: [
+    `
+      .raised-by-outside-money-chart {
+        height: 300px;
+      }
+    `,
+  ],
 })
 export class RaisedByOutsideMoneyBarComponent implements OnChanges {
   @Input() raisedByOutsideMoney: RaisedByOutsideMoney;
 
-  echartsInstance: ECharts;
+  echartsInstance: echarts.ECharts;
   mergeOptions: EChartsOption;
 
   chartOption: EChartsOption = {
     tooltip: {
       show: true,
       trigger: 'item',
-      formatter: (params) =>  
+      formatter: (params) =>
         `${params.data.name}: $${Math.abs(params.data.value).toLocaleString()}`,
       axisPointer: {
         type: 'shadow',
-      }
+      },
     },
     xAxis: {
       type: 'value',
       axisLabel: {
-        formatter: (value: number) => 
+        formatter: (value: number) =>
           getCompactFormattedCurrency(Math.abs(value), 1),
       },
     },
@@ -45,9 +65,8 @@ export class RaisedByOutsideMoneyBarComponent implements OnChanges {
         label: {
           show: true,
           position: 'right',
-          formatter: (params) => getCompactFormattedCurrency(
-            Math.abs(params.data['value'])
-          ),
+          formatter: (params) =>
+            getCompactFormattedCurrency(Math.abs(params.data['value'])),
           fontWeight: 'bold',
         },
         itemStyle: { color: '#3392FF' },
@@ -60,45 +79,47 @@ export class RaisedByOutsideMoneyBarComponent implements OnChanges {
         label: {
           show: true,
           position: 'left',
-          formatter: (params) => getCompactFormattedCurrency(
-            Math.abs(params.data['value'])
-          ),
+          formatter: (params) =>
+            getCompactFormattedCurrency(Math.abs(params.data['value'])),
           fontWeight: 'bold',
         },
         itemStyle: { color: '#6964AD' },
         // data: [], // set in ngOnChanges
       },
     ],
-  }
+  };
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges(): void {
     this.setChartData(this.raisedByOutsideMoney);
   }
 
-  onChartInit(ec: ECharts): void {
+  onChartInit(ec: echarts.ECharts): void {
     this.echartsInstance = ec;
   }
 
   setChartData(chartData: object): void {
-
     let series = [
       {
         name: 'raised-by-outside-money-in-support',
-        data:[ {
-          name: 'Expenditures in Support',
-          value: chartData['inSupport'],
-        }]
+        data: [
+          {
+            name: 'Expenditures in Support',
+            value: chartData['inSupport'],
+          },
+        ],
       },
       {
         name: 'raised-by-outside-money-in-opposition',
-        data: [{
-          name: 'Expenditures in Opposition',
-          value: -1 * chartData['inOpposition']
-        }],
+        data: [
+          {
+            name: 'Expenditures in Opposition',
+            value: -1 * chartData['inOpposition'],
+          },
+        ],
       },
-    ]
+    ];
 
     if (this.echartsInstance) {
       this.echartsInstance.setOption({ series });
@@ -107,5 +128,4 @@ export class RaisedByOutsideMoneyBarComponent implements OnChanges {
       this.chartOption.series[1].data = series[1].data;
     }
   }
-
 }
