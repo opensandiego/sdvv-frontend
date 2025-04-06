@@ -1,12 +1,31 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { getCompactFormattedCurrency } from '../shared/number-formatter';
+
+import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
 import { EChartsOption } from 'echarts';
-import { getCompactFormattedCurrency } from '../shared/number-formatter'
+import { BarChart } from 'echarts/charts';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { SVGRenderer } from 'echarts/renderers';
+echarts.use([BarChart, TooltipComponent, SVGRenderer, GridComponent]);
 
 @Component({
-    selector: 'support-oppose-bar',
-    templateUrl: './support-oppose-bar.component.html',
-    styleUrls: ['./support-oppose-bar.component.scss'],
-    standalone: false
+  selector: 'support-oppose-bar',
+  imports: [NgxEchartsDirective],
+  providers: [provideEchartsCore({ echarts })],
+  template: `<div
+    class="outside-spending-chart"
+    echarts
+    [options]="chartOption"
+    [merge]="mergeOption"
+  ></div> `,
+  styles: [
+    `
+      .outside-spending-chart {
+        height: 125px;
+      }
+    `,
+  ],
 })
 export class SupportOpposeBarComponent implements OnChanges {
   @Input() support: number;
@@ -36,7 +55,7 @@ export class SupportOpposeBarComponent implements OnChanges {
       type: 'category',
       inverse: true,
       axisTick: {
-        show: false
+        show: false,
       },
       axisLabel: {
         show: false,
@@ -45,39 +64,44 @@ export class SupportOpposeBarComponent implements OnChanges {
     tooltip: {
       show: true,
       trigger: 'item',
-      formatter: (params) => `${params.name}: $${(+params.value).toLocaleString()}`,
+      formatter: (params) =>
+        `${params.name}: $${(+params.value).toLocaleString()}`,
     },
-    series: [{
-      type: 'bar',
-      label: {
-        show: true,
-        position: 'right',
-        formatter: (params) => 
-        `{a|${params['name']}} \n {b|${getCompactFormattedCurrency(+params['value'], 1)}}`,     
-        align: 'left',
-        rich: {
-          a: {
-            fontSize: 12,
-          },
-          b: {
-            fontSize: 16,
-            fontWeight: 'bold',
-            padding: [5, 0, 5, 0],
+    series: [
+      {
+        type: 'bar',
+        label: {
+          show: true,
+          position: 'right',
+          formatter: (params) =>
+            `{a|${params['name']}} \n {b|${getCompactFormattedCurrency(
+              +params['value'],
+              1
+            )}}`,
+          align: 'left',
+          rich: {
+            a: {
+              fontSize: 12,
+            },
+            b: {
+              fontSize: 16,
+              fontWeight: 'bold',
+              padding: [5, 0, 5, 0],
+            },
           },
         },
+        barWidth: 20,
       },
-      barWidth: 20,
-    }],
+    ],
   };
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges(): void {
     this.setChartMergeOption();
   }
 
   setChartMergeOption(): void {
-
     const rows = {
       Support: {
         name: 'Support',
@@ -87,7 +111,7 @@ export class SupportOpposeBarComponent implements OnChanges {
         name: 'Oppose',
         color: this.opposeBarColor,
       },
-    }
+    };
 
     this.mergeOption = {
       backgroundColor: this.backgroundColor,
@@ -105,17 +129,15 @@ export class SupportOpposeBarComponent implements OnChanges {
           {
             name: rows.Support.name,
             value: this.support,
-            itemStyle: { color: rows.Support.color, },
+            itemStyle: { color: rows.Support.color },
           },
           {
             name: rows.Oppose.name,
             value: this.oppose,
-            itemStyle: { color: rows.Oppose.color, },
+            itemStyle: { color: rows.Oppose.color },
           },
         ],
-      }
-    }
-
+      },
+    };
   }
-
 }
