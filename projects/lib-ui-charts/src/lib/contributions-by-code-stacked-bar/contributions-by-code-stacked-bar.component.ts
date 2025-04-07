@@ -1,13 +1,20 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ECharts, EChartsOption } from 'echarts';
-import { CommonModule } from '@angular/common';
 
 import { getCompactFormattedCurrency } from '../shared/number-formatter';
-import * as echarts from 'echarts/core';
-import { BarChart } from 'echarts/charts';
-import { SVGRenderer } from 'echarts/renderers';
+
 import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
-echarts.use([BarChart, SVGRenderer]);
+import * as echarts from 'echarts/core';
+import { EChartsCoreOption } from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import { TooltipComponent } from 'echarts/components';
+import { SVGRenderer } from 'echarts/renderers';
+import { DatasetComponent } from 'echarts/components';
+echarts.use([
+  BarChart,
+  TooltipComponent,
+  DatasetComponent,
+  SVGRenderer,
+]);
 
 export interface ContributionsByCode {
   ind: number;
@@ -24,7 +31,8 @@ enum DatasetIndex {
 
 @Component({
   selector: 'contributions-by-code-stacked-bar',
-  imports: [CommonModule, NgxEchartsDirective],
+  imports: [NgxEchartsDirective],
+  providers: [provideEchartsCore({ echarts })],
   template: `
     <div
       class="total-raised-chart"
@@ -35,17 +43,16 @@ enum DatasetIndex {
       [merge]="mergeOption"
     ></div>
   `,
-  providers: [provideEchartsCore({ echarts })],
 })
 export class ContributionsByCodeStackedBarComponent implements OnChanges {
   @Input() monetaryContributionsByCode: ContributionsByCode;
   @Input() nonMonetaryContributionsByCode: ContributionsByCode;
 
-  echartsInstance: ECharts;
-  initOpts: EChartsOption;
-  mergeOption: EChartsOption;
+  echartsInstance: echarts.ECharts;
+  initOpts: EChartsCoreOption;
+  mergeOption: EChartsCoreOption;
 
-  chartOption: EChartsOption = {
+  chartOption: EChartsCoreOption = {
     legend: {},
     xAxis: {
       type: 'category',
@@ -137,7 +144,7 @@ export class ContributionsByCodeStackedBarComponent implements OnChanges {
 
   constructor() {}
 
-  onChartInit(ec: ECharts): void {
+  onChartInit(ec: echarts.ECharts): void {
     this.echartsInstance = ec;
   }
 
