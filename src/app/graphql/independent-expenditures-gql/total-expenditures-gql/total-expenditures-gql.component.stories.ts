@@ -1,42 +1,39 @@
-// import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
 
-import { IndependentExpendituresGQLModule } from '../independent-expenditures-gql.module';
 import { TotalIndependentExpendituresGQLComponent } from './total-expenditures-gql.component';
+import { GraphQLModule } from '../../graphql.module';
 
-export default {
+const meta: Meta<TotalIndependentExpendituresGQLComponent> = {
   title: 'Lib-gql/Total Independent Expenditures',
   component: TotalIndependentExpendituresGQLComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        CommonModule,
-        IndependentExpendituresGQLModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [importProvidersFrom(GraphQLModule)],
     }),
-  ], 
+  ],
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
 };
 
-export const Default = () => ({
-  props: {
-    candidateId: ''
-  },
-})
+export default meta;
+type Story = StoryObj<TotalIndependentExpendituresGQLComponent>;
 
-export const BarbaraBry2020 = () => ({
-  props: {
+export const Default: Story = {
+  args: {
+    candidateId: '',
+  },
+};
+
+export const BarbaraBry2020: Story = {
+  args: {
     candidateId: 'be0a57fb-c0f0-bbd5-0d42-44a6560cbd21|2020',
-    textColor: 'black',
   },
-})
+};
 
-export const ToddGloria2020 = () => ({
-  props: {
+export const ToddGloria2020: Story = {
+  args: {
     candidateId: '24738d25-2b55-4ef8-b78e-dcc4442a6327|2020',
-    textColor: 'black',
   },
-})
-
+};
