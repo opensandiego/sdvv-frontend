@@ -1,11 +1,33 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {
+  faBalanceScale,
+  faMapMarkedAlt,
+  faUniversity,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
+
+import { SharedPipesModule } from '../shared/shared-pipes.module';
 import { OfficeData, OfficeInfo } from '../lib-ui-components.models';
 
 @Component({
-    selector: 'office-card',
-    templateUrl: './office-card.component.html',
-    styleUrls: ['./office-card.component.scss'],
-    standalone: false
+  selector: 'office-card',
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    FontAwesomeModule,
+    SharedPipesModule,
+  ],
+  templateUrl: './office-card.component.html',
+  styleUrls: ['./office-card.component.scss'],
 })
 export class OfficeCardComponent implements OnChanges {
   @Input() officeInfo: OfficeInfo;
@@ -21,46 +43,45 @@ export class OfficeCardComponent implements OnChanges {
   candidatesCount: number = 0;
   link: string = '';
 
-/**
- * For totalRaised and candidatesCount
- * 0 means there are no candidates so disable the amount.
- * null/undefined means that the amount has not yet been 
- * determined and the value is pending.
- */
+  /**
+   * For totalRaised and candidatesCount
+   * 0 means there are no candidates so disable the amount.
+   * null/undefined means that the amount has not yet been
+   * determined and the value is pending.
+   */
 
-/**
- * The icons used below must be imported in the module and
- * injected in the module's constructor. The imported icon 
- * names are similar but not exactly the same as those
- * used in library.addIcons().
- */   
   private officeIconsMap = {
-    'mayor': 'university',
-    'city attorney': 'balance-scale',
-    'city council': 'map-marked-alt',
-    'default': 'times',
-  }
+    mayor: faUniversity,
+    'city attorney': faBalanceScale,
+    'city council': faMapMarkedAlt,
+    default: faTimes,
+  };
 
-  constructor( ) { }
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['officeInfo']) {
-      const officeName = changes['officeInfo'].currentValue?.officeTitle; 
+      const officeName = changes['officeInfo'].currentValue?.officeTitle;
       this.officeName = officeName ? officeName : '-';
-      
+
       // Sample URL: http://localhost:4200/year/2020/office/mayor/0
-      const link = officeName ? `office/${officeName.toLowerCase().split(' ').join('-')}/0` : ''; 
-      
-      const candidatesCount = changes['officeInfo'].currentValue?.candidateCount
+      const link = officeName
+        ? `office/${officeName.toLowerCase().split(' ').join('-')}/0`
+        : '';
+
+      const candidatesCount =
+        changes['officeInfo'].currentValue?.candidateCount;
       this.candidatesCount = candidatesCount ? candidatesCount : 0;
-      
+
       this.link = candidatesCount > 0 ? link : null;
       this.isDisabled = candidatesCount < 1;
-      this.buttonText = candidatesCount > 0 ? this.defaultButtonText : this.disabledButtonText;
+      this.buttonText =
+        candidatesCount > 0 ? this.defaultButtonText : this.disabledButtonText;
     }
-    
+
     if (changes['officeData']) {
-      const totalRaised = changes['officeData'].currentValue?.totalContributions;
+      const totalRaised =
+        changes['officeData'].currentValue?.totalContributions;
       this.totalRaised = totalRaised ? totalRaised : 0;
       this.totalRaisedInProgress = !(totalRaised >= 0);
     }
