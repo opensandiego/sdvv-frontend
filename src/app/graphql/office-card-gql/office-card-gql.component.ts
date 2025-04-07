@@ -1,17 +1,18 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { OfficeInfo, OfficeData } from 'lib-ui-components';
+import { OfficeInfo, OfficeData, OfficeCardComponent } from 'lib-ui-components';
 import { OfficeCardGQLData } from './office-card-gql-data.query';
 import { OfficeCardGQLInfo } from './office-card-gql-info.query';
+import { GraphQLModule } from '../graphql.module';
 
 @Component({
-    selector: 'office-card-gql',
-    template: `
-    <office-card 
+  selector: 'office-card-gql',
+  imports: [GraphQLModule, OfficeCardComponent],
+  template: `
+    <office-card
       [officeInfo]="officeInfo"
       [officeData]="officeData"
     ></office-card>
   `,
-    standalone: false
 })
 export class OfficeCardGQLComponent implements OnChanges {
   @Input() year: string;
@@ -22,11 +23,13 @@ export class OfficeCardGQLComponent implements OnChanges {
 
   constructor(
     private officeCardGQLInfo: OfficeCardGQLInfo,
-    private officeCardGQLData: OfficeCardGQLData,
+    private officeCardGQLData: OfficeCardGQLData
   ) {}
 
   ngOnChanges() {
-    if (!this.year || !this.officeTitle) { return; }
+    if (!this.year || !this.officeTitle) {
+      return;
+    }
     this.officeInfo = null;
     this.officeData = null;
     const filters = {
@@ -34,34 +37,43 @@ export class OfficeCardGQLComponent implements OnChanges {
       // inGeneralElection: this.year !== '2022',
     };
 
-    this.officeCardGQLInfo.watch({
-      electionYear: this.year,
-      title: this.officeTitle,
-      filters,
-    }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
-      const committeeCount = result?.data?.office?.committeeCount;
+    this.officeCardGQLInfo
+      .watch(
+        {
+          electionYear: this.year,
+          title: this.officeTitle,
+          filters,
+        },
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const committeeCount = result?.data?.office?.committeeCount;
 
-      this.officeInfo = {
-        officeTitle: this.officeTitle,
-        candidateCount: committeeCount ? committeeCount : 0,
-      }
-    });
+        this.officeInfo = {
+          officeTitle: this.officeTitle,
+          candidateCount: committeeCount ? committeeCount : 0,
+        };
+      });
 
-    this.officeCardGQLData.watch({
-      electionYear: this.year,
-      title: this.officeTitle,
-      filters,
-    }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
-      const totalContributions = result?.data?.office?.totalContributions;
+    this.officeCardGQLData
+      .watch(
+        {
+          electionYear: this.year,
+          title: this.officeTitle,
+          filters,
+        },
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const totalContributions = result?.data?.office?.totalContributions;
 
-      this.officeData = {
-        totalContributions: totalContributions ? totalContributions : 0,
-      }
-    });
-
+        this.officeData = {
+          totalContributions: totalContributions ? totalContributions : 0,
+        };
+      });
   }
 }
