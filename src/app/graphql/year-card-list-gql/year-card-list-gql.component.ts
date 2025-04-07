@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { GraphQLModule } from '../graphql.module';
-import { YearCardGQLModule } from '../year-card-gql/year-card-gql.module';
 import { YearSelectorGQL, YearsResponse } from './year-card-list-gql.query';
+import { YearCardGQLComponent } from '../year-card-gql/year-card-gql.component';
 
 interface ElectionYearItem {
   year: string;
@@ -11,14 +11,9 @@ interface ElectionYearItem {
 }
 
 @Component({
-    imports: [
-        CommonModule,
-        GraphQLModule,
-        YearCardGQLModule,
-    ],
-    selector: 'gql-year-card-list',
-    styleUrls: ['./year-card-list-gql.component.scss'],
-    template: `
+  selector: 'gql-year-card-list',
+  imports: [CommonModule, GraphQLModule, YearCardGQLComponent],
+  template: `
     <div class="list" *ngFor="let electionYear of electionYearList">
       <gql-year-card
         [year]="electionYear.year"
@@ -26,31 +21,45 @@ interface ElectionYearItem {
         [inGeneralElection]="electionYear.inGeneralElection"
       ></gql-year-card>
     </div>
-  `
+  `,
+  styles: [
+    `
+      :host {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 10px;
+      }
+    `,
+  ],
 })
 export class YearCardListGQLComponent implements OnInit {
   electionYearList: ElectionYearItem[];
 
-  caption = 'Campaign Finance Charts for Candidates in San Diego City Elections.';
+  caption =
+    'Campaign Finance Charts for Candidates in San Diego City Elections.';
 
-  constructor(
-    private yearSelectorGQL: YearSelectorGQL,
-  ) {}
+  constructor(private yearSelectorGQL: YearSelectorGQL) {}
 
   ngOnInit() {
-    this.yearSelectorGQL.watch({ }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
-      const years: YearsResponse = result.data;
+    this.yearSelectorGQL
+      .watch(
+        {},
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const years: YearsResponse = result.data;
 
-      if (years.electionYears) {
-        this.electionYearList = years.electionYears.map( electionYear => ({
-          year: electionYear.year,
-          inPrimaryElection: electionYear.year === '2022',
-          // inGeneralElection: electionYear.year !== '2022',
-        }) );
-      }
-    });
+        if (years.electionYears) {
+          this.electionYearList = years.electionYears.map((electionYear) => ({
+            year: electionYear.year,
+            inPrimaryElection: electionYear.year === '2022',
+            // inGeneralElection: electionYear.year !== '2022',
+          }));
+        }
+      });
   }
-
 }
