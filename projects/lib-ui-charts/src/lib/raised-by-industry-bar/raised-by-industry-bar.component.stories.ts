@@ -1,9 +1,9 @@
-import { applicationConfig } from '@storybook/angular';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { RaisedByIndustryBarComponent } from './raised-by-industry-bar.component';
 
-export default {
+const meta: Meta<RaisedByIndustryBarComponent> = {
   title: 'Lib-ui-charts/Raised by Industry Bar',
   component: RaisedByIndustryBarComponent,
   decorators: [
@@ -12,9 +12,11 @@ export default {
     }),
   ],
 };
+export default meta;
+type Story = StoryObj<RaisedByIndustryBarComponent>;
 
-export const Default = () => ({
-  props: {
+export const Default: Story = {
+  args: {
     raisedByIndustries: [
       { name: 'Education', value: 43456 },
       { name: 'Technology', value: 42789 },
@@ -30,25 +32,25 @@ export const Default = () => ({
       { name: 'Gambling', value: 3123 },
     ],
   },
-});
+};
 
-export const OneIndustry = () => ({
-  props: {
+export const OneIndustry: Story = {
+  args: {
     raisedByIndustries: [{ name: 'Technology', value: 42789 }],
   },
-});
+};
 
-export const TwoIndustries = () => ({
-  props: {
+export const TwoIndustries: Story = {
+  args: {
     raisedByIndustries: [
       { name: 'Construction', value: 37111 },
       { name: 'Mining', value: 6543 },
     ],
   },
-});
+};
 
-export const FiveIndustries = () => ({
-  props: {
+export const FiveIndustries: Story = {
+  args: {
     raisedByIndustries: [
       { name: 'Manufacturing', value: 6789 },
       { name: 'Agriculture', value: 31008 },
@@ -57,10 +59,10 @@ export const FiveIndustries = () => ({
       { name: 'Banking', value: 28123 },
     ],
   },
-});
+};
 
-export const DuplicatedIndustries = () => ({
-  props: {
+export const DuplicatedIndustries: Story = {
+  args: {
     raisedByIndustries: [
       { name: 'Education', value: 43456 },
       { name: 'Technology', value: 42789 },
@@ -88,4 +90,4 @@ export const DuplicatedIndustries = () => ({
       { name: 'Gambling 2', value: 3123 },
     ],
   },
-});
+};

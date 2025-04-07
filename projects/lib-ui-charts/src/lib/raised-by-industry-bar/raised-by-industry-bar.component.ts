@@ -6,11 +6,20 @@ import { getCompactFormattedCurrency } from '../shared/number-formatter';
 
 import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
 import * as echarts from 'echarts/core';
-import { EChartsOption } from 'echarts';
 import { BarChart } from 'echarts/charts';
-import { TooltipComponent, GridComponent } from 'echarts/components';
+import {
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+} from 'echarts/components';
 import { SVGRenderer } from 'echarts/renderers';
-echarts.use([BarChart, TooltipComponent, GridComponent, SVGRenderer]);
+echarts.use([
+  BarChart,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  SVGRenderer,
+]);
 
 @Component({
   selector: 'raised-by-industry-bar',
@@ -44,10 +53,10 @@ export class RaisedByIndustryBarComponent implements OnChanges {
   private dataRowsCount = 0;
 
   echartsInstance: echarts.ECharts;
-  mergeOption: EChartsOption;
-  initOpts: EChartsOption;
+  mergeOption: echarts.EChartsCoreOption;
+  initOpts: echarts.EChartsCoreOption;
 
-  chartOption: EChartsOption = {
+  chartOption: echarts.EChartsCoreOption = {
     grid: {
       containLabel: true,
       left: '5%',
