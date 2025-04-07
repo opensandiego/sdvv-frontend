@@ -1,14 +1,7 @@
-import {
-  Meta,
-  applicationConfig,
-  StoryObj,
-  moduleMetadata,
-} from '@storybook/angular';
+import { Meta, applicationConfig, StoryObj } from '@storybook/angular';
 
 import { YearSelectorComponent } from './year-selector.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
-import { SelectModule } from 'primeng/select';
 
 export const ActionsData = {
   selectedYearChange: () => {},
@@ -18,9 +11,6 @@ const meta: Meta<YearSelectorComponent> = {
   title: 'Lib UI Components/Election Year Selector',
   component: YearSelectorComponent,
   decorators: [
-    moduleMetadata({
-      imports: [CommonModule, SelectModule],
-    }),
     applicationConfig({
       // List of providers and environment providers that should be available to the root component and all its children.
       providers: [provideAnimations()],
