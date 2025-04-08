@@ -1,17 +1,26 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-import { GraphQLModule } from '../graphql.module';
-import { CandidateCardModule, CandidateInfo, CommitteeData } from 'lib-ui-components';
-import { CandidateCardFinanceDataGQL, CandidateCardFinanceDataResponse } from './candidate-card-finance-data-gql.query';
-import { CandidateCardInfoGQL, CandidateCardInfoResponse } from './candidate-card-info-gql.query';
+import {
+  CandidateCardComponent,
+  CandidateInfo,
+  CommitteeData,
+} from 'lib-ui-components';
+import {
+  CandidateCardFinanceDataGQL,
+  CandidateCardFinanceDataResponse,
+} from './candidate-card-finance-data-gql.query';
+import {
+  CandidateCardInfoGQL,
+  CandidateCardInfoResponse,
+} from './candidate-card-info-gql.query';
 import { globals } from 'src/app/globals';
 
 const uri = `${environment.apiUrl}`;
 
 @Component({
   selector: 'gql-candidate-card',
-  imports: [GraphQLModule, CandidateCardModule],
+  imports: [CandidateCardComponent],
   template: `
     <candidate-card
       [candidateInfo]="candidateInfo"
