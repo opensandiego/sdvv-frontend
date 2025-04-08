@@ -1,8 +1,7 @@
 import { Meta, applicationConfig, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
 
 import { ContributionsByLocationTabComponent } from './contributions-by-location-tab.component';
-import { importProvidersFrom } from '@angular/core';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { GraphQLModule } from 'src/app/graphql/graphql.module';
 
 const meta: Meta<ContributionsByLocationTabComponent> = {
