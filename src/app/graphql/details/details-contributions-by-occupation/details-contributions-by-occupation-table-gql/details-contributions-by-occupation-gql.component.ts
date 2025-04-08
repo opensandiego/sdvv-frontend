@@ -4,9 +4,10 @@ import { ContributionsGroupedByOccupation, ContributionsGroupedByOccupationGQLQu
 import { globals } from 'src/app/globals';
 
 @Component({
-  selector: 'details-contributions-by-occupation-gql',
-  templateUrl: './details-contributions-by-occupation-gql.component.html',
-  styleUrls: ['./details-contributions-by-occupation-gql.component.scss']
+    selector: 'details-contributions-by-occupation-gql',
+    templateUrl: './details-contributions-by-occupation-gql.component.html',
+    styleUrls: ['./details-contributions-by-occupation-gql.component.scss'],
+    standalone: false
 })
 export class DetailsContributionsByOccupationGQLComponent implements OnChanges {
   @Input() candidateId;

@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-  name: "roundCurrencyDisplay",
+    name: "roundCurrencyDisplay",
+    standalone: false
 })
 export class RoundCurrencyDisplayPipe implements PipeTransform {
   transform(input: any, args?: any): any {

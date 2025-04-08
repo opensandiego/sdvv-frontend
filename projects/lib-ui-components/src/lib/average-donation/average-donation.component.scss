@@ -1,5 +1,5 @@
-@import "../styles/variables";
-@import "../styles/elements";
+@use "../styles/variables";
+@use "../styles/elements";
 
 .average-donation{
   display: flex;
@@ -12,14 +12,14 @@
     font-size: 12px;
     margin-top: 5px;
     margin-bottom: 0px;
-    color: $vvgrey;
+    color: variables.$vvgrey;
   }
 
   .amount {
     font-weight: bold;
     font-size: 18px;
     margin-top: 5px;
-    color: $vvdarkgrey;
+    color: variables.$vvdarkgrey;
   }
 
 }

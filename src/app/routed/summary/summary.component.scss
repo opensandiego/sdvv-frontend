@@ -1,13 +1,13 @@
-@import "../../styles/variables";
-@import "../../styles/elements";
-@import "../../styles/global";
+@use "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
 
 .ftm{
   margin: 0px auto 20px auto;
   text-align:center;
   padding:40px 40px 60px 40px;
   font-weight: 100;
-  box-shadow: $vvshadow;
+  box-shadow: variables.$vvshadow;
   color:#4E4E4E;
   background-color: #fff;
   h1{
@@ -17,7 +17,7 @@
     margin:10px 0px 20px 0px;
     line-height: 1.4;
   }
-  .ftm_caption{   
+  .ftm_caption{
     display: block;
     margin:10px auto 20px auto;
   }
@@ -27,7 +27,7 @@
   margin-top:60px;
   font-size:14px;
   a{
-    color:$vvlightblue;
+    color:variables.$vvlightblue;
   }
   p{
     margin:0px !important;

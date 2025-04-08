@@ -3,8 +3,8 @@ import { RaisedVsSpentGQL, RaisedVsSpent } from './raised-vs-spent-gql.query';
 import { globals } from 'src/app/globals';
 
 @Component({
-  selector: 'gql-raised-vs-spent',
-  template: `
+    selector: 'gql-raised-vs-spent',
+    template: `
     <raised-vs-spent-bar
       [raised]="raised"
       [spent]="spent"
@@ -12,6 +12,7 @@ import { globals } from 'src/app/globals';
       [spentBarColor]="expendituresInSupportColor"
     ></raised-vs-spent-bar>
   `,
+    standalone: false
 })
 export class RaisedVsSpentBarGQLComponent implements OnChanges {
   @Input() candidateId: string;

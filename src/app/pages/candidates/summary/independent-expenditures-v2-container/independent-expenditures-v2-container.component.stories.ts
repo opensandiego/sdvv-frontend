@@ -1,6 +1,7 @@
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
+
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { IndependentExpendituresV2ContainerComponent } from './independent-expenditures-v2-container.component'
@@ -19,7 +20,7 @@ export default {
       ],
       providers: [],
     }),
-  ], 
+  ],
 };
 
 export const ADefault = () => ({

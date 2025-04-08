@@ -11,13 +11,12 @@ export interface Category {
 }
 
 @Component({
-  standalone: true,
-  imports: [
-    MatTableModule,
-  ],
-  selector: 'app-top-categories-table',
-  templateUrl: './top-categories-table.component.html',
-  styleUrls: ['./top-categories-table.component.scss']
+    imports: [
+        MatTableModule,
+    ],
+    selector: 'app-top-categories-table',
+    templateUrl: './top-categories-table.component.html',
+    styleUrls: ['./top-categories-table.component.scss']
 })
 export class TopCategoriesTableComponent implements OnChanges, OnInit {
 

@@ -1,4 +1,4 @@
-import { InMemoryCache, makeVar } from "@apollo/client";
+import { InMemoryCache, makeVar } from "@apollo/client/core";
 
 export const electionYearVar = makeVar('');
 

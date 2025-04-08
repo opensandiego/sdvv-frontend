@@ -3,9 +3,10 @@ import { EChartsOption } from 'echarts';
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
-  selector: 'raised-vs-spent-bar',
-  templateUrl: './raised-vs-spent-bar.component.html',
-  styleUrls: ['./raised-vs-spent-bar.component.scss']
+    selector: 'raised-vs-spent-bar',
+    templateUrl: './raised-vs-spent-bar.component.html',
+    styleUrls: ['./raised-vs-spent-bar.component.scss'],
+    standalone: false
 })
 export class RaisedVsSpentBarComponent implements OnChanges {
   @Input() raised: number = 0;

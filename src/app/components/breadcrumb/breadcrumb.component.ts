@@ -7,14 +7,13 @@ import { TitleMetaTagService } from './title-meta-tag.service';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 @Component({
-  standalone: true,
-  imports: [
-    BreadcrumbModule,
-  ],
-  selector: 'breadcrumb',
-  template: `
+    imports: [
+        BreadcrumbModule,
+    ],
+    selector: 'breadcrumb',
+    template: `
     <p-breadcrumb [home]="home" [model]="items"></p-breadcrumb>
-  `,
+  `
 })
 export class BreadcrumbComponent implements OnInit {
   items: MenuItem[];

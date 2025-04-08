@@ -5,9 +5,10 @@ import { spendingCodes } from './spending-codes';
 import { globals } from 'src/app/globals';
 
 @Component({
-  selector: 'details-total-spent',
-  templateUrl: './details-total-spent.component.html',
-  styleUrls: ['./details-total-spent.component.scss']
+    selector: 'details-total-spent',
+    templateUrl: './details-total-spent.component.html',
+    styleUrls: ['./details-total-spent.component.scss'],
+    standalone: false
 })
 export class DetailsTotalSpentComponent implements OnInit, OnChanges {
   @Input() candidateId: string;

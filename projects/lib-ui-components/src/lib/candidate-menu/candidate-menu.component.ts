@@ -4,15 +4,16 @@ import { ActiveMenuPath } from '../lib-ui-components.models';
 import { Office } from './office';
 
 @Component({
-  selector: 'candidate-menu',
-  template: `
+    selector: 'candidate-menu',
+    template: `
     <p-panelMenu
       [model]="items"
       [style]="{'width':'200px'}"
       [multiple]="false"
     ></p-panelMenu>
   `,
-  styleUrls: ['./candidate-menu.component.scss'],
+    styleUrls: ['./candidate-menu.component.scss'],
+    standalone: false
 })
 export class CandidateMenuComponent implements OnChanges {
   @Input() activeItem: ActiveMenuPath;

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 import { GraphQLModule } from '../graphql.module';
@@ -7,18 +7,11 @@ import { CandidateCardGQLModule } from '../candidate-card-gql/candidate-card-gql
 import { CandidateCardListInfoGQL } from './candidate-card-list-gql.query';
 import { CandidateCardListGQLComponent } from './candidate-card-list-gql.component';
 
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    GraphQLModule,
-    CandidateCardGQLModule,
-  ],
-  declarations: [
-    CandidateCardListGQLComponent,
-  ],  
-  providers: [ CandidateCardListInfoGQL ], 
-  exports: [ CandidateCardListGQLComponent ],
-  bootstrap: []
-})
+@NgModule({ declarations: [
+        CandidateCardListGQLComponent,
+    ],
+    exports: [CandidateCardListGQLComponent],
+    bootstrap: [], imports: [CommonModule,
+        GraphQLModule,
+        CandidateCardGQLModule], providers: [CandidateCardListInfoGQL, provideHttpClient(withInterceptorsFromDi())] })
 export class CandidateCardListGQLModule { }

@@ -7,9 +7,10 @@ import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 
 @Component({
-  selector: 'total-raised-bar',
-  templateUrl: './total-raised-bar.component.html',
-  styleUrls: ['./total-raised-bar.component.scss']
+    selector: 'total-raised-bar',
+    templateUrl: './total-raised-bar.component.html',
+    styleUrls: ['./total-raised-bar.component.scss'],
+    standalone: false
 })
 export class TotalRaisedBarComponent implements OnChanges {
 

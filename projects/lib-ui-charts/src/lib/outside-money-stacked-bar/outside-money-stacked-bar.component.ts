@@ -6,9 +6,10 @@ import { Committee } from '../lib-ui-charts.models';
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
-  selector: 'outside-money-stacked-bar',
-  templateUrl: './outside-money-stacked-bar.component.html',
-  styleUrls: ['./outside-money-stacked-bar.component.scss']
+    selector: 'outside-money-stacked-bar',
+    templateUrl: './outside-money-stacked-bar.component.html',
+    styleUrls: ['./outside-money-stacked-bar.component.scss'],
+    standalone: false
 })
 export class OutsideMoneyStackedBarComponent implements OnChanges {
   @Input() opposedCommittees: Committee[];

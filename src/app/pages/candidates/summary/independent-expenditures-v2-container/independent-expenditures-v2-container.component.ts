@@ -7,15 +7,14 @@ import { IndependentCommittees, IndependentExpendituresV2Component } from "../in
 import { globals } from "src/app/globals";
 
 @Component({
-  standalone: true,
-  selector: 'independent-expenditures-v2-container',
-  imports: [
-    MatDividerModule,
-    ChartTitleModule,
-    GraphQLModule,
-    IndependentExpendituresV2Component,
-  ],
-  template: `
+    selector: 'independent-expenditures-v2-container',
+    imports: [
+        MatDividerModule,
+        ChartTitleModule,
+        GraphQLModule,
+        IndependentExpendituresV2Component,
+    ],
+    template: `
     <mat-divider></mat-divider>
 
     <div class="outside-money-container">
@@ -32,7 +31,7 @@ import { globals } from "src/app/globals";
       ></independent-expenditures-v2>
     </div>
   `,
-  styleUrls: ['./independent-expenditures-v2-container.component.scss'],
+    styleUrls: ['./independent-expenditures-v2-container.component.scss']
 })
 export class IndependentExpendituresV2ContainerComponent implements OnChanges {
   @Input() candidateId: string;

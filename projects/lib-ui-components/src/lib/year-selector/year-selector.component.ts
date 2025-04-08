@@ -1,23 +1,49 @@
-import { Component, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ElectionYear } from '../lib-ui-components.models';
+import { SelectModule } from 'primeng/select';
 
 @Component({
-  selector: 'year-selector',
-  templateUrl: './year-selector.component.html',
-  styleUrls: ['./year-selector.component.scss']
+    selector: 'year-selector',
+    template: `
+    <p-select
+      inputId="dropdown"
+      [placeholder]="placeholderText"
+      [autoDisplayFirst]="false"
+      optionLabel="year"
+      [options]="electionYears"
+      [formControl]="selectedYearModel"
+      (onChange)="selectYear()"
+      class="w-full py-1"
+    />
+  `,
+    // TODO: fix styling color to change back to blue border and blue text highlight.
+    // Fix text vertical spacing
+    imports: [CommonModule, ReactiveFormsModule, SelectModule]
 })
 export class YearSelectorComponent implements OnChanges {
   @Input() years: ElectionYear[];
   @Input() selectedYear: string;
   @Output() selectedYearChange = new EventEmitter<string>();
-  
-  public dropDownDisabled = false;
-  public placeholderText;
+
+  public placeholderText: string;
 
   electionYears: ElectionYear[];
-  selectedYearModel: ElectionYear = { year: '' };
+  selectedYearModel = new FormControl<{ year: string }>({
+    year: '',
+    disabled: false,
+  });
 
-  ngOnChanges(changes: SimpleChanges) {    
+  ngOnChanges(changes: SimpleChanges) {
+    console.log({ changes });
     if (changes['years']) {
       const years = changes['years'].currentValue;
       this.setElectionYears(years);
@@ -31,26 +57,30 @@ export class YearSelectorComponent implements OnChanges {
 
   private setElectionYears(years: ElectionYear[]) {
     if (years?.length > 0) {
-      this.dropDownDisabled = false;
+      this.selectedYearModel?.enable();
       this.placeholderText = 'Election Year';
       this.electionYears = years;
     } else {
-      this.dropDownDisabled = true;
+      this.selectedYearModel?.disable();
       this.placeholderText = 'Loading Years...';
     }
   }
 
-  selectYear(event) {
-    const year = event?.value?.year;
+  // Called from template
+  selectYear() {
+    const year = this.selectedYearModel.value.year;
     this.selectedYearChange.emit(year);
   }
 
   private setYear(selectedYear: string) {
-    this.selectedYearModel = { year: selectedYear };
+    this.selectedYearModel.setValue({ year: selectedYear });
 
-    const isElectionYear = this.years?.some( validYear => validYear.year === selectedYear);
-    if (!isElectionYear) {
-      return; 
-    };
+    // What does the code below do?
+    // const isElectionYear = this.years?.some(
+    //   (validYear) => validYear.year === selectedYear
+    // );
+    // if (!isElectionYear) {
+    //   return;
+    // }
   }
 }

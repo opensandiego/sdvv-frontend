@@ -4,9 +4,10 @@ import { EChartsOption } from 'echarts';
 import { getFormattedCurrency } from '../shared/number-formatter';
 
 @Component({
-  selector: 'raised-in-vs-out-donut',
-  templateUrl: './raised-in-vs-out-donut.component.html',
-  styleUrls: ['./raised-in-vs-out-donut.component.scss']
+    selector: 'raised-in-vs-out-donut',
+    templateUrl: './raised-in-vs-out-donut.component.html',
+    styleUrls: ['./raised-in-vs-out-donut.component.scss'],
+    standalone: false
 })
 export class RaisedInVsOutDonutComponent implements OnChanges {
   @Input() inside: number = 0;

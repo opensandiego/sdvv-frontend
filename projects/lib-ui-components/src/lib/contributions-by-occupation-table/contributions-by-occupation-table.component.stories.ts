@@ -7,7 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ContributionsByOccupationTableComponent } from './contributions-by-occupation-table.component';
 
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { APP_INITIALIZER } from '@angular/core';
+import { inject, provideAppInitializer } from '@angular/core';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default {
@@ -22,16 +22,14 @@ export default {
         FontAwesomeModule,
       ],
       providers: [
-        {
-          provide: APP_INITIALIZER,
-          useFactory: (library: FaIconLibrary) => {
+        provideAppInitializer(() => {
+        const initializerFn = ((library: FaIconLibrary) => {
             return async () => {
               library.addIcons(faCircle);
             };
-          },
-          deps: [ FaIconLibrary ],
-          multi: true,
-        }
+          })(inject(FaIconLibrary));
+        return initializerFn();
+      })
       ],
     }),
   ],  

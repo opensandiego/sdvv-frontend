@@ -1,6 +1,6 @@
 // import { Meta, Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import { APP_INITIALIZER } from '@angular/core';
+import { inject, provideAppInitializer } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,20 +18,15 @@ export default {
         OfficeCardModule,
       ],
       providers: [
-        {
-          // from: https://stackoverflow.com/questions/58175700/angular-fontawesome-faiconlibrary-angular-storybook-js
-          provide: APP_INITIALIZER,
-          useFactory: (library: FaIconLibrary) => {
+        provideAppInitializer(() => {
+        const initializerFn = ((library: FaIconLibrary) => {
             return async () => {
               // Add the necessary icons inside the initializer body.
               library.addIcons(faUniversity, faBalanceScale, faMapMarkedAlt, faQuestion);
             };
-          },
-          // When using a factory provider you need to explicitly specify its 
-          // dependencies.
-          deps: [ FaIconLibrary ],
-          multi: true,
-        }
+          })(inject(FaIconLibrary));
+        return initializerFn();
+      })
       ],
     }),
   ],  

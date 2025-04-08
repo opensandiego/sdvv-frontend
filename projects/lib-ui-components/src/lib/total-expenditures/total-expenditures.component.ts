@@ -2,9 +2,10 @@ import { Component, Input, } from '@angular/core';
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
-  selector: 'total-expenditures',
-  templateUrl: './total-expenditures.component.html',
-  styleUrls: ['./total-expenditures.component.scss']
+    selector: 'total-expenditures',
+    templateUrl: './total-expenditures.component.html',
+    styleUrls: ['./total-expenditures.component.scss'],
+    standalone: false
 })
 export class TotalExpendituresComponent {
   @Input() totalExpenditures: number;

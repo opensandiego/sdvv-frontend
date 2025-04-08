@@ -2,9 +2,10 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { OfficeData, OfficeInfo } from '../lib-ui-components.models';
 
 @Component({
-  selector: 'office-card',
-  templateUrl: './office-card.component.html',
-  styleUrls: ['./office-card.component.scss']
+    selector: 'office-card',
+    templateUrl: './office-card.component.html',
+    styleUrls: ['./office-card.component.scss'],
+    standalone: false
 })
 export class OfficeCardComponent implements OnChanges {
   @Input() officeInfo: OfficeInfo;

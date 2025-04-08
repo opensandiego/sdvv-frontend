@@ -4,13 +4,14 @@ import { map } from 'rxjs/operators';
 import { ElectionYearGQL } from './election-year-gql.query';
 
 @Component({
-  selector: 'election-year-routed',
-  template: `
+    selector: 'election-year-routed',
+    template: `
     <gql-year-selector
       [year]="activeYear"
       (yearChanged)="changeRoute($event)"
     ></gql-year-selector>
   `,
+    standalone: false
 })
 export class ElectionYearRouteComponent implements OnInit {
   activeYear: string = '';

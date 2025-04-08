@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { LastUpdateGQL, LastUpdateResponse } from './last-update-gql.query';
 
 @Component({
-  selector: 'footer-gql',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+    selector: 'footer-gql',
+    templateUrl: './footer.component.html',
+    styleUrls: ['./footer.component.scss'],
+    standalone: false
 })
 export class FooterGQLComponent implements OnInit {
   lastUpdatedDate: string;

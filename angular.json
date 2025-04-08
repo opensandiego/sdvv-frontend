@@ -15,12 +15,15 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/sdvv-frontend",
+            "outputPath": {
+              "base": "dist/sdvv-frontend"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -29,8 +32,6 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/primeflex/primeflex.css",
-              "./node_modules/primeng/resources/primeng.min.css",
-              "./node_modules/primeng/resources/themes/saga-blue/theme.css",
               "./node_modules/primeicons/primeicons.css",
               "./node_modules/mapbox-gl/dist/mapbox-gl.css",
               "./node_modules/@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css",
@@ -41,12 +42,11 @@
               "prop-types",
               "hoist-non-react-statics"
             ],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -61,8 +61,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -109,16 +107,16 @@
           "options": {},
           "configurations": {
             "production": {
-              "browserTarget": "sdvv-frontend:build:production"
+              "buildTarget": "sdvv-frontend:build:production"
             },
             "development": {
-              "browserTarget": "sdvv-frontend:build:development"
+              "buildTarget": "sdvv-frontend:build:development"
             },
             "staging": {
-              "browserTarget": "sdvv-frontend:build:staging"
+              "buildTarget": "sdvv-frontend:build:staging"
             },
             "db-staging": {
-              "browserTarget": "sdvv-frontend:build:db-staging"
+              "buildTarget": "sdvv-frontend:build:db-staging"
             }
           },
           "defaultConfiguration": "development"
@@ -126,7 +124,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sdvv-frontend:build"
+            "buildTarget": "sdvv-frontend:build"
           }
         },
         "test": {
@@ -348,7 +346,8 @@
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": false
   },
   "schematics": {
     "@angular-eslint/schematics:application": {

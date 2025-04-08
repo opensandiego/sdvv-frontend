@@ -11,15 +11,14 @@ interface ElectionYearItem {
 }
 
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    GraphQLModule,
-    YearCardGQLModule,
-  ],
-  selector: 'gql-year-card-list',
-  styleUrls: ['./year-card-list-gql.component.scss'],
-  template: `
+    imports: [
+        CommonModule,
+        GraphQLModule,
+        YearCardGQLModule,
+    ],
+    selector: 'gql-year-card-list',
+    styleUrls: ['./year-card-list-gql.component.scss'],
+    template: `
     <div class="list" *ngFor="let electionYear of electionYearList">
       <gql-year-card
         [year]="electionYear.year"
@@ -27,7 +26,7 @@ interface ElectionYearItem {
         [inGeneralElection]="electionYear.inGeneralElection"
       ></gql-year-card>
     </div>
-  `,
+  `
 })
 export class YearCardListGQLComponent implements OnInit {
   electionYearList: ElectionYearItem[];

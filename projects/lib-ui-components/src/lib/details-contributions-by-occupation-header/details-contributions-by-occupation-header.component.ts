@@ -7,9 +7,10 @@ export enum SortOrder {
 }
 
 @Component({
-  selector: 'details-contributions-by-occupation-header',
-  templateUrl: './details-contributions-by-occupation-header.component.html',
-  styleUrls: ['./details-contributions-by-occupation-header.component.scss']
+    selector: 'details-contributions-by-occupation-header',
+    templateUrl: './details-contributions-by-occupation-header.component.html',
+    styleUrls: ['./details-contributions-by-occupation-header.component.scss'],
+    standalone: false
 })
 export class DetailsContributionsByOccupationHeaderComponent {
   @Output() sortOrderChanged: EventEmitter<SortOrder> = new EventEmitter<SortOrder>();

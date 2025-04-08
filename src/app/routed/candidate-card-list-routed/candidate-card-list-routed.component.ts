@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'candidate-card-list-routed',
-  template: `
+    selector: 'candidate-card-list-routed',
+    template: `
     <candidate-card-list-gql
       [year]="year"
       [office]="office"
       [district]="district"
     ></candidate-card-list-gql>
   `,
+    standalone: false
 })
 export class CandidateCardListRoutedComponent implements OnInit {
   year: string;

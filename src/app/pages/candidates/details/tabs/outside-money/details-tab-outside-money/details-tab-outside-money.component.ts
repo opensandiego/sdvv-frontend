@@ -4,9 +4,10 @@ import { OutsideMoney, OutsideMoneyGQLQuery } from './details-outside-money-gql.
 import { globals } from 'src/app/globals';
 
 @Component({
-  selector: 'details-tab-outside-money',
-  templateUrl: './details-tab-outside-money.component.html',
-  styleUrls: ['./details-tab-outside-money.component.scss']
+    selector: 'details-tab-outside-money',
+    templateUrl: './details-tab-outside-money.component.html',
+    styleUrls: ['./details-tab-outside-money.component.scss'],
+    standalone: false
 })
 export class DetailsTabOutsideMoneyComponent implements OnChanges {
   @Input() candidateId: string;

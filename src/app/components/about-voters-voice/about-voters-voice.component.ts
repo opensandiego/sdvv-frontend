@@ -6,13 +6,12 @@ import { faBinoculars, faMoneyBill, faHandshake, faGavel } from '@fortawesome/fr
 import { faBalanceScale, faMapMarkedAlt, faQuestion, faUniversity } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  standalone: true,
-  imports: [
-    FontAwesomeModule,
-  ],
-  selector: 'about-voters-voice',
-  templateUrl: './about-voters-voice.component.html',
-  styleUrls: ['./about-voters-voice.component.scss'],
+    imports: [
+        FontAwesomeModule,
+    ],
+    selector: 'about-voters-voice',
+    templateUrl: './about-voters-voice.component.html',
+    styleUrls: ['./about-voters-voice.component.scss']
 })
 export class AboutVotersVoiceComponent {
   constructor(library: FaIconLibrary) {

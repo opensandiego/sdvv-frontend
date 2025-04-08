@@ -6,9 +6,10 @@ import { RaisedByLocations } from '../lib-ui-charts.models';
 import { getCompactFormattedCurrency } from '../shared/number-formatter'
 
 @Component({
-  selector: 'raised-by-location-bar',
-  templateUrl: './raised-by-location-bar.component.html',
-  styleUrls: ['./raised-by-location-bar.component.scss']
+    selector: 'raised-by-location-bar',
+    templateUrl: './raised-by-location-bar.component.html',
+    styleUrls: ['./raised-by-location-bar.component.scss'],
+    standalone: false
 })
 export class RaisedByLocationBarComponent implements OnChanges {
   @Input() raisedByLocations: RaisedByLocations;

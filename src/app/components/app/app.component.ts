@@ -3,13 +3,12 @@ import { GoogleTagManagerService } from 'angular-google-tag-manager';
 import { HomeComponent } from '../home/home.component';
 
 @Component({
-  standalone: true,
-  imports: [
-    HomeComponent,
-  ],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    imports: [
+        HomeComponent,
+    ],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'sdvv-frontend';

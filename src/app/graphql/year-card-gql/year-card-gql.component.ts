@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { YearCardGQL, YearCardResponse } from './year-card-gql.query';
 
 @Component({
-  selector: 'gql-year-card',
-  template: `
+    selector: 'gql-year-card',
+    template: `
     <year-card
       [year]="year"
       [mayorCandidateCount]="mayorCount"
@@ -11,6 +11,7 @@ import { YearCardGQL, YearCardResponse } from './year-card-gql.query';
       [cityAttorneyCandidateCount]="cityAttorneyCount"
     ></year-card>
   `,
+    standalone: false
 })
 export class YearCardGQLComponent implements OnChanges {
   @Input() year: string;

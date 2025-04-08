@@ -2,9 +2,9 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { CandidateCardListInfoGQL } from './candidate-card-list-gql.query';
 
 @Component({
-  selector: 'candidate-card-list-gql',
-  styleUrls: ['./candidate-card-list.component.scss'],
-  template: `
+    selector: 'candidate-card-list-gql',
+    styleUrls: ['./candidate-card-list.component.scss'],
+    template: `
     <div class="candidate-cards grid justify-left nogutter">
       <div *ngFor="let id of candidateIds">
         <gql-candidate-card
@@ -13,6 +13,7 @@ import { CandidateCardListInfoGQL } from './candidate-card-list-gql.query';
       </div>
     </div>
   `,
+    standalone: false
 })
 export class CandidateCardListGQLComponent implements OnChanges {
   @Input() year: string;

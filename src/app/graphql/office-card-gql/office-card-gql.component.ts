@@ -4,13 +4,14 @@ import { OfficeCardGQLData } from './office-card-gql-data.query';
 import { OfficeCardGQLInfo } from './office-card-gql-info.query';
 
 @Component({
-  selector: 'office-card-gql',
-  template: `
+    selector: 'office-card-gql',
+    template: `
     <office-card 
       [officeInfo]="officeInfo"
       [officeData]="officeData"
     ></office-card>
   `,
+    standalone: false
 })
 export class OfficeCardGQLComponent implements OnChanges {
   @Input() year: string;

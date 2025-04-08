@@ -4,9 +4,10 @@ import { DetailsTotalRaised, DetailsTotalRaisedGQLQuery } from './details-total-
 import { globals } from 'src/app/globals';
 
 @Component({
-  selector: 'details-total-raised',
-  templateUrl: './details-total-raised.component.html',
-  styleUrls: ['./details-total-raised.component.scss']
+    selector: 'details-total-raised',
+    templateUrl: './details-total-raised.component.html',
+    styleUrls: ['./details-total-raised.component.scss'],
+    standalone: false
 })
 export class DetailsTotalRaisedComponent implements OnChanges {
   @Input() candidateId: string;

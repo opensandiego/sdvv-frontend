@@ -1,6 +1,6 @@
 
 <div class="outside-money-container">
-  
+
   <outside-money-stacked-bar-v2
     *ngIf="committeesFound && oppositionCommittees && supportCommittees"
     [opposedCommittees]="oppositionCommittees"
@@ -8,39 +8,42 @@
     [committeeHighlighted]="hoveredCommittee"
     (committeeHighlightedChange)="committeeHoveredOver($event)"
   ></outside-money-stacked-bar-v2>
-  
-  <p-accordion >
-    <p-accordionTab [header]="accordionTitle" [disabled]="!committeesFound" [selected]="tabSelected">
-      
-      <div class="committee-tables">
-        <div class="opposition-panel" *ngIf="oppositionCommittees?.length > 0">
-          <div class="heading">
-            <fa-icon [icon]="faCircle" [icon]="faCircle" [style.color]="oppositionColor" ></fa-icon>
-            {{oppositionExpenditures.title}}
-          </div>
-          <app-top-categories-table class="opposition-table"
-            *ngIf="oppositionCommittees"
-            [categories]='oppositionCommittees'
-            [categoryHighlighted]="hoveredCommittee"
-            (categoryHighlightedChange)="committeeHoveredOver($event)"
-          ></app-top-categories-table>
-        </div>
-    
-        <div class="support-panel" *ngIf="supportCommittees?.length > 0">
-          <div class="heading">
-            <fa-icon [icon]="faCircle" [style.color]="supportColor" ></fa-icon>
-            {{supportExpenditures.title}}
-          </div>
-          <app-top-categories-table  class="support-table"
-            *ngIf="supportCommittees"
-            [categories]='supportCommittees'
-            [categoryHighlighted]="hoveredCommittee"
-            (categoryHighlightedChange)="committeeHoveredOver($event)"
-          ></app-top-categories-table>
-        </div>
-      </div>
 
-    </p-accordionTab>
+  <p-accordion >
+    <p-accordion-panel value="0" [disabled]="!committeesFound">
+      <p-accordion-header>{{accordionTitle}}</p-accordion-header>
+
+      <p-accordion-content>
+        <div class="committee-tables">
+          <div class="opposition-panel" *ngIf="oppositionCommittees?.length > 0">
+            <div class="heading">
+              <fa-icon [icon]="faCircle" [icon]="faCircle" [style.color]="oppositionColor" ></fa-icon>
+              {{oppositionExpenditures.title}}
+            </div>
+            <app-top-categories-table class="opposition-table"
+              *ngIf="oppositionCommittees"
+              [categories]='oppositionCommittees'
+              [categoryHighlighted]="hoveredCommittee"
+              (categoryHighlightedChange)="committeeHoveredOver($event)"
+            ></app-top-categories-table>
+          </div>
+
+          <div class="support-panel" *ngIf="supportCommittees?.length > 0">
+            <div class="heading">
+              <fa-icon [icon]="faCircle" [style.color]="supportColor" ></fa-icon>
+              {{supportExpenditures.title}}
+            </div>
+            <app-top-categories-table  class="support-table"
+              *ngIf="supportCommittees"
+              [categories]='supportCommittees'
+              [categoryHighlighted]="hoveredCommittee"
+              (categoryHighlightedChange)="committeeHoveredOver($event)"
+            ></app-top-categories-table>
+          </div>
+        </div>
+      </p-accordion-content>
+
+    </p-accordion-panel>
   </p-accordion>
 
 </div>

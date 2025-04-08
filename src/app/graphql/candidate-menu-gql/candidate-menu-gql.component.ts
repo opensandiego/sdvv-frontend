@@ -4,8 +4,8 @@ import { CandidateMenuGQL, CandidateMenuResponse } from './candidate-menu-gql.qu
 
 export { ActiveMenuPath as ActiveMenuPathGQL };
 @Component({
-  selector: 'gql-candidate-menu',
-  template: `
+    selector: 'gql-candidate-menu',
+    template: `
     <candidate-menu 
       [activeItem]="activeItem"
       [detailsActive]="detailsActive"
@@ -14,6 +14,7 @@ export { ActiveMenuPath as ActiveMenuPathGQL };
       [cityAttorney]="cityAttorney"
     ></candidate-menu>
   `,
+    standalone: false
 })
 export class CandidateMenuGQLComponent implements OnChanges {
   @Input() electionYear: string;

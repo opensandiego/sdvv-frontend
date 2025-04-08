@@ -1,4 +1,3 @@
-import { Meta, Story } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -13,7 +12,7 @@ export default {
     moduleMetadata({
       declarations: [],
       imports: [
-        BrowserAnimationsModule, 
+        BrowserAnimationsModule,
         NgxEchartsModule.forRoot({
           echarts: () => import('echarts'),
         }),
