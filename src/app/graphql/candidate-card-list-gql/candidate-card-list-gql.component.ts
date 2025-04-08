@@ -1,19 +1,27 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { CandidateCardListInfoGQL } from './candidate-card-list-gql.query';
+import { CommonModule } from '@angular/common';
+import { GraphQLModule } from '../graphql.module';
+import { CandidateCardGQLComponent } from '../candidate-card-gql/candidate-card-gql.component';
 
 @Component({
-    selector: 'candidate-card-list-gql',
-    styleUrls: ['./candidate-card-list.component.scss'],
-    template: `
+  selector: 'candidate-card-list-gql',
+  imports: [CommonModule, GraphQLModule, CandidateCardGQLComponent],
+  styles: [
+    `
+      .candidate-cards {
+        padding: 10px 20px;
+        margin: 0em;
+      }
+    `,
+  ],
+  template: `
     <div class="candidate-cards grid justify-left nogutter">
       <div *ngFor="let id of candidateIds">
-        <gql-candidate-card
-          [candidateId]="id"
-        ></gql-candidate-card>
+        <gql-candidate-card [candidateId]="id"></gql-candidate-card>
       </div>
     </div>
   `,
-    standalone: false
 })
 export class CandidateCardListGQLComponent implements OnChanges {
   @Input() year: string;
@@ -22,9 +30,7 @@ export class CandidateCardListGQLComponent implements OnChanges {
 
   candidateIds: string[];
 
-  constructor(
-    private candidateCardListInfoGQL: CandidateCardListInfoGQL,
-  ) { }
+  constructor(private candidateCardListInfoGQL: CandidateCardListInfoGQL) {}
 
   ngOnChanges() {
     const filters = {
@@ -32,20 +38,25 @@ export class CandidateCardListGQLComponent implements OnChanges {
       districts: this.district ? [this.district] : undefined,
       inPrimaryElection: this.year === '2022',
       // inGeneralElection: this.year !== '2022',
-    }
+    };
 
-    this.candidateCardListInfoGQL.watch({
-      year: this.year,
-      filters: filters,
-    }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
-      const response = result.data;
+    this.candidateCardListInfoGQL
+      .watch(
+        {
+          year: this.year,
+          filters: filters,
+        },
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const response = result.data;
 
-      const candidates = response?.candidates;
-      this.candidateIds = candidates 
-        ? candidates.map((candidate) => candidate.id) 
-        : [];
+        const candidates = response?.candidates;
+        this.candidateIds = candidates
+          ? candidates.map((candidate) => candidate.id)
+          : [];
       });
   }
 }

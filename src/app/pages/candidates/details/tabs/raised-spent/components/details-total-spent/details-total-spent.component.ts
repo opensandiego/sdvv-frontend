@@ -3,17 +3,28 @@ import { faMoneyBillWave, faHandHoldingUsd, faQuestionCircle } from '@fortawesom
 import { DetailsTotalSpent, DetailsTotalSpentGQLQuery } from './details-total-spent-gql.query';
 import { spendingCodes } from './spending-codes';
 import { globals } from 'src/app/globals';
+import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TotalSpentDonutComponent } from 'lib-ui-charts';
+import { TopCategoriesTableComponent } from 'src/app/components/top-categories-table/top-categories-table.component';
 
 @Component({
-    selector: 'details-total-spent',
-    templateUrl: './details-total-spent.component.html',
-    styleUrls: ['./details-total-spent.component.scss'],
-    standalone: false
+  selector: 'details-total-spent',
+  imports: [
+    CommonModule,
+    MatTooltipModule,
+    FontAwesomeModule,
+    TotalSpentDonutComponent,
+    TopCategoriesTableComponent,
+  ],
+  templateUrl: './details-total-spent.component.html',
+  styleUrls: ['./details-total-spent.component.scss'],
 })
 export class DetailsTotalSpentComponent implements OnInit, OnChanges {
   @Input() candidateId: string;
 
-  title = "Total Spent";
+  title = 'Total Spent';
   tooltipText = 'Placeholder tooltip text.';
   totalSpentTextColor = globals.expendituresInSupportColor;
   colors = [
@@ -36,9 +47,7 @@ export class DetailsTotalSpentComponent implements OnInit, OnChanges {
 
   spendingMap;
 
-  constructor(
-    private detailsTotalSpentGQLQuery: DetailsTotalSpentGQLQuery,
-  ) { }
+  constructor(private detailsTotalSpentGQLQuery: DetailsTotalSpentGQLQuery) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['candidateId']) {
@@ -50,42 +59,54 @@ export class DetailsTotalSpentComponent implements OnInit, OnChanges {
   update(candidateId: string) {
     this.candidateId = candidateId;
 
-    if (!this.candidateId) { return; }
+    if (!this.candidateId) {
+      return;
+    }
 
-    this.detailsTotalSpentGQLQuery.watch({
-      candidateId: this.candidateId,
-      limit: 5,
-    }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
-      const response: DetailsTotalSpent = result.data;
+    this.detailsTotalSpentGQLQuery
+      .watch(
+        {
+          candidateId: this.candidateId,
+          limit: 5,
+        },
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const response: DetailsTotalSpent = result.data;
 
-      const expenses = response?.candidate?.committee?.expenses;
-      const expenseCodes = expenses.groupBy.expenseByCode;
+        const expenses = response?.candidate?.committee?.expenses;
+        const expenseCodes = expenses.groupBy.expenseByCode;
 
-      /**
-       * Determine the minimum number of colors to use in the donut chart so 
-       * that two adjoining slices do not use the same color. If the length of
-       * expenseCodes is even then use two colors otherwise use three. 
-       */
-      const minimumColorCount = expenseCodes.length % 2 === 0? 2: 3;
+        /**
+         * Determine the minimum number of colors to use in the donut chart so
+         * that two adjoining slices do not use the same color. If the length of
+         * expenseCodes is even then use two colors otherwise use three.
+         */
+        const minimumColorCount = expenseCodes.length % 2 === 0 ? 2 : 3;
 
-      this.categoriesCombined = expenseCodes.map((expense, i) => ({
-        id: i.toString(),
-        code: expense.code,
-        name: expense.code ? this.getSpendingCodeDescription(expense.code) : 'not categorized',
-        value: expense.sum,
-        percent: expense.percent,
-        color: this.colors[i % minimumColorCount],
-      }));
+        this.categoriesCombined = expenseCodes.map((expense, i) => ({
+          id: i.toString(),
+          code: expense.code,
+          name: expense.code
+            ? this.getSpendingCodeDescription(expense.code)
+            : 'not categorized',
+          value: expense.sum,
+          percent: expense.percent,
+          color: this.colors[i % minimumColorCount],
+        }));
 
-      this.totalSpent = expenses.sum;
-      this.totalSpentFormatted = this.totalSpent
-        .toLocaleString('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0});
+        this.totalSpent = expenses.sum;
+        this.totalSpentFormatted = this.totalSpent.toLocaleString('en', {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 0,
+        });
 
-      // this.cashInHand = parseInt(response.cashOnHand);
-      // this.loansAndDebts = parseInt(response.loansAndDebts);
-    });
+        // this.cashInHand = parseInt(response.cashOnHand);
+        // this.loansAndDebts = parseInt(response.loansAndDebts);
+      });
   }
 
   getSpendingCodeDescription(spendingCode: string): string {
@@ -96,8 +117,7 @@ export class DetailsTotalSpentComponent implements OnInit, OnChanges {
     this.spendingMap = new Map(spendingCodes);
   }
 
-  categoryHoveredOver(category){
+  categoryHoveredOver(category) {
     this.hoveredCategory = category;
   }
-
 }

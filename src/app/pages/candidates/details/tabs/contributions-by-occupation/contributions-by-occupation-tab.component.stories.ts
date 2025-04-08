@@ -1,12 +1,12 @@
-import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
-import { GraphQLModule } from '../graphql.module';
+import { Meta, applicationConfig, StoryObj } from '@storybook/angular';
 import { importProvidersFrom } from '@angular/core';
 
-import { CandidateDetailsHeaderGQLComponent } from './candidate-details-header-gql.component';
+import { ContributionsByOccupationTabComponent } from './contributions-by-occupation-tab.component';
+import { GraphQLModule } from 'src/app/graphql/graphql.module';
 
-const meta: Meta<CandidateDetailsHeaderGQLComponent> = {
-  title: 'Lib-gql/Candidate Details Header',
-  component: CandidateDetailsHeaderGQLComponent,
+const meta: Meta<ContributionsByOccupationTabComponent> = {
+  title: 'Lib Containers/Contributions By Occupation Tab',
+  component: ContributionsByOccupationTabComponent,
   decorators: [
     applicationConfig({
       providers: [importProvidersFrom(GraphQLModule)],
@@ -15,14 +15,13 @@ const meta: Meta<CandidateDetailsHeaderGQLComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<CandidateDetailsHeaderGQLComponent>;
+type Story = StoryObj<ContributionsByOccupationTabComponent>;
 
 export const Default: Story = {
   args: {
     candidateId: '',
   },
 };
-
 export const BarbaraBry2020: Story = {
   args: {
     candidateId: 'be0a57fb-c0f0-bbd5-0d42-44a6560cbd21|2020',

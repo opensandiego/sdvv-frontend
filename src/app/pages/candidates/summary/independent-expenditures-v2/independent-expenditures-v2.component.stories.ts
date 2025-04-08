@@ -1,40 +1,20 @@
-import {
-  Meta,
-  applicationConfig,
-  StoryObj,
-  moduleMetadata,
-} from '@storybook/angular';
+import { Meta, applicationConfig, StoryObj } from '@storybook/angular';
 
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
 import { IndependentExpendituresV2Component } from './independent-expenditures-v2.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AccordionModule } from 'primeng/accordion';
-import { OutsideMoneyStackedBarComponentV2 } from 'projects/lib-ui-charts/src/lib/outside-money-stacked-bar-v2/outside-money-stacked-bar.component';
-import { TopCategoriesTableComponent } from 'src/app/components/top-categories-table/top-categories-table.component';
+import { importProvidersFrom } from '@angular/core';
+import { GraphQLModule } from 'src/app/graphql/graphql.module';
 
 const meta: Meta<IndependentExpendituresV2Component> = {
   title: 'Lib UI Components/Independent Expenditures V2',
   component: IndependentExpendituresV2Component,
   decorators: [
-    moduleMetadata({
-      imports: [
-        CommonModule,
-        FontAwesomeModule,
-        AccordionModule,
-        OutsideMoneyStackedBarComponentV2,
-        TopCategoriesTableComponent,
-      ],
-    }),
     applicationConfig({
       // List of providers and environment providers that should be available to the root component and all its children.
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(GraphQLModule)],
     }),
   ],
   excludeStories: /.*Data$/,
-  // args: {
-  //   ...ActionsData,
-  // },
 };
 
 export default meta;

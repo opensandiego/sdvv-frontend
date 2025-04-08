@@ -1,12 +1,17 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActiveMenuPath } from 'lib-ui-components';
-import { CandidateMenuGQL, CandidateMenuResponse } from './candidate-menu-gql.query';
+import {
+  CandidateMenuGQL,
+  CandidateMenuResponse,
+} from './candidate-menu-gql.query';
+import { CandidateMenuComponent } from 'projects/lib-ui-components/src/public-api';
 
 export { ActiveMenuPath as ActiveMenuPathGQL };
 @Component({
-    selector: 'gql-candidate-menu',
-    template: `
-    <candidate-menu 
+  selector: 'gql-candidate-menu',
+  imports: [CandidateMenuComponent],
+  template: `
+    <candidate-menu
       [activeItem]="activeItem"
       [detailsActive]="detailsActive"
       [mayor]="mayor"
@@ -14,7 +19,6 @@ export { ActiveMenuPath as ActiveMenuPathGQL };
       [cityAttorney]="cityAttorney"
     ></candidate-menu>
   `,
-    standalone: false
 })
 export class CandidateMenuGQLComponent implements OnChanges {
   @Input() electionYear: string;
@@ -33,7 +37,6 @@ export class CandidateMenuGQLComponent implements OnChanges {
       const electionYear = changes['electionYear'].currentValue;
       this.electionYearChanged(electionYear);
     }
-
   }
 
   electionYearChanged(electionYear) {
@@ -43,7 +46,7 @@ export class CandidateMenuGQLComponent implements OnChanges {
       this.mayor = null;
       this.cityCouncil = null;
       this.cityAttorney = null;
-      return; 
+      return;
     }
 
     const filters = {
@@ -51,20 +54,28 @@ export class CandidateMenuGQLComponent implements OnChanges {
       // inGeneralElection: this.year !== '2022',
     };
 
-    this.candidateMenuGQL.watch({
-      year: this.electionYear,
-      filters,
-    }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
+    this.candidateMenuGQL
+      .watch(
+        {
+          year: this.electionYear,
+          filters,
+        },
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        if (!result?.data?.electionYear) {
+          return;
+        }
 
-      if (!result?.data?.electionYear) { return; }
+        const response: CandidateMenuResponse = JSON.parse(
+          JSON.stringify(result.data.electionYear)
+        );
 
-      const response: CandidateMenuResponse = JSON.parse(JSON.stringify(result.data.electionYear));
-
-      this.mayor = response.officesByType.mayor;
-      this.cityCouncil = response.officesByType.cityCouncil;
-      this.cityAttorney = response.officesByType.cityAttorney;
-    });
+        this.mayor = response.officesByType.mayor;
+        this.cityCouncil = response.officesByType.cityCouncil;
+        this.cityAttorney = response.officesByType.cityAttorney;
+      });
   }
 }

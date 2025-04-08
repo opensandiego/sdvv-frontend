@@ -59,3 +59,8 @@ a{
         color: variables.$vvlightblue;
     }
 }
+
+#storybook-docs {
+  height: 100vh;
+  overflow: auto;
+}

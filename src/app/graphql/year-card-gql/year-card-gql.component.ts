@@ -1,9 +1,12 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { YearCardGQL, YearCardResponse } from './year-card-gql.query';
+import { YearCardComponent } from 'lib-ui-components';
+import { GraphQLModule } from '../graphql.module';
 
 @Component({
-    selector: 'gql-year-card',
-    template: `
+  selector: 'gql-year-card',
+  imports: [GraphQLModule, YearCardComponent],
+  template: `
     <year-card
       [year]="year"
       [mayorCandidateCount]="mayorCount"
@@ -11,7 +14,6 @@ import { YearCardGQL, YearCardResponse } from './year-card-gql.query';
       [cityAttorneyCandidateCount]="cityAttorneyCount"
     ></year-card>
   `,
-    standalone: false
 })
 export class YearCardGQLComponent implements OnChanges {
   @Input() year: string;
@@ -24,8 +26,8 @@ export class YearCardGQLComponent implements OnChanges {
 
   constructor(private yearCardGQL: YearCardGQL) {}
 
-  ngOnChanges(changes: SimpleChanges) {   
-    if (changes['year']) {      
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['year']) {
       this.year = changes['year'].currentValue;
       this.queryYear(this.year);
     }
@@ -42,32 +44,36 @@ export class YearCardGQLComponent implements OnChanges {
       inGeneralElection: this.inGeneralElection,
     };
 
-    this.setCountsToNull()
-    
-    this.yearCardGQL.watch({
-      year: year,
-      filters,
-    }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
+    this.setCountsToNull();
 
-      const response: YearCardResponse = result?.data;
-      const officesByType = response?.electionYear?.officesByType;
+    this.yearCardGQL
+      .watch(
+        {
+          year: year,
+          filters,
+        },
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const response: YearCardResponse = result?.data;
+        const officesByType = response?.electionYear?.officesByType;
 
-      if (!officesByType) { 
-        this.setCountsToZero();
-        return;
-      }
+        if (!officesByType) {
+          this.setCountsToZero();
+          return;
+        }
 
-      const mayorCount = officesByType?.mayor?.committeeCount;
-      this.mayorCount = mayorCount ? mayorCount : 0;
+        const mayorCount = officesByType?.mayor?.committeeCount;
+        this.mayorCount = mayorCount ? mayorCount : 0;
 
-      const cityCouncilCount = officesByType?.cityCouncil?.committeeCount; 
-      this.cityCouncilCount = cityCouncilCount ? cityCouncilCount : 0;
-      
-      const cityAttorneyCount = officesByType?.cityAttorney?.committeeCount; 
-      this.cityAttorneyCount = cityAttorneyCount ? cityAttorneyCount : 0;
-    });
+        const cityCouncilCount = officesByType?.cityCouncil?.committeeCount;
+        this.cityCouncilCount = cityCouncilCount ? cityCouncilCount : 0;
+
+        const cityAttorneyCount = officesByType?.cityAttorney?.committeeCount;
+        this.cityAttorneyCount = cityAttorneyCount ? cityAttorneyCount : 0;
+      });
   }
 
   setCountsTo(value) {
@@ -83,5 +89,4 @@ export class YearCardGQLComponent implements OnChanges {
   setCountsToNull() {
     this.setCountsTo(null);
   }
-
 }

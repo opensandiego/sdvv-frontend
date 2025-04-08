@@ -27,7 +27,7 @@ import { SelectModule } from 'primeng/select';
   `,
     // TODO: fix styling color to change back to blue border and blue text highlight.
     // Fix text vertical spacing
-    imports: [CommonModule, ReactiveFormsModule, SelectModule]
+    imports: [ReactiveFormsModule, SelectModule]
 })
 export class YearSelectorComponent implements OnChanges {
   @Input() years: ElectionYear[];
@@ -43,7 +43,6 @@ export class YearSelectorComponent implements OnChanges {
   });
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log({ changes });
     if (changes['years']) {
       const years = changes['years'].currentValue;
       this.setElectionYears(years);
