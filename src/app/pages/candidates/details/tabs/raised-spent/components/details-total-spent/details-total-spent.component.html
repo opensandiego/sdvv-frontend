@@ -5,12 +5,12 @@
 
     <div class="total-spent-header">
       <div class="title">Total Spent</div>
-      <div class="total-spent" 
+      <div class="total-spent"
         [style.color]="totalSpentTextColor"
       >{{totalSpentFormatted}}</div>
     </div>
 
-    <total-spent-donut 
+    <total-spent-donut
       *ngIf="categoriesCombined"
       [spendingCategories]="categoriesCombined"
       [categoryHighlighted]="hoveredCategory"
@@ -19,7 +19,7 @@
   </div>
 
   <div class="total-spent-table-panel">
-    <app-top-categories-table 
+    <app-top-categories-table
     *ngIf="categoriesCombined"
     [categories]='categoriesCombined'
     [categoryHighlighted]="hoveredCategory"
@@ -43,7 +43,7 @@
         <i
           class="tooltip-text"
           aria-hidden="true"
-          [matTooltip]="tooltipText" 
+          [matTooltip]="tooltipText"
         ><fa-icon [icon]="faQuestionCircle"></fa-icon>
         </i>
       </div>
