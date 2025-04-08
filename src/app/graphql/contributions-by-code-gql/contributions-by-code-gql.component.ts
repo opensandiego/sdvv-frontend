@@ -1,8 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ContributionsByCodeGQL, ContributionsByCode } from './contributions-by-code-gql.query';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  ContributionsByCodeGQL,
+  ContributionsByCode,
+} from './contributions-by-code-gql.query';
+import { ContributionsByCodeStackedBarComponent } from 'projects/lib-ui-charts/src/lib/contributions-by-code-stacked-bar/contributions-by-code-stacked-bar.component';
 
 @Component({
   selector: 'gql-contributions-by-code',
+  imports: [ContributionsByCodeStackedBarComponent],
   template: `
     <contributions-by-code-stacked-bar
       [monetaryContributionsByCode]="monetaryContributions"
@@ -10,7 +15,7 @@ import { ContributionsByCodeGQL, ContributionsByCode } from './contributions-by-
     ></contributions-by-code-stacked-bar>
   `,
 })
-export class ContributionsByCodeGQLComponent implements OnInit {
+export class ContributionsByCodeGQLComponent implements OnChanges {
   @Input() candidateId: string;
 
   monetaryContributions = {};
@@ -18,30 +23,43 @@ export class ContributionsByCodeGQLComponent implements OnInit {
 
   constructor(private contributionsByCodeGQL: ContributionsByCodeGQL) {}
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['candidateId']) {
+      const candidateId = changes['candidateId'].currentValue;
+      this.candidateIdChanged(candidateId);
+    }
+  }
 
-    this.contributionsByCodeGQL.watch({
-      candidateId: this.candidateId,
-      includeMonetary: true,
-      includeNonMonetary: true,
-    }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
-      const contributionsByCode: ContributionsByCode = result.data;
+  candidateIdChanged(candidateId: string) {
+    this.contributionsByCodeGQL
+      .watch(
+        {
+          candidateId: this.candidateId,
+          includeMonetary: true,
+          includeNonMonetary: true,
+        },
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const contributionsByCode: ContributionsByCode = result.data;
 
-      if (contributionsByCode.candidate) {
-        const monetary = contributionsByCode.candidate.committee.contributions.categorizedBy.method.monetary;
+        if (contributionsByCode.candidate) {
+          const monetary =
+            contributionsByCode.candidate.committee.contributions.categorizedBy
+              .method.monetary;
 
-        this.monetaryContributions = { ...monetary };
-        delete this.monetaryContributions['__typename'];
+          this.monetaryContributions = { ...monetary };
+          delete this.monetaryContributions['__typename'];
 
+          const nonMonetary =
+            contributionsByCode.candidate.committee.contributions.categorizedBy
+              .method.nonMonetary;
 
-        const nonMonetary = contributionsByCode.candidate.committee.
-        contributions.categorizedBy.method.nonMonetary;
-
-        this.nonMonetaryContributions = { ...nonMonetary };
-        delete this.nonMonetaryContributions['__typename'];
-      }
-    });
+          this.nonMonetaryContributions = { ...nonMonetary };
+          delete this.nonMonetaryContributions['__typename'];
+        }
+      });
   }
 }
