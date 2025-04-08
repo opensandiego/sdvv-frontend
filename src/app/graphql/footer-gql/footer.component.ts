@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { LastUpdateGQL, LastUpdateResponse } from './last-update-gql.query';
+import { CommonModule } from '@angular/common';
+import { GraphQLModule } from '../graphql.module';
 
 @Component({
-    selector: 'footer-gql',
-    templateUrl: './footer.component.html',
-    styleUrls: ['./footer.component.scss'],
-    standalone: false
+  selector: 'footer-gql',
+  imports: [CommonModule, GraphQLModule],
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss'],
 })
 export class FooterGQLComponent implements OnInit {
   lastUpdatedDate: string;
 
-  constructor(
-    private lastUpdateGQL: LastUpdateGQL,
-  ) { }
+  constructor(private lastUpdateGQL: LastUpdateGQL) {}
 
-  ngOnInit(): void {     
+  ngOnInit(): void {
     this.update();
   }
 
   update() {
-    this.lastUpdateGQL
-      .watch().valueChanges.subscribe( (result: any) => {
+    this.lastUpdateGQL.watch().valueChanges.subscribe((result: any) => {
       const response: LastUpdateResponse = result.data;
       const dateTime = response.lastUpdate.dateTime;
       this.lastUpdatedDate = dateTime;
