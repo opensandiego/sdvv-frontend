@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -18,14 +18,13 @@ import { OfficeData, OfficeInfo } from '../lib-ui-components.models';
 @Component({
   selector: 'office-card',
   imports: [
-    CommonModule,
     RouterModule,
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
     FontAwesomeModule,
-    SharedPipesModule,
-  ],
+    SharedPipesModule
+],
   templateUrl: './office-card.component.html',
   styleUrls: ['./office-card.component.scss'],
 })

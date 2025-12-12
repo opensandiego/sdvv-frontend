@@ -1,23 +1,24 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { OfficeCardGQLModule } from 'src/app/graphql/office-card-gql/office-card-gql.module';
 
 @Component({
     imports: [
-        CommonModule,
-        RouterModule,
-        OfficeCardGQLModule,
-    ],
+    RouterModule,
+    OfficeCardGQLModule
+],
     selector: 'office-card-list-routed',
     template: `
-    <div class="list" *ngFor="let title of officeTitles">
-      <office-card-gql
-        [year]="year"
-        [officeTitle]="title"
-      ></office-card-gql>
-    </div>
-  `,
+    @for (title of officeTitles; track title) {
+      <div class="list">
+        <office-card-gql
+          [year]="year"
+          [officeTitle]="title"
+        ></office-card-gql>
+      </div>
+    }
+    `,
     styleUrls: ['./office-card-list-routed.component.scss']
 })
 export class OfficeCardListRoutedComponent implements OnInit {

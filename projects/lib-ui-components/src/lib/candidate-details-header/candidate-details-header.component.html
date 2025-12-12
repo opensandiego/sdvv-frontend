@@ -5,7 +5,9 @@
     <div class="candidate-name">{{candidateName ? candidateName : '--'}}</div>
     <div class="description">{{description ? description : ''}}</div>
     <div class="website">
-      <a *ngIf="website" [href]="website"><fa-icon [icon]="faLink"></fa-icon>Website</a>
+      @if (website) {
+        <a [href]="website"><fa-icon [icon]="faLink"></fa-icon>Website</a>
+      }
     </div>
   </div>
 </ng-template>

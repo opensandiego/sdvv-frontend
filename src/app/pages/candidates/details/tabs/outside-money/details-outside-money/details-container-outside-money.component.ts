@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
@@ -17,11 +17,10 @@ export interface IndependentCommittees {
 @Component({
   selector: 'details-outside-money',
   imports: [
-    CommonModule,
     FontAwesomeModule,
     OutsideMoneyStackedBarComponent,
-    TopCategoriesTableComponent,
-  ],
+    TopCategoriesTableComponent
+],
   templateUrl: './details-container-outside-money.component.html',
   styleUrls: ['./details-container-outside-money.component.scss'],
 })

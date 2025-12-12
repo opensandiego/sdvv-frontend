@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -11,15 +11,14 @@ import { ContributionsByLocationTabComponent } from '../tabs/contributions-by-lo
 @Component({
   selector: 'candidate-details-container',
   imports: [
-    CommonModule,
     MatTooltipModule,
     MatTabsModule,
     RouterModule,
     CandidateDetailsHeaderGQLComponent,
     DetailsTabRaisedVSpentComponent,
     ContributionsByOccupationTabComponent,
-    ContributionsByLocationTabComponent,
-  ],
+    ContributionsByLocationTabComponent
+],
   templateUrl: './candidate-details-container.component.html',
   styles: [
     `
