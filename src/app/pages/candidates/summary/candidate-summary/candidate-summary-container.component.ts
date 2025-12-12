@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -14,17 +14,15 @@ import { IndependentExpendituresV2ContainerComponent } from '../independent-expe
 @Component({
   selector: 'candidate-summary-container',
   imports: [
-    CommonModule,
     FontAwesomeModule,
     RouterModule,
-
     GraphQLModule,
     CandidateCardGQLComponent,
     RaisedVsSpentContainerModule,
     ContributionsByOccupationContainerModule,
     RaisedInVsOutContainerModule,
-    IndependentExpendituresV2ContainerComponent,
-  ],
+    IndependentExpendituresV2ContainerComponent
+],
   templateUrl: './candidate-summary-container.component.html',
   styleUrls: ['./candidate-summary-container.component.scss'],
 })

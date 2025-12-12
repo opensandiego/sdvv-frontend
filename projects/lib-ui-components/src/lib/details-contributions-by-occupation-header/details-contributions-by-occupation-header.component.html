@@ -5,14 +5,15 @@
     <label class="label">Sort</label>
     <div class="buttons">
 
-      <button mat-flat-button 
-        *ngFor="let sortButton of sortButtons"
-        [color]="(sortOrder === sortButton.order) ? 'primary' : ''" 
-        (click)="onSort(sortButton.order)" 
-      >
-      {{sortButton.text}}
-      <fa-icon [icon]="sortButton.icon"></fa-icon>
-     </button>
+      @for (sortButton of sortButtons; track sortButton) {
+        <button mat-flat-button
+          [color]="(sortOrder === sortButton.order) ? 'primary' : ''"
+          (click)="onSort(sortButton.order)"
+          >
+          {{sortButton.text}}
+          <fa-icon [icon]="sortButton.icon"></fa-icon>
+        </button>
+      }
 
     </div>
   </div>

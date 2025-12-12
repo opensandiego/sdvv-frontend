@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { GraphQLModule } from '../graphql.module';
 import { YearSelectorGQL, YearsResponse } from './year-card-list-gql.query';
@@ -12,16 +12,18 @@ interface ElectionYearItem {
 
 @Component({
   selector: 'gql-year-card-list',
-  imports: [CommonModule, GraphQLModule, YearCardGQLComponent],
+  imports: [GraphQLModule, YearCardGQLComponent],
   template: `
-    <div class="list" *ngFor="let electionYear of electionYearList">
-      <gql-year-card
-        [year]="electionYear.year"
-        [inPrimaryElection]="electionYear.inPrimaryElection"
-        [inGeneralElection]="electionYear.inGeneralElection"
-      ></gql-year-card>
-    </div>
-  `,
+    @for (electionYear of electionYearList; track electionYear) {
+      <div class="list">
+        <gql-year-card
+          [year]="electionYear.year"
+          [inPrimaryElection]="electionYear.inPrimaryElection"
+          [inGeneralElection]="electionYear.inGeneralElection"
+        ></gql-year-card>
+      </div>
+    }
+    `,
   styles: [
     `
       :host {

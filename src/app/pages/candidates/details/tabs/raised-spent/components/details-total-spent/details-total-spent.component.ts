@@ -3,7 +3,7 @@ import { faMoneyBillWave, faHandHoldingUsd, faQuestionCircle } from '@fortawesom
 import { DetailsTotalSpent, DetailsTotalSpentGQLQuery } from './details-total-spent-gql.query';
 import { spendingCodes } from './spending-codes';
 import { globals } from 'src/app/globals';
-import { CommonModule } from '@angular/common';
+
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TotalSpentDonutComponent } from 'lib-ui-charts';
@@ -12,12 +12,11 @@ import { TopCategoriesTableComponent } from 'src/app/components/top-categories-t
 @Component({
   selector: 'details-total-spent',
   imports: [
-    CommonModule,
     MatTooltipModule,
     FontAwesomeModule,
     TotalSpentDonutComponent,
-    TopCategoriesTableComponent,
-  ],
+    TopCategoriesTableComponent
+],
   templateUrl: './details-total-spent.component.html',
   styleUrls: ['./details-total-spent.component.scss'],
 })

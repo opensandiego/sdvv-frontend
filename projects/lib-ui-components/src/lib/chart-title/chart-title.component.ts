@@ -1,5 +1,5 @@
 import { Component, Input, } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,7 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
   selector: 'chart-title',
   templateUrl: './chart-title.component.html',
   styleUrls: ['./chart-title.component.scss'],
-  imports: [CommonModule, MatTooltipModule, FontAwesomeModule],
+  imports: [MatTooltipModule, FontAwesomeModule],
 })
 export class ChartTitleComponent {
   @Input() titleText: string = 'Title Text Here';

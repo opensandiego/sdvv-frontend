@@ -3,19 +3,20 @@ import {
   ContributionsGroupedByLocation,
   ContributionsGroupedByLocationGQL,
 } from './details-contributions-by-location-gql.query';
-import { CommonModule } from '@angular/common';
+
 import { RaisedByLocationBarComponent } from 'lib-ui-charts';
 import { GraphQLModule } from '../../graphql.module';
 
 @Component({
   selector: 'details-contributions-by-location',
-  imports: [CommonModule, GraphQLModule, RaisedByLocationBarComponent],
+  imports: [GraphQLModule, RaisedByLocationBarComponent],
   template: `<div class="tab-raised-by-location">
-    <raised-by-location-bar
-      *ngIf="raisedByLocations"
-      [raisedByLocations]="raisedByLocations"
-    ></raised-by-location-bar>
-  </div>`,
+      @if (raisedByLocations) {
+        <raised-by-location-bar
+          [raisedByLocations]="raisedByLocations"
+        ></raised-by-location-bar>
+      }
+    </div>`,
   styles: [
     `
       .tab-raised-by-location {

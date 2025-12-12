@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MenuItem } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
 import { PanelMenu } from 'primeng/panelmenu';
@@ -8,7 +8,7 @@ import { Office } from './office';
 
 @Component({
   selector: 'candidate-menu',
-  imports: [CommonModule, MenuModule, PanelMenu],
+  imports: [MenuModule, PanelMenu],
   template: `
     <p-panelMenu
       [model]="items"
