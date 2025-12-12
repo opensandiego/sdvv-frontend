@@ -55,7 +55,7 @@
     "graphql": "^16.10.0",
     "mapbox-gl": "^2.15.0",
     "ngx-echarts": "^19.0.0",
-    "ngx-mapbox-gl": "^11.0.1",
+    "ngx-mapbox-gl": "^12.0.0",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
     "primeng": "^20.4.0",
