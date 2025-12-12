@@ -101,7 +101,7 @@
     "ng-packagr": "^20.3.2",
     "postcss": "^8.2.15",
     "storybook": "10.1.7",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
 }
