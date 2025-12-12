@@ -7,16 +7,15 @@ import {
 import { globals } from 'src/app/globals';
 import { DetailsContributionsByOccupationHeaderComponent } from 'lib-ui-components';
 import { GraphQLModule } from 'src/app/graphql/graphql.module';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'details-contributions-by-occupation-gql',
   imports: [
-    CommonModule,
     GraphQLModule,
     RaisedByIndustryBarComponent,
-    DetailsContributionsByOccupationHeaderComponent,
-  ],
+    DetailsContributionsByOccupationHeaderComponent
+],
   templateUrl: './details-contributions-by-occupation-gql.component.html',
   styleUrls: ['./details-contributions-by-occupation-gql.component.scss'],
 })

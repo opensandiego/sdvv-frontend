@@ -8,18 +8,19 @@
     >{{totalRaisedFormatted}}</div>
   </div>
 
-  <total-raised-bar class="total-raised-chart"
-    *ngIf="raisedCategories"
-    [raisedCategories]="raisedCategories"
-  ></total-raised-bar>
+  @if (raisedCategories) {
+    <total-raised-bar class="total-raised-chart"
+      [raisedCategories]="raisedCategories"
+    ></total-raised-bar>
+  }
 
   <div class="total-raised-footer">
     <div>
       <i
         class="tooltip-text"
         aria-hidden="true"
-        [matTooltip]="tooltipText" 
-      ><fa-icon [icon]="faQuestionCircle"></fa-icon>
+        [matTooltip]="tooltipText"
+        ><fa-icon [icon]="faQuestionCircle"></fa-icon>
       </i>
     </div>
   </div>

@@ -6,7 +6,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Committee } from '../lib-ui-charts.models';
 import { getCompactFormattedCurrency } from '../shared/number-formatter';
 
@@ -19,7 +19,7 @@ echarts.use([BarChart, SVGRenderer]);
 
 @Component({
   selector: 'outside-money-stacked-bar',
-  imports: [CommonModule, NgxEchartsDirective],
+  imports: [NgxEchartsDirective],
   template: `
     <div
       class="outside-money-stacked-bar-chart"

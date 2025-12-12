@@ -8,7 +8,7 @@
     "sourceMap": true,
     "declaration": false,
     "module": "es2020",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "paths": {
       "lib-ui-charts": [
         "dist/lib-ui-charts/lib-ui-charts",
@@ -24,11 +24,6 @@
     "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
-    ],
-    "lib": [
-      "es2020",
-      "dom",
-      "esnext.asynciterable"
     ],
     "resolveJsonModule": true,
     "useDefineForClassFields": false,

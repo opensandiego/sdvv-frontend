@@ -1,12 +1,12 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { CandidateCardListInfoGQL } from './candidate-card-list-gql.query';
-import { CommonModule } from '@angular/common';
+
 import { GraphQLModule } from '../graphql.module';
 import { CandidateCardGQLComponent } from '../candidate-card-gql/candidate-card-gql.component';
 
 @Component({
   selector: 'candidate-card-list-gql',
-  imports: [CommonModule, GraphQLModule, CandidateCardGQLComponent],
+  imports: [GraphQLModule, CandidateCardGQLComponent],
   styles: [
     `
       .candidate-cards {
@@ -17,11 +17,13 @@ import { CandidateCardGQLComponent } from '../candidate-card-gql/candidate-card-
   ],
   template: `
     <div class="candidate-cards grid justify-left nogutter">
-      <div *ngFor="let id of candidateIds">
-        <gql-candidate-card [candidateId]="id"></gql-candidate-card>
-      </div>
+      @for (id of candidateIds; track id) {
+        <div>
+          <gql-candidate-card [candidateId]="id"></gql-candidate-card>
+        </div>
+      }
     </div>
-  `,
+    `,
 })
 export class CandidateCardListGQLComponent implements OnChanges {
   @Input() year: string;

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -14,7 +14,7 @@ export enum SortOrder {
 
 @Component({
   selector: 'details-contributions-by-occupation-header',
-  imports: [CommonModule, MatButtonModule, FontAwesomeModule],
+  imports: [MatButtonModule, FontAwesomeModule],
   templateUrl: './details-contributions-by-occupation-header.component.html',
   styleUrls: ['./details-contributions-by-occupation-header.component.scss'],
 })

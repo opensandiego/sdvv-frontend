@@ -11,9 +11,8 @@ const config: StorybookConfig = {
   // Optional
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    'storybook-addon-angular-router',
+    // 'storybook-addon-angular-router',
+    '@storybook/addon-docs'
   ],
   core: {
     disableTelemetry: true,

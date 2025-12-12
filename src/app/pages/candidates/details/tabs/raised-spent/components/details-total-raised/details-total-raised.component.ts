@@ -5,7 +5,7 @@ import {
   DetailsTotalRaisedGQLQuery,
 } from './details-total-raised-gql.query';
 import { globals } from 'src/app/globals';
-import { CommonModule } from '@angular/common';
+
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TotalRaisedBarModule } from 'lib-ui-charts';
@@ -13,11 +13,10 @@ import { TotalRaisedBarModule } from 'lib-ui-charts';
 @Component({
   selector: 'details-total-raised',
   imports: [
-    CommonModule,
     MatTooltipModule,
     FontAwesomeModule,
-    TotalRaisedBarModule,
-  ],
+    TotalRaisedBarModule
+],
   templateUrl: './details-total-raised.component.html',
   styleUrls: ['./details-total-raised.component.scss'],
 })

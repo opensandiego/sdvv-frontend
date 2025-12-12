@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
@@ -17,12 +17,11 @@ export interface IndependentCommittees {
 }
 @Component({
     imports: [
-        CommonModule,
-        FontAwesomeModule,
-        AccordionModule,
-        OutsideMoneyStackedBarComponentV2,
-        TopCategoriesTableComponent,
-    ],
+    FontAwesomeModule,
+    AccordionModule,
+    OutsideMoneyStackedBarComponentV2,
+    TopCategoriesTableComponent
+],
     selector: 'independent-expenditures-v2',
     templateUrl: './independent-expenditures-v2.component.html',
     styleUrls: ['./independent-expenditures-v2.component.scss']
