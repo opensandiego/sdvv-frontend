@@ -1,4 +1,4 @@
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { bootstrapApplication, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -20,7 +20,7 @@ const gtmID = environment.gtm;
 bootstrapApplication(AppComponent, {
   providers: [
     // provideAnimationsAsync(),
-    providePrimeNG({
+    provideZoneChangeDetection(),providePrimeNG({
       theme: {
         preset: Material,
       },
