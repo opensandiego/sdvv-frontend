@@ -17,7 +17,6 @@ import { SelectModule } from 'primeng/select';
     <p-select
       inputId="dropdown"
       [placeholder]="placeholderText"
-      [autoDisplayFirst]="false"
       optionLabel="year"
       [options]="electionYears"
       [formControl]="selectedYearModel"
