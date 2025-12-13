@@ -1,4 +1,8 @@
-import { enableProdMode, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import {
+  enableProdMode,
+  importProvidersFrom,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { bootstrapApplication, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -7,9 +11,8 @@ import { MAIN_ROUTES } from './app/routes/main-routes';
 import { AppComponent } from './app/components/app/app.component';
 import { environment } from './environments/environment';
 
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import Material from '@primeng/themes/material';
+import Aura from '@primeuix/themes/aura';
 
 if (environment.production) {
   enableProdMode();
@@ -19,10 +22,10 @@ const gtmID = environment.gtm;
 
 bootstrapApplication(AppComponent, {
   providers: [
-    // provideAnimationsAsync(),
-    provideZoneChangeDetection(),providePrimeNG({
+    provideZoneChangeDetection(),
+    providePrimeNG({
       theme: {
-        preset: Material,
+        preset: Aura,
       },
     }),
     importProvidersFrom(

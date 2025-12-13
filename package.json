@@ -47,7 +47,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@mapbox/mapbox-gl-geocoder": "^5.1.2",
     "@material-ui/core": "^4.12.4",
-    "@primeng/themes": "^21.0.1",
+    "@primeuix/themes": "^2.0.2",
     "apollo-angular": "^11.0.0",
     "core-js": "^3.33.0",
     "echarts": "^5.6.0",
