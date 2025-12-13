@@ -10,7 +10,6 @@ import { GraphQLModule } from './app/graphql/graphql.module';
 import { MAIN_ROUTES } from './app/routes/main-routes';
 import { AppComponent } from './app/components/app/app.component';
 import { environment } from './environments/environment';
-
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 
@@ -26,6 +25,9 @@ bootstrapApplication(AppComponent, {
     providePrimeNG({
       theme: {
         preset: Aura,
+        options: {
+          darkModeSelector: '.app-dark',
+        },
       },
     }),
     importProvidersFrom(
