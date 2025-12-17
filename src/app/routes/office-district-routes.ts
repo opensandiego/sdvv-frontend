@@ -4,9 +4,13 @@ import { DistrictRedirectResolverService } from '../public/resolvers/district-re
 const officeRoutes: Routes = [
   {
     path: '',
-    loadComponent: () => import('../components/office-districts/office-districts.component').then(mod => mod.OfficeDistrictComponent),
+    loadComponent: () =>
+      import('../components/office-districts/office-districts.component').then(
+        (mod) => mod.OfficeDistrictComponent
+      ),
     data: { type: '' },
-    loadChildren: () => import('../routed/candidate-summary-routed/candidate-summary-routed.module').then(m => m.CandidateSummaryRoutedModule),
+    loadChildren: () =>
+      import('../routed/candidate-summary-routed/candidate-summary.routes'),
   },
   {
     path: ':candidateId',
