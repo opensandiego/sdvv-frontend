@@ -11,8 +11,9 @@ const officeRoutes: Routes = [
   {
     path: ':candidateId',
     data: { type: 'candidate' },
-    loadChildren: () => import('../routed/candidate-details-routed/candidate-details-routed.module').then(m => m.CandidateDetailsRoutedModule),
-  }, 
+    loadChildren: () =>
+      import('../routed/candidate-details-routed/candidate-details.routes'),
+  },
 ];
 
 const districts: Routes = [
@@ -30,8 +31,8 @@ export const OFFICE_DISTRICT_ROUTES: Routes = [
   {
     path: ':office_name',
     children: districts,
-    data: { 
+    data: {
       type: 'office_prefix',
     },
   },
-]
+];
