@@ -40,5 +40,6 @@ export * from './lib/year-card/year-card.module';
 export * from './lib/year-card/year-card.component';
 
 export * from './lib/year-selector/year-selector.component';
+export * from './lib/year-selector/year-selector-v2.component';
 
 export * from './lib/lib-ui-components.models';
