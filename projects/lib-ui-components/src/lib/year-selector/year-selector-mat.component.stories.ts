@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { fn } from 'storybook/test';
-import { YearSelectorNewComponent } from './year-selector-new.component';
+import { YearSelectorMatComponent } from './year-selector-mat.component';
 
 export const ComponentData = {
   years: ['2026', '2024', '2022', '2020', '2018', '2016', '2014', '2012'].map(
@@ -10,16 +10,16 @@ export const ComponentData = {
   events: { selectedYearChange: fn(), },
 };
 
-const meta: Meta<YearSelectorNewComponent> = {
-  title: 'YearSelectorNewComponent',
-  component: YearSelectorNewComponent,
+const meta: Meta<YearSelectorMatComponent> = {
+  title: 'YearSelectorMatComponent',
+  component: YearSelectorMatComponent,
   //👇 Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<YearSelectorNewComponent>;
+type Story = StoryObj<YearSelectorMatComponent>;
 
 export const Default: Story = {
   args: {

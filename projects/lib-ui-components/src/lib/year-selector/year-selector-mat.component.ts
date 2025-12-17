@@ -8,12 +8,12 @@ interface ElectionYearItem {
 }
 
 /**
- * This component is intended to be a replacement for YearSelectorComponent
+ * This component was intended to be a replacement for YearSelectorComponent
  * within YearSelectorGQLComponent. This component uses angular/material.
- * This can be moved into a library after testing.
+ * This component was superseded by YearSelectorV2Component.
  */
 @Component({
-  selector: 'year-selector-new',
+  selector: 'year-selector-mat',
   template: ` <mat-form-field class="year-select-list">
     <mat-label>Election Year</mat-label>
     <mat-select
@@ -41,7 +41,7 @@ interface ElectionYearItem {
     FormsModule,
   ],
 })
-export class YearSelectorNewComponent {
+export class YearSelectorMatComponent {
   years = input<ElectionYearItem[]>([]);
 
   public selectedYear = model<string | undefined>();
