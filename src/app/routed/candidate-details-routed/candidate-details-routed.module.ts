@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { CandidateDetailsContainerModule } from 'src/app/pages/candidates/details/candidate-details/candidate-details-container.module';
+import { CandidateDetailsContainerComponent } from 'src/app/pages/candidates/details/candidate-details/candidate-details-container.component';
 import { CandidateDetailsRoutedComponent } from './candidate-details-routed.component';
 import { CandidateDetailsRoutingModule } from './candidate-details-routing.module';
 
@@ -10,7 +10,7 @@ import { CandidateDetailsRoutingModule } from './candidate-details-routing.modul
   imports: [
     CommonModule,
     RouterModule,
-    CandidateDetailsContainerModule,
+    CandidateDetailsContainerComponent,
     CandidateDetailsRoutingModule,
   ],
   declarations: [
