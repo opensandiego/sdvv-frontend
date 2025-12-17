@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { bootstrapApplication, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { GraphQLModule } from './app/graphql/graphql.module';
 import { MAIN_ROUTES } from './app/routes/main-routes';
@@ -34,6 +35,7 @@ bootstrapApplication(AppComponent, {
         },
       },
     }),
+    provideHttpClient(withFetch()),
     importProvidersFrom(
       RouterModule.forRoot(
         MAIN_ROUTES
