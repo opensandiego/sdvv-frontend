@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { ElectionYearGQL } from './election-year-gql.query';
-import { ActiveMenuPathGQL } from 'src/app/graphql/candidate-menu-gql/candidate-menu-gql.component';
-import { CandidateMenuGQLModule } from 'src/app/graphql/candidate-menu-gql/candidate-menu-gql.module';
+import {
+  ActiveMenuPathGQL,
+  CandidateMenuGQLComponent,
+} from 'src/app/graphql/candidate-menu-gql/candidate-menu-gql.component';
 
 @Component({
   selector: 'candidate-menu-routed',
@@ -15,7 +17,7 @@ import { CandidateMenuGQLModule } from 'src/app/graphql/candidate-menu-gql/candi
       [detailsActive]="detailsActive"
     ></gql-candidate-menu>
   `,
-  imports: [CommonModule, CandidateMenuGQLModule],
+  imports: [CommonModule, CandidateMenuGQLComponent],
 })
 export class CandidateMenuRoutedComponent implements OnInit {
   activeYear: string;
