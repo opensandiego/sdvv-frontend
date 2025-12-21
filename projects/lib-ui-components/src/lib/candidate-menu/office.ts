@@ -1,5 +1,5 @@
-import { ActiveMenuPath, CandidateMenuItem } from "../lib-ui-components.models";
-import { CandidateUtil } from "./candidate-util";
+import { ActiveMenuPath, CandidateMenuItem } from '../lib-ui-components.models';
+import { CandidateUtil } from './candidate-util';
 
 export class Office {
   id: string;
@@ -12,7 +12,11 @@ export class Office {
   disabled: boolean = true;
   activeItem: ActiveMenuPath;
 
-  constructor(title: string, icon: string, candidates: CandidateMenuItem[] = null) {
+  constructor(
+    title: string,
+    icon: string,
+    candidates: CandidateMenuItem[] = null
+  ) {
     this.id = title.toLowerCase().split(' ').join('-');
     this.title = title.toLowerCase().split(' ').join('-');
     this.label = title.toUpperCase();
@@ -33,7 +37,10 @@ export class Office {
   }
 
   addRouterLinks(detailsActive: boolean) {
-    this.candidates = CandidateUtil.addRouterLinks(this.candidates, detailsActive);
+    this.candidates = CandidateUtil.addRouterLinks(
+      this.candidates,
+      detailsActive
+    );
   }
 
   getItems() {
@@ -41,46 +48,58 @@ export class Office {
     if (hasSeats) {
       const distinctSeats = CandidateUtil.getDistinctSeats(this.candidates);
 
-      return distinctSeats.map(seat => {
-        const seeAllCandidatesItem = CandidateUtil.getSeeAllCandidatesItem(this.title, this.year, seat);
+      return distinctSeats.map((seat) => {
+        const seeAllCandidatesItem = CandidateUtil.getSeeAllCandidatesItem(
+          this.title,
+          this.year,
+          seat
+        );
 
         const candidatesMenuItems = this.candidates
-          .filter(candidate => candidate.district === seat)
-          .map(candidate => CandidateUtil.getCandidateItem(candidate));
+          .filter((candidate) => candidate.district === seat)
+          .map((candidate) => CandidateUtil.getCandidateItem(candidate));
 
         return {
           id: seat,
           label: `District ${seat}`,
           icon: 'fa fa-fw fa-map-marker',
-          items: [ seeAllCandidatesItem, ...candidatesMenuItems, ],
-          expanded: 
-            this.activeItem?.districtNumber?.toUpperCase() === seat.toUpperCase(),
-        }
+          linkClass: 'text-gray-600 text-[15px]',
+          items: [seeAllCandidatesItem, ...candidatesMenuItems],
+          expanded:
+            this.activeItem?.districtNumber?.toUpperCase() ===
+            seat.toUpperCase(),
+        };
       });
-
     } else {
-      const seeAllCandidatesItem = CandidateUtil.getSeeAllCandidatesItem(this.title, this.year, this.district)
+      const seeAllCandidatesItem = CandidateUtil.getSeeAllCandidatesItem(
+        this.title,
+        this.year,
+        this.district
+      );
 
-      const candidatesMenuItems = CandidateUtil.getCandidateItems(this.candidates);
+      const candidatesMenuItems = CandidateUtil.getCandidateItems(
+        this.candidates
+      );
 
-      return [ seeAllCandidatesItem, ...candidatesMenuItems, ];
+      return [seeAllCandidatesItem, ...candidatesMenuItems];
     }
   }
 
   toMenuItem(activeItem?: ActiveMenuPath) {
     this.activeItem = activeItem;
 
-    const subItems = this.candidates && !this.disabled 
-      ? this.getItems()
-      : null;
+    const subItems = this.candidates && !this.disabled ? this.getItems() : null;
 
     return {
       id: this.id,
       label: this.label,
+      styleClass: 'bg-[#f8f9fa] border-b-1 border-solid border-[#dee2e6]',
+      linkClass:
+        'font-semibold text-gray-600 hover:text-white hover:bg-blue-500 focus:bg-blue-500 text-[15px]',
       disabled: this.disabled,
       items: subItems,
-      expanded: 
+      expanded:
         activeItem?.officeTitle?.toUpperCase() === this.title?.toUpperCase(),
-    }
+    };
   }
-};
+}
