@@ -1,4 +1,3 @@
-
 import {
   Component,
   EventEmitter,
@@ -11,9 +10,12 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ElectionYear } from '../lib-ui-components.models';
 import { SelectModule } from 'primeng/select';
 
+/**
+ * @deprecated use YearSelectorV2Component
+ */
 @Component({
-    selector: 'year-selector',
-    template: `
+  selector: 'year-selector',
+  template: `
     <p-select
       inputId="dropdown"
       [placeholder]="placeholderText"
@@ -24,9 +26,7 @@ import { SelectModule } from 'primeng/select';
       class="w-full py-1"
     />
   `,
-    // TODO: fix styling color to change back to blue border and blue text highlight.
-    // Fix text vertical spacing
-    imports: [ReactiveFormsModule, SelectModule]
+  imports: [ReactiveFormsModule, SelectModule],
 })
 export class YearSelectorComponent implements OnChanges {
   @Input() years: ElectionYear[];

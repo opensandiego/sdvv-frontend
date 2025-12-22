@@ -13,7 +13,7 @@ export class CandidateUtil {
   static addRouterLink(candidate: CandidateMenuItem, detailsActive: boolean): CandidateMenuItem {
     let linkPrefix = `/year/${candidate.electionYear}/office/`;
     linkPrefix = linkPrefix + candidate.office.toLowerCase().split(' ').join('-');
-    const linkDistrict =  candidate.district 
+    const linkDistrict =  candidate.district
       ? `/${candidate.district}`
       : `/0`;
     const linkSuffix = detailsActive ? `/details` : ``;
@@ -31,9 +31,10 @@ export class CandidateUtil {
       id: candidate.id,
       label: candidate.fullName,
       icon: candidate.inGeneralElection ? 'pi pi-check-circle' : 'pi pi-user',
+      linkClass: 'text-gray-600 text-[15px]',
       routerLink: candidate.routerLink,
-      routerLinkActiveOptions: { exact:true },
-    }
+      routerLinkActiveOptions: { exact: true },
+    };
   }
 
 
@@ -42,16 +43,17 @@ export class CandidateUtil {
 
     linkPrefix = linkPrefix + `${officeTitle.toLowerCase().split(' ').join('-')}`;
 
-    const linkDistrict =  district 
+    const linkDistrict =  district
       ? `/${district}`
       : `/0`;
 
     return {
       label: 'See All ',
       icon: 'pi pi-users',
+      linkClass: 'text-gray-600 text-[15px]',
       routerLink: `${linkPrefix}${linkDistrict}`,
-      routerLinkActiveOptions: { exact:true },     
-    }
+      routerLinkActiveOptions: { exact: true },
+    };
   }
 
   // Districts/Seats
