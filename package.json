@@ -54,7 +54,6 @@
     "mapbox-gl": "^3.17.0",
     "ngx-echarts": "^19.0.0",
     "ngx-mapbox-gl": "^13.0.0",
-    "primeflex": "^4.0.0",
     "primeicons": "^7.0.0",
     "primeng": "^21.0.1",
     "rxjs": "^7.8.1",
