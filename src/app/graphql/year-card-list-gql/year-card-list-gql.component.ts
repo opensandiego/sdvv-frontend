@@ -58,7 +58,7 @@ export class YearCardListGQLComponent implements OnInit {
         if (years.electionYears) {
           this.electionYearList = years.electionYears.map((electionYear) => ({
             year: electionYear.year,
-            inPrimaryElection: electionYear.year === '2022',
+            // inPrimaryElection: electionYear.year === '2022',
             // inGeneralElection: electionYear.year !== '2022',
           }));
         }

@@ -38,7 +38,7 @@ export class CandidateCardListGQLComponent implements OnChanges {
     const filters = {
       offices: this.office ? [this.office] : undefined,
       districts: this.district ? [this.district] : undefined,
-      inPrimaryElection: this.year === '2022',
+      // inPrimaryElection: this.year === '2022',
       // inGeneralElection: this.year !== '2022',
     };
 
