@@ -1,10 +1,9 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ActiveMenuPath } from 'lib-ui-components';
+import { ActiveMenuPath, CandidateMenuComponent } from 'lib-ui-components';
 import {
   CandidateMenuGQL,
   CandidateMenuResponse,
 } from './candidate-menu-gql.query';
-import { CandidateMenuComponent } from 'projects/lib-ui-components/src/public-api';
 
 export { ActiveMenuPath as ActiveMenuPathGQL };
 @Component({
