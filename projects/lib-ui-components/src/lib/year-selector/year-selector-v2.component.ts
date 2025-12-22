@@ -40,7 +40,6 @@ export class YearSelectorV2Component {
 
   selectYear(event: SelectChangeEvent) {
     const year = event.value;
-    console.log(year);
     this.selectedYear.set(year);
   }
 }

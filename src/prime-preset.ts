@@ -13,10 +13,12 @@ export const PrimePreset = definePreset(Material, {
             focusRing: { color: '{blue.600}' },
           },
           option: {
+            padding: "8px 16px 8px 16px",
+            // focus = hover
             selectedBackground: '{blue.200}',
-            selectedColor: '{blue.600}',
-            selectedFocusBackground: '{blue.300}',
-            selectedFocusColor: '{blue.900}',
+            selectedColor: '{black.600}',
+            selectedFocusBackground: '{blue.100}',
+            selectedFocusColor: '{black.900}',
           },
         },
       },
