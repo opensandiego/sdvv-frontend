@@ -16,14 +16,14 @@ import { CandidateCardGQLComponent } from '../candidate-card-gql/candidate-card-
     `,
   ],
   template: `
-    <div class="candidate-cards grid justify-left nogutter">
+    <div class="candidate-cards flex flex-wrap justify-left">
       @for (id of candidateIds; track id) {
-        <div>
-          <gql-candidate-card [candidateId]="id"></gql-candidate-card>
-        </div>
+      <div>
+        <gql-candidate-card [candidateId]="id"></gql-candidate-card>
+      </div>
       }
     </div>
-    `,
+  `,
 })
 export class CandidateCardListGQLComponent implements OnChanges {
   @Input() year: string;
