@@ -1,22 +1,31 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewEncapsulation,
+} from '@angular/core';
 
 import { MenuItem } from 'primeng/api';
-import { MenuModule } from 'primeng/menu';
 import { PanelMenu } from 'primeng/panelmenu';
 import { ActiveMenuPath } from '../lib-ui-components.models';
 import { Office } from './office';
+import { CommonModule } from '@angular/common';
+import { BadgeModule } from 'primeng/badge';
 
 @Component({
   selector: 'candidate-menu',
-  imports: [MenuModule, PanelMenu],
+  imports: [PanelMenu, BadgeModule, CommonModule],
   template: `
     <p-panelMenu
       [model]="items"
       [style]="{ width: '200px' }"
       [multiple]="false"
-    ></p-panelMenu>
+    >
+    </p-panelMenu>
   `,
   styleUrls: ['./candidate-menu.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CandidateMenuComponent implements OnChanges {
   @Input() activeItem: ActiveMenuPath;

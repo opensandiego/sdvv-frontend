@@ -33,7 +33,7 @@ export class OfficeCardGQLComponent implements OnChanges {
     this.officeInfo = null;
     this.officeData = null;
     const filters = {
-      inPrimaryElection: this.year === '2022',
+      // inPrimaryElection: this.year === '2022',
       // inGeneralElection: this.year !== '2022',
     };
 

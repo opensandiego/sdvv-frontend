@@ -50,7 +50,7 @@ export class CandidateMenuGQLComponent implements OnChanges {
     }
 
     const filters = {
-      inPrimaryElection: this.electionYear === '2022',
+      // inPrimaryElection: this.electionYear === '2022',
       // inGeneralElection: this.year !== '2022',
     };
 

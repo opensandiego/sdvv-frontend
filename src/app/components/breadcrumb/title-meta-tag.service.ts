@@ -6,11 +6,7 @@ import { globals } from 'src/app/globals';
   providedIn: 'root',
 })
 export class TitleMetaTagService {
-
-  constructor(
-    private titleService: Title,
-    private metaService: Meta,
-  ) { }
+  constructor(private titleService: Title, private metaService: Meta) {}
 
   public setTitle(items) {
     let pageTitle = '';
@@ -50,11 +46,13 @@ export class TitleMetaTagService {
     this.titleService.setTitle(pageTitle);
 
     this.metaService.addTags([
-      {property: 'og:url', content: location.href},
-      {property: 'og:title', content: pageTitle},
-      {property: 'og:image', content: `${location.origin}/assets/preview-images/${imageFileName}`},
+      { property: 'og:url', content: location.href },
+      { property: 'og:title', content: pageTitle },
+      {
+        property: 'og:image',
+        content: `${location.origin}/assets/preview-images/${imageFileName}`,
+      },
       // {property: 'og:description', content: this.caption},
-    ]); 
+    ]);
   }
 }
-

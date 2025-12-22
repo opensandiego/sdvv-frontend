@@ -1,15 +1,14 @@
 import { Meta, StoryObj } from '@storybook/angular';
 
 import { OfficeCardComponent } from './office-card.component';
-import { OfficeCardModule } from './office-card.module';
 
-const meta: Meta<OfficeCardModule> = {
+const meta: Meta<OfficeCardComponent> = {
   title: 'Lib UI Components/Office Card',
   component: OfficeCardComponent,
 };
 
 export default meta;
-type Story = StoryObj<OfficeCardModule>;
+type Story = StoryObj<OfficeCardComponent>;
 
 export const Default: Story = {
   args: {},
