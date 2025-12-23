@@ -1,6 +1,8 @@
-import type { Preview } from '@storybook/angular';
+import { applicationConfig, type Preview } from '@storybook/angular';
 import { setCompodocJson } from '@storybook/addon-docs/angular';
 import docJson from '../documentation.json';
+import { providePrimeNG } from 'primeng/config';
+import { PrimePreset } from 'src/prime-preset';
 setCompodocJson(docJson);
 
 const preview: Preview = {
@@ -13,6 +15,24 @@ const preview: Preview = {
     },
     // docs: { inlineStories: true },
   },
+  decorators: [
+    applicationConfig({
+      providers: [
+        providePrimeNG({
+          theme: {
+            preset: PrimePreset,
+            options: {
+              darkModeSelector: false,
+              cssLayer: {
+                name: 'primeng',
+                order: 'theme, base, primeng',
+              },
+            },
+          },
+        }),
+      ],
+    }),
+  ],
 };
 
 export default preview;
