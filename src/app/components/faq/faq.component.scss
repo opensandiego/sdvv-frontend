@@ -4,6 +4,7 @@
 
 
 .faq{
+        @include elements.link-text-styles;
         padding:20px 40px 40px 40px;
         margin:20px 40px;
         background-color:#ffffff;

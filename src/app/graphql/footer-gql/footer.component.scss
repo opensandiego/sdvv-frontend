@@ -3,6 +3,7 @@
 @use "../../styles/global";
 
 .footer {
+  @include elements.link-text-styles;
   display: grid;
   grid-template-columns: 3fr auto;
   padding: 40px 40px 40px 40px;
