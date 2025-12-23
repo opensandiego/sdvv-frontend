@@ -3,6 +3,7 @@
 @use "../../styles/global";
 
 .about_container{
+    @include elements.link-text-styles;
     padding:20px 40px 0px 30px;
 }
 .about{
