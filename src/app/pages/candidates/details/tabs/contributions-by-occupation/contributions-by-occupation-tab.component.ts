@@ -37,6 +37,7 @@ export class ContributionsByOccupationTabComponent {
   title = {
     top: 'Amount Raised',
     bottom: 'By Occupation',
-    tooltipText: 'Placeholder tooltip text for Amount Raised by Occupation!',
+    tooltipText:
+      'Total contributions to filer grouped by contributor occupation',
   };
 }

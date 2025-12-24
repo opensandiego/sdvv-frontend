@@ -24,7 +24,7 @@ export class DetailsTotalSpentComponent implements OnInit, OnChanges {
   @Input() candidateId: string;
 
   title = 'Total Spent';
-  tooltipText = 'Placeholder tooltip text.';
+  tooltipText = 'Total expenditures made by filer grouped by payment type';
   totalSpentTextColor = globals.expendituresInSupportColor;
   colors = [
     globals.expendituresInSupportColor,

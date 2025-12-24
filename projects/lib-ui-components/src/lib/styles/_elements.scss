@@ -21,3 +21,19 @@
       }
 
 }
+
+@mixin link-text-styles {
+  a {
+    color: variables.$vvlightblue;
+    text-decoration: none;
+
+    &:hover {
+      color: variables.$vvblue;
+      text-decoration: underline;
+    }
+
+    &:visited {
+      color: variables.$vvlightblue;
+    }
+  }
+}
