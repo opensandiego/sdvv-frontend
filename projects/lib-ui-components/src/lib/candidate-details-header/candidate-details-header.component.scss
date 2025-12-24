@@ -1,3 +1,4 @@
+@use "../styles/elements";
 
 .details-header-wrapper {
   display: grid;
@@ -33,6 +34,7 @@
 }
 
 .info {
+  @include elements.link-text-styles;
   grid-column: 2;
   grid-row: 1 / 4;
 
