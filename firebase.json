@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/sdvv-frontend",
+    "public": "dist/sdvv-frontend/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
