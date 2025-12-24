@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "app/styles/variables";
-@import "app/styles/elements";
-@import "app/styles/global";
+@use "./tailwind.css";
+@use "app/styles/variables";
+@use "app/styles/elements";
+@use "app/styles/global";
 
 html, body { height: 100%; }
 body {

@@ -1,24 +1,16 @@
-// import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { applicationConfig } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { TotalSpentDonutComponent } from './total-spent-donut.component';
-
-import { TotalSpentDonutModule } from './total-spent-donut.module';
 
 export default {
   title: 'Lib-ui-charts/Total Spent Donut',
   component: TotalSpentDonutComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        CommonModule,
-        TotalSpentDonutModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
-  ], 
+  ],
 };
 
 // const Template: Story<TotalSpentDonutComponent> = (args: TotalSpentDonutComponent) => ({

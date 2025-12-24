@@ -1,22 +1,22 @@
 import { Routes } from '@angular/router';
- 
+
 import { YearRouteResolverService } from '../public/resolvers/year-route-resolver.service';
- 
+
 export const MAIN_ROUTES: Routes = [
-  { 
+  {
     path: '',
     resolve: {
       year: YearRouteResolverService,
     },
     children: [
       { path: 'home', redirectTo: '/years', pathMatch: 'full', },
-      { path: '', redirectTo: '/year/2022', pathMatch: 'full', },
+      { path: '', redirectTo: '/year/2026', pathMatch: 'full', },
       { path: 'years',
         loadChildren: () => import('./year-summary-routes').then(mod => mod.YEAR_SUMMARY_ROUTES),
       },
     ]
   },
-  { 
+  {
     path: 'year/:year',
     data: { type: 'year' },
     resolve: {

@@ -7,15 +7,14 @@ import { faUniversity, faBalanceScale, faMapMarkedAlt, faQuestion, faBars, faChe
 import { SideMenuService } from 'src/app/public/services/side-menu.service';
 
 @Component({
-  standalone: true,
-  imports: [
-    FontAwesomeModule,
-    MatToolbarModule,
-    RouterModule,
-  ],
-  selector: 'header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+    imports: [
+        FontAwesomeModule,
+        MatToolbarModule,
+        RouterModule,
+    ],
+    selector: 'header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
 

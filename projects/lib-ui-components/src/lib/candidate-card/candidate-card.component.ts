@@ -1,20 +1,43 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { CandidateInfo, CommitteeData } from '../lib-ui-components.models';
 
 @Component({
   selector: 'candidate-card',
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatButtonModule,
+    MatIconModule,
+    FontAwesomeModule,
+  ],
   templateUrl: './candidate-card.component.html',
-  styleUrls: ['./candidate-card.component.scss']
+  styleUrls: ['./candidate-card.component.scss'],
 })
 export class CandidateCardComponent implements OnChanges {
   @Input()
   set candidateInfo(candidateInfo: CandidateInfo) {
-    if (!candidateInfo) { return; }
+    if (!candidateInfo) {
+      return;
+    }
 
     this.candidateId = candidateInfo.id;
-    this.candidateImg = candidateInfo.imageUrl 
-        ? candidateInfo.imageUrl
-        : this.defaultImagePath;
+    this.candidateImg = candidateInfo.imageUrl
+      ? candidateInfo.imageUrl
+      : this.defaultImagePath;
     this.firstName = candidateInfo.firstName;
     this.lastName = candidateInfo.lastName;
     this.fullName = candidateInfo.fullName;
@@ -24,7 +47,9 @@ export class CandidateCardComponent implements OnChanges {
 
   @Input()
   set committeeData(committeeData: CommitteeData) {
-    if (!committeeData) { return; }
+    if (!committeeData) {
+      return;
+    }
 
     this.raised = committeeData?.raised;
     this.donors = committeeData?.donors;
@@ -70,7 +95,9 @@ export class CandidateCardComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['inExpandedCard']) {
       this.inExpandedCard = changes['inExpandedCard'].currentValue;
-      this.buttonText = (this.inExpandedCard) ? 'See Full Details' : 'See Details';
+      this.buttonText = this.inExpandedCard
+        ? 'See Full Details'
+        : 'See Details';
       // this.buttonLink = (this.inExpandedCard) ? 'details' : this.candidateId;
     }
   }

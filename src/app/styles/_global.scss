@@ -1,59 +1,56 @@
-*:focus{
-    outline: none;
+@use "./variables";
+
+*:focus {
+  outline: none;
 }
 
 
-h1{
-    color:$vvdarkblue;
-    padding:0px;
-    margin:0px;
-    text-align:center;
-    font-size: 24px;
-    font-weight: bold;
+h1 {
+  color: variables.$vvdarkblue;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.header-nav{
-    font-size: 18px;
-    display: grid;
-    grid-template-columns: 3fr auto auto;
-    padding: 10px 20px;
-    text-align: left;
-    background-color: $vvdarkblue;
-    align-items: center;
-    .nav_links {
-        margin-left: 20px;
-        margin-right: 20px;
-        color: #ffffff;
-        text-decoration: none;
-        font-weight: 100;
-        &:hover {
-            text-decoration: underline;
-            color: $vvyellow;
-          }
-          &:active {
-            
-            color: $vvyellow;
-          }
-      }
-  }
+.header-nav {
+  font-size: 18px;
+  display: grid;
+  grid-template-columns: 3fr auto auto;
+  padding: 10px 20px;
+  text-align: left;
+  background-color: variables.$vvdarkblue;
+  align-items: center;
 
-.h-sub{
-    color:$vvdarkblue;
-    font-weight: normal;
-    padding:0px;
-    margin:0px;
-    text-align:center;
-}
-
-a{
-    color: $vvlightblue;
+  .nav_links {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #ffffff;
     text-decoration: none;
+    font-weight: 100;
 
-    &:hover{
-        color: $vvblue;
-        text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+      color: variables.$vvyellow;
     }
-    &:visited{
-        color: $vvlightblue;
+
+    &:active {
+
+      color: variables.$vvyellow;
     }
+  }
+}
+
+.h-sub {
+  color: variables.$vvdarkblue;
+  font-weight: normal;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+#storybook-docs {
+  height: 100vh;
+  overflow: auto;
 }

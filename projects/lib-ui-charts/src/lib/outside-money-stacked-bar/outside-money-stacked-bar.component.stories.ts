@@ -1,26 +1,15 @@
-// import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxEchartsModule } from 'ngx-echarts';
-
+import { applicationConfig } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { OutsideMoneyStackedBarComponent } from './outside-money-stacked-bar.component';
 
 export default {
   title: 'Lib-ui-charts/Outside Money Stacked Bar',
   component: OutsideMoneyStackedBarComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        BrowserAnimationsModule, 
-        NgxEchartsModule.forRoot({
-          echarts: () => import('echarts'),
-        }),
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
-  ], 
+  ],
 };
 
 export const Default = () => ({

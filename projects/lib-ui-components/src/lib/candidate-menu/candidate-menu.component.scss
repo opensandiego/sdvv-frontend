@@ -1,40 +1,26 @@
+.p-panelmenu {
+  // a {
+  //   text-decoration: none;
+  // }
 
-::ng-deep .p-panelmenu {  
-  .p-menuitem-link {
-    text-decoration: none !important;
+  .p-panelmenu-panel:has(.p-panelmenu-header-active) {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 
-  .p-menuitem-link-active {
+  .p-panelmenu-item-link-active {
     background-color: #125db380;
   }
 
-  .p-menuitem-text {
-    color: #222222;
+  #mayor_list,
+  #city-council_list,
+  #city-attorney_list {
+    padding-left: 0;
   }
 
-  .p-disabled .p-menuitem-text {
-    color: #999999;
-  }
-
-  .p-menuitem-text {
-    font-family: Roboto,Helvetica Neue,sans-serif;
-    font-size: 15px;
-  }
-}
-
-::ng-deep .p-panelmenu .p-panelmenu-header {
-  .p-panelmenu-header-action {
-    text-decoration: none !important;
-  }
-
-  :hover {
-	  background-color: #3392ff !important;
-    .p-menuitem-text {
-      color: white !important;
-    }
-  }
-  :focus {
-	  background-color: #125DB3 !important;
-    color: white !important;
+  .p-panelmenu-content>ul {
+    padding-inline-start: 0;
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
 }

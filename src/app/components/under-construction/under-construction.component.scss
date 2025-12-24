@@ -1,15 +1,15 @@
-@import "../../styles/variables";
-@import "../../styles/elements";
-@import "../../styles/global";
+@use "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
 
 
 .construction{
-   
+
     width:100%;
     height: 100%;
     margin:auto;
-    background-color: $vvbackground;
-  
+    background-color: variables.$vvbackground;
+
 
     .construction-box{
         margin:auto;

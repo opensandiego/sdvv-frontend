@@ -1,5 +1,5 @@
-@import "../styles/variables";
-@import "../styles/elements";
+@use "../styles/variables";
+@use "../styles/elements";
 
 .groups {
   .groups-table {
@@ -9,7 +9,7 @@
 
   .mat-mdc-cell {
     font-size: 13px;
-    color: $vvgrey;
+    color: variables.$vvgrey;
     padding: 8px;
   }
 
@@ -25,10 +25,10 @@
     font-weight: bold;
     text-align: right;
   }
-  
+
   fa-icon {
     font-size: 16px;
-  }  
+  }
 }
 
 

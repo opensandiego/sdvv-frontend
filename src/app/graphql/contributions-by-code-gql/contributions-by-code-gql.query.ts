@@ -15,10 +15,10 @@ export interface ContributionsByCode {
       contributions: {
         categorizedBy: {
           method: {
-            monetary?: AmountsByCode
-            nonMonetary?: AmountsByCode
-          }
-        }
+            monetary?: AmountsByCode;
+            nonMonetary?: AmountsByCode;
+          };
+        };
       };
     };
   };
@@ -34,30 +34,36 @@ export const CONTRIBUTIONS_BY_CODE_FRAGMENT = gql`
   }
 `;
 
-@Injectable({
-  providedIn: 'root',
-})
-export class ContributionsByCodeGQL extends Query<Response> { 
-  document = gql`
-    query monetaryContributionsByCode ($candidateId: String!, $includeMonetary: Boolean!, $includeNonMonetary: Boolean!) {
-      candidate(id: $candidateId) {
-        fullName
-        committee {
-          contributions {
-            categorizedBy {
-              method {
-                monetary @include(if: $includeMonetary) {
-                  ...CodeFields
-                }
-                nonMonetary @include(if: $includeNonMonetary) {
-                  ...CodeFields
-                }
+export const GET_MONETARY_CONTRIBUTIONS_BY_CODE = gql`
+  query monetaryContributionsByCode(
+    $candidateId: String!
+    $includeMonetary: Boolean!
+    $includeNonMonetary: Boolean!
+  ) {
+    candidate(id: $candidateId) {
+      committee {
+        name
+        contributions {
+          categorizedBy {
+            method {
+              monetary @include(if: $includeMonetary) {
+                ...CodeFields
+              }
+              nonMonetary @include(if: $includeNonMonetary) {
+                ...CodeFields
               }
             }
           }
         }
       }
     }
-    ${CONTRIBUTIONS_BY_CODE_FRAGMENT}
-  `;
+  }
+  ${CONTRIBUTIONS_BY_CODE_FRAGMENT}
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ContributionsByCodeGQL extends Query<Response> {
+  document = GET_MONETARY_CONTRIBUTIONS_BY_CODE;
 }

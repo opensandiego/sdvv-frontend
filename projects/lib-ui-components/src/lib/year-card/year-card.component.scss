@@ -1,6 +1,6 @@
-@import "../styles/variables";
-@import "../styles/elements";
-@import "../styles/global";
+@use "../styles/variables";
+@use "../styles/elements";
+@use "../styles/global";
 
 .year-card {
   min-width: 150px;
@@ -16,18 +16,18 @@
   font-weight: 100;
 
   .year-button {
-    @include button-styles;
+    @include elements.button-styles;
     text-decoration: none !important;
   }
   .year-button:hover{
-    background-color: $vvlightblue;
+    background-color: variables.$vvlightblue;
   }
-  
+
   .offices-container {
     width: 100%;
     max-width: 175px;
     margin: 30px 5px;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;

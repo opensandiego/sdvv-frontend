@@ -1,12 +1,23 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { RaisedByIndustry } from 'lib-ui-charts';
-import { ContributionsGroupedByOccupation, ContributionsGroupedByOccupationGQLQuery } from './details-contributions-by-occupation-gql.query';
+import { RaisedByIndustry, RaisedByIndustryBarComponent } from 'lib-ui-charts';
+import {
+  ContributionsGroupedByOccupation,
+  ContributionsGroupedByOccupationGQLQuery,
+} from './details-contributions-by-occupation-gql.query';
 import { globals } from 'src/app/globals';
+import { DetailsContributionsByOccupationHeaderComponent } from 'lib-ui-components';
+import { GraphQLModule } from 'src/app/graphql/graphql.module';
+
 
 @Component({
   selector: 'details-contributions-by-occupation-gql',
+  imports: [
+    GraphQLModule,
+    RaisedByIndustryBarComponent,
+    DetailsContributionsByOccupationHeaderComponent
+],
   templateUrl: './details-contributions-by-occupation-gql.component.html',
-  styleUrls: ['./details-contributions-by-occupation-gql.component.scss']
+  styleUrls: ['./details-contributions-by-occupation-gql.component.scss'],
 })
 export class DetailsContributionsByOccupationGQLComponent implements OnChanges {
   @Input() candidateId;
@@ -14,7 +25,9 @@ export class DetailsContributionsByOccupationGQLComponent implements OnChanges {
   contributionsColor = globals.contributionsColor;
   contributionsGroupedByOccupation: RaisedByIndustry[];
 
-  constructor(private contributionsGroupedByOccupationGQL: ContributionsGroupedByOccupationGQLQuery) { }
+  constructor(
+    private contributionsGroupedByOccupationGQL: ContributionsGroupedByOccupationGQLQuery
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['candidateId']) {
@@ -26,28 +39,42 @@ export class DetailsContributionsByOccupationGQLComponent implements OnChanges {
   update(candidateId: string) {
     this.candidateId = candidateId;
 
-    if (!this.candidateId) { return; }
+    if (!this.candidateId) {
+      return;
+    }
 
-    this.contributionsGroupedByOccupationGQL.watch({
-      candidateId: this.candidateId,
-    }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
-      const response: ContributionsGroupedByOccupation = result.data;
+    this.contributionsGroupedByOccupationGQL
+      .watch(
+        {
+          candidateId: this.candidateId,
+        },
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const response: ContributionsGroupedByOccupation = result.data;
 
-      const contributions = response?.candidate?.committee?.contributions?.groupBy?.occupation;
+        const contributions =
+          response?.candidate?.committee?.contributions?.groupBy?.occupation;
 
-      this.contributionsGroupedByOccupation = contributions ? contributions.slice(0, 20) : [];
-      this.doSort();
-    });
+        this.contributionsGroupedByOccupation = contributions
+          ? contributions.slice(0, 20)
+          : [];
+        this.doSort();
+      });
   }
 
   doSort(order: number = 1) {
     if (!this.contributionsGroupedByOccupation) return;
 
-    this.contributionsGroupedByOccupation = this.contributionsGroupedByOccupation
-      .sort((a, b) => (a.value - b.value) * order);
+    this.contributionsGroupedByOccupation =
+      this.contributionsGroupedByOccupation.sort(
+        (a, b) => (a.value - b.value) * order
+      );
 
-    this.contributionsGroupedByOccupation = [...this.contributionsGroupedByOccupation];
+    this.contributionsGroupedByOccupation = [
+      ...this.contributionsGroupedByOccupation,
+    ];
   }
 }

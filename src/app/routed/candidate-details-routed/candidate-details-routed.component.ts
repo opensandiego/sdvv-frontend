@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CandidateDetailsContainerComponent } from 'src/app/pages/candidates/details/candidate-details/candidate-details-container.component';
 
 @Component({
   selector: 'candidate-details-routed',
@@ -8,20 +9,17 @@ import { ActivatedRoute } from '@angular/router';
       [candidateId]="candidateId"
     ></candidate-details-container>
   `,
+  imports: [RouterModule, CandidateDetailsContainerComponent],
 })
 export class CandidateDetailsRoutedComponent implements OnInit {
   candidateId: string;
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-  ) { }
+  constructor(private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void { 
-
-    this.activatedRoute.paramMap.subscribe(params => {
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((params) => {
       const candidateId = params.get('candidateId');
       this.candidateId = candidateId ? candidateId : '';
-    })
-
+    });
   }
 }

@@ -1,27 +1,62 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
-import { EChartsOption, ECharts } from 'echarts';
 import { RaisedByIndustry } from '../lib-ui-charts.models';
 
-import { getCompactFormattedCurrency } from '../shared/number-formatter'
+import { getCompactFormattedCurrency } from '../shared/number-formatter';
+
+import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+} from 'echarts/components';
+import { SVGRenderer } from 'echarts/renderers';
+echarts.use([
+  BarChart,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  SVGRenderer,
+]);
 
 @Component({
   selector: 'raised-by-industry-bar',
-  templateUrl: './raised-by-industry-bar.component.html',
-  styleUrls: ['./raised-by-industry-bar.component.scss']
+  imports: [NgxEchartsDirective],
+  providers: [provideEchartsCore({ echarts })],
+  template: `
+    <div
+      class="raised-by-industry-chart"
+      echarts
+      [options]="chartOption"
+      [initOpts]="initOpts"
+      (chartInit)="onChartInit($event)"
+      [merge]="mergeOption"
+    ></div>
+  `,
+  styles: [
+    `
+      .raised-by-industry-chart {
+        min-width: 100px;
+        width: 100%;
+        min-height: 400px;
+        height: 100%;
+      }
+    `,
+  ],
 })
 export class RaisedByIndustryBarComponent implements OnChanges {
-
   @Input() raisedByIndustries: RaisedByIndustry[];
   @Input() raisedBarColor?: string = 'black';
 
   private dataRowsCount = 0;
 
-  echartsInstance: ECharts;
-  mergeOption: EChartsOption;
-  initOpts: EChartsOption;
-  
-  chartOption: EChartsOption = {
+  echartsInstance: echarts.ECharts;
+  mergeOption: echarts.EChartsCoreOption;
+  initOpts: echarts.EChartsCoreOption;
+
+  chartOption: echarts.EChartsCoreOption = {
     grid: {
       containLabel: true,
       left: '5%',
@@ -32,58 +67,59 @@ export class RaisedByIndustryBarComponent implements OnChanges {
     tooltip: {
       show: true,
       trigger: 'axis',
-      formatter: (params) => 
+      formatter: (params) =>
         `${params[0].data.name}: $${params[0].data.value.toLocaleString()}`,
       axisPointer: {
         type: 'shadow',
-      }
+      },
     },
     dataset: {
-      source: [],  // set in ngOnChanges
+      source: [], // set in ngOnChanges
     },
     xAxis: {
       position: 'top',
       axisLabel: {
-        formatter: (value: number) => 
-          getCompactFormattedCurrency(value),
+        formatter: (value: number) => getCompactFormattedCurrency(value),
       },
     },
     yAxis: {
       type: 'category',
       axisTick: {
-        show: false
+        show: false,
       },
     },
-    series: [{
-      type: 'bar',
-      name: 'raised-by-industry-bar',
-      encode: {
-        y: 'name',
-        x: 'value',
-        label: 'label',
+    series: [
+      {
+        type: 'bar',
+        name: 'raised-by-industry-bar',
+        encode: {
+          y: 'name',
+          x: 'value',
+          label: 'label',
+        },
+        label: {
+          show: true,
+          position: 'right',
+          formatter: (params) =>
+            getCompactFormattedCurrency(params.data['value'], 1),
+        },
+        itemStyle: {
+          color: this.raisedBarColor,
+        },
+        barCategoryGap: '120%',
+        barMinWidth: 16,
       },
-      label: {
-        show: true,
-        position: 'right',
-        formatter: (params) => 
-          getCompactFormattedCurrency(params.data['value'], 1),
-      },
-      itemStyle: {
-        color: this.raisedBarColor,
-      },
-      barCategoryGap: '120%',
-      barMinWidth: 16,
-    }],
-  }
+    ],
+  };
 
-  constructor() {  }
+  constructor() {}
 
-  ngOnChanges(): void { 
+  ngOnChanges(): void {
     this.setChartMergeOption();
     this.setChartHeight();
   }
 
-  onChartInit(ec: ECharts): void {
+  onChartInit(ec: echarts.ECharts): void {
     this.echartsInstance = ec;
   }
 
@@ -92,11 +128,13 @@ export class RaisedByIndustryBarComponent implements OnChanges {
       dataset: {
         source: this.raisedByIndustries,
       },
-      series: [{
-        itemStyle: {
-          color: this.raisedBarColor,
+      series: [
+        {
+          itemStyle: {
+            color: this.raisedBarColor,
+          },
         },
-      }]
+      ],
     };
   }
 
@@ -117,5 +155,4 @@ export class RaisedByIndustryBarComponent implements OnChanges {
 
     this.dataRowsCount = itemCount;
   }
-
 }

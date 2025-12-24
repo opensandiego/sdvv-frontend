@@ -1,17 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'average-donation',
-  templateUrl: './average-donation.component.html',
-  styleUrls: ['./average-donation.component.scss']
+  imports: [CommonModule],
+  template: `<div class="average-donation">
+    <div class="title">{{ title }}</div>
+    <div class="amount">
+      {{ average | currency : 'USD' : 'symbol' : '1.0-0' }}
+    </div>
+  </div> `,
+  styleUrls: ['./average-donation.component.scss'],
 })
-export class AverageDonationComponent implements OnInit {
+export class AverageDonationComponent {
   @Input() average: number = 0;
   title = 'Average Donation';
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

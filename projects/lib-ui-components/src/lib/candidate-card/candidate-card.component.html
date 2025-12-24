@@ -1,6 +1,6 @@
 <div class="candidate-card-outer-container">
 
-    <div class="candidate-card justify-center align-center nogutter" [ngClass]="{'in-expanded' : inExpandedCard}">
+  <div class="candidate-card justify-center align-center nogutter" [ngClass]="{'in-expanded' : inExpandedCard}">
 
     <div class="candidate p-col-12">
       <div class="candidate-image-container">
@@ -17,30 +17,32 @@
     </div>
 
     <div class="candidate-numbers">
-    <div class="spending">
-      <div class="support">
-        <h2>In Support</h2>
-        <h3 [style.color]="inSupportTextColor">{{inSupport ? (inSupport | currency : 'USD' : 'symbol' : '1.0-0') : '0'}}</h3>
-      </div>
+      <div class="spending">
+        <div class="support">
+          <h2>In Support</h2>
+          <h3 [style.color]="inSupportTextColor">{{inSupport ? (inSupport | currency : 'USD' : 'symbol' : '1.0-0') :
+            '0'}}</h3>
+        </div>
 
-      <div class="opposition">
-        <h2>In Opposition</h2>
-        <h3 [style.color]="inOppositionTextColor">{{inOpposition ? (inOpposition | currency : 'USD' : 'symbol' : '1.0-0') : '0'}}</h3>
+        <div class="opposition">
+          <h2>In Opposition</h2>
+          <h3 [style.color]="inOppositionTextColor">{{inOpposition ? (inOpposition | currency : 'USD' : 'symbol' :
+            '1.0-0') : '0'}}</h3>
+        </div>
       </div>
     </div>
-  </div>
 
-    <a
-      *ngIf="buttonText && buttonLink"
-      class="candidate-button" 
-      mat-flat-button 
-      [routerLink]="[(inExpandedCard ? 'details' : candidateId)]"
-    > {{buttonText}} </a>
+    @if (buttonText && buttonLink) {
+    <a class="candidate-button" mat-flat-button [routerLink]="[(inExpandedCard ? 'details' : candidateId)]">
+      {{buttonText}} </a>
+    }
 
-    <div *ngIf="inExpandedCard && website" class="website-link">
+    @if (inExpandedCard && website) {
+    <div class="website-link">
       <mat-icon>link</mat-icon>
       <a href="{{website}}">Website</a>
     </div>
+    }
 
   </div>
 

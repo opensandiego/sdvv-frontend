@@ -1,63 +1,64 @@
-// import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { Meta, applicationConfig, StoryObj } from '@storybook/angular';
 
-import { YearCardGQLModule } from './year-card-gql.module';
 import { YearCardGQLComponent } from './year-card-gql.component';
+import { importProvidersFrom } from '@angular/core';
+import { GraphQLModule } from '../graphql.module';
 
-export default {
+const meta: Meta<YearCardGQLComponent> = {
   title: 'Lib-gql/Year Card',
   component: YearCardGQLComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        CommonModule,
-        YearCardGQLModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [importProvidersFrom(GraphQLModule)],
     }),
-  ], 
+  ],
 };
 
-const Template = (args) => ({
-  props: args,
-})
+export default meta;
+type Story = StoryObj<YearCardGQLComponent>;
 
-export const Default = Template.bind({});
-Default.args = {}
+export const Default: Story = {
+  args: {},
+};
 
-export const EmptyStringSelectedYear = Template.bind({});
-EmptyStringSelectedYear.args = {
-  year: ''
-}
+export const EmptyStringSelectedYear: Story = {
+  args: {
+    year: '',
+  },
+};
 
-export const Year2022 = Template.bind({});
-Year2022.args = {
-  year: '2022'
-}
+export const Year2022: Story = {
+  args: {
+    year: '2022',
+  },
+};
 
-export const Year2020 = Template.bind({});
-Year2020.args = {
-  year: '2020'
-}
+export const Year2020: Story = {
+  args: {
+    year: '2020',
+  },
+};
 
-export const Year2018 = Template.bind({});
-Year2018.args = {
-  year: '2018'
-}
+export const Year2018: Story = {
+  args: {
+    year: '2018',
+  },
+};
 
-export const Year2016 = Template.bind({});
-Year2016.args = {
-  year: '2016'
-}
+export const Year2016: Story = {
+  args: {
+    year: '2016',
+  },
+};
 
-export const Year2014 = Template.bind({});
-Year2014.args = {
-  year: '2014'
-}
+export const Year2014: Story = {
+  args: {
+    year: '2014',
+  },
+};
 
-export const SelectedYearNotValid = Template.bind({});
-SelectedYearNotValid.args = {
-  year: 'ABCD'
-}
+export const SelectedYearNotValid: Story = {
+  args: {
+    year: 'ABCD',
+  },
+};

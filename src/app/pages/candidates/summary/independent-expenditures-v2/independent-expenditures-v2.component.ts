@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
@@ -16,22 +16,20 @@ export interface IndependentCommittees {
   color: string;
 }
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
+    imports: [
     FontAwesomeModule,
     AccordionModule,
     OutsideMoneyStackedBarComponentV2,
-    TopCategoriesTableComponent,
-  ],
-  selector: 'independent-expenditures-v2',
-  templateUrl: './independent-expenditures-v2.component.html',
-  styleUrls: ['./independent-expenditures-v2.component.scss']
+    TopCategoriesTableComponent
+],
+    selector: 'independent-expenditures-v2',
+    templateUrl: './independent-expenditures-v2.component.html',
+    styleUrls: ['./independent-expenditures-v2.component.scss']
 })
 export class IndependentExpendituresV2Component implements OnChanges {
   @Input() oppositionCommittees: IndependentCommittees[];
   @Input() supportCommittees: IndependentCommittees[];
-  
+
   hoveredCommittee: string = null;
   oppositionColor = globals.expendituresInOppositionColor;
   supportColor = globals.expendituresInSupportColor;
@@ -40,7 +38,6 @@ export class IndependentExpendituresV2Component implements OnChanges {
   inactiveAccordionTitle = 'No Independent Expenditures by Outside Committees found';
   accordionTitle = '';
   committeesFound = false;
-  tabSelected = false;
 
   opposeCount = 0;
   supportCount = 0;
@@ -54,7 +51,7 @@ export class IndependentExpendituresV2Component implements OnChanges {
     title: 'Expenditures in Support',
     categories: [],
   };
-  
+
   faCircle = faCircle;
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -62,7 +59,7 @@ export class IndependentExpendituresV2Component implements OnChanges {
       const committees = changes['oppositionCommittees'].currentValue;
       this.opposeCount = committees ? committees.length : 0;
     }
-    
+
     if (changes['supportCommittees']) {
       const committees = changes['supportCommittees'].currentValue;
       this.supportCount = committees ? committees.length : 0;
@@ -74,12 +71,11 @@ export class IndependentExpendituresV2Component implements OnChanges {
     } else {
       this.accordionTitle = this.inactiveAccordionTitle;
       this.committeesFound = false;
-      this.tabSelected = false; // this needs to be set to false when the candidate is changed to one with no committees 
     }
   }
 
   committeeHoveredOver(committee){
     this.hoveredCommittee = committee;
   }
-  
+
 }
