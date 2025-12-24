@@ -93,7 +93,7 @@ export class Office {
     return {
       id: this.id,
       label: this.label,
-      styleClass: 'bg-[#f8f9fa] border-b-1 border-solid border-[#dee2e6]',
+      styleClass: 'bg-[#f8f9fa] outline-1 outline-solid outline-[#dee2e6]',
       linkClass:
         'font-semibold text-gray-600 hover:text-white hover:bg-blue-500 focus:bg-blue-500 text-[15px]',
       disabled: this.disabled,

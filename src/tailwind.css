@@ -1,2 +1,14 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
+
+/* 1. Declare layer order */
+@layer theme, base, components, utilities;
+
+/* 2. Import Tailwind styles within layers */
+@import "tailwindcss/theme.css" layer(theme);
+/* @import "tailwindcss/preflight.css" layer(base); */
+/* Note: preflight is the base layer */
+
+/* 3. Import utilities WITHOUT a layer to give them the highest precedence */
+@import "tailwindcss/utilities.css";
+
 @import "tailwindcss-primeui";
