@@ -34,6 +34,7 @@ export class ContributionsByLocationTabComponent {
   title = {
     top: 'Amount Raised',
     bottom: 'By Location',
-    tooltipText: 'Placeholder tooltip text for Amount Raised by Location!',
+    tooltipText:
+      'Total contributions to filer grouped using city, state, and zip code fields',
   };
 }

@@ -23,7 +23,7 @@ import { TotalRaisedBarModule } from 'lib-ui-charts';
 export class DetailsTotalRaisedComponent implements OnChanges {
   @Input() candidateId: string;
 
-  tooltipText = 'Placeholder tooltip text.';
+  tooltipText = 'Total contributions to filer grouped by contribution type';
   contributionsColor = globals.contributionsColor;
   totalContributionsTextColor = globals.contributionsColor;
 
