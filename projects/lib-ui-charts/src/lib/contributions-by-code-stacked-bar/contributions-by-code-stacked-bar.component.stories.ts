@@ -1,34 +1,27 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, applicationConfig } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { ContributionsByCodeStackedBarComponent } from './contributions-by-code-stacked-bar.component';
 
-import { NgxEchartsModule } from 'ngx-echarts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-export default {
+const meta: Meta<ContributionsByCodeStackedBarComponent> = {
   title: 'Lib-ui-charts/Contributions By Code',
   component: ContributionsByCodeStackedBarComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        BrowserAnimationsModule, 
-        NgxEchartsModule.forRoot({
-          echarts: () => import('echarts'),
-        }),
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
-  ], 
-} as Meta;
+  ],
+};
 
-export const Default: Story = () => ({
-  props: { },
-});
+export default meta;
+type Story = StoryObj<ContributionsByCodeStackedBarComponent>;
 
-export const Sample1: Story = () => ({
-  props: {
+export const Default: Story = {
+  args: {},
+};
+
+export const Sample1: Story = {
+  args: {
     monetaryContributionsByCode: {
       ind: 10000,
       com: 0,
@@ -42,12 +35,12 @@ export const Sample1: Story = () => ({
       oth: 7000,
       pty: 0,
       scc: 550,
-    }
+    },
   },
-});
+};
 
-export const Sample2: Story = () => ({
-  props: {
+export const Sample2: Story = {
+  args: {
     monetaryContributionsByCode: {
       ind: 7000,
       com: 300,
@@ -61,6 +54,6 @@ export const Sample2: Story = () => ({
       oth: 50,
       pty: 500,
       scc: 750,
-    }
+    },
   },
-});
+};

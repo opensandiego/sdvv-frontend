@@ -1,56 +1,46 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Meta, applicationConfig, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
 
-import { ContributionsByOccupationContainerModule } from './contributions-by-occupation-container.module';
 import { ContributionsByOccupationContainerComponent } from './contributions-by-occupation-container.component';
+import { GraphQLModule } from 'src/app/graphql/graphql.module';
 
-export default {
+const meta: Meta<ContributionsByOccupationContainerComponent> = {
   title: 'Lib-Containers/Contributions by Occupation',
   component: ContributionsByOccupationContainerComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [ ],
-      imports: [
-        CommonModule,
-        BrowserAnimationsModule,
-        MatTooltipModule,
-        ContributionsByOccupationContainerModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [importProvidersFrom(GraphQLModule)],
     }),
-  ],  
-  argTypes: {
-  },
-} as Meta;
+  ],
+};
 
+export default meta;
+type Story = StoryObj<ContributionsByOccupationContainerComponent>;
 
-export const Default: Story = () => ({
-  props: {  },
-})
+export const Default: Story = {
+  args: {  },
+};
 
-export const Empty: Story = () => ({
-  props: {
+export const Empty: Story = {
+  args: {
     candidateId: ''
   },
-})
+};
 
-export const BarbaraBry2020: Story = () => ({
-  props: {
+export const BarbaraBry2020: Story = {
+  args: {
     candidateId: 'be0a57fb-c0f0-bbd5-0d42-44a6560cbd21|2020'
   },
-})
+};
 
-export const JenniferCampbell2022: Story = () => ({
-  props: {
+export const JenniferCampbell2022: Story = {
+  args: {
     candidateId: 'd3d1c6e7-0add-49f1-9b3d-e9289e7efcf6|2022'
   },
-})
+};
 
-export const MonicaMontgomerySteppe2022: Story = () => ({
-  props: {
+export const MonicaMontgomerySteppe2022: Story = {
+  args: {
     candidateId: '82cae978-49df-4a77-8793-0efffb7772b5|2022'
   },
-})
+};

@@ -1,29 +1,17 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj } from '@storybook/angular';
 
 import { AverageDonationComponent } from './average-donation.component';
 
-export default {
+const meta: Meta<AverageDonationComponent> = {
   title: 'Lib UI Components/Average Donation',
   component: AverageDonationComponent,
-  decorators: [
-    moduleMetadata({
-      declarations: [
-      ],
-      imports: [
-      ],
-      providers: [],
-    }),
-  ],  
-  argTypes: {
+};
+
+export default meta;
+type Story = StoryObj<AverageDonationComponent>;
+
+export const Default: Story = {
+  args: {
+    average: 333,
   },
-} as Meta;
-
-const Template: Story<AverageDonationComponent> = (args: AverageDonationComponent) => ({
-  props: args,
-})
-
-export const Default = Template.bind({});
-Default.args = {
-  amount: 333,
 };

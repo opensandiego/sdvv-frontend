@@ -1,4 +1,4 @@
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 
 import Button from './button.component';
@@ -16,9 +16,9 @@ export default {
       imports: [CommonModule],
     }),
   ],
-} as Meta;
+};
 
-const Template: Story<Page> = (args: Page) => ({
+const Template = (args: Page) => ({
   props: args,
 });
 

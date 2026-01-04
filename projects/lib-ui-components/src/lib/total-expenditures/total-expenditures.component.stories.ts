@@ -1,33 +1,35 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Meta, StoryObj, applicationConfig } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-import { TotalExpendituresModule } from './total-expenditures.module';
 import { TotalExpendituresComponent } from './total-expenditures.component';
 
-export default {
+const meta: Meta<TotalExpendituresComponent> = {
   title: 'Lib UI Components/Total Expenditures',
   component: TotalExpendituresComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [ ],
-      imports: [        
-        BrowserAnimationsModule,
-        TotalExpendituresModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
-  ], 
-  argTypes: {  },
-} as Meta;
+  ],
+};
 
-export const Default: Story = () => ({
-  props: { },
-});
+export default meta;
+type Story = StoryObj<TotalExpendituresComponent>;
 
-export const Amount12456: Story = () => ({
-  props: {
+export const Default: Story = {
+  args: {},
+};
+
+export const Amount12456: Story = {
+  args: {
     totalExpenditures: 123456,
     textColor: null,
   },
-});
+};
+
+export const Amount5678: Story = {
+  args: {
+    totalExpenditures: 5678,
+    textColor: null,
+  },
+};

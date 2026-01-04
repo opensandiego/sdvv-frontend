@@ -1,48 +1,47 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { Meta, applicationConfig, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-import { YearSelectorGQLModule } from './year-selector-gql.module';
 import { YearSelectorGQLComponent } from './year-selector-gql.component';
+import { GraphQLModule } from '../graphql.module';
 
-export default {
+const meta: Meta<YearSelectorGQLComponent> = {
   title: 'Lib-gql/Election Years',
   component: YearSelectorGQLComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        CommonModule,
-        YearSelectorGQLModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [provideAnimations(), importProvidersFrom(GraphQLModule)],
     }),
-  ], 
-} as Meta;
+  ],
+};
 
-const Template: Story = (args) => ({
-  props: args,
-})
+export default meta;
+type Story = StoryObj<YearSelectorGQLComponent>;
 
-export const Default = Template.bind({});
-Default.args = {}
+export const Default: Story = {
+  args: {},
+};
 
-export const EmptyStringSelectedYear = Template.bind({});
-EmptyStringSelectedYear.args = {
-  year: ''
-}
+export const EmptyStringSelectedYear: Story = {
+  args: {
+    year: '',
+  },
+};
 
-export const SelectedYear2022 = Template.bind({});
-SelectedYear2022.args = {
-  year: '2022'
-}
+export const SelectedYear2022: Story = {
+  args: {
+    year: '2022',
+  },
+};
 
-export const SelectedYear2020 = Template.bind({});
-SelectedYear2020.args = {
-  year: '2020'
-}
+export const SelectedYear2020: Story = {
+  args: {
+    year: '2020',
+  },
+};
 
-export const SelectedYearNotValid = Template.bind({});
-SelectedYearNotValid.args = {
-  year: 'ABCD'
-}
+export const SelectedYearNotValid: Story = {
+  args: {
+    year: 'ABCD',
+  },
+};

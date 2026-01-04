@@ -1,0 +1,52 @@
+@use "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar.mat-primary, .header-toolbar {
+  background-color: variables.$vvdarkblue;
+}
+
+.router-link-active {
+  color: variables.$vvyellow !important;
+}
+
+.logo{
+  &:focus{
+    outline: none !important;
+  }
+}
+
+.header-toolbar {
+  .mat-toolbar{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .bar-toggle{
+    color:#fff;
+    padding-right:20px;
+    font-size: 22px;
+  }
+  padding-top: 3.5px;
+  padding-bottom: 3.5px;
+}
+
+.nav_links {
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 100;
+  font-size: 18px;
+
+  &:hover {
+      text-decoration: underline;
+      color: variables.$vvyellow;
+    }
+    &:active {
+      color: variables.$vvyellow;
+    }
+}

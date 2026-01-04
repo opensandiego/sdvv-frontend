@@ -3,23 +3,20 @@
   <a class="cta"
     routerLinkActive="active-link"
     [routerLink]="[link]">
-    <fa-icon [icon]="['fas', getIcon(officeName)]"></fa-icon>
-      {{buttonText}}
+    <fa-icon [icon]="getIcon(officeName)"></fa-icon>
+    {{buttonText}}
   </a>
   <p class="raised">Total Raised</p>
- 
-  <div *ngIf="totalRaisedInProgress; then spinnerBlock else elseTotalRaisedBlock">
-  </div>
 
-  <ng-template #spinnerBlock>
+  @if (totalRaisedInProgress) {
     <mat-spinner [diameter]="20" class="spinner"></mat-spinner>
-  </ng-template> 
-
-  <ng-template #elseTotalRaisedBlock>
+  } @else {
     <h3 class="amount_raised">
       {{ totalRaised > 0 ? (totalRaised | roundCurrencyDisplay: 1) : '-'  }}
     </h3>
-  </ng-template>
+  }
+
+
 
   <p class="candidate_num">Candidates</p>
   <h3>{{ candidatesCount > 0 ? candidatesCount : '-' }}</h3>

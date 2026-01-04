@@ -1,28 +1,22 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
 
-import { YearCardListGQLModule } from './year-card-list-gql.module';
 import { YearCardListGQLComponent } from './year-card-list-gql.component';
+import { GraphQLModule } from '../graphql.module';
 
-export default {
+const meta: Meta<YearCardListGQLComponent> = {
   title: 'Lib-gql/Year Card List',
   component: YearCardListGQLComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        CommonModule,
-        YearCardListGQLModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [importProvidersFrom(GraphQLModule)],
     }),
-  ], 
-} as Meta;
+  ],
+};
 
-const Template: Story = (args) => ({
-  props: args,
-})
+export default meta;
+type Story = StoryObj<YearCardListGQLComponent>;
 
-export const Default = Template.bind({});
-Default.args = {}
+export const Default: Story = {
+  args: {},
+};

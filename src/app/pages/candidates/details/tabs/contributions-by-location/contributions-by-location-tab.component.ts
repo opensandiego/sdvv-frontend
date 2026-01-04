@@ -1,9 +1,32 @@
 import { Component, Input } from '@angular/core';
+import { DetailsTabTitleComponent } from 'lib-ui-components';
+import { DetailsContributionsByLocationComponent } from 'src/app/graphql/details/details-contributions-by-location/details-contributions-by-location-gql.component';
 
 @Component({
   selector: 'contributions-by-location-tab',
-  templateUrl: './contributions-by-location-tab.component.html',
-  styleUrls: ['./contributions-by-location-tab.component.scss']
+  imports: [DetailsTabTitleComponent, DetailsContributionsByLocationComponent],
+  template: `<div class="tab-raised-by-location">
+    <details-tab-title
+      [smallTitleText]="title.top"
+      [largeTitleText]="title.bottom"
+      [tooltipText]="title.tooltipText"
+    ></details-tab-title>
+
+    <details-contributions-by-location
+      [candidateId]="candidateId"
+    ></details-contributions-by-location>
+  </div>`,
+  styles: [
+    `
+      .tab-raised-by-location {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        padding: 15px;
+        margin: 10px;
+      }
+    `,
+  ],
 })
 export class ContributionsByLocationTabComponent {
   @Input() candidateId: string;
@@ -11,6 +34,7 @@ export class ContributionsByLocationTabComponent {
   title = {
     top: 'Amount Raised',
     bottom: 'By Location',
-    tooltipText: 'Placeholder tooltip text for Amount Raised by Location!',
+    tooltipText:
+      'Total contributions to filer grouped using city, state, and zip code fields',
   };
 }

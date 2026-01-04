@@ -1,18 +1,40 @@
 import { Component, Input, OnChanges } from '@angular/core';
-
-import { EChartsOption } from 'echarts';
 import { RaisedCategory } from '../lib-ui-charts.models';
 
-import { getCompactFormattedCurrency } from '../shared/number-formatter'
+import { getCompactFormattedCurrency } from '../shared/number-formatter';
 
+import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+import { EChartsOption } from 'echarts';
+import { BarChart } from 'echarts/charts';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { SVGRenderer } from 'echarts/renderers';
+echarts.use([BarChart, TooltipComponent, SVGRenderer, GridComponent]);
 
 @Component({
   selector: 'total-raised-bar',
-  templateUrl: './total-raised-bar.component.html',
-  styleUrls: ['./total-raised-bar.component.scss']
+  imports: [NgxEchartsDirective],
+  providers: [provideEchartsCore({ echarts })],
+  template: `<div
+    class="total-raised-chart"
+    echarts
+    [options]="chartOption"
+    [merge]="mergeOption"
+  ></div>`,
+  styles: [
+    `
+      .total-raised-chart {
+        height: 100%;
+        min-height: 200px;
+        width: 100%;
+        min-width: 250px;
+        display: flex;
+        justify-content: center;
+      }
+    `,
+  ],
 })
 export class TotalRaisedBarComponent implements OnChanges {
-
   @Input() raisedCategories: RaisedCategory[];
 
   mergeOption: EChartsOption = {};
@@ -21,16 +43,20 @@ export class TotalRaisedBarComponent implements OnChanges {
     tooltip: {
       show: true,
       trigger: 'axis',
-      formatter: (params) => (params[0].data.value === null) ? '' : 
-          `${params[0].data.name}:<br />$${params[0].data.value.toLocaleString()}`,
+      formatter: (params) =>
+        params[0].data.value === null
+          ? ''
+          : `${
+              params[0].data.name
+            }:<br />$${params[0].data.value.toLocaleString()}`,
       axisPointer: {
         type: 'shadow',
-      }
+      },
     },
     xAxis: {
       type: 'category',
       axisTick: {
-        show: false
+        show: false,
       },
       axisLabel: {
         interval: 0,
@@ -40,65 +66,64 @@ export class TotalRaisedBarComponent implements OnChanges {
     yAxis: {
       show: false,
     },
-    series: [{
-      type: 'bar',
-      label: {
-        show: true,
-        position: 'top',
-        fontSize: 18,
-        fontWeight: 'bold',
-        formatter: (params) => 
-          getCompactFormattedCurrency(params.data['value']),
+    series: [
+      {
+        type: 'bar',
+        label: {
+          show: true,
+          position: 'top',
+          fontSize: 18,
+          fontWeight: 'bold',
+          formatter: (params) =>
+            getCompactFormattedCurrency(params.data['value']),
+        },
+        itemStyle: {
+          borderRadius: [5, 5, 0, 0],
+        },
       },
-      itemStyle: { 
-        borderRadius: [5, 5, 0, 0],
-      },
-    }],
+    ],
     media: [
       {
-        query: { maxWidth: 375, },
+        query: { maxWidth: 375 },
         option: {
           xAxis: {
             axisLabel: {
               formatter: (value) => `${value.split(' ').join('\n')}`,
             },
           },
-        }
+        },
       },
 
       {
-        query: { minWidth: 376, },
+        query: { minWidth: 376 },
         option: {
           xAxis: {
             axisLabel: {
               formatter: (value) => `${value}`,
             },
           },
-        }
+        },
       },
     ],
   };
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges(): void {
     this.setChartMergeOption(this.raisedCategories);
   }
 
   setChartMergeOption(chartData: RaisedCategory[]): void {
-
     this.mergeOption = {
       xAxis: {
-        data: chartData.map( category => category.name),
+        data: chartData.map((category) => category.name),
       },
       series: {
-        data: chartData.map( item => ({
-            ...item,
-            itemStyle: { color: item.color, },
-          })),
+        data: chartData.map((item) => ({
+          ...item,
+          itemStyle: { color: item.color },
+        })),
       },
-    }
-
+    };
   }
-
 }

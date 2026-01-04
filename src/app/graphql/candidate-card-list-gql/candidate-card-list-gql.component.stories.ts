@@ -1,68 +1,63 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
+import { GraphQLModule } from '../graphql.module';
+import { importProvidersFrom } from '@angular/core';
 
 import { CandidateCardListGQLComponent } from './candidate-card-list-gql.component';
-import { CandidateCardListGQLModule } from './candidate-card-list-gql.module';
 
-
-export default {
+const meta: Meta<CandidateCardListGQLComponent> = {
   title: 'Lib-gql/Candidate Card List',
   component: CandidateCardListGQLComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        CommonModule,
-        CandidateCardListGQLModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [importProvidersFrom(GraphQLModule)],
     }),
-  ], 
-} as Meta;
+  ],
+};
 
-export const Default: Story = () => ({
-})
+export default meta;
+type Story = StoryObj<CandidateCardListGQLComponent>;
 
-export const Year2020: Story = () => ({
-  props: {
+export const Default: Story = {};
+
+export const Year2020: Story = {
+  args: {
     year: '2020',
   },
-})
+};
 
-export const Year2020Mayor: Story = () => ({
-  props: {
+export const Year2020Mayor: Story = {
+  args: {
     year: '2020',
     office: 'Mayor',
   },
-})
+};
 
-export const Year2020CityAttorney: Story = () => ({
-  props: {
+export const Year2020CityAttorney: Story = {
+  args: {
     year: '2020',
     office: 'City Attorney',
   },
-})
+};
 
-export const Year2020CityCouncil: Story = () => ({
-  props: {
+export const Year2020CityCouncil: Story = {
+  args: {
     year: '2020',
     office: 'City Council',
   },
-})
+};
 
-export const Year2020CityCouncilDist1: Story = () => ({
-  props: {
+export const Year2020CityCouncilDist1: Story = {
+  args: {
     year: '2020',
     office: 'City Council',
     district: '1',
   },
-})
+};
 
-export const Year2020CityCouncilDist3: Story = () => ({
-  props: {
+export const Year2020CityCouncilDist3: Story = {
+  args: {
     year: '2020',
     office: 'City Council',
     district: '3',
   },
-})
+};

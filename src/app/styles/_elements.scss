@@ -1,4 +1,4 @@
-@import "../styles/variables";
+@use "../styles/variables";
 
 
 @mixin button-styles{
@@ -6,18 +6,34 @@
     border: none;
     font-size: 14px;
     font-weight: 700;
-    background-color: $vvblue;
+    background-color: variables.$vvblue;
     padding: 15px 10px;
     color:#ffffff;
     max-width:200px;
     margin:auto;
-    box-shadow: $vvshadow;
+    box-shadow: variables.$vvshadow;
     min-width: 170px;
 
 
     &:hover {
-        background-color: $vvlightblue;
-        box-shadow: $vvshadowdark;
+        background-color: variables.$vvlightblue;
+        box-shadow: variables.$vvshadowdark;
       }
 
+}
+
+@mixin link-text-styles{
+  a {
+    color: variables.$vvlightblue;
+    text-decoration: none;
+
+    &:hover {
+      color: variables.$vvblue;
+      text-decoration: underline;
+    }
+
+    &:visited {
+      color: variables.$vvlightblue;
+    }
+  }
 }

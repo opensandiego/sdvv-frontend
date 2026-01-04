@@ -1,0 +1,230 @@
+@use "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
+@use "sass:color";
+
+.main_section{
+  background-color: variables.$vvbackground;
+}
+.full-width{
+  padding: 0px;
+}
+.logo{
+  &:focus{
+    outline: none !important;
+  }
+}
+.sidenav-container {
+  height: 95vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+
+  .mat-accordion {
+
+    .mat-expansion-panel {
+      border-radius: 0px !important;
+      box-shadow: none !important;
+      border-bottom: 1px solid #F5F5F5;
+
+      .mat-expansion-panel-content {
+        background: color.adjust(variables.$vvbackground, $lightness: 3%);
+        .mat-expansion-panel-body {
+          padding: 0 20px 0;
+          margin: 0 10px;
+
+        }
+
+        i {
+          opacity: 0.7;
+        }
+
+        .mat-expansion-panel-header {
+          .mat-content{
+            display: flex;
+            justify-content: space-between;
+            //margin: 0;
+          }
+
+          .mat-expansion-indicator {
+            padding: 0 5px;
+          }
+          transition: none;
+          background: color.adjust(variables.$vvbackground, $lightness: 3%);
+          padding: 5px 0px;
+
+          &:hover {
+            background: color.adjust(variables.$vvbackground, $lightness: 3%) !important;
+            border-bottom: 2px variables.$vvlightblue solid;
+            font-style: italic;
+          }
+
+        }
+      }
+    }
+
+    .active-link {
+      background-color: variables.$vvlightblue !important;
+
+
+      .mat-content .mat-expansion-panel-header-title {
+        color: variables.$vvlightgrey;
+      }
+    }
+
+    .mat-expansion-panel-header {
+      transition: 300ms ease;
+      .mat-content .mat-expansion-panel-header-title {
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      &:hover {
+        background-color: color.adjust(variables.$vvlightblue, $lightness: 10%) !important;
+
+        .mat-content .mat-expansion-panel-header-title {
+          color: variables.$vvlightgrey;
+        }
+      }
+
+    }
+
+    .mat-expansion-panel-body {
+      ul {
+        list-style-type: none;
+        padding: 0px;
+
+        li {
+          margin: 0 0 5px 0;
+
+          &:hover {
+            font-weight: bold;
+            color: variables.$vvlightblue;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .candidate-selected {
+      font-weight: bold;
+      color: variables.$vvlightblue;
+    }
+
+    .district-selected {
+      background: color.adjust(variables.$vvbackground, $lightness: 3%) !important;
+      border-bottom: 2px variables.$vvlightblue solid;
+      font-style: italic;
+    }
+}
+
+  .submenu {
+    overflow-y: hidden;
+    transition: transform 300ms ease;
+    transform: scaleY(0);
+    transform-origin: top;
+    padding-left: 30px;
+    background: variables.$vvlightgrey;
+  }
+
+  .submenu.expanded {
+    transform: scaleY(1);
+  }
+
+  .menu-button-expand {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+  }
+
+  .menu-button-expand.rotated {
+    transform: rotate(180deg);
+  }
+
+  mat-nav-list {
+    width: 15vw;
+    padding-top: 0;
+  }
+}
+
+/*TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version.*/
+:host ::ng-deep .mat-list-item-content {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+
+  .sidenav-container {
+    mat-drawer {
+      @media only screen and (min-width: 1201px) {
+        width: 150px;
+      }
+
+      @media only screen and (max-width: 1200px) {
+        width: 200px;
+      }
+    }
+    .mat-accordion {
+      .mat-expansion-panel {
+        @media only screen and (min-width: 1201px) {
+          width: 150px;
+        }
+
+        @media only screen and (max-width: 1200px) {
+          width: 200px;
+        }
+        .mat-expansion-panel-content {
+          .mat-expansion-panel-header {
+            font-size: 12px;
+            padding: 5px 16px 0px 16px;
+          }
+
+          .mat-expansion-panel-body {
+            padding: 0px;
+          }
+
+          .fa-map-marked-alt {
+            padding-top: 4px;
+          }
+        }
+
+        .mat-accordion .mat-expansion-panel {
+          margin-top: 0px;
+          margin-bottom: 0px;
+        }
+
+        .mat-expansion-panel-header {
+          font-size: 12px;
+          padding: 0 12px;
+        }
+
+        .mat-expansion-panel-body {
+          padding: 0px;
+
+          ul li {
+            font-size: 12px;
+            padding: 0 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*CTA Stack*/
+@media only screen and (max-width: 636px) {
+  .headline {
+    font-size: 26px;
+  }
+
+  .subheadline {
+    margin: auto;
+  }
+
+  .last {
+    margin-right: 0px !important;
+  }
+}
+
+.year-breadcrumb {
+  display: flex;
+}

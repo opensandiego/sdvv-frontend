@@ -1,32 +1,21 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj } from '@storybook/angular';
 
-import { CandidateDetailsHeaderModule } from './candidate-details-header.module';
 import { CandidateDetailsHeaderComponent } from './candidate-details-header.component';
 
-export default {
+const meta: Meta<CandidateDetailsHeaderComponent> = {
   title: 'Lib UI Components/Candidate Details Header',
   component: CandidateDetailsHeaderComponent,
-  decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        CandidateDetailsHeaderModule,
-      ],
-      providers: [],
-    }),
-  ], 
-} as Meta;
+};
 
+export default meta;
+type Story = StoryObj<CandidateDetailsHeaderComponent>;
 
-export const Default: Story = () => ({
-  props: {
-  },
-})
+export const Default: Story = {
+  args: {},
+};
 
-export const Sample1: Story = () => ({
-  props: {
-    id: 'mock|id',
+export const Sample1: Story = {
+  args: {
     imageUrl: null,
     candidateName: 'John Jones',
     description: 'Former Fire Fighter and Active Reservist',
@@ -36,15 +25,14 @@ export const Sample1: Story = () => ({
     donors: 6789,
     averageDonation: 345,
   },
-})
+};
 
-export const Sample2: Story = () => ({
-  props: {
-    id: 'mock|id',
+export const Sample2: Story = {
+  args: {
     candidateName: 'John Jones II',
 
     raised: 9876543,
     donors: 20876,
     averageDonation: 100,
   },
-})
+};

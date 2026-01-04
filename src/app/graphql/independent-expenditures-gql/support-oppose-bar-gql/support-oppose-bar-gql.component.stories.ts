@@ -1,40 +1,36 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
 
 import { SupportOpposeBarGQLComponent } from './support-oppose-bar-gql.component';
-import { IndependentExpendituresGQLModule } from '../independent-expenditures-gql.module';
+import { GraphQLModule } from '../../graphql.module';
 
-export default {
+const meta: Meta<SupportOpposeBarGQLComponent> = {
   title: 'Lib-gql/Support Oppose Bar',
   component: SupportOpposeBarGQLComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        CommonModule,
-        IndependentExpendituresGQLModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [importProvidersFrom(GraphQLModule)],
     }),
-  ], 
-} as Meta;
+  ],
+};
 
-export const Default: Story = () => ({
-  props: {
-    candidateId: ''
+export default meta;
+type Story = StoryObj<SupportOpposeBarGQLComponent>;
+
+export const Default: Story = {
+  args: {
+    candidateId: '',
   },
-})
+};
 
-export const BarbaraBry2020: Story = () => ({
-  props: {
-    candidateId: 'be0a57fb-c0f0-bbd5-0d42-44a6560cbd21|2020'
+export const BarbaraBry2020: Story = {
+  args: {
+    candidateId: 'be0a57fb-c0f0-bbd5-0d42-44a6560cbd21|2020',
   },
-})
+};
 
-export const ToddGloria2020: Story = () => ({
-  props: {
-    candidateId: '24738d25-2b55-4ef8-b78e-dcc4442a6327|2020'
+export const ToddGloria2020: Story = {
+  args: {
+    candidateId: '24738d25-2b55-4ef8-b78e-dcc4442a6327|2020',
   },
-})
-
+};

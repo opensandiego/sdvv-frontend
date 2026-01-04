@@ -1,16 +1,18 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ElectionYear } from 'lib-ui-components';
+import { ElectionYear, YearSelectorV2Component } from 'lib-ui-components';
 
 import { YearSelectorGQL, YearsResponse } from './year-selector-gql.query';
+import { GraphQLModule } from '../graphql.module';
 
 @Component({
   selector: 'gql-year-selector',
+  imports: [GraphQLModule, YearSelectorV2Component],
   template: `
-    <year-selector
+    <year-selector-v2
       [years]="electionYears"
       [selectedYear]="year"
       (selectedYearChange)="doChange($event)"
-    ></year-selector>
+    ></year-selector-v2>
   `,
 })
 export class YearSelectorGQLComponent implements OnInit {
@@ -26,15 +28,21 @@ export class YearSelectorGQLComponent implements OnInit {
   constructor(private yearSelectorGQL: YearSelectorGQL) {}
 
   ngOnInit() {
-    this.yearSelectorGQL.watch({ }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
-      const years: YearsResponse = result.data;
+    this.yearSelectorGQL
+      .watch(
+        {},
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const years: YearsResponse = result.data;
 
-      if (years.electionYears) {
-        this.electionYears = years.electionYears.map( electionYear => ({ year: electionYear.year}) );
-      }
-    });
+        if (years.electionYears) {
+          this.electionYears = years.electionYears.map((electionYear) => ({
+            year: electionYear.year,
+          }));
+        }
+      });
   }
-
 }

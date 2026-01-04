@@ -3,16 +3,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { RaisedByIndustryBarComponent } from './raised-by-industry-bar.component';
 
 @NgModule({
-  declarations: [
-    RaisedByIndustryBarComponent,
-  ],
-  imports: [
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts'),
-    }),
-  ],
-  exports: [
-    RaisedByIndustryBarComponent,
-  ]
+  declarations: [],
+  imports: [RaisedByIndustryBarComponent],
+  exports: [RaisedByIndustryBarComponent],
 })
-export class RaisedByIndustryBarModule { }
+export class RaisedByIndustryBarModule {}

@@ -1,0 +1,21 @@
+
+name: Deploy to Firebase on release/prod merge
+'on':
+  push:
+    branches:
+      - release/prod
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: 'npm ci'
+      - run: 'npm run build:staging'
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: >-
+            ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SAN_DIEGO_VOTERS_VOICE
+            }}
+          channelId: live
+          projectId: san-diego-voters-voice

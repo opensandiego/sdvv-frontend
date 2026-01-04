@@ -1,44 +1,41 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { Meta, applicationConfig, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
 
-import { RaisedVsSpentGQLModule } from '../raised-vs-spent-gql.module';
 import { RaisedVsSpentBarGQLComponent } from './raised-vs-spent-bar-gql.component';
+import { GraphQLModule } from '../../graphql.module';
 
-export default {
+const meta: Meta<RaisedVsSpentBarGQLComponent> = {
   title: 'Lib-gql/Raised Vs Spent',
   component: RaisedVsSpentBarGQLComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        CommonModule,
-        RaisedVsSpentGQLModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [importProvidersFrom(GraphQLModule)],
     }),
-  ], 
-} as Meta;
+  ],
+};
 
-export const Default: Story = () => ({
-  props: {
+export default meta;
+type Story = StoryObj<RaisedVsSpentBarGQLComponent>;
+
+export const Default: Story = {
+  args: {
     candidateId: ''
   },
-})
-export const BarbaraBry2020: Story = () => ({
-  props: {
+};
+export const BarbaraBry2020: Story = {
+  args: {
     candidateId: 'be0a57fb-c0f0-bbd5-0d42-44a6560cbd21|2020'
   },
-})
+};
 
-export const JenniferCampbell2022: Story = () => ({
-  props: {
+export const JenniferCampbell2022: Story = {
+  args: {
     candidateId: 'd3d1c6e7-0add-49f1-9b3d-e9289e7efcf6|2022'
   },
-})
+};
 
-export const MonicaMontgomerySteppe2022: Story = () => ({
-  props: {
+export const MonicaMontgomerySteppe2022: Story = {
+  args: {
     candidateId: '82cae978-49df-4a77-8793-0efffb7772b5|2022'
   },
-})
+};

@@ -1,9 +1,14 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ContributionsGroupedByOccupationGQL, ContributionsGroupedByOccupation } from './contributions-by-occupation-gql.query';
+import {
+  ContributionsGroupedByOccupationGQL,
+  ContributionsGroupedByOccupation,
+} from './contributions-by-occupation-gql.query';
 import { globals } from 'src/app/globals';
+import { ContributionsByOccupationTableComponent } from 'lib-ui-components';
 
 @Component({
   selector: 'gql-contributions-by-occupation-table',
+  imports: [ContributionsByOccupationTableComponent],
   template: `
     <contributions-by-occupation-table
       [contributionGroups]="contributionsGroupedByOccupation"
@@ -17,30 +22,42 @@ export class ContributionsByOccupationGQLComponent implements OnChanges {
   contributionsColorShades = globals.contributionsColorShades;
   contributionsGroupedByOccupation;
 
-  constructor(private contributionsGroupedByOccupationGQL: ContributionsGroupedByOccupationGQL) { }
+  constructor(
+    private contributionsGroupedByOccupationGQL: ContributionsGroupedByOccupationGQL
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['candidateId']) {
       const candidateId = changes['candidateId'].currentValue;
-      this.update(candidateId); 
+      this.update(candidateId);
     }
   }
 
   update(candidateId: string) {
     this.candidateId = candidateId;
 
-    if (!this.candidateId) { return; }
+    if (!this.candidateId) {
+      return;
+    }
 
-    this.contributionsGroupedByOccupationGQL.watch({
-      candidateId: this.candidateId,
-    }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
-      const response: ContributionsGroupedByOccupation = result.data;
+    this.contributionsGroupedByOccupationGQL
+      .watch(
+        {
+          candidateId: this.candidateId,
+        },
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const response: ContributionsGroupedByOccupation = result.data;
 
-      const contributions = response?.candidate?.committee?.contributions?.groupBy?.occupation;
+        const contributions =
+          response?.candidate?.committee?.contributions?.groupBy?.occupation;
 
-      this.contributionsGroupedByOccupation = contributions ? contributions.slice(0, 5) : [];
-    });
+        this.contributionsGroupedByOccupation = contributions
+          ? contributions.slice(0, 5)
+          : [];
+      });
   }
 }

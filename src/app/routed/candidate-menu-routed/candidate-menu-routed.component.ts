@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { ElectionYearGQL } from './election-year-gql.query';
-import { ActiveMenuPathGQL } from 'src/app/graphql/candidate-menu-gql/candidate-menu-gql.component';
+import {
+  ActiveMenuPathGQL,
+  CandidateMenuGQLComponent,
+} from 'src/app/graphql/candidate-menu-gql/candidate-menu-gql.component';
 
 @Component({
   selector: 'candidate-menu-routed',
@@ -13,6 +17,7 @@ import { ActiveMenuPathGQL } from 'src/app/graphql/candidate-menu-gql/candidate-
       [detailsActive]="detailsActive"
     ></gql-candidate-menu>
   `,
+  imports: [CommonModule, CandidateMenuGQLComponent],
 })
 export class CandidateMenuRoutedComponent implements OnInit {
   activeYear: string;
@@ -25,18 +30,18 @@ export class CandidateMenuRoutedComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private electionYearGQL: ElectionYearGQL,
-  ) { }
+    private electionYearGQL: ElectionYearGQL
+  ) {}
 
-   ngOnInit() {
+  ngOnInit() {
     this.watchElectionYear();
     this.trackDetailsActive();
   }
 
   private watchElectionYear() {
     const electionYear$ = this.electionYearGQL
-      .watch().valueChanges
-      .pipe(map((result) => result.data))
+      .watch()
+      .valueChanges.pipe(map((result) => result.data))
       .subscribe((result) => {
         this.activeYear = result.electionYear;
       });
@@ -50,7 +55,7 @@ export class CandidateMenuRoutedComponent implements OnInit {
     };
 
     let fragmentIndex = fragments.indexOf('office');
-    if (fragmentIndex >= 0 ) {
+    if (fragmentIndex >= 0) {
       path.officeTitle = fragments[++fragmentIndex];
       path.districtNumber = fragments[++fragmentIndex];
     }
@@ -60,13 +65,15 @@ export class CandidateMenuRoutedComponent implements OnInit {
 
   trackDetailsActive() {
     this.router.events
-    .pipe(filter(event => event instanceof NavigationEnd))
-    .subscribe(event => {
-      const urlFragments = event['url'].split('/').filter( fragment => fragment);
-      this.activeItem = this.getActiveItem(urlFragments);
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        const urlFragments = event['url']
+          .split('/')
+          .filter((fragment) => fragment);
+        this.activeItem = this.getActiveItem(urlFragments);
 
-      const detailsActive = event['url'].includes('/details')
-      this.detailsActive = detailsActive;
-    });
+        const detailsActive = event['url'].includes('/details');
+        this.detailsActive = detailsActive;
+      });
   }
 }

@@ -1,7 +1,7 @@
 import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/angular/types-6-0';
+// import { Story, Meta } from '@storybook/angular/types-6-0';
 
 import Button from './button.component';
 import Header from './header.component';
@@ -15,9 +15,9 @@ export default {
       imports: [CommonModule],
     }),
   ],
-} as Meta;
+};
 
-const Template: Story<Header> = (args: Header) => ({
+const Template = (args: Header) => ({
   props: args,
 });
 

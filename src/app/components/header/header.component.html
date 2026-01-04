@@ -1,0 +1,33 @@
+<div class="header-toolbar">
+  <mat-toolbar color="primary" >
+
+    <i class="bar-toggle" (click)="sideNavToggle()">
+      <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+    </i>
+
+    <img class="logo"
+      [src]="logoURL" 
+      [alt]="logoAltText"
+      width="120" height="auto" 
+      routerLinkActive="active-link"
+      [routerLink]="homeLink"
+      (click)="resetSidenav()"
+    >
+
+    <span class="spacer"></span>
+
+    <a
+      class="nav_links"
+      routerLink="/about"
+      routerLinkActive="router-link-active"
+      (click)="resetSidenav()"
+    >About</a>
+    <a
+      class="nav_links"
+      routerLink="/faq"
+      routerLinkActive="router-link-active"
+      (click)="resetSidenav()"
+    >FAQ</a>
+
+  </mat-toolbar>
+</div>

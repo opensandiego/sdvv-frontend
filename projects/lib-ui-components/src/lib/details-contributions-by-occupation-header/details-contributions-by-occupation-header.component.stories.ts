@@ -1,28 +1,22 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-import { DetailsContributionsByOccupationHeaderModule } from './details-contributions-by-occupation-header.module';
 import { DetailsContributionsByOccupationHeaderComponent } from './details-contributions-by-occupation-header.component';
 
-export default {
+const meta: Meta<DetailsContributionsByOccupationHeaderComponent> = {
   title: 'Lib UI Components/Details Contributions by Occupation Header',
   component: DetailsContributionsByOccupationHeaderComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [ ],
-      imports: [
-        CommonModule,
-        DetailsContributionsByOccupationHeaderModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
-  ],  
-  argTypes: {
-  },
-} as Meta;
+  ],
+  argTypes: {},
+};
 
+export default meta;
+type Story = StoryObj<DetailsContributionsByOccupationHeaderComponent>;
 
-export const Default: Story = () => ({
-  props: {  },
-})
+export const Default: Story = {
+  args: {},
+};

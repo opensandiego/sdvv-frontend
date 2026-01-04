@@ -1,14 +1,14 @@
-@import "../styles/variables";
-@import "../styles/elements";
-@import "../styles/global";
+@use "../styles/variables";
+@use "../styles/elements";
+@use "../styles/global";
 
 .office-summary-card{
 
   text-align: center;
   font-weight: 100;
-  
+
   .cta{
-    @include button-styles;
+    @include elements.button-styles;
     padding: 10px 20px;
     max-width: 200px;
     text-decoration: none !important;
@@ -19,7 +19,7 @@
     }
   }
   .cta:hover{
-      background-color: $vvlightblue;
+      background-color: variables.$vvlightblue;
   }
 
   p{

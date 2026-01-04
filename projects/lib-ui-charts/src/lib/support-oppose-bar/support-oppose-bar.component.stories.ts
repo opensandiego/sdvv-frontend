@@ -1,6 +1,5 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { NgxEchartsModule } from 'ngx-echarts';
+import { applicationConfig } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { SupportOpposeBarComponent } from './support-oppose-bar.component';
 
@@ -8,19 +7,13 @@ export default {
   title: 'Lib-ui-charts/Support Oppose Bar',
   component: SupportOpposeBarComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        NgxEchartsModule.forRoot({
-          echarts: () => import('echarts'),
-        }),
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
-} as Meta;
+};
 
-export const Default: Story = () => ({
+export const Default = () => ({
   props: {
     support: 200123,
     oppose: 5432,
@@ -29,14 +22,14 @@ export const Default: Story = () => ({
   },
 });
 
-export const DefaultColors: Story = () => ({
+export const DefaultColors = () => ({
   props: {
     support: 200123,
     oppose: 5432,
   },
 });
 
-export const GreyBackgroundWhiteText: Story = () => ({
+export const GreyBackgroundWhiteText = () => ({
   props: {
     support: 200123,
     oppose: 5432,
@@ -45,7 +38,7 @@ export const GreyBackgroundWhiteText: Story = () => ({
   },
 });
 
-export const GreenText: Story = () => ({
+export const GreenText = () => ({
   props: {
     support: 200123,
     oppose: 5432,

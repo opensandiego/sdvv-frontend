@@ -34,3 +34,28 @@ fa-icon {
   font-size: 10px;
   margin-right: 10px;
 }
+
+.p-accordionpanel {
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.p-accordionheader {
+  background-color: #f5f5f5;
+  color: #495057;
+  font-weight: 500;
+}
+
+.p-accordionpanel:last-child {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #CBD5E1;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.heading {
+  padding-top: 1.25rem !important;
+  color: #495057;
+  font-weight: 400;
+}

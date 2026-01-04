@@ -1,10 +1,15 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { SharedPipesModule } from '../shared/shared-pipes.module';
 
 @Component({
   selector: 'candidate-details-header',
+  imports: [CommonModule, FontAwesomeModule, SharedPipesModule],
   templateUrl: './candidate-details-header.component.html',
-  styleUrls: ['./candidate-details-header.component.scss']
+  styleUrls: ['./candidate-details-header.component.scss'],
 })
 export class CandidateDetailsHeaderComponent {
   @Input() candidateId?: string;
@@ -23,6 +28,5 @@ export class CandidateDetailsHeaderComponent {
 
   faLink = faLink;
 
-  constructor(
-  ) { }
+  constructor() {}
 }

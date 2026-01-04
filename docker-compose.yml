@@ -1,0 +1,14 @@
+# run command: docker compose up -d
+version: "3.9"
+name: sdvv-frontend-develop
+
+services:
+  web-staging:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        buildtype: build:staging # connect to remote staging database
+        # buildtype: build:api:local # connect to local database
+    ports:
+      - "4200:80"

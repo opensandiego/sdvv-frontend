@@ -1,48 +1,47 @@
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
+import { Meta, applicationConfig, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
 
-import { DetailsContributionsByLocationComponent } from './details-contributions-by-location-gql.component'
-import { DetailsContributionsByLocationGQLModule } from './details-contributions-by-location-gql.module';
+import { GraphQLModule } from '../../graphql.module';
+import { DetailsContributionsByLocationComponent } from './details-contributions-by-location-gql.component';
 
-export default {
+const meta: Meta<DetailsContributionsByLocationComponent> = {
   title: 'Lib-gql/Details Contributions by Location',
   component: DetailsContributionsByLocationComponent,
   decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [
-        DetailsContributionsByLocationGQLModule,
-      ],
-      providers: [],
+    applicationConfig({
+      providers: [importProvidersFrom(GraphQLModule)],
     }),
-  ], 
-  argTypes: { },
-} as Meta;
+  ],
+  argTypes: {},
+};
 
-export const Default: Story = () => ({
-  props: {  },
-})
+export default meta;
+type Story = StoryObj<DetailsContributionsByLocationComponent>;
 
-export const Empty: Story = () => ({
-  props: {
-    candidateId: ''
+export const Default: Story = {
+  args: {},
+};
+
+export const Empty: Story = {
+  args: {
+    candidateId: '',
   },
-})
+};
 
-export const BarbaraBry2020: Story = () => ({
-  props: {
-    candidateId: 'be0a57fb-c0f0-bbd5-0d42-44a6560cbd21|2020'
+export const BarbaraBry2020: Story = {
+  args: {
+    candidateId: 'be0a57fb-c0f0-bbd5-0d42-44a6560cbd21|2020',
   },
-})
+};
 
-export const JenniferCampbell2022: Story = () => ({
-  props: {
-    candidateId: 'd3d1c6e7-0add-49f1-9b3d-e9289e7efcf6|2022'
+export const JenniferCampbell2022: Story = {
+  args: {
+    candidateId: 'd3d1c6e7-0add-49f1-9b3d-e9289e7efcf6|2022',
   },
-})
+};
 
-export const MonicaMontgomerySteppe2022: Story = () => ({
-  props: {
-    candidateId: '82cae978-49df-4a77-8793-0efffb7772b5|2022'
+export const MonicaMontgomerySteppe2022: Story = {
+  args: {
+    candidateId: '82cae978-49df-4a77-8793-0efffb7772b5|2022',
   },
-})
+};

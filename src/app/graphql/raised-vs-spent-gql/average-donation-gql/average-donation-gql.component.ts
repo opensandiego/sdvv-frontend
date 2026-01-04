@@ -1,12 +1,16 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { AverageDonationGQL, AverageDonationResponse } from './average-donation-gql.query';
+import {
+  AverageDonationGQL,
+  AverageDonationResponse,
+} from './average-donation-gql.query';
+import { GraphQLModule } from '../../graphql.module';
+import { AverageDonationComponent } from 'lib-ui-components';
 
 @Component({
   selector: 'gql-average-donation',
+  imports: [GraphQLModule, AverageDonationComponent],
   template: `
-    <average-donation 
-      [average]="averageDonation"
-    ></average-donation>
+    <average-donation [average]="averageDonation"></average-donation>
   `,
 })
 export class AverageDonationGQLComponent implements OnChanges {
@@ -16,7 +20,7 @@ export class AverageDonationGQLComponent implements OnChanges {
 
   constructor(private averageDonationGQL: AverageDonationGQL) {}
 
-  ngOnChanges(changes: SimpleChanges): void  {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes['candidateId']) {
       const candidateId = changes['candidateId'].currentValue;
       this.update(candidateId);
@@ -26,17 +30,24 @@ export class AverageDonationGQLComponent implements OnChanges {
   update(candidateId: string) {
     this.candidateId = candidateId;
 
-    if (!this.candidateId) { return; }
+    if (!this.candidateId) {
+      return;
+    }
 
-    this.averageDonationGQL.watch({
-      candidateId: this.candidateId,
-    }, {
-      // errorPolicy: 'all',
-    }).valueChanges.subscribe( (result: any) => {
-      const response: AverageDonationResponse = result.data;
+    this.averageDonationGQL
+      .watch(
+        {
+          candidateId: this.candidateId,
+        },
+        {
+          // errorPolicy: 'all',
+        }
+      )
+      .valueChanges.subscribe((result: any) => {
+        const response: AverageDonationResponse = result.data;
 
-      const average = response?.candidate?.committee?.contributions?.average;
-      this.averageDonation = average ? average : 0;
-    });
+        const average = response?.candidate?.committee?.contributions?.average;
+        this.averageDonation = average ? average : 0;
+      });
   }
 }

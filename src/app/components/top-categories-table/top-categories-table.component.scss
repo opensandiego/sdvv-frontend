@@ -1,0 +1,27 @@
+
+.categories-table {
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+
+  border-spacing:0 20px;
+
+  .percent, .value {
+    text-align: right;
+  }
+
+  .mat-mdc-row {
+    height: 30px;
+  }
+
+  .mat-mdc-cell {
+    padding-right: 10px;
+    border: 0;
+  }
+
+  .mat-mdc-row:hover .mat-mdc-cell, .highlighted {
+    border-color: currentColor;
+    background-color: #cccccc;
+  }
+
+}

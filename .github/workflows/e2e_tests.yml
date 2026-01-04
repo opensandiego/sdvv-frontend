@@ -16,13 +16,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Cypress run
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         with:
           build: npm run build:lib
-          start: npm run start:db:staging
+          start: npm run start:db:staging:e2e
           wait-on: 'http://localhost:4200'
           browser: ${{matrix.browser}}
-          headless: true
           # spec: cypress/e2e/sdvv-frontend.cy.js
           config-file: cypress.config.ts
       # - name: Upload Screenshots (if generated)

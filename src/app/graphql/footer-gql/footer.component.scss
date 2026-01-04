@@ -1,14 +1,15 @@
-@import "../../styles/variables";
-@import "../../styles/elements";
-@import "../../styles/global";
+@use "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
 
 .footer {
+  @include elements.link-text-styles;
   display: grid;
   grid-template-columns: 3fr auto;
   padding: 40px 40px 40px 40px;
-  color: $vvdarkblue;
+  color: variables.$vvdarkblue;
   border:none;
-  background-color: $vvbackground;
+  background-color: variables.$vvbackground;
 
   h3 {
     font-size: 14px;
@@ -30,12 +31,12 @@
   .footer_links {
     margin: 20px 20px 20px 0px;
     display: inline-block;
-    
+
     font-weight: 400;
     font-size: 14px;
     line-height: 1.5;
     text-decoration: none;
-    color: $vvblue;
+    color: variables.$vvblue;
 
     .footer_logo {
       align-self: center;
@@ -44,12 +45,12 @@
     }
 
     .updated{
-    color: $vvgreen;
+    color: variables.$vvgreen;
     font-style: italic;
     font-size: 12px;
     }
 
-    .footer_links:hover {
+    :hover {
       text-decoration: underline;
     }
   }
@@ -59,7 +60,7 @@
   .footer {
     grid-template-columns: 1fr;
     text-align: center;
-   
+
     h3 {
       font-size: 14px;
       margin-right: 0px;
