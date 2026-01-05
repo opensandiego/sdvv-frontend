@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { LastUpdatedComponent } from '../../graphql/last-updated/last-updated.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'footer',
-  imports: [LastUpdatedComponent],
+  imports: [],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
