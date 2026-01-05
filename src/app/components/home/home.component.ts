@@ -1,10 +1,16 @@
-import { Component, HostListener, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { SideMenuService } from 'src/app/public/services/side-menu.service';
 import { CandidateMenuRoutedComponent } from 'src/app/routed/candidate-menu-routed/candidate-menu-routed.component';
 import { ElectionYearRouteComponent } from 'src/app/routed/election-year-routed/election-year-routed.component';
-import { FooterGQLModule } from '../../graphql/footer-gql/footer.module';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { HeaderComponent } from '../header/header.component';
 
@@ -15,7 +21,7 @@ import { HeaderComponent } from '../header/header.component';
     BreadcrumbComponent,
     ElectionYearRouteComponent,
     CandidateMenuRoutedComponent,
-    FooterGQLModule,
+    FooterComponent,
     HeaderComponent,
   ],
   selector: 'home',
