@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { GraphQLModule } from '../graphql.module';
 import { LastUpdateGQL, LastUpdateResponse } from './last-update-gql.query';
 
-import { GraphQLModule } from '../graphql.module';
-
 @Component({
-  selector: 'footer-gql',
+  selector: 'last-updated',
   imports: [GraphQLModule],
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
+  template: `<div>
+    <p class="updated">Data Last Updated {{ lastUpdatedDate }}</p>
+  </div>`,
+  styles: `
+    @use "../../../styles/variables";
+
+    .updated {
+      color: variables.$vvgreen;
+      font-style: italic;
+      font-size: 14px;
+    }
+`,
 })
-export class FooterGQLComponent implements OnInit {
+export class LastUpdatedComponent implements OnInit {
   lastUpdatedDate: string;
 
   constructor(private lastUpdateGQL: LastUpdateGQL) {}
