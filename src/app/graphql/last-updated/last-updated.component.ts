@@ -5,16 +5,14 @@ import { LastUpdateGQL, LastUpdateResponse } from './last-update-gql.query';
 @Component({
   selector: 'last-updated',
   imports: [GraphQLModule],
-  template: `<div>
-    <p class="updated">Data Last Updated {{ lastUpdatedDate }}</p>
-  </div>`,
+  template: `
+    <div class="updated">Data Last Updated {{ lastUpdatedDate }}</div>
+  `,
   styles: `
-    @use "../../../styles/variables";
-
     .updated {
-      color: variables.$vvgreen;
       font-style: italic;
       font-size: 14px;
+      padding: 10px;
     }
 `,
 })
