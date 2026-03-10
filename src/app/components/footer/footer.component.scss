@@ -8,7 +8,7 @@
   grid-template-columns: 3fr auto;
   padding: 40px 40px 40px 40px;
   color: variables.$vvdarkblue;
-  border:none;
+  border: none;
   background-color: variables.$vvbackground;
 
   h3 {
@@ -37,23 +37,8 @@
     line-height: 1.5;
     text-decoration: none;
     color: variables.$vvblue;
-
-    .footer_logo {
-      align-self: center;
-      justify-self: center;
-      margin-right: 20px;
-    }
-
-    .updated{
-    color: variables.$vvgreen;
-    font-style: italic;
-    font-size: 12px;
-    }
-
-    :hover {
-      text-decoration: underline;
-    }
   }
+  margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 636px) {
