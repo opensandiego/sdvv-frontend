@@ -43,11 +43,6 @@ bootstrapApplication(AppComponent, {
       // NgxEchartsModule.forRoot({
       //   echarts: () => import('echarts')
       // }),
-
-      // NgxMapboxGLModule.withConfig({
-      //   accessToken: 'pk.eyJ1Ijoicm9iZXJ0Z3oiLCJhIjoiY2t2cTNscG5vMXVyNTJwdXBlNnFtbTlqYSJ9.mKxW2etLLUmXBEnBPax0Dw',
-      //   // Optional, can also be set per map (accessToken input of mgl-map)
-      // }),
     ),
     { provide: 'googleTagManagerId', useValue: gtmID },
     Title,
