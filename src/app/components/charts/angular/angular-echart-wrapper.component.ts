@@ -8,6 +8,7 @@ import {
   PLATFORM_ID,
   input,
   output,
+  effect,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as echarts from 'echarts';
@@ -44,6 +45,21 @@ export class AngularEChartWrapperComponent implements AfterViewInit, OnDestroy {
   private chart: echarts.ECharts | null = null;
   private resizeHandler = () => this.chart?.resize();
 
+  constructor() {
+    effect(() => {
+      const currentOptions = this.options();
+      const currentHeight = this.height();
+
+      if (this.chart) {
+        this.chart.setOption(currentOptions, { notMerge: true });
+
+        requestAnimationFrame(() => {
+          this.chart?.resize();
+        });
+      }
+    });
+  }
+
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.chart = echarts.init(this.chartContainer.nativeElement);
@@ -61,7 +77,7 @@ export class AngularEChartWrapperComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy() {
     if (isPlatformBrowser(this.platformId)) {
       window.removeEventListener('resize', this.resizeHandler);
-      this.chart?.off('click'); 
+      this.chart?.off('click');
       this.chart?.dispose();
     }
   }
