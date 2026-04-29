@@ -27,8 +27,6 @@ export function getContributionsByInOutCityNonItemized({
 }: {
   candidateSeries: CandidateInOutCityNonItemized[];
 }) {
-  console.log('getContributionsByInOutCityNonItemized - called');
-
   const chartOptions: ContributionsByLocationComparisonOptions = {
     legend: {
       top: '0%',
@@ -109,8 +107,6 @@ export function getContributionsByInOutCity({
 }: {
   candidateSeries: CandidateInOutCity[];
 }) {
-  console.log('getContributionsByInOutCityNonItemized - called');
-
   const chartOptions: ContributionsByLocationComparisonOptions = {
     legend: {
       top: '0%',

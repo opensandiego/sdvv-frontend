@@ -105,22 +105,22 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent {
             },
           ])
           .flat()
+          // commented this out so that the candidate data is sorted by name
           // add combinedAmount to each candidate, needed for sorting
-          .map((candidate) => {
-            const total = [...candidate.support, ...candidate.oppose].reduce(
-              (acc, curr) => acc + curr.amount,
-              0,
-            );
+          // .map((candidate) => {
+          //   const total = [...candidate.support, ...candidate.oppose].reduce(
+          //     (acc, curr) => acc + curr.amount,
+          //     0,
+          //   );
 
-            return {
-              ...candidate,
-              combinedAmount: total,
-            };
-          })
-          .sort(
-            (a, b) =>
-              a.combinedAmount - b.combinedAmount ||
-              b.candidateName.localeCompare(a.candidateName),
+          //   return {
+          //     ...candidate,
+          //     combinedAmount: total,
+          //   };
+          // })
+          .sort((a, b) =>
+            // a.combinedAmount - b.combinedAmount ||
+            b.candidateName.localeCompare(a.candidateName),
           );
 
         return { candidateSeries };
