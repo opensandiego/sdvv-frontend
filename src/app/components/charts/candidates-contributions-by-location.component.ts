@@ -75,6 +75,16 @@ export class CandidateContributionsByLocationComparisonChartsComponent {
         this.dataService.getContributionsByLocation(params),
       ),
       map((data) => {
+        // if any candidate has the inGeneralElection condition set then filter all by their inGeneralElection
+        const hasGeneral = data.some(
+          (candidate) => candidate.inGeneralElection,
+        );
+
+        return hasGeneral
+          ? data.filter((candidate) => candidate.inGeneralElection)
+          : data;
+      }),
+      map((data) => {
         const candidateSeries = data
           .map((candidate) => [
             {

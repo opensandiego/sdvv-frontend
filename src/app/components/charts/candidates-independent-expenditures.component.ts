@@ -102,6 +102,16 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent {
         this.dataService.getCandidatesIndependentExpenditures(params),
       ),
       map((data) => {
+        // if any candidate has the inGeneralElection condition set then filter all by their inGeneralElection
+        const hasGeneral = data.some(
+          (candidate) => candidate.inGeneralElection,
+        );
+
+        return hasGeneral
+          ? data.filter((candidate) => candidate.inGeneralElection)
+          : data;
+      }),
+      map((data) => {
         const candidateSeries = data
           // combine f460d and s496 support and oppose filers and amounts for each candidate
           .map((candidate) => [
