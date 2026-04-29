@@ -40,18 +40,30 @@ function getUniqueFilers<
   selector: 'candidates-independent-expenditures-comparison-chart',
   template: `
     <ng-container *ngIf="processedChartData() as data">
-      <chart-title
-        class="candidates-independent-expenditures-comparison-f460d-chart-title"
-        [titleText]="titleIndExp"
-        [tooltipText]="tooltipIndExp"
-      ></chart-title>
-      <angular-echarts
-        [options]="data.options"
-        [height]="data.height"
-        (chartClick)="onChartClick($event)"
-      ></angular-echarts>
+      <div class="candidates-independent-expenditures-comparison-container">
+        <chart-title
+          class="candidates-independent-expenditures-comparison-f460d-chart-title"
+          [titleText]="titleIndExp"
+          [tooltipText]="tooltipIndExp"
+        ></chart-title>
+        <angular-echarts
+          [options]="data.options"
+          [height]="data.height"
+          (chartClick)="onChartClick($event)"
+        ></angular-echarts>
+      </div>
     </ng-container>
   `,
+  styles: [
+    `
+      .candidates-independent-expenditures-comparison-container {
+        margin: 20px;
+        padding: 15px 25px 15px 25px;
+        background: #fff;
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.21);
+      }
+    `,
+  ],
 })
 export class CandidatesIndependentExpendituresComparisonChartsComponent {
   private router = inject(Router);

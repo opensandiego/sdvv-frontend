@@ -13,18 +13,30 @@ import { getContributionsByInOutCity } from './options-phase-1/contributions-by-
   selector: 'candidates-contributions-by-location-comparison-chart',
   template: `
     <ng-container *ngIf="processedChartData() as data">
-      <chart-title
-        class="candidates-contributions-by-location-comparison-f460ac-chart-title"
-        [titleText]="titleContribLoc"
-        [tooltipText]="tooltipContribLoc"
-      ></chart-title>
-      <angular-echarts
-        [options]="data.options"
-        [height]="data.height"
-        (chartClick)="onChartClick($event)"
-      ></angular-echarts>
+      <div class="candidates-contributions-by-location-comparison-container">
+        <chart-title
+          class="candidates-contributions-by-location-comparison-f460ac-chart-title"
+          [titleText]="titleContribLoc"
+          [tooltipText]="tooltipContribLoc"
+        ></chart-title>
+        <angular-echarts
+          [options]="data.options"
+          [height]="data.height"
+          (chartClick)="onChartClick($event)"
+        ></angular-echarts>
+      </div>
     </ng-container>
   `,
+  styles: [
+    `
+      .candidates-contributions-by-location-comparison-container {
+        margin: 20px;
+        padding: 15px 25px 15px 25px;
+        background: #fff;
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.21);
+      }
+    `,
+  ],
 })
 export class CandidateContributionsByLocationComparisonChartsComponent {
   private router = inject(Router);
