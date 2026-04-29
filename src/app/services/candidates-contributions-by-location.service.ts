@@ -52,7 +52,7 @@ export class CandidatesContributionsByLocationService {
     if (office) {
       params = params.set('office', office);
     }
-    if (district) {
+    if (district && district !== '0') {
       params = params.set('district', district);
     }
 
