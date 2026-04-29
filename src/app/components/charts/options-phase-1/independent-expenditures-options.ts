@@ -176,7 +176,7 @@ export function getSupportedVsOpposedComparison({
       type: 'value',
       axisLabel: {
         formatter: (value: number) =>
-          getCompactFormattedCurrency(Math.abs(value)),
+          getCompactFormattedCurrency(Math.abs(value), 1),
       },
       min: -boundary,
       max: boundary,
