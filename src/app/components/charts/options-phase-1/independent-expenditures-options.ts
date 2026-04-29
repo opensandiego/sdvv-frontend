@@ -48,8 +48,6 @@ export function getSupportedVsOpposedComparison({
 }: {
   candidateSeries: CandidateSupportedVsOpposed[];
 }) {
-  console.log('getSupportedVsOpposedComparison - called');
-
   const maxSupport = Math.max(...candidateSeries.map((c) => c.support.length));
   const maxOppose = Math.max(...candidateSeries.map((c) => c.oppose.length));
   const supportColors = ['#316238', '#54A465']; // Alternating Support
