@@ -74,10 +74,9 @@ export class CandidateContributionsByLocationComparisonChartsComponent {
             },
           ])
           .flat()
-          .sort(
-            (a, b) =>
-              // a.totalContributions - b.totalContributions ||
-              b.candidateName.localeCompare(a.candidateName),
+          .sort((a, b) =>
+            // a.totalContributions - b.totalContributions ||
+            b.candidateName.localeCompare(a.candidateName),
           );
 
         return { candidateSeries };
