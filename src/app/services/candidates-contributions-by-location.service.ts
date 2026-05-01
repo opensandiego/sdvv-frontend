@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { inject, Injectable, signal } from '@angular/core';
+import { finalize, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 type ContributionsByForm = {
@@ -35,6 +35,8 @@ type CandidatesContributionsByLocationResponse = {
 })
 export class CandidatesContributionsByLocationService {
   private http = inject(HttpClient);
+  private _isLoading = signal(false);
+  isLoading = this._isLoading.asReadonly();
 
   getContributionsByLocation({
     year,
@@ -56,11 +58,16 @@ export class CandidatesContributionsByLocationService {
       params = params.set('district', district);
     }
 
+    this._isLoading.set(true);
+
     return this.http
       .get<CandidatesContributionsByLocationResponse>(
         `${environment.apiUrl}/api/candidates/summaries/contributions/in-out-city`,
         { params: params },
       )
-      .pipe(map((response) => response.data));
+      .pipe(
+        map((response) => response.data),
+        finalize(() => this._isLoading.set(false)),
+      );
   }
 }
