@@ -12,21 +12,28 @@ import { getContributionsByInOutCity } from './options-phase-1/contributions-by-
   imports: [CommonModule, AngularEChartWrapperComponent, ChartTitleComponent],
   selector: 'candidates-contributions-by-location-comparison-chart',
   template: `
-    <ng-container *ngIf="processedChartData() as data">
-      <div class="candidates-contributions-by-location-comparison-container">
-        <chart-title
-          class="candidates-contributions-by-location-comparison-f460ac-chart-title"
-          [titleText]="titleContribLoc"
-          [tooltipText]="tooltipContribLoc"
-        ></chart-title>
+    <div class="candidates-contributions-by-location-comparison-container">
+      <chart-title
+        class="candidates-contributions-by-location-comparison-f460ac-chart-title"
+        [titleText]="titleContribLoc"
+        [tooltipText]="tooltipContribLoc"
+      ></chart-title>
+      <ng-container *ngIf="processedChartData() as data">
         <angular-echarts
           [options]="data.options"
           [height]="data.height"
           [loading]="isLoading()"
           (chartClick)="onChartClick($event)"
         ></angular-echarts>
+      </ng-container>
+      <div class="candidates-contributions-by-location-comparison-footnote">
+        <p>
+          Optional notes here about what data is in or not in the chart above:
+          ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
       </div>
-    </ng-container>
+    </div>
   `,
   styles: [
     `
@@ -35,6 +42,14 @@ import { getContributionsByInOutCity } from './options-phase-1/contributions-by-
         padding: 15px 25px 15px 25px;
         background: #fff;
         box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.21);
+
+        .candidates-contributions-by-location-comparison-footnote {
+          p {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 400;
+          }
+        }
       }
     `,
   ],
