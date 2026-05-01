@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { inject, Injectable, signal } from '@angular/core';
+import { finalize, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 type IndependentExpenditureFiler = {
@@ -32,6 +32,8 @@ type CandidatesIndependentExpendituresResponse = {
 })
 export class CandidatesIndependentExpendituresService {
   private http = inject(HttpClient);
+  private _isLoading = signal(false);
+  isLoading = this._isLoading.asReadonly();
 
   getCandidatesIndependentExpenditures({
     year,
@@ -42,22 +44,24 @@ export class CandidatesIndependentExpendituresService {
     office?: string;
     district?: string;
   }): Observable<CandidatesIndependentExpenditures[]> {
-    let params = new HttpParams();
-    if (year) {
-      params = params.set('year', year);
-    }
-    if (office) {
-      params = params.set('office', office.split('-').join(' '));
-    }
-    if (district && district !== '0') {
-      params = params.set('district', district);
-    }
+    const queryParams = {
+      ...(year && { year }),
+      ...(office && { office }),
+      ...(district && district !== '0' && { district }),
+    };
+
+    const params = new HttpParams({ fromObject: queryParams });
+
+    this._isLoading.set(true);
 
     return this.http
       .get<CandidatesIndependentExpendituresResponse>(
         `${environment.apiUrl}/api/candidates/summaries/independent-expenditures`,
         { params: params },
       )
-      .pipe(map((response) => response.data));
+      .pipe(
+        map((response) => response.data),
+        finalize(() => this._isLoading.set(false)),
+      );
   }
 }

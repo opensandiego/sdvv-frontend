@@ -39,20 +39,28 @@ function getUniqueFilers<
   imports: [CommonModule, AngularEChartWrapperComponent, ChartTitleComponent],
   selector: 'candidates-independent-expenditures-comparison-chart',
   template: `
-    <ng-container *ngIf="processedChartData() as data">
-      <div class="candidates-independent-expenditures-comparison-container">
-        <chart-title
-          class="candidates-independent-expenditures-comparison-f460d-chart-title"
-          [titleText]="titleIndExp"
-          [tooltipText]="tooltipIndExp"
-        ></chart-title>
+    <div class="candidates-independent-expenditures-comparison-container">
+      <chart-title
+        class="candidates-independent-expenditures-comparison-f460d-chart-title"
+        [titleText]="titleIndExp"
+        [tooltipText]="tooltipIndExp"
+      ></chart-title>
+      <ng-container *ngIf="processedChartData() as data">
         <angular-echarts
           [options]="data.options"
           [height]="data.height"
+          [loading]="isLoading()"
           (chartClick)="onChartClick($event)"
         ></angular-echarts>
+      </ng-container>
+      <div class="candidates-independent-expenditures-comparison-footnote">
+        <p>
+          Optional notes here about what data is in or not in the chart above:
+          ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
       </div>
-    </ng-container>
+    </div>
   `,
   styles: [
     `
@@ -61,6 +69,14 @@ function getUniqueFilers<
         padding: 15px 25px 15px 25px;
         background: #fff;
         box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.21);
+
+        .candidates-independent-expenditures-comparison-footnote {
+          p {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 400;
+          }
+        }
       }
     `,
   ],
@@ -69,6 +85,7 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private dataService = inject(CandidatesIndependentExpendituresService);
+  isLoading = this.dataService.isLoading;
 
   titleIndExp = 'Outside Money Independent Expenditures';
   tooltipIndExp = 'TODO: add info here';
