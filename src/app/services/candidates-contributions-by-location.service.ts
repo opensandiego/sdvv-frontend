@@ -47,23 +47,20 @@ export class CandidatesContributionsByLocationService {
     office?: string;
     district?: string;
   }): Observable<CandidateContributionsByLocation[]> {
-    let params = new HttpParams();
-    if (year) {
-      params = params.set('year', year);
-    }
-    if (office) {
-      params = params.set('office', office);
-    }
-    if (district && district !== '0') {
-      params = params.set('district', district);
-    }
+    const queryParams = {
+      ...(year && { year }),
+      ...(office && { office }),
+      ...(district && district !== '0' && { district }),
+    };
+
+    const params = new HttpParams({ fromObject: queryParams });
 
     this._isLoading.set(true);
 
     return this.http
       .get<CandidatesContributionsByLocationResponse>(
         `${environment.apiUrl}/api/candidates/summaries/contributions/in-out-city`,
-        { params: params },
+        { params },
       )
       .pipe(
         map((response) => response.data),

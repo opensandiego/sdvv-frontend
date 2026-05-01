@@ -44,16 +44,13 @@ export class CandidatesIndependentExpendituresService {
     office?: string;
     district?: string;
   }): Observable<CandidatesIndependentExpenditures[]> {
-    let params = new HttpParams();
-    if (year) {
-      params = params.set('year', year);
-    }
-    if (office) {
-      params = params.set('office', office.split('-').join(' '));
-    }
-    if (district && district !== '0') {
-      params = params.set('district', district);
-    }
+    const queryParams = {
+      ...(year && { year }),
+      ...(office && { office }),
+      ...(district && district !== '0' && { district }),
+    };
+
+    const params = new HttpParams({ fromObject: queryParams });
 
     this._isLoading.set(true);
 
