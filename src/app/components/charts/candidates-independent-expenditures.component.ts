@@ -49,6 +49,7 @@ function getUniqueFilers<
         <angular-echarts
           [options]="data.options"
           [height]="data.height"
+          [loading]="isLoading()"
           (chartClick)="onChartClick($event)"
         ></angular-echarts>
       </div>
@@ -69,6 +70,7 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private dataService = inject(CandidatesIndependentExpendituresService);
+  isLoading = this.dataService.isLoading;
 
   titleIndExp = 'Outside Money Independent Expenditures';
   tooltipIndExp = 'TODO: add info here';

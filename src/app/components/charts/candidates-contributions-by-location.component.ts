@@ -22,6 +22,7 @@ import { getContributionsByInOutCity } from './options-phase-1/contributions-by-
         <angular-echarts
           [options]="data.options"
           [height]="data.height"
+          [loading]="isLoading()"
           (chartClick)="onChartClick($event)"
         ></angular-echarts>
       </div>
@@ -42,6 +43,7 @@ export class CandidateContributionsByLocationComparisonChartsComponent {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private dataService = inject(CandidatesContributionsByLocationService);
+  isLoading = this.dataService.isLoading;
 
   titleContribLoc = 'Contributions by Location';
   tooltipContribLoc = 'TODO: add info here';
