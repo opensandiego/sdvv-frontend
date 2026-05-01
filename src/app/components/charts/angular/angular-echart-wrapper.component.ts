@@ -39,6 +39,7 @@ export class AngularEChartWrapperComponent implements AfterViewInit, OnDestroy {
   options = input<echarts.EChartsOption>({});
   width = input('100%');
   height = input('400px');
+  loading = input<boolean>(false);
 
   chartClick = output<any>();
 
@@ -49,9 +50,16 @@ export class AngularEChartWrapperComponent implements AfterViewInit, OnDestroy {
     effect(() => {
       const currentOptions = this.options();
       const currentHeight = this.height();
+      const isLoading = this.loading();
 
       if (this.chart) {
-        this.chart.setOption(currentOptions, { notMerge: true });
+        // Toggle ECharts loading overlay
+        if (isLoading) {
+          this.chart.showLoading();
+        } else {
+          this.chart.hideLoading();
+          this.chart.setOption(currentOptions, { notMerge: true });
+        }
 
         requestAnimationFrame(() => {
           this.chart?.resize();
