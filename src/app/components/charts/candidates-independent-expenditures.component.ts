@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  OnDestroy,
+  signal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, switchMap } from 'rxjs';
@@ -64,6 +72,10 @@ function getUniqueFilers<
   `,
   styles: [
     `
+      :host {
+        display: block;
+      }
+
       .candidates-independent-expenditures-comparison-container {
         margin: 20px;
         padding: 15px 25px 15px 25px;
@@ -81,11 +93,30 @@ function getUniqueFilers<
     `,
   ],
 })
-export class CandidatesIndependentExpendituresComparisonChartsComponent {
+export class CandidatesIndependentExpendituresComparisonChartsComponent
+  implements AfterViewInit, OnDestroy
+{
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private dataService = inject(CandidatesIndependentExpendituresService);
   isLoading = this.dataService.isLoading;
+
+  // observer to update component width signal
+  // to use in chart options function
+  private el = inject(ElementRef);
+  private observer!: ResizeObserver;
+  private width = signal<number>(0);
+
+  ngAfterViewInit() {
+    this.observer = new ResizeObserver((entries) => {
+      this.width.set(entries[0].contentRect.width);
+    });
+
+    this.observer.observe(this.el.nativeElement);
+  }
+  ngOnDestroy() {
+    this.observer.disconnect();
+  }
 
   titleIndExp = 'Outside Money Independent Expenditures';
   tooltipIndExp = 'TODO: add info here';
@@ -174,9 +205,10 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent {
 
     const { candidateSeries } = data;
 
-    // Generate the chart options object the candidates
+    // Generate the chart options object from the candidates data
     const options = getSupportedVsOpposedComparison({
       candidateSeries,
+      componentWidth: this.width(),
     });
 
     // Calculate height for the chart based on the amount of candidates/rows of stacks

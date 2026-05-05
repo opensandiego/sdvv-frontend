@@ -140,6 +140,7 @@ export function getContributionsByInOutCity({
     xAxis: {
       type: 'value',
       axisLabel: {
+        hideOverlap: true,
         formatter: (value: number) =>
           getCompactFormattedCurrency(Math.abs(value)),
       },

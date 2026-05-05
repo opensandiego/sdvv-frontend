@@ -22,7 +22,13 @@ export type CandidateSupportedVsOpposed = {
   oppose: IndependentExpenditureFiler[];
 };
 
-function getNiceInterval(maxVal: number, desiredTicks = 5) {
+function getTicks(width: number) {
+  if (width < 450) return 1;
+  if (width < 750) return 3;
+  return 5;
+}
+
+function getAxisInterval(maxVal: number, desiredTicks = 5) {
   if (maxVal === 0) return 1;
 
   // Find the rough interval
@@ -45,8 +51,10 @@ const boundaryMultiplier = 1.025;
 
 export function getSupportedVsOpposedComparison({
   candidateSeries,
+  componentWidth,
 }: {
   candidateSeries: CandidateSupportedVsOpposed[];
+  componentWidth: number;
 }) {
   const maxSupport = Math.max(...candidateSeries.map((c) => c.support.length));
   const maxOppose = Math.max(...candidateSeries.map((c) => c.oppose.length));
@@ -133,9 +141,11 @@ export function getSupportedVsOpposedComparison({
     itemStyle: { color: 'rgba(0,0,0,0)' },
   });
 
+  const ticks = getTicks(componentWidth);
+
   const maxDataValue2 =
     Math.max(...opposeTotals, ...supportTotals) * boundaryMultiplier;
-  const interval = getNiceInterval(maxDataValue2); // Choose based on your scale
+  const interval = getAxisInterval(maxDataValue2, ticks);
   const boundary = Math.ceil(maxDataValue2 / interval) * interval;
 
   const chartOption: SupportedVsOpposedComparisonOptions = {
@@ -175,6 +185,7 @@ export function getSupportedVsOpposedComparison({
     xAxis: {
       type: 'value',
       axisLabel: {
+        hideOverlap: true,
         formatter: (value: number) =>
           getCompactFormattedCurrency(Math.abs(value), 1),
       },
