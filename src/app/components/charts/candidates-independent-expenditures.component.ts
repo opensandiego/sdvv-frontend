@@ -118,7 +118,7 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent
     this.observer.disconnect();
   }
 
-  titleIndExp = 'Outside Money Independent Expenditures';
+  titleIndExp = 'Outside Money / Independent Expenditures';
   tooltipIndExp = 'TODO: add info here';
 
   onChartClick(params: any) {
