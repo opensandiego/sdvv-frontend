@@ -60,7 +60,7 @@ export class CandidateContributionsByLocationComparisonChartsComponent {
   private dataService = inject(CandidatesContributionsByLocationService);
   isLoading = this.dataService.isLoading;
 
-  titleContribLoc = 'Contributions by Location';
+  titleContribLoc = 'Individual Contributions';
   tooltipContribLoc = 'TODO: add info here';
 
   onChartClick(params: any) {
