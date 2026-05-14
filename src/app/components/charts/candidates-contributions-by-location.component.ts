@@ -27,11 +27,7 @@ import { getContributionsByInOutCity } from './options-phase-1/contributions-by-
         ></angular-echarts>
       </ng-container>
       <div class="candidates-contributions-by-location-comparison-footnote">
-        <p>
-          Optional notes here about what data is in or not in the chart above:
-          ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <p>{{ footnote }}</p>
       </div>
     </div>
   `,
@@ -62,6 +58,7 @@ export class CandidateContributionsByLocationComparisonChartsComponent {
 
   titleContribLoc = 'Individual Contributions';
   tooltipContribLoc = 'TODO: add info here';
+  footnote = `Itemized contributions as reported on FPPC Form 460. Contributions are itemized when a contributor's cumulative contributions to a committee total $100 or more within a calendar year. See FAQ for more.`;
 
   onChartClick(params: any) {
     // Filter for yAxis label clicks only
