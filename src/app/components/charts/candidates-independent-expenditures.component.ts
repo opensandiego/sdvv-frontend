@@ -62,11 +62,7 @@ function getUniqueFilers<
         ></angular-echarts>
       </ng-container>
       <div class="candidates-independent-expenditures-comparison-footnote">
-        <p>
-          Optional notes here about what data is in or not in the chart above:
-          ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <p>{{ footnote }}</p>
       </div>
     </div>
   `,
@@ -100,6 +96,7 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent
   private activatedRoute = inject(ActivatedRoute);
   private dataService = inject(CandidatesIndependentExpendituresService);
   isLoading = this.dataService.isLoading;
+  footnote = `Includes Form 460 data from previous periods and recent expenditures >$1,000 reported on Form 496. Does not include amounts from Form 460 Schedule D (unitemized contributions and independent expenditures of <$100 made this period).`;
 
   // observer to update component width signal
   // to use in chart options function
