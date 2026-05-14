@@ -49,12 +49,14 @@ export class RaisedInVsOutTitleGQLComponent implements OnChanges {
         const response: CandidateInfo = result.data;
 
         const district = response?.candidate?.district;
-        const jurisdictionComplete = district ? `District ${district}` : 'City';
+        // const jurisdictionComplete = district ? `District ${district}` : 'City';
+        const jurisdictionComplete = 'City';
 
         this.title = `In vs. Out of ${jurisdictionComplete}`;
 
         const agency = response?.candidate?.agency;
-        const area = district ? `${agency}, District ${district}` : `${agency}`;
+        // const area = district ? `${agency}, District ${district}` : `${agency}`;
+        const area = `${agency}`;
 
         this.tooltip = `Total campaign funds raised inside versus funds raised outside ${area}.`;
       });
