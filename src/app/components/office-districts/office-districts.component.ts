@@ -12,8 +12,7 @@ import { CandidateContributionsByLocationComparisonChartsComponent } from '../ch
     CandidateContributionsByLocationComparisonChartsComponent,
   ],
   selector: 'office-districts',
-  template: `
-    <router-outlet></router-outlet>
+  template: `    
     <div class="center-title">
       <h2 mat-card-title>{{ contestName() }}</h2>
     </div>
