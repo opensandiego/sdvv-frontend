@@ -41,8 +41,8 @@ export class CandidateCardComponent implements OnChanges {
     this.firstName = candidateInfo.firstName;
     this.lastName = candidateInfo.lastName;
     this.fullName = candidateInfo.fullName;
-    this.description = candidateInfo.description;
-    this.website = candidateInfo.website;
+    this.description = candidateInfo.description ?? '';
+    this.website = candidateInfo.website ?? '';
   }
 
   @Input()
@@ -51,11 +51,11 @@ export class CandidateCardComponent implements OnChanges {
       return;
     }
 
-    this.raised = committeeData?.raised;
-    this.donors = committeeData?.donors;
+    this.raised = committeeData?.raised ?? 0;
+    this.donors = committeeData?.donors ?? 0;
 
-    this.inSupport = committeeData?.totalInSupport;
-    this.inOpposition = committeeData?.totalInOpposition;
+    this.inSupport = committeeData?.totalInSupport ?? 0;
+    this.inOpposition = committeeData?.totalInOpposition ?? 0;
   }
 
   @Input() inExpandedCard: boolean = false;
@@ -75,7 +75,7 @@ export class CandidateCardComponent implements OnChanges {
   private defaultImagePath = 'assets/candidate-card/profile.png';
 
   // Candidate info
-  candidateId: string;
+  candidateId: string = '';
   candidateImg: string = '';
   firstName: string = '';
   lastName: string = '';
