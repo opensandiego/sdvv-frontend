@@ -58,3 +58,15 @@
     color: variables.$vvlightblue;
   }
 }
+
+.compare-candidates-link-container {
+  padding-top: 10px;
+
+  .compare-candidates-button {
+    @include elements.button-styles;
+    text-align: center;
+    text-decoration: none;
+    margin: 10px;
+    padding: 15px;
+  }
+}
