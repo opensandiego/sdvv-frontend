@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CandidateSummaryContainerModule } from 'src/app/pages/candidates/summary/candidate-summary/candidate-summary-container.module';
+import { CandidateSummaryContainerComponent } from 'src/app/pages/candidates/summary/candidate-summary/candidate-summary-container.component';
 
 @Component({
   selector: 'candidate-summary-routed',
@@ -9,7 +9,7 @@ import { CandidateSummaryContainerModule } from 'src/app/pages/candidates/summar
       [candidateId]="candidateId"
     ></candidate-summary-container>
   `,
-  imports: [RouterModule, CandidateSummaryContainerModule],
+  imports: [RouterModule, CandidateSummaryContainerComponent],
 })
 export class CandidateSummaryRoutedComponent implements OnInit {
   candidateId: string;

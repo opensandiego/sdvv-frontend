@@ -116,7 +116,7 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent
   }
 
   titleIndExp = 'Outside Money / Independent Expenditures';
-  tooltipIndExp = 'TODO: add info here';
+  tooltipIndExp = 'Expenditures supporting/opposing candidates, by committees not controlled by candidates';
 
   onChartClick(params: any) {
     // Filter for yAxis label clicks only

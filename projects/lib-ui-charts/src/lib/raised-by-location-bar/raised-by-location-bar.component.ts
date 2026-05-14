@@ -37,7 +37,7 @@ export class RaisedByLocationBarComponent implements OnChanges {
   mergeOptions: EChartsOption;
 
   locations = [
-    { name: 'In District', color: '#71B3FF' },
+    // { name: 'In District', color: '#71B3FF' },
     { name: 'In City', color: '#3392FF' },
     { name: 'In County', color: '#337FD6' },
     { name: 'In State', color: '#336399' },
@@ -107,7 +107,7 @@ export class RaisedByLocationBarComponent implements OnChanges {
 
   buildChartData(raisedRegions: RaisedByLocations): object[] {
     const chartData = [
-      { value: raisedRegions['inDistrict'] },
+      // { value: raisedRegions['inDistrict'] },
       { value: raisedRegions['inCity'] },
       { value: raisedRegions['inCounty'] },
       { value: raisedRegions['inState'] },

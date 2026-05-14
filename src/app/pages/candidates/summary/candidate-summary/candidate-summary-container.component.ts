@@ -2,7 +2,7 @@
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { GraphQLModule } from 'src/app/graphql/graphql.module';
 import { CandidateCardGQLComponent } from 'src/app/graphql/candidate-card-gql/candidate-card-gql.component';
@@ -27,7 +27,8 @@ import { IndependentExpendituresV2ContainerComponent } from '../independent-expe
   styleUrls: ['./candidate-summary-container.component.scss'],
 })
 export class CandidateSummaryContainerComponent {
-  @Input() candidateId: string;
+  @Input() candidateId!: string;
 
   faTimesCircle = faTimesCircle;
+  faArrowLeft = faArrowLeft;
 }
