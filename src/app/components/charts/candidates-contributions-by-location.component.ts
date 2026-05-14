@@ -56,8 +56,8 @@ export class CandidateContributionsByLocationComparisonChartsComponent {
   private dataService = inject(CandidatesContributionsByLocationService);
   isLoading = this.dataService.isLoading;
 
-  titleContribLoc = 'Individual Contributions';
-  tooltipContribLoc = 'TODO: add info here';
+  titleContribLoc = 'Contributions to Candidates';
+  tooltipContribLoc = 'Contributions more than $100 per year as reported on Form 460';
   footnote = `Itemized contributions as reported on FPPC Form 460. Contributions are itemized when a contributor's cumulative contributions to a committee total $100 or more within a calendar year. See FAQ for more.`;
 
   onChartClick(params: any) {
