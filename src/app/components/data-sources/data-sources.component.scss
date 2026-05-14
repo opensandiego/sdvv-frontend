@@ -1,0 +1,15 @@
+@use "../../styles/variables";
+@use "../../styles/elements";
+@use "../../styles/global";
+
+.sources {
+  font-size: 14px;
+  a {
+    text-decoration: none;
+    color: variables.$vvlightblue;
+  }
+
+  p {
+    margin: 0px !important;
+  }
+}
