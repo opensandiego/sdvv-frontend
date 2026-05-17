@@ -1,18 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { MoreInformationComponent } from '../more-information-icon/more-information-icon.component';
 
 @Component({
   selector: 'details-tab-title',
-  imports: [MatTooltipModule, FontAwesomeModule],
+  imports: [MoreInformationComponent],
   templateUrl: './details-tab-title.component.html',
   styleUrls: ['./details-tab-title.component.scss'],
 })
 export class DetailsTabTitleComponent {
-  @Input() smallTitleText: string;
-  @Input() largeTitleText: string;
-  @Input() tooltipText?: string = 'Placeholder tooltip text.';
-
-  faQuestionCircle = faQuestionCircle;
+  @Input() smallTitleText: string = '';
+  @Input() largeTitleText: string = '';
+  @Input() tooltipText?: string = '';
 }
