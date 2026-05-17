@@ -27,7 +27,7 @@ import { getContributionsByInOutCity } from './options-phase-1/contributions-by-
         ></angular-echarts>
       </ng-container>
       <div class="candidates-contributions-by-location-comparison-footnote">
-        <p>{{ footnote }}</p>
+        <p><strong>Note:</strong> {{ footnote }}</p>
       </div>
     </div>
   `,

@@ -62,7 +62,7 @@ function getUniqueFilers<
         ></angular-echarts>
       </ng-container>
       <div class="candidates-independent-expenditures-comparison-footnote">
-        <p>{{ footnote }}</p>
+        <p><strong>Note:</strong> {{ footnote }}</p>
       </div>
     </div>
   `,
