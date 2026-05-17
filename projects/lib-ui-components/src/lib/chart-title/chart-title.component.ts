@@ -1,22 +1,41 @@
-import { Component, Input, } from '@angular/core';
-
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { Component, Input } from '@angular/core';
+import { MoreInformationComponent } from '../more-information-icon/more-information-icon.component';
 
 @Component({
   selector: 'chart-title',
-  templateUrl: './chart-title.component.html',
-  styleUrls: ['./chart-title.component.scss'],
-  imports: [MatTooltipModule, FontAwesomeModule],
+  styles: [
+    `
+      .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .text {
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+    `,
+  ],
+  template: `
+    <div class="title">
+      <p>
+        <span class="text" [style.color]="textColor">{{ titleText }}</span>
+
+        <more-information-icon
+          [tooltipText]="tooltipText"
+        ></more-information-icon>
+      </p>
+    </div>
+  `,
+
+  imports: [MoreInformationComponent],
 })
 export class ChartTitleComponent {
   @Input() titleText: string = 'Title Text Here';
   @Input() textColor: string = '#244366';
   @Input() tooltipText: string = 'Placeholder text.';
-  @Input() tooltipColor: string = '#707070';
-
-  faQuestionCircle = faQuestionCircle
 
   constructor() {}
 }

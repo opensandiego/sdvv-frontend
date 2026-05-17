@@ -1,22 +1,19 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { faMoneyBillWave, faHandHoldingUsd, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillWave, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
 import { DetailsTotalSpent, DetailsTotalSpentGQLQuery } from './details-total-spent-gql.query';
 import { spendingCodes } from './spending-codes';
 import { globals } from 'src/app/globals';
-
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MoreInformationComponent } from 'lib-ui-components';
 import { TotalSpentDonutComponent } from 'lib-ui-charts';
 import { TopCategoriesTableComponent } from 'src/app/components/top-categories-table/top-categories-table.component';
 
 @Component({
   selector: 'details-total-spent',
   imports: [
-    MatTooltipModule,
-    FontAwesomeModule,
+    MoreInformationComponent,
     TotalSpentDonutComponent,
-    TopCategoriesTableComponent
-],
+    TopCategoriesTableComponent,
+  ],
   templateUrl: './details-total-spent.component.html',
   styleUrls: ['./details-total-spent.component.scss'],
 })
@@ -42,7 +39,6 @@ export class DetailsTotalSpentComponent implements OnInit, OnChanges {
 
   faMoneyBillWave = faMoneyBillWave;
   faHandHoldingUsd = faHandHoldingUsd;
-  faQuestionCircle = faQuestionCircle;
 
   spendingMap;
 
@@ -70,7 +66,7 @@ export class DetailsTotalSpentComponent implements OnInit, OnChanges {
         },
         {
           // errorPolicy: 'all',
-        }
+        },
       )
       .valueChanges.subscribe((result: any) => {
         const response: DetailsTotalSpent = result.data;
