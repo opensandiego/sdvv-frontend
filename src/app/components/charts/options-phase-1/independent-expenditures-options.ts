@@ -200,6 +200,7 @@ export function getSupportedVsOpposedComparison({
       triggerEvent: true, // enable events for labels
       axisLabel: {
         cursor: 'pointer',
+        color: '#0077FF', // candidate name label
       },
       axisTick: { show: false },
     },

@@ -1,9 +1,9 @@
 import type { DatasetOption } from 'echarts/types/dist/shared.js';
-import type {
-  BarSeriesOption,
-  ComposeOption,
-  DatasetComponentOption,
-  TooltipComponentOption,
+import {
+  type BarSeriesOption,
+  type ComposeOption,
+  type DatasetComponentOption,
+  type TooltipComponentOption,
 } from 'echarts';
 import { getCompactFormattedCurrency } from '../../../public/util/number-formatter';
 
@@ -151,6 +151,7 @@ export function getContributionsByInOutCity({
       triggerEvent: true, // enable events for labels
       axisLabel: {
         cursor: 'pointer',
+        color: '#0077FF', // candidate name label
       },
     },
     series: [
