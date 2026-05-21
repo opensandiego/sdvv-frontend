@@ -11,6 +11,8 @@ import {
 } from '../independent-expenditures-v2/independent-expenditures-v2.component';
 import { globals } from 'src/app/globals';
 
+
+/** @deprecated use IndependentExpendituresV3ContainerComponent */
 @Component({
   selector: 'independent-expenditures-v2-container',
   imports: [
