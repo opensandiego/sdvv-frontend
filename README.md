@@ -7,7 +7,7 @@
 
 **Organizations Involved in the Project**
 
-* [Open San Diego](https://opensandiego.org/)
+* Open San Diego
 * [Represent.us](https://represent.us/)
 * [Common Cause](https://www.commoncause.org/)
 * [League of Women's Voters](https://www.lwv.org/)

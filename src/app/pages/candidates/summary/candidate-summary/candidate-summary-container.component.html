@@ -29,9 +29,9 @@
   </div>
 
   <div class="item-5">
-    <independent-expenditures-v2-container
+    <independent-expenditures-v3-container
       [candidateId]="candidateId"
-    ></independent-expenditures-v2-container>
+    ></independent-expenditures-v3-container>
   </div>
 
 
@@ -42,4 +42,9 @@
       </i>
     </a>
   </div>
+</div>
+
+<div class="compare-candidates-link-container">
+  <a class="compare-candidates-button" mat-flat-button [routerLink]="['../']">
+    <fa-icon [icon]="faArrowLeft"></fa-icon>&nbsp;Compare candidates</a>
 </div>

@@ -12,6 +12,8 @@ export * from './lib/candidate-menu/candidate-menu.component';
 
 export * from './lib/chart-title/chart-title.component';
 
+export * from './lib/more-information-icon/more-information-icon.component';
+
 export * from './lib/contributions-by-occupation-table/contributions-by-occupation-table.component';
 
 export * from './lib/details-contributions-by-occupation-header/details-contributions-by-occupation-header.component';
