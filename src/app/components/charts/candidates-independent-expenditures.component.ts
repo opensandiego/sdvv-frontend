@@ -10,38 +10,11 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, switchMap } from 'rxjs';
+import { catchError, map, of, startWith, switchMap } from 'rxjs';
 import { AngularEChartWrapperComponent } from './angular/angular-echart-wrapper.component';
 import { ChartTitleComponent } from 'lib-ui-components';
-import { CandidatesIndependentExpendituresService } from 'src/app/services/candidates-independent-expenditures.service';
+import { CandidatesIndependentExpendituresService } from 'src/app/services/candidates-independent-expenditures/candidates-independent-expenditures.service';
 import { getSupportedVsOpposedComparison } from './options-phase-1/independent-expenditures-options';
-
-/**
- * Combine filers with the same name and add the combined amounts for each duplicate
- */
-function getUniqueFilers<
-  T extends {
-    filerName: string;
-    amount: number;
-  },
->({ filers }: { filers: T[] }) {
-  const merged = filers.reduce((acc, current) => {
-    const existing = acc.get(current.filerName.toLowerCase());
-
-    if (existing) {
-      existing.amount += current.amount;
-    } else {
-      acc.set(current.filerName.toLowerCase(), { ...current });
-    }
-
-    return acc;
-  }, new Map<string, T>());
-
-  // Convert the Map back into an array
-  const result: T[] = Array.from(merged.values());
-
-  return result;
-}
 
 @Component({
   imports: [CommonModule, AngularEChartWrapperComponent, ChartTitleComponent],
@@ -95,7 +68,6 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private dataService = inject(CandidatesIndependentExpendituresService);
-  isLoading = this.dataService.isLoading;
   footnote = `Includes Form 460 data from previous periods and recent expenditures >$1,000 reported on Form 496. Does not include amounts from Form 460 Schedule D (unitemized contributions and independent expenditures of <$100 made this period).`;
 
   // observer to update component width signal
@@ -116,7 +88,8 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent
   }
 
   titleIndExp = 'Outside Money / Independent Expenditures';
-  tooltipIndExp = 'Expenditures supporting/opposing candidates, by committees not controlled by candidates';
+  tooltipIndExp =
+    'Expenditures supporting/opposing candidates, by committees not controlled by candidates';
 
   onChartClick(params: any) {
     // Filter for yAxis label clicks only
@@ -134,67 +107,34 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent
     }
   }
 
-  public preProcessedData = toSignal(
-    this.activatedRoute.paramMap.pipe(
-      // get parameters from route
-      map((params) => ({
-        year: params.get('year') ?? undefined,
-        office: params.get('office_name') ?? undefined,
-        district: params.get('district_number') ?? undefined,
-      })),
-      // use parameters from route to get data from service
-      switchMap((params) =>
-        this.dataService.getCandidatesIndependentExpenditures(params),
+  private state$ = this.activatedRoute.paramMap.pipe(
+    // get parameters from route
+    map((params) => ({
+      year: params.get('year') ?? undefined,
+      office: params.get('office_name') ?? undefined,
+      district: params.get('district_number') ?? undefined,
+    })),
+    // use parameters from route to get data from service
+    switchMap((params) =>
+      this.dataService.getIndependentExpendituresCandidateList(params).pipe(
+        map((data) => ({ loading: false, data, error: null })),
+
+        startWith({ loading: true, data: null, error: null }),
+
+        catchError((error) => of({ loading: false, data: null, error })),
       ),
-      map((data) => {
-        // if any candidate has the inGeneralElection condition set then filter all by their inGeneralElection
-        const hasGeneral = data.some(
-          (candidate) => candidate.inGeneralElection,
-        );
-
-        return hasGeneral
-          ? data.filter((candidate) => candidate.inGeneralElection)
-          : data;
-      }),
-      map((data) => {
-        const candidateSeries = data
-          // combine f460d and s496 support and oppose filers and amounts for each candidate
-          .map((candidate) => [
-            {
-              candidateId: candidate.candidateId,
-              candidateName: candidate.candidateName,
-              support: getUniqueFilers({
-                filers: [...candidate.f460d.support, ...candidate.s496.support],
-              }),
-              oppose: getUniqueFilers({
-                filers: [...candidate.f460d.oppose, ...candidate.s496.oppose],
-              }),
-            },
-          ])
-          .flat()
-          // commented this out so that the candidate data is sorted by name
-          // add combinedAmount to each candidate, needed for sorting
-          // .map((candidate) => {
-          //   const total = [...candidate.support, ...candidate.oppose].reduce(
-          //     (acc, curr) => acc + curr.amount,
-          //     0,
-          //   );
-
-          //   return {
-          //     ...candidate,
-          //     combinedAmount: total,
-          //   };
-          // })
-          .sort((a, b) =>
-            // a.combinedAmount - b.combinedAmount ||
-            b.candidateName.localeCompare(a.candidateName),
-          );
-
-        return { candidateSeries };
-      }),
     ),
-    { initialValue: null },
   );
+
+  // convert the observable stream to a signal
+  private state = toSignal(this.state$, {
+    initialValue: { loading: true, data: null, error: null },
+  });
+
+  // expose read-only signals for use in template
+  public preProcessedData = computed(() => this.state().data);
+  public isLoading = computed(() => this.state().loading);
+  // public hasError = computed(() => this.state().error);
 
   public processedChartData = computed(() => {
     const data = this.preProcessedData();
