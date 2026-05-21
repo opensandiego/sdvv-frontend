@@ -1,14 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { finalize, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-type IndependentExpenditureFiler = {
+export type IndependentExpenditureFiler = {
   filerName: string;
   amount: number;
 };
 
-type CandidatesIndependentExpenditures = {
+export type IndependentExpendituresCandidate = {
   candidateId: string;
   candidateName: string;
   inPrimaryElection: boolean;
@@ -23,17 +23,17 @@ type CandidatesIndependentExpenditures = {
   };
 };
 
-type CandidatesIndependentExpendituresResponse = {
-  data: CandidatesIndependentExpenditures[];
+type IndependentExpendituresResponseCandidates = {
+  data: IndependentExpendituresCandidate[];
 };
 
-@Injectable({
-  providedIn: 'root',
-})
-export class CandidatesIndependentExpendituresService {
+type IndependentExpendituresResponseCandidate = {
+  data: IndependentExpendituresCandidate;
+};
+
+@Injectable({ providedIn: 'root' })
+export class IndependentExpendituresApiService {
   private http = inject(HttpClient);
-  private _isLoading = signal(false);
-  isLoading = this._isLoading.asReadonly();
 
   getCandidatesIndependentExpenditures({
     year,
@@ -43,7 +43,7 @@ export class CandidatesIndependentExpendituresService {
     year?: string;
     office?: string;
     district?: string;
-  }): Observable<CandidatesIndependentExpenditures[]> {
+  }): Observable<IndependentExpendituresCandidate[]> {
     const queryParams = {
       ...(year && { year }),
       ...(office && { office }),
@@ -52,16 +52,30 @@ export class CandidatesIndependentExpendituresService {
 
     const params = new HttpParams({ fromObject: queryParams });
 
-    this._isLoading.set(true);
-
     return this.http
-      .get<CandidatesIndependentExpendituresResponse>(
+      .get<IndependentExpendituresResponseCandidates>(
         `${environment.apiUrl}/api/candidates/summaries/independent-expenditures`,
         { params: params },
       )
-      .pipe(
-        map((response) => response.data),
-        finalize(() => this._isLoading.set(false)),
-      );
+      .pipe(map((response) => response.data));
+  }
+
+  getIndependentExpendituresCandidateFetch({
+    candidateId,
+  }: {
+    candidateId: string;
+  }): Observable<IndependentExpendituresCandidate> {
+    const queryParams = {
+      candidateId,
+    };
+
+    const params = new HttpParams({ fromObject: queryParams });
+
+    return this.http
+      .get<IndependentExpendituresResponseCandidate>(
+        `${environment.apiUrl}/api/candidate/summaries/independent-expenditures`,
+        { params: params },
+      )
+      .pipe(map((response) => response.data));
   }
 }
