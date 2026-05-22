@@ -1,37 +1,31 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import {
   DetailsTotalRaised,
   DetailsTotalRaisedGQLQuery,
 } from './details-total-raised-gql.query';
 import { globals } from 'src/app/globals';
-
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MoreInformationComponent } from 'lib-ui-components';
 import { TotalRaisedBarModule } from 'lib-ui-charts';
 
 @Component({
   selector: 'details-total-raised',
   imports: [
-    MatTooltipModule,
-    FontAwesomeModule,
-    TotalRaisedBarModule
+    TotalRaisedBarModule,
+    MoreInformationComponent
 ],
   templateUrl: './details-total-raised.component.html',
   styleUrls: ['./details-total-raised.component.scss'],
 })
 export class DetailsTotalRaisedComponent implements OnChanges {
-  @Input() candidateId: string;
+  @Input() candidateId!: string;
 
   tooltipText = 'Total contributions to filer grouped by contribution type';
   contributionsColor = globals.contributionsColor;
   totalContributionsTextColor = globals.contributionsColor;
 
-  totalRaised: number;
-  totalRaisedFormatted: string;
-  raisedCategories: any[];
-
-  faQuestionCircle = faQuestionCircle;
+  totalRaised!: number;
+  totalRaisedFormatted!: string;
+  raisedCategories!: any[];
 
   constructor(private detailsTotalRaisedGQLQuery: DetailsTotalRaisedGQLQuery) {}
 
