@@ -1,18 +1,19 @@
 <div class="header-toolbar">
-  <mat-toolbar color="primary" >
-
+  <mat-toolbar color="primary">
     <i class="bar-toggle" (click)="sideNavToggle()">
       <fa-icon [icon]="['fas', 'bars']"></fa-icon>
     </i>
 
-    <img class="logo"
-      [src]="logoURL" 
+    <img
+      class="logo"
+      [src]="logoURL"
       [alt]="logoAltText"
-      width="120" height="auto" 
+      width="auto"
+      height="75"
       routerLinkActive="active-link"
       [routerLink]="homeLink"
       (click)="resetSidenav()"
-    >
+    />
 
     <span class="spacer"></span>
 
@@ -21,13 +22,14 @@
       routerLink="/about"
       routerLinkActive="router-link-active"
       (click)="resetSidenav()"
-    >About</a>
+      >About</a
+    >
     <a
       class="nav_links"
       routerLink="/faq"
       routerLinkActive="router-link-active"
       (click)="resetSidenav()"
-    >FAQ</a>
-
+      >FAQ</a
+    >
   </mat-toolbar>
 </div>
