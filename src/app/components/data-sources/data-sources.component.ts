@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LastUpdatedComponent } from 'src/app/graphql/last-updated/last-updated.component';
 
 @Component({
-  imports: [RouterModule, LastUpdatedComponent],
+  imports: [RouterModule],
   selector: 'data-sources',
   template: `
     <div class="sources">
@@ -13,7 +12,6 @@ import { LastUpdatedComponent } from 'src/app/graphql/last-updated/last-updated.
           >City of San Diego Electronic Filing System.</a
         >
       </p>
-      <last-updated></last-updated>
     </div>
   `,
   styleUrls: [`./data-sources.component.scss`]

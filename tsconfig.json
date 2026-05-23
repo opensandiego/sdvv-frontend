@@ -11,12 +11,10 @@
     "moduleResolution": "bundler",
     "paths": {
       "lib-ui-charts": [
-        "dist/lib-ui-charts/lib-ui-charts",
-        "dist/lib-ui-charts"
+        "./projects/lib-ui-charts/src/public-api.ts"
       ],
       "lib-ui-components": [
-        "dist/lib-ui-components/lib-ui-components",
-        "dist/lib-ui-components"
+        "./projects/lib-ui-components/src/public-api.ts"
       ]
     },
     "experimentalDecorators": true,
