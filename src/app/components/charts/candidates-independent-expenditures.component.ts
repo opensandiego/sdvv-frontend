@@ -68,7 +68,7 @@ export class CandidatesIndependentExpendituresComparisonChartsComponent
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private dataService = inject(CandidatesIndependentExpendituresService);
-  footnote = `Includes Form 460 data from previous periods and recent expenditures >$1,000 reported on Form 496. Does not include amounts from Form 460 Schedule D (unitemized contributions and independent expenditures of <$100 made this period).`;
+  footnote = `Hover your mouse over the chart segments on a computer, or tap them on your mobile device, to reveal the entities behind the spending. Includes Form 460 data from previous periods and recent expenditures >$1,000 reported on Form 496. Does not include amounts from Form 460 Schedule D (unitemized contributions and independent expenditures of <$100 made this period).`;
 
   // observer to update component width signal
   // to use in chart options function
