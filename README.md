@@ -9,7 +9,6 @@
 
 * Open San Diego
 * [Represent.us](https://represent.us/)
-* [Common Cause](https://www.commoncause.org/)
 * [League of Women's Voters](https://www.lwv.org/)
 
 **Links**
@@ -21,7 +20,11 @@
 
 Currently, campaign finance information for candidates running for local offices as well as money spent by outside groups to support or defeat them is not readily accessible to the public.  When the amount of money being spent as well as the source is not known, voters feel disenfranchised by the election process.  Making campaign finance data easy to find and read will increase public trust and confidence in the election process.
 
-For more information with Voter's Voice Initiative visit [https://sdvotersvoice.org/](https://sdvotersvoice.org/)
+This site was developed as a collaboration between the Voters' Voice Initiatives, a non-partisan community group advocating for election reform, and Open San Diego, a former brigade of the national, non-partisan Code for America.
+
+In 2025, Represent San Diego, one of the founders of Voters' Voice, assumed sole hosting duties for the site.
+
+In 2026, the League of Women Voters of San Diego funded new features that let users compare candidates through charts showing independent expenditure spending and contributions from inside versus outside the city.
 
 #### Data Source
 
