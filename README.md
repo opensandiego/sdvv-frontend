@@ -1,4 +1,3 @@
-
 # Transparency Dashboard for San Diego City elections
 
 <!-- ### Introduction -->
@@ -8,8 +7,8 @@
 **Organizations Involved in the Project**
 
 * Open San Diego
-* [Represent.us](https://represent.us/)
-* [League of Women's Voters](https://www.lwv.org/)
+* [RepresentUs - San Diego chapter](https://representsandiego.org/)
+* [League of Women Voters of San Diego](https://lwvsandiego.org/)
 
 **Links**
 * Production website: https://followthemoneysandiego.org/
@@ -18,7 +17,7 @@
 
 #### Background Information
 
-Currently, campaign finance information for candidates running for local offices as well as money spent by outside groups to support or defeat them is not readily accessible to the public.  When the amount of money being spent as well as the source is not known, voters feel disenfranchised by the election process.  Making campaign finance data easy to find and read will increase public trust and confidence in the election process.
+Currently, campaign finance information for candidates running for local offices as well as money spent by outside groups to support or defeat them is not readily accessible to the public. When the amount of money being spent as well as the source is not known, voters feel disenfranchised by the election process. Making campaign finance data easy to find and read will increase public trust and confidence in the election process.
 
 This site was developed as a collaboration between the Voters' Voice Initiatives, a non-partisan community group advocating for election reform, and Open San Diego, a former brigade of the national, non-partisan Code for America.
 
@@ -31,49 +30,60 @@ In 2026, the League of Women Voters of San Diego funded new features that let us
 The campaign finance data used in this site is sourced from publicly available campaign disclosure data provided by the [City of San Diego's Electronic Filing System](https://efile.sandiego.gov/).
 
 ### Prerequisites
-* Angular CLI 16+
-* npm 9.8+
-* node 18+
+
+* Angular CLI 21+
+* npm 11.11+
+* node 24+
 
 ### Setup
+
 1. Clone directory from github
 
 2. change to the sdvv-frontend directory
+
 ```
 cd sdvv-frontend
 ```
 
-3. Run npm install to install all the dependencies 
+3. Run npm install to install all the dependencies
+
 ```
 npm install
 ```
 
 4. Install the Angular CLI
+
 ```
 npm install -g @angular/cli
 ```
 
 5. Build the libraries at least once. This will build them into the /dist folder.
+
 ```
 npm run build:lib
 ```
+
 If you are modifying a component in a library then you can run either library in watch mode using:
+
 ```
 npm run start:lib:ui:charts
 npm run start:lib:ui:components
 ```
 
 6. Start the Angular server then browse to http://localhost:4200/
+
 ```
 npm run start
 ```
 
 Or to start the server and open the application in the browser.
+
 ```
 ng serve --open
 ```
 
 The easiest way to run the site locally is to have it access the data using the remote development backend hosted on Heroku. This does not require the backend or database to be run locally. To do this use:
+
 ```
 npm run start:db:remote
 ```
