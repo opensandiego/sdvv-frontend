@@ -71,7 +71,7 @@
     "@angular/compiler-cli": "21.2.15",
     "@angular/elements": "21.2.15",
     "@angular/language-service": "21.2.15",
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.29.6",
     "@compodoc/compodoc": "^1.2.1",
     "@cypress/schematic": "^5.0.0",
     "@juggle/resize-observer": "^3.3.1",
