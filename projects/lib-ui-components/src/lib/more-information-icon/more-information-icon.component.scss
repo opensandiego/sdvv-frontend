@@ -4,7 +4,7 @@
 .tooltip-icon {
   color: variables.$vvgrey;
   cursor: pointer;
-  margin-left: 0.5em;
+  margin-left: var(--dynamic-margin-left);
   font-size: 16px;
   outline: none;
   transition: color 0.2s ease-in-out;
