@@ -23,7 +23,10 @@
     <div class="candidate-numbers">
       <div class="spending">
         <div class="support">
-          <h2>Spending <br>In Support</h2> 
+          <span class="support-heading">
+            <h2>Spending <br>In Support</h2>
+            <more-information-icon [tooltipText]="tooltipText" marginLeft="0.15em"></more-information-icon>
+          </span>
           <h3 [style.color]="inSupportTextColor">{{inSupport ? (inSupport | currency : 'USD' : 'symbol' : '1.0-0') :
             '0'}}</h3>
         </div>

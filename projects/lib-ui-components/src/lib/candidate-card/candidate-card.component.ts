@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CandidateInfo, CommitteeData } from '../lib-ui-components.models';
+import { MoreInformationComponent } from 'lib-ui-components';
 
 @Component({
   selector: 'candidate-card',
@@ -23,6 +24,7 @@ import { CandidateInfo, CommitteeData } from '../lib-ui-components.models';
     MatButtonModule,
     MatIconModule,
     FontAwesomeModule,
+    MoreInformationComponent,
   ],
   templateUrl: './candidate-card.component.html',
   styleUrls: ['./candidate-card.component.scss'],
@@ -94,6 +96,10 @@ export class CandidateCardComponent implements OnChanges {
 
   buttonText: string = 'See Details';
   buttonLink: string = 'details';
+
+  tooltipText: string = `The combination of funds raised by the candidate's controlled
+    campaign committee and outside expenditures made by independent (non-candidate controlled)
+    committees in support of the candidate.`;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['inExpandedCard']) {
