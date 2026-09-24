@@ -1,0 +1,21 @@
+@use "../../styles/elements";
+
+.district-links-container {
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 125px));
+
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px;
+
+  .compare-candidates-button {
+    @include elements.button-styles;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+    padding: 6px;
+    min-width: 125px;
+  }
+}
