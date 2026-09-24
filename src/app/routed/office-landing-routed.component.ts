@@ -1,16 +1,22 @@
 import { Component, input } from '@angular/core';
+import {
+  DistrictInput,
+  DistrictLinksComponent,
+} from './district-links/district-links.component';
 
 @Component({
   selector: 'office-landing-route',
   standalone: true,
-  imports: [],
+  imports: [DistrictLinksComponent],
   template: `
     <div class="landing-page-container">
       <div class="center-title">
         <h2 mat-card-title>{{ year() }} City Council Races on the Ballot</h2>
       </div>
       <div class="landing-page-section">Section 1</div>
-      <div class="landing-page-section">Section 2</div>
+      <div class="landing-page-section">
+        <district-links />
+      </div>
       <div class="landing-page-section">
         Wondering which district you are in? Use the city's
         <a
