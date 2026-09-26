@@ -3,17 +3,32 @@ import {
   DistrictInput,
   DistrictLinksComponent,
 } from './district-links/district-links.component';
+import { SpendingByDistrictChartComponent } from '../components/charts/spending-by-city-council-district/spending-by-city-council-district.component';
+import { SpendingByDistrictSummaryComponent } from '../components/spending-by-city-council-district-summary/spending-by-city-council-district-summary.component';
+import { LastUpdateDateComponent } from '../graphql/last-updated/last-update-date.component';
 
 @Component({
   selector: 'office-landing-route',
   standalone: true,
-  imports: [DistrictLinksComponent],
+  imports: [
+    SpendingByDistrictChartComponent,
+    SpendingByDistrictSummaryComponent,
+    DistrictLinksComponent,
+    LastUpdateDateComponent,
+  ],
   template: `
     <div class="landing-page-container">
       <div class="center-title">
         <h2 mat-card-title>{{ year() }} City Council Races on the Ballot</h2>
       </div>
-      <div class="landing-page-section">Section 1</div>
+      <div class="landing-page-section spending-by-district-section">
+        <city-council-spending-by-district-comparison-chart [year]="year()" />
+
+        <div class="section-1-footer">
+          <city-council-spending-by-district-summary />
+          <last-update-date />
+        </div>
+      </div>
       <div class="landing-page-section">
         <district-links />
       </div>
@@ -40,6 +55,22 @@ import {
         padding: 15px 25px 15px 25px;
         background: #fff;
         box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.21);
+      }
+
+      .spending-by-district-section {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .section-1-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
       }
     `,
   ],
