@@ -195,6 +195,11 @@ export function getContributionsByInOutCityParty({
     legend: {
       top: '0%',
       selectedMode: false,
+      data: [
+        'In City (non-party)',
+        'Out of City (non-party)',
+        'Political Party',
+      ],
     },
     tooltip: {
       trigger: 'item',
@@ -213,7 +218,13 @@ export function getContributionsByInOutCityParty({
       containLabel: true,
     },
     dataset: {
-      dimensions: ['candidateName', 'inCity', 'outCity', 'politicalParty'],
+      dimensions: [
+        'candidateName',
+        'inCity',
+        'outCity',
+        'politicalParty',
+        'totalContributions',
+      ],
       source: candidateSeries,
     },
     xAxis: {
@@ -247,11 +258,21 @@ export function getContributionsByInOutCityParty({
         stack: 'total',
         itemStyle: { color: '#ABC7F9' },
         encode: { x: 'politicalParty', y: 'candidateName' },
+      },
+
+      // Hidden series for showing stack total labels to the right of last bar
+      {
+        name: '_stack_totals_',
+        type: 'bar',
+        barWidth: 25,
+        // the barGap with stack not set is needed to shift the label into place
+        barGap: '-100%',
+        itemStyle: { color: 'none' }, // makes the bar invisible
+        silent: true, // disable tooltip
+        encode: { x: 'totalContributions', y: 'candidateName' }, // need a total stack
         label: {
           show: true,
-          position: 'right',
-          color: '#000', // change
-          fontWeight: 'bold', // change
+          position: 'right', // place label to the right of the last stack
           formatter: (params) => {
             const record = candidateSeries[params.dataIndex];
 
