@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CandidateInfo, CommitteeData } from '../lib-ui-components.models';
-import { MoreInformationComponent } from 'lib-ui-components';
+import { MoreInformationComponent } from '../more-information-icon/more-information-icon.component';
 
 @Component({
   selector: 'candidate-card',
