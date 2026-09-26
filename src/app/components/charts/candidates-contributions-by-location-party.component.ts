@@ -105,17 +105,24 @@ export class CandidateContributionsByLocationPartyComparisonChartComponent {
       }),
       map((data) => {
         const candidateSeries = data
-          .map((candidate) => [
-            {
-              candidateId: candidate.candidateId,
-              candidateName: candidate.candidateName,
-              inCity: candidate.f460a.inCity + candidate.f460c.inCity,
-              outCity: candidate.f460a.outCity + candidate.f460c.outCity,
-              politicalParty:
-                candidate.f460a.politicalParty + candidate.f460c.politicalParty,
-              totalContributions: candidate.totalContributions,
-            },
-          ])
+          .map((candidate) => {
+            const inCity = candidate.f460a.inCity + candidate.f460c.inCity;
+            const outCity = candidate.f460a.outCity + candidate.f460c.outCity;
+            const politicalParty =
+              candidate.f460a.politicalParty + candidate.f460c.politicalParty;
+
+            // generate totalContributions per candidate in component, not in API-db query
+            return [
+              {
+                candidateId: candidate.candidateId,
+                candidateName: candidate.candidateName,
+                inCity,
+                outCity,
+                politicalParty,
+                totalContributions: inCity + outCity + politicalParty,
+              },
+            ];
+          })
           .flat()
           .sort((a, b) => b.candidateName.localeCompare(a.candidateName));
 

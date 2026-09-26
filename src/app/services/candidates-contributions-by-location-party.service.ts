@@ -7,7 +7,6 @@ type ContributionsByForm = {
   inCity: number;
   outCity: number;
   politicalParty: number; // added this
-  formContributions: number;
   formTransactionCount: number;
 };
 
@@ -23,7 +22,6 @@ type CandidateContributionsByLocation = {
   f460a: ContributionsByForm;
   f460c: ContributionsByForm;
   f496p3: ContributionsByForm;
-  totalContributions: number;
   transactionCount: number;
 };
 
