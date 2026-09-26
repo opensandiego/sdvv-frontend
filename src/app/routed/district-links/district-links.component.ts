@@ -1,11 +1,10 @@
-import { Component, input } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject, input } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map, switchMap } from 'rxjs';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-
-export type DistrictInput = {
-  district: number;
-};
+import { SpendingByCityCouncilDistrictService } from 'src/app/services/spending-by-city-council-district.service';
 
 @Component({
   selector: 'district-links',
@@ -16,13 +15,13 @@ export type DistrictInput = {
       <div>See candidate breakdown by district:</div>
 
       <div class="district-links-container">
-        @for (district of districts(); track $index) {
+        @for (district of preProcessedData(); track $index) {
           <a
             class="compare-candidates-button"
             mat-flat-button
-            [routerLink]="['./', district.district]"
+            [routerLink]="['./', district.districtNumber]"
           >
-            District {{ district.district }}&nbsp;<fa-icon
+            {{ district.districtName }}&nbsp;<fa-icon
               [icon]="faArrowRight"
             ></fa-icon>
           </a>
@@ -33,7 +32,39 @@ export type DistrictInput = {
   styleUrls: ['./district-links.component.scss'],
 })
 export class DistrictLinksComponent {
-  districts = input<DistrictInput[]>([]);
+  year = input<string>(''); // value is set from route
+
+  private activatedRoute = inject(ActivatedRoute);
+  private dataService = inject(SpendingByCityCouncilDistrictService);
+  isLoading = this.dataService.isLoading;
 
   faArrowRight = faArrowRight;
+
+  public preProcessedData = toSignal(
+    this.activatedRoute.paramMap.pipe(
+      // get parameters from route
+      map((params) => ({
+        year: params.get('year') ?? undefined, //
+      })),
+      // use parameters from route to get data from service
+      switchMap((params) =>
+        this.dataService.getSpendingByCityCouncilDistrict(params),
+      ),
+      map((data) => {
+        const districtSeries = data
+          .map((district) => [
+            // only use the number and name fields
+            {
+              districtNumber: district.districtNumber,
+              districtName: `District ${district.districtNumber}`,
+            },
+          ])
+          .flat()
+          .sort((a, b) => a.districtNumber - b.districtNumber);
+
+        return districtSeries;
+      }),
+    ),
+    { initialValue: null },
+  );
 }
