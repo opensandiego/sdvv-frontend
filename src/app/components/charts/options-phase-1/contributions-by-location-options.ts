@@ -229,10 +229,20 @@ export function getContributionsByInOutCityParty({
     },
     xAxis: {
       type: 'value',
+      axisLabel: {
+        hideOverlap: true,
+        formatter: (value: number) =>
+          getCompactFormattedCurrency(Math.abs(value), 1),
+      },
     },
     yAxis: {
       type: 'category',
       encode: { y: 'candidateName' },
+      triggerEvent: true, // enable events for labels
+      axisLabel: {
+        cursor: 'pointer',
+        color: '#0077FF', // candidate name label
+      },
     },
     series: [
       {
