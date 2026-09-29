@@ -2,7 +2,7 @@ import { Component, input } from '@angular/core';
 import { DistrictLinksComponent } from './district-links/district-links.component';
 import { SpendingByDistrictChartComponent } from '../components/charts/spending-by-city-council-district/spending-by-city-council-district.component';
 import { SpendingByDistrictSummaryComponent } from '../components/spending-by-city-council-district-summary/spending-by-city-council-district-summary.component';
-import { LastUpdateDateComponent } from '../graphql/last-updated/last-update-date.component';
+import { LastUpdateDateComponent } from '../components/last-updated/last-update-date.component';
 
 @Component({
   selector: 'office-landing-route',
