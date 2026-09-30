@@ -1,8 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, input } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  OnDestroy,
+  signal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, switchMap } from 'rxjs';
+import { catchError, filter, map, of, startWith, switchMap } from 'rxjs';
 import {
   AngularEChartWrapperComponent,
   AxisLabelHoverPayload,
@@ -22,15 +30,19 @@ import { SpendingByCityCouncilDistrictService } from 'src/app/services/spending-
         [showTooltipIcon]="false"
       ></chart-title>
 
-      @if (processedChartData(); as data) {
-        <angular-echarts
-          [options]="data.options"
-          [height]="data.height"
-          [loading]="isLoading()"
-          (chartClick)="onChartClick($event)"
-          (axisLabelHover)="onAxisLabelHover($event)"
-          (axisLabelHoverOut)="onAxisLabelHoverOut($event)"
-        ></angular-echarts>
+      @if (hasData()) {
+        @if (processedChartData(); as data) {
+          <angular-echarts
+            [options]="data.options"
+            [height]="data.height"
+            [loading]="isLoading()"
+            (chartClick)="onChartClick($event)"
+            (axisLabelHover)="onAxisLabelHover($event)"
+            (axisLabelHoverOut)="onAxisLabelHoverOut($event)"
+          ></angular-echarts>
+        }
+      } @else {
+        <div class="no-data">No Campaign Spending by Districts Found</div>
       }
     </div>
   `,
@@ -45,17 +57,35 @@ import { SpendingByCityCouncilDistrictService } from 'src/app/services/spending-
     `,
   ],
 })
-export class SpendingByDistrictChartComponent {
+export class SpendingByDistrictChartComponent
+  implements AfterViewInit, OnDestroy
+{
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private dataService = inject(SpendingByCityCouncilDistrictService);
-  isLoading = this.dataService.isLoading;
 
   // To enable axis label mouse detection, provide a series in options function
   // with the name that matches tooltipAxisLabelSeriesName.
   protected tooltipAxisLabelSeriesName = '__axis_label_tooltip_target__';
 
   title = computed(() => `Campaign Spending by District`);
+
+  // observer to update component width signal
+  // to use in chart options function
+  private el = inject(ElementRef);
+  private observer!: ResizeObserver;
+  private width = signal<number>(0);
+
+  ngAfterViewInit() {
+    this.observer = new ResizeObserver((entries) => {
+      this.width.set(entries[0].contentRect.width);
+    });
+
+    this.observer.observe(this.el.nativeElement);
+  }
+  ngOnDestroy() {
+    this.observer.disconnect();
+  }
 
   onChartClick(params: any) {
     // Check if the user clicked either the yAxis label OR a bar in the series
@@ -113,40 +143,59 @@ export class SpendingByDistrictChartComponent {
     }
   }
 
-  public preProcessedData = toSignal(
-    this.activatedRoute.paramMap.pipe(
-      // get parameter from route
-      map((params) => params.get('year')),
+  private state$ = this.activatedRoute.paramMap.pipe(
+    // get parameters from route
+    map((params) => params.get('year')),
 
-      filter((electionYear): electionYear is string => !!electionYear),
+    filter((electionYear): electionYear is string => !!electionYear),
 
-      // use parameters from route to get data from service
-      switchMap((electionYear) =>
-        this.dataService.getSpendingByCityCouncilDistrict({ electionYear }),
+    // use parameters from route to get data from service
+    switchMap((electionYear) =>
+      this.dataService.getSpendingByCityCouncilDistrict({ electionYear }).pipe(
+        map((data) => ({ loading: false, data, error: null })),
+
+        startWith({ loading: true, data: null, error: null }),
+
+        catchError((error) => of({ loading: false, data: null, error })),
       ),
-
-      map((data) => {
-        const districtSeries = data
-          .map((district) => [
-            {
-              districtNumber: district.districtNumber,
-              districtName: `District ${district.districtNumber}`,
-              contributions: district.contributions,
-              independentExpenditures: district.independentExpenditures,
-              totalSpending:
-                district.contributions + district.independentExpenditures,
-            },
-          ])
-          .flat()
-          .sort((a, b) => b.districtNumber - a.districtNumber);
-
-        return { districtSeries };
-      }),
     ),
-    { initialValue: null },
   );
 
+  // convert the observable stream to a signal
+  private state = toSignal(this.state$, {
+    initialValue: { loading: true, data: null, error: null },
+  });
+
+  // expose read-only signals for use in template
+  public preProcessedData = computed(() => {
+    const data = this.state().data;
+    if (!data) return null;
+
+    const districtSeries = data
+      .map((district) => [
+        {
+          districtNumber: district.districtNumber,
+          districtName: `District ${district.districtNumber}`,
+          contributions: district.contributions,
+          independentExpenditures: district.independentExpenditures,
+          totalSpending:
+            district.contributions + district.independentExpenditures,
+        },
+      ])
+      .flat()
+      .sort((a, b) => b.districtNumber - a.districtNumber);
+
+    return { districtSeries };
+  });
+
+  public isLoading = computed(() => this.state().loading);
+  public hasData = computed(() => (this.state().data ? true : false));
+
   public processedChartData = computed(() => {
+    // this.width() causes the processedChartData function to run when this.width changes.
+    // This is needed to redraw the chart when the size of its container changes.
+    this.width();
+
     const data = this.preProcessedData();
     if (!data) return null;
 
