@@ -15,37 +15,73 @@ type DistrictsSpendingSummary = {
   imports: [CommonModule, CurrencyPipe],
   selector: 'city-council-spending-by-district-summary',
   template: ` <div class="spending-summary-container">
-    @if (processedSummaryData(); as data) {
-      <div class="spending-summary-item">
-        Total contributions:
-        {{ data.totalContributions | currency: 'USD' : 'symbol' : '1.0' }}
-      </div>
+    <div class="spending-summary-items-container">
+      @if (processedSummaryData(); as data) {
+        <div class="spending-summary-item">
+          Total contributions:
+          {{ data.totalContributions | currency: 'USD' : 'symbol' : '1.0' }}
+        </div>
 
-      <div class="spending-summary-item">|</div>
+        <div class="spending-summary-item">
+          Total independent expenditures:
+          {{
+            data.totalIndependentExpenditures
+              | currency: 'USD' : 'symbol' : '1.0'
+          }}
+        </div>
 
-      <div class="spending-summary-item">
-        Total independent expenditures:
-        {{
-          data.totalIndependentExpenditures | currency: 'USD' : 'symbol' : '1.0'
-        }}
-      </div>
-
-      <div class="spending-summary-item">|</div>
-
-      <div class="spending-summary-item">
-        Combined total:
-        {{ data.combinedTotal | currency: 'USD' : 'symbol' : '1.0' }}
-      </div>
-    }
+        <div class="spending-summary-item">
+          Combined total:
+          {{ data.combinedTotal | currency: 'USD' : 'symbol' : '1.0' }}
+        </div>
+      }
+    </div>
   </div>`,
   styles: [
     `
       .spending-summary-container {
+        container-type: inline-size;
+      }
+
+      .spending-summary-items-container {
         display: flex;
-        gap: 10px;
+        flex-direction: row;
+        gap: 16px;
       }
 
       .spending-summary-item {
+        white-space: nowrap;
+      }
+
+      /* add vertical line */
+      .spending-summary-items-container
+        .spending-summary-item
+        + .spending-summary-item {
+        border-left: 2px solid #00000075;
+        padding-left: 16px;
+      }
+
+      @container (max-width: 850px) {
+        .spending-summary-items-container {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        /* remove vertical line */
+        .spending-summary-items-container
+          .spending-summary-item
+          + .spending-summary-item {
+          border-left: none;
+          padding-left: 0;
+        }
+
+        /* add horizontal line */
+        .spending-summary-items-container
+          .spending-summary-item
+          + .spending-summary-item {
+          border-top: 2px solid #00000075;
+          padding-top: 16px;
+        }
       }
     `,
   ],
