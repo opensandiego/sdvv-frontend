@@ -19,7 +19,7 @@ import { LastUpdateDateComponent } from '../components/last-updated/last-update-
         <h2 mat-card-title>{{ year() }} City Council Races on the Ballot</h2>
       </div>
       <div class="landing-page-section spending-by-district-section">
-        <city-council-spending-by-district-comparison-chart [year]="year()" />
+        <city-council-spending-by-district-comparison-chart />
 
         <div class="section-1-footer">
           <city-council-spending-by-district-summary />

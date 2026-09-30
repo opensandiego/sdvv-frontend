@@ -46,8 +46,6 @@ import { SpendingByCityCouncilDistrictService } from 'src/app/services/spending-
   ],
 })
 export class SpendingByDistrictChartComponent {
-  year = input<string>('');
-
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private dataService = inject(SpendingByCityCouncilDistrictService);
@@ -57,9 +55,7 @@ export class SpendingByDistrictChartComponent {
   // with the name that matches tooltipAxisLabelSeriesName.
   protected tooltipAxisLabelSeriesName = '__axis_label_tooltip_target__';
 
-  title = computed(
-    () => `Campaign Spending by City Council District ${this.year()}`,
-  );
+  title = computed(() => `Campaign Spending by District`);
 
   onChartClick(params: any) {
     // Check if the user clicked either the yAxis label OR a bar in the series
