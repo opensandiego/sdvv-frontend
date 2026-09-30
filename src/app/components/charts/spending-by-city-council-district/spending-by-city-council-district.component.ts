@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, switchMap } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs';
 import {
   AngularEChartWrapperComponent,
   AxisLabelHoverPayload,
@@ -119,14 +119,16 @@ export class SpendingByDistrictChartComponent {
 
   public preProcessedData = toSignal(
     this.activatedRoute.paramMap.pipe(
-      // get parameters from route
-      map((params) => ({
-        year: params.get('year') ?? undefined, //
-      })),
+      // get parameter from route
+      map((params) => params.get('year')),
+
+      filter((electionYear): electionYear is string => !!electionYear),
+
       // use parameters from route to get data from service
-      switchMap((params) =>
-        this.dataService.getSpendingByCityCouncilDistrict(params),
+      switchMap((electionYear) =>
+        this.dataService.getSpendingByCityCouncilDistrict({ electionYear }),
       ),
+
       map((data) => {
         const districtSeries = data
           .map((district) => [
