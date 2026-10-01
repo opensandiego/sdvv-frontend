@@ -266,7 +266,7 @@ export function getContributionsByInOutCityParty({
         type: 'bar',
         barWidth: 25,
         stack: 'total',
-        itemStyle: { color: '#ABC7F9' },
+        itemStyle: { color: '#8C8C8C' },
         encode: { x: 'politicalParty', y: 'candidateName' },
       },
 
