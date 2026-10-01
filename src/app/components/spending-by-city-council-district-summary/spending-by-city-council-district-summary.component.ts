@@ -1,5 +1,12 @@
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
@@ -19,20 +26,25 @@ type DistrictsSpendingSummary = {
       @if (processedSummaryData(); as data) {
         <div class="spending-summary-item">
           Total contributions:
-          {{ data.totalContributions | currency: 'USD' : 'symbol' : '1.0' }}
+          {{
+            data.totalContributions
+              | currency: 'USD' : 'symbol' : currencyDigits()
+          }}
         </div>
 
         <div class="spending-summary-item">
-          Total independent expenditures:
+          Total {{ independentExpendituresText() }}:
           {{
             data.totalIndependentExpenditures
-              | currency: 'USD' : 'symbol' : '1.0'
+              | currency: 'USD' : 'symbol' : currencyDigits()
           }}
         </div>
 
         <div class="spending-summary-item">
           Combined total:
-          {{ data.combinedTotal | currency: 'USD' : 'symbol' : '1.0' }}
+          {{
+            data.combinedTotal | currency: 'USD' : 'symbol' : currencyDigits()
+          }}
         </div>
       }
     </div>
@@ -86,10 +98,29 @@ type DistrictsSpendingSummary = {
     `,
   ],
 })
-export class SpendingByDistrictSummaryComponent {
+export class SpendingByDistrictSummaryComponent implements OnInit, OnDestroy {
   private activatedRoute = inject(ActivatedRoute);
   private dataService = inject(SpendingByCityCouncilDistrictService);
   isLoading = this.dataService.isLoading;
+
+  private mediaQuery = window.matchMedia('(max-width: 450px)');
+  isMobile = signal(this.mediaQuery.matches);
+
+  private listener = (e: MediaQueryListEvent) => this.isMobile.set(e.matches);
+
+  ngOnInit() {
+    this.mediaQuery.addEventListener('change', this.listener);
+  }
+
+  ngOnDestroy() {
+    this.mediaQuery.removeEventListener('change', this.listener);
+  }
+
+  currencyDigits = computed(() => (this.isMobile() ? '1.0-0' : '1.0'));
+
+  independentExpendituresText = computed(() =>
+    this.isMobile() ? 'independent exp.' : 'independent expenditures',
+  );
 
   public preProcessedData = toSignal(
     this.activatedRoute.paramMap.pipe(
