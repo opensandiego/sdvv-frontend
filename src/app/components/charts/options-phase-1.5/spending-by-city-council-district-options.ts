@@ -57,7 +57,7 @@ export function getContributionsByCityCouncilDistricts({
     },
     grid: {
       left: '3%',
-      right: '4%',
+      right: '50px',
       bottom: '3%',
       top: '60px',
       containLabel: true,
