@@ -2,21 +2,21 @@ import { Component, computed, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CandidateCardListRoutedComponent } from 'src/app/routed/candidate-card-list-routed/candidate-card-list-routed.component';
 import { CandidatesIndependentExpendituresComparisonChartsComponent } from '../charts/candidates-independent-expenditures.component';
-import { CandidateContributionsByLocationComparisonChartsComponent } from '../charts/candidates-contributions-by-location.component';
+import { CandidateContributionsByLocationPartyComparisonChartComponent } from '../charts/candidates-contributions-by-location-party.component';
 
 @Component({
   imports: [
     RouterModule,
     CandidateCardListRoutedComponent,
     CandidatesIndependentExpendituresComparisonChartsComponent,
-    CandidateContributionsByLocationComparisonChartsComponent,
+    CandidateContributionsByLocationPartyComparisonChartComponent,
   ],
   selector: 'office-districts',
-  template: `    
+  template: `
     <div class="center-title">
       <h2 mat-card-title>{{ contestName() }}</h2>
     </div>
-    <candidates-contributions-by-location-comparison-chart />
+    <candidates-contributions-by-location-party-comparison-chart />
     <candidates-independent-expenditures-comparison-chart />
     <candidate-card-list-routed></candidate-card-list-routed>
   `,

@@ -7,6 +7,7 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
   selector: 'more-information-icon',
   imports: [MatTooltipModule, FontAwesomeModule],
   template: ` <fa-icon
+    [style.--dynamic-margin-left]="marginLeft()"
     [icon]="faQuestionCircle"
     [matTooltip]="tooltipText()"
     matTooltipClass="tooltip-text"
@@ -19,6 +20,7 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 })
 export class MoreInformationComponent {
   tooltipText = input<string>('');
+  marginLeft = input<string>('0.5em');
 
   faQuestionCircle = faQuestionCircle;
 }

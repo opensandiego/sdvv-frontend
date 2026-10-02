@@ -1,12 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { finalize, map, Observable } from 'rxjs';
-import { environment } from '../../../src/environments/environment';
+import { map, Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 type ContributionsByForm = {
   inCity: number;
   outCity: number;
-  formContributions: number;
+  politicalParty: number;
   formTransactionCount: number;
 };
 
@@ -22,7 +22,6 @@ type CandidateContributionsByLocation = {
   f460a: ContributionsByForm;
   f460c: ContributionsByForm;
   f496p3: ContributionsByForm;
-  totalContributions: number;
   transactionCount: number;
 };
 
@@ -33,12 +32,24 @@ type CandidatesContributionsByLocationResponse = {
 @Injectable({
   providedIn: 'root',
 })
-export class CandidatesContributionsByLocationService {
+export class CandidatesContributionsByLocationPartyService {
   private http = inject(HttpClient);
   private _isLoading = signal(false);
   isLoading = this._isLoading.asReadonly();
 
-  getContributionsByLocation({
+  filterForInGeneralCandidates(
+    data: CandidateContributionsByLocation[],
+  ): CandidateContributionsByLocation[] {
+    // if any candidate has the inGeneralElection condition set
+    // then filter all by their inGeneralElection
+    const hasGeneral = data.some((candidate) => candidate.inGeneralElection);
+
+    return hasGeneral
+      ? data.filter((candidate) => candidate.inGeneralElection)
+      : data;
+  }
+
+  getContributionsByLocationParty({
     year,
     office,
     district,
@@ -46,7 +57,7 @@ export class CandidatesContributionsByLocationService {
     year?: string;
     office?: string;
     district?: string;
-  }): Observable<CandidateContributionsByLocation[]> {
+  }): Observable<{ candidateSeries: CandidateContributionsByLocation[] }> {
     const queryParams = {
       ...(year && { year }),
       ...(office && { office }),
@@ -55,8 +66,6 @@ export class CandidatesContributionsByLocationService {
 
     const params = new HttpParams({ fromObject: queryParams });
 
-    this._isLoading.set(true);
-
     return this.http
       .get<CandidatesContributionsByLocationResponse>(
         `${environment.apiUrl}/api/candidates/summaries/contributions/in-out-city`,
@@ -64,7 +73,9 @@ export class CandidatesContributionsByLocationService {
       )
       .pipe(
         map((response) => response.data),
-        finalize(() => this._isLoading.set(false)),
+        map((data) => ({
+          candidateSeries: this.filterForInGeneralCandidates(data),
+        })),
       );
   }
 }
