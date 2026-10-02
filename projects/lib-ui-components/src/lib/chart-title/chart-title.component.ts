@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MoreInformationComponent } from '../more-information-icon/more-information-icon.component';
 
 @Component({
@@ -21,11 +21,13 @@ import { MoreInformationComponent } from '../more-information-icon/more-informat
   template: `
     <div class="title">
       <p>
-        <span class="text" [style.color]="textColor">{{ titleText }}</span>
+        <span class="text" [style.color]="textColor">{{ titleText() }}</span>
 
-        <more-information-icon
-          [tooltipText]="tooltipText"
-        ></more-information-icon>
+        @if (showTooltipIcon()) {
+          <more-information-icon
+            [tooltipText]="tooltipText()"
+          ></more-information-icon>
+        }
       </p>
     </div>
   `,
@@ -33,9 +35,10 @@ import { MoreInformationComponent } from '../more-information-icon/more-informat
   imports: [MoreInformationComponent],
 })
 export class ChartTitleComponent {
-  @Input() titleText: string = 'Title Text Here';
-  @Input() textColor: string = '#244366';
-  @Input() tooltipText: string = 'Placeholder text.';
+  titleText = input<string>('Title Text Here');
+  textColor = input<string>('#244366');
+  tooltipText = input<string>('Placeholder text.');
+  showTooltipIcon = input<boolean>(true);
 
   constructor() {}
 }
