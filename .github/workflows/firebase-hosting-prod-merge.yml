@@ -1,4 +1,4 @@
-
+# prettier-ignore
 name: Deploy to Firebase on release/prod merge
 'on':
   push:
@@ -8,7 +8,7 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: 'npm ci'
       - run: 'npm run build'
       - uses: FirebaseExtended/action-hosting-deploy@v0
