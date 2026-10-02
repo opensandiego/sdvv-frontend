@@ -13,6 +13,11 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import * as echarts from 'echarts';
 
+export type AxisLabelHoverPayload = {
+  params: any;
+  chart: echarts.ECharts | null;
+};
+
 @Component({
   standalone: true,
   selector: 'angular-echarts',
@@ -42,6 +47,8 @@ export class AngularEChartWrapperComponent implements AfterViewInit, OnDestroy {
   loading = input<boolean>(false);
 
   chartClick = output<any>();
+  axisLabelHover = output<AxisLabelHoverPayload>();
+  axisLabelHoverOut = output<AxisLabelHoverPayload>();
 
   private chart: echarts.ECharts | null = null;
   private resizeHandler = () => this.chart?.resize();
@@ -78,6 +85,22 @@ export class AngularEChartWrapperComponent implements AfterViewInit, OnDestroy {
         this.chartClick.emit(params);
       });
 
+      this.chart.on('mouseover', (params: any) => {
+        // when the mouse pointer is over an item
+        this.axisLabelHover.emit({
+          params,
+          chart: this.chart,
+        });
+      });
+
+      this.chart.on('mouseout', (params: any) => {
+        // when the mouse pointer is no longer over an item
+        this.axisLabelHoverOut.emit({
+          params,
+          chart: this.chart,
+        });
+      });
+
       window.addEventListener('resize', this.resizeHandler);
     }
   }
@@ -86,6 +109,10 @@ export class AngularEChartWrapperComponent implements AfterViewInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       window.removeEventListener('resize', this.resizeHandler);
       this.chart?.off('click');
+
+      this.chart?.off('mouseover');
+      this.chart?.off('mouseout');
+
       this.chart?.dispose();
     }
   }

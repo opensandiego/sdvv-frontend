@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GraphQLModule } from '../graphql.module';
 import { LastUpdateGQL, LastUpdateResponse } from './last-update-gql.query';
 
+/** @deprecated use components / LastUpdateDateComponent  */
 @Component({
   selector: 'last-updated',
   imports: [GraphQLModule],
