@@ -47,6 +47,25 @@ const districts: Routes = [
 
 export const OFFICE_DISTRICT_ROUTES: Routes = [
   {
+    path: 'city-council',
+    // data: { type: 'office_prefix', office_name: 'city-council' },
+    data: { type: 'office_prefix' },
+    children: [
+      {
+        path: '0',
+        redirectTo: '',
+        pathMatch: 'full',
+      },
+      {
+        path: '',
+        loadComponent: () =>
+          import('../routed/office-landing-routed.component').then(
+            (mod) => mod.OfficeLandingRoutedComponent,
+          ),
+      },
+    ],
+  },
+  {
     path: ':office_name',
     children: districts,
     data: {
