@@ -83,7 +83,7 @@
     "@storybook/addon-links": "10.5.6",
     "@storybook/angular-vite": "10.5.6",
     "@types/jasmine": "~4.0.3",
-    "@types/node": "^24.13.3",
+    "@types/node": "^26.6.4",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "@webcomponents/custom-elements": "^1.6.0",
