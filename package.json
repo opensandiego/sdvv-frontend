@@ -87,7 +87,7 @@
     "@typescript-eslint/parser": "^7.18.0",
     "@webcomponents/custom-elements": "^1.6.0",
     "babel-loader": "^9.2.1",
-    "cypress": "^15.19.0",
+    "cypress": "^16.1.1",
     "eslint": "^8.57.1",
     "eslint-plugin-storybook": "10.6.1",
     "jasmine-core": "~4.1.1",
