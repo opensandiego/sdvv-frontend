@@ -9,12 +9,16 @@ export const MAIN_ROUTES: Routes = [
       year: YearRouteResolverService,
     },
     children: [
-      { path: 'home', redirectTo: '/years', pathMatch: 'full', },
-      { path: '', redirectTo: '/year/2026', pathMatch: 'full', },
-      { path: 'years',
-        loadChildren: () => import('./year-summary-routes').then(mod => mod.YEAR_SUMMARY_ROUTES),
+      { path: 'home', redirectTo: '/years', pathMatch: 'full' },
+      { path: '', redirectTo: '/year/2026', pathMatch: 'full' },
+      {
+        path: 'years',
+        loadChildren: () =>
+          import('./year-summary-routes').then(
+            (mod) => mod.YEAR_SUMMARY_ROUTES,
+          ),
       },
-    ]
+    ],
   },
   {
     path: 'year/:year',
@@ -24,33 +28,48 @@ export const MAIN_ROUTES: Routes = [
     },
     children: [
       {
+        // year with office summaries
         path: '',
         data: { type: '' },
-        loadChildren: () => import('./offices-routes').then(mod => mod.OFFICE_ROUTES),
+        loadChildren: () =>
+          import('./offices-routes').then((mod) => mod.OFFICE_ROUTES),
       },
       {
         path: 'office',
         data: { breadcrumb: null, startRoute: true, type: '' },
-        loadChildren: () => import('./office-district-routes').then(mod => mod.OFFICE_DISTRICT_ROUTES),
-      }
+        loadChildren: () =>
+          import('./office-district-routes').then(
+            (mod) => mod.OFFICE_DISTRICT_ROUTES,
+          ),
+      },
     ],
   },
   { path: 'splash', redirectTo: '', pathMatch: 'full' },
   {
     path: 'about',
-    loadComponent: () => import('../components/about/about.component').then(mod => mod.AboutComponent)
+    loadComponent: () =>
+      import('../components/about/about.component').then(
+        (mod) => mod.AboutComponent,
+      ),
   },
   {
     path: 'faq',
-    loadComponent: () => import('../components/faq/faq.component').then(mod => mod.FaqComponent)
+    loadComponent: () =>
+      import('../components/faq/faq.component').then((mod) => mod.FaqComponent),
   },
   {
     path: 'under-construction',
-    loadComponent: () => import('../components/under-construction/under-construction.component').then(mod => mod.UnderConstructionComponent)
+    loadComponent: () =>
+      import('../components/under-construction/under-construction.component').then(
+        (mod) => mod.UnderConstructionComponent,
+      ),
   },
   {
     path: '404',
-    loadComponent: () => import('../components/not-found/not-found.component').then(mod => mod.NotFoundComponent)
+    loadComponent: () =>
+      import('../components/not-found/not-found.component').then(
+        (mod) => mod.NotFoundComponent,
+      ),
   },
   { path: '**', pathMatch: 'full', redirectTo: '404' },
 ];
