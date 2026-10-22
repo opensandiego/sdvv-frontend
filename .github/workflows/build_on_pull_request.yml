@@ -1,18 +1,19 @@
-name: Test Build  
-on: 
+# prettier-ignore
+name: Test Build
+on:
   pull_request:
-    branches: [ dev ]
+    branches: [dev]
 
 jobs:
-  deploy: 
+  deploy:
     runs-on: ubuntu-latest
     name: Running NPM Build
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v7
         with:
-          node-version: '24'
+          node-version: '26.10'
       - run: npm ci
 
       - run: npm run build
