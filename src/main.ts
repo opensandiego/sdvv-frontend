@@ -5,7 +5,11 @@ import {
 } from '@angular/core';
 import { bootstrapApplication, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { GraphQLModule } from './app/graphql/graphql.module';
 import { MAIN_ROUTES } from './app/routes/main-routes';
@@ -16,6 +20,7 @@ import { PrimePreset } from './prime-preset';
 
 // Import the ECharts v5 theme so it self-registers globally
 import 'echarts/theme/v5.js';
+import { cachingInterceptor } from './app/interceptors/caching.interceptor';
 
 if (environment.production) {
   enableProdMode();
@@ -38,7 +43,7 @@ bootstrapApplication(AppComponent, {
         },
       },
     }),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([cachingInterceptor])),
     provideRouter(MAIN_ROUTES, withComponentInputBinding()),
     importProvidersFrom(
       BrowserAnimationsModule,

@@ -37,7 +37,7 @@ export class SpendingByCityCouncilDistrictService {
     return this.http
       .get<SpendingByCityCouncilDistrictResponse>(
         `${environment.apiUrl}/api/office/summaries/spending/city-council/districts`,
-        { params, cache: 'force-cache' },
+        { params },
       )
       .pipe(
         map((response) => response.data),

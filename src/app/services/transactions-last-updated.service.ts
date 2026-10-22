@@ -35,7 +35,7 @@ export class TransactionsLastUpdatedService {
     return this.http
       .get<TransactionsLastUpdatedResponse>(
         `${environment.apiUrl}/api/transactions/last-updated`,
-        { params, cache: 'force-cache' },
+        { params },
       )
       .pipe(
         map((response) => response.data),
